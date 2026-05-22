@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 11:30:01 UTC
+Generated: 2026-05-22 11:40:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:37 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      865608  0.1  2.2 649380 87444 ?        Ssl  09:20   0:08 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      865608  0.1  2.2 649380 87444 ?        Ssl  09:20   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -700,36 +700,36 @@ root      865608  0.1  2.2 649380 87444 ?        Ssl  09:20   0:08 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 10:29:01,065 [INFO] main: ETHUSDT | RL adj=70.0%
-2026-05-22 10:29:03,067 [INFO] main: Next scan in 60min (weekday-active)
-2026-05-22 11:20:33,149 [INFO] main: Symbols: 30
-2026-05-22 11:25:02,240 [WARNING] positions: paper_price BNBUSDT: Connection timeout to host https://api.bitget.com/api/v2/mix/market/ticker?symbol=BNBUSDT&productType=USDT-FUTURES
-2026-05-22 11:29:03,078 [INFO] main: Scanning 26 symbols...
-2026-05-22 11:29:04,708 [INFO] main: HYPEUSDT | Bull:long(70%) Bear:short(70%)
-2026-05-22 11:29:10,407 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 11:29:10,409 [INFO] main: HYPEUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-22 11:29:10,409 [INFO] main: HYPEUSDT | RL adj=70.0%
-2026-05-22 11:29:14,051 [INFO] main: BSBUSDT | Bull:long(70%) Bear:short(72%)
-2026-05-22 11:29:19,492 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 11:29:19,493 [INFO] main: BSBUSDT | Judge:HOLD conf=72% size=0.0%
-2026-05-22 11:29:19,494 [INFO] main: BSBUSDT | RL adj=72.0%
-2026-05-22 11:29:23,219 [INFO] main: OPGUSDT | Bull:long(45%) Bear:short(80%)
-2026-05-22 11:29:27,902 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 11:29:27,903 [INFO] main: OPGUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-22 11:29:27,904 [INFO] main: OPGUSDT | RL adj=80.0%
-2026-05-22 11:29:31,622 [INFO] main: SKYAIUSDT | Bull:long(65%) Bear:short(70%)
-2026-05-22 11:29:36,633 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 11:29:36,635 [INFO] main: SKYAIUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-22 11:29:36,635 [INFO] main: SKYAIUSDT | RL adj=70.0%
-2026-05-22 11:29:40,266 [INFO] main: ONDOUSDT | Bull:long(65%) Bear:short(70%)
-2026-05-22 11:29:46,305 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 11:29:46,313 [INFO] main: ONDOUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-22 11:29:46,313 [INFO] main: ONDOUSDT | RL adj=70.0%
-2026-05-22 11:29:50,073 [INFO] main: UBUSDT | Bull:long(80%) Bear:short(80%)
-2026-05-22 11:29:56,298 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 11:29:56,299 [INFO] main: UBUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-22 11:29:56,300 [INFO] main: UBUSDT | RL adj=80.0%
-2026-05-22 11:30:00,041 [INFO] main: WLDUSDT | Bull:long(55%) Bear:short(80%)
+2026-05-22 11:32:03,367 [INFO] main: SUIUSDT | RL adj=70.0%
+2026-05-22 11:32:07,052 [INFO] main: PEPEUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-22 11:32:24,410 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 11:32:24,412 [INFO] main: PEPEUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-22 11:32:24,412 [INFO] main: PEPEUSDT | RL adj=80.0%
+2026-05-22 11:32:28,279 [INFO] main: FIDAUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-22 11:32:32,549 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 11:32:32,550 [INFO] main: FIDAUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-22 11:32:32,550 [INFO] main: FIDAUSDT | RL adj=80.0%
+2026-05-22 11:32:36,343 [INFO] main: NEARUSDT | Bull:long(55%) Bear:short(80%)
+2026-05-22 11:32:41,000 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 11:32:41,001 [INFO] main: NEARUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-22 11:32:41,001 [INFO] main: NEARUSDT | RL adj=80.0%
+2026-05-22 11:32:44,843 [INFO] main: ADAUSDT | Bull:long(42%) Bear:short(72%)
+2026-05-22 11:32:48,690 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 11:32:48,691 [INFO] main: ADAUSDT | Judge:HOLD conf=72% size=0.0%
+2026-05-22 11:32:48,691 [INFO] main: ADAUSDT | RL adj=72.0%
+2026-05-22 11:32:52,443 [INFO] main: GRASSUSDT | Bull:long(70%) Bear:short(70%)
+2026-05-22 11:32:58,050 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 11:32:58,051 [INFO] main: GRASSUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-22 11:32:58,051 [INFO] main: GRASSUSDT | RL adj=70.0%
+2026-05-22 11:33:01,765 [INFO] main: BTCUSDT | Bull:long(55%) Bear:short(70%)
+2026-05-22 11:33:07,044 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 11:33:07,045 [INFO] main: BTCUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-22 11:33:07,045 [INFO] main: BTCUSDT | RL adj=70.0%
+2026-05-22 11:33:10,761 [INFO] main: INJUSDT | Bull:long(60%) Bear:short(70%)
+2026-05-22 11:33:16,388 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 11:33:16,389 [INFO] main: INJUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-22 11:33:16,389 [INFO] main: INJUSDT | RL adj=70.0%
+2026-05-22 11:33:18,392 [INFO] main: Next scan in 60min (weekday-active)
 ```
 
 ## Disk
@@ -747,7 +747,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       605Mi       1.1Gi       4.8Mi       2.4Gi       3.1Gi
+Mem:           3.7Gi       604Mi       1.1Gi       4.8Mi       2.4Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
