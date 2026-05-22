@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 17:30:01 UTC
+Generated: 2026-05-22 17:40:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      865608  0.0  2.2 649636 87776 ?        Ssl  09:20   0:18 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      865608  0.0  2.2 649636 87776 ?        Ssl  09:20   0:19 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -730,9 +730,6 @@ root      865608  0.0  2.2 649636 87776 ?        Ssl  09:20   0:18 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 12:33:54,659 [INFO] main: PENGUUSDT | Bull:long(60%) Bear:short(70%)
-2026-05-22 12:34:00,410 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 12:34:00,412 [INFO] main: PENGUUSDT | Judge:HOLD conf=70% size=0.0%
 2026-05-22 12:34:00,412 [INFO] main: PENGUUSDT | RL adj=70.0%
 2026-05-22 12:34:04,291 [INFO] main: DOGEUSDT | Bull:long(80%) Bear:short(70%)
 2026-05-22 12:34:09,192 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -760,6 +757,9 @@ root      865608  0.0  2.2 649636 87776 ?        Ssl  09:20   0:18 /opt/ensemble
 2026-05-22 16:34:11,251 [INFO] main: Max positions
 2026-05-22 16:34:11,252 [INFO] main: Next scan in 60min (weekday-active)
 2026-05-22 17:20:37,263 [INFO] main: Symbols: 30
+2026-05-22 17:34:11,254 [INFO] main: Scanning 27 symbols...
+2026-05-22 17:34:11,254 [INFO] main: Max positions
+2026-05-22 17:34:11,255 [INFO] main: Next scan in 60min (weekday-active)
 ```
 
 ## Disk
@@ -777,7 +777,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       612Mi       970Mi       4.8Mi       2.5Gi       3.1Gi
+Mem:           3.7Gi       611Mi       970Mi       4.8Mi       2.5Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
