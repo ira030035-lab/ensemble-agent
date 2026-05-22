@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 20:20:01 UTC
+Generated: 2026-05-22 20:30:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      865608  0.0  2.2 649636 87784 ?        Ssl  09:20   0:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      865608  0.0  2.2 649636 87784 ?        Ssl  09:20   0:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -766,7 +766,6 @@ root      865608  0.0  2.2 649636 87784 ?        Ssl  09:20   0:24 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 19:37:46,315 [INFO] main: NEARUSDT | Bull:long(45%) Bear:short(70%)
 2026-05-22 19:37:51,089 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-22 19:37:51,090 [INFO] main: NEARUSDT | Judge:HOLD conf=70% size=0.0%
 2026-05-22 19:37:51,090 [INFO] main: NEARUSDT | RL adj=70.0%
@@ -796,6 +795,7 @@ root      865608  0.0  2.2 649636 87784 ?        Ssl  09:20   0:24 /opt/ensemble
 2026-05-22 19:41:10,068 [INFO] positions: OK SOLUSDT short PnL:3.09% reason:take_profit
 2026-05-22 19:41:10,068 [INFO] positions: Lessons: This SOLUSDT short trade was closed with a 3.09% profit. The trade was based on a bearish conviction that outweighed bullish sentiment, despite the trending_up regime. The outcome validated the decision to short, as structural weakness dominated and the take_profit target was reached.
 2026-05-22 19:41:10,070 [INFO] rl: RL learned from short SOLUSDT: profit 3.09% | weights bull=0.983 bear=1.008 judge=1.008 threshold=64.98
+2026-05-22 20:20:39,203 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -813,7 +813,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       603Mi       966Mi       4.8Mi       2.5Gi       3.1Gi
+Mem:           3.7Gi       603Mi       965Mi       4.8Mi       2.5Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
