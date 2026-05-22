@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 11:50:01 UTC
+Generated: 2026-05-22 12:00:01 UTC
 
 ## Services
 ```
@@ -17,7 +17,7 @@ root      865608  0.1  2.2 649380 87444 ?        Ssl  09:20   0:10 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 659.8467562631998,
+  "balance": 670.9590490631998,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779330658",
@@ -28,18 +28,6 @@ root      865608  0.1  2.2 649380 87444 ?        Ssl  09:20   0:10 /opt/ensemble
       "confidence": 76,
       "opened_at": "2026-05-21T02:30:58.052787",
       "cost": 59.726634
-    },
-    "TAOUSDT": {
-      "id": "PAPER_TAOUSDT_1779429563",
-      "symbol": "TAOUSDT",
-      "side": "long",
-      "entry_price": 282.79,
-      "qty": 0.1701,
-      "confidence": 68,
-      "opened_at": "2026-05-22T05:59:23.053840",
-      "cost": 9.620515800000002,
-      "notional": 48.102579000000006,
-      "leverage": 5
     },
     "ASTERUSDT": {
       "id": "PAPER_ASTERUSDT_1779429829",
@@ -692,19 +680,32 @@ root      865608  0.1  2.2 649380 87444 ?        Ssl  09:20   0:10 /opt/ensemble
       "closed_at": "2026-05-22T07:59:17.536654",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_TAOUSDT_1779429563",
+      "symbol": "TAOUSDT",
+      "side": "long",
+      "entry_price": 282.79,
+      "qty": 0.1701,
+      "confidence": 68,
+      "opened_at": "2026-05-22T05:59:23.053840",
+      "cost": 9.620515800000002,
+      "notional": 48.102579000000006,
+      "leverage": 5,
+      "exit_price": 291.56,
+      "pnl_pct": 3.1,
+      "pnl_usdt": 1.49,
+      "closed_at": "2026-05-22T11:55:53.834457",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -2.814309226799997
+  "total_pnl": -1.3225322268000002
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 11:32:03,367 [INFO] main: SUIUSDT | RL adj=70.0%
-2026-05-22 11:32:07,052 [INFO] main: PEPEUSDT | Bull:long(45%) Bear:short(80%)
-2026-05-22 11:32:24,410 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 11:32:24,412 [INFO] main: PEPEUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-22 11:32:24,412 [INFO] main: PEPEUSDT | RL adj=80.0%
 2026-05-22 11:32:28,279 [INFO] main: FIDAUSDT | Bull:long(45%) Bear:short(80%)
 2026-05-22 11:32:32,549 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-22 11:32:32,550 [INFO] main: FIDAUSDT | Judge:HOLD conf=80% size=0.0%
@@ -730,6 +731,11 @@ root      865608  0.1  2.2 649380 87444 ?        Ssl  09:20   0:10 /opt/ensemble
 2026-05-22 11:33:16,389 [INFO] main: INJUSDT | Judge:HOLD conf=70% size=0.0%
 2026-05-22 11:33:16,389 [INFO] main: INJUSDT | RL adj=70.0%
 2026-05-22 11:33:18,392 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-22 11:55:53,833 [INFO] positions: TAKE-PROFIT TAOUSDT long PnL:3.1%
+2026-05-22 11:55:53,838 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG TAOUSDT @ 291.5600 PnL: 3.10% (+1.49 USDT) | Баланс: 670.96
+2026-05-22 11:55:54,216 [INFO] positions: OK TAOUSDT long PnL:3.1% reason:take_profit
+2026-05-22 11:55:54,216 [INFO] positions: Lessons: The TAOUSDT long trade closed with a 3.1% profit. The initial reasoning was based on a narrow edge of BULL conviction over BEAR conviction, but a trending_up regime and bullish MACD supported the long action. This trade outcome suggests that even a small conviction edge can be sufficient for a profitable trade when supported by favorable market conditions.
+2026-05-22 11:55:54,218 [INFO] rl: RL learned from long TAOUSDT: profit 3.10% | weights bull=1.011 bear=0.985 judge=1.005 threshold=64.94
 ```
 
 ## Disk
