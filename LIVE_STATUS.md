@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 17:20:01 UTC
+Generated: 2026-05-22 17:30:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      865608  0.0  2.2 649636 87768 ?        Ssl  09:20   0:18 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      865608  0.0  2.2 649636 87776 ?        Ssl  09:20   0:18 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -730,7 +730,6 @@ root      865608  0.0  2.2 649636 87768 ?        Ssl  09:20   0:18 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 12:33:50,815 [INFO] main: ZECUSDT | RL adj=80.0%
 2026-05-22 12:33:54,659 [INFO] main: PENGUUSDT | Bull:long(60%) Bear:short(70%)
 2026-05-22 12:34:00,410 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-22 12:34:00,412 [INFO] main: PENGUUSDT | Judge:HOLD conf=70% size=0.0%
@@ -760,6 +759,7 @@ root      865608  0.0  2.2 649636 87768 ?        Ssl  09:20   0:18 /opt/ensemble
 2026-05-22 16:34:11,251 [INFO] main: Scanning 27 symbols...
 2026-05-22 16:34:11,251 [INFO] main: Max positions
 2026-05-22 16:34:11,252 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-22 17:20:37,263 [INFO] main: Symbols: 30
 ```
 
 ## Disk
