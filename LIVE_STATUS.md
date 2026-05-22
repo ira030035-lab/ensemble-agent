@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 23:20:01 UTC
+Generated: 2026-05-22 23:30:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      865608  0.0  2.2 649636 87796 ?        Ssl  09:20   0:34 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      865608  0.0  2.2 649636 87796 ?        Ssl  09:20   0:35 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -784,7 +784,6 @@ root      865608  0.0  2.2 649636 87796 ?        Ssl  09:20   0:34 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 22:50:35,138 [INFO] main: SKYAIUSDT | Bull:long(80%) Bear:short(70%)
 2026-05-22 22:50:41,035 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-22 22:50:41,037 [INFO] main: SKYAIUSDT | Judge:HOLD conf=72% size=0.0%
 2026-05-22 22:50:41,037 [INFO] main: SKYAIUSDT | RL adj=72.0%
@@ -814,6 +813,7 @@ root      865608  0.0  2.2 649636 87796 ?        Ssl  09:20   0:34 /opt/ensemble
 2026-05-22 22:53:32,605 [INFO] positions: OK TONUSDT short PnL:0.77% reason:trailing_stop
 2026-05-22 22:53:32,605 [INFO] positions: Lessons: This trade was a short position in TONUSDT that closed with a 0.77% profit, driven by a strong bearish conviction and a trending_down regime. The position size was relatively small at 0.08% of the total portfolio. The trade was closed by a trailing stop, highlighting the importance of risk management in capturing profits.
 2026-05-22 22:53:32,607 [INFO] rl: RL learned from short TONUSDT: profit 0.77% | weights bull=0.981 bear=1.010 judge=1.009 threshold=64.95
+2026-05-22 23:20:41,169 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -831,7 +831,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       602Mi       956Mi       4.8Mi       2.5Gi       3.1Gi
+Mem:           3.7Gi       602Mi       957Mi       4.8Mi       2.5Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
