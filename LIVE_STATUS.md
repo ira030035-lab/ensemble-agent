@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 12:20:01 UTC
+Generated: 2026-05-22 12:30:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:38 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      865608  0.1  2.2 649380 87444 ?        Ssl  09:20   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      865608  0.0  2.2 649380 87552 ?        Ssl  09:20   0:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -706,7 +706,6 @@ root      865608  0.1  2.2 649380 87444 ?        Ssl  09:20   0:10 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 11:32:28,279 [INFO] main: FIDAUSDT | Bull:long(45%) Bear:short(80%)
 2026-05-22 11:32:32,549 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-22 11:32:32,550 [INFO] main: FIDAUSDT | Judge:HOLD conf=80% size=0.0%
 2026-05-22 11:32:32,550 [INFO] main: FIDAUSDT | RL adj=80.0%
@@ -736,6 +735,7 @@ root      865608  0.1  2.2 649380 87444 ?        Ssl  09:20   0:10 /opt/ensemble
 2026-05-22 11:55:54,216 [INFO] positions: OK TAOUSDT long PnL:3.1% reason:take_profit
 2026-05-22 11:55:54,216 [INFO] positions: Lessons: The TAOUSDT long trade closed with a 3.1% profit. The initial reasoning was based on a narrow edge of BULL conviction over BEAR conviction, but a trending_up regime and bullish MACD supported the long action. This trade outcome suggests that even a small conviction edge can be sufficient for a profitable trade when supported by favorable market conditions.
 2026-05-22 11:55:54,218 [INFO] rl: RL learned from long TAOUSDT: profit 3.10% | weights bull=1.011 bear=0.985 judge=1.005 threshold=64.94
+2026-05-22 12:20:33,818 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -753,7 +753,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       603Mi       1.1Gi       4.8Mi       2.4Gi       3.1Gi
+Mem:           3.7Gi       604Mi       1.1Gi       4.8Mi       2.4Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
