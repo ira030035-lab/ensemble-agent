@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 19:20:01 UTC
+Generated: 2026-05-22 19:30:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      865608  0.0  2.2 649636 87776 ?        Ssl  09:20   0:21 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      865608  0.0  2.2 649636 87784 ?        Ssl  09:20   0:21 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -742,7 +742,6 @@ root      865608  0.0  2.2 649636 87776 ?        Ssl  09:20   0:21 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 14:20:35,215 [INFO] main: Symbols: 30
 2026-05-22 14:34:11,232 [INFO] main: Scanning 27 symbols...
 2026-05-22 14:34:11,232 [INFO] main: Max positions
 2026-05-22 14:34:11,232 [INFO] main: Next scan in 60min (weekday-active)
@@ -772,6 +771,7 @@ root      865608  0.0  2.2 649636 87776 ?        Ssl  09:20   0:21 /opt/ensemble
 2026-05-22 18:45:34,345 [INFO] positions: LOSS ADAUSDT long PnL:-3.05% reason:stop_loss
 2026-05-22 18:45:34,345 [INFO] positions: Lessons: The trade was closed at a loss due to a stop loss being triggered, resulting in a -3.05% PnL. This outcome highlights the importance of considering conviction splits and volume weakness when sizing positions. Despite a favorable trending_up regime and technical alignment, the equal conviction split and low volume ratio ultimately led to a failed trade.
 2026-05-22 18:45:34,347 [INFO] rl: RL learned from long ADAUSDT: loss -3.05% | weights bull=0.997 bear=0.997 judge=1.006 threshold=64.96
+2026-05-22 19:20:38,559 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -789,7 +789,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       605Mi       967Mi       4.8Mi       2.5Gi       3.1Gi
+Mem:           3.7Gi       606Mi       965Mi       4.8Mi       2.5Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
