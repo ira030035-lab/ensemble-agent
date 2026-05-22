@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 20:30:01 UTC
+Generated: 2026-05-22 20:40:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      865608  0.0  2.2 649636 87784 ?        Ssl  09:20   0:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      865608  0.0  2.2 649636 87784 ?        Ssl  09:20   0:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -766,36 +766,36 @@ root      865608  0.0  2.2 649636 87784 ?        Ssl  09:20   0:25 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 19:37:51,089 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 19:37:51,090 [INFO] main: NEARUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-22 19:37:51,090 [INFO] main: NEARUSDT | RL adj=70.0%
-2026-05-22 19:37:54,887 [INFO] main: PENGUUSDT | Bull:long(45%) Bear:short(80%)
-2026-05-22 19:38:00,742 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 19:38:00,744 [INFO] main: PENGUUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-22 19:38:00,744 [INFO] main: PENGUUSDT | RL adj=80.0%
-2026-05-22 19:38:04,502 [INFO] main: WLDUSDT | Bull:long(45%) Bear:short(80%)
-2026-05-22 19:38:10,318 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 19:38:10,319 [INFO] main: WLDUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-22 19:38:10,319 [INFO] main: WLDUSDT | RL adj=80.0%
-2026-05-22 19:38:14,078 [INFO] main: ONDOUSDT | Bull:long(45%) Bear:short(85%)
-2026-05-22 19:38:19,934 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 19:38:19,936 [INFO] main: ONDOUSDT | Judge:HOLD conf=85% size=0.0%
-2026-05-22 19:38:19,936 [INFO] main: ONDOUSDT | RL adj=85.0%
-2026-05-22 19:38:23,644 [INFO] main: UBUSDT | Bull:long(45%) Bear:short(80%)
-2026-05-22 19:38:28,118 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 19:38:28,120 [INFO] main: UBUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-22 19:38:28,120 [INFO] main: UBUSDT | RL adj=80.0%
-2026-05-22 19:38:31,821 [INFO] main: SUIUSDT | Bull:long(45%) Bear:short(85%)
-2026-05-22 19:38:39,001 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 19:38:39,002 [INFO] main: SUIUSDT | Judge:HOLD conf=85% size=0.0%
-2026-05-22 19:38:39,002 [INFO] main: SUIUSDT | RL adj=85.0%
-2026-05-22 19:38:41,005 [INFO] main: Next scan in 60min (weekday-active)
-2026-05-22 19:41:09,749 [INFO] positions: TAKE-PROFIT SOLUSDT short PnL:3.09%
-2026-05-22 19:41:09,754 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT SOLUSDT @ 84.0930 PnL: 3.09% (+1.86 USDT) | Баланс: 678.46
-2026-05-22 19:41:10,068 [INFO] positions: OK SOLUSDT short PnL:3.09% reason:take_profit
-2026-05-22 19:41:10,068 [INFO] positions: Lessons: This SOLUSDT short trade was closed with a 3.09% profit. The trade was based on a bearish conviction that outweighed bullish sentiment, despite the trending_up regime. The outcome validated the decision to short, as structural weakness dominated and the take_profit target was reached.
-2026-05-22 19:41:10,070 [INFO] rl: RL learned from short SOLUSDT: profit 3.09% | weights bull=0.983 bear=1.008 judge=1.008 threshold=64.98
-2026-05-22 20:20:39,203 [INFO] main: Symbols: 30
+2026-05-22 20:38:51,919 [INFO] main: NEARUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-22 20:38:51,919 [INFO] main: NEARUSDT | RL adj=80.0%
+2026-05-22 20:38:55,588 [INFO] main: WLDUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-22 20:39:00,466 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 20:39:00,467 [INFO] main: WLDUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-22 20:39:00,467 [INFO] main: WLDUSDT | RL adj=80.0%
+2026-05-22 20:39:04,860 [INFO] main: BILLUSDT | Bull:long(70%) Bear:short(80%)
+2026-05-22 20:39:10,311 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 20:39:10,312 [INFO] main: BILLUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-22 20:39:10,312 [INFO] main: BILLUSDT | RL adj=80.0%
+2026-05-22 20:39:14,032 [INFO] main: INJUSDT | Bull:long(45%) Bear:short(70%)
+2026-05-22 20:39:21,742 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 20:39:21,743 [INFO] main: INJUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-22 20:39:21,743 [INFO] main: INJUSDT | RL adj=70.0%
+2026-05-22 20:39:25,437 [INFO] main: TAOUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-22 20:39:30,273 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 20:39:30,274 [INFO] main: TAOUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-22 20:39:30,274 [INFO] main: TAOUSDT | RL adj=80.0%
+2026-05-22 20:39:33,993 [INFO] main: ONDOUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-22 20:39:39,523 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 20:39:39,525 [INFO] main: ONDOUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-22 20:39:39,525 [INFO] main: ONDOUSDT | RL adj=80.0%
+2026-05-22 20:39:43,377 [INFO] main: FIDAUSDT | Bull:long(45%) Bear:short(85%)
+2026-05-22 20:39:49,000 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 20:39:49,002 [INFO] main: FIDAUSDT | Judge:HOLD conf=85% size=0.0%
+2026-05-22 20:39:49,002 [INFO] main: FIDAUSDT | RL adj=85.0%
+2026-05-22 20:39:53,020 [INFO] main: ALTUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-22 20:39:59,254 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 20:39:59,255 [INFO] main: ALTUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-22 20:39:59,256 [INFO] main: ALTUSDT | RL adj=80.0%
 ```
 
 ## Disk
