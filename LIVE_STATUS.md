@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 18:30:01 UTC
+Generated: 2026-05-22 18:40:01 UTC
 
 ## Services
 ```
@@ -730,9 +730,6 @@ root      865608  0.0  2.2 649636 87776 ?        Ssl  09:20   0:20 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 12:34:04,291 [INFO] main: DOGEUSDT | Bull:long(80%) Bear:short(70%)
-2026-05-22 12:34:09,192 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 12:34:09,194 [INFO] main: DOGEUSDT | Judge:LONG conf=72% size=8.0%
 2026-05-22 12:34:09,194 [INFO] main: DOGEUSDT | RL adj=73.8%
 2026-05-22 12:34:09,194 [INFO] main: DOGEUSDT | gate PASS (Judge 72/70 RL 73.8/64.94 slack=±3)
 2026-05-22 12:34:09,194 [INFO] positions: [PAPER] Opening LONG DOGEUSDT notional=$52.7 conf=72%
@@ -760,6 +757,9 @@ root      865608  0.0  2.2 649636 87776 ?        Ssl  09:20   0:20 /opt/ensemble
 2026-05-22 17:34:11,254 [INFO] main: Max positions
 2026-05-22 17:34:11,255 [INFO] main: Next scan in 60min (weekday-active)
 2026-05-22 18:20:37,907 [INFO] main: Symbols: 30
+2026-05-22 18:34:11,266 [INFO] main: Scanning 27 symbols...
+2026-05-22 18:34:11,267 [INFO] main: Max positions
+2026-05-22 18:34:11,267 [INFO] main: Next scan in 60min (weekday-active)
 ```
 
 ## Disk
