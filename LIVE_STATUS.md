@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 16:20:01 UTC
+Generated: 2026-05-22 16:30:01 UTC
 
 ## Services
 ```
@@ -730,7 +730,6 @@ root      865608  0.0  2.2 649636 87768 ?        Ssl  09:20   0:17 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 12:33:42,310 [INFO] main: INJUSDT | RL adj=80.0%
 2026-05-22 12:33:45,983 [INFO] main: ZECUSDT | Bull:long(45%) Bear:short(80%)
 2026-05-22 12:33:50,814 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-22 12:33:50,815 [INFO] main: ZECUSDT | Judge:HOLD conf=80% size=0.0%
@@ -760,6 +759,7 @@ root      865608  0.0  2.2 649636 87768 ?        Ssl  09:20   0:17 /opt/ensemble
 2026-05-22 15:34:11,242 [INFO] main: Scanning 27 symbols...
 2026-05-22 15:34:11,242 [INFO] main: Max positions
 2026-05-22 15:34:11,243 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-22 16:20:36,580 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -777,7 +777,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       596Mi       1.1Gi       4.8Mi       2.4Gi       3.1Gi
+Mem:           3.7Gi       597Mi       1.1Gi       4.8Mi       2.4Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
