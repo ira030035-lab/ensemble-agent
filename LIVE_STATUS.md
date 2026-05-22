@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 12:30:01 UTC
+Generated: 2026-05-22 12:40:01 UTC
 
 ## Services
 ```
@@ -11,13 +11,13 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:38 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      865608  0.0  2.2 649380 87552 ?        Ssl  09:20   0:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      865608  0.0  2.2 649380 87560 ?        Ssl  09:20   0:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 670.9590490631998,
+  "balance": 648.3396787359998,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779330658",
@@ -51,6 +51,30 @@ root      865608  0.0  2.2 649380 87552 ?        Ssl  09:20   0:11 /opt/ensemble
       "opened_at": "2026-05-22T06:05:46.091766",
       "cost": 12.075330679999999,
       "notional": 60.376653399999995,
+      "leverage": 5
+    },
+    "ADAUSDT": {
+      "id": "PAPER_ADAUSDT_1779453213",
+      "symbol": "ADAUSDT",
+      "side": "long",
+      "entry_price": 0.2522,
+      "qty": 239.4382,
+      "confidence": 72,
+      "opened_at": "2026-05-22T12:33:33.595113",
+      "cost": 12.077262807999999,
+      "notional": 60.386314039999995,
+      "leverage": 5
+    },
+    "DOGEUSDT": {
+      "id": "PAPER_DOGEUSDT_1779453249",
+      "symbol": "DOGEUSDT",
+      "side": "long",
+      "entry_price": 0.10636,
+      "qty": 495.5861,
+      "confidence": 72,
+      "opened_at": "2026-05-22T12:34:09.195141",
+      "cost": 10.542107519199998,
+      "notional": 52.710537595999995,
       "leverage": 5
     }
   },
@@ -706,36 +730,36 @@ root      865608  0.0  2.2 649380 87552 ?        Ssl  09:20   0:11 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 11:32:32,549 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 11:32:32,550 [INFO] main: FIDAUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-22 11:32:32,550 [INFO] main: FIDAUSDT | RL adj=80.0%
-2026-05-22 11:32:36,343 [INFO] main: NEARUSDT | Bull:long(55%) Bear:short(80%)
-2026-05-22 11:32:41,000 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 11:32:41,001 [INFO] main: NEARUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-22 11:32:41,001 [INFO] main: NEARUSDT | RL adj=80.0%
-2026-05-22 11:32:44,843 [INFO] main: ADAUSDT | Bull:long(42%) Bear:short(72%)
-2026-05-22 11:32:48,690 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 11:32:48,691 [INFO] main: ADAUSDT | Judge:HOLD conf=72% size=0.0%
-2026-05-22 11:32:48,691 [INFO] main: ADAUSDT | RL adj=72.0%
-2026-05-22 11:32:52,443 [INFO] main: GRASSUSDT | Bull:long(70%) Bear:short(70%)
-2026-05-22 11:32:58,050 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 11:32:58,051 [INFO] main: GRASSUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-22 11:32:58,051 [INFO] main: GRASSUSDT | RL adj=70.0%
-2026-05-22 11:33:01,765 [INFO] main: BTCUSDT | Bull:long(55%) Bear:short(70%)
-2026-05-22 11:33:07,044 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 11:33:07,045 [INFO] main: BTCUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-22 11:33:07,045 [INFO] main: BTCUSDT | RL adj=70.0%
-2026-05-22 11:33:10,761 [INFO] main: INJUSDT | Bull:long(60%) Bear:short(70%)
-2026-05-22 11:33:16,388 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 11:33:16,389 [INFO] main: INJUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-22 11:33:16,389 [INFO] main: INJUSDT | RL adj=70.0%
-2026-05-22 11:33:18,392 [INFO] main: Next scan in 60min (weekday-active)
-2026-05-22 11:55:53,833 [INFO] positions: TAKE-PROFIT TAOUSDT long PnL:3.1%
-2026-05-22 11:55:53,838 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG TAOUSDT @ 291.5600 PnL: 3.10% (+1.49 USDT) | Баланс: 670.96
-2026-05-22 11:55:54,216 [INFO] positions: OK TAOUSDT long PnL:3.1% reason:take_profit
-2026-05-22 11:55:54,216 [INFO] positions: Lessons: The TAOUSDT long trade closed with a 3.1% profit. The initial reasoning was based on a narrow edge of BULL conviction over BEAR conviction, but a trending_up regime and bullish MACD supported the long action. This trade outcome suggests that even a small conviction edge can be sufficient for a profitable trade when supported by favorable market conditions.
-2026-05-22 11:55:54,218 [INFO] rl: RL learned from long TAOUSDT: profit 3.10% | weights bull=1.011 bear=0.985 judge=1.005 threshold=64.94
-2026-05-22 12:20:33,818 [INFO] main: Symbols: 30
+2026-05-22 12:33:24,920 [INFO] main: LABUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-22 12:33:24,920 [INFO] main: LABUSDT | RL adj=80.0%
+2026-05-22 12:33:28,594 [INFO] main: ADAUSDT | Bull:long(70%) Bear:short(70%)
+2026-05-22 12:33:33,592 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 12:33:33,594 [INFO] main: ADAUSDT | Judge:LONG conf=72% size=9.0%
+2026-05-22 12:33:33,594 [INFO] main: ADAUSDT | RL adj=72.3%
+2026-05-22 12:33:33,594 [INFO] main: ADAUSDT | gate PASS (Judge 72/70 RL 72.3/64.94 slack=±3)
+2026-05-22 12:33:33,594 [INFO] positions: [PAPER] Opening LONG ADAUSDT notional=$60.4 conf=72%
+2026-05-22 12:33:33,599 [INFO] paper_trading: [PAPER] ОТКРЫТА LONG ADAUSDT @ 0.2522 qty=239.4382 notional=60.39 margin=12.08 x5 | Баланс: 658.88
+2026-05-22 12:33:37,339 [INFO] main: INJUSDT | Bull:long(70%) Bear:short(80%)
+2026-05-22 12:33:42,309 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 12:33:42,310 [INFO] main: INJUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-22 12:33:42,310 [INFO] main: INJUSDT | RL adj=80.0%
+2026-05-22 12:33:45,983 [INFO] main: ZECUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-22 12:33:50,814 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 12:33:50,815 [INFO] main: ZECUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-22 12:33:50,815 [INFO] main: ZECUSDT | RL adj=80.0%
+2026-05-22 12:33:54,659 [INFO] main: PENGUUSDT | Bull:long(60%) Bear:short(70%)
+2026-05-22 12:34:00,410 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 12:34:00,412 [INFO] main: PENGUUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-22 12:34:00,412 [INFO] main: PENGUUSDT | RL adj=70.0%
+2026-05-22 12:34:04,291 [INFO] main: DOGEUSDT | Bull:long(80%) Bear:short(70%)
+2026-05-22 12:34:09,192 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 12:34:09,194 [INFO] main: DOGEUSDT | Judge:LONG conf=72% size=8.0%
+2026-05-22 12:34:09,194 [INFO] main: DOGEUSDT | RL adj=73.8%
+2026-05-22 12:34:09,194 [INFO] main: DOGEUSDT | gate PASS (Judge 72/70 RL 73.8/64.94 slack=±3)
+2026-05-22 12:34:09,194 [INFO] positions: [PAPER] Opening LONG DOGEUSDT notional=$52.7 conf=72%
+2026-05-22 12:34:09,199 [INFO] paper_trading: [PAPER] ОТКРЫТА LONG DOGEUSDT @ 0.1064 qty=495.5861 notional=52.71 margin=10.54 x5 | Баланс: 648.34
+2026-05-22 12:34:11,213 [INFO] main: Max positions
+2026-05-22 12:34:11,214 [INFO] main: Next scan in 60min (weekday-active)
 ```
 
 ## Disk
@@ -753,7 +777,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       604Mi       1.1Gi       4.8Mi       2.4Gi       3.1Gi
+Mem:           3.7Gi       603Mi       1.1Gi       4.8Mi       2.4Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
