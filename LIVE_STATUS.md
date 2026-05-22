@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 13:20:01 UTC
+Generated: 2026-05-22 13:30:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:38 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      865608  0.0  2.2 649380 87560 ?        Ssl  09:20   0:12 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      865608  0.0  2.2 649636 87752 ?        Ssl  09:20   0:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -730,7 +730,6 @@ root      865608  0.0  2.2 649380 87560 ?        Ssl  09:20   0:12 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 12:33:24,920 [INFO] main: LABUSDT | Judge:HOLD conf=80% size=0.0%
 2026-05-22 12:33:24,920 [INFO] main: LABUSDT | RL adj=80.0%
 2026-05-22 12:33:28,594 [INFO] main: ADAUSDT | Bull:long(70%) Bear:short(70%)
 2026-05-22 12:33:33,592 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -760,6 +759,7 @@ root      865608  0.0  2.2 649380 87560 ?        Ssl  09:20   0:12 /opt/ensemble
 2026-05-22 12:34:09,199 [INFO] paper_trading: [PAPER] ОТКРЫТА LONG DOGEUSDT @ 0.1064 qty=495.5861 notional=52.71 margin=10.54 x5 | Баланс: 648.34
 2026-05-22 12:34:11,213 [INFO] main: Max positions
 2026-05-22 12:34:11,214 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-22 13:20:34,531 [INFO] main: Symbols: 30
 ```
 
 ## Disk
