@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 13:30:01 UTC
+Generated: 2026-05-22 13:40:01 UTC
 
 ## Services
 ```
@@ -730,9 +730,6 @@ root      865608  0.0  2.2 649636 87752 ?        Ssl  09:20   0:13 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 12:33:24,920 [INFO] main: LABUSDT | RL adj=80.0%
-2026-05-22 12:33:28,594 [INFO] main: ADAUSDT | Bull:long(70%) Bear:short(70%)
-2026-05-22 12:33:33,592 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-22 12:33:33,594 [INFO] main: ADAUSDT | Judge:LONG conf=72% size=9.0%
 2026-05-22 12:33:33,594 [INFO] main: ADAUSDT | RL adj=72.3%
 2026-05-22 12:33:33,594 [INFO] main: ADAUSDT | gate PASS (Judge 72/70 RL 72.3/64.94 slack=±3)
@@ -760,6 +757,9 @@ root      865608  0.0  2.2 649636 87752 ?        Ssl  09:20   0:13 /opt/ensemble
 2026-05-22 12:34:11,213 [INFO] main: Max positions
 2026-05-22 12:34:11,214 [INFO] main: Next scan in 60min (weekday-active)
 2026-05-22 13:20:34,531 [INFO] main: Symbols: 30
+2026-05-22 13:34:11,217 [INFO] main: Scanning 26 symbols...
+2026-05-22 13:34:11,217 [INFO] main: Max positions
+2026-05-22 13:34:11,217 [INFO] main: Next scan in 60min (weekday-active)
 ```
 
 ## Disk
@@ -777,7 +777,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       604Mi       1.1Gi       4.8Mi       2.4Gi       3.1Gi
+Mem:           3.7Gi       605Mi       1.1Gi       4.8Mi       2.4Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
