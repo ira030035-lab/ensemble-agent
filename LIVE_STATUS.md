@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 23:40:01 UTC
+Generated: 2026-05-22 23:50:01 UTC
 
 ## Services
 ```
@@ -17,7 +17,7 @@ root      865608  0.0  2.2 649636 87796 ?        Ssl  09:20   0:35 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 681.5382012933783,
+  "balance": 690.9054733904305,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779330658",
@@ -28,18 +28,6 @@ root      865608  0.0  2.2 649636 87796 ?        Ssl  09:20   0:35 /opt/ensemble
       "confidence": 76,
       "opened_at": "2026-05-21T02:30:58.052787",
       "cost": 59.726634
-    },
-    "PEPEUSDT": {
-      "id": "PAPER_PEPEUSDT_1779486338",
-      "symbol": "PEPEUSDT",
-      "side": "short",
-      "entry_price": 3.683e-06,
-      "qty": 11052828.4331,
-      "confidence": 72,
-      "opened_at": "2026-05-22T21:45:38.441448",
-      "cost": 8.141513423821461,
-      "notional": 40.7075671191073,
-      "leverage": 5
     }
   },
   "trade_history": [
@@ -776,19 +764,32 @@ root      865608  0.0  2.2 649636 87796 ?        Ssl  09:20   0:35 /opt/ensemble
       "closed_at": "2026-05-22T22:53:32.262714",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_PEPEUSDT_1779486338",
+      "symbol": "PEPEUSDT",
+      "side": "short",
+      "entry_price": 3.683e-06,
+      "qty": 11052828.4331,
+      "confidence": 72,
+      "opened_at": "2026-05-22T21:45:38.441448",
+      "cost": 8.141513423821461,
+      "notional": 40.7075671191073,
+      "leverage": 5,
+      "exit_price": 3.5721e-06,
+      "pnl_pct": 3.01,
+      "pnl_usdt": 1.23,
+      "closed_at": "2026-05-22T23:48:05.066455",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -1.4530748447999964
+  "total_pnl": -0.22731617156920558
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 22:50:41,035 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 22:50:41,037 [INFO] main: SKYAIUSDT | Judge:HOLD conf=72% size=0.0%
-2026-05-22 22:50:41,037 [INFO] main: SKYAIUSDT | RL adj=72.0%
-2026-05-22 22:50:44,619 [INFO] main: SUIUSDT | Bull:long(42%) Bear:short(80%)
-2026-05-22 22:50:50,142 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-22 22:50:50,144 [INFO] main: SUIUSDT | Judge:HOLD conf=80% size=0.0%
 2026-05-22 22:50:50,144 [INFO] main: SUIUSDT | RL adj=80.0%
 2026-05-22 22:50:53,933 [INFO] main: BSBUSDT | Bull:long(70%) Bear:short(80%)
@@ -814,6 +815,11 @@ root      865608  0.0  2.2 649636 87796 ?        Ssl  09:20   0:35 /opt/ensemble
 2026-05-22 22:53:32,605 [INFO] positions: Lessons: This trade was a short position in TONUSDT that closed with a 0.77% profit, driven by a strong bearish conviction and a trending_down regime. The position size was relatively small at 0.08% of the total portfolio. The trade was closed by a trailing stop, highlighting the importance of risk management in capturing profits.
 2026-05-22 22:53:32,607 [INFO] rl: RL learned from short TONUSDT: profit 0.77% | weights bull=0.981 bear=1.010 judge=1.009 threshold=64.95
 2026-05-22 23:20:41,169 [INFO] main: Symbols: 30
+2026-05-22 23:48:05,066 [INFO] positions: TAKE-PROFIT PEPEUSDT short PnL:3.01%
+2026-05-22 23:48:05,069 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT PEPEUSDT @ 0.0000 PnL: 3.01% (+1.23 USDT) | Баланс: 690.91
+2026-05-22 23:48:05,414 [INFO] positions: OK PEPEUSDT short PnL:3.01% reason:take_profit
+2026-05-22 23:48:05,414 [INFO] positions: Lessons: The trade was successful with a 3.01% profit, validating the bearish conviction and trend analysis. The combination of oversold RSI, negative funding, and OB imbalance, along with a trending_down regime, supported the short position despite a potentially false positive MACD signal. This outcome reinforces the importance of considering regime structure and momentum alignment when making trading decisions.
+2026-05-22 23:48:05,416 [INFO] rl: RL learned from short PEPEUSDT: profit 3.01% | weights bull=0.973 bear=1.017 judge=1.011 threshold=64.92
 ```
 
 ## Disk
@@ -831,7 +837,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       602Mi       956Mi       4.8Mi       2.5Gi       3.1Gi
+Mem:           3.7Gi       607Mi       951Mi       4.8Mi       2.5Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
