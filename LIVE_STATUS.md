@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 18:20:01 UTC
+Generated: 2026-05-22 18:30:01 UTC
 
 ## Services
 ```
@@ -730,7 +730,6 @@ root      865608  0.0  2.2 649636 87776 ?        Ssl  09:20   0:20 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 12:34:00,412 [INFO] main: PENGUUSDT | RL adj=70.0%
 2026-05-22 12:34:04,291 [INFO] main: DOGEUSDT | Bull:long(80%) Bear:short(70%)
 2026-05-22 12:34:09,192 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-22 12:34:09,194 [INFO] main: DOGEUSDT | Judge:LONG conf=72% size=8.0%
@@ -760,6 +759,7 @@ root      865608  0.0  2.2 649636 87776 ?        Ssl  09:20   0:20 /opt/ensemble
 2026-05-22 17:34:11,254 [INFO] main: Scanning 27 symbols...
 2026-05-22 17:34:11,254 [INFO] main: Max positions
 2026-05-22 17:34:11,255 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-22 18:20:37,907 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -777,7 +777,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       611Mi       968Mi       4.8Mi       2.5Gi       3.1Gi
+Mem:           3.7Gi       603Mi       975Mi       4.8Mi       2.5Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
