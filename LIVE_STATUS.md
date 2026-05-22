@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 18:40:01 UTC
+Generated: 2026-05-22 18:50:01 UTC
 
 ## Services
 ```
@@ -17,7 +17,7 @@ root      865608  0.0  2.2 649636 87776 ?        Ssl  09:20   0:20 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 648.3396787359998,
+  "balance": 666.4575326159998,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779330658",
@@ -29,18 +29,6 @@ root      865608  0.0  2.2 649636 87776 ?        Ssl  09:20   0:20 /opt/ensemble
       "opened_at": "2026-05-21T02:30:58.052787",
       "cost": 59.726634
     },
-    "ASTERUSDT": {
-      "id": "PAPER_ASTERUSDT_1779429829",
-      "symbol": "ASTERUSDT",
-      "side": "short",
-      "entry_price": 0.6908,
-      "qty": 49.0437,
-      "confidence": 72,
-      "opened_at": "2026-05-22T06:03:49.621406",
-      "cost": 6.7758775920000005,
-      "notional": 33.87938796,
-      "leverage": 5
-    },
     "SOLUSDT": {
       "id": "PAPER_SOLUSDT_1779429946",
       "symbol": "SOLUSDT",
@@ -51,18 +39,6 @@ root      865608  0.0  2.2 649636 87776 ?        Ssl  09:20   0:20 /opt/ensemble
       "opened_at": "2026-05-22T06:05:46.091766",
       "cost": 12.075330679999999,
       "notional": 60.376653399999995,
-      "leverage": 5
-    },
-    "ADAUSDT": {
-      "id": "PAPER_ADAUSDT_1779453213",
-      "symbol": "ADAUSDT",
-      "side": "long",
-      "entry_price": 0.2522,
-      "qty": 239.4382,
-      "confidence": 72,
-      "opened_at": "2026-05-22T12:33:33.595113",
-      "cost": 12.077262807999999,
-      "notional": 60.386314039999995,
       "leverage": 5
     },
     "DOGEUSDT": {
@@ -722,24 +698,50 @@ root      865608  0.0  2.2 649636 87776 ?        Ssl  09:20   0:20 /opt/ensemble
       "closed_at": "2026-05-22T11:55:53.834457",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ASTERUSDT_1779429829",
+      "symbol": "ASTERUSDT",
+      "side": "short",
+      "entry_price": 0.6908,
+      "qty": 49.0437,
+      "confidence": 72,
+      "opened_at": "2026-05-22T06:03:49.621406",
+      "cost": 6.7758775920000005,
+      "notional": 33.87938796,
+      "leverage": 5,
+      "exit_price": 0.6682,
+      "pnl_pct": 3.27,
+      "pnl_usdt": 1.11,
+      "closed_at": "2026-05-22T18:45:33.610179",
+      "reason": "take_profit",
+      "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ADAUSDT_1779453213",
+      "symbol": "ADAUSDT",
+      "side": "long",
+      "entry_price": 0.2522,
+      "qty": 239.4382,
+      "confidence": 72,
+      "opened_at": "2026-05-22T12:33:33.595113",
+      "cost": 12.077262807999999,
+      "notional": 60.386314039999995,
+      "leverage": 5,
+      "exit_price": 0.2445,
+      "pnl_pct": -3.05,
+      "pnl_usdt": -1.84,
+      "closed_at": "2026-05-22T18:45:33.994955",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -1.3225322268000002
+  "total_pnl": -2.057818746799999
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 12:34:09,194 [INFO] main: DOGEUSDT | RL adj=73.8%
-2026-05-22 12:34:09,194 [INFO] main: DOGEUSDT | gate PASS (Judge 72/70 RL 73.8/64.94 slack=±3)
-2026-05-22 12:34:09,194 [INFO] positions: [PAPER] Opening LONG DOGEUSDT notional=$52.7 conf=72%
-2026-05-22 12:34:09,199 [INFO] paper_trading: [PAPER] ОТКРЫТА LONG DOGEUSDT @ 0.1064 qty=495.5861 notional=52.71 margin=10.54 x5 | Баланс: 648.34
-2026-05-22 12:34:11,213 [INFO] main: Max positions
-2026-05-22 12:34:11,214 [INFO] main: Next scan in 60min (weekday-active)
-2026-05-22 13:20:34,531 [INFO] main: Symbols: 30
-2026-05-22 13:34:11,217 [INFO] main: Scanning 26 symbols...
-2026-05-22 13:34:11,217 [INFO] main: Max positions
-2026-05-22 13:34:11,217 [INFO] main: Next scan in 60min (weekday-active)
 2026-05-22 14:20:35,215 [INFO] main: Symbols: 30
 2026-05-22 14:34:11,232 [INFO] main: Scanning 27 symbols...
 2026-05-22 14:34:11,232 [INFO] main: Max positions
@@ -760,6 +762,16 @@ root      865608  0.0  2.2 649636 87776 ?        Ssl  09:20   0:20 /opt/ensemble
 2026-05-22 18:34:11,266 [INFO] main: Scanning 27 symbols...
 2026-05-22 18:34:11,267 [INFO] main: Max positions
 2026-05-22 18:34:11,267 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-22 18:45:33,609 [INFO] positions: TAKE-PROFIT ASTERUSDT short PnL:3.27%
+2026-05-22 18:45:33,614 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ASTERUSDT @ 0.6682 PnL: 3.27% (+1.11 USDT) | Баланс: 656.22
+2026-05-22 18:45:33,992 [INFO] positions: OK ASTERUSDT short PnL:3.27% reason:take_profit
+2026-05-22 18:45:33,992 [INFO] positions: Lessons: The trade was successful with a 3.27% profit, validating the bearish conviction and trending_down regime analysis. The conservative sizing approach helped absorb potential whipsaw risk from the MACD bullish divergence. This outcome reinforces the effectiveness of prioritizing macro headwinds and structural alignment over isolated micro-signals in similar trending_down setups.
+2026-05-22 18:45:33,994 [INFO] rl: RL learned from short ASTERUSDT: profit 3.27% | weights bull=1.002 bear=0.991 judge=1.006 threshold=64.91
+2026-05-22 18:45:33,994 [INFO] positions: STOP-LOSS ADAUSDT long PnL:-3.05%
+2026-05-22 18:45:33,998 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG ADAUSDT @ 0.2445 PnL: -3.05% (-1.84 USDT) | Баланс: 666.46
+2026-05-22 18:45:34,345 [INFO] positions: LOSS ADAUSDT long PnL:-3.05% reason:stop_loss
+2026-05-22 18:45:34,345 [INFO] positions: Lessons: The trade was closed at a loss due to a stop loss being triggered, resulting in a -3.05% PnL. This outcome highlights the importance of considering conviction splits and volume weakness when sizing positions. Despite a favorable trending_up regime and technical alignment, the equal conviction split and low volume ratio ultimately led to a failed trade.
+2026-05-22 18:45:34,347 [INFO] rl: RL learned from long ADAUSDT: loss -3.05% | weights bull=0.997 bear=0.997 judge=1.006 threshold=64.96
 ```
 
 ## Disk
@@ -777,7 +789,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       603Mi       975Mi       4.8Mi       2.5Gi       3.1Gi
+Mem:           3.7Gi       603Mi       974Mi       4.8Mi       2.5Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
