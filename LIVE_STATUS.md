@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 14:30:01 UTC
+Generated: 2026-05-22 14:40:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:38 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:39 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root      865608  0.0  2.2 649636 87768 ?        Ssl  09:20   0:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
@@ -730,9 +730,6 @@ root      865608  0.0  2.2 649636 87768 ?        Ssl  09:20   0:14 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 12:33:33,594 [INFO] main: ADAUSDT | RL adj=72.3%
-2026-05-22 12:33:33,594 [INFO] main: ADAUSDT | gate PASS (Judge 72/70 RL 72.3/64.94 slack=±3)
-2026-05-22 12:33:33,594 [INFO] positions: [PAPER] Opening LONG ADAUSDT notional=$60.4 conf=72%
 2026-05-22 12:33:33,599 [INFO] paper_trading: [PAPER] ОТКРЫТА LONG ADAUSDT @ 0.2522 qty=239.4382 notional=60.39 margin=12.08 x5 | Баланс: 658.88
 2026-05-22 12:33:37,339 [INFO] main: INJUSDT | Bull:long(70%) Bear:short(80%)
 2026-05-22 12:33:42,309 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -760,6 +757,9 @@ root      865608  0.0  2.2 649636 87768 ?        Ssl  09:20   0:14 /opt/ensemble
 2026-05-22 13:34:11,217 [INFO] main: Max positions
 2026-05-22 13:34:11,217 [INFO] main: Next scan in 60min (weekday-active)
 2026-05-22 14:20:35,215 [INFO] main: Symbols: 30
+2026-05-22 14:34:11,232 [INFO] main: Scanning 27 symbols...
+2026-05-22 14:34:11,232 [INFO] main: Max positions
+2026-05-22 14:34:11,232 [INFO] main: Next scan in 60min (weekday-active)
 ```
 
 ## Disk
@@ -777,7 +777,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       603Mi       1.1Gi       4.8Mi       2.4Gi       3.1Gi
+Mem:           3.7Gi       594Mi       1.1Gi       4.8Mi       2.4Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
