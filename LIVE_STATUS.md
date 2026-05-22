@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 21:20:01 UTC
+Generated: 2026-05-22 21:30:01 UTC
 
 ## Services
 ```
@@ -766,7 +766,6 @@ root      865608  0.0  2.2 649636 87784 ?        Ssl  09:20   0:28 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 20:42:07,870 [INFO] main: PENGUUSDT | RL adj=85.0%
 2026-05-22 20:42:11,682 [INFO] main: PEPEUSDT | Bull:long(45%) Bear:short(80%)
 2026-05-22 20:42:16,731 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-22 20:42:16,732 [INFO] main: PEPEUSDT | Judge:HOLD conf=80% size=0.0%
@@ -796,6 +795,7 @@ root      865608  0.0  2.2 649636 87784 ?        Ssl  09:20   0:28 /opt/ensemble
 2026-05-22 20:43:11,118 [INFO] main: LINKUSDT | Judge:HOLD conf=80% size=0.0%
 2026-05-22 20:43:11,118 [INFO] main: LINKUSDT | RL adj=80.0%
 2026-05-22 20:43:13,120 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-22 21:20:39,860 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -813,7 +813,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       602Mi       963Mi       4.8Mi       2.5Gi       3.1Gi
+Mem:           3.7Gi       605Mi       960Mi       4.8Mi       2.5Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
