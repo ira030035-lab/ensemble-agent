@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-22 09:06:33 UTC
+Generated: 2026-05-22 09:21:41 UTC
 
 ## agents.py
 ```python
@@ -1124,6 +1124,12 @@ class Orchestrator:
                 log.info(symbol+" | regime BLOCK ("+snapshot.regime+")"); return
             if decision.action=="short" and snapshot.regime=="trending_down" and snapshot.rsi_1h>45:
                 log.info(symbol+" | regime BLOCK (short × trending_down × rsi1h="+str(round(snapshot.rsi_1h,1))+"; late-entry guard)"); return
+            if decision.action=="short" and snapshot.regime=="trending_up" and snapshot.rsi_1h<55:
+                log.info(symbol+" | regime BLOCK (short × trending_up × rsi1h="+str(round(snapshot.rsi_1h,1))+"; counter-trend guard)"); return
+            if decision.action=="long" and snapshot.regime=="trending_down" and snapshot.rsi_1h>45:
+                log.info(symbol+" | regime BLOCK (long × trending_down × rsi1h="+str(round(snapshot.rsi_1h,1))+"; counter-trend guard)"); return
+            if decision.action=="long" and snapshot.regime=="trending_up" and snapshot.rsi_1h<55:
+                log.info(symbol+" | regime BLOCK (long × trending_up × rsi1h="+str(round(snapshot.rsi_1h,1))+"; late-entry guard)"); return
             slack=getattr(self.cfg,"THRESHOLD_SLACK",3)
             j_base=self.cfg.MIN_CONFIDENCE; r_base=self.rl.weights.conf_threshold
             j_dev=decision.confidence-j_base; r_dev=rl_conf-r_base
