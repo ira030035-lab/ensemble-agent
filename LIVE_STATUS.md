@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 19:30:01 UTC
+Generated: 2026-05-22 19:40:01 UTC
 
 ## Services
 ```
@@ -11,13 +11,13 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      865608  0.0  2.2 649636 87784 ?        Ssl  09:20   0:21 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      865608  0.0  2.2 649636 87784 ?        Ssl  09:20   0:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 666.4575326159998,
+  "balance": 664.5193773051998,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779330658",
@@ -41,16 +41,16 @@ root      865608  0.0  2.2 649636 87784 ?        Ssl  09:20   0:21 /opt/ensemble
       "notional": 60.376653399999995,
       "leverage": 5
     },
-    "DOGEUSDT": {
-      "id": "PAPER_DOGEUSDT_1779453249",
-      "symbol": "DOGEUSDT",
-      "side": "long",
-      "entry_price": 0.10636,
-      "qty": 495.5861,
-      "confidence": 72,
-      "opened_at": "2026-05-22T12:34:09.195141",
-      "cost": 10.542107519199998,
-      "notional": 52.710537595999995,
+    "TONUSDT": {
+      "id": "PAPER_TONUSDT_1779478588",
+      "symbol": "TONUSDT",
+      "side": "short",
+      "entry_price": 1.9003,
+      "qty": 28.4302,
+      "confidence": 78,
+      "opened_at": "2026-05-22T19:36:28.136595",
+      "cost": 10.805181812,
+      "notional": 54.025909060000004,
       "leverage": 5
     }
   },
@@ -734,44 +734,62 @@ root      865608  0.0  2.2 649636 87784 ?        Ssl  09:20   0:21 /opt/ensemble
       "closed_at": "2026-05-22T18:45:33.994955",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_DOGEUSDT_1779453249",
+      "symbol": "DOGEUSDT",
+      "side": "long",
+      "entry_price": 0.10636,
+      "qty": 495.5861,
+      "confidence": 72,
+      "opened_at": "2026-05-22T12:34:09.195141",
+      "cost": 10.542107519199998,
+      "notional": 52.710537595999995,
+      "leverage": 5,
+      "exit_price": 0.10298,
+      "pnl_pct": -3.18,
+      "pnl_usdt": -1.68,
+      "closed_at": "2026-05-22T19:30:54.131442",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -2.057818746799999
+  "total_pnl": -3.732899764799996
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 14:34:11,232 [INFO] main: Scanning 27 symbols...
-2026-05-22 14:34:11,232 [INFO] main: Max positions
-2026-05-22 14:34:11,232 [INFO] main: Next scan in 60min (weekday-active)
-2026-05-22 15:20:35,870 [INFO] main: Symbols: 30
-2026-05-22 15:34:11,242 [INFO] main: Scanning 27 symbols...
-2026-05-22 15:34:11,242 [INFO] main: Max positions
-2026-05-22 15:34:11,243 [INFO] main: Next scan in 60min (weekday-active)
-2026-05-22 16:20:36,580 [INFO] main: Symbols: 30
-2026-05-22 16:34:11,251 [INFO] main: Scanning 27 symbols...
-2026-05-22 16:34:11,251 [INFO] main: Max positions
-2026-05-22 16:34:11,252 [INFO] main: Next scan in 60min (weekday-active)
-2026-05-22 17:20:37,263 [INFO] main: Symbols: 30
-2026-05-22 17:34:11,254 [INFO] main: Scanning 27 symbols...
-2026-05-22 17:34:11,254 [INFO] main: Max positions
-2026-05-22 17:34:11,255 [INFO] main: Next scan in 60min (weekday-active)
-2026-05-22 18:20:37,907 [INFO] main: Symbols: 30
-2026-05-22 18:34:11,266 [INFO] main: Scanning 27 symbols...
-2026-05-22 18:34:11,267 [INFO] main: Max positions
-2026-05-22 18:34:11,267 [INFO] main: Next scan in 60min (weekday-active)
-2026-05-22 18:45:33,609 [INFO] positions: TAKE-PROFIT ASTERUSDT short PnL:3.27%
-2026-05-22 18:45:33,614 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ASTERUSDT @ 0.6682 PnL: 3.27% (+1.11 USDT) | Баланс: 656.22
-2026-05-22 18:45:33,992 [INFO] positions: OK ASTERUSDT short PnL:3.27% reason:take_profit
-2026-05-22 18:45:33,992 [INFO] positions: Lessons: The trade was successful with a 3.27% profit, validating the bearish conviction and trending_down regime analysis. The conservative sizing approach helped absorb potential whipsaw risk from the MACD bullish divergence. This outcome reinforces the effectiveness of prioritizing macro headwinds and structural alignment over isolated micro-signals in similar trending_down setups.
-2026-05-22 18:45:33,994 [INFO] rl: RL learned from short ASTERUSDT: profit 3.27% | weights bull=1.002 bear=0.991 judge=1.006 threshold=64.91
-2026-05-22 18:45:33,994 [INFO] positions: STOP-LOSS ADAUSDT long PnL:-3.05%
-2026-05-22 18:45:33,998 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG ADAUSDT @ 0.2445 PnL: -3.05% (-1.84 USDT) | Баланс: 666.46
-2026-05-22 18:45:34,345 [INFO] positions: LOSS ADAUSDT long PnL:-3.05% reason:stop_loss
-2026-05-22 18:45:34,345 [INFO] positions: Lessons: The trade was closed at a loss due to a stop loss being triggered, resulting in a -3.05% PnL. This outcome highlights the importance of considering conviction splits and volume weakness when sizing positions. Despite a favorable trending_up regime and technical alignment, the equal conviction split and low volume ratio ultimately led to a failed trade.
-2026-05-22 18:45:34,347 [INFO] rl: RL learned from long ADAUSDT: loss -3.05% | weights bull=0.997 bear=0.997 judge=1.006 threshold=64.96
-2026-05-22 19:20:38,559 [INFO] main: Symbols: 30
+2026-05-22 19:37:33,866 [INFO] main: SKYAIUSDT | RL adj=80.0%
+2026-05-22 19:37:37,520 [INFO] main: BILLUSDT | Bull:long(70%) Bear:short(70%)
+2026-05-22 19:37:42,558 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 19:37:42,560 [INFO] main: BILLUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-22 19:37:42,560 [INFO] main: BILLUSDT | RL adj=70.0%
+2026-05-22 19:37:46,315 [INFO] main: NEARUSDT | Bull:long(45%) Bear:short(70%)
+2026-05-22 19:37:51,089 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 19:37:51,090 [INFO] main: NEARUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-22 19:37:51,090 [INFO] main: NEARUSDT | RL adj=70.0%
+2026-05-22 19:37:54,887 [INFO] main: PENGUUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-22 19:38:00,742 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 19:38:00,744 [INFO] main: PENGUUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-22 19:38:00,744 [INFO] main: PENGUUSDT | RL adj=80.0%
+2026-05-22 19:38:04,502 [INFO] main: WLDUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-22 19:38:10,318 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 19:38:10,319 [INFO] main: WLDUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-22 19:38:10,319 [INFO] main: WLDUSDT | RL adj=80.0%
+2026-05-22 19:38:14,078 [INFO] main: ONDOUSDT | Bull:long(45%) Bear:short(85%)
+2026-05-22 19:38:19,934 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 19:38:19,936 [INFO] main: ONDOUSDT | Judge:HOLD conf=85% size=0.0%
+2026-05-22 19:38:19,936 [INFO] main: ONDOUSDT | RL adj=85.0%
+2026-05-22 19:38:23,644 [INFO] main: UBUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-22 19:38:28,118 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 19:38:28,120 [INFO] main: UBUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-22 19:38:28,120 [INFO] main: UBUSDT | RL adj=80.0%
+2026-05-22 19:38:31,821 [INFO] main: SUIUSDT | Bull:long(45%) Bear:short(85%)
+2026-05-22 19:38:39,001 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-22 19:38:39,002 [INFO] main: SUIUSDT | Judge:HOLD conf=85% size=0.0%
+2026-05-22 19:38:39,002 [INFO] main: SUIUSDT | RL adj=85.0%
+2026-05-22 19:38:41,005 [INFO] main: Next scan in 60min (weekday-active)
 ```
 
 ## Disk
@@ -789,7 +807,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       606Mi       965Mi       4.8Mi       2.5Gi       3.1Gi
+Mem:           3.7Gi       603Mi       968Mi       4.8Mi       2.5Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
