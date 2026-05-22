@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-22 19:40:01 UTC
+Generated: 2026-05-22 19:50:01 UTC
 
 ## Services
 ```
@@ -10,14 +10,14 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root      865608  0.0  2.2 649636 87784 ?        Ssl  09:20   0:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 664.5193773051998,
+  "balance": 678.4594519851997,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779330658",
@@ -28,18 +28,6 @@ root      865608  0.0  2.2 649636 87784 ?        Ssl  09:20   0:24 /opt/ensemble
       "confidence": 76,
       "opened_at": "2026-05-21T02:30:58.052787",
       "cost": 59.726634
-    },
-    "SOLUSDT": {
-      "id": "PAPER_SOLUSDT_1779429946",
-      "symbol": "SOLUSDT",
-      "side": "short",
-      "entry_price": 86.773,
-      "qty": 0.6958,
-      "confidence": 72,
-      "opened_at": "2026-05-22T06:05:46.091766",
-      "cost": 12.075330679999999,
-      "notional": 60.376653399999995,
-      "leverage": 5
     },
     "TONUSDT": {
       "id": "PAPER_TONUSDT_1779478588",
@@ -752,19 +740,32 @@ root      865608  0.0  2.2 649636 87784 ?        Ssl  09:20   0:24 /opt/ensemble
       "closed_at": "2026-05-22T19:30:54.131442",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_SOLUSDT_1779429946",
+      "symbol": "SOLUSDT",
+      "side": "short",
+      "entry_price": 86.773,
+      "qty": 0.6958,
+      "confidence": 72,
+      "opened_at": "2026-05-22T06:05:46.091766",
+      "cost": 12.075330679999999,
+      "notional": 60.376653399999995,
+      "leverage": 5,
+      "exit_price": 84.093,
+      "pnl_pct": 3.09,
+      "pnl_usdt": 1.86,
+      "closed_at": "2026-05-22T19:41:09.750327",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -3.732899764799996
+  "total_pnl": -1.8681557648000011
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 19:37:33,866 [INFO] main: SKYAIUSDT | RL adj=80.0%
-2026-05-22 19:37:37,520 [INFO] main: BILLUSDT | Bull:long(70%) Bear:short(70%)
-2026-05-22 19:37:42,558 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 19:37:42,560 [INFO] main: BILLUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-22 19:37:42,560 [INFO] main: BILLUSDT | RL adj=70.0%
 2026-05-22 19:37:46,315 [INFO] main: NEARUSDT | Bull:long(45%) Bear:short(70%)
 2026-05-22 19:37:51,089 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-22 19:37:51,090 [INFO] main: NEARUSDT | Judge:HOLD conf=70% size=0.0%
@@ -790,6 +791,11 @@ root      865608  0.0  2.2 649636 87784 ?        Ssl  09:20   0:24 /opt/ensemble
 2026-05-22 19:38:39,002 [INFO] main: SUIUSDT | Judge:HOLD conf=85% size=0.0%
 2026-05-22 19:38:39,002 [INFO] main: SUIUSDT | RL adj=85.0%
 2026-05-22 19:38:41,005 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-22 19:41:09,749 [INFO] positions: TAKE-PROFIT SOLUSDT short PnL:3.09%
+2026-05-22 19:41:09,754 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT SOLUSDT @ 84.0930 PnL: 3.09% (+1.86 USDT) | Баланс: 678.46
+2026-05-22 19:41:10,068 [INFO] positions: OK SOLUSDT short PnL:3.09% reason:take_profit
+2026-05-22 19:41:10,068 [INFO] positions: Lessons: This SOLUSDT short trade was closed with a 3.09% profit. The trade was based on a bearish conviction that outweighed bullish sentiment, despite the trending_up regime. The outcome validated the decision to short, as structural weakness dominated and the take_profit target was reached.
+2026-05-22 19:41:10,070 [INFO] rl: RL learned from short SOLUSDT: profit 3.09% | weights bull=0.983 bear=1.008 judge=1.008 threshold=64.98
 ```
 
 ## Disk
@@ -807,7 +813,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       603Mi       968Mi       4.8Mi       2.5Gi       3.1Gi
+Mem:           3.7Gi       605Mi       966Mi       4.8Mi       2.5Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
