@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-23 22:20:01 UTC
+Generated: 2026-05-23 22:30:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49540 ?        Ssl  May19   0:53 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      915939  0.0  2.2 648004 85936 ?        Ssl  19:19   0:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      915939  0.0  2.2 648004 85936 ?        Ssl  19:19   0:08 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -862,36 +862,36 @@ root      915939  0.0  2.2 648004 85936 ?        Ssl  19:19   0:05 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-23 19:23:01,099 [INFO] main: UNIUSDT | RL adj=72.0%
-2026-05-23 19:23:04,752 [INFO] main: GENIUSUSDT | Bull:long(55%) Bear:short(80%)
-2026-05-23 19:23:09,925 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 19:23:09,927 [INFO] main: GENIUSUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-23 19:23:09,927 [INFO] main: GENIUSUSDT | RL adj=80.0%
-2026-05-23 19:23:13,619 [INFO] main: ETHUSDT | Bull:long(55%) Bear:short(80%)
-2026-05-23 19:23:19,048 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 19:23:19,050 [INFO] main: ETHUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-23 19:23:19,050 [INFO] main: ETHUSDT | RL adj=80.0%
-2026-05-23 19:23:22,743 [INFO] main: WLDUSDT | Bull:long(70%) Bear:short(80%)
-2026-05-23 19:23:28,502 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 19:23:28,504 [INFO] main: WLDUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-23 19:23:28,504 [INFO] main: WLDUSDT | RL adj=80.0%
-2026-05-23 19:23:32,113 [INFO] main: XRPUSDT | Bull:long(55%) Bear:short(80%)
-2026-05-23 19:23:37,395 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 19:23:37,396 [INFO] main: XRPUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-23 19:23:37,396 [INFO] main: XRPUSDT | RL adj=80.0%
-2026-05-23 19:23:41,113 [INFO] main: GMTUSDT | Bull:long(70%) Bear:short(80%)
-2026-05-23 19:23:45,977 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 19:23:45,978 [INFO] main: GMTUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-23 19:23:45,978 [INFO] main: GMTUSDT | RL adj=80.0%
-2026-05-23 19:23:47,981 [INFO] main: Next scan in 180min (weekend)
-2026-05-23 20:19:22,681 [INFO] main: Symbols: 30
-2026-05-23 20:40:59,607 [INFO] positions: STOP-LOSS AAVEUSDT short PnL:-3.03%
-2026-05-23 20:40:59,612 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT AAVEUSDT @ 87.9900 PnL: -3.03% (-1.33 USDT) | Баланс: 741.08
-2026-05-23 20:41:00,035 [INFO] positions: LOSS AAVEUSDT short PnL:-3.03% reason:stop_loss
-2026-05-23 20:41:00,036 [INFO] positions: Lessons: Trending_down regime and high BEAR conviction were correct but not enough to overcome the MACD bullish divergence and overbought conditions. Conservative sizing helped limit losses to 3.03%. The combination of high RSI and high BB position can sometimes lead to whipsaw risk, even with strong structural alignment and conviction.
-2026-05-23 20:41:00,038 [INFO] rl: RL learned from short AAVEUSDT: loss -3.03% | weights bull=0.972 bear=1.014 judge=1.014 threshold=64.96
-2026-05-23 21:19:23,402 [INFO] main: Symbols: 30
-2026-05-23 22:19:24,082 [INFO] main: Symbols: 30
+2026-05-23 22:27:20,271 [INFO] main: SOLUSDT | Bull:long(70%) Bear:short(72%)
+2026-05-23 22:27:25,331 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 22:27:25,333 [INFO] main: SOLUSDT | Judge:HOLD conf=72% size=0.0%
+2026-05-23 22:27:25,333 [INFO] main: SOLUSDT | RL adj=72.0%
+2026-05-23 22:27:29,032 [INFO] main: ADAUSDT | Bull:long(65%) Bear:short(70%)
+2026-05-23 22:27:33,809 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 22:27:33,810 [INFO] main: ADAUSDT | Judge:HOLD conf=68% size=0.0%
+2026-05-23 22:27:33,810 [INFO] main: ADAUSDT | RL adj=68.0%
+2026-05-23 22:27:37,557 [INFO] main: WLDUSDT | Bull:long(55%) Bear:short(80%)
+2026-05-23 22:27:43,088 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 22:27:43,089 [INFO] main: WLDUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-23 22:27:43,090 [INFO] main: WLDUSDT | RL adj=80.0%
+2026-05-23 22:27:46,806 [INFO] main: ZECUSDT | Bull:long(70%) Bear:short(72%)
+2026-05-23 22:27:52,275 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 22:27:52,276 [INFO] main: ZECUSDT | Judge:HOLD conf=72% size=0.0%
+2026-05-23 22:27:52,277 [INFO] main: ZECUSDT | RL adj=72.0%
+2026-05-23 22:27:56,075 [INFO] main: BILLUSDT | Bull:long(55%) Bear:short(80%)
+2026-05-23 22:28:02,233 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 22:28:02,234 [INFO] main: BILLUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-23 22:28:02,234 [INFO] main: BILLUSDT | RL adj=80.0%
+2026-05-23 22:28:05,940 [INFO] main: LINKUSDT | Bull:long(55%) Bear:short(80%)
+2026-05-23 22:28:10,374 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 22:28:10,376 [INFO] main: LINKUSDT | Judge:SHORT conf=72% size=6.0%
+2026-05-23 22:28:10,376 [INFO] main: LINKUSDT | RL adj=76.2%
+2026-05-23 22:28:10,376 [INFO] main: LINKUSDT | regime BLOCK (short × trending_down × rsi1h=79.3; late-entry guard)
+2026-05-23 22:28:14,144 [INFO] main: XRPUSDT | Bull:long(65%) Bear:short(70%)
+2026-05-23 22:28:19,112 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 22:28:19,113 [INFO] main: XRPUSDT | Judge:HOLD conf=68% size=0.0%
+2026-05-23 22:28:19,113 [INFO] main: XRPUSDT | RL adj=68.0%
+2026-05-23 22:28:21,116 [INFO] main: Next scan in 180min (weekend)
 ```
 
 ## Disk
@@ -909,7 +909,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       618Mi       1.1Gi       4.8Mi       2.3Gi       3.1Gi
+Mem:           3.7Gi       617Mi       1.1Gi       4.8Mi       2.3Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
