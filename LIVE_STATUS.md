@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-23 22:10:01 UTC
+Generated: 2026-05-23 22:20:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49540 ?        Ssl  May19   0:53 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      915939  0.0  2.1 646548 84340 ?        Ssl  19:19   0:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      915939  0.0  2.2 648004 85936 ?        Ssl  19:19   0:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -862,7 +862,6 @@ root      915939  0.0  2.1 646548 84340 ?        Ssl  19:19   0:05 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-23 19:23:01,099 [INFO] main: UNIUSDT | Judge:HOLD conf=72% size=0.0%
 2026-05-23 19:23:01,099 [INFO] main: UNIUSDT | RL adj=72.0%
 2026-05-23 19:23:04,752 [INFO] main: GENIUSUSDT | Bull:long(55%) Bear:short(80%)
 2026-05-23 19:23:09,925 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -892,6 +891,7 @@ root      915939  0.0  2.1 646548 84340 ?        Ssl  19:19   0:05 /opt/ensemble
 2026-05-23 20:41:00,036 [INFO] positions: Lessons: Trending_down regime and high BEAR conviction were correct but not enough to overcome the MACD bullish divergence and overbought conditions. Conservative sizing helped limit losses to 3.03%. The combination of high RSI and high BB position can sometimes lead to whipsaw risk, even with strong structural alignment and conviction.
 2026-05-23 20:41:00,038 [INFO] rl: RL learned from short AAVEUSDT: loss -3.03% | weights bull=0.972 bear=1.014 judge=1.014 threshold=64.96
 2026-05-23 21:19:23,402 [INFO] main: Symbols: 30
+2026-05-23 22:19:24,082 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -909,7 +909,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       616Mi       1.1Gi       4.8Mi       2.3Gi       3.1Gi
+Mem:           3.7Gi       618Mi       1.1Gi       4.8Mi       2.3Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
