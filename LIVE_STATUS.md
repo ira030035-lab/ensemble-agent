@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-23 16:30:01 UTC
+Generated: 2026-05-23 16:40:01 UTC
 
 ## Services
 ```
@@ -17,7 +17,7 @@ root      907965  0.0  2.2 647784 86072 ?        Ssl  09:56   0:15 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 723.2038636296951,
+  "balance": 733.6233747156951,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1779497565",
@@ -29,18 +29,6 @@ root      907965  0.0  2.2 647784 86072 ?        Ssl  09:56   0:15 /opt/ensemble
       "opened_at": "2026-05-23T00:52:45.625592",
       "cost": 9.040163999999999,
       "notional": 45.20081999999999,
-      "leverage": 5
-    },
-    "FILUSDT": {
-      "id": "PAPER_FILUSDT_1779530186",
-      "symbol": "FILUSDT",
-      "side": "short",
-      "entry_price": 0.9292,
-      "qty": 66.2229,
-      "confidence": 82,
-      "opened_at": "2026-05-23T09:56:26.918762",
-      "cost": 12.306863736,
-      "notional": 61.53431868,
       "leverage": 5
     },
     "AAVEUSDT": {
@@ -842,19 +830,32 @@ root      907965  0.0  2.2 647784 86072 ?        Ssl  09:56   0:15 /opt/ensemble
       "closed_at": "2026-05-23T14:35:31.037978",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_FILUSDT_1779530186",
+      "symbol": "FILUSDT",
+      "side": "short",
+      "entry_price": 0.9292,
+      "qty": 66.2229,
+      "confidence": 82,
+      "opened_at": "2026-05-23T09:56:26.918762",
+      "cost": 12.306863736,
+      "notional": 61.53431868,
+      "leverage": 5,
+      "exit_price": 0.9577,
+      "pnl_pct": -3.07,
+      "pnl_usdt": -1.89,
+      "closed_at": "2026-05-23T16:35:44.717276",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 2.4757118036952646
+  "total_pnl": 0.5883591536952666
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-23 16:07:58,356 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 16:07:58,357 [INFO] main: ADAUSDT | Judge:SHORT conf=72% size=6.0%
-2026-05-23 16:07:58,357 [INFO] main: ADAUSDT | RL adj=76.4%
-2026-05-23 16:07:58,357 [INFO] main: ADAUSDT | gate PASS (Judge 72/70 RL 76.4/64.86 slack=±3)
-2026-05-23 16:07:58,357 [INFO] positions: Same-side cap: skip SHORT ADAUSDT (3/3 already short)
 2026-05-23 16:08:02,088 [INFO] main: BEATUSDT | Bull:long(45%) Bear:short(72%)
 2026-05-23 16:08:06,015 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-23 16:08:06,016 [INFO] main: BEATUSDT | Judge:HOLD conf=72% size=0.0%
@@ -880,6 +881,11 @@ root      907965  0.0  2.2 647784 86072 ?        Ssl  09:56   0:15 /opt/ensemble
 2026-05-23 16:08:51,950 [INFO] main: ONDOUSDT | Judge:HOLD conf=70% size=0.0%
 2026-05-23 16:08:51,950 [INFO] main: ONDOUSDT | RL adj=70.0%
 2026-05-23 16:08:53,952 [INFO] main: Next scan in 180min (weekend)
+2026-05-23 16:35:44,716 [INFO] positions: STOP-LOSS FILUSDT short PnL:-3.07%
+2026-05-23 16:35:44,721 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT FILUSDT @ 0.9577 PnL: -3.07% (-1.89 USDT) | Баланс: 733.62
+2026-05-23 16:35:45,114 [INFO] positions: LOSS FILUSDT short PnL:-3.07% reason:stop_loss
+2026-05-23 16:35:45,114 [INFO] positions: Lessons: The trade was closed at a loss due to hitting the stop loss, resulting in a -3.07% PnL. This outcome contrasts with past profitable trades in similar setups, highlighting the importance of patience and not exiting prematurely. The key takeaway is to hold through the trend and avoid exiting on minor reversals, as evidenced by past breakeven trades that would have been profitable with more patience.
+2026-05-23 16:35:45,115 [INFO] rl: RL learned from short FILUSDT: loss -3.07% | weights bull=0.966 bear=1.020 judge=1.013 threshold=64.91
 ```
 
 ## Disk
@@ -897,7 +903,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       603Mi       1.1Gi       4.8Mi       2.3Gi       3.1Gi
+Mem:           3.7Gi       604Mi       1.1Gi       4.8Mi       2.3Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
