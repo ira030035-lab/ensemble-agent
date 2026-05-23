@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-23 06:40:01 UTC
+Generated: 2026-05-23 06:50:01 UTC
 
 ## Services
 ```
@@ -10,8 +10,8 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:43 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      865608  0.0  2.2 649800 88204 ?        Ssl  May22   0:47 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      812670  0.0  1.2 209160 50560 ?        Ssl  May19   0:44 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      865608  0.0  2.2 649800 88204 ?        Ssl  May22   0:48 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
