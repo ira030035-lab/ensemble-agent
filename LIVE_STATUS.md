@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-23 19:00:01 UTC
+Generated: 2026-05-23 19:10:01 UTC
 
 ## Services
 ```
@@ -10,8 +10,8 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      812670  0.0  1.2 209160 50560 ?        Ssl  May19   0:51 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      907965  0.0  2.2 648304 86724 ?        Ssl  09:56   0:17 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:51 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      907965  0.0  2.2 648304 86728 ?        Ssl  09:56   0:18 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -856,36 +856,36 @@ root      907965  0.0  2.2 648304 86724 ?        Ssl  09:56   0:17 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-23 16:08:06,016 [INFO] main: BEATUSDT | RL adj=72.0%
-2026-05-23 16:08:09,712 [INFO] main: NEARUSDT | Bull:long(80%) Bear:short(80%)
-2026-05-23 16:08:15,333 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 16:08:15,335 [INFO] main: NEARUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-23 16:08:15,335 [INFO] main: NEARUSDT | RL adj=80.0%
-2026-05-23 16:08:19,021 [INFO] main: BCHUSDT | Bull:long(60%) Bear:short(80%)
-2026-05-23 16:08:24,366 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 16:08:24,368 [INFO] main: BCHUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-23 16:08:24,368 [INFO] main: BCHUSDT | RL adj=80.0%
-2026-05-23 16:08:28,234 [INFO] main: INJUSDT | Bull:long(60%) Bear:short(80%)
-2026-05-23 16:08:33,121 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 16:08:33,123 [INFO] main: INJUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-23 16:08:33,123 [INFO] main: INJUSDT | RL adj=80.0%
-2026-05-23 16:08:36,898 [INFO] main: DOGEUSDT | Bull:long(55%) Bear:short(80%)
-2026-05-23 16:08:42,761 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 16:08:42,763 [INFO] main: DOGEUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-23 16:08:42,763 [INFO] main: DOGEUSDT | RL adj=80.0%
-2026-05-23 16:08:46,522 [INFO] main: ONDOUSDT | Bull:long(65%) Bear:short(70%)
-2026-05-23 16:08:51,948 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 16:08:51,950 [INFO] main: ONDOUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-23 16:08:51,950 [INFO] main: ONDOUSDT | RL adj=70.0%
-2026-05-23 16:08:53,952 [INFO] main: Next scan in 180min (weekend)
-2026-05-23 16:35:44,716 [INFO] positions: STOP-LOSS FILUSDT short PnL:-3.07%
-2026-05-23 16:35:44,721 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT FILUSDT @ 0.9577 PnL: -3.07% (-1.89 USDT) | Баланс: 733.62
-2026-05-23 16:35:45,114 [INFO] positions: LOSS FILUSDT short PnL:-3.07% reason:stop_loss
-2026-05-23 16:35:45,114 [INFO] positions: Lessons: The trade was closed at a loss due to hitting the stop loss, resulting in a -3.07% PnL. This outcome contrasts with past profitable trades in similar setups, highlighting the importance of patience and not exiting prematurely. The key takeaway is to hold through the trend and avoid exiting on minor reversals, as evidenced by past breakeven trades that would have been profitable with more patience.
-2026-05-23 16:35:45,115 [INFO] rl: RL learned from short FILUSDT: loss -3.07% | weights bull=0.966 bear=1.020 judge=1.013 threshold=64.91
-2026-05-23 16:56:25,300 [INFO] main: Symbols: 30
-2026-05-23 17:56:25,987 [INFO] main: Symbols: 30
-2026-05-23 18:56:26,686 [INFO] main: Symbols: 30
+2026-05-23 19:08:53,960 [INFO] main: Scanning 29 symbols...
+2026-05-23 19:08:55,749 [INFO] main: ONDOUSDT | Bull:long(55%) Bear:short(80%)
+2026-05-23 19:09:00,641 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 19:09:00,642 [INFO] main: ONDOUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-23 19:09:00,642 [INFO] main: ONDOUSDT | RL adj=80.0%
+2026-05-23 19:09:04,329 [INFO] main: ZECUSDT | Bull:long(65%) Bear:short(70%)
+2026-05-23 19:09:10,105 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 19:09:10,106 [INFO] main: ZECUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-23 19:09:10,106 [INFO] main: ZECUSDT | RL adj=70.0%
+2026-05-23 19:09:13,806 [INFO] main: HYPEUSDT | Bull:long(70%) Bear:short(70%)
+2026-05-23 19:09:19,149 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 19:09:19,151 [INFO] main: HYPEUSDT | Judge:LONG conf=72% size=9.0%
+2026-05-23 19:09:19,151 [INFO] main: HYPEUSDT | RL adj=71.4%
+2026-05-23 19:09:19,151 [INFO] main: HYPEUSDT | regime BLOCK (volatile)
+2026-05-23 19:09:22,889 [INFO] main: BSBUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-23 19:09:28,967 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 19:09:28,969 [INFO] main: BSBUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-23 19:09:28,969 [INFO] main: BSBUSDT | RL adj=80.0%
+2026-05-23 19:09:32,771 [INFO] main: XRPUSDT | Bull:long(55%) Bear:short(80%)
+2026-05-23 19:09:39,432 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 19:09:39,434 [INFO] main: XRPUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-23 19:09:39,434 [INFO] main: XRPUSDT | RL adj=80.0%
+2026-05-23 19:09:43,198 [INFO] main: BCHUSDT | Bull:long(60%) Bear:short(70%)
+2026-05-23 19:09:48,787 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 19:09:48,789 [INFO] main: BCHUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-23 19:09:48,789 [INFO] main: BCHUSDT | RL adj=70.0%
+2026-05-23 19:09:52,428 [INFO] main: TONUSDT | Bull:long(60%) Bear:short(70%)
+2026-05-23 19:09:58,256 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 19:09:58,257 [INFO] main: TONUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-23 19:09:58,257 [INFO] main: TONUSDT | RL adj=70.0%
 ```
 
 ## Disk
@@ -903,7 +903,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       609Mi       1.1Gi       4.8Mi       2.3Gi       3.1Gi
+Mem:           3.7Gi       604Mi       1.1Gi       4.8Mi       2.3Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
