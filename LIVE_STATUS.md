@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-23 07:50:01 UTC
+Generated: 2026-05-23 08:00:01 UTC
 
 ## Services
 ```
@@ -10,14 +10,14 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:44 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      812670  0.0  1.2 208136 49540 ?        Ssl  May19   0:44 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root      865608  0.0  2.2 648620 87164 ?        Ssl  May22   0:51 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 669.59173382138,
+  "balance": 683.714682365695,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779330658",
@@ -39,18 +39,6 @@ root      865608  0.0  2.2 648620 87164 ?        Ssl  May22   0:51 /opt/ensemble
       "opened_at": "2026-05-23T00:52:45.625592",
       "cost": 9.040163999999999,
       "notional": 45.20081999999999,
-      "leverage": 5
-    },
-    "PEPEUSDT": {
-      "id": "PAPER_PEPEUSDT_1779497664",
-      "symbol": "PEPEUSDT",
-      "side": "short",
-      "entry_price": 3.607e-06,
-      "qty": 17013550.8304,
-      "confidence": 78,
-      "opened_at": "2026-05-23T00:54:24.256401",
-      "cost": 12.27357556905056,
-      "notional": 61.367877845252806,
       "leverage": 5
     }
   },
@@ -806,19 +794,32 @@ root      865608  0.0  2.2 648620 87164 ?        Ssl  May22   0:51 /opt/ensemble
       "closed_at": "2026-05-22T23:48:05.066455",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_PEPEUSDT_1779497664",
+      "symbol": "PEPEUSDT",
+      "side": "short",
+      "entry_price": 3.607e-06,
+      "qty": 17013550.8304,
+      "confidence": 78,
+      "opened_at": "2026-05-23T00:54:24.256401",
+      "cost": 12.27357556905056,
+      "notional": 61.367877845252806,
+      "leverage": 5,
+      "exit_price": 3.4983e-06,
+      "pnl_pct": 3.01,
+      "pnl_usdt": 1.85,
+      "closed_at": "2026-05-23T07:50:27.634617",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -0.22731617156920558
+  "total_pnl": 1.622056803695273
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-23 07:03:01,774 [INFO] main: ETHUSDT | Judge:HOLD conf=85% size=0.0%
-2026-05-23 07:03:01,774 [INFO] main: ETHUSDT | RL adj=85.0%
-2026-05-23 07:03:05,520 [INFO] main: LABUSDT | Bull:long(60%) Bear:short(70%)
-2026-05-23 07:03:10,642 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 07:03:10,643 [INFO] main: LABUSDT | Judge:HOLD conf=70% size=0.0%
 2026-05-23 07:03:10,643 [INFO] main: LABUSDT | RL adj=70.0%
 2026-05-23 07:03:14,318 [INFO] main: ENAUSDT | Bull:long(45%) Bear:short(80%)
 2026-05-23 07:03:19,482 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -844,6 +845,11 @@ root      865608  0.0  2.2 648620 87164 ?        Ssl  May22   0:51 /opt/ensemble
 2026-05-23 07:03:51,524 [INFO] positions: Same-side cap: skip SHORT LINKUSDT (3/3 already short)
 2026-05-23 07:03:53,525 [INFO] main: Next scan in 180min (weekend)
 2026-05-23 07:20:46,322 [INFO] main: Symbols: 30
+2026-05-23 07:50:27,634 [INFO] positions: TAKE-PROFIT PEPEUSDT short PnL:3.01%
+2026-05-23 07:50:27,638 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT PEPEUSDT @ 0.0000 PnL: 3.01% (+1.85 USDT) | Баланс: 683.71
+2026-05-23 07:50:28,198 [INFO] positions: OK PEPEUSDT short PnL:3.01% reason:take_profit
+2026-05-23 07:50:28,198 [INFO] positions: Lessons: The trade was closed with a 3.01% profit, validating the initial bearish setup. The combination of a trending_down regime, oversold RSI, bearish MACD, and negative funding all contributed to the successful short position. This outcome reinforces the effectiveness of the bearish conviction and technical indicators in similar market conditions.
+2026-05-23 07:50:28,200 [INFO] rl: RL learned from short PEPEUSDT: profit 3.01% | weights bull=0.963 bear=1.024 judge=1.012 threshold=64.89
 ```
 
 ## Disk
@@ -861,7 +867,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       609Mi       922Mi       4.8Mi       2.5Gi       3.1Gi
+Mem:           3.7Gi       605Mi       926Mi       4.8Mi       2.5Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
