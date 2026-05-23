@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-23 07:20:01 UTC
+Generated: 2026-05-23 07:30:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:44 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      865608  0.0  2.2 649800 88204 ?        Ssl  May22   0:50 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      865608  0.0  2.2 648620 87164 ?        Ssl  May22   0:51 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -814,7 +814,6 @@ root      865608  0.0  2.2 649800 88204 ?        Ssl  May22   0:50 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-23 07:03:01,772 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-23 07:03:01,774 [INFO] main: ETHUSDT | Judge:HOLD conf=85% size=0.0%
 2026-05-23 07:03:01,774 [INFO] main: ETHUSDT | RL adj=85.0%
 2026-05-23 07:03:05,520 [INFO] main: LABUSDT | Bull:long(60%) Bear:short(70%)
@@ -844,6 +843,7 @@ root      865608  0.0  2.2 649800 88204 ?        Ssl  May22   0:50 /opt/ensemble
 2026-05-23 07:03:51,523 [INFO] main: LINKUSDT | gate PASS (Judge 72/70 RL 77.6/64.92 slack=±3)
 2026-05-23 07:03:51,524 [INFO] positions: Same-side cap: skip SHORT LINKUSDT (3/3 already short)
 2026-05-23 07:03:53,525 [INFO] main: Next scan in 180min (weekend)
+2026-05-23 07:20:46,322 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -861,7 +861,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       604Mi       929Mi       4.8Mi       2.5Gi       3.1Gi
+Mem:           3.7Gi       604Mi       928Mi       4.8Mi       2.5Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
