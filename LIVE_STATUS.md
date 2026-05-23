@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-23 06:50:01 UTC
+Generated: 2026-05-23 07:00:01 UTC
 
 ## Services
 ```
@@ -814,11 +814,6 @@ root      865608  0.0  2.2 649800 88204 ?        Ssl  May22   0:48 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-23 03:59:08,552 [INFO] main: GRASSUSDT | RL adj=80.0%
-2026-05-23 03:59:12,156 [INFO] main: SOLUSDT | Bull:long(45%) Bear:short(80%)
-2026-05-23 03:59:18,042 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 03:59:18,043 [INFO] main: SOLUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-23 03:59:18,043 [INFO] main: SOLUSDT | RL adj=80.0%
 2026-05-23 03:59:21,653 [INFO] main: ETHUSDT | Bull:long(42%) Bear:short(80%)
 2026-05-23 03:59:25,756 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-23 03:59:25,758 [INFO] main: ETHUSDT | Judge:SHORT conf=72% size=6.0%
@@ -844,6 +839,11 @@ root      865608  0.0  2.2 649800 88204 ?        Ssl  May22   0:48 /opt/ensemble
 2026-05-23 04:20:44,286 [INFO] main: Symbols: 30
 2026-05-23 05:20:44,899 [INFO] main: Symbols: 30
 2026-05-23 06:20:45,605 [INFO] main: Symbols: 30
+2026-05-23 06:59:53,456 [INFO] main: Scanning 27 symbols...
+2026-05-23 06:59:55,209 [INFO] main: ALTUSDT | Bull:long(65%) Bear:short(80%)
+2026-05-23 07:00:01,375 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 07:00:01,377 [INFO] main: ALTUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-23 07:00:01,377 [INFO] main: ALTUSDT | RL adj=80.0%
 ```
 
 ## Disk
@@ -861,7 +861,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       607Mi       927Mi       4.8Mi       2.5Gi       3.1Gi
+Mem:           3.7Gi       610Mi       923Mi       4.8Mi       2.5Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
