@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-23 07:00:01 UTC
+Generated: 2026-05-23 07:10:01 UTC
 
 ## Services
 ```
@@ -10,8 +10,8 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      812670  0.0  1.2 209160 50560 ?        Ssl  May19   0:44 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      865608  0.0  2.2 649800 88204 ?        Ssl  May22   0:48 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:44 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      865608  0.0  2.2 649800 88204 ?        Ssl  May22   0:50 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -814,36 +814,36 @@ root      865608  0.0  2.2 649800 88204 ?        Ssl  May22   0:48 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-23 03:59:21,653 [INFO] main: ETHUSDT | Bull:long(42%) Bear:short(80%)
-2026-05-23 03:59:25,756 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 03:59:25,758 [INFO] main: ETHUSDT | Judge:SHORT conf=72% size=6.0%
-2026-05-23 03:59:25,758 [INFO] main: ETHUSDT | RL adj=78.1%
-2026-05-23 03:59:25,758 [INFO] main: ETHUSDT | gate PASS (Judge 72/70 RL 78.1/64.92 slack=±3)
-2026-05-23 03:59:25,758 [INFO] positions: Same-side cap: skip SHORT ETHUSDT (3/3 already short)
-2026-05-23 03:59:29,456 [INFO] main: BILLUSDT | Bull:long(70%) Bear:short(70%)
-2026-05-23 03:59:35,099 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 03:59:35,100 [INFO] main: BILLUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-23 03:59:35,100 [INFO] main: BILLUSDT | RL adj=70.0%
-2026-05-23 03:59:38,794 [INFO] main: TAOUSDT | Bull:long(45%) Bear:short(80%)
-2026-05-23 03:59:42,551 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 03:59:42,552 [INFO] main: TAOUSDT | Judge:SHORT conf=72% size=6.0%
-2026-05-23 03:59:42,553 [INFO] main: TAOUSDT | RL adj=77.6%
-2026-05-23 03:59:42,553 [INFO] main: TAOUSDT | gate PASS (Judge 72/70 RL 77.6/64.92 slack=±3)
-2026-05-23 03:59:42,553 [INFO] positions: Same-side cap: skip SHORT TAOUSDT (3/3 already short)
-2026-05-23 03:59:46,178 [INFO] main: INJUSDT | Bull:long(70%) Bear:short(70%)
-2026-05-23 03:59:51,444 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 03:59:51,446 [INFO] main: INJUSDT | Judge:LONG conf=68% size=9.0%
-2026-05-23 03:59:51,446 [INFO] main: INJUSDT | RL adj=67.5%
-2026-05-23 03:59:51,446 [INFO] main: INJUSDT | regime BLOCK (long × trending_up × rsi1h=40.8; late-entry guard)
-2026-05-23 03:59:53,446 [INFO] main: Next scan in 180min (weekend)
-2026-05-23 04:20:44,286 [INFO] main: Symbols: 30
-2026-05-23 05:20:44,899 [INFO] main: Symbols: 30
-2026-05-23 06:20:45,605 [INFO] main: Symbols: 30
-2026-05-23 06:59:53,456 [INFO] main: Scanning 27 symbols...
-2026-05-23 06:59:55,209 [INFO] main: ALTUSDT | Bull:long(65%) Bear:short(80%)
-2026-05-23 07:00:01,375 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 07:00:01,377 [INFO] main: ALTUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-23 07:00:01,377 [INFO] main: ALTUSDT | RL adj=80.0%
+2026-05-23 07:03:01,772 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 07:03:01,774 [INFO] main: ETHUSDT | Judge:HOLD conf=85% size=0.0%
+2026-05-23 07:03:01,774 [INFO] main: ETHUSDT | RL adj=85.0%
+2026-05-23 07:03:05,520 [INFO] main: LABUSDT | Bull:long(60%) Bear:short(70%)
+2026-05-23 07:03:10,642 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 07:03:10,643 [INFO] main: LABUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-23 07:03:10,643 [INFO] main: LABUSDT | RL adj=70.0%
+2026-05-23 07:03:14,318 [INFO] main: ENAUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-23 07:03:19,482 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 07:03:19,483 [INFO] main: ENAUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-23 07:03:19,483 [INFO] main: ENAUSDT | RL adj=80.0%
+2026-05-23 07:03:23,192 [INFO] main: ONDOUSDT | Bull:long(60%) Bear:short(80%)
+2026-05-23 07:03:27,571 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 07:03:27,573 [INFO] main: ONDOUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-23 07:03:27,573 [INFO] main: ONDOUSDT | RL adj=80.0%
+2026-05-23 07:03:31,280 [INFO] main: TONUSDT | Bull:long(45%) Bear:short(85%)
+2026-05-23 07:03:35,534 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 07:03:35,536 [INFO] main: TONUSDT | Judge:HOLD conf=85% size=0.0%
+2026-05-23 07:03:35,536 [INFO] main: TONUSDT | RL adj=85.0%
+2026-05-23 07:03:39,244 [INFO] main: UBUSDT | Bull:long(60%) Bear:short(70%)
+2026-05-23 07:03:44,166 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 07:03:44,167 [INFO] main: UBUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-23 07:03:44,167 [INFO] main: UBUSDT | RL adj=70.0%
+2026-05-23 07:03:47,871 [INFO] main: LINKUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-23 07:03:51,522 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 07:03:51,523 [INFO] main: LINKUSDT | Judge:SHORT conf=72% size=7.0%
+2026-05-23 07:03:51,523 [INFO] main: LINKUSDT | RL adj=77.6%
+2026-05-23 07:03:51,523 [INFO] main: LINKUSDT | gate PASS (Judge 72/70 RL 77.6/64.92 slack=±3)
+2026-05-23 07:03:51,524 [INFO] positions: Same-side cap: skip SHORT LINKUSDT (3/3 already short)
+2026-05-23 07:03:53,525 [INFO] main: Next scan in 180min (weekend)
 ```
 
 ## Disk
@@ -861,7 +861,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       610Mi       923Mi       4.8Mi       2.5Gi       3.1Gi
+Mem:           3.7Gi       604Mi       928Mi       4.8Mi       2.5Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
