@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-23 00:50:01 UTC
+Generated: 2026-05-23 01:00:01 UTC
 
 ## Services
 ```
@@ -11,13 +11,13 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      865608  0.0  2.2 649636 87796 ?        Ssl  May22   0:36 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      865608  0.0  2.2 649636 87796 ?        Ssl  May22   0:38 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 690.9054733904305,
+  "balance": 669.59173382138,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779330658",
@@ -28,6 +28,30 @@ root      865608  0.0  2.2 649636 87796 ?        Ssl  May22   0:36 /opt/ensemble
       "confidence": 76,
       "opened_at": "2026-05-21T02:30:58.052787",
       "cost": 59.726634
+    },
+    "BTCUSDT": {
+      "id": "PAPER_BTCUSDT_1779497565",
+      "symbol": "BTCUSDT",
+      "side": "short",
+      "entry_price": 75334.7,
+      "qty": 0.0006,
+      "confidence": 72,
+      "opened_at": "2026-05-23T00:52:45.625592",
+      "cost": 9.040163999999999,
+      "notional": 45.20081999999999,
+      "leverage": 5
+    },
+    "PEPEUSDT": {
+      "id": "PAPER_PEPEUSDT_1779497664",
+      "symbol": "PEPEUSDT",
+      "side": "short",
+      "entry_price": 3.607e-06,
+      "qty": 17013550.8304,
+      "confidence": 78,
+      "opened_at": "2026-05-23T00:54:24.256401",
+      "cost": 12.27357556905056,
+      "notional": 61.367877845252806,
+      "leverage": 5
     }
   },
   "trade_history": [
@@ -790,36 +814,36 @@ root      865608  0.0  2.2 649636 87796 ?        Ssl  May22   0:36 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-22 22:50:50,144 [INFO] main: SUIUSDT | RL adj=80.0%
-2026-05-22 22:50:53,933 [INFO] main: BSBUSDT | Bull:long(70%) Bear:short(80%)
-2026-05-22 22:50:59,106 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 22:50:59,107 [INFO] main: BSBUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-22 22:50:59,107 [INFO] main: BSBUSDT | RL adj=80.0%
-2026-05-22 22:51:02,773 [INFO] main: OPGUSDT | Bull:long(55%) Bear:short(80%)
-2026-05-22 22:51:07,821 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 22:51:07,822 [INFO] main: OPGUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-22 22:51:07,822 [INFO] main: OPGUSDT | RL adj=80.0%
-2026-05-22 22:51:11,441 [INFO] main: INJUSDT | Bull:long(60%) Bear:short(70%)
-2026-05-22 22:51:15,946 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 22:51:15,947 [INFO] main: INJUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-22 22:51:15,948 [INFO] main: INJUSDT | RL adj=70.0%
-2026-05-22 22:51:19,648 [INFO] main: GENIUSUSDT | Bull:long(45%) Bear:short(70%)
-2026-05-22 22:51:24,514 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-22 22:51:24,515 [INFO] main: GENIUSUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-22 22:51:24,515 [INFO] main: GENIUSUSDT | RL adj=70.0%
-2026-05-22 22:51:26,518 [INFO] main: Next scan in 120min (weekday-quiet)
-2026-05-22 22:53:32,261 [INFO] positions: TRAILING-STOP TONUSDT short peak:1.8% now:0.77%
-2026-05-22 22:53:32,266 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT TONUSDT @ 1.8857 PnL: 0.77% (+0.42 USDT) | Баланс: 681.54
-2026-05-22 22:53:32,605 [INFO] positions: OK TONUSDT short PnL:0.77% reason:trailing_stop
-2026-05-22 22:53:32,605 [INFO] positions: Lessons: This trade was a short position in TONUSDT that closed with a 0.77% profit, driven by a strong bearish conviction and a trending_down regime. The position size was relatively small at 0.08% of the total portfolio. The trade was closed by a trailing stop, highlighting the importance of risk management in capturing profits.
-2026-05-22 22:53:32,607 [INFO] rl: RL learned from short TONUSDT: profit 0.77% | weights bull=0.981 bear=1.010 judge=1.009 threshold=64.95
-2026-05-22 23:20:41,169 [INFO] main: Symbols: 30
-2026-05-22 23:48:05,066 [INFO] positions: TAKE-PROFIT PEPEUSDT short PnL:3.01%
-2026-05-22 23:48:05,069 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT PEPEUSDT @ 0.0000 PnL: 3.01% (+1.23 USDT) | Баланс: 690.91
-2026-05-22 23:48:05,414 [INFO] positions: OK PEPEUSDT short PnL:3.01% reason:take_profit
-2026-05-22 23:48:05,414 [INFO] positions: Lessons: The trade was successful with a 3.01% profit, validating the bearish conviction and trend analysis. The combination of oversold RSI, negative funding, and OB imbalance, along with a trending_down regime, supported the short position despite a potentially false positive MACD signal. This outcome reinforces the importance of considering regime structure and momentum alignment when making trading decisions.
-2026-05-22 23:48:05,416 [INFO] rl: RL learned from short PEPEUSDT: profit 3.01% | weights bull=0.973 bear=1.017 judge=1.011 threshold=64.92
-2026-05-23 00:20:41,798 [INFO] main: Symbols: 30
+2026-05-23 00:55:08,994 [INFO] main: ENAUSDT | RL adj=78.4%
+2026-05-23 00:55:08,994 [INFO] main: ENAUSDT | gate PASS (Judge 72/70 RL 78.4/64.92 slack=±3)
+2026-05-23 00:55:08,995 [INFO] positions: Same-side cap: skip SHORT ENAUSDT (3/3 already short)
+2026-05-23 00:55:12,608 [INFO] main: HYPEUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-23 00:55:16,750 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 00:55:16,751 [INFO] main: HYPEUSDT | Judge:SHORT conf=72% size=7.0%
+2026-05-23 00:55:16,751 [INFO] main: HYPEUSDT | RL adj=77.6%
+2026-05-23 00:55:16,751 [INFO] main: HYPEUSDT | gate PASS (Judge 72/70 RL 77.6/64.92 slack=±3)
+2026-05-23 00:55:16,752 [INFO] positions: Same-side cap: skip SHORT HYPEUSDT (3/3 already short)
+2026-05-23 00:55:20,403 [INFO] main: SOLUSDT | Bull:long(42%) Bear:short(80%)
+2026-05-23 00:55:25,401 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 00:55:25,403 [INFO] main: SOLUSDT | Judge:SHORT conf=76% size=8.0%
+2026-05-23 00:55:25,403 [INFO] main: SOLUSDT | RL adj=82.1%
+2026-05-23 00:55:25,403 [INFO] main: SOLUSDT | gate PASS (Judge 76/70 RL 82.1/64.92 slack=±3)
+2026-05-23 00:55:25,403 [INFO] positions: Same-side cap: skip SHORT SOLUSDT (3/3 already short)
+2026-05-23 00:55:29,026 [INFO] main: UBUSDT | Bull:long(65%) Bear:short(70%)
+2026-05-23 00:55:35,181 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 00:55:35,183 [INFO] main: UBUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-23 00:55:35,183 [INFO] main: UBUSDT | RL adj=70.0%
+2026-05-23 00:55:38,828 [INFO] main: LINKUSDT | Bull:long(42%) Bear:short(85%)
+2026-05-23 00:55:46,941 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 00:55:46,942 [INFO] main: LINKUSDT | Judge:SHORT conf=78% size=8.0%
+2026-05-23 00:55:46,942 [INFO] main: LINKUSDT | RL adj=84.8%
+2026-05-23 00:55:46,942 [INFO] main: LINKUSDT | gate PASS (Judge 78/70 RL 84.8/64.92 slack=±3)
+2026-05-23 00:55:46,943 [INFO] positions: Same-side cap: skip SHORT LINKUSDT (3/3 already short)
+2026-05-23 00:55:50,614 [INFO] main: GENIUSUSDT | Bull:long(45%) Bear:short(70%)
+2026-05-23 00:55:55,908 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 00:55:55,909 [INFO] main: GENIUSUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-23 00:55:55,909 [INFO] main: GENIUSUSDT | RL adj=70.0%
+2026-05-23 00:55:57,911 [INFO] main: Next scan in 180min (weekend)
 ```
 
 ## Disk
@@ -837,7 +861,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       604Mi       949Mi       4.8Mi       2.5Gi       3.1Gi
+Mem:           3.7Gi       615Mi       938Mi       4.8Mi       2.5Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
