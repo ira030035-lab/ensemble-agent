@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-23 14:30:01 UTC
+Generated: 2026-05-23 14:40:01 UTC
 
 ## Services
 ```
@@ -11,24 +11,14 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:50 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      907965  0.0  2.1 646312 84472 ?        Ssl  09:56   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      907965  0.0  2.1 646312 84476 ?        Ssl  09:56   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 671.407818629695,
+  "balance": 731.988107629695,
   "positions": {
-    "BNBUSDT": {
-      "id": "PAPER_BNBUSDT_1779330658",
-      "symbol": "BNBUSDT",
-      "side": "short",
-      "entry_price": 654.18,
-      "qty": 0.0913,
-      "confidence": 76,
-      "opened_at": "2026-05-21T02:30:58.052787",
-      "cost": 59.726634
-    },
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1779497565",
       "symbol": "BTCUSDT",
@@ -824,19 +814,30 @@ root      907965  0.0  2.1 646312 84472 ?        Ssl  09:56   0:10 /opt/ensemble
       "closed_at": "2026-05-23T07:50:27.634617",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BNBUSDT_1779330658",
+      "symbol": "BNBUSDT",
+      "side": "short",
+      "entry_price": 654.18,
+      "qty": 0.0913,
+      "confidence": 76,
+      "opened_at": "2026-05-21T02:30:58.052787",
+      "cost": 59.726634,
+      "exit_price": 644.83,
+      "pnl_pct": 1.43,
+      "pnl_usdt": 0.85,
+      "closed_at": "2026-05-23T14:35:31.037978",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 1.622056803695273
+  "total_pnl": 2.4757118036952646
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-23 13:03:44,454 [INFO] main: TRUMPUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-23 13:03:44,454 [INFO] main: TRUMPUSDT | RL adj=80.0%
-2026-05-23 13:03:48,133 [INFO] main: TONUSDT | Bull:long(55%) Bear:short(70%)
-2026-05-23 13:03:55,166 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 13:03:55,167 [INFO] main: TONUSDT | Judge:HOLD conf=70% size=0.0%
 2026-05-23 13:03:55,167 [INFO] main: TONUSDT | RL adj=70.0%
 2026-05-23 13:03:59,094 [INFO] main: PEPEUSDT | Bull:long(60%) Bear:short(70%)
 2026-05-23 13:04:04,809 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -862,6 +863,11 @@ root      907965  0.0  2.1 646312 84472 ?        Ssl  09:56   0:10 /opt/ensemble
 2026-05-23 13:04:42,805 [INFO] positions: Same-side cap: skip SHORT DOGEUSDT (3/3 already short)
 2026-05-23 13:04:44,808 [INFO] main: Next scan in 180min (weekend)
 2026-05-23 13:56:23,233 [INFO] main: Symbols: 30
+2026-05-23 14:35:31,037 [INFO] positions: TRAILING-STOP BNBUSDT short peak:2.45% now:1.43%
+2026-05-23 14:35:31,042 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT BNBUSDT @ 644.8300 PnL: 1.43% (+0.85 USDT) | Баланс: 731.99
+2026-05-23 14:35:31,452 [INFO] positions: OK BNBUSDT short PnL:1.43% reason:trailing_stop
+2026-05-23 14:35:31,452 [INFO] positions: Lessons: This trade was successful with a 1.43% profit due to a strong bearish conviction and overbought conditions. The combination of high RSI levels, negative order book imbalance, and a significant conviction asymmetry correctly indicated reversal risk. The outcome reinforces the importance of considering conviction asymmetry and overbought conditions when making trading decisions.
+2026-05-23 14:35:31,454 [INFO] rl: RL learned from short BNBUSDT: profit 1.43% | weights bull=0.960 bear=1.027 judge=1.013 threshold=64.86
 ```
 
 ## Disk
