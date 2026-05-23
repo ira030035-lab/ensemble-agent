@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-23 13:50:01 UTC
+Generated: 2026-05-23 14:00:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:50 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      907965  0.0  2.2 647972 86120 ?        Ssl  09:56   0:09 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      907965  0.0  2.1 646096 84464 ?        Ssl  09:56   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -832,7 +832,6 @@ root      907965  0.0  2.2 647972 86120 ?        Ssl  09:56   0:09 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-23 13:03:44,453 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-23 13:03:44,454 [INFO] main: TRUMPUSDT | Judge:HOLD conf=80% size=0.0%
 2026-05-23 13:03:44,454 [INFO] main: TRUMPUSDT | RL adj=80.0%
 2026-05-23 13:03:48,133 [INFO] main: TONUSDT | Bull:long(55%) Bear:short(70%)
@@ -862,6 +861,7 @@ root      907965  0.0  2.2 647972 86120 ?        Ssl  09:56   0:09 /opt/ensemble
 2026-05-23 13:04:42,805 [INFO] main: DOGEUSDT | gate PASS (Judge 72/70 RL 77.8/64.89 slack=±3)
 2026-05-23 13:04:42,805 [INFO] positions: Same-side cap: skip SHORT DOGEUSDT (3/3 already short)
 2026-05-23 13:04:44,808 [INFO] main: Next scan in 180min (weekend)
+2026-05-23 13:56:23,233 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -879,7 +879,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       604Mi       1.2Gi       4.8Mi       2.3Gi       3.1Gi
+Mem:           3.7Gi       605Mi       1.2Gi       4.8Mi       2.3Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
