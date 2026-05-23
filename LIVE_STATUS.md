@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-23 09:20:01 UTC
+Generated: 2026-05-23 09:30:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 209160 50560 ?        Ssl  May19   0:44 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      865608  0.0  2.2 650324 88744 ?        Ssl  May22   0:53 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      865608  0.0  2.2 648620 87180 ?        Ssl  May22   0:53 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -820,7 +820,6 @@ root      865608  0.0  2.2 650324 88744 ?        Ssl  May22   0:53 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-23 07:03:14,318 [INFO] main: ENAUSDT | Bull:long(45%) Bear:short(80%)
 2026-05-23 07:03:19,482 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-23 07:03:19,483 [INFO] main: ENAUSDT | Judge:HOLD conf=80% size=0.0%
 2026-05-23 07:03:19,483 [INFO] main: ENAUSDT | RL adj=80.0%
@@ -850,6 +849,7 @@ root      865608  0.0  2.2 650324 88744 ?        Ssl  May22   0:53 /opt/ensemble
 2026-05-23 07:50:28,198 [INFO] positions: Lessons: The trade was closed with a 3.01% profit, validating the initial bearish setup. The combination of a trending_down regime, oversold RSI, bearish MACD, and negative funding all contributed to the successful short position. This outcome reinforces the effectiveness of the bearish conviction and technical indicators in similar market conditions.
 2026-05-23 07:50:28,200 [INFO] rl: RL learned from short PEPEUSDT: profit 3.01% | weights bull=0.963 bear=1.024 judge=1.012 threshold=64.89
 2026-05-23 08:20:46,986 [INFO] main: Symbols: 30
+2026-05-23 09:20:47,641 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -867,7 +867,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       607Mi       921Mi       4.8Mi       2.5Gi       3.1Gi
+Mem:           3.7Gi       608Mi       920Mi       4.8Mi       2.5Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
