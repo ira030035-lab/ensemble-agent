@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-23 17:00:01 UTC
+Generated: 2026-05-23 20:00:01 UTC
 
 ## agents.py
 ```python
@@ -24,6 +24,11 @@ Decision criteria:
 - LONG if: BULL conviction >= 55 AND BEAR is flat OR BEAR conviction < BULL conviction. Set action="long".
 - SHORT if: BEAR conviction >= 55 AND BULL is flat OR BULL conviction < BEAR conviction. Set action="short".
 - HOLD only when: signals genuinely conflict (both > 60 in opposite directions) OR both sides agree it is flat/unclear. HOLD is a real cost — missed opportunity.
+
+Market sentiment (Fear & Greed) is a soft signal, not a blocker:
+- Extreme Greed (>80) + LONG: require BULL conviction clearly > BEAR (margin >= 10), otherwise lean HOLD. Late-cycle euphoria.
+- Extreme Fear (<20) + SHORT: require BEAR conviction clearly > BULL (margin >= 10), otherwise lean HOLD. Capitulation often marks bottoms.
+- Neither extreme: sentiment is informational only, do not let it override the BULL/BEAR debate.
 
 For action="long" or "short": confidence in 50-95 reflecting how aligned the evidence is; position_size_pct in 0.03-0.12 (bigger when conviction higher, smaller when conflicting).
 For action="hold": confidence = max conviction of either side; position_size_pct = 0.0.
@@ -972,9 +977,30 @@ if __name__ == "__main__":
 
 ## data_engine.py
 ```python
-import logging,numpy as np
+import logging,numpy as np,aiohttp,time
 from dataclasses import dataclass
 log = logging.getLogger("data_engine")
+
+class SentimentCache:
+    def __init__(self,ttl=3600):
+        self.ttl=ttl; self._fg=None; self._fg_ts=0; self._dom=None; self._dom_ts=0
+    async def get_fear_greed(self):
+        if self._fg is not None and time.time()-self._fg_ts<self.ttl: return self._fg
+        try:
+            async with aiohttp.ClientSession() as s:
+                async with s.get("https://api.alternative.me/fng/?limit=1",timeout=aiohttp.ClientTimeout(total=10)) as r:
+                    j=await r.json(); d=j.get("data",[{}])[0]
+                    val=int(d.get("value",0)); label=d.get("value_classification","")
+                    self._fg=(val,label); self._fg_ts=time.time(); return self._fg
+        except Exception as e: log.warning("F&G fetch: "+str(e)); return self._fg
+    async def get_btc_dominance(self):
+        if self._dom is not None and time.time()-self._dom_ts<self.ttl: return self._dom
+        try:
+            async with aiohttp.ClientSession() as s:
+                async with s.get("https://api.coinpaprika.com/v1/global",timeout=aiohttp.ClientTimeout(total=10)) as r:
+                    j=await r.json(); val=float(j.get("bitcoin_dominance_percentage",0))
+                    self._dom=val; self._dom_ts=time.time(); return self._dom
+        except Exception as e: log.warning("BTC.D fetch: "+str(e)); return self._dom
 
 @dataclass
 class MarketSnapshot:
@@ -982,6 +1008,7 @@ class MarketSnapshot:
     price_change_4h:float; volume_15m:float; volume_ratio:float
     rsi_15m:float; rsi_1h:float; macd_signal:str; bb_position:float
     funding_rate:float; open_interest_change:float; bid_ask_imbalance:float; regime:str
+    fear_greed:int=None; fear_greed_label:str=""; btc_dominance:float=None
     def to_text(self):
         lines = [
             "Symbol: "+self.symbol,
@@ -998,10 +1025,16 @@ class MarketSnapshot:
             "OB imbalance: "+str(round(self.bid_ask_imbalance,3)),
             "Regime: "+self.regime,
         ]
+        if self.fear_greed is not None:
+            lines.append("Market Sentiment: "+self.fear_greed_label+" ("+str(self.fear_greed)+"/100)")
+        else:
+            lines.append("Market Sentiment: n/a")
+        if self.btc_dominance is not None and not self.symbol.startswith("BTC"):
+            lines.append("BTC Dominance: "+str(round(self.btc_dominance,1))+"%")
         return "\n".join(lines)
 
 class DataEngine:
-    def __init__(self,bitget): self.bitget=bitget
+    def __init__(self,bitget): self.bitget=bitget; self.sentiment=SentimentCache()
     async def get_snapshot(self,symbol):
         try:
             c15=await self.bitget.get_candles(symbol,"15m",100)
@@ -1022,9 +1055,13 @@ class DataEngine:
             bv=sum(float(b[1]) for b in bids[:10]); av=sum(float(a[1]) for a in asks[:10])
             imb=(bv-av)/(bv+av) if bv+av>0 else 0
             closes=d15["close"]; regime=self._regime(d1h["close"])
+            fg=await self.sentiment.get_fear_greed()
+            dom=await self.sentiment.get_btc_dominance()
+            fg_val,fg_lbl=(fg if fg else (None,""))
             return MarketSnapshot(symbol,price,pc15,pc1h,pc4h,vol15,vr,
                 self._rsi(closes),self._rsi(d1h["close"]),self._macd(closes),
-                self._bb(closes),funding,0.0,imb,regime)
+                self._bb(closes),funding,0.0,imb,regime,
+                fear_greed=fg_val,fear_greed_label=fg_lbl,btc_dominance=dom)
         except Exception as e: log.error("DataEngine "+symbol+": "+str(e)); return None
     def _rsi(self,c,p=14):
         if len(c)<p+1: return 50.0
