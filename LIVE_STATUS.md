@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-23 20:40:01 UTC
+Generated: 2026-05-23 20:50:01 UTC
 
 ## Services
 ```
@@ -10,14 +10,14 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      812670  0.0  1.2 208136 49540 ?        Ssl  May19   0:52 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      915939  0.0  2.1 645524 84308 ?        Ssl  19:19   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:52 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      915939  0.0  2.1 645780 84432 ?        Ssl  19:19   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 733.6233747156951,
+  "balance": 741.0755817156952,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1779497565",
@@ -29,18 +29,6 @@ root      915939  0.0  2.1 645524 84308 ?        Ssl  19:19   0:04 /opt/ensemble
       "opened_at": "2026-05-23T00:52:45.625592",
       "cost": 9.040163999999999,
       "notional": 45.20081999999999,
-      "leverage": 5
-    },
-    "AAVEUSDT": {
-      "id": "PAPER_AAVEUSDT_1779552292",
-      "symbol": "AAVEUSDT",
-      "side": "short",
-      "entry_price": 85.4,
-      "qty": 0.5143,
-      "confidence": 72,
-      "opened_at": "2026-05-23T16:04:52.629043",
-      "cost": 8.784244,
-      "notional": 43.92122,
       "leverage": 5
     }
   },
@@ -848,19 +836,32 @@ root      915939  0.0  2.1 645524 84308 ?        Ssl  19:19   0:04 /opt/ensemble
       "closed_at": "2026-05-23T16:35:44.717276",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_AAVEUSDT_1779552292",
+      "symbol": "AAVEUSDT",
+      "side": "short",
+      "entry_price": 85.4,
+      "qty": 0.5143,
+      "confidence": 72,
+      "opened_at": "2026-05-23T16:04:52.629043",
+      "cost": 8.784244,
+      "notional": 43.92122,
+      "leverage": 5,
+      "exit_price": 87.99,
+      "pnl_pct": -3.03,
+      "pnl_usdt": -1.33,
+      "closed_at": "2026-05-23T20:40:59.608053",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 0.5883591536952666
+  "total_pnl": -0.7436778463047278
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-23 19:22:45,391 [INFO] main: SUIUSDT | Bull:long(70%) Bear:short(72%)
-2026-05-23 19:22:51,190 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 19:22:51,192 [INFO] main: SUIUSDT | Judge:HOLD conf=72% size=0.0%
-2026-05-23 19:22:51,192 [INFO] main: SUIUSDT | RL adj=72.0%
-2026-05-23 19:22:54,980 [INFO] main: UNIUSDT | Bull:long(70%) Bear:short(72%)
 2026-05-23 19:23:01,098 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-23 19:23:01,099 [INFO] main: UNIUSDT | Judge:HOLD conf=72% size=0.0%
 2026-05-23 19:23:01,099 [INFO] main: UNIUSDT | RL adj=72.0%
@@ -886,6 +887,11 @@ root      915939  0.0  2.1 645524 84308 ?        Ssl  19:19   0:04 /opt/ensemble
 2026-05-23 19:23:45,978 [INFO] main: GMTUSDT | RL adj=80.0%
 2026-05-23 19:23:47,981 [INFO] main: Next scan in 180min (weekend)
 2026-05-23 20:19:22,681 [INFO] main: Symbols: 30
+2026-05-23 20:40:59,607 [INFO] positions: STOP-LOSS AAVEUSDT short PnL:-3.03%
+2026-05-23 20:40:59,612 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT AAVEUSDT @ 87.9900 PnL: -3.03% (-1.33 USDT) | Баланс: 741.08
+2026-05-23 20:41:00,035 [INFO] positions: LOSS AAVEUSDT short PnL:-3.03% reason:stop_loss
+2026-05-23 20:41:00,036 [INFO] positions: Lessons: Trending_down regime and high BEAR conviction were correct but not enough to overcome the MACD bullish divergence and overbought conditions. Conservative sizing helped limit losses to 3.03%. The combination of high RSI and high BB position can sometimes lead to whipsaw risk, even with strong structural alignment and conviction.
+2026-05-23 20:41:00,038 [INFO] rl: RL learned from short AAVEUSDT: loss -3.03% | weights bull=0.972 bear=1.014 judge=1.014 threshold=64.96
 ```
 
 ## Disk
@@ -903,7 +909,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       615Mi       1.1Gi       4.8Mi       2.3Gi       3.1Gi
+Mem:           3.7Gi       620Mi       1.1Gi       4.8Mi       2.3Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
