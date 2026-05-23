@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-23 01:20:01 UTC
+Generated: 2026-05-23 01:30:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      865608  0.0  2.2 649636 87796 ?        Ssl  May22   0:39 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      865608  0.0  2.2 649800 88192 ?        Ssl  May22   0:39 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -814,7 +814,6 @@ root      865608  0.0  2.2 649636 87796 ?        Ssl  May22   0:39 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-23 00:55:08,994 [INFO] main: ENAUSDT | RL adj=78.4%
 2026-05-23 00:55:08,994 [INFO] main: ENAUSDT | gate PASS (Judge 72/70 RL 78.4/64.92 slack=±3)
 2026-05-23 00:55:08,995 [INFO] positions: Same-side cap: skip SHORT ENAUSDT (3/3 already short)
 2026-05-23 00:55:12,608 [INFO] main: HYPEUSDT | Bull:long(45%) Bear:short(80%)
@@ -844,6 +843,7 @@ root      865608  0.0  2.2 649636 87796 ?        Ssl  May22   0:39 /opt/ensemble
 2026-05-23 00:55:55,909 [INFO] main: GENIUSUSDT | Judge:HOLD conf=70% size=0.0%
 2026-05-23 00:55:55,909 [INFO] main: GENIUSUSDT | RL adj=70.0%
 2026-05-23 00:55:57,911 [INFO] main: Next scan in 180min (weekend)
+2026-05-23 01:20:42,394 [INFO] main: Symbols: 30
 ```
 
 ## Disk
