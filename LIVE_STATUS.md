@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-23 19:10:01 UTC
+Generated: 2026-05-23 19:20:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:51 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      907965  0.0  2.2 648304 86728 ?        Ssl  09:56   0:18 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      915939  3.0  2.1 643696 82068 ?        Ssl  19:19   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -856,42 +856,42 @@ root      907965  0.0  2.2 648304 86728 ?        Ssl  09:56   0:18 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-23 19:08:53,960 [INFO] main: Scanning 29 symbols...
-2026-05-23 19:08:55,749 [INFO] main: ONDOUSDT | Bull:long(55%) Bear:short(80%)
-2026-05-23 19:09:00,641 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 19:09:00,642 [INFO] main: ONDOUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-23 19:09:00,642 [INFO] main: ONDOUSDT | RL adj=80.0%
-2026-05-23 19:09:04,329 [INFO] main: ZECUSDT | Bull:long(65%) Bear:short(70%)
-2026-05-23 19:09:10,105 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 19:09:10,106 [INFO] main: ZECUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-23 19:09:10,106 [INFO] main: ZECUSDT | RL adj=70.0%
-2026-05-23 19:09:13,806 [INFO] main: HYPEUSDT | Bull:long(70%) Bear:short(70%)
-2026-05-23 19:09:19,149 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 19:09:19,151 [INFO] main: HYPEUSDT | Judge:LONG conf=72% size=9.0%
-2026-05-23 19:09:19,151 [INFO] main: HYPEUSDT | RL adj=71.4%
-2026-05-23 19:09:19,151 [INFO] main: HYPEUSDT | regime BLOCK (volatile)
-2026-05-23 19:09:22,889 [INFO] main: BSBUSDT | Bull:long(45%) Bear:short(80%)
-2026-05-23 19:09:28,967 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 19:09:28,969 [INFO] main: BSBUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-23 19:09:28,969 [INFO] main: BSBUSDT | RL adj=80.0%
-2026-05-23 19:09:32,771 [INFO] main: XRPUSDT | Bull:long(55%) Bear:short(80%)
-2026-05-23 19:09:39,432 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 19:09:39,434 [INFO] main: XRPUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-23 19:09:39,434 [INFO] main: XRPUSDT | RL adj=80.0%
-2026-05-23 19:09:43,198 [INFO] main: BCHUSDT | Bull:long(60%) Bear:short(70%)
-2026-05-23 19:09:48,787 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 19:09:48,789 [INFO] main: BCHUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-23 19:09:48,789 [INFO] main: BCHUSDT | RL adj=70.0%
-2026-05-23 19:09:52,428 [INFO] main: TONUSDT | Bull:long(60%) Bear:short(70%)
-2026-05-23 19:09:58,256 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-23 19:09:58,257 [INFO] main: TONUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-23 19:09:58,257 [INFO] main: TONUSDT | RL adj=70.0%
+2026-05-23 19:13:16,487 [INFO] main: UNIUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-23 19:13:16,487 [INFO] main: UNIUSDT | RL adj=70.0%
+2026-05-23 19:13:18,489 [INFO] main: Next scan in 180min (weekend)
+2026-05-23 19:19:20,780 [INFO] main: Shutting down...
+2026-05-23 19:19:20,780 [INFO] positions: Position monitor stopped
+2026-05-23 19:19:21,123 [INFO] memory: Memory loaded: 66 trades
+2026-05-23 19:19:21,124 [INFO] rl: RL weights loaded: bull=0.966 bear=1.020 judge=1.013 episodes=11
+2026-05-23 19:19:21,124 [INFO] positions: Restored 2 positions from paper_state (0L/2S)
+2026-05-23 19:19:21,124 [INFO] main: === Adversarial Trading Agent started ===
+2026-05-23 19:19:21,124 [INFO] main: Bull: race(Gemini x5, Groq x2) → Haiku fb | Bear: race(Groq x2, Gemini x5) → Haiku fb | Judge: Haiku (decide) + Groq Llama (exit/dir/reflect)
+2026-05-23 19:19:22,003 [INFO] main: Symbols: 30
+2026-05-23 19:19:22,003 [INFO] main: Scanning 29 symbols...
+2026-05-23 19:19:22,004 [INFO] positions: Position monitor started
+2026-05-23 19:19:24,061 [INFO] main: SOLUSDT | Bull:long(55%) Bear:short(80%)
+2026-05-23 19:19:29,865 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 19:19:29,896 [INFO] main: SOLUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-23 19:19:29,896 [INFO] main: SOLUSDT | RL adj=80.0%
+2026-05-23 19:19:33,580 [INFO] main: PEPEUSDT | Bull:long(60%) Bear:short(70%)
+2026-05-23 19:19:38,895 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 19:19:38,896 [INFO] main: PEPEUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-23 19:19:38,897 [INFO] main: PEPEUSDT | RL adj=70.0%
+2026-05-23 19:19:42,618 [INFO] main: TONUSDT | Bull:long(60%) Bear:short(80%)
+2026-05-23 19:19:47,153 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 19:19:47,154 [INFO] main: TONUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-23 19:19:47,154 [INFO] main: TONUSDT | RL adj=80.0%
+2026-05-23 19:19:50,917 [INFO] main: HYPEUSDT | Bull:long(65%) Bear:short(72%)
+2026-05-23 19:19:55,823 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-23 19:19:55,824 [INFO] main: HYPEUSDT | Judge:HOLD conf=72% size=0.0%
+2026-05-23 19:19:55,824 [INFO] main: HYPEUSDT | RL adj=72.0%
+2026-05-23 19:19:59,670 [INFO] main: BILLUSDT | Bull:long(65%) Bear:short(80%)
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  872K  381M   1% /run
+tmpfs           382M  880K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  5.7G   67G   8% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -903,7 +903,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       604Mi       1.1Gi       4.8Mi       2.3Gi       3.1Gi
+Mem:           3.7Gi       856Mi       917Mi       4.8Mi       2.3Gi       2.9Gi
 Swap:             0B          0B          0B
 ```
 
