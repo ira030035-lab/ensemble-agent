@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-23 16:50:01 UTC
+Generated: 2026-05-23 17:00:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:51 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      907965  0.0  2.2 647784 86072 ?        Ssl  09:56   0:15 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      907965  0.0  2.2 648304 86716 ?        Ssl  09:56   0:15 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -856,7 +856,6 @@ root      907965  0.0  2.2 647784 86072 ?        Ssl  09:56   0:15 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-23 16:08:02,088 [INFO] main: BEATUSDT | Bull:long(45%) Bear:short(72%)
 2026-05-23 16:08:06,015 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-23 16:08:06,016 [INFO] main: BEATUSDT | Judge:HOLD conf=72% size=0.0%
 2026-05-23 16:08:06,016 [INFO] main: BEATUSDT | RL adj=72.0%
@@ -886,6 +885,7 @@ root      907965  0.0  2.2 647784 86072 ?        Ssl  09:56   0:15 /opt/ensemble
 2026-05-23 16:35:45,114 [INFO] positions: LOSS FILUSDT short PnL:-3.07% reason:stop_loss
 2026-05-23 16:35:45,114 [INFO] positions: Lessons: The trade was closed at a loss due to hitting the stop loss, resulting in a -3.07% PnL. This outcome contrasts with past profitable trades in similar setups, highlighting the importance of patience and not exiting prematurely. The key takeaway is to hold through the trend and avoid exiting on minor reversals, as evidenced by past breakeven trades that would have been profitable with more patience.
 2026-05-23 16:35:45,115 [INFO] rl: RL learned from short FILUSDT: loss -3.07% | weights bull=0.966 bear=1.020 judge=1.013 threshold=64.91
+2026-05-23 16:56:25,300 [INFO] main: Symbols: 30
 ```
 
 ## Disk
