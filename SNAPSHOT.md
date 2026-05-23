@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-23 09:00:01 UTC
+Generated: 2026-05-23 10:00:01 UTC
 
 ## agents.py
 ```python
@@ -71,8 +71,15 @@ class BullAgent:
                 [self._gemini(prompt), self._groq(prompt)],
                 self._claude(prompt))
             d=self._parse(text)
-            return AgentVerdict(d.get("side","long"),int(d.get("confidence",50)),d.get("reasoning",text))
-        except Exception as e: log.error("Bull: "+str(e)); return AgentVerdict("long",30,"Error: "+str(e))
+            side=d.get("side")
+            if side not in ("long","flat"):
+                log.warning("Bull: unparseable response → flat/25. raw="+(text or "")[:160].replace("\n"," "))
+                return AgentVerdict("flat",25,"Unparseable: "+(text or "")[:200])
+            conf=d.get("confidence")
+            try: conf=int(conf)
+            except: conf=50
+            return AgentVerdict(side,conf,d.get("reasoning",text))
+        except Exception as e: log.error("Bull: "+str(e)); return AgentVerdict("flat",25,"Error: "+str(e))
     async def _claude(self,prompt):
         import anthropic
         c=anthropic.AsyncAnthropic(api_key=self.cfg.ANTHROPIC_API_KEY)
@@ -154,9 +161,21 @@ class BullAgent:
         if last_err: log.debug("Bull-Gemini: "+last_err)
         return ""
     def _parse(self,t):
+        if not t: return {}
         t=re.sub(r"```json|```","",t).strip()
-        try: return json.loads(t)
-        except: return {"reasoning":t}
+        try:
+            d=json.loads(t)
+            if isinstance(d,dict): return d
+        except: pass
+        m=re.search(r'\{[^{}]*?"side"\s*:\s*"(?:long|flat)"[^{}]*\}',t,re.IGNORECASE|re.DOTALL)
+        if m:
+            try: return json.loads(m.group(0))
+            except: pass
+        sm=re.search(r'"?side"?\s*:\s*"?(long|flat)"?',t,re.IGNORECASE)
+        if sm:
+            cm=re.search(r'"?confidence"?\s*:\s*(\d+)',t)
+            return {"side":sm.group(1).lower(),"confidence":int(cm.group(1)) if cm else 50,"reasoning":t[:200]}
+        return {}
 
 class BearAgent:
     def __init__(self,cfg):
@@ -171,8 +190,15 @@ class BearAgent:
                 [self._groq(prompt), self._gemini(prompt)],
                 self._claude(prompt))
             d=self._parse(text)
-            return AgentVerdict(d.get("side","flat"),int(d.get("confidence",50)),d.get("reasoning",text))
-        except Exception as e: log.error("Bear: "+str(e)); return AgentVerdict("flat",30,"Error: "+str(e))
+            side=d.get("side")
+            if side not in ("short","flat","long"):
+                log.warning("Bear: unparseable response → flat/25. raw="+(text or "")[:160].replace("\n"," "))
+                return AgentVerdict("flat",25,"Unparseable: "+(text or "")[:200])
+            conf=d.get("confidence")
+            try: conf=int(conf)
+            except: conf=50
+            return AgentVerdict(side,conf,d.get("reasoning",text))
+        except Exception as e: log.error("Bear: "+str(e)); return AgentVerdict("flat",25,"Error: "+str(e))
     async def _groq(self,prompt):
         keys=list(getattr(self.cfg,"GROQ_API_KEYS",[]) or [])
         if not keys: return ""
@@ -251,12 +277,23 @@ class BearAgent:
         msg=await c.messages.create(model=self.cfg.BEAR_MODEL,max_tokens=300,system=BEAR_SYS,messages=[{"role":"user","content":prompt}])
         return msg.content[0].text
     def _parse(self,t):
+        if not t: return {}
         t=re.sub(r"```json|```","",t).strip()
-        try: return json.loads(t)
-        except:
-            t2=t.strip().lower()
-            if t2 in ("long","short","flat","hold"): return {"side":t2,"confidence":60,"reasoning":t2}
-            return {"reasoning":t}
+        try:
+            d=json.loads(t)
+            if isinstance(d,dict): return d
+        except: pass
+        m=re.search(r'\{[^{}]*?"side"\s*:\s*"(?:short|flat|long)"[^{}]*\}',t,re.IGNORECASE|re.DOTALL)
+        if m:
+            try: return json.loads(m.group(0))
+            except: pass
+        sm=re.search(r'"?side"?\s*:\s*"?(short|flat|long)"?',t,re.IGNORECASE)
+        if sm:
+            cm=re.search(r'"?confidence"?\s*:\s*(\d+)',t)
+            return {"side":sm.group(1).lower(),"confidence":int(cm.group(1)) if cm else 50,"reasoning":t[:200]}
+        t2=t.strip().lower()
+        if t2 in ("long","short","flat","hold"): return {"side":t2,"confidence":60,"reasoning":t2}
+        return {}
 
 class Judge:
     def __init__(self,cfg):
