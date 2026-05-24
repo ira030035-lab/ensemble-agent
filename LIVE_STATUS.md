@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-24 05:10:01 UTC
+Generated: 2026-05-24 05:20:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49540 ?        Ssl  May19   0:53 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      915939  0.0  2.1 647160 85040 ?        Ssl  May23   0:19 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      915939  0.0  2.1 646648 84908 ?        Ssl  May23   0:19 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -862,7 +862,6 @@ root      915939  0.0  2.1 647160 85040 ?        Ssl  May23   0:19 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-24 04:36:14,772 [INFO] main: BEATUSDT | RL adj=80.0%
 2026-05-24 04:36:18,443 [INFO] main: SOLUSDT | Bull:long(60%) Bear:short(72%)
 2026-05-24 04:36:24,351 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-24 04:36:24,352 [INFO] main: SOLUSDT | Judge:HOLD conf=72% size=0.0%
@@ -892,6 +891,7 @@ root      915939  0.0  2.1 647160 85040 ?        Ssl  May23   0:19 /opt/ensemble
 2026-05-24 04:37:26,007 [INFO] main: TRUMPUSDT | Judge:HOLD conf=70% size=0.0%
 2026-05-24 04:37:26,008 [INFO] main: TRUMPUSDT | RL adj=70.0%
 2026-05-24 04:37:28,010 [INFO] main: Next scan in 180min (weekend)
+2026-05-24 05:19:28,729 [INFO] main: Symbols: 30
 ```
 
 ## Disk
