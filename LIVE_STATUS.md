@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-24 22:10:01 UTC
+Generated: 2026-05-24 22:20:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 209160 50560 ?        Ssl  May19   0:57 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      915939  0.0  2.2 649276 87624 ?        Ssl  May23   0:49 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      915939  0.0  2.2 649648 88008 ?        Ssl  May23   0:49 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -922,7 +922,6 @@ root      915939  0.0  2.2 649276 87624 ?        Ssl  May23   0:49 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-24 19:58:33,806 [INFO] main: WLDUSDT | Judge:HOLD conf=80% size=0.0%
 2026-05-24 19:58:33,806 [INFO] main: WLDUSDT | RL adj=80.0%
 2026-05-24 19:58:37,512 [INFO] main: BSBUSDT | Bull:long(45%) Bear:short(80%)
 2026-05-24 19:58:42,545 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -952,6 +951,7 @@ root      915939  0.0  2.2 649276 87624 ?        Ssl  May23   0:49 /opt/ensemble
 2026-05-24 21:44:26,158 [INFO] positions: LOSS LINKUSDT long PnL:-3.03% reason:stop_loss
 2026-05-24 21:44:26,158 [INFO] positions: Lessons: The trade was closed at a loss of 3.03% due to a stop loss, despite a trending_up regime and bullish indicators. The low volume was a concern and may have contributed to the loss, highlighting the importance of considering volume in trade decisions. The equal conviction split between BULL and BEAR was resolved by regime strength and fear sentiment alignment, but ultimately did not yield a profitable outcome.
 2026-05-24 21:44:26,160 [INFO] rl: RL learned from long LINKUSDT: loss -3.03% | weights bull=0.958 bear=1.026 judge=1.016 threshold=64.98
+2026-05-24 22:19:40,442 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -969,7 +969,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       617Mi       1.1Gi       4.8Mi       2.3Gi       3.1Gi
+Mem:           3.7Gi       619Mi       1.1Gi       4.8Mi       2.3Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
