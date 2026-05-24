@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-24 14:10:01 UTC
+Generated: 2026-05-24 14:20:01 UTC
 
 ## Services
 ```
@@ -10,14 +10,14 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      812670  0.0  1.2 209160 50560 ?        Ssl  May19   0:55 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      915939  0.0  2.2 649512 87544 ?        Ssl  May23   0:35 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:56 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      915939  0.0  2.2 647724 86144 ?        Ssl  May23   0:35 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 710.3830219476952,
+  "balance": 722.2246774356952,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1779497565",
@@ -41,18 +41,6 @@ root      915939  0.0  2.2 649512 87544 ?        Ssl  May23   0:35 /opt/ensemble
       "opened_at": "2026-05-24T07:39:27.701314",
       "cost": 8.892954360000001,
       "notional": 44.4647718,
-      "leverage": 5
-    },
-    "TONUSDT": {
-      "id": "PAPER_TONUSDT_1779630536",
-      "symbol": "TONUSDT",
-      "side": "short",
-      "entry_price": 1.7588,
-      "qty": 29.1408,
-      "confidence": 76,
-      "opened_at": "2026-05-24T13:48:56.292612",
-      "cost": 10.250567808,
-      "notional": 51.25283904,
       "leverage": 5
     },
     "BNBUSDT": {
@@ -890,20 +878,32 @@ root      915939  0.0  2.2 649512 87544 ?        Ssl  May23   0:35 /opt/ensemble
       "closed_at": "2026-05-23T20:40:59.608053",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_TONUSDT_1779630536",
+      "symbol": "TONUSDT",
+      "side": "short",
+      "entry_price": 1.7588,
+      "qty": 29.1408,
+      "confidence": 76,
+      "opened_at": "2026-05-24T13:48:56.292612",
+      "cost": 10.250567808,
+      "notional": 51.25283904,
+      "leverage": 5,
+      "exit_price": 1.7042,
+      "pnl_pct": 3.1,
+      "pnl_usdt": 1.59,
+      "closed_at": "2026-05-24T14:16:58.012821",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -0.7436778463047278
+  "total_pnl": 0.8474098336952716
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-24 13:49:48,737 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-24 13:49:48,738 [INFO] main: LABUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-24 13:49:48,738 [INFO] main: LABUSDT | RL adj=70.0%
-2026-05-24 13:49:52,470 [INFO] main: ADAUSDT | Bull:long(45%) Bear:short(80%)
-2026-05-24 13:49:57,808 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-24 13:49:57,809 [INFO] main: ADAUSDT | Judge:SHORT conf=72% size=9.0%
 2026-05-24 13:49:57,812 [INFO] main: ADAUSDT | RL adj=77.6%
 2026-05-24 13:49:57,812 [INFO] main: ADAUSDT | regime BLOCK (short × trending_up × rsi1h=36.7; counter-trend guard)
 2026-05-24 13:50:01,596 [INFO] main: NEARUSDT | Bull:long(65%) Bear:short(70%)
@@ -928,6 +928,12 @@ root      915939  0.0  2.2 649512 87544 ?        Ssl  May23   0:35 /opt/ensemble
 2026-05-24 13:50:43,506 [INFO] main: XRPUSDT | Judge:HOLD conf=80% size=0.0%
 2026-05-24 13:50:43,506 [INFO] main: XRPUSDT | RL adj=80.0%
 2026-05-24 13:50:45,508 [INFO] main: Next scan in 180min (weekend)
+2026-05-24 14:16:58,012 [INFO] positions: TAKE-PROFIT TONUSDT short PnL:3.1%
+2026-05-24 14:16:58,016 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT TONUSDT @ 1.7042 PnL: 3.10% (+1.59 USDT) | Баланс: 722.22
+2026-05-24 14:16:58,324 [INFO] positions: OK TONUSDT short PnL:3.1% reason:take_profit
+2026-05-24 14:16:58,324 [INFO] positions: Lessons: TONUSDT short with BEAR conviction and strong confluence of technical indicators yielded 3.1% profit. The setup mirrored a prior successful short at RSI 25.0 with similar regime, reinforcing the effectiveness of this pattern. Conservative position sizing helped mitigate potential whipsaw risks and thin volume.
+2026-05-24 14:16:58,326 [INFO] rl: RL learned from short TONUSDT: profit 3.10% | weights bull=0.963 bear=1.021 judge=1.016 threshold=64.93
+2026-05-24 14:19:34,797 [INFO] main: Symbols: 30
 ```
 
 ## Disk
