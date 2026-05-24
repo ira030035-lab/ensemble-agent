@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-24 21:40:01 UTC
+Generated: 2026-05-24 21:50:01 UTC
 
 ## Services
 ```
@@ -17,7 +17,7 @@ root      915939  0.0  2.2 649276 87624 ?        Ssl  May23   0:49 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 713.5579840996952,
+  "balance": 721.1018294596952,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1779497565",
@@ -29,18 +29,6 @@ root      915939  0.0  2.2 649276 87624 ?        Ssl  May23   0:49 /opt/ensemble
       "opened_at": "2026-05-23T00:52:45.625592",
       "cost": 9.040163999999999,
       "notional": 45.20081999999999,
-      "leverage": 5
-    },
-    "LINKUSDT": {
-      "id": "PAPER_LINKUSDT_1779608367",
-      "symbol": "LINKUSDT",
-      "side": "long",
-      "entry_price": 9.558,
-      "qty": 4.6521,
-      "confidence": 68,
-      "opened_at": "2026-05-24T07:39:27.701314",
-      "cost": 8.892954360000001,
-      "notional": 44.4647718,
       "leverage": 5
     },
     "BNBUSDT": {
@@ -908,19 +896,32 @@ root      915939  0.0  2.2 649276 87624 ?        Ssl  May23   0:49 /opt/ensemble
       "closed_at": "2026-05-24T14:16:58.012821",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_LINKUSDT_1779608367",
+      "symbol": "LINKUSDT",
+      "side": "long",
+      "entry_price": 9.558,
+      "qty": 4.6521,
+      "confidence": 68,
+      "opened_at": "2026-05-24T07:39:27.701314",
+      "cost": 8.892954360000001,
+      "notional": 44.4647718,
+      "leverage": 5,
+      "exit_price": 9.268,
+      "pnl_pct": -3.03,
+      "pnl_usdt": -1.35,
+      "closed_at": "2026-05-24T21:44:25.638148",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 0.8474098336952716
+  "total_pnl": -0.5016991663047243
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-24 19:58:24,307 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-24 19:58:24,308 [INFO] main: GENIUSUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-24 19:58:24,308 [INFO] main: GENIUSUSDT | RL adj=80.0%
-2026-05-24 19:58:28,069 [INFO] main: WLDUSDT | Bull:long(45%) Bear:short(80%)
-2026-05-24 19:58:33,805 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-24 19:58:33,806 [INFO] main: WLDUSDT | Judge:HOLD conf=80% size=0.0%
 2026-05-24 19:58:33,806 [INFO] main: WLDUSDT | RL adj=80.0%
 2026-05-24 19:58:37,512 [INFO] main: BSBUSDT | Bull:long(45%) Bear:short(80%)
@@ -946,6 +947,11 @@ root      915939  0.0  2.2 649276 87624 ?        Ssl  May23   0:49 /opt/ensemble
 2026-05-24 19:59:21,782 [INFO] main: Next scan in 180min (weekend)
 2026-05-24 20:19:39,073 [INFO] main: Symbols: 30
 2026-05-24 21:19:39,746 [INFO] main: Symbols: 30
+2026-05-24 21:44:25,637 [INFO] positions: STOP-LOSS LINKUSDT long PnL:-3.03%
+2026-05-24 21:44:25,641 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG LINKUSDT @ 9.2680 PnL: -3.03% (-1.35 USDT) | Баланс: 721.10
+2026-05-24 21:44:26,158 [INFO] positions: LOSS LINKUSDT long PnL:-3.03% reason:stop_loss
+2026-05-24 21:44:26,158 [INFO] positions: Lessons: The trade was closed at a loss of 3.03% due to a stop loss, despite a trending_up regime and bullish indicators. The low volume was a concern and may have contributed to the loss, highlighting the importance of considering volume in trade decisions. The equal conviction split between BULL and BEAR was resolved by regime strength and fear sentiment alignment, but ultimately did not yield a profitable outcome.
+2026-05-24 21:44:26,160 [INFO] rl: RL learned from long LINKUSDT: loss -3.03% | weights bull=0.958 bear=1.026 judge=1.016 threshold=64.98
 ```
 
 ## Disk
@@ -963,7 +969,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       617Mi       1.1Gi       4.8Mi       2.3Gi       3.1Gi
+Mem:           3.7Gi       616Mi       1.1Gi       4.8Mi       2.3Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
