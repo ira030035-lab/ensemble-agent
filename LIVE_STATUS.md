@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-24 07:10:01 UTC
+Generated: 2026-05-24 07:20:01 UTC
 
 ## Services
 ```
@@ -862,7 +862,6 @@ root      915939  0.0  2.1 646648 84908 ?        Ssl  May23   0:21 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-24 04:36:24,351 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-24 04:36:24,352 [INFO] main: SOLUSDT | Judge:HOLD conf=72% size=0.0%
 2026-05-24 04:36:24,352 [INFO] main: SOLUSDT | RL adj=72.0%
 2026-05-24 04:36:27,965 [INFO] main: INJUSDT | Bull:long(45%) Bear:short(80%)
@@ -892,6 +891,7 @@ root      915939  0.0  2.1 646648 84908 ?        Ssl  May23   0:21 /opt/ensemble
 2026-05-24 04:37:28,010 [INFO] main: Next scan in 180min (weekend)
 2026-05-24 05:19:28,729 [INFO] main: Symbols: 30
 2026-05-24 06:19:29,423 [INFO] main: Symbols: 30
+2026-05-24 07:19:30,107 [INFO] main: Symbols: 30
 ```
 
 ## Disk
