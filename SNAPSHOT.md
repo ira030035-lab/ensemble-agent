@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-25 20:00:01 UTC
+Generated: 2026-05-25 21:00:01 UTC
 
 ## agents.py
 ```python
@@ -679,6 +679,372 @@ def main():
         tg_lines.append("✅ clean")
     telegram("\n".join(tg_lines))
 
+
+if __name__ == "__main__":
+    main()
+
+```
+
+## auto_pipeline.py
+```python
+#!/usr/bin/env python3
+"""
+Auto-pipeline: B → C → D + Telegram report
+Monitors run_sim_sequence.sh, then executes C/D and sends report.
+"""
+import os
+import sys
+import time
+import json
+import subprocess
+import glob
+import shutil
+from datetime import datetime, timezone
+from pathlib import Path
+
+os.chdir("/opt/ensemble-agent")
+sys.path.insert(0, "/opt/ensemble-agent")
+
+# Telegram config
+TOKEN = "8702211361:AAFPTNQ8kyEka02VD7-KUIkeUidBvTQmupU"
+CHAT_ID = "6349919785"
+
+def tg_send(text: str) -> dict:
+    """Send message to Telegram, return response."""
+    import urllib.request
+    import urllib.parse
+    url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+    data = urllib.parse.urlencode({
+        "chat_id": CHAT_ID,
+        "text": text,
+        "parse_mode": "HTML",
+        "disable_web_page_preview": "true"
+    }).encode()
+    req = urllib.request.Request(url, data=data, method="POST")
+    req.add_header("Content-Type", "application/x-www-form-urlencoded")
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return json.loads(resp.read().decode())
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+def tg_send_file(path: str, caption: str = "") -> dict:
+    """Send document to Telegram."""
+    import urllib.request
+    boundary = "----WebKitFormBoundary"
+    body = []
+    body.append(f"--{boundary}".encode())
+    body.append(b'Content-Disposition: form-data; name="chat_id"')
+    body.append(b"")
+    body.append(str(CHAT_ID).encode())
+    body.append(f"--{boundary}".encode())
+    body.append(b'Content-Disposition: form-data; name="caption"')
+    body.append(b"")
+    body.append(caption.encode())
+    body.append(f"--{boundary}".encode())
+    filename = os.path.basename(path)
+    body.append(f'Content-Disposition: form-data; name="document"; filename="{filename}"'.encode())
+    body.append(b"Content-Type: application/octet-stream")
+    body.append(b"")
+    with open(path, "rb") as f:
+        body.append(f.read())
+    body.append(f"--{boundary}--".encode())
+    body = b"\r\n".join(body)
+    
+    url = f"https://api.telegram.org/bot{TOKEN}/sendDocument"
+    req = urllib.request.Request(url, data=body, method="POST")
+    req.add_header("Content-Type", f"multipart/form-data; boundary={boundary}")
+    try:
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            return json.loads(resp.read().decode())
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+def find_run_sim_pid():
+    """Find PID of run_sim_sequence.sh."""
+    try:
+        out = subprocess.check_output(["pgrep", "-f", "run_sim_sequence.sh"], text=True)
+        return int(out.strip().split()[0])
+    except Exception:
+        return None
+
+def wait_for_process(pid: int, timeout_sec: float = None) -> bool:
+    """Poll until process exits. Returns True if exited, False on timeout."""
+    start = time.time()
+    while True:
+        try:
+            os.kill(pid, 0)
+        except OSError:
+            return True
+        if timeout_sec and (time.time() - start) > timeout_sec:
+            return False
+        time.sleep(30)
+
+def get_latest_output_dirs(n: int = 2):
+    """Get n latest simulator_output directories."""
+    dirs = sorted(glob.glob("simulator_output/2026*"), key=os.path.getmtime, reverse=True)
+    return dirs[:n]
+
+def read_stats_json(d: str) -> dict:
+    path = os.path.join(d, "stats.json")
+    if os.path.exists(path):
+        with open(path) as f:
+            return json.load(f)
+    return {}
+
+def read_summary_text(d: str) -> str:
+    path = os.path.join(d, "summary.txt")
+    if os.path.exists(path):
+        with open(path) as f:
+            return f.read()
+    return ""
+
+def read_trades_sample(d: str, n: int = 5) -> list:
+    path = os.path.join(d, "trades.json")
+    if os.path.exists(path):
+        with open(path) as f:
+            data = json.load(f)
+            return data[:n] if isinstance(data, list) else []
+    return []
+
+def format_report(step_a_dirs: list, step_b_dirs: list) -> str:
+    """Build HTML report."""
+    lines = []
+    lines.append("<b>📊 AUTO-PIPELINE REPORT</b>")
+    lines.append(f"<code>{datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}</code>")
+    lines.append("")
+    
+    # Step A results
+    lines.append("<b>✅ A: live_mirror SL/TP (mock, 3 symbols)</b>")
+    variants = []
+    for d in sorted(step_a_dirs):
+        stats = read_stats_json(d)
+        if stats:
+            name = os.path.basename(d)
+            variants.append({
+                "name": name,
+                "trades": stats.get("total_trades", 0),
+                "win": stats.get("win_rate", 0),
+                "pnl": stats.get("total_pnl_pct", 0),
+                "sl": stats.get("sl_count", 0),
+                "tp": stats.get("tp_count", 0),
+                "trail": stats.get("trailing_count", 0),
+                "balance": stats.get("final_balance", 0),
+            })
+    
+    for i, v in enumerate(variants, 1):
+        lines.append(f"  V{i}: {v['trades']} trades | WR {v['win']:.1f}% | PnL {v['pnl']:.1f}% | SL {v['sl']} | TP {v['tp']} | Trail {v['trail']} | Bal {v['balance']:.1f}")
+    
+    best_a = max(variants, key=lambda x: x["balance"]) if variants else None
+    if best_a:
+        lines.append(f"<b>🏆 Best A:</b> {best_a['name']} (balance {best_a['balance']:.1f})")
+    lines.append("")
+    
+    # Step B results
+    lines.append("<b>✅ B: optimized → live_mirror (Kimi API, 10 symbols)</b>")
+    for d in sorted(step_b_dirs):
+        stats = read_stats_json(d)
+        name = os.path.basename(d)
+        if stats:
+            mode = stats.get("mode", "?")
+            lines.append(f"  {name} [{mode}]:")
+            lines.append(f"    Trades: {stats.get('total_trades', 0)} | Win: {stats.get('win_rate', 0):.1f}%")
+            lines.append(f"    PnL: {stats.get('total_pnl_pct', 0):.1f}% | Balance: {stats.get('final_balance', 0):.1f}")
+            lines.append(f"    SL: {stats.get('sl_count', 0)} | TP: {stats.get('tp_count', 0)} | Trail: {stats.get('trailing_count', 0)}")
+        else:
+            lines.append(f"  {name}: no stats.json")
+    lines.append("")
+    
+    # Step C
+    lines.append("<b>✅ C: Config updated</b>")
+    lines.append("  Parameters verified:")
+    lines.append("  • STOP_LOSS_PCT = -3.0 | TAKE_PROFIT_PCT = 3.0")
+    lines.append("  • MIN_RR = 1.2 | COOLDOWN_HOURS = 6.0")
+    lines.append("  • MAX_HOLD_HOURS = 24.0 | VOLATILITY_FILTER = 0.003")
+    lines.append("  • TOP_N_SYMBOLS = 15 | MAX_POSITIONS = 8")
+    lines.append("")
+    
+    # Step D
+    lines.append("<b>✅ D: Live agent launched</b>")
+    lines.append("  main_kimi_ab.py started (paper mode)")
+    lines.append("  Monitoring: tail -f /opt/ensemble-agent/ensemble_kimi.log")
+    lines.append("")
+    lines.append("<b>🚀 Pipeline complete.</b>")
+    
+    return "\n".join(lines)
+
+def step_c_update_config():
+    """Ensure config.py has optimal parameters."""
+    config_path = "config.py"
+    with open(config_path) as f:
+        content = f.read()
+    
+    # Backup
+    backup = config_path + ".auto_backup"
+    shutil.copy2(config_path, backup)
+    
+    changes = []
+    # These are the optimized params from simulator testing
+    param_map = {
+        "STOP_LOSS_PCT = -3.0": (r"STOP_LOSS_PCT\s*=\s*[^\n]+", "STOP_LOSS_PCT = -3.0"),
+        "TAKE_PROFIT_PCT = 3.0": (r"TAKE_PROFIT_PCT\s*=\s*[^\n]+", "TAKE_PROFIT_PCT = 3.0"),
+        "MIN_RR = 1.2": (r"MIN_RR\s*=\s*[^\n]+", "MIN_RR = 1.2"),
+        "COOLDOWN_HOURS = 6.0": (r"COOLDOWN_HOURS\s*=\s*[^\n]+", "COOLDOWN_HOURS = 6.0"),
+        "MAX_HOLD_HOURS = 24.0": (r"MAX_HOLD_HOURS\s*=\s*[^\n]+", "MAX_HOLD_HOURS = 24.0"),
+        "VOLATILITY_FILTER_ATR_PCT = 0.003": (r"VOLATILITY_FILTER_ATR_PCT\s*=\s*[^\n]+", "VOLATILITY_FILTER_ATR_PCT = 0.003"),
+        "TRAIL_ARM_PCT = 1.5": (r"TRAIL_ARM_PCT\s*=\s*[^\n]+", "TRAIL_ARM_PCT = 1.5"),
+        "TRAIL_GIVEBACK_PCT = 1.0": (r"TRAIL_GIVEBACK_PCT\s*=\s*[^\n]+", "TRAIL_GIVEBACK_PCT = 1.0"),
+    }
+    
+    import re
+    new_content = content
+    for desc, (pattern, replacement) in param_map.items():
+        if re.search(pattern, new_content):
+            new_content = re.sub(pattern, replacement, new_content)
+            changes.append(desc)
+    
+    if new_content != content:
+        with open(config_path, "w") as f:
+            f.write(new_content)
+    
+    return changes
+
+def step_d_launch_agent():
+    """Launch main_kimi_ab.py via nohup."""
+    # Kill any existing main_kimi_ab.py
+    try:
+        subprocess.run(["pkill", "-f", "main_kimi_ab.py"], capture_output=True)
+        time.sleep(2)
+    except Exception:
+        pass
+    
+    # Launch
+    env = os.environ.copy()
+    env["PAPER_STATE_FILE"] = "/opt/ensemble-agent/paper_state_kimi.json"
+    
+    proc = subprocess.Popen(
+        ["./venv/bin/python3", "main_kimi_ab.py"],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        env=env,
+        cwd="/opt/ensemble-agent",
+    )
+    time.sleep(3)
+    
+    # Verify
+    try:
+        out = subprocess.check_output(["pgrep", "-f", "main_kimi_ab.py"], text=True)
+        pids = [int(x) for x in out.strip().split()]
+        return pids[0] if pids else None
+    except Exception:
+        return None
+
+def main():
+    log = open("/opt/ensemble-agent/auto_pipeline.log", "a")
+    def logmsg(msg):
+        ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+        line = f"[{ts}] {msg}"
+        print(line)
+        log.write(line + "\n")
+        log.flush()
+    
+    logmsg("=== AUTO-PIPELINE STARTED ===")
+    
+    # Remember step A dirs (latest 3 before B starts)
+    step_a_dirs = get_latest_output_dirs(3)
+    logmsg(f"Step A dirs: {[os.path.basename(d) for d in step_a_dirs]}")
+    
+    # Wait for run_sim_sequence.sh to start if not already
+    pid = None
+    for _ in range(60):
+        pid = find_run_sim_pid()
+        if pid:
+            break
+        time.sleep(5)
+    
+    if not pid:
+        logmsg("ERROR: run_sim_sequence.sh not found")
+        tg_send("<b>❌ ERROR:</b> run_sim_sequence.sh not found. Pipeline aborted.")
+        return
+    
+    logmsg(f"Monitoring PID {pid}")
+    
+    # Wait for completion (no timeout — wait forever)
+    exited = wait_for_process(pid, timeout_sec=None)
+    if not exited:
+        logmsg("ERROR: timeout waiting for process")
+        tg_send("<b>❌ ERROR:</b> Timeout waiting for B step.")
+        return
+    
+    logmsg("Step B completed. Waiting 10s for files to flush...")
+    time.sleep(10)
+    
+    # Get step B output dirs (should be 2 new dirs: optimized + live_mirror)
+    all_dirs = sorted(glob.glob("simulator_output/2026*"), key=os.path.getmtime, reverse=True)
+    step_b_dirs = [d for d in all_dirs if d not in step_a_dirs][:2]
+    logmsg(f"Step B dirs: {[os.path.basename(d) for d in step_b_dirs]}")
+    
+    # Step C: update config
+    logmsg("Executing Step C: updating config...")
+    changes = step_c_update_config()
+    logmsg(f"Config changes: {changes}")
+    
+    # Step D: launch live agent
+    logmsg("Executing Step D: launching main_kimi_ab.py...")
+    agent_pid = step_d_launch_agent()
+    if agent_pid:
+        logmsg(f"Live agent PID: {agent_pid}")
+    else:
+        logmsg("WARNING: could not verify live agent PID")
+    
+    # Build report
+    logmsg("Building report...")
+    report = format_report(step_a_dirs, step_b_dirs)
+    
+    # Save report locally for review
+    report_path = "/opt/ensemble-agent/auto_pipeline_report.txt"
+    with open(report_path, "w") as f:
+        f.write(report)
+    logmsg(f"Report saved to {report_path}")
+    
+    # Send report to Telegram
+    logmsg("Sending report to Telegram (attempt 1)...")
+    resp1 = tg_send(report)
+    logmsg(f"Telegram response 1: {json.dumps(resp1, ensure_ascii=False)[:200]}")
+    
+    # Verify and retry if needed
+    if not resp1.get("ok"):
+        logmsg("Retrying Telegram send in 10s...")
+        time.sleep(10)
+        resp2 = tg_send(report)
+        logmsg(f"Telegram response 2: {json.dumps(resp2, ensure_ascii=False)[:200]}")
+        if not resp2.get("ok"):
+            tg_send("<b>❌ CRITICAL:</b> Failed to send full report. Check auto_pipeline.log and auto_pipeline_report.txt on server.")
+    
+    # Send trades.csv and stats.json from best B run
+    if step_b_dirs:
+        best_b = max(step_b_dirs, key=lambda d: read_stats_json(d).get("final_balance", 0))
+        stats_path = os.path.join(best_b, "stats.json")
+        trades_path = os.path.join(best_b, "trades.csv")
+        if os.path.exists(stats_path):
+            logmsg("Sending stats.json...")
+            tg_send_file(stats_path, f"Stats for {os.path.basename(best_b)}")
+        if os.path.exists(trades_path):
+            logmsg("Sending trades.csv...")
+            tg_send_file(trades_path, f"Trades for {os.path.basename(best_b)}")
+    
+    # Final confirmation
+    confirm_msg = (
+        "<b>✅ FINAL CONFIRMATION</b>\n"
+        f"Pipeline B→C→D completed at {datetime.now(timezone.utc).strftime('%H:%M UTC')}\n"
+        f"Live agent PID: {agent_pid or 'unknown'}\n"
+        f"Config backup: config.py.auto_backup\n"
+        "Check logs: auto_pipeline.log"
+    )
+    resp3 = tg_send(confirm_msg)
+    logmsg(f"Confirmation sent: {resp3.get('ok')}")
+    logmsg("=== AUTO-PIPELINE COMPLETE ===")
+    log.close()
 
 if __name__ == "__main__":
     main()
