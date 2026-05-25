@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 07:10:01 UTC
+Generated: 2026-05-25 07:20:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49540 ?        Ssl  May19   0:59 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      915939  0.0  2.2 649672 88144 ?        Ssl  May23   1:09 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      915939  0.0  2.2 649960 88452 ?        Ssl  May23   1:09 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -940,7 +940,6 @@ root      915939  0.0  2.2 649672 88144 ?        Ssl  May23   1:09 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 06:15:34,323 [INFO] main: WLDUSDT | RL adj=76.3%
 2026-05-25 06:15:34,323 [INFO] main: WLDUSDT | gate PASS (Judge 72/70 RL 76.3/65.03 slack=±3)
 2026-05-25 06:15:34,324 [INFO] positions: [PAPER] Opening SHORT WLDUSDT notional=$43.7 conf=72%
 2026-05-25 06:15:34,328 [INFO] paper_trading: [PAPER] ОТКРЫТА SHORT WLDUSDT @ 0.2927 qty=149.3199 notional=43.71 margin=8.74 x5 | Баланс: 719.69
@@ -970,6 +969,7 @@ root      915939  0.0  2.2 649672 88144 ?        Ssl  May23   1:09 /opt/ensemble
 2026-05-25 06:16:33,983 [INFO] main: XRPUSDT | RL adj=68.0%
 2026-05-25 06:16:35,985 [INFO] main: Next scan in 120min (weekday-quiet)
 2026-05-25 06:19:45,870 [INFO] main: Symbols: 30
+2026-05-25 07:19:46,538 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -987,7 +987,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.1Gi       233Mi       4.8Mi       2.7Gi       2.6Gi
+Mem:           3.7Gi       1.1Gi       235Mi       4.8Mi       2.7Gi       2.6Gi
 Swap:             0B          0B          0B
 ```
 
