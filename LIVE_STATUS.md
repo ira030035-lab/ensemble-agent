@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 14:30:01 UTC
+Generated: 2026-05-25 14:40:01 UTC
 
 ## Services
 ```
@@ -10,15 +10,15 @@ ensemble-dashboard.service: inactive
 
 ## Processes
 ```
-root      944698  0.0  2.8 557756 110928 ?       Ssl  12:15   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      944698  0.0  2.8 557756 110992 ?       Ssl  12:15   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      946105  0.0  0.0   2800  1916 ?        Ss   13:50   0:00 sh -c while true; do ./venv/bin/python dashboard_api.py >> dashboard_api.log 2>&1; echo "[RESTART] $(date)" >> dashboard_api.log; sleep 2; done
-root      946106  0.2  1.2 132032 47108 ?        Sl   13:50   0:05 ./venv/bin/python dashboard_api.py
+root      946106  0.2  1.2 133572 48396 ?        Sl   13:50   0:06 ./venv/bin/python dashboard_api.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 685.5110354696952,
+  "balance": 699.1322704476952,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779630553",
@@ -66,18 +66,6 @@ root      946106  0.2  1.2 132032 47108 ?        Sl   13:50   0:05 ./venv/bin/py
       "opened_at": "2026-05-25T12:04:25.035975",
       "cost": 11.318919359999999,
       "notional": 56.5945968,
-      "leverage": 5
-    },
-    "TONUSDT": {
-      "id": "PAPER_TONUSDT_1779715044",
-      "symbol": "TONUSDT",
-      "side": "long",
-      "entry_price": 1.8089,
-      "qty": 34.7321,
-      "confidence": 68,
-      "opened_at": "2026-05-25T13:17:24.391241",
-      "cost": 12.565379138,
-      "notional": 62.82689569,
       "leverage": 5
     }
   },
@@ -1029,19 +1017,32 @@ root      946106  0.2  1.2 132032 47108 ?        Sl   13:50   0:05 ./venv/bin/py
       "closed_at": "2026-05-25T12:40:39.054921",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_TONUSDT_1779715044",
+      "symbol": "TONUSDT",
+      "side": "long",
+      "entry_price": 1.8089,
+      "qty": 34.7321,
+      "confidence": 68,
+      "opened_at": "2026-05-25T13:17:24.391241",
+      "cost": 12.565379138,
+      "notional": 62.82689569,
+      "leverage": 5,
+      "exit_price": 1.8393,
+      "pnl_pct": 1.68,
+      "pnl_usdt": 1.06,
+      "closed_at": "2026-05-25T14:32:41.316894",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -3.964745016304726
+  "total_pnl": -2.9088891763047267
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 12:40:39,426 [INFO] positions: OK INJUSDT long PnL:3.08% reason:take_profit
-2026-05-25 12:40:39,426 [INFO] positions: Lessons: The trade was successful with a 3.08% profit, validating the BULL conviction and trending_up regime. Key factors included a strong momentum and volume ratio, bullish MACD, and negative funding signaling crowded shorts. The combination of a trending_up regime, BULL conviction, and negative funding with RSI between 60-75 can be a repeatable long continuation signal.
-2026-05-25 12:40:39,426 [INFO] rl: RL learned from long INJUSDT: profit 3.08% | weights bull=0.987 bear=0.992 judge=1.021 threshold=65.16
-2026-05-25 13:15:28,639 [INFO] main: Scanning 28 symbols...
-2026-05-25 13:15:29,381 [INFO] main: Symbols: 30
 2026-05-25 13:15:31,449 [INFO] main: GENIUSUSDT | Bull:long(45%) Bear:short(80%)
 2026-05-25 13:15:37,223 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-25 13:15:37,236 [INFO] main: GENIUSUSDT | Judge:HOLD conf=80% size=0.0%
@@ -1067,12 +1068,17 @@ root      946106  0.2  1.2 132032 47108 ?        Sl   13:50   0:05 ./venv/bin/py
 2026-05-25 14:17:26,398 [INFO] main: Scanning 26 symbols...
 2026-05-25 14:17:26,398 [INFO] main: Max positions
 2026-05-25 14:17:26,398 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-25 14:32:41,316 [INFO] positions: TRAILING-STOP TONUSDT long peak:2.69% now:1.68%
+2026-05-25 14:32:41,321 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG TONUSDT @ 1.8393 PnL: 1.68% (+1.06 USDT) | Баланс: 699.13
+2026-05-25 14:32:41,697 [INFO] positions: OK TONUSDT long PnL:1.68% reason:trailing_stop
+2026-05-25 14:32:41,698 [INFO] positions: Lessons: A long position in TONUSDT was closed with a 1.68% profit, validating the original BULL conviction and trending_up regime alignment. The trade outcome supports the notion that low-volume uptrends in trending regimes can be continuation signals rather than exhaustion warnings. This experience should be remembered as a successful example of navigating headwinds and executing a trade based on conviction and regime alignment.
+2026-05-25 14:32:41,698 [INFO] rl: RL learned from long TONUSDT: profit 1.68% | weights bull=0.990 bear=0.988 judge=1.022 threshold=65.13
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  888K  381M   1% /run
+tmpfs           382M  880K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  8.1G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -1084,7 +1090,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       998Mi       630Mi       4.8Mi       2.4Gi       2.8Gi
+Mem:           3.7Gi       1.1Gi       491Mi       4.8Mi       2.4Gi       2.6Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
