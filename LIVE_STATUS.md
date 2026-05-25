@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 17:50:01 UTC
+Generated: 2026-05-25 18:00:01 UTC
 
 ## Services
 ```
@@ -11,8 +11,8 @@ ensemble-dashboard.service: inactive
 ## Processes
 ```
 root      946105  0.0  0.0   2800  1916 ?        Ss   13:50   0:00 sh -c while true; do ./venv/bin/python dashboard_api.py >> dashboard_api.log 2>&1; echo "[RESTART] $(date)" >> dashboard_api.log; sleep 2; done
-root      946106  0.1  1.2 134084 48844 ?        Sl   13:50   0:22 ./venv/bin/python dashboard_api.py
-root      949381  0.2  3.1 686824 124280 ?       Sl   17:19   0:04 python3 main.py
+root      946106  0.1  1.2 133568 48316 ?        Sl   13:50   0:23 ./venv/bin/python dashboard_api.py
+root      949381  0.2  3.1 686824 124284 ?       Sl   17:19   0:05 python3 main.py
 ```
 
 ## Paper state
@@ -1127,7 +1127,6 @@ root      949381  0.2  3.1 686824 124280 ?       Sl   17:19   0:04 python3 main.
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 17:24:16,243 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-25 17:24:16,244 [INFO] main: BILLUSDT | Judge:HOLD conf=75% size=0.0%
 2026-05-25 17:24:16,244 [INFO] main: BILLUSDT | RL adj=75.0%
 2026-05-25 17:24:22,238 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -1157,6 +1156,7 @@ root      949381  0.2  3.1 686824 124280 ?       Sl   17:19   0:04 python3 main.
 2026-05-25 17:48:34,383 [INFO] positions: OK GRASSUSDT long PnL:0.91% reason:trailing_stop
 2026-05-25 17:48:34,384 [INFO] positions: Lessons: A narrow BULL conviction edge of 5 points was sufficient to yield a profitable trade, supported by a trending_up regime and bullish MACD. The modest position size of 0.07 helped to mitigate risks due to low volume and a narrow conviction spread. This trade reinforces the idea that a clear edge, even if narrow, can be profitable in trending markets with strong technical indicators.
 2026-05-25 17:48:34,384 [INFO] rl: RL learned from long GRASSUSDT: profit 0.91% | weights bull=1.003 bear=0.972 judge=1.026 threshold=65.09
+2026-05-25 17:59:09,208 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1174,7 +1174,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       836Mi       725Mi       4.8Mi       2.5Gi       2.9Gi
+Mem:           3.7Gi       841Mi       719Mi       4.8Mi       2.5Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
