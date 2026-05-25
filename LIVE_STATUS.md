@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 08:20:01 UTC
+Generated: 2026-05-25 08:30:01 UTC
 
 ## Services
 ```
@@ -10,8 +10,8 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      812670  0.0  1.2 208136 49540 ?        Ssl  May19   0:59 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      915939  0.0  2.2 649960 88560 ?        Ssl  May23   1:12 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:59 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      915939  0.0  2.2 649960 88560 ?        Ssl  May23   1:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -952,42 +952,42 @@ root      915939  0.0  2.2 649960 88560 ?        Ssl  May23   1:12 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 08:18:58,537 [INFO] main: INJUSDT | RL adj=71.1%
-2026-05-25 08:18:58,537 [INFO] main: INJUSDT | regime BLOCK (short × trending_down × rsi1h=50.2; late-entry guard)
-2026-05-25 08:19:02,306 [INFO] main: XANUSDT | Bull:long(55%) Bear:short(80%)
-2026-05-25 08:19:07,120 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 08:19:07,121 [INFO] main: XANUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-25 08:19:07,122 [INFO] main: XANUSDT | RL adj=80.0%
-2026-05-25 08:19:10,850 [INFO] main: GRASSUSDT | Bull:long(55%) Bear:short(70%)
-2026-05-25 08:19:16,277 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 08:19:16,279 [INFO] main: GRASSUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-25 08:19:16,279 [INFO] main: GRASSUSDT | RL adj=70.0%
-2026-05-25 08:19:20,010 [INFO] main: PEPEUSDT | Bull:long(42%) Bear:short(80%)
-2026-05-25 08:19:24,960 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 08:19:24,963 [INFO] main: PEPEUSDT | Judge:SHORT conf=72% size=6.0%
-2026-05-25 08:19:24,963 [INFO] main: PEPEUSDT | RL adj=78.2%
-2026-05-25 08:19:24,963 [INFO] main: PEPEUSDT | regime BLOCK (short × trending_down × rsi1h=54.1; late-entry guard)
-2026-05-25 08:19:28,716 [INFO] main: ZECUSDT | Bull:long(65%) Bear:short(70%)
-2026-05-25 08:19:34,602 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 08:19:34,603 [INFO] main: ZECUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-25 08:19:34,603 [INFO] main: ZECUSDT | RL adj=70.0%
-2026-05-25 08:19:38,253 [INFO] main: PLUMEUSDT | Bull:long(65%) Bear:short(70%)
-2026-05-25 08:19:44,062 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 08:19:44,064 [INFO] main: PLUMEUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-25 08:19:44,064 [INFO] main: PLUMEUSDT | RL adj=70.0%
-2026-05-25 08:19:47,217 [INFO] main: Symbols: 30
-2026-05-25 08:19:47,739 [INFO] main: INUSDT | Bull:long(70%) Bear:short(70%)
 2026-05-25 08:19:53,902 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-25 08:19:53,903 [INFO] main: INUSDT | Judge:LONG conf=72% size=8.0%
 2026-05-25 08:19:53,903 [INFO] main: INUSDT | RL adj=71.4%
 2026-05-25 08:19:53,903 [INFO] main: INUSDT | regime BLOCK (volatile)
 2026-05-25 08:19:57,517 [INFO] main: BEATUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-25 08:20:01,998 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 08:20:01,999 [INFO] main: BEATUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-25 08:20:01,999 [INFO] main: BEATUSDT | RL adj=80.0%
+2026-05-25 08:20:05,742 [INFO] main: BSBUSDT | Bull:long(45%) Bear:short(85%)
+2026-05-25 08:20:11,908 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 08:20:11,909 [INFO] main: BSBUSDT | Judge:HOLD conf=85% size=0.0%
+2026-05-25 08:20:11,909 [INFO] main: BSBUSDT | RL adj=85.0%
+2026-05-25 08:20:16,596 [INFO] main: ONDOUSDT | Bull:long(65%) Bear:short(70%)
+2026-05-25 08:20:21,346 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 08:20:21,348 [INFO] main: ONDOUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-25 08:20:21,348 [INFO] main: ONDOUSDT | RL adj=70.0%
+2026-05-25 08:20:25,060 [INFO] main: ADAUSDT | Bull:long(55%) Bear:short(70%)
+2026-05-25 08:20:30,468 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 08:20:30,470 [INFO] main: ADAUSDT | Judge:SHORT conf=68% size=6.0%
+2026-05-25 08:20:30,470 [INFO] main: ADAUSDT | RL adj=70.8%
+2026-05-25 08:20:30,470 [INFO] main: ADAUSDT | regime BLOCK (short × trending_down × rsi1h=56.2; late-entry guard)
+2026-05-25 08:20:34,253 [INFO] main: NILUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-25 08:20:39,633 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 08:20:39,635 [INFO] main: NILUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-25 08:20:39,635 [INFO] main: NILUSDT | RL adj=80.0%
+2026-05-25 08:20:43,264 [INFO] main: GENIUSUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-25 08:20:48,791 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 08:20:48,791 [INFO] main: GENIUSUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-25 08:20:48,792 [INFO] main: GENIUSUSDT | RL adj=80.0%
+2026-05-25 08:20:50,794 [INFO] main: Next scan in 60min (weekday-active)
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  888K  381M   1% /run
+tmpfs           382M  880K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  6.0G   66G   9% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -999,7 +999,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.0Gi       331Mi       4.8Mi       2.7Gi       2.7Gi
+Mem:           3.7Gi       766Mi       607Mi       4.8Mi       2.7Gi       3.0Gi
 Swap:             0B          0B          0B
 ```
 
