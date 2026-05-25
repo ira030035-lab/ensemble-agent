@@ -1,18 +1,17 @@
 # Live status
 
-Generated: 2026-05-25 15:50:01 UTC
+Generated: 2026-05-25 16:00:01 UTC
 
 ## Services
 ```
-ensemble-agent.service:     active
+ensemble-agent.service:     inactive
 ensemble-dashboard.service: inactive
 ```
 
 ## Processes
 ```
-root      944698  0.0  3.0 711824 118528 ?       Ssl  12:15   0:09 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      946105  0.0  0.0   2800  1916 ?        Ss   13:50   0:00 sh -c while true; do ./venv/bin/python dashboard_api.py >> dashboard_api.log 2>&1; echo "[RESTART] $(date)" >> dashboard_api.log; sleep 2; done
-root      946106  0.2  1.2 133528 48464 ?        Sl   13:50   0:16 ./venv/bin/python dashboard_api.py
+root      946106  0.2  1.2 133528 48472 ?        Sl   13:50   0:17 ./venv/bin/python dashboard_api.py
 ```
 
 ## Paper state
@@ -1073,36 +1072,18 @@ root      946106  0.2  1.2 133528 48464 ?        Sl   13:50   0:16 ./venv/bin/py
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 15:42:23,831 [INFO] openai._base_client: Retrying request to /chat/completions in 0.392399 seconds
-2026-05-25 15:42:54,270 [INFO] openai._base_client: Retrying request to /chat/completions in 0.776548 seconds
-2026-05-25 15:43:28,238 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 15:43:28,239 [INFO] main: FIDAUSDT | Bull:long(50%) Bear:short(72%)
-2026-05-25 15:43:33,342 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 15:43:33,343 [INFO] main: FIDAUSDT | Judge:HOLD conf=72% size=0.0%
-2026-05-25 15:43:33,344 [INFO] main: FIDAUSDT | RL adj=72.0%
-2026-05-25 15:44:06,830 [INFO] openai._base_client: Retrying request to /chat/completions in 0.387367 seconds
-2026-05-25 15:44:37,240 [INFO] openai._base_client: Retrying request to /chat/completions in 0.797281 seconds
-2026-05-25 15:45:11,702 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 15:45:11,703 [INFO] main: SKYAIUSDT | Bull:flat(25%) Bear:short(78%)
-2026-05-25 15:45:17,828 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 15:45:17,829 [INFO] main: SKYAIUSDT | Judge:SHORT conf=72% size=6.0%
-2026-05-25 15:45:17,830 [INFO] main: SKYAIUSDT | RL adj=83.5%
-2026-05-25 15:45:17,830 [INFO] main: SKYAIUSDT | regime BLOCK (volatile)
-2026-05-25 15:45:51,347 [INFO] openai._base_client: Retrying request to /chat/completions in 0.389307 seconds
-2026-05-25 15:45:51,348 [INFO] openai._base_client: Retrying request to /chat/completions in 0.487235 seconds
-2026-05-25 15:46:21,774 [INFO] openai._base_client: Retrying request to /chat/completions in 0.982984 seconds
-2026-05-25 15:46:21,875 [INFO] openai._base_client: Retrying request to /chat/completions in 0.750929 seconds
-2026-05-25 15:46:55,240 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 15:46:55,813 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 15:46:55,814 [INFO] main: TONUSDT | Bull:flat(25%) Bear:short(78%)
-2026-05-25 15:47:01,170 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 15:47:01,173 [INFO] main: TONUSDT | Judge:SHORT conf=72% size=7.0%
-2026-05-25 15:47:01,173 [INFO] main: TONUSDT | RL adj=83.5%
-2026-05-25 15:47:01,173 [INFO] main: TONUSDT | gate PASS (Judge 72/70 RL 83.5/65.1 slack=±3)
-2026-05-25 15:47:01,854 [INFO] positions: [PAPER] Opening SHORT TONUSDT notional=$49.1 conf=72%
-2026-05-25 15:47:01,860 [INFO] paper_trading: [PAPER] ОТКРЫТА SHORT TONUSDT @ 1.9282 qty=25.4574 notional=49.09 margin=9.82 x5 | Баланс: 691.43
-2026-05-25 15:47:03,863 [INFO] main: Max positions
-2026-05-25 15:47:03,863 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-25 15:58:16,327 [INFO] memory: Memory loaded: 79 trades
+2026-05-25 15:58:16,327 [INFO] rl: RL weights loaded: bull=0.992 bear=0.986 judge=1.023 episodes=21
+2026-05-25 15:58:16,330 [INFO] positions: Restored 5 positions from paper_state (2L/3S)
+2026-05-25 15:58:16,330 [INFO] main: === Adversarial Trading Agent started ===
+2026-05-25 15:58:16,330 [INFO] main: Bull: race(Kimi x1, Groq x2) → Haiku fb | Bear: race(Groq x2, Kimi x1) → Haiku fb | Judge: Haiku (decide) + Groq Llama (exit/dir/reflect)
+2026-05-25 15:58:16,980 [INFO] main: Symbols: 30
+2026-05-25 15:58:16,980 [INFO] main: Scanning 26 symbols...
+2026-05-25 15:58:16,980 [INFO] main: Max positions
+2026-05-25 15:58:16,980 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-25 15:58:16,980 [INFO] positions: Position monitor started
+2026-05-25 15:59:14,067 [INFO] main: Shutting down...
+2026-05-25 15:59:14,068 [INFO] positions: Position monitor stopped
 ```
 
 ## Disk
@@ -1120,7 +1101,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.1Gi       504Mi       4.8Mi       2.4Gi       2.6Gi
+Mem:           3.7Gi       1.0Gi       580Mi       4.8Mi       2.4Gi       2.7Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 

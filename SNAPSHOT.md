@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-25 15:00:01 UTC
+Generated: 2026-05-25 16:00:01 UTC
 
 ## agents.py
 ```python
@@ -859,8 +859,8 @@ class Config:
     MIN_CONFIDENCE = 70
     THRESHOLD_SLACK = 3
     MIN_HOLD_SEC = 7200
-    JUDGE_EXIT_INTERVAL_SEC = 3600
-    JUDGE_EXIT_NOISE_BAND_PCT = 1.0
+    JUDGE_EXIT_INTERVAL_SEC = 7200
+    JUDGE_EXIT_NOISE_BAND_PCT = 2.5
     STOP_LOSS_PCT = -3.0
     TAKE_PROFIT_PCT = 3.0
     TRAIL_ARM_PCT = 1.5
@@ -3020,7 +3020,8 @@ class UnifiedKimiJudge:
 5. Brief reasoning (1 sentence)
 
 ## RULES:
-- If both bull and bear signals are weak (<0.55) → decision "HOLD"
+- If one side confidence >= 0.50 and the other is weaker → choose that side (LONG or SHORT)
+- HOLD only when: both signals are genuinely weak (<0.35) OR both conflict strongly (>0.60 each in opposite directions)
 - If price is near daily high and regime is ranging → bias to SHORT
 - If price is near daily low and regime is ranging → bias to LONG
 - If 2+ consecutive SL in a side exists in memory → reduce confidence for that side
@@ -3677,6 +3678,18 @@ class Simulator:
         with open(reject_path, "w", encoding="utf-8") as f:
             json.dump(self.reject_logger.summary(), f, ensure_ascii=False, indent=2)
         logger.info(f"[SAVE] Rejects: {reject_path}")
+
+        # Backup Kimi cache
+        try:
+            import zipfile
+            cache_backup = out / "kimi_cache.zip"
+            with zipfile.ZipFile(cache_backup, 'w', zipfile.ZIP_DEFLATED) as zf:
+                for f in self.cfg.kimi_cache_dir.iterdir():
+                    if f.is_file():
+                        zf.write(f, f.name)
+            logger.info(f"[SAVE] Cache backup: {cache_backup}")
+        except Exception as e:
+            logger.warning(f"Cache backup failed: {e}")
 
     def _compute_stats(self) -> Dict:
         trades = self.engine.closed_trades
