@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 19:30:01 UTC
+Generated: 2026-05-25 19:40:01 UTC
 
 ## Services
 ```
@@ -11,14 +11,14 @@ ensemble-dashboard.service: inactive
 ## Processes
 ```
 root      946105  0.0  0.0   2800  1916 ?        Ss   13:50   0:00 sh -c while true; do ./venv/bin/python dashboard_api.py >> dashboard_api.log 2>&1; echo "[RESTART] $(date)" >> dashboard_api.log; sleep 2; done
-root      946106  0.1  1.2 134080 48788 ?        Sl   13:50   0:25 ./venv/bin/python dashboard_api.py
-root      949381  0.1  3.2 721892 128080 ?       Sl   17:19   0:10 python3 main.py
+root      946106  0.1  1.2 134080 48788 ?        Sl   13:50   0:26 ./venv/bin/python dashboard_api.py
+root      949381  0.1  3.3 725044 131400 ?       Sl   17:19   0:13 python3 main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 690.1298759756951,
+  "balance": 700.2290679756951,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779630553",
@@ -66,18 +66,6 @@ root      949381  0.1  3.2 721892 128080 ?       Sl   17:19   0:10 python3 main.
       "opened_at": "2026-05-25T17:03:12.208650",
       "cost": 9.329447999999998,
       "notional": 46.64723999999999,
-      "leverage": 5
-    },
-    "TAOUSDT": {
-      "id": "PAPER_TAOUSDT_1779733538",
-      "symbol": "TAOUSDT",
-      "side": "long",
-      "entry_price": 280.15,
-      "qty": 0.1724,
-      "confidence": 68,
-      "opened_at": "2026-05-25T18:25:38.523690",
-      "cost": 9.659571999999999,
-      "notional": 48.29785999999999,
       "leverage": 5
     }
   },
@@ -1137,44 +1125,62 @@ root      949381  0.1  3.2 721892 128080 ?       Sl   17:19   0:10 python3 main.
       "closed_at": "2026-05-25T19:15:30.769205",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_TAOUSDT_1779733538",
+      "symbol": "TAOUSDT",
+      "side": "long",
+      "entry_price": 280.15,
+      "qty": 0.1724,
+      "confidence": 68,
+      "opened_at": "2026-05-25T18:25:38.523690",
+      "cost": 9.659571999999999,
+      "notional": 48.29785999999999,
+      "leverage": 5,
+      "exit_price": 282.7,
+      "pnl_pct": 4.55,
+      "pnl_usdt": 0.44,
+      "closed_at": "2026-05-25T19:38:03.028548",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -6.13304992630472
+  "total_pnl": -5.6934299263047174
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 19:15:19,821 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 19:15:19,822 [INFO] main: PEPEUSDT | Bull:long(50%) Bear:short(70%)
-2026-05-25 19:15:24,723 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 19:15:24,725 [INFO] main: PEPEUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-25 19:15:24,725 [INFO] main: PEPEUSDT | RL adj=70.0%
-2026-05-25 19:15:30,768 [INFO] positions: STOP-LOSS ASTERUSDT long PnL:-3.02%
-2026-05-25 19:15:30,774 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG ASTERUSDT @ 0.6931 PnL: -15.11% (-1.74 USDT) | Баланс: 690.13
-2026-05-25 19:15:31,045 [INFO] positions: LOSS ASTERUSDT long PnL:-3.02% reason:stop_loss
-2026-05-25 19:15:31,045 [INFO] positions: Lessons: The ASTERUSDT long trade resulted in a 3.02% loss due to a stop loss. The original reasoning was based on a trending_up regime, but the trade did not work out as expected. This trade highlights the importance of considering multiple factors beyond regime alignment when making trading decisions.
-2026-05-25 19:15:31,046 [INFO] rl: RL learned from long ASTERUSDT: loss -3.02% | weights bull=0.997 bear=0.977 judge=1.026 threshold=65.14
-2026-05-25 19:15:31,235 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 19:15:31,605 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 19:15:31,606 [INFO] main: UBUSDT | Bull:long(65%) Bear:short(75%)
-2026-05-25 19:15:37,422 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 19:15:37,424 [INFO] main: UBUSDT | Judge:HOLD conf=75% size=0.0%
-2026-05-25 19:15:37,424 [INFO] main: UBUSDT | RL adj=75.0%
-2026-05-25 19:15:45,978 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 19:15:46,442 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 19:15:46,444 [INFO] main: NILUSDT | Bull:long(70%) Bear:short(70%)
-2026-05-25 19:15:52,235 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 19:15:52,236 [INFO] main: NILUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-25 19:15:52,236 [INFO] main: NILUSDT | RL adj=70.0%
-2026-05-25 19:15:59,300 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 19:15:59,751 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 19:15:59,752 [INFO] main: ZECUSDT | Bull:long(65%) Bear:short(70%)
-2026-05-25 19:16:05,800 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 19:16:05,801 [INFO] main: ZECUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-25 19:16:05,802 [INFO] main: ZECUSDT | RL adj=70.0%
-2026-05-25 19:16:07,804 [INFO] main: Next scan in 60min (weekday-active)
-2026-05-25 19:19:27,534 [INFO] main: Symbols: 30
+2026-05-25 19:35:12,258 [INFO] main: ADAUSDT | Bull:long(40%) Bear:short(60%)
+2026-05-25 19:35:18,702 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 19:35:18,703 [INFO] main: ADAUSDT | Judge:HOLD conf=60% size=0.0%
+2026-05-25 19:35:18,703 [INFO] main: ADAUSDT | RL adj=60.0%
+2026-05-25 19:35:24,442 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 19:35:25,298 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 19:35:25,299 [INFO] main: ONDOUSDT | Bull:flat(40%) Bear:short(75%)
+2026-05-25 19:35:30,188 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 19:35:30,189 [INFO] main: ONDOUSDT | Judge:SHORT conf=72% size=6.0%
+2026-05-25 19:35:30,189 [INFO] main: ONDOUSDT | RL adj=83.0%
+2026-05-25 19:35:30,189 [INFO] main: ONDOUSDT | gate PASS (Judge 72/70 RL 83.0/65.14 slack=±3)
+2026-05-25 19:35:30,190 [INFO] positions: Same-side cap: skip SHORT ONDOUSDT (3/3 already short)
+2026-05-25 19:35:36,121 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 19:35:36,745 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 19:35:36,748 [INFO] main: BEATUSDT | Bull:long(40%) Bear:short(75%)
+2026-05-25 19:35:43,186 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 19:35:43,188 [INFO] main: BEATUSDT | Judge:HOLD conf=75% size=0.0%
+2026-05-25 19:35:43,188 [INFO] main: BEATUSDT | RL adj=75.0%
+2026-05-25 19:35:49,270 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 19:35:50,568 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 19:35:50,569 [INFO] main: SUIUSDT | Bull:long(70%) Bear:short(80%)
+2026-05-25 19:35:56,136 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 19:35:56,138 [INFO] main: SUIUSDT | Judge:LONG conf=62% size=6.0%
+2026-05-25 19:35:56,138 [INFO] main: SUIUSDT | RL adj=60.7%
+2026-05-25 19:35:58,140 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-25 19:38:03,027 [INFO] positions: TRAILING-STOP TAOUSDT long peak:2.0% now:0.91%
+2026-05-25 19:38:03,040 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG TAOUSDT @ 282.7000 PnL: 4.55% (+0.44 USDT) | Баланс: 700.23
+2026-05-25 19:38:03,360 [INFO] positions: OK TAOUSDT long PnL:0.91% reason:trailing_stop
+2026-05-25 19:38:03,360 [INFO] positions: Lessons: The TAOUSDT long trade closed with a 0.91% profit. The original reasoning was based on a narrow margin between BULL and BEAR conviction, with BULL conviction at 70% and BEAR conviction at 75%. The trade was ultimately closed by a trailing stop, resulting in a small gain.
+2026-05-25 19:38:03,360 [INFO] rl: RL learned from long TAOUSDT: profit 0.91% | weights bull=0.999 bear=0.974 judge=1.026 threshold=65.11
 ```
 
 ## Disk
@@ -1192,7 +1198,7 @@ tmpfs           382M   16K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.1Gi       236Mi       4.8Mi       2.7Gi       2.7Gi
+Mem:           3.7Gi       1.1Gi       215Mi       4.8Mi       2.7Gi       2.6Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
