@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-25 12:00:01 UTC
+Generated: 2026-05-25 13:00:01 UTC
 
 ## agents.py
 ```python
@@ -374,6 +374,94 @@ class Judge:
         log.warning("Judge JSON unparseable, defaulting to hold: "+t[:120].replace("\n"," "))
         return {"reasoning":t}
 
+
+class KimiJudge(Judge):
+    """Judge that uses Kimi (Moonshot) unified API instead of Claude Haiku.
+
+    Inherits Groq-based reflect/ask_exit/ask_direction from Judge.
+    Overrides decide() and _claude() to use Kimi.
+    """
+
+    def __init__(self, cfg):
+        super().__init__(cfg)
+        self._client = None
+        self._kimi_model = getattr(cfg, "KIMI_MODEL", "kimi-k2.6")
+        self._kimi_base_url = getattr(cfg, "KIMI_BASE_URL", "https://api.moonshot.ai/v1")
+        self._kimi_key = getattr(cfg, "KIMI_API_KEY", "")
+
+    def _get_client(self):
+        import openai
+        if self._client is None:
+            self._client = openai.AsyncOpenAI(
+                api_key=self._kimi_key,
+                base_url=self._kimi_base_url
+            )
+        return self._client
+
+    async def _claude(self, prompt):
+        """Override Claude call with Kimi API."""
+        client = self._get_client()
+        try:
+            resp = await client.chat.completions.create(
+                model=self._kimi_model,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.3,
+                max_tokens=400,
+                timeout=30
+            )
+            return resp.choices[0].message.content.strip()
+        except Exception as e:
+            log.warning("KimiJudge _claude failed: " + str(e))
+            return ""
+
+    async def decide(self, market_text, bull, bear, memory_ctx):
+        """Unified Kimi decision — one call replaces Claude decide."""
+        prompt = f"""You are the JUDGE in an adversarial trading ensemble. BULL argues for LONG; BEAR argues for SHORT/avoid. A "flat" side from either agent means NEUTRAL — it is NOT opposition, just absence of conviction.
+
+## MARKET DATA
+{market_text}
+
+## BULL ({bull.confidence}%)
+{bull.reasoning}
+
+## BEAR ({bear.confidence}%)
+{bear.reasoning}
+
+## MEMORY
+{memory_ctx}
+
+## DECISION CRITERIA
+- LONG if: BULL conviction >= 55 AND (BEAR is flat OR BEAR conviction < BULL conviction)
+- SHORT if: BEAR conviction >= 55 AND (BULL is flat OR BULL conviction < BEAR conviction)
+- HOLD only when: signals genuinely conflict (both > 60 in opposite directions) OR both agree it is flat/unclear. HOLD is a real cost — missed opportunity.
+
+Market sentiment (Fear & Greed) is a soft signal, not a blocker.
+
+For action="long" or "short": confidence in 50-95 reflecting how aligned the evidence is; position_size_pct in 0.03-0.12 (bigger when conviction higher, smaller when conflicting).
+For action="hold": confidence = max conviction of either side; position_size_pct = 0.0.
+
+Respond ONLY with valid JSON, no prose, no markdown fences:
+{{"action":"long|short|hold","confidence":0-100,"position_size_pct":0.0-0.15,"reasoning":"brief","lessons_from_memory":"brief"}}"""
+
+        try:
+            r = await self._claude(prompt)
+            d = self._parse(r)
+            action = d.get("action", "hold")
+            if action not in ("long", "short", "hold"):
+                action = "hold"
+            conf = int(_clamp(d.get("confidence", 50), 0, 100))
+            size = _clamp(d.get("position_size_pct", 0.03), 0.0, 0.15)
+            if action == "hold":
+                size = 0.0
+            return JudgeDecision(
+                action, conf, size,
+                d.get("reasoning", r)[:200],
+                d.get("lessons_from_memory", "")
+            )
+        except Exception as e:
+            log.error("KimiJudge decide: " + str(e))
+            return JudgeDecision("hold", 0, 0.0, "KimiJudge error: " + str(e)[:100], "")
+
 ```
 
 ## audit.py
@@ -667,7 +755,7 @@ class BitgetClient:
      log.info("Bitget recovered after "+str(self._cb_failures)+" failures")
     self._cb_failures=0
     return d
-   except (aiohttp.ClientError,asyncio.TimeoutError,RuntimeError) as e:
+   except (aiohttp.ClientError,asyncio.TimeoutError,RuntimeError,json.JSONDecodeError,ValueError) as e:
     last_err=e
     self._cb_failures+=1
     if self._cb_failures>=_CB_FAILURE_THRESHOLD:
@@ -801,6 +889,7 @@ class Config:
     STATE_FILE = "/opt/ensemble-agent/state.json"
     TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
     TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+    KIMI_JUDGE_ENABLED = False
 
 ```
 
@@ -1079,6 +1168,9 @@ class MarketSnapshot:
             lines.append("BTC Dominance: "+str(round(self.btc_dominance,1))+"%")
         return "\n".join(lines)
 
+_CANDLE_FETCH_LIMITS={"15m":100,"1H":100,"4H":50}  # canonical fetch sizes
+_CANDLE_TTL={"15m":60,"1H":300,"4H":900}
+
 class DataEngine:
     def __init__(self,bitget):
         self.bitget=bitget
@@ -1095,33 +1187,48 @@ class DataEngine:
             stale=[k for k,v in self._cache.items() if now-v[0]>3600]
             for k in stale: self._cache.pop(k,None)
         return val
+    async def _get_candles_cached(self,symbol,granularity):
+        """Canonical cached candle fetcher. Always pulls the per-granularity fetch
+        limit so smaller consumers (e.g. correlation) hit the same cache entry."""
+        fetch_limit=_CANDLE_FETCH_LIMITS.get(granularity,50)
+        ttl=_CANDLE_TTL.get(granularity,300)
+        return await self._cached(("candles",granularity,symbol),ttl,
+            lambda:self.bitget.get_candles(symbol,granularity,fetch_limit))
     async def get_closes(self,symbol,granularity="1H",limit=25):
-        """Cached helper that returns just the close-price series for a symbol."""
-        ttl={"15m":60,"1H":300,"4H":900}.get(granularity,300)
-        candles=await self._cached(("c"+granularity.lower(),symbol,limit),ttl,
-            lambda:self.bitget.get_candles(symbol,granularity,limit))
+        """Return up to `limit` most-recent close prices via the canonical cache."""
+        candles=await self._get_candles_cached(symbol,granularity)
         if not candles: return []
-        try: return [float(x[4]) for x in candles]
+        try: return [float(x[4]) for x in candles[-limit:]]
         except Exception as e:
             log.warning("get_closes "+symbol+" "+granularity+": "+str(e)); return []
     async def correlation(self,symbol_a,symbol_b,granularity="1H",n=24):
-        """Pearson correlation of returns over the last n+1 bars. Returns 0.0 on failure."""
+        """Pearson correlation of returns over the last n+1 bars.
+
+        Returns float in [-1,1] on success, or 0.0 on failure / insufficient data.
+        Callers MUST treat the return as best-effort: a 0.0 here means
+        "could not compute" (new listing, frozen market, parse error), NOT
+        "verified uncorrelated". Loud INFO log makes such cases visible.
+        """
         if symbol_a==symbol_b: return 1.0
         ca=await self.get_closes(symbol_a,granularity,n+1)
         cb=await self.get_closes(symbol_b,granularity,n+1)
-        if len(ca)<n+1 or len(cb)<n+1: return 0.0
+        if len(ca)<n+1 or len(cb)<n+1:
+            log.info("correlation: insufficient data for "+symbol_a+"/"+symbol_b+" ("+str(len(ca))+"/"+str(len(cb))+" bars, need "+str(n+1)+") → assume uncorrelated")
+            return 0.0
         ra=np.diff(ca)/ca[:-1]
         rb=np.diff(cb)/cb[:-1]
         if len(ra)<2 or len(rb)<2: return 0.0
-        # numpy.corrcoef returns nan for zero-variance series
         with np.errstate(invalid="ignore"):
             c=np.corrcoef(ra,rb)[0,1]
-        return float(c) if np.isfinite(c) else 0.0
+        if not np.isfinite(c):
+            log.info("correlation: zero-variance series "+symbol_a+"/"+symbol_b+" → assume uncorrelated")
+            return 0.0
+        return float(c)
     async def get_snapshot(self,symbol):
         try:
-            c15=await self._cached(("c15",symbol),60,lambda:self.bitget.get_candles(symbol,"15m",100))
-            c1h=await self._cached(("c1h",symbol),300,lambda:self.bitget.get_candles(symbol,"1H",50))
-            c4h=await self._cached(("c4h",symbol),900,lambda:self.bitget.get_candles(symbol,"4H",30))
+            c15=await self._get_candles_cached(symbol,"15m")
+            c1h=await self._get_candles_cached(symbol,"1H")
+            c4h=await self._get_candles_cached(symbol,"4H")
             if not c15 or not c1h or not c4h: return None
             def parse(c): return {"close":[float(x[4]) for x in c],"volume":[float(x[5]) for x in c]}
             d15,d1h,d4h=parse(c15),parse(c1h),parse(c4h)
@@ -1211,6 +1318,302 @@ async def close() -> None:
         await _session.close()
         log.info("Shared aiohttp.ClientSession closed")
     _session = None
+
+```
+
+## main_kimi_ab.py
+```python
+#!/usr/bin/env python3
+"""
+A/B Test: Kimi as Judge (paper mode, isolated state).
+Runs alongside main.py without interference.
+"""
+import os
+
+# Isolate paper state BEFORE any imports that transitively load paper_trading
+os.environ["PAPER_STATE_FILE"] = "/opt/ensemble-agent/paper_state_kimi.json"
+
+import asyncio
+import logging
+import signal
+import sys
+import random
+from logging.handlers import RotatingFileHandler
+from datetime import datetime, timezone
+from config import Config
+
+# Override config for Kimi A/B test BEFORE any module instantiates Config()
+Config.KIMI_JUDGE_ENABLED = True
+Config.MEMORY_FILE = "/opt/ensemble-agent/memory_kimi.json"
+Config.TOP_N_SYMBOLS = 10          # fewer symbols = less API load
+Config.MAX_POSITIONS = 5
+
+from bitget_client import BitgetClient
+from data_engine import DataEngine
+from agents import BullAgent, BearAgent, KimiJudge
+from memory import Memory
+from rl_agent import RLAgent
+from position_manager import PositionManager
+import http_pool
+
+_log_handler = RotatingFileHandler(
+    "/opt/ensemble-agent/ensemble_kimi.log",
+    maxBytes=50 * 1024 * 1024,
+    backupCount=5,
+    encoding="utf-8"
+)
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    handlers=[_log_handler]
+)
+log = logging.getLogger("main.kimi")
+
+
+class KimiOrchestrator:
+    def __init__(self):
+        self.cfg = Config()
+        self.bitget = BitgetClient(self.cfg)
+        self.data = DataEngine(self.bitget)
+        self.bull = BullAgent(self.cfg)
+        self.bear = BearAgent(self.cfg)
+        self.judge = KimiJudge(self.cfg)
+        self.memory = Memory(self.cfg)
+        self.rl = RLAgent(self.cfg)
+        self.positions = PositionManager(
+            self.bitget, self.cfg, self.memory, self.judge, self.rl, data=self.data
+        )
+        self.running = True
+        self.symbols = []
+        self._stop_event = asyncio.Event()
+
+    async def _wait(self, timeout):
+        try:
+            await asyncio.wait_for(self._stop_event.wait(), timeout=timeout)
+        except asyncio.TimeoutError:
+            pass
+
+    async def start(self):
+        await self.bitget.start()
+        await self.positions.setup()
+        log.info("=== Kimi A/B Test Agent started ===")
+        log.info("Bull: race(Kimi, Groq) | Bear: race(Groq, Kimi) | Judge: KIMI unified")
+        loop = asyncio.get_event_loop()
+        for sig in (signal.SIGINT, signal.SIGTERM):
+            loop.add_signal_handler(sig, self.stop)
+        closed_in_memory = sum(
+            1 for t in self.memory.trades
+            if t.outcome in ("profit", "loss") and not getattr(t, "orphan", False)
+        )
+        if (
+            self.rl.weights.episodes == 0
+            and closed_in_memory > 0
+            and getattr(self.cfg, "RL_PRIME_FROM_HISTORY", True)
+        ):
+            log.info("RL prime: learning from " + str(closed_in_memory) + " closed trades")
+            self.rl.learn_from_history(self.memory)
+        elif self.rl.weights.episodes == 0:
+            log.info("RL: starting fresh")
+        await self._refresh_symbols()
+        try:
+            await asyncio.gather(
+                self.scan_loop(),
+                self.positions.monitor_loop(self._stop_event),
+                self.symbol_refresh_loop(),
+            )
+        finally:
+            try:
+                pending = [
+                    t for t in asyncio.all_tasks()
+                    if t is not asyncio.current_task() and not t.done()
+                ]
+                if pending:
+                    log.info("Draining " + str(len(pending)) + " pending tasks")
+                    await asyncio.wait(pending, timeout=5)
+            except Exception as e:
+                log.error("drain: " + str(e))
+            try:
+                self.memory._save_sync()
+            except Exception as e:
+                log.error("memory final save: " + str(e))
+            try:
+                self.rl._save_sync()
+            except Exception as e:
+                log.error("rl final save: " + str(e))
+            try:
+                await self.bitget.close()
+            except Exception as e:
+                log.error("bitget close: " + str(e))
+            try:
+                await http_pool.close()
+            except Exception as e:
+                log.error("http_pool close: " + str(e))
+
+    def stop(self):
+        log.info("Shutting down...")
+        self.running = False
+        self._stop_event.set()
+
+    async def symbol_refresh_loop(self):
+        while self.running:
+            await self._wait(3600)
+            if not self.running:
+                break
+            await self._refresh_symbols()
+
+    async def _refresh_symbols(self):
+        try:
+            self.symbols = await self.bitget.get_top_symbols(self.cfg.TOP_N_SYMBOLS)
+            log.info("Symbols: " + str(len(self.symbols)))
+        except Exception as e:
+            log.error("Symbol refresh: " + str(e))
+
+    def _next_interval(self):
+        now = datetime.now(timezone.utc)
+        wd = now.weekday()
+        h = now.hour
+        if wd >= 5:
+            return 10800, "weekend"
+        if 8 <= h < 22:
+            return 3600, "weekday-active"
+        return 7200, "weekday-quiet"
+
+    async def scan_loop(self):
+        while self.running:
+            try:
+                await self.scan_all()
+            except Exception as e:
+                log.error("Scan: " + str(e))
+            interval, mode = self._next_interval()
+            log.info("Next scan in " + str(interval // 60) + "min (" + mode + ")")
+            await self._wait(interval)
+
+    async def scan_all(self):
+        if not self.symbols:
+            return
+        candidates = [s for s in self.symbols if s not in self.positions.open_trades]
+        random.shuffle(candidates)
+        log.info("Scanning " + str(len(candidates)) + " symbols...")
+        for symbol in candidates:
+            if not self.running:
+                break
+            if len(self.positions.open_trades) >= self.cfg.MAX_POSITIONS:
+                log.info("Max positions")
+                break
+            try:
+                await self.analyze(symbol)
+                await self._wait(2)
+            except Exception as e:
+                log.error("Analyze " + symbol + ": " + str(e))
+
+    async def analyze(self, symbol):
+        snapshot = await self.data.get_snapshot(symbol)
+        if not snapshot:
+            return
+        market_text = snapshot.to_text()
+        bull, bear = await asyncio.gather(
+            self.bull.analyze(market_text), self.bear.analyze(market_text)
+        )
+        log.info(
+            symbol
+            + " | Bull:" + bull.side + "(" + str(bull.confidence) + "%)"
+            + " Bear:" + bear.side + "(" + str(bear.confidence) + "%)"
+        )
+        similar = self.memory.get_similar(snapshot)
+        mem_ctx = self.memory.format_similar_for_judge(similar)
+        decision = await self.judge.decide(market_text, bull, bear, mem_ctx)
+        log.info(
+            symbol
+            + " | Judge:" + decision.action.upper()
+            + " conf=" + str(decision.confidence) + "%"
+            + " size=" + str(round(decision.position_size_pct * 100, 1)) + "%"
+        )
+        rl_conf = self.rl.get_adjusted_confidence(
+            bull.confidence, bear.confidence, decision.confidence,
+            decision.action, bull.side, bear.side
+        )
+        rl_ok = self.rl.should_trade(rl_conf)
+        log.info(str(symbol) + " | RL adj=" + str(round(rl_conf, 1)) + "%")
+        if decision.action in ("long", "short"):
+            if snapshot.regime in ("volatile", "unknown"):
+                log.info(symbol + " | regime BLOCK (" + snapshot.regime + ")")
+                return
+            if (
+                decision.action == "short"
+                and snapshot.regime == "trending_down"
+                and snapshot.rsi_1h > 45
+            ):
+                log.info(
+                    symbol
+                    + " | regime BLOCK (short × trending_down × rsi1h="
+                    + str(round(snapshot.rsi_1h, 1))
+                    + "; late-entry guard)"
+                )
+                return
+            if (
+                decision.action == "short"
+                and snapshot.regime == "trending_up"
+                and snapshot.rsi_1h < 55
+            ):
+                log.info(
+                    symbol
+                    + " | regime BLOCK (short × trending_up × rsi1h="
+                    + str(round(snapshot.rsi_1h, 1))
+                    + "; counter-trend guard)"
+                )
+                return
+            if (
+                decision.action == "long"
+                and snapshot.regime == "trending_down"
+                and snapshot.rsi_1h > 45
+            ):
+                log.info(
+                    symbol
+                    + " | regime BLOCK (long × trending_down × rsi1h="
+                    + str(round(snapshot.rsi_1h, 1))
+                    + "; counter-trend guard)"
+                )
+                return
+            if (
+                decision.action == "long"
+                and snapshot.regime == "trending_up"
+                and snapshot.rsi_1h < 55
+            ):
+                log.info(
+                    symbol
+                    + " | regime BLOCK (long × trending_up × rsi1h="
+                    + str(round(snapshot.rsi_1h, 1))
+                    + "; late-entry guard)"
+                )
+                return
+            slack = getattr(self.cfg, "THRESHOLD_SLACK", 3)
+            j_base = self.cfg.MIN_CONFIDENCE
+            r_base = self.rl.weights.conf_threshold
+            j_dev = decision.confidence - j_base
+            r_dev = rl_conf - r_base
+            soft_ok = (
+                decision.confidence >= j_base - slack
+                and rl_conf >= r_base - slack
+                and j_dev + r_dev >= 0
+            )
+            if soft_ok:
+                log.info(
+                    symbol
+                    + " | gate PASS (Judge "
+                    + str(decision.confidence) + "/" + str(j_base)
+                    + " RL " + str(round(rl_conf, 1)) + "/" + str(r_base)
+                    + " slack=±" + str(slack) + ")"
+                )
+                trade = await self.positions.open_position(symbol, decision, snapshot)
+                if trade:
+                    self.memory.update_trade(
+                        trade.id,
+                        bull_confidence=bull.confidence,
+                        bear_confidence=bear.confidence
+                    )
+
+
+asyncio.run(KimiOrchestrator().start())
 
 ```
 
@@ -1457,7 +1860,7 @@ log = logging.getLogger(__name__)
 def _utcnow_iso():
     return datetime.now(timezone.utc).replace(tzinfo=None).isoformat()
 
-PAPER_STATE_FILE = "/opt/ensemble-agent/paper_state.json"
+PAPER_STATE_FILE = os.getenv("PAPER_STATE_FILE", "/opt/ensemble-agent/paper_state.json")
 _STATE_LOCK = threading.RLock()
 
 def _load_state():
@@ -1529,11 +1932,12 @@ def paper_close(symbol, current_price, reason="judge_exit"):
         entry = pos["entry_price"]
         qty = pos["qty"]
         side = pos["side"]
+        leverage = pos.get("leverage", 1)
         if side == "long":
-            pnl = (current_price - entry) / entry * 100
+            pnl = (current_price - entry) / entry * 100 * leverage
             pnl_usdt = (current_price - entry) * qty
         else:
-            pnl = (entry - current_price) / entry * 100
+            pnl = (entry - current_price) / entry * 100 * leverage
             pnl_usdt = (entry - current_price) * qty
         margin = pos.get("cost", 0.0)
         if margin > 0 and pnl_usdt < -margin:
@@ -1601,6 +2005,9 @@ class PositionManager:
         self.data=data  # DataEngine, optional — used for correlation checks
         self.open_trades={}
         self._peak_pnl={}
+        # Serializes open_position so concurrent scan paths can't bypass
+        # correlation/same-side gates between check and insertion (TOCTOU).
+        self._open_lock=asyncio.Lock()
     async def setup(self):
         """Async restore of positions on startup. Dispatches paper vs live."""
         if getattr(self.cfg,"PAPER_MODE",False):
@@ -1670,6 +2077,9 @@ class PositionManager:
         except Exception as e:
             log.error("Restore: "+str(e)); log.error(traceback.format_exc())
     async def open_position(self,symbol,decision,snapshot):
+        async with self._open_lock:
+            return await self._open_position_inner(symbol,decision,snapshot)
+    async def _open_position_inner(self,symbol,decision,snapshot):
         from memory import TradeMemory
         if self.cfg.PAPER_MODE:
             ps=paper_trading._load_state()
@@ -1693,7 +2103,10 @@ class PositionManager:
         if self.data is not None:
             max_corr=getattr(self.cfg,"MAX_CORRELATION",0.85)
             n=getattr(self.cfg,"CORR_LOOKBACK_BARS",24)
-            same_side_open=[s for s,t in self.open_trades.items() if t.side==decision.action and s!=symbol]
+            # Snapshot via list() to avoid 'dict changed during iteration' if
+            # monitor_loop concurrently closes a position mid-check.
+            snapshot_items=list(self.open_trades.items())
+            same_side_open=[s for s,t in snapshot_items if t.side==decision.action and s!=symbol]
             for open_sym in same_side_open:
                 try: c=await self.data.correlation(symbol,open_sym,granularity="1H",n=n)
                 except Exception as e: log.warning("correlation "+symbol+"/"+open_sym+": "+str(e)); c=0.0
@@ -1780,6 +2193,9 @@ class PositionManager:
                 for symbol,trade in list(self.open_trades.items()):
                     if symbol not in ex_syms:
                         if not self.cfg.PAPER_MODE:
+                            # Bug fix: set exit_price and pnl_pct before finalizing
+                            trade.exit_price = trade.entry_price
+                            trade.pnl_pct = 0.0
                             await self._finalize(trade,"closed_externally"); del self.open_trades[symbol]
                         continue
                     ep=next((p for p in ex_list if p["symbol"]==symbol),None)
@@ -2064,9 +2480,25 @@ class SimConfig:
     months: int = 6
     interval: str = "15m"          # 15m, 1h, 4h
     leverage: float = 5.0
-    base_sl_pct: float = 0.03      # ~3%
-    base_tp_pct: float = 0.03      # ~3%
+
+    # --- MODE: "live_mirror" | "optimized" ---
+    mode: str = "optimized"
+
+    # live_mirror: fixed SL/TP like live system
+    live_mirror_sl_pct: float = 0.03      # 3% unleveraged
+    live_mirror_tp_pct: float = 0.03      # 3% unleveraged
+    live_mirror_trail_arm_pct: float = 0.015   # 1.5%
+    live_mirror_trail_giveback_pct: float = 0.01  # 1.0%
+
+    # optimized: dynamic ATR-based with wider floors
+    base_sl_pct: float = 0.03
+    base_tp_pct: float = 0.03
+    min_sl_pct: float = 0.01       # minimum 1% SL (prevents 0.2% noise stops)
     min_rr: float = 1.5
+    optimized_trail_arm_pct: float = 0.75   # 75% of TP reached
+    optimized_trail_sl_buffer_pct: float = 0.005  # move SL to entry + 0.5%
+    max_hold_hours: float = 48.0
+    volatility_filter_atr_pct: float = 0.005  # skip if ATR < 0.5% of price
 
     # Unified Kimi API
     kimi_api_key: str = field(default_factory=lambda: os.getenv("KIMI_API_KEY", ""))
@@ -2090,6 +2522,8 @@ class SimConfig:
     def __post_init__(self):
         self.data_cache_dir.mkdir(parents=True, exist_ok=True)
         self.output_dir.mkdir(parents=True, exist_ok=True)
+        if self.mode not in ("live_mirror", "optimized"):
+            raise ValueError(f"Invalid mode: {self.mode}. Use 'live_mirror' or 'optimized'.")
 
 
 # ---------------------------------------------------------------------------
@@ -2330,23 +2764,40 @@ class EntryFilter:
     def calculate_dynamic_levels(
         self, side: str, entry: float, atr: float, support: float, resistance: float, min_rr: float
     ) -> Tuple[bool, Optional[Dict]]:
+        if self.cfg.mode == "live_mirror":
+            # Fixed ±3% unleveraged like live system
+            if side == "long":
+                sl = entry * (1 - self.cfg.live_mirror_sl_pct)
+                tp = entry * (1 + self.cfg.live_mirror_tp_pct)
+            else:
+                sl = entry * (1 + self.cfg.live_mirror_sl_pct)
+                tp = entry * (1 - self.cfg.live_mirror_tp_pct)
+            rr = self.cfg.live_mirror_tp_pct / self.cfg.live_mirror_sl_pct
+            return True, {"sl": sl, "tp": tp, "rr": rr, "atr": atr, "support": support, "resistance": resistance}
+
+        # --- optimized mode ---
         if side == "long":
             sl = min(entry * (1 - self.cfg.base_sl_pct), support * 0.995)
             tp = resistance * 1.005
-            # Cap TP at 3×ATR from entry
             tp = min(tp, entry + 3.0 * atr)
             sl_atr = entry - 1.5 * atr
             if sl_atr > sl:
                 sl = sl_atr
+            # enforce minimum SL width (don't let stops be tighter than 1%)
+            min_sl_price = entry * (1 - self.cfg.min_sl_pct)
+            if sl > min_sl_price:
+                sl = min_sl_price
             rr = (tp - entry) / (entry - sl) if (entry - sl) > 0 else 0
         else:
             sl = max(entry * (1 + self.cfg.base_sl_pct), resistance * 1.005)
             tp = support * 0.995
-            # Cap TP at 3×ATR from entry
             tp = max(tp, entry - 3.0 * atr)
             sl_atr = entry + 1.5 * atr
             if sl_atr < sl:
                 sl = sl_atr
+            min_sl_price = entry * (1 + self.cfg.min_sl_pct)
+            if sl < min_sl_price:
+                sl = min_sl_price
             rr = (entry - tp) / (sl - entry) if (sl - entry) > 0 else 0
 
         if rr < min_rr:
@@ -2650,7 +3101,10 @@ class VirtualPosition:
     leverage: float
     entry_time: datetime
     open_idx: int
+    mode: str = "optimized"
     liq_price: float = field(init=False)
+    _peak_pnl_pct: float = field(default=0.0, repr=False)
+    _trailing_active: bool = field(default=False, repr=False)
 
     def __post_init__(self):
         if self.side == "long":
@@ -2658,7 +3112,21 @@ class VirtualPosition:
         else:
             self.liq_price = self.entry_price * (1 + 0.8 / self.leverage)
 
-    def check_exit(self, candle: pd.Series) -> Tuple[bool, Optional[str], float]:
+    def _raw_pnl_pct(self, price: float) -> float:
+        if self.side == "long":
+            return (price - self.entry_price) / self.entry_price
+        return (self.entry_price - price) / self.entry_price
+
+    def update_peak(self, candle: pd.Series):
+        """Track peak PnL for trailing stop logic."""
+        if self.side == "long":
+            pnl = self._raw_pnl_pct(candle["high"])
+        else:
+            pnl = self._raw_pnl_pct(candle["low"])
+        if pnl > self._peak_pnl_pct:
+            self._peak_pnl_pct = pnl
+
+    def check_exit(self, candle: pd.Series, mode_cfg: Optional[SimConfig] = None) -> Tuple[bool, Optional[str], float]:
         high, low, close = candle["high"], candle["low"], candle["close"]
         if self.side == "long":
             if low <= self.liq_price:
@@ -2683,11 +3151,13 @@ class VirtualPosition:
 
 
 class TradingEngine:
-    def __init__(self, config: SimConfig):
+    def __init__(self, config: SimConfig, initial_balance: float = 1000.0):
         self.cfg = config
         self.positions: Dict[str, VirtualPosition] = {}
         self.closed_trades: List[Dict] = []
         self.daily_stats = {"shorts": 0, "longs": 0, "date": None}
+        self.balance = initial_balance
+        self.initial_balance = initial_balance
 
     def can_open(self, symbol: str, side: str, memory: SymbolMemory, regime: str,
                  bull_conf: float, bear_conf: float, current_time: datetime) -> Tuple[bool, Optional[str]]:
@@ -2713,13 +3183,20 @@ class TradingEngine:
                 return False, "DAILY_SHORT_CAP"
         return True, None
 
+    def _position_size(self) -> float:
+        """Position notional size. live_mirror uses % of balance; optimized uses fixed $100."""
+        if self.cfg.mode == "live_mirror":
+            # 10% of current balance per trade (similar to live 0.03–0.12 range)
+            return self.balance * 0.10
+        return 100.0
+
     def open_position(self, symbol: str, side: str, entry_price: float,
                       sl_price: float, tp_price: float, current_time: datetime, idx: int) -> VirtualPosition:
         pos = VirtualPosition(
             symbol=symbol, side=side, entry_price=entry_price,
             sl_price=sl_price, tp_price=tp_price,
-            size_usdt=100.0, leverage=self.cfg.leverage,
-            entry_time=current_time, open_idx=idx
+            size_usdt=self._position_size(), leverage=self.cfg.leverage,
+            entry_time=current_time, open_idx=idx, mode=self.cfg.mode
         )
         self.positions[symbol] = pos
         self.daily_stats["shorts" if side == "short" else "longs"] += 1
@@ -2729,6 +3206,13 @@ class TradingEngine:
                        exit_time: datetime, idx: int) -> Dict:
         pos = self.positions.pop(symbol)
         pnl_pct = pos.pnl_pct(exit_price)
+        # Update balance for live_mirror mode
+        if self.cfg.mode == "live_mirror":
+            margin = pos.size_usdt / pos.leverage
+            pnl_usdt = margin * pnl_pct / 100.0 * pos.leverage  # pnl_pct already includes leverage
+            # Actually pnl_pct = (price_delta/entry) * leverage, so raw pnl_usdt = size * price_delta/entry
+            raw_pnl_usdt = pos.size_usdt * (pnl_pct / pos.leverage) / 100.0
+            self.balance += margin + raw_pnl_usdt
         hold_time = (exit_time - pos.entry_time).total_seconds() / 60.0
         trade = {
             "symbol": symbol, "side": pos.side,
@@ -2738,26 +3222,63 @@ class TradingEngine:
             "opened": pos.entry_time.isoformat(),
             "closed": exit_time.isoformat(),
             "hold_minutes": round(hold_time, 1),
-            "leverage": pos.leverage
+            "leverage": pos.leverage,
+            "mode": self.cfg.mode
         }
         self.closed_trades.append(trade)
         return trade
 
     def update_trailing(self, pos: VirtualPosition, candle: pd.Series):
+        pos.update_peak(candle)
+        if self.cfg.mode == "live_mirror":
+            # Live mirror trailing: arm at +1.5%, giveback 1.0%
+            arm = self.cfg.live_mirror_trail_arm_pct
+            give = self.cfg.live_mirror_trail_giveback_pct
+            if pos._peak_pnl_pct >= arm and not pos._trailing_active:
+                pos._trailing_active = True
+            if pos._trailing_active:
+                if pos.side == "long":
+                    trail_sl = pos.entry_price * (1 + pos._peak_pnl_pct - give)
+                    if trail_sl > pos.sl_price:
+                        pos.sl_price = trail_sl
+                else:
+                    trail_sl = pos.entry_price * (1 - pos._peak_pnl_pct + give)
+                    if trail_sl < pos.sl_price:
+                        pos.sl_price = trail_sl
+            return
+
+        # --- optimized mode ---
+        # Trailing activates at 75% of TP distance, moves SL to entry ±0.5%
         if pos.side == "long":
-            half_tp = pos.entry_price + (pos.tp_price - pos.entry_price) * 0.5
-            if candle["high"] >= half_tp and pos.sl_price < pos.entry_price:
-                pos.sl_price = pos.entry_price * 1.01
+            tp_dist = pos.tp_price - pos.entry_price
+            if tp_dist <= 0:
+                return
+            trigger = pos.entry_price + tp_dist * self.cfg.optimized_trail_arm_pct
+            if candle["high"] >= trigger and pos.sl_price < pos.entry_price:
+                new_sl = pos.entry_price * (1 + self.cfg.optimized_trail_sl_buffer_pct)
+                if new_sl > pos.sl_price:
+                    pos.sl_price = new_sl
         else:
-            half_tp = pos.entry_price - (pos.entry_price - pos.tp_price) * 0.5
-            if candle["low"] <= half_tp and pos.sl_price > pos.entry_price:
-                pos.sl_price = pos.entry_price * 0.99
+            tp_dist = pos.entry_price - pos.tp_price
+            if tp_dist <= 0:
+                return
+            trigger = pos.entry_price - tp_dist * self.cfg.optimized_trail_arm_pct
+            if candle["low"] <= trigger and pos.sl_price > pos.entry_price:
+                new_sl = pos.entry_price * (1 - self.cfg.optimized_trail_sl_buffer_pct)
+                if new_sl < pos.sl_price:
+                    pos.sl_price = new_sl
 
     def process_candle(self, symbol: str, candle: pd.Series, idx: int, current_time: datetime):
         if symbol not in self.positions:
             return None
         pos = self.positions[symbol]
         self.update_trailing(pos, candle)
+
+        # Max hold time exit
+        hold_hours = (current_time - pos.entry_time).total_seconds() / 3600.0
+        if hold_hours >= self.cfg.max_hold_hours:
+            return self.close_position(symbol, candle["close"], "max_hold_time", current_time, idx)
+
         closed, reason, exit_price = pos.check_exit(candle)
         if closed:
             return self.close_position(symbol, exit_price, reason, current_time, idx)
@@ -2799,7 +3320,7 @@ class Simulator:
         self.indicators = TechnicalIndicators()
         self.entry_filter = EntryFilter(config)
         self.judge = UnifiedKimiJudge(config)
-        self.engine = TradingEngine(config)
+        self.engine = TradingEngine(config, initial_balance=1000.0)
         self.rl_builder = RLDatasetBuilder()
         self.memories: Dict[str, SymbolMemory] = defaultdict(lambda: SymbolMemory(""))
         self.consecutive_signals: Dict[str, Dict] = defaultdict(lambda: {"long": 0, "short": 0})
@@ -2807,7 +3328,7 @@ class Simulator:
 
     async def run(self):
         logger.info("=" * 60)
-        logger.info("SIMULATOR START (Unified Kimi Architecture)")
+        logger.info(f"SIMULATOR START (mode={self.cfg.mode})")
         logger.info(f"Symbols: {len(self.cfg.symbols)} | Months: {self.cfg.months} | Interval: {self.cfg.interval}")
         logger.info("=" * 60)
 
@@ -2911,6 +3432,10 @@ class Simulator:
                 mem = self.memories[sym]
                 mem.symbol = sym
 
+                # Volatility filter: skip if ATR < 0.5% of price (too noisy)
+                if self.cfg.mode == "optimized" and atr / price < self.cfg.volatility_filter_atr_pct:
+                    return
+
                 # === ОДИН ВЫЗОВ KIMI ===
                 decision = await self.judge.decide(
                     sym, df, price, ema20, ema50, atr, rsi,
@@ -2929,8 +3454,9 @@ class Simulator:
                 if not ok_extreme:
                     return
 
+                min_rr = self.cfg.min_rr if self.cfg.mode == "optimized" else 1.0
                 ok_levels, levels = self.entry_filter.calculate_dynamic_levels(
-                    side, price, atr, support, resistance, self.cfg.min_rr
+                    side, price, atr, support, resistance, min_rr
                 )
                 if not ok_levels:
                     return
@@ -3003,11 +3529,12 @@ class Simulator:
     def _compute_stats(self) -> Dict:
         trades = self.engine.closed_trades
         if not trades:
-            return {}
+            return {"mode": self.cfg.mode}
         df = pd.DataFrame(trades)
         wins = df[df["pnl_pct"] > 0]
         losses = df[df["pnl_pct"] <= 0]
         return {
+            "mode": self.cfg.mode,
             "total_trades": len(df),
             "win_rate": round(len(wins) / len(df) * 100, 2),
             "avg_pnl": round(df["pnl_pct"].mean(), 4),
@@ -3019,7 +3546,9 @@ class Simulator:
             "sl_count": int((df["reason"] == "stop_loss").sum()),
             "tp_count": int((df["reason"] == "take_profit").sum()),
             "trailing_count": int((df["reason"] == "trailing_stop").sum()),
+            "max_hold_count": int((df["reason"] == "max_hold_time").sum()),
             "liquidation_count": int((df["reason"] == "liquidation").sum()),
+            "final_balance": round(self.engine.balance, 2) if self.cfg.mode == "live_mirror" else None,
             "rl_transitions": len(self.rl_builder.transitions)
         }
 
@@ -3034,6 +3563,7 @@ def main():
     parser.add_argument("--months", type=int, default=6)
     parser.add_argument("--interval", type=str, default="15m", choices=["15m","1h","4h"])
     parser.add_argument("--leverage", type=float, default=5.0)
+    parser.add_argument("--mode", type=str, default="optimized", choices=["live_mirror","optimized"])
     parser.add_argument("--max-concurrent", type=int, default=15, help="Max concurrent Kimi calls")
     args = parser.parse_args()
 
@@ -3042,6 +3572,7 @@ def main():
         months=args.months,
         interval=args.interval,
         leverage=args.leverage,
+        mode=args.mode,
         max_concurrent_kimi_calls=args.max_concurrent
     )
 
