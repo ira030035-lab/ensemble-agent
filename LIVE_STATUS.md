@@ -1,23 +1,22 @@
 # Live status
 
-Generated: 2026-05-25 13:10:01 UTC
+Generated: 2026-05-25 13:20:01 UTC
 
 ## Services
 ```
 ensemble-agent.service:     active
-ensemble-dashboard.service: active
+ensemble-dashboard.service: inactive
 ```
 
 ## Processes
 ```
-root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   1:08 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      944698  0.0  1.4 324584 56432 ?        Ssl  12:15   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      944698  0.0  2.7 555448 109340 ?       Ssl  12:15   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 698.0764146076953,
+  "balance": 685.5110354696952,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779630553",
@@ -65,6 +64,18 @@ root      944698  0.0  1.4 324584 56432 ?        Ssl  12:15   0:01 /opt/ensemble
       "opened_at": "2026-05-25T12:04:25.035975",
       "cost": 11.318919359999999,
       "notional": 56.5945968,
+      "leverage": 5
+    },
+    "TONUSDT": {
+      "id": "PAPER_TONUSDT_1779715044",
+      "symbol": "TONUSDT",
+      "side": "long",
+      "entry_price": 1.8089,
+      "qty": 34.7321,
+      "confidence": 68,
+      "opened_at": "2026-05-25T13:17:24.391241",
+      "cost": 12.565379138,
+      "notional": 62.82689569,
       "leverage": 5
     }
   },
@@ -1024,29 +1035,6 @@ root      944698  0.0  1.4 324584 56432 ?        Ssl  12:15   0:01 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 12:10:00,007 [INFO] openai._base_client: Retrying request to /chat/completions in 0.870751 seconds
-2026-05-25 12:10:34,363 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 12:10:34,365 [INFO] main: INJUSDT | Bull:long(72%) Bear:flat(45%)
-2026-05-25 12:10:40,239 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 12:10:40,240 [INFO] main: INJUSDT | Judge:LONG conf=72% size=9.0%
-2026-05-25 12:10:40,240 [INFO] main: INJUSDT | RL adj=82.6%
-2026-05-25 12:10:40,240 [INFO] main: INJUSDT | gate PASS (Judge 72/70 RL 82.6/65.18 slack=±3)
-2026-05-25 12:10:40,792 [INFO] positions: [PAPER] Opening LONG INJUSDT notional=$62.7 conf=72%
-2026-05-25 12:10:40,796 [INFO] paper_trading: [PAPER] ОТКРЫТА LONG INJUSDT @ 5.4840 qty=11.4247 notional=62.65 margin=12.53 x5 | Баланс: 683.62
-2026-05-25 12:10:42,799 [INFO] main: Max positions
-2026-05-25 12:10:42,799 [INFO] main: Next scan in 60min (weekday-active)
-2026-05-25 12:15:27,483 [INFO] main: Shutting down...
-2026-05-25 12:15:27,483 [INFO] positions: Position monitor stopped
-2026-05-25 12:15:27,492 [INFO] http_pool: Shared aiohttp.ClientSession closed
-2026-05-25 12:15:27,969 [INFO] memory: Memory loaded: 76 trades
-2026-05-25 12:15:27,969 [INFO] rl: RL weights loaded: bull=0.981 bear=1.001 judge=1.019 episodes=18
-2026-05-25 12:15:27,969 [INFO] positions: Restored 5 positions from paper_state (3L/2S)
-2026-05-25 12:15:27,969 [INFO] main: === Adversarial Trading Agent started ===
-2026-05-25 12:15:27,970 [INFO] main: Bull: race(Kimi x1, Groq x2) → Haiku fb | Bear: race(Groq x2, Kimi x1) → Haiku fb | Judge: Haiku (decide) + Groq Llama (exit/dir/reflect)
-2026-05-25 12:15:28,636 [INFO] main: Symbols: 30
-2026-05-25 12:15:28,637 [INFO] main: Scanning 27 symbols...
-2026-05-25 12:15:28,637 [INFO] main: Max positions
-2026-05-25 12:15:28,637 [INFO] main: Next scan in 60min (weekday-active)
 2026-05-25 12:15:28,637 [INFO] positions: Position monitor started
 2026-05-25 12:15:30,033 [INFO] http_pool: Shared aiohttp.ClientSession created
 2026-05-25 12:40:39,054 [INFO] positions: TAKE-PROFIT INJUSDT long PnL:3.08%
@@ -1054,6 +1042,29 @@ root      944698  0.0  1.4 324584 56432 ?        Ssl  12:15   0:01 /opt/ensemble
 2026-05-25 12:40:39,426 [INFO] positions: OK INJUSDT long PnL:3.08% reason:take_profit
 2026-05-25 12:40:39,426 [INFO] positions: Lessons: The trade was successful with a 3.08% profit, validating the BULL conviction and trending_up regime. Key factors included a strong momentum and volume ratio, bullish MACD, and negative funding signaling crowded shorts. The combination of a trending_up regime, BULL conviction, and negative funding with RSI between 60-75 can be a repeatable long continuation signal.
 2026-05-25 12:40:39,426 [INFO] rl: RL learned from long INJUSDT: profit 3.08% | weights bull=0.987 bear=0.992 judge=1.021 threshold=65.16
+2026-05-25 13:15:28,639 [INFO] main: Scanning 28 symbols...
+2026-05-25 13:15:29,381 [INFO] main: Symbols: 30
+2026-05-25 13:15:31,449 [INFO] main: GENIUSUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-25 13:15:37,223 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 13:15:37,236 [INFO] main: GENIUSUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-25 13:15:37,236 [INFO] main: GENIUSUSDT | RL adj=80.0%
+2026-05-25 13:15:59,174 [WARNING] agents: Judge-Groq all failed: openai/gpt-oss-120b empty
+2026-05-25 13:16:01,356 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 13:16:10,718 [INFO] openai._base_client: Retrying request to /chat/completions in 0.417357 seconds
+2026-05-25 13:16:10,719 [INFO] openai._base_client: Retrying request to /chat/completions in 0.483231 seconds
+2026-05-25 13:16:41,174 [INFO] openai._base_client: Retrying request to /chat/completions in 0.970762 seconds
+2026-05-25 13:16:41,239 [INFO] openai._base_client: Retrying request to /chat/completions in 0.791873 seconds
+2026-05-25 13:17:15,094 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 13:17:17,904 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 13:17:17,905 [INFO] main: TONUSDT | Bull:long(62%) Bear:flat(45%)
+2026-05-25 13:17:23,794 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 13:17:23,795 [INFO] main: TONUSDT | Judge:LONG conf=68% size=9.0%
+2026-05-25 13:17:23,795 [INFO] main: TONUSDT | RL adj=77.2%
+2026-05-25 13:17:23,795 [INFO] main: TONUSDT | gate PASS (Judge 68/70 RL 77.2/65.16 slack=±3)
+2026-05-25 13:17:24,390 [INFO] positions: [PAPER] Opening LONG TONUSDT notional=$62.8 conf=68%
+2026-05-25 13:17:24,394 [INFO] paper_trading: [PAPER] ОТКРЫТА LONG TONUSDT @ 1.8089 qty=34.7321 notional=62.83 margin=12.57 x5 | Баланс: 685.51
+2026-05-25 13:17:26,397 [INFO] main: Max positions
+2026-05-25 13:17:26,397 [INFO] main: Next scan in 60min (weekday-active)
 ```
 
 ## Disk
@@ -1071,7 +1082,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.3Gi       146Mi       4.8Mi       2.6Gi       2.5Gi
+Mem:           3.7Gi       1.3Gi       182Mi       4.8Mi       2.5Gi       2.4Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
