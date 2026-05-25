@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 10:40:01 UTC
+Generated: 2026-05-25 10:50:01 UTC
 
 ## Services
 ```
@@ -17,7 +17,7 @@ root      915939  0.0  2.2 649648 88256 ?        Ssl  May23   1:20 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 714.6485931836952,
+  "balance": 721.8998060676952,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779630553",
@@ -41,18 +41,6 @@ root      915939  0.0  2.2 649648 88256 ?        Ssl  May23   1:20 /opt/ensemble
       "opened_at": "2026-05-25T08:18:32.165573",
       "cost": 11.515060578,
       "notional": 57.57530289,
-      "leverage": 5
-    },
-    "NEARUSDT": {
-      "id": "PAPER_NEARUSDT_1779700951",
-      "symbol": "NEARUSDT",
-      "side": "short",
-      "entry_price": 2.3822,
-      "qty": 18.0226,
-      "confidence": 68,
-      "opened_at": "2026-05-25T09:22:31.116832",
-      "cost": 8.586687544,
-      "notional": 42.93343772,
       "leverage": 5
     }
   },
@@ -968,19 +956,32 @@ root      915939  0.0  2.2 649648 88256 ?        Ssl  May23   1:20 /opt/ensemble
       "closed_at": "2026-05-25T09:34:28.820780",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_NEARUSDT_1779700951",
+      "symbol": "NEARUSDT",
+      "side": "short",
+      "entry_price": 2.3822,
+      "qty": 18.0226,
+      "confidence": 68,
+      "opened_at": "2026-05-25T09:22:31.116832",
+      "cost": 8.586687544,
+      "notional": 42.93343772,
+      "leverage": 5,
+      "exit_price": 2.4563,
+      "pnl_pct": -3.11,
+      "pnl_usdt": -1.34,
+      "closed_at": "2026-05-25T10:49:36.594349",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -4.56004465630472
+  "total_pnl": -5.895519316304721
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 10:28:58,450 [INFO] main: SOLUSDT | RL adj=70.0%
-2026-05-25 10:29:02,371 [INFO] main: NILUSDT | Bull:long(80%) Bear:short(80%)
-2026-05-25 10:29:08,318 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 10:29:08,319 [INFO] main: NILUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-25 10:29:08,319 [INFO] main: NILUSDT | RL adj=80.0%
 2026-05-25 10:29:12,262 [INFO] main: INJUSDT | Bull:long(70%) Bear:short(70%)
 2026-05-25 10:29:17,369 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-25 10:29:17,371 [INFO] main: INJUSDT | Judge:HOLD conf=70% size=0.0%
@@ -1006,12 +1007,17 @@ root      915939  0.0  2.2 649648 88256 ?        Ssl  May23   1:20 /opt/ensemble
 2026-05-25 10:30:08,144 [INFO] main: ETHUSDT | Judge:HOLD conf=70% size=0.0%
 2026-05-25 10:30:08,144 [INFO] main: ETHUSDT | RL adj=70.0%
 2026-05-25 10:30:10,146 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-25 10:49:36,593 [INFO] positions: STOP-LOSS NEARUSDT short PnL:-3.11%
+2026-05-25 10:49:36,600 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT NEARUSDT @ 2.4563 PnL: -3.11% (-1.34 USDT) | Баланс: 721.90
+2026-05-25 10:49:37,018 [INFO] positions: LOSS NEARUSDT short PnL:-3.11% reason:stop_loss
+2026-05-25 10:49:37,018 [INFO] positions: Lessons: The trade was closed at a loss of 3.11% due to hitting the stop loss. The initial analysis correctly identified a strong bearish trend but was unable to prevent a loss. The key takeaway is that a high conviction bearish view was not enough to overcome the market's movement, highlighting the importance of risk management and stop loss placement.
+2026-05-25 10:49:37,020 [INFO] rl: RL learned from short NEARUSDT: loss -3.11% | weights bull=0.981 bear=1.001 judge=1.019 threshold=65.18
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  880K  381M   1% /run
+tmpfs           382M  872K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  8.1G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -1023,7 +1029,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.1Gi       217Mi       4.8Mi       2.7Gi       2.6Gi
+Mem:           3.7Gi       610Mi       724Mi       4.8Mi       2.7Gi       3.1Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
