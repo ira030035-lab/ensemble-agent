@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 17:40:01 UTC
+Generated: 2026-05-25 17:50:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: inactive
 ```
 root      946105  0.0  0.0   2800  1916 ?        Ss   13:50   0:00 sh -c while true; do ./venv/bin/python dashboard_api.py >> dashboard_api.log 2>&1; echo "[RESTART] $(date)" >> dashboard_api.log; sleep 2; done
 root      946106  0.1  1.2 134084 48844 ?        Sl   13:50   0:22 ./venv/bin/python dashboard_api.py
-root      949381  0.3  3.1 686824 124132 ?       Sl   17:19   0:04 python3 main.py
+root      949381  0.2  3.1 686824 124280 ?       Sl   17:19   0:04 python3 main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 679.7976826956951,
+  "balance": 690.0144553176951,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779630553",
@@ -54,18 +54,6 @@ root      949381  0.3  3.1 686824 124132 ?       Sl   17:19   0:04 python3 main.
       "opened_at": "2026-05-25T15:36:39.410029",
       "cost": 12.853666379999998,
       "notional": 64.26833189999999,
-      "leverage": 5
-    },
-    "GRASSUSDT": {
-      "id": "PAPER_GRASSUSDT_1779726006",
-      "symbol": "GRASSUSDT",
-      "side": "long",
-      "entry_price": 0.5362,
-      "qty": 91.1073,
-      "confidence": 68,
-      "opened_at": "2026-05-25T16:20:06.383763",
-      "cost": 9.770346852,
-      "notional": 48.85173426,
       "leverage": 5
     },
     "HYPEUSDT": {
@@ -1113,19 +1101,32 @@ root      949381  0.3  3.1 686824 124132 ?       Sl   17:19   0:04 python3 main.
       "closed_at": "2026-05-25T16:33:03.381026",
       "reason": "judge_exit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_GRASSUSDT_1779726006",
+      "symbol": "GRASSUSDT",
+      "side": "long",
+      "entry_price": 0.5362,
+      "qty": 91.1073,
+      "confidence": 68,
+      "opened_at": "2026-05-25T16:20:06.383763",
+      "cost": 9.770346852,
+      "notional": 48.85173426,
+      "leverage": 5,
+      "exit_price": 0.5411,
+      "pnl_pct": 4.57,
+      "pnl_usdt": 0.45,
+      "closed_at": "2026-05-25T17:48:34.001438",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -4.839407776304725
+  "total_pnl": -4.392982006304724
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 17:24:02,792 [INFO] main: XANUSDT | Judge:HOLD conf=65% size=0.0%
-2026-05-25 17:24:02,792 [INFO] main: XANUSDT | RL adj=65.0%
-2026-05-25 17:24:10,362 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 17:24:10,777 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 17:24:10,778 [INFO] main: BILLUSDT | Bull:long(55%) Bear:short(75%)
 2026-05-25 17:24:16,243 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-25 17:24:16,244 [INFO] main: BILLUSDT | Judge:HOLD conf=75% size=0.0%
 2026-05-25 17:24:16,244 [INFO] main: BILLUSDT | RL adj=75.0%
@@ -1151,6 +1152,11 @@ root      949381  0.3  3.1 686824 124132 ?       Sl   17:19   0:04 python3 main.
 2026-05-25 17:24:55,152 [INFO] main: Next scan in 60min (weekday-active)
 2026-05-25 17:28:59,238 [WARNING] bitget: Bitget GET /api/v2/mix/market/ticker retry 1/3 after  — sleep 0.5s
 2026-05-25 17:29:00,182 [INFO] bitget: Bitget recovered after 1 failures
+2026-05-25 17:48:34,000 [INFO] positions: TRAILING-STOP GRASSUSDT long peak:2.16% now:0.91%
+2026-05-25 17:48:34,004 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG GRASSUSDT @ 0.5411 PnL: 4.57% (+0.45 USDT) | Баланс: 690.01
+2026-05-25 17:48:34,383 [INFO] positions: OK GRASSUSDT long PnL:0.91% reason:trailing_stop
+2026-05-25 17:48:34,384 [INFO] positions: Lessons: A narrow BULL conviction edge of 5 points was sufficient to yield a profitable trade, supported by a trending_up regime and bullish MACD. The modest position size of 0.07 helped to mitigate risks due to low volume and a narrow conviction spread. This trade reinforces the idea that a clear edge, even if narrow, can be profitable in trending markets with strong technical indicators.
+2026-05-25 17:48:34,384 [INFO] rl: RL learned from long GRASSUSDT: profit 0.91% | weights bull=1.003 bear=0.972 judge=1.026 threshold=65.09
 ```
 
 ## Disk
@@ -1168,7 +1174,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       920Mi       642Mi       4.8Mi       2.5Gi       2.8Gi
+Mem:           3.7Gi       836Mi       725Mi       4.8Mi       2.5Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
