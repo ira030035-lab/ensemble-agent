@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 09:30:01 UTC
+Generated: 2026-05-25 09:40:01 UTC
 
 ## Services
 ```
@@ -17,20 +17,8 @@ root      915939  0.0  2.2 647948 86684 ?        Ssl  May23   1:16 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 706.9718091836952,
+  "balance": 714.6485931836952,
   "positions": {
-    "BTCUSDT": {
-      "id": "PAPER_BTCUSDT_1779497565",
-      "symbol": "BTCUSDT",
-      "side": "short",
-      "entry_price": 75334.7,
-      "qty": 0.0006,
-      "confidence": 72,
-      "opened_at": "2026-05-23T00:52:45.625592",
-      "cost": 9.040163999999999,
-      "notional": 45.20081999999999,
-      "leverage": 5
-    },
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779630553",
       "symbol": "BNBUSDT",
@@ -962,19 +950,32 @@ root      915939  0.0  2.2 647948 86684 ?        Ssl  May23   1:16 /opt/ensemble
       "closed_at": "2026-05-25T08:45:59.705335",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_BTCUSDT_1779497565",
+      "symbol": "BTCUSDT",
+      "side": "short",
+      "entry_price": 75334.7,
+      "qty": 0.0006,
+      "confidence": 72,
+      "opened_at": "2026-05-23T00:52:45.625592",
+      "cost": 9.040163999999999,
+      "notional": 45.20081999999999,
+      "leverage": 5,
+      "exit_price": 77607.0,
+      "pnl_pct": -3.02,
+      "pnl_usdt": -1.36,
+      "closed_at": "2026-05-25T09:34:28.820780",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -3.196664656304719
+  "total_pnl": -4.56004465630472
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 09:24:14,332 [INFO] main: ONDOUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-25 09:24:14,332 [INFO] main: ONDOUSDT | RL adj=80.0%
-2026-05-25 09:24:18,260 [INFO] main: SUIUSDT | Bull:long(45%) Bear:short(80%)
-2026-05-25 09:24:24,180 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 09:24:24,181 [INFO] main: SUIUSDT | Judge:HOLD conf=80% size=0.0%
 2026-05-25 09:24:24,181 [INFO] main: SUIUSDT | RL adj=80.0%
 2026-05-25 09:24:27,898 [INFO] main: TONUSDT | Bull:long(45%) Bear:short(80%)
 2026-05-25 09:24:32,617 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -1000,6 +1001,11 @@ root      915939  0.0  2.2 647948 86684 ?        Ssl  May23   1:16 /opt/ensemble
 2026-05-25 09:25:09,623 [INFO] main: WLDUSDT | Judge:HOLD conf=80% size=0.0%
 2026-05-25 09:25:09,624 [INFO] main: WLDUSDT | RL adj=80.0%
 2026-05-25 09:25:11,626 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-25 09:34:28,820 [INFO] positions: STOP-LOSS BTCUSDT short PnL:-3.02%
+2026-05-25 09:34:28,825 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT BTCUSDT @ 77607.0000 PnL: -3.02% (-1.36 USDT) | Баланс: 714.65
+2026-05-25 09:34:29,220 [INFO] positions: LOSS BTCUSDT short PnL:-3.02% reason:stop_loss
+2026-05-25 09:34:29,220 [INFO] positions: Lessons: Tight stops are essential in low-volume trending setups to mitigate MACD divergence risk and RSI exhaustion whipsaws. Conservative position sizing can help limit losses but may not prevent them entirely. The memory of this trade should emphasize the importance of strict risk management in trending_down regimes with low volume and deeply oversold conditions.
+2026-05-25 09:34:29,222 [INFO] rl: RL learned from short BTCUSDT: loss -3.02% | weights bull=0.975 bear=1.007 judge=1.018 threshold=65.13
 ```
 
 ## Disk
@@ -1017,7 +1023,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       604Mi       769Mi       4.8Mi       2.7Gi       3.1Gi
+Mem:           3.7Gi       600Mi       772Mi       4.8Mi       2.7Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
