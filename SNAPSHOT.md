@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-25 17:00:01 UTC
+Generated: 2026-05-25 18:00:01 UTC
 
 ## agents.py
 ```python
@@ -2260,8 +2260,15 @@ class PositionManager:
                 log.error("Monitor: "+str(e))
                 log.error(traceback.format_exc())
             if stop_event is not None:
-                try: await asyncio.wait_for(stop_event.wait(),timeout=30); log.info("Position monitor stopped"); return
-                except asyncio.TimeoutError: pass
+                try:
+                    await asyncio.wait_for(stop_event.wait(),timeout=30)
+                    log.info("Position monitor stopped")
+                    return
+                except asyncio.TimeoutError:
+                    pass
+                except Exception as e:
+                    log.error("Monitor wait error: "+str(e))
+                    return
             else:
                 await asyncio.sleep(30)
     async def _finalize(self,trade,reason):
@@ -2569,8 +2576,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)-8s | %(message)s",
     handlers=[
-        logging.FileHandler("simulator.log", encoding="utf-8"),
-        logging.StreamHandler(sys.stdout)
+        logging.FileHandler("simulator.log", encoding="utf-8")
     ]
 )
 logger = logging.getLogger("simulator")
