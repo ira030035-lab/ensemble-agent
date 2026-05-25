@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-25 13:00:01 UTC
+Generated: 2026-05-25 14:00:01 UTC
 
 ## agents.py
 ```python
@@ -405,7 +405,7 @@ class KimiJudge(Judge):
             resp = await client.chat.completions.create(
                 model=self._kimi_model,
                 messages=[{"role": "user", "content": prompt}],
-                temperature=0.3,
+                temperature=1.0,
                 max_tokens=400,
                 timeout=30
             )
@@ -1028,6 +1028,41 @@ async def handle_api(request):
                         headers={"Access-Control-Allow-Origin": "*"})
 
 
+async def handle_upcoming(request):
+    """Возвращает предстоящие сделки: сигналы Judge LONG/SHORT, которые ещё не открыты."""
+    data = parse_log()
+    state = _load_state()
+    open_syms = set(state.get("positions", {}).keys())
+
+    # Также проверяем лог на недавние открытия
+    recent_opens = set()
+    try:
+        with open(LOG_FILE, "r") as f:
+            lines = f.readlines()[-500:]
+        for line in lines:
+            m = re.search(r"\[PAPER\] ОТКРЫТА (LONG|SHORT) (\w+)", line)
+            if m:
+                recent_opens.add(m.group(2))
+    except Exception:
+        pass
+
+    upcoming = []
+    seen = set()
+    for d in data.get("decisions", []):
+        sym = d.get("symbol", "")
+        action = d.get("judge_action", "HOLD")
+        if action in ("LONG", "SHORT") and sym not in open_syms and sym not in recent_opens and sym not in seen:
+            seen.add(sym)
+            upcoming.append(d)
+
+    upcoming.sort(key=lambda x: x.get("judge_conf", 0), reverse=True)
+    return web.Response(
+        text=json.dumps({"upcoming": upcoming[:20], "timestamp": datetime.now().isoformat()}, ensure_ascii=False),
+        content_type="application/json",
+        headers={"Access-Control-Allow-Origin": "*"}
+    )
+
+
 async def handle_options(request):
     return web.Response(headers={"Access-Control-Allow-Origin": "*",
                                  "Access-Control-Allow-Methods": "GET",
@@ -1096,9 +1131,11 @@ async def handle_paper(request):
 app = web.Application()
 app.router.add_get("/ensemble-api", handle_api)
 app.router.add_get("/paper-api", handle_paper)
+app.router.add_get("/upcoming-api", handle_upcoming)
 app.router.add_get("/", handle_html)
 app.router.add_options("/ensemble-api", handle_options)
 app.router.add_options("/paper-api", handle_options)
+app.router.add_options("/upcoming-api", handle_options)
 
 if __name__ == "__main__":
     print("Ensemble API on port 8765")

@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 13:50:01 UTC
+Generated: 2026-05-25 14:00:01 UTC
 
 ## Services
 ```
@@ -11,6 +11,8 @@ ensemble-dashboard.service: inactive
 ## Processes
 ```
 root      944698  0.0  2.7 555448 109356 ?       Ssl  12:15   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      946105  0.0  0.0   2800  1916 ?        Ss   13:50   0:00 sh -c while true; do ./venv/bin/python dashboard_api.py >> dashboard_api.log 2>&1; echo "[RESTART] $(date)" >> dashboard_api.log; sleep 2; done
+root      946106  0.2  1.2 133628 48124 ?        Sl   13:50   0:01 ./venv/bin/python dashboard_api.py
 ```
 
 ## Paper state
