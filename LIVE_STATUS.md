@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 16:10:01 UTC
+Generated: 2026-05-25 16:20:01 UTC
 
 ## Services
 ```
@@ -11,13 +11,15 @@ ensemble-dashboard.service: inactive
 ## Processes
 ```
 root      946105  0.0  0.0   2800  1916 ?        Ss   13:50   0:00 sh -c while true; do ./venv/bin/python dashboard_api.py >> dashboard_api.log 2>&1; echo "[RESTART] $(date)" >> dashboard_api.log; sleep 2; done
-root      946106  0.2  1.2 133608 48088 ?        Sl   13:50   0:17 ./venv/bin/python dashboard_api.py
+root      946106  0.2  1.2 133328 47804 ?        Sl   13:50   0:18 ./venv/bin/python dashboard_api.py
+root      948217  0.0  0.0   7340  2304 ?        S    16:19   0:00 /bin/bash -c cd '/root' && cd /opt/ensemble-agent && kill 948201 2>/dev/null; sleep 1 source venv/bin/activate && python3 main.py > ensemble.log 2>&1 & echo "PID: $!" sleep 5 tail -n 10 ensemble.log
+root      948219  4.2  2.7 376292 108616 ?       Sl   16:19   0:01 python3 main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 691.4252657316952,
+  "balance": 697.8822806676951,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779630553",
@@ -65,18 +67,6 @@ root      946106  0.2  1.2 133608 48088 ?        Sl   13:50   0:17 ./venv/bin/py
       "opened_at": "2026-05-25T15:36:39.410029",
       "cost": 12.853666379999998,
       "notional": 64.26833189999999,
-      "leverage": 5
-    },
-    "TONUSDT": {
-      "id": "PAPER_TONUSDT_1779724021",
-      "symbol": "TONUSDT",
-      "side": "short",
-      "entry_price": 1.9282,
-      "qty": 25.4574,
-      "confidence": 72,
-      "opened_at": "2026-05-25T15:47:01.855702",
-      "cost": 9.817391736,
-      "notional": 49.086958679999995,
       "leverage": 5
     }
   },
@@ -1064,26 +1054,55 @@ root      946106  0.2  1.2 133608 48088 ?        Sl   13:50   0:17 ./venv/bin/py
       "closed_at": "2026-05-25T14:45:40.806585",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_TONUSDT_1779724021",
+      "symbol": "TONUSDT",
+      "side": "short",
+      "entry_price": 1.9282,
+      "qty": 25.4574,
+      "confidence": 72,
+      "opened_at": "2026-05-25T15:47:01.855702",
+      "cost": 9.817391736,
+      "notional": 49.086958679999995,
+      "leverage": 5,
+      "exit_price": 2.0602,
+      "pnl_pct": -34.23,
+      "pnl_usdt": -3.36,
+      "closed_at": "2026-05-25T16:18:19.537185",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -2.3800821763047177
+  "total_pnl": -5.740458976304721
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 15:58:16,327 [INFO] memory: Memory loaded: 79 trades
-2026-05-25 15:58:16,327 [INFO] rl: RL weights loaded: bull=0.992 bear=0.986 judge=1.023 episodes=21
-2026-05-25 15:58:16,330 [INFO] positions: Restored 5 positions from paper_state (2L/3S)
-2026-05-25 15:58:16,330 [INFO] main: === Adversarial Trading Agent started ===
-2026-05-25 15:58:16,330 [INFO] main: Bull: race(Kimi x1, Groq x2) → Haiku fb | Bear: race(Groq x2, Kimi x1) → Haiku fb | Judge: Haiku (decide) + Groq Llama (exit/dir/reflect)
-2026-05-25 15:58:16,980 [INFO] main: Symbols: 30
-2026-05-25 15:58:16,980 [INFO] main: Scanning 26 symbols...
-2026-05-25 15:58:16,980 [INFO] main: Max positions
-2026-05-25 15:58:16,980 [INFO] main: Next scan in 60min (weekday-active)
-2026-05-25 15:58:16,980 [INFO] positions: Position monitor started
-2026-05-25 15:59:14,067 [INFO] main: Shutting down...
-2026-05-25 15:59:14,068 [INFO] positions: Position monitor stopped
+2026-05-25 16:19:26,581 [INFO] memory: Memory loaded: 79 trades
+2026-05-25 16:19:26,581 [INFO] rl: RL weights loaded: bull=1.005 bear=0.971 judge=1.024 episodes=22
+2026-05-25 16:19:26,581 [INFO] positions: Restored 4 positions from paper_state (2L/2S)
+2026-05-25 16:19:26,582 [INFO] main: === Adversarial Trading Agent started ===
+2026-05-25 16:19:26,582 [INFO] main: Bull: race(Kimi x1, Groq x2) → Haiku fb | Bear: race(Groq x2, Kimi x1) → Haiku fb | Judge: Haiku (decide) + Groq Llama (exit/dir/reflect)
+2026-05-25 16:19:27,270 [INFO] main: Symbols: 30
+2026-05-25 16:19:27,271 [INFO] main: Scanning 27 symbols...
+2026-05-25 16:19:27,271 [INFO] positions: Position monitor started
+2026-05-25 16:19:28,387 [INFO] http_pool: Shared aiohttp.ClientSession created
+2026-05-25 16:19:32,282 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 16:19:35,493 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 16:19:35,495 [INFO] main: WLDUSDT | Bull:long(65%) Bear:short(60%)
+2026-05-25 16:19:40,792 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 16:19:40,805 [INFO] main: WLDUSDT | Judge:LONG conf=62% size=6.0%
+2026-05-25 16:19:40,805 [INFO] main: WLDUSDT | RL adj=63.1%
+2026-05-25 16:19:47,303 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 16:19:47,304 [INFO] main: BILLUSDT | Bull:long(50%) Bear:short(82%)
+2026-05-25 16:19:51,899 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 16:19:51,900 [INFO] main: BILLUSDT | Judge:HOLD conf=82% size=0.0%
+2026-05-25 16:19:51,900 [INFO] main: BILLUSDT | RL adj=82.0%
+2026-05-25 16:19:59,538 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 16:20:00,494 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 16:20:00,496 [INFO] main: GRASSUSDT | Bull:long(70%) Bear:short(65%)
 ```
 
 ## Disk
@@ -1101,7 +1120,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.0Gi       579Mi       4.8Mi       2.4Gi       2.7Gi
+Mem:           3.7Gi       932Mi       683Mi       4.8Mi       2.4Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
