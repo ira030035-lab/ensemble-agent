@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 05:00:01 UTC
+Generated: 2026-05-25 05:10:01 UTC
 
 ## Services
 ```
@@ -17,7 +17,7 @@ root      915939  0.0  2.2 649760 88160 ?        Ssl  May23   1:04 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 721.1018294596952,
+  "balance": 728.4323683956952,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1779497565",
@@ -41,18 +41,6 @@ root      915939  0.0  2.2 649760 88160 ?        Ssl  May23   1:04 /opt/ensemble
       "opened_at": "2026-05-24T13:49:13.547795",
       "cost": 11.549037600000002,
       "notional": 57.745188000000006,
-      "leverage": 5
-    },
-    "TONUSDT": {
-      "id": "PAPER_TONUSDT_1779652593",
-      "symbol": "TONUSDT",
-      "side": "short",
-      "entry_price": 1.7513,
-      "qty": 24.7436,
-      "confidence": 72,
-      "opened_at": "2026-05-24T19:56:33.499667",
-      "cost": 8.666693336,
-      "notional": 43.33346668,
       "leverage": 5
     }
   },
@@ -914,19 +902,32 @@ root      915939  0.0  2.2 649760 88160 ?        Ssl  May23   1:04 /opt/ensemble
       "closed_at": "2026-05-24T21:44:25.638148",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_TONUSDT_1779652593",
+      "symbol": "TONUSDT",
+      "side": "short",
+      "entry_price": 1.7513,
+      "qty": 24.7436,
+      "confidence": 72,
+      "opened_at": "2026-05-24T19:56:33.499667",
+      "cost": 8.666693336,
+      "notional": 43.33346668,
+      "leverage": 5,
+      "exit_price": 1.8053,
+      "pnl_pct": -3.08,
+      "pnl_usdt": -1.34,
+      "closed_at": "2026-05-25T05:05:12.418418",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -0.5016991663047243
+  "total_pnl": -1.83785356630472
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 04:11:01,714 [INFO] main: ADAUSDT | Judge:SHORT conf=72% size=8.0%
-2026-05-25 04:11:01,714 [INFO] main: ADAUSDT | RL adj=77.9%
-2026-05-25 04:11:01,714 [INFO] main: ADAUSDT | gate PASS (Judge 72/70 RL 77.9/64.98 slack=±3)
-2026-05-25 04:11:01,714 [INFO] positions: Same-side cap: skip SHORT ADAUSDT (3/3 already short)
-2026-05-25 04:11:05,465 [INFO] main: PLUMEUSDT | Bull:long(60%) Bear:short(70%)
 2026-05-25 04:11:11,372 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-25 04:11:11,373 [INFO] main: PLUMEUSDT | Judge:HOLD conf=70% size=0.0%
 2026-05-25 04:11:11,373 [INFO] main: PLUMEUSDT | RL adj=70.0%
@@ -952,6 +953,11 @@ root      915939  0.0  2.2 649760 88160 ?        Ssl  May23   1:04 /opt/ensemble
 2026-05-25 04:11:57,340 [INFO] main: BILLUSDT | RL adj=72.0%
 2026-05-25 04:11:59,342 [INFO] main: Next scan in 120min (weekday-quiet)
 2026-05-25 04:19:44,504 [INFO] main: Symbols: 30
+2026-05-25 05:05:12,418 [INFO] positions: STOP-LOSS TONUSDT short PnL:-3.08%
+2026-05-25 05:05:12,420 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT TONUSDT @ 1.8053 PnL: -3.08% (-1.34 USDT) | Баланс: 728.43
+2026-05-25 05:05:12,691 [INFO] positions: LOSS TONUSDT short PnL:-3.08% reason:stop_loss
+2026-05-25 05:05:12,691 [INFO] positions: Lessons: High conviction shorts in a trending_down regime require discipline to hold through noise and avoid premature exits. Conservative sizing is key to managing risk in these trades. This trade's outcome serves as a reminder to stick to the original plan and not get shaken out by short-term fluctuations.
+2026-05-25 05:05:12,692 [INFO] rl: RL learned from short TONUSDT: loss -3.08% | weights bull=0.963 bear=1.020 judge=1.017 threshold=65.03
 ```
 
 ## Disk
