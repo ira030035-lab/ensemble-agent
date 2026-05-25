@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-25 19:00:01 UTC
+Generated: 2026-05-25 20:00:01 UTC
 
 ## agents.py
 ```python
@@ -866,6 +866,11 @@ class Config:
     TRAIL_ARM_PCT = 1.5
     TRAIL_GIVEBACK_PCT = 1.0
     EMERGENCY_STOP_PCT = -15.0
+    POSITION_SIZE_FIXED = 100.0  # $100 fixed per trade (optimized mode)
+    MIN_RR = 1.2
+    COOLDOWN_HOURS = 6.0
+    MAX_HOLD_HOURS = 24.0
+    VOLATILITY_FILTER_ATR_PCT = 0.003
     PAPER_MODE = True
     PAPER_BALANCE = 1000.0
     LEVERAGE = 5
@@ -1368,8 +1373,8 @@ from config import Config
 # Override config for Kimi A/B test BEFORE any module instantiates Config()
 Config.KIMI_JUDGE_ENABLED = True
 Config.MEMORY_FILE = "/opt/ensemble-agent/memory_kimi.json"
-Config.TOP_N_SYMBOLS = 10          # fewer symbols = less API load
-Config.MAX_POSITIONS = 5
+Config.TOP_N_SYMBOLS = 15          # more symbols = less idle capital
+Config.MAX_POSITIONS = 8
 
 from bitget_client import BitgetClient
 from data_engine import DataEngine
@@ -2139,7 +2144,8 @@ class PositionManager:
                     return None
         if self.cfg.PAPER_MODE:
             balance=ps["balance"]
-            size=balance*decision.position_size_pct
+            fixed_size=getattr(self.cfg,"POSITION_SIZE_FIXED",100.0)
+            size=min(fixed_size, balance*0.5)  # $100 fixed, max 50% of balance
             price=snapshot.price
             qty=round(size/price,4) if price>0 else 0
             leverage=getattr(self.cfg,"LEVERAGE",5)
@@ -2148,7 +2154,8 @@ class PositionManager:
             if not trade_id: return None
         else:
             balance=await self.bitget.get_account_balance()
-            size=balance*decision.position_size_pct
+            fixed_size=getattr(self.cfg,"POSITION_SIZE_FIXED",100.0)
+            size=min(fixed_size, balance*0.5)
             log.info("Opening "+decision.action.upper()+" "+symbol+" $"+str(round(size,1))+" conf="+str(decision.confidence)+"%")
             result=await self.bitget.place_order(symbol,decision.action,size)
             if result.get("code")!="00000": log.error("Order failed: "+str(result)); return None
@@ -2482,14 +2489,11 @@ import logging
 import hashlib
 import random
 from dataclasses import dataclass, field, asdict
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional, Tuple, Any
 from pathlib import Path
 from collections import defaultdict, Counter
 import traceback
-
-import hashlib
-import random
 
 import numpy as np
 import pandas as pd
@@ -2518,7 +2522,7 @@ class SimConfig:
     leverage: float = 5.0
 
     # --- MODE: "live_mirror" | "optimized" ---
-    mode: str = "optimized"
+    mode: str = "live_mirror"
 
     # live_mirror: fixed SL/TP like live system
     live_mirror_sl_pct: float = 0.03      # 3% unleveraged
@@ -2530,11 +2534,11 @@ class SimConfig:
     base_sl_pct: float = 0.03
     base_tp_pct: float = 0.03
     min_sl_pct: float = 0.01       # minimum 1% SL (prevents 0.2% noise stops)
-    min_rr: float = 1.5
+    min_rr: float = 1.2
     optimized_trail_arm_pct: float = 0.75   # 75% of TP reached
     optimized_trail_sl_buffer_pct: float = 0.005  # move SL to entry + 0.5%
-    max_hold_hours: float = 48.0
-    volatility_filter_atr_pct: float = 0.005  # skip if ATR < 0.5% of price
+    max_hold_hours: float = 24.0
+    volatility_filter_atr_pct: float = 0.003  # skip if ATR < 0.3% of price
 
     # Unified Kimi API
     kimi_api_key: str = field(default_factory=lambda: os.getenv("KIMI_API_KEY", ""))
@@ -2544,7 +2548,7 @@ class SimConfig:
     # Filters
     extreme_filter_long_threshold: float = 0.85
     extreme_filter_short_threshold: float = 0.15
-    cooldown_hours_after_2_sl: float = 12.0
+    cooldown_hours_after_2_sl: float = 6.0
     max_daily_short_ratio: float = 0.80
 
     # Performance
@@ -2652,7 +2656,7 @@ class BinanceDataLoader:
         interval: str,
         months: int
     ) -> pd.DataFrame:
-        end_dt = datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0)
+        end_dt = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
         start_dt = end_dt - timedelta(days=30*months)
         start_ms = int(start_dt.timestamp() * 1000)
         end_ms = int(end_dt.timestamp() * 1000)
@@ -3271,14 +3275,16 @@ class VirtualPosition:
             if low <= self.liq_price:
                 return True, "liquidation", self.liq_price
             if low <= self.sl_price:
-                return True, "stop_loss", self.sl_price
+                reason = "trailing_stop" if self._sl_moved else "stop_loss"
+                return True, reason, self.sl_price
             if high >= self.tp_price:
                 return True, "take_profit", self.tp_price
         else:
             if high >= self.liq_price:
                 return True, "liquidation", self.liq_price
             if high >= self.sl_price:
-                return True, "stop_loss", self.sl_price
+                reason = "trailing_stop" if self._sl_moved else "stop_loss"
+                return True, reason, self.sl_price
             if low <= self.tp_price:
                 return True, "take_profit", self.tp_price
         return False, None, close
@@ -3338,6 +3344,8 @@ class TradingEngine:
             entry_time=current_time, open_idx=idx, mode=self.cfg.mode
         )
         self.positions[symbol] = pos
+        if self.cfg.mode == "live_mirror":
+            self.balance -= pos.size_usdt / pos.leverage
         self.daily_stats["shorts" if side == "short" else "longs"] += 1
         return pos
 
@@ -3348,10 +3356,9 @@ class TradingEngine:
         # Update balance for live_mirror mode
         if self.cfg.mode == "live_mirror":
             margin = pos.size_usdt / pos.leverage
-            pnl_usdt = margin * pnl_pct / 100.0 * pos.leverage  # pnl_pct already includes leverage
-            # Actually pnl_pct = (price_delta/entry) * leverage, so raw pnl_usdt = size * price_delta/entry
-            raw_pnl_usdt = pos.size_usdt * (pnl_pct / pos.leverage) / 100.0
-            self.balance += margin + raw_pnl_usdt
+            # pnl_pct is leverage-adjusted decimal (e.g. 0.50 for +50%)
+            pnl_usdt = margin * pnl_pct
+            self.balance += margin + pnl_usdt
         hold_time = (exit_time - pos.entry_time).total_seconds() / 60.0
         trade = {
             "symbol": symbol, "side": pos.side,
@@ -3658,7 +3665,7 @@ class Simulator:
         await asyncio.gather(*[process_one(s) for s in symbols], return_exceptions=True)
 
     def _save_results(self):
-        ts_str = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+        ts_str = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
         out = self.cfg.output_dir / ts_str
         out.mkdir(parents=True, exist_ok=True)
 
