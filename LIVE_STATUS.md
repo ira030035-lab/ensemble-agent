@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 19:10:01 UTC
+Generated: 2026-05-25 19:20:01 UTC
 
 ## Services
 ```
@@ -11,14 +11,14 @@ ensemble-dashboard.service: inactive
 ## Processes
 ```
 root      946105  0.0  0.0   2800  1916 ?        Ss   13:50   0:00 sh -c while true; do ./venv/bin/python dashboard_api.py >> dashboard_api.log 2>&1; echo "[RESTART] $(date)" >> dashboard_api.log; sleep 2; done
-root      946106  0.1  1.2 134080 48788 ?        Sl   13:50   0:24 ./venv/bin/python dashboard_api.py
-root      949381  0.1  3.2 720616 126312 ?       Sl   17:19   0:10 python3 main.py
+root      946106  0.1  1.2 134080 48788 ?        Sl   13:50   0:25 ./venv/bin/python dashboard_api.py
+root      949381  0.1  3.2 721892 128080 ?       Sl   17:19   0:10 python3 main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 680.3548833176951,
+  "balance": 690.1298759756951,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779630553",
@@ -30,18 +30,6 @@ root      949381  0.1  3.2 720616 126312 ?       Sl   17:19   0:10 python3 main.
       "opened_at": "2026-05-24T13:49:13.547795",
       "cost": 11.549037600000002,
       "notional": 57.745188000000006,
-      "leverage": 5
-    },
-    "ASTERUSDT": {
-      "id": "PAPER_ASTERUSDT_1779697112",
-      "symbol": "ASTERUSDT",
-      "side": "long",
-      "entry_price": 0.7147,
-      "qty": 80.5587,
-      "confidence": 72,
-      "opened_at": "2026-05-25T08:18:32.165573",
-      "cost": 11.515060578,
-      "notional": 57.57530289,
       "leverage": 5
     },
     "LINKUSDT": {
@@ -1131,44 +1119,62 @@ root      949381  0.1  3.2 720616 126312 ?       Sl   17:19   0:10 python3 main.
       "closed_at": "2026-05-25T17:48:34.001438",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ASTERUSDT_1779697112",
+      "symbol": "ASTERUSDT",
+      "side": "long",
+      "entry_price": 0.7147,
+      "qty": 80.5587,
+      "confidence": 72,
+      "opened_at": "2026-05-25T08:18:32.165573",
+      "cost": 11.515060578,
+      "notional": 57.57530289,
+      "leverage": 5,
+      "exit_price": 0.6931,
+      "pnl_pct": -15.11,
+      "pnl_usdt": -1.74,
+      "closed_at": "2026-05-25T19:15:30.769205",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -4.392982006304724
+  "total_pnl": -6.13304992630472
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 18:29:30,184 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 18:29:30,186 [INFO] main: TONUSDT | Judge:HOLD conf=88% size=0.0%
-2026-05-25 18:29:30,186 [INFO] main: TONUSDT | RL adj=88.0%
-2026-05-25 18:29:37,940 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 18:29:38,045 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 18:29:38,047 [INFO] main: XANUSDT | Bull:long(50%) Bear:short(70%)
-2026-05-25 18:29:43,012 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 18:29:43,013 [INFO] main: XANUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-25 18:29:43,013 [INFO] main: XANUSDT | RL adj=70.0%
-2026-05-25 18:29:50,014 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 18:29:50,234 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 18:29:50,235 [INFO] main: ESPORTSUSDT | Bull:long(50%) Bear:short(70%)
-2026-05-25 18:29:55,345 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 18:29:55,347 [INFO] main: ESPORTSUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-25 18:29:55,347 [INFO] main: ESPORTSUSDT | RL adj=70.0%
-2026-05-25 18:30:02,698 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 18:30:03,006 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 18:30:03,007 [INFO] main: NILUSDT | Bull:long(75%) Bear:short(70%)
-2026-05-25 18:30:09,567 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 18:30:09,568 [INFO] main: NILUSDT | Judge:LONG conf=72% size=8.0%
-2026-05-25 18:30:09,568 [INFO] main: NILUSDT | RL adj=73.1%
-2026-05-25 18:30:09,569 [INFO] main: NILUSDT | regime BLOCK (volatile)
-2026-05-25 18:30:17,121 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 18:30:18,801 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 18:30:18,803 [INFO] main: GRASSUSDT | Bull:long(75%) Bear:short(70%)
-2026-05-25 18:30:24,473 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 18:30:24,474 [INFO] main: GRASSUSDT | Judge:HOLD conf=73% size=0.0%
-2026-05-25 18:30:24,475 [INFO] main: GRASSUSDT | RL adj=73.0%
-2026-05-25 18:30:26,477 [INFO] main: Next scan in 60min (weekday-active)
-2026-05-25 18:59:09,886 [INFO] main: Symbols: 30
+2026-05-25 19:15:19,821 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 19:15:19,822 [INFO] main: PEPEUSDT | Bull:long(50%) Bear:short(70%)
+2026-05-25 19:15:24,723 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 19:15:24,725 [INFO] main: PEPEUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-25 19:15:24,725 [INFO] main: PEPEUSDT | RL adj=70.0%
+2026-05-25 19:15:30,768 [INFO] positions: STOP-LOSS ASTERUSDT long PnL:-3.02%
+2026-05-25 19:15:30,774 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG ASTERUSDT @ 0.6931 PnL: -15.11% (-1.74 USDT) | Баланс: 690.13
+2026-05-25 19:15:31,045 [INFO] positions: LOSS ASTERUSDT long PnL:-3.02% reason:stop_loss
+2026-05-25 19:15:31,045 [INFO] positions: Lessons: The ASTERUSDT long trade resulted in a 3.02% loss due to a stop loss. The original reasoning was based on a trending_up regime, but the trade did not work out as expected. This trade highlights the importance of considering multiple factors beyond regime alignment when making trading decisions.
+2026-05-25 19:15:31,046 [INFO] rl: RL learned from long ASTERUSDT: loss -3.02% | weights bull=0.997 bear=0.977 judge=1.026 threshold=65.14
+2026-05-25 19:15:31,235 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 19:15:31,605 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 19:15:31,606 [INFO] main: UBUSDT | Bull:long(65%) Bear:short(75%)
+2026-05-25 19:15:37,422 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 19:15:37,424 [INFO] main: UBUSDT | Judge:HOLD conf=75% size=0.0%
+2026-05-25 19:15:37,424 [INFO] main: UBUSDT | RL adj=75.0%
+2026-05-25 19:15:45,978 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 19:15:46,442 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 19:15:46,444 [INFO] main: NILUSDT | Bull:long(70%) Bear:short(70%)
+2026-05-25 19:15:52,235 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 19:15:52,236 [INFO] main: NILUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-25 19:15:52,236 [INFO] main: NILUSDT | RL adj=70.0%
+2026-05-25 19:15:59,300 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 19:15:59,751 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 19:15:59,752 [INFO] main: ZECUSDT | Bull:long(65%) Bear:short(70%)
+2026-05-25 19:16:05,800 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 19:16:05,801 [INFO] main: ZECUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-25 19:16:05,802 [INFO] main: ZECUSDT | RL adj=70.0%
+2026-05-25 19:16:07,804 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-25 19:19:27,534 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1186,7 +1192,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       969Mi       369Mi       4.8Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       995Mi       343Mi       4.8Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
