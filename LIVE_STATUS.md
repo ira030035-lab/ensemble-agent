@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 05:10:01 UTC
+Generated: 2026-05-25 05:20:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 209160 50560 ?        Ssl  May19   0:57 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      915939  0.0  2.2 649760 88160 ?        Ssl  May23   1:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      915939  0.0  2.2 650188 88588 ?        Ssl  May23   1:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -928,7 +928,6 @@ root      915939  0.0  2.2 649760 88160 ?        Ssl  May23   1:04 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 04:11:11,372 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-25 04:11:11,373 [INFO] main: PLUMEUSDT | Judge:HOLD conf=70% size=0.0%
 2026-05-25 04:11:11,373 [INFO] main: PLUMEUSDT | RL adj=70.0%
 2026-05-25 04:11:15,096 [INFO] main: XRPUSDT | Bull:long(45%) Bear:short(70%)
@@ -958,6 +957,7 @@ root      915939  0.0  2.2 649760 88160 ?        Ssl  May23   1:04 /opt/ensemble
 2026-05-25 05:05:12,691 [INFO] positions: LOSS TONUSDT short PnL:-3.08% reason:stop_loss
 2026-05-25 05:05:12,691 [INFO] positions: Lessons: High conviction shorts in a trending_down regime require discipline to hold through noise and avoid premature exits. Conservative sizing is key to managing risk in these trades. This trade's outcome serves as a reminder to stick to the original plan and not get shaken out by short-term fluctuations.
 2026-05-25 05:05:12,692 [INFO] rl: RL learned from short TONUSDT: loss -3.08% | weights bull=0.963 bear=1.020 judge=1.017 threshold=65.03
+2026-05-25 05:19:45,205 [INFO] main: Symbols: 30
 ```
 
 ## Disk
