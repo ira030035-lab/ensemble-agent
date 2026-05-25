@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-25 06:00:01 UTC
+Generated: 2026-05-25 07:00:01 UTC
 
 ## agents.py
 ```python
@@ -1775,6 +1775,1053 @@ class RLAgent:
 
 ```
 
+## simulator.py
+```python
+#!/usr/bin/env python3
+"""
+Ensemble Trading Agent — Offline RL Simulator (Unified Kimi Architecture)
+=========================================================================
+Машина времени по историческим свечам Binance для offline обучения RL.
+
+Архитектура (ОБНОВЛЕННАЯ):
+    Один вызов Kimi API → {bull_conf, bear_conf, decision, confidence, reasoning}
+    ↓
+    Python Filters (extreme, memory, cooldown, R/R) → Virtual Trade
+    ↓
+    (state, action, reward, next_state) dataset для RL
+
+Запуск:
+    python simulator.py --symbols SOLUSDT,DOGEUSDT,... --months 6 --interval 15m
+
+Требования:
+    pip install aiohttp pandas numpy aiofiles python-dotenv openai
+"""
+
+import os
+import sys
+import json
+import time
+import asyncio
+import argparse
+import logging
+from dataclasses import dataclass, field, asdict
+from datetime import datetime, timedelta
+from typing import Dict, List, Optional, Tuple, Any
+from pathlib import Path
+from collections import defaultdict
+import traceback
+
+import numpy as np
+import pandas as pd
+import aiohttp
+from dotenv import load_dotenv
+
+# ---------------------------------------------------------------------------
+# Configuration
+# ---------------------------------------------------------------------------
+
+load_dotenv()
+
+@dataclass
+class SimConfig:
+    """Конфигурация симулятора."""
+    symbols: List[str] = field(default_factory=lambda: [
+        "SOLUSDT","DOGEUSDT","ADAUSDT","AAVEUSDT","FILUSDT",
+        "BNBUSDT","PEPEUSDT","TONUSDT","ASTERUSDT","BTCUSDT",
+        "ETHUSDT","XRPUSDT","LTCUSDT","LINKUSDT","DOTUSDT",
+        "AVAXUSDT","MATICUSDT","UNIUSDT","ATOMUSDT","ETCUSDT",
+        "XLMUSDT","ALGOUSDT","VETUSDT","ICPUSDT","TRXUSDT",
+        "NEARUSDT","APTUSDT","SUIUSDT","SEIUSDT","FETUSDT"
+    ])
+    months: int = 6
+    interval: str = "15m"          # 15m, 1h, 4h
+    leverage: float = 5.0
+    base_sl_pct: float = 0.03      # ~3%
+    base_tp_pct: float = 0.03      # ~3%
+    min_rr: float = 1.5
+
+    # Unified Kimi API
+    kimi_api_key: str = field(default_factory=lambda: os.getenv("KIMI_API_KEY", ""))
+    kimi_base_url: str = "https://api.moonshot.ai/v1"
+    kimi_model: str = "kimi-k2.6"
+
+    # Filters
+    extreme_filter_long_threshold: float = 0.85
+    extreme_filter_short_threshold: float = 0.15
+    cooldown_hours_after_2_sl: float = 12.0
+    max_daily_short_ratio: float = 0.60
+
+    # Performance
+    max_concurrent_kimi_calls: int = 15
+    request_timeout: float = 45.0
+
+    # Paths
+    data_cache_dir: Path = Path("./simulator_cache")
+    output_dir: Path = Path("./simulator_output")
+
+    def __post_init__(self):
+        self.data_cache_dir.mkdir(parents=True, exist_ok=True)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+
+
+# ---------------------------------------------------------------------------
+# Logging
+# ---------------------------------------------------------------------------
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)-8s | %(message)s",
+    handlers=[
+        logging.FileHandler("simulator.log", encoding="utf-8"),
+        logging.StreamHandler(sys.stdout)
+    ]
+)
+logger = logging.getLogger("simulator")
+
+
+# ---------------------------------------------------------------------------
+# Binance Data Loader
+# ---------------------------------------------------------------------------
+
+class BinanceDataLoader:
+    """Загрузка и кэширование исторических свечей с Binance."""
+
+    API_BASE = "https://api.binance.com"
+
+    def __init__(self, config: SimConfig):
+        self.cfg = config
+
+    async def fetch_klines(
+        self,
+        session: aiohttp.ClientSession,
+        symbol: str,
+        interval: str,
+        start_ms: int,
+        end_ms: int
+    ) -> pd.DataFrame:
+        all_rows = []
+        current_start = start_ms
+
+        while current_start < end_ms:
+            url = (
+                f"{self.API_BASE}/api/v3/klines"
+                f"?symbol={symbol}&interval={interval}"
+                f"&startTime={current_start}&endTime={end_ms}&limit=1000"
+            )
+            try:
+                async with session.get(url, timeout=30) as resp:
+                    if resp.status != 200:
+                        text = await resp.text()
+                        logger.error(f"Binance HTTP {resp.status} for {symbol}: {text}")
+                        break
+                    data = await resp.json()
+                    if not data:
+                        break
+                    all_rows.extend(data)
+                    current_start = data[-1][0] + 1
+                    await asyncio.sleep(0.05)
+            except Exception as e:
+                logger.error(f"Fetch error {symbol}: {e}")
+                break
+
+        if not all_rows:
+            return pd.DataFrame()
+
+        df = pd.DataFrame(all_rows, columns=[
+            "open_time","open","high","low","close","volume",
+            "close_time","quote_volume","trades","taker_buy_base",
+            "taker_buy_quote","ignore"
+        ])
+        for col in ["open","high","low","close","volume"]:
+            df[col] = df[col].astype(float)
+        df["open_time"] = pd.to_datetime(df["open_time"], unit="ms")
+        df.set_index("open_time", inplace=True)
+        df.sort_index(inplace=True)
+        return df
+
+    def cache_path(self, symbol: str, interval: str, start_ms: int, end_ms: int) -> Path:
+        return self.cfg.data_cache_dir / f"{symbol}_{interval}_{start_ms}_{end_ms}.parquet"
+
+    async def load(
+        self,
+        session: aiohttp.ClientSession,
+        symbol: str,
+        interval: str,
+        months: int
+    ) -> pd.DataFrame:
+        end_dt = datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0)
+        start_dt = end_dt - timedelta(days=30*months)
+        start_ms = int(start_dt.timestamp() * 1000)
+        end_ms = int(end_dt.timestamp() * 1000)
+
+        cache_file = self.cache_path(symbol, interval, start_ms, end_ms)
+        if cache_file.exists():
+            logger.info(f"[CACHE] {symbol} {interval}")
+            return pd.read_parquet(cache_file)
+
+        logger.info(f"[FETCH] {symbol} {interval} ({start_dt.date()} → {end_dt.date()})")
+        df = await self.fetch_klines(session, symbol, interval, start_ms, end_ms)
+        if not df.empty:
+            df.to_parquet(cache_file)
+        return df
+
+
+# ---------------------------------------------------------------------------
+# Technical Indicators
+# ---------------------------------------------------------------------------
+
+class TechnicalIndicators:
+    @staticmethod
+    def ema(series: pd.Series, period: int) -> pd.Series:
+        return series.ewm(span=period, adjust=False).mean()
+
+    @staticmethod
+    def atr(df: pd.DataFrame, period: int = 14) -> pd.Series:
+        high_low = df["high"] - df["low"]
+        high_close = np.abs(df["high"] - df["close"].shift())
+        low_close = np.abs(df["low"] - df["close"].shift())
+        tr = pd.concat([high_low, high_close, low_close], axis=1).max(axis=1)
+        return tr.ewm(span=period, adjust=False).mean()
+
+    @staticmethod
+    def rsi(series: pd.Series, period: int = 14) -> pd.Series:
+        delta = series.diff()
+        gain = delta.where(delta > 0, 0.0)
+        loss = (-delta.where(delta < 0, 0.0))
+        avg_gain = gain.ewm(alpha=1/period, min_periods=period).mean()
+        avg_loss = loss.ewm(alpha=1/period, min_periods=period).mean()
+        rs = avg_gain / avg_loss
+        return 100 - (100 / (1 + rs))
+
+    @staticmethod
+    def nearest_levels(df: pd.DataFrame, lookback: int = 50) -> Tuple[float, float]:
+        recent = df.iloc[-lookback:]
+        resistance = recent["high"].max()
+        support = recent["low"].min()
+        return support, resistance
+
+    @staticmethod
+    def daily_range(df: pd.DataFrame, current_time: datetime) -> Tuple[float, float, float]:
+        day_start = current_time.replace(hour=0, minute=0, second=0, microsecond=0)
+        day_mask = df.index >= day_start
+        day_df = df[day_mask]
+        if day_df.empty:
+            return 0.0, 0.0, 0.0
+        high = day_df["high"].max()
+        low = day_df["low"].min()
+        return high, low, high - low
+
+
+# ---------------------------------------------------------------------------
+# Symbol Memory
+# ---------------------------------------------------------------------------
+
+@dataclass
+class SymbolMemory:
+    symbol: str
+    trades: List[Dict] = field(default_factory=list)
+
+    def record(self, side: str, pnl_pct: float, reason: str, entry_time: datetime):
+        self.trades.append({
+            "side": side,
+            "pnl_pct": pnl_pct,
+            "reason": reason,
+            "entry_time": entry_time.isoformat()
+        })
+        if len(self.trades) > 50:
+            self.trades = self.trades[-50:]
+
+    def consecutive_sl_same_side(self, side: str) -> int:
+        count = 0
+        for t in reversed(self.trades):
+            if t["side"] == side and t["reason"] == "stop_loss":
+                count += 1
+            elif t["side"] == side:
+                break
+        return count
+
+    def winrate_last_n(self, n: int = 20) -> float:
+        if not self.trades:
+            return 0.5
+        recent = self.trades[-n:]
+        wins = sum(1 for t in recent if t["pnl_pct"] > 0)
+        return wins / len(recent) if recent else 0.5
+
+    def cooldown_until(self, side: str, cooldown_hours: float) -> Optional[datetime]:
+        if self.consecutive_sl_same_side(side) >= 2:
+            last_sl = None
+            for t in reversed(self.trades):
+                if t["side"] == side and t["reason"] == "stop_loss":
+                    last_sl = datetime.fromisoformat(t["entry_time"])
+                    break
+            if last_sl:
+                return last_sl + timedelta(hours=cooldown_hours)
+        return None
+
+
+# ---------------------------------------------------------------------------
+# Regime Detector
+# ---------------------------------------------------------------------------
+
+class RegimeDetector:
+    @staticmethod
+    def detect(price: float, ema20: float, ema50: float) -> str:
+        if ema20 > ema50 and price > ema20:
+            return "bull"
+        elif ema20 < ema50 and price < ema20:
+            return "bear"
+        return "ranging"
+
+    @staticmethod
+    def threshold_multiplier(regime: str, side: str) -> float:
+        if regime == "bull" and side == "short":
+            return 1.30
+        if regime == "bear" and side == "long":
+            return 1.30
+        return 1.0
+
+
+# ---------------------------------------------------------------------------
+# Entry Filter (Extremes + Dynamic TP/SL)
+# ---------------------------------------------------------------------------
+
+class EntryFilter:
+    def __init__(self, config: SimConfig):
+        self.cfg = config
+
+    def check_extreme(self, side: str, entry: float, day_high: float, day_low: float) -> Tuple[bool, Optional[str]]:
+        if day_high == day_low:
+            return True, None
+        pos = (entry - day_low) / (day_high - day_low)
+        if side == "long" and pos > self.cfg.extreme_filter_long_threshold:
+            return False, f"FOMO_LONG_AT_DAILY_HIGH(pos={pos:.2f})"
+        if side == "short" and pos < self.cfg.extreme_filter_short_threshold:
+            return False, f"SHORT_AT_DAILY_LOW(pos={pos:.2f})"
+        return True, None
+
+    def calculate_dynamic_levels(
+        self, side: str, entry: float, atr: float, support: float, resistance: float, min_rr: float
+    ) -> Tuple[bool, Optional[Dict]]:
+        if side == "long":
+            sl = min(entry * (1 - self.cfg.base_sl_pct), support * 0.995)
+            tp = resistance * 1.005
+            sl_atr = entry - 1.5 * atr
+            if sl_atr > sl:
+                sl = sl_atr
+            rr = (tp - entry) / (entry - sl) if (entry - sl) > 0 else 0
+        else:
+            sl = max(entry * (1 + self.cfg.base_sl_pct), resistance * 1.005)
+            tp = support * 0.995
+            sl_atr = entry + 1.5 * atr
+            if sl_atr < sl:
+                sl = sl_atr
+            rr = (entry - tp) / (sl - entry) if (sl - entry) > 0 else 0
+
+        if rr < min_rr:
+            return False, {"reason": f"R_R_TOO_LOW({rr:.2f})"}
+
+        return True, {"sl": sl, "tp": tp, "rr": rr, "atr": atr, "support": support, "resistance": resistance}
+
+
+# ---------------------------------------------------------------------------
+# Unified Kimi Judge (ОДИН ВЫЗОВ ВМЕСТО ТРЁХ)
+# ---------------------------------------------------------------------------
+
+class UnifiedKimiJudge:
+    """
+    Один вызов Kimi API заменяет Bull + Bear + Judge.
+    Возвращает bull_confidence, bear_confidence, decision, confidence, reasoning.
+    """
+
+    def __init__(self, config: SimConfig):
+        self.cfg = config
+        self._client = None
+
+    def _get_client(self):
+        import openai
+        if self._client is None:
+            self._client = openai.AsyncOpenAI(
+                api_key=self.cfg.kimi_api_key,
+                base_url=self.cfg.kimi_base_url
+            )
+        return self._client
+
+    def _format_ohlcv(self, df: pd.DataFrame, periods: int = 50) -> str:
+        """Форматирование последних N свечей для промпта."""
+        recent = df.iloc[-periods:].copy()
+        lines = []
+        for ts, row in recent.iterrows():
+            lines.append(
+                f"{ts.strftime('%m-%d %H:%M')} O:{row['open']:.6f} H:{row['high']:.6f} "
+                f"L:{row['low']:.6f} C:{row['close']:.6f} V:{row['volume']:.2f}"
+            )
+        return "\n".join(lines)
+
+    def _build_prompt(
+        self,
+        symbol: str,
+        df: pd.DataFrame,
+        price: float,
+        ema20: float,
+        ema50: float,
+        atr: float,
+        rsi: float,
+        support: float,
+        resistance: float,
+        day_high: float,
+        day_low: float,
+        regime: str,
+        memory: SymbolMemory
+    ) -> str:
+        """Единый промпт для Kimi: анализ + сигналы + решение."""
+
+        ohlcv_text = self._format_ohlcv(df, periods=50)
+
+        mem_lines = []
+        if memory.trades:
+            recent = memory.trades[-5:]
+            for t in recent:
+                mem_lines.append(f"- {t['side']} {t['reason']} PnL:{t['pnl_pct']:.2f}%")
+        else:
+            mem_lines.append("- No recent trades")
+
+        consecutive_sl_long = memory.consecutive_sl_same_side("long")
+        consecutive_sl_short = memory.consecutive_sl_same_side("short")
+        winrate = memory.winrate_last_n(20)
+
+        return f"""You are an ensemble trading analyst. Analyze the provided market data and output a strict JSON decision.
+
+## SYMBOL: {symbol}
+## CURRENT PRICE: {price:.6f}
+## MARKET REGIME: {regime}
+## DAILY RANGE: High={day_high:.6f} Low={day_low:.6f}
+
+## TECHNICAL INDICATORS (current):
+- EMA20: {ema20:.6f}
+- EMA50: {ema50:.6f}
+- RSI14: {rsi:.2f}
+- ATR14: {atr:.6f}
+- Nearest Support: {support:.6f}
+- Nearest Resistance: {resistance:.6f}
+
+## RECENT PRICE ACTION (last 50 candles):
+{ohlcv_text}
+
+## SYMBOL MEMORY (last 5 trades):
+{"\n".join(mem_lines)}
+- Win rate last 20: {winrate:.1%}
+- Consecutive SL (long): {consecutive_sl_long}
+- Consecutive SL (short): {consecutive_sl_short}
+
+## TASK:
+1. Evaluate BULL probability (breakout/upside continuation) → bull_confidence 0.0–1.0
+2. Evaluate BEAR probability (breakdown/downside continuation) → bear_confidence 0.0–1.0
+3. Make final DECISION: "LONG", "SHORT", or "HOLD"
+4. Provide overall confidence 0–100
+5. Brief reasoning (1 sentence)
+
+## RULES:
+- If both bull and bear signals are weak (<0.55) → decision "HOLD"
+- If price is near daily high and regime is ranging → bias to SHORT
+- If price is near daily low and regime is ranging → bias to LONG
+- If 2+ consecutive SL in a side exists in memory → reduce confidence for that side
+- Respond ONLY with the JSON object below, no markdown, no explanation outside JSON.
+
+## REQUIRED JSON FORMAT:
+{{"bull_confidence": 0.00, "bear_confidence": 0.00, "decision": "HOLD", "confidence": 0, "size": 0.0, "reasoning": "..."}}
+"""
+
+    async def decide(
+        self,
+        symbol: str,
+        df: pd.DataFrame,
+        price: float,
+        ema20: float,
+        ema50: float,
+        atr: float,
+        rsi: float,
+        support: float,
+        resistance: float,
+        day_high: float,
+        day_low: float,
+        regime: str,
+        memory: SymbolMemory
+    ) -> Dict:
+        """Один вызов Kimi. Возвращает полный decision object."""
+
+        prompt = self._build_prompt(
+            symbol, df, price, ema20, ema50, atr, rsi,
+            support, resistance, day_high, day_low, regime, memory
+        )
+
+        client = self._get_client()
+        try:
+            resp = await client.chat.completions.create(
+                model=self.cfg.kimi_model,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.15,
+                max_tokens=256,
+                timeout=self.cfg.request_timeout
+            )
+            text = resp.choices[0].message.content.strip()
+            return self._parse_response(text, symbol)
+        except Exception as e:
+            logger.warning(f"Kimi unified call failed for {symbol}: {e}")
+            return {
+                "bull_confidence": 0.0,
+                "bear_confidence": 0.0,
+                "decision": "HOLD",
+                "confidence": 0,
+                "size": 0.0,
+                "reasoning": f"API_ERROR: {str(e)[:50]}"
+            }
+
+    def _parse_response(self, text: str, symbol: str) -> Dict:
+        """Строгий парсинг JSON от Kimi."""
+        text = text.strip()
+
+        # Удалить markdown code fences если есть
+        if text.startswith("```"):
+            lines = text.split("\n")
+            if lines[0].startswith("```"):
+                lines = lines[1:]
+            if lines and lines[-1].startswith("```"):
+                lines = lines[:-1]
+            text = "\n".join(lines).strip()
+
+        # Найти JSON объект
+        start = text.find("{")
+        end = text.rfind("}")
+        if start == -1 or end == -1 or end <= start:
+            logger.warning(f"[{symbol}] No JSON found in response: {text[:100]}")
+            return self._fallback(text)
+
+        try:
+            data = json.loads(text[start:end+1])
+
+            # Нормализация
+            bull_conf = float(data.get("bull_confidence", 0))
+            bear_conf = float(data.get("bear_confidence", 0))
+            decision = str(data.get("decision", "HOLD")).upper().strip()
+            conf = int(data.get("confidence", 0))
+            size = float(data.get("size", 0))
+            reasoning = str(data.get("reasoning", ""))
+
+            # Валидация decision
+            if decision not in ("LONG", "SHORT", "HOLD"):
+                decision = "HOLD"
+
+            # Если decision не HOLD, но confidence обеих сторон низкая — форсируем HOLD
+            if decision != "HOLD" and max(bull_conf, bear_conf) < 0.50:
+                decision = "HOLD"
+
+            return {
+                "bull_confidence": max(0.0, min(1.0, bull_conf)),
+                "bear_confidence": max(0.0, min(1.0, bear_conf)),
+                "decision": decision,
+                "confidence": max(0, min(100, conf)),
+                "size": size,
+                "reasoning": reasoning[:200]
+            }
+
+        except json.JSONDecodeError as e:
+            logger.warning(f"[{symbol}] JSON parse error: {e} | Text: {text[:150]}")
+            return self._fallback(text)
+
+    def _fallback(self, text: str) -> Dict:
+        """Эвристика если JSON сломан."""
+        lower = text.lower()
+        if "long" in lower and "short" not in lower:
+            return {"bull_confidence": 0.6, "bear_confidence": 0.3, "decision": "LONG", "confidence": 50, "size": 5.0, "reasoning": "fallback_long"}
+        if "short" in lower and "long" not in lower:
+            return {"bull_confidence": 0.3, "bear_confidence": 0.6, "decision": "SHORT", "confidence": 50, "size": 5.0, "reasoning": "fallback_short"}
+        return {"bull_confidence": 0.0, "bear_confidence": 0.0, "decision": "HOLD", "confidence": 0, "size": 0.0, "reasoning": "fallback_hold"}
+
+
+# ---------------------------------------------------------------------------
+# RL State / Reward
+# ---------------------------------------------------------------------------
+
+@dataclass
+class RLState:
+    bull_confidence: float
+    bear_confidence: float
+    entry_position_in_range: float
+    distance_to_nearest_level: float
+    market_regime: int
+    rsi_14: float
+    funding_rate: float
+    time_of_day_utc: float
+    consecutive_same_side_signals: int
+
+    def to_vector(self) -> np.ndarray:
+        return np.array([
+            self.bull_confidence,
+            self.bear_confidence,
+            self.entry_position_in_range,
+            self.distance_to_nearest_level,
+            self.market_regime,
+            self.rsi_14 / 100.0,
+            self.funding_rate,
+            self.time_of_day_utc / 24.0,
+            self.consecutive_same_side_signals / 5.0
+        ], dtype=np.float32)
+
+
+class RewardShaper:
+    @staticmethod
+    def calculate(
+        pnl_pct: float,
+        reason: str,
+        side: str,
+        entry_pos_in_range: float,
+        regime: str,
+        hold_time_minutes: float,
+        side_aligned_with_regime: bool
+    ) -> float:
+        reward = 0.0
+        if reason == "take_profit":
+            reward += 1.0
+        elif reason == "stop_loss":
+            reward -= 1.0
+        elif reason == "trailing_stop":
+            reward += 0.5 if pnl_pct > 0 else -0.5
+
+        if side == "long" and entry_pos_in_range > 0.85:
+            reward -= 2.0
+        if side == "short" and entry_pos_in_range < 0.15:
+            reward -= 2.0
+
+        if side_aligned_with_regime:
+            reward += 0.5
+        else:
+            reward -= 0.5
+
+        if reason == "stop_loss" and hold_time_minutes < 30:
+            reward -= 1.5
+
+        return reward
+
+
+# ---------------------------------------------------------------------------
+# Virtual Position & Engine
+# ---------------------------------------------------------------------------
+
+@dataclass
+class VirtualPosition:
+    symbol: str
+    side: str
+    entry_price: float
+    sl_price: float
+    tp_price: float
+    size_usdt: float
+    leverage: float
+    entry_time: datetime
+    open_idx: int
+    liq_price: float = field(init=False)
+
+    def __post_init__(self):
+        if self.side == "long":
+            self.liq_price = self.entry_price * (1 - 0.8 / self.leverage)
+        else:
+            self.liq_price = self.entry_price * (1 + 0.8 / self.leverage)
+
+    def check_exit(self, candle: pd.Series) -> Tuple[bool, Optional[str], float]:
+        high, low, close = candle["high"], candle["low"], candle["close"]
+        if self.side == "long":
+            if low <= self.liq_price:
+                return True, "liquidation", self.liq_price
+            if low <= self.sl_price:
+                return True, "stop_loss", self.sl_price
+            if high >= self.tp_price:
+                return True, "take_profit", self.tp_price
+        else:
+            if high >= self.liq_price:
+                return True, "liquidation", self.liq_price
+            if high >= self.sl_price:
+                return True, "stop_loss", self.sl_price
+            if low <= self.tp_price:
+                return True, "take_profit", self.tp_price
+        return False, None, close
+
+    def pnl_pct(self, exit_price: float) -> float:
+        if self.side == "long":
+            return (exit_price - self.entry_price) / self.entry_price * self.leverage
+        return (self.entry_price - exit_price) / self.entry_price * self.leverage
+
+
+class TradingEngine:
+    def __init__(self, config: SimConfig):
+        self.cfg = config
+        self.positions: Dict[str, VirtualPosition] = {}
+        self.closed_trades: List[Dict] = []
+        self.daily_stats = {"shorts": 0, "longs": 0, "date": None}
+
+    def can_open(self, symbol: str, side: str, memory: SymbolMemory, regime: str,
+                 bull_conf: float, bear_conf: float, current_time: datetime) -> Tuple[bool, Optional[str]]:
+        if symbol in self.positions:
+            return False, "ALREADY_OPEN"
+
+        cooldown = memory.cooldown_until(side, self.cfg.cooldown_hours_after_2_sl)
+        if cooldown and current_time < cooldown:
+            return False, f"COOLDOWN_UNTIL_{cooldown.isoformat()}"
+
+        mult = RegimeDetector.threshold_multiplier(regime, side)
+        base_conf = bull_conf if side == "long" else bear_conf
+        if base_conf * mult < 0.5:
+            return False, f"THRESHOLD_TOO_LOW({base_conf:.2f}*{mult:.2f})"
+
+        today = current_time.date()
+        if self.daily_stats.get("date") != today:
+            self.daily_stats = {"shorts": 0, "longs": 0, "date": today}
+        total = self.daily_stats["shorts"] + self.daily_stats["longs"]
+        if total > 0 and side == "short":
+            ratio = self.daily_stats["shorts"] / total
+            if ratio > self.cfg.max_daily_short_ratio:
+                return False, "DAILY_SHORT_CAP"
+        return True, None
+
+    def open_position(self, symbol: str, side: str, entry_price: float,
+                      sl_price: float, tp_price: float, current_time: datetime, idx: int) -> VirtualPosition:
+        pos = VirtualPosition(
+            symbol=symbol, side=side, entry_price=entry_price,
+            sl_price=sl_price, tp_price=tp_price,
+            size_usdt=100.0, leverage=self.cfg.leverage,
+            entry_time=current_time, open_idx=idx
+        )
+        self.positions[symbol] = pos
+        self.daily_stats["shorts" if side == "short" else "longs"] += 1
+        return pos
+
+    def close_position(self, symbol: str, exit_price: float, reason: str,
+                       exit_time: datetime, idx: int) -> Dict:
+        pos = self.positions.pop(symbol)
+        pnl_pct = pos.pnl_pct(exit_price)
+        hold_time = (exit_time - pos.entry_time).total_seconds() / 60.0
+        trade = {
+            "symbol": symbol, "side": pos.side,
+            "entry": pos.entry_price, "exit": exit_price,
+            "sl": pos.sl_price, "tp": pos.tp_price,
+            "pnl_pct": round(pnl_pct, 4), "reason": reason,
+            "opened": pos.entry_time.isoformat(),
+            "closed": exit_time.isoformat(),
+            "hold_minutes": round(hold_time, 1),
+            "leverage": pos.leverage
+        }
+        self.closed_trades.append(trade)
+        return trade
+
+    def update_trailing(self, pos: VirtualPosition, candle: pd.Series):
+        if pos.side == "long":
+            half_tp = pos.entry_price + (pos.tp_price - pos.entry_price) * 0.5
+            if candle["high"] >= half_tp and pos.sl_price < pos.entry_price:
+                pos.sl_price = pos.entry_price * 1.01
+        else:
+            half_tp = pos.entry_price - (pos.entry_price - pos.tp_price) * 0.5
+            if candle["low"] <= half_tp and pos.sl_price > pos.entry_price:
+                pos.sl_price = pos.entry_price * 0.99
+
+    def process_candle(self, symbol: str, candle: pd.Series, idx: int, current_time: datetime):
+        if symbol not in self.positions:
+            return None
+        pos = self.positions[symbol]
+        self.update_trailing(pos, candle)
+        closed, reason, exit_price = pos.check_exit(candle)
+        if closed:
+            return self.close_position(symbol, exit_price, reason, current_time, idx)
+        return None
+
+
+# ---------------------------------------------------------------------------
+# RL Dataset Builder
+# ---------------------------------------------------------------------------
+
+class RLDatasetBuilder:
+    def __init__(self):
+        self.transitions: List[Dict] = []
+
+    def add(self, state: RLState, action: str, reward: float,
+            next_state: Optional[RLState], trade_info: Dict):
+        self.transitions.append({
+            "state": state.to_vector().tolist(),
+            "action": action,
+            "reward": round(reward, 4),
+            "next_state": next_state.to_vector().tolist() if next_state else None,
+            "trade": trade_info
+        })
+
+    def save(self, path: Path):
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(self.transitions, f, ensure_ascii=False, indent=2)
+        logger.info(f"[RL] Dataset saved: {path} ({len(self.transitions)} transitions)")
+
+
+# ---------------------------------------------------------------------------
+# Main Simulator
+# ---------------------------------------------------------------------------
+
+class Simulator:
+    def __init__(self, config: SimConfig):
+        self.cfg = config
+        self.loader = BinanceDataLoader(config)
+        self.indicators = TechnicalIndicators()
+        self.entry_filter = EntryFilter(config)
+        self.judge = UnifiedKimiJudge(config)
+        self.engine = TradingEngine(config)
+        self.rl_builder = RLDatasetBuilder()
+        self.memories: Dict[str, SymbolMemory] = defaultdict(lambda: SymbolMemory(""))
+        self.consecutive_signals: Dict[str, Dict] = defaultdict(lambda: {"long": 0, "short": 0})
+        self.pending_states: Dict[str, Dict] = {}
+
+    async def run(self):
+        logger.info("=" * 60)
+        logger.info("SIMULATOR START (Unified Kimi Architecture)")
+        logger.info(f"Symbols: {len(self.cfg.symbols)} | Months: {self.cfg.months} | Interval: {self.cfg.interval}")
+        logger.info("=" * 60)
+
+        async with aiohttp.ClientSession() as session:
+            data_map: Dict[str, pd.DataFrame] = {}
+            for sym in self.cfg.symbols:
+                df = await self.loader.load(session, sym, self.cfg.interval, self.cfg.months)
+                if df.empty:
+                    logger.warning(f"[SKIP] No data for {sym}")
+                    continue
+                data_map[sym] = df
+                logger.info(f"[DATA] {sym}: {len(df)} candles")
+
+            if not data_map:
+                logger.error("No data loaded. Exiting.")
+                return
+
+            common_idx = None
+            for sym, df in data_map.items():
+                if common_idx is None:
+                    common_idx = df.index
+                else:
+                    common_idx = common_idx.intersection(df.index)
+
+            logger.info(f"[SYNC] Common timeline: {len(common_idx)} candles")
+
+            for i, ts in enumerate(common_idx):
+                if i % 500 == 0:
+                    logger.info(f"[PROGRESS] {i}/{len(common_idx)} | Closed: {len(self.engine.closed_trades)} | Open: {len(self.engine.positions)}")
+
+                # 1. Обработка открытых позиций
+                for sym, df in data_map.items():
+                    if sym in self.engine.positions:
+                        candle = df.loc[ts]
+                        trade = self.engine.process_candle(sym, candle, i, ts)
+                        if trade:
+                            mem = self.memories[sym]
+                            mem.record(trade["side"], trade["pnl_pct"], trade["reason"], ts)
+
+                            entry_pos = self._get_entry_pos_from_trade(trade, df)
+                            regime = trade.get("regime", "ranging")
+                            side_aligned = (regime == "bull" and trade["side"] == "long") or \
+                                           (regime == "bear" and trade["side"] == "short")
+                            reward = RewardShaper.calculate(
+                                trade["pnl_pct"], trade["reason"], trade["side"],
+                                entry_pos, regime, trade["hold_minutes"], side_aligned
+                            )
+
+                            if sym in self.pending_states:
+                                pending = self.pending_states.pop(sym)
+                                pending["reward"] = reward
+                                pending["trade"] = trade
+                                self.rl_builder.transitions.append(pending)
+
+                # 2. Новые входы (batch)
+                candidates = [s for s in data_map if s not in self.engine.positions]
+                if candidates:
+                    await self._process_entry_batch(session, candidates, data_map, ts, i)
+
+        self._save_results()
+
+    def _get_entry_pos_from_trade(self, trade: Dict, df: pd.DataFrame) -> float:
+        try:
+            entry_time = datetime.fromisoformat(trade["opened"])
+            day_df = df[df.index.date == entry_time.date()]
+            if day_df.empty:
+                return 0.5
+            high, low = day_df["high"].max(), day_df["low"].min()
+            if high == low:
+                return 0.5
+            return (trade["entry"] - low) / (high - low)
+        except Exception:
+            return 0.5
+
+    async def _process_entry_batch(
+        self,
+        session: aiohttp.ClientSession,
+        symbols: List[str],
+        data_map: Dict[str, pd.DataFrame],
+        ts: datetime,
+        idx: int
+    ):
+        semaphore = asyncio.Semaphore(self.cfg.max_concurrent_kimi_calls)
+
+        async def process_one(sym: str):
+            async with semaphore:
+                df = data_map[sym]
+                candle = df.loc[ts]
+                price = candle["close"]
+
+                # Индикаторы
+                ema20 = self.indicators.ema(df["close"], 20).loc[ts]
+                ema50 = self.indicators.ema(df["close"], 50).loc[ts]
+                atr = self.indicators.atr(df, 14).loc[ts]
+                rsi = self.indicators.rsi(df["close"], 14).loc[ts]
+                support, resistance = self.indicators.nearest_levels(df, 50)
+                day_high, day_low, day_range = self.indicators.daily_range(df, ts)
+                regime = RegimeDetector.detect(price, ema20, ema50)
+
+                # Memory
+                mem = self.memories[sym]
+                mem.symbol = sym
+
+                # === ОДИН ВЫЗОВ KIMI ===
+                decision = await self.judge.decide(
+                    sym, df, price, ema20, ema50, atr, rsi,
+                    support, resistance, day_high, day_low, regime, mem
+                )
+
+                side = decision.get("decision", "HOLD").lower()
+                if side == "hold":
+                    return
+
+                bull_conf = decision.get("bull_confidence", 0)
+                bear_conf = decision.get("bear_confidence", 0)
+
+                # Python-фильтры (не в промпте)
+                ok_extreme, _ = self.entry_filter.check_extreme(side, price, day_high, day_low)
+                if not ok_extreme:
+                    return
+
+                ok_levels, levels = self.entry_filter.calculate_dynamic_levels(
+                    side, price, atr, support, resistance, self.cfg.min_rr
+                )
+                if not ok_levels:
+                    return
+
+                can_open, reject_reason = self.engine.can_open(
+                    sym, side, mem, regime, bull_conf, bear_conf, ts
+                )
+                if not can_open:
+                    return
+
+                # Открытие позиции
+                sl = levels["sl"]
+                tp = levels["tp"]
+                pos = self.engine.open_position(sym, side, price, sl, tp, ts, idx)
+
+                # RL State
+                entry_pos = (price - day_low) / day_range if day_range > 0 else 0.5
+                dist_to_level = min(abs(price - support), abs(price - resistance)) / atr if atr > 0 else 0
+                regime_int = 1 if regime == "bull" else (-1 if regime == "bear" else 0)
+
+                state = RLState(
+                    bull_confidence=bull_conf,
+                    bear_confidence=bear_conf,
+                    entry_position_in_range=entry_pos,
+                    distance_to_nearest_level=dist_to_level,
+                    market_regime=regime_int,
+                    rsi_14=rsi,
+                    funding_rate=0.0,
+                    time_of_day_utc=ts.hour + ts.minute / 60.0,
+                    consecutive_same_side_signals=self.consecutive_signals[sym][side]
+                )
+
+                self.consecutive_signals[sym][side] += 1
+                self.consecutive_signals[sym]["long" if side == "short" else "short"] = 0
+
+                # Сохраняем pending state (reward и trade дополним при выходе)
+                self.pending_states[sym] = {
+                    "state": state.to_vector().tolist(),
+                    "action": side,
+                    "reward": None,
+                    "next_state": None,
+                    "entry_time": ts.isoformat()
+                }
+
+        await asyncio.gather(*[process_one(s) for s in symbols], return_exceptions=True)
+
+    def _save_results(self):
+        ts_str = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+        out = self.cfg.output_dir / ts_str
+        out.mkdir(parents=True, exist_ok=True)
+
+        trades_path = out / "trades.json"
+        with open(trades_path, "w", encoding="utf-8") as f:
+            json.dump(self.engine.closed_trades, f, ensure_ascii=False, indent=2)
+        logger.info(f"[SAVE] Trades: {trades_path} ({len(self.engine.closed_trades)} trades)")
+
+        rl_path = out / "rl_dataset.json"
+        self.rl_builder.save(rl_path)
+
+        stats = self._compute_stats()
+        stats_path = out / "stats.json"
+        with open(stats_path, "w", encoding="utf-8") as f:
+            json.dump(stats, f, ensure_ascii=False, indent=2)
+        logger.info(f"[SAVE] Stats: {stats_path}")
+
+        if self.engine.closed_trades:
+            df = pd.DataFrame(self.engine.closed_trades)
+            df.to_csv(out / "trades.csv", index=False)
+
+    def _compute_stats(self) -> Dict:
+        trades = self.engine.closed_trades
+        if not trades:
+            return {}
+        df = pd.DataFrame(trades)
+        wins = df[df["pnl_pct"] > 0]
+        losses = df[df["pnl_pct"] <= 0]
+        return {
+            "total_trades": len(df),
+            "win_rate": round(len(wins) / len(df) * 100, 2),
+            "avg_pnl": round(df["pnl_pct"].mean(), 4),
+            "total_pnl_pct": round(df["pnl_pct"].sum(), 4),
+            "avg_win": round(wins["pnl_pct"].mean(), 4) if not wins.empty else 0,
+            "avg_loss": round(losses["pnl_pct"].mean(), 4) if not losses.empty else 0,
+            "shorts": int((df["side"] == "short").sum()),
+            "longs": int((df["side"] == "long").sum()),
+            "sl_count": int((df["reason"] == "stop_loss").sum()),
+            "tp_count": int((df["reason"] == "take_profit").sum()),
+            "trailing_count": int((df["reason"] == "trailing_stop").sum()),
+            "liquidation_count": int((df["reason"] == "liquidation").sum()),
+            "rl_transitions": len(self.rl_builder.transitions)
+        }
+
+
+# ---------------------------------------------------------------------------
+# CLI
+# ---------------------------------------------------------------------------
+
+def main():
+    parser = argparse.ArgumentParser(description="Offline RL Simulator — Unified Kimi")
+    parser.add_argument("--symbols", type=str, default=",".join(SimConfig().symbols))
+    parser.add_argument("--months", type=int, default=6)
+    parser.add_argument("--interval", type=str, default="15m", choices=["15m","1h","4h"])
+    parser.add_argument("--leverage", type=float, default=5.0)
+    parser.add_argument("--max-concurrent", type=int, default=15, help="Max concurrent Kimi calls")
+    args = parser.parse_args()
+
+    cfg = SimConfig(
+        symbols=args.symbols.split(","),
+        months=args.months,
+        interval=args.interval,
+        leverage=args.leverage,
+        max_concurrent_kimi_calls=args.max_concurrent
+    )
+
+    sim = Simulator(cfg)
+    asyncio.run(sim.run())
+
+
+if __name__ == "__main__":
+    main()
+
+```
+
 ## .env
 ```
 TELEGRAM_TOKEN=***
@@ -1794,5 +2841,7 @@ GEMINI_API_KEY2=***
 GEMINI_API_KEY3=***
 GEMINI_API_KEY4=***
 GEMINI_API_KEY5=***
+KIMI_API_KEY=***
+
 ```
 
