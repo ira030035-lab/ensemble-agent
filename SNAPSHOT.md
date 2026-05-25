@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-25 16:00:01 UTC
+Generated: 2026-05-25 17:00:01 UTC
 
 ## agents.py
 ```python
@@ -852,7 +852,7 @@ class Config:
     JUDGE_MODEL = "claude-haiku-4-5-20251001"
     TOP_N_SYMBOLS = 30
     SCAN_INTERVAL = 3600
-    MAX_POSITIONS = 5
+    MAX_POSITIONS = 10
     MAX_SAME_SIDE = 3
     MAX_CORRELATION = 0.85
     CORR_LOOKBACK_BARS = 24
@@ -1795,6 +1795,7 @@ class TradeMemory:
     volume_ratio_at_entry:float; bull_confidence:int; bear_confidence:int
     judge_confidence:int; judge_reasoning:str; outcome:Optional[str]
     opened_at:str; closed_at:Optional[str]; lessons:Optional[str]
+    close_reason:Optional[str]=None
     orphan:bool=False
 
 class Memory:
@@ -2268,7 +2269,7 @@ class PositionManager:
         trade.outcome="profit" if (trade.pnl_pct or 0)>0 else "loss"
         lessons=await self.judge.reflect(trade,reason+" PnL:"+str(round(trade.pnl_pct or 0,2))+"%")
         trade.lessons=lessons
-        self.memory.update_trade(trade.id,closed_at=trade.closed_at,exit_price=trade.exit_price,pnl_pct=trade.pnl_pct,outcome=trade.outcome,lessons=lessons)
+        self.memory.update_trade(trade.id,closed_at=trade.closed_at,exit_price=trade.exit_price,pnl_pct=trade.pnl_pct,outcome=trade.outcome,lessons=lessons,close_reason=reason)
         e="OK" if trade.outcome=="profit" else "LOSS"
         log.info(e+" "+trade.symbol+" "+trade.side+" PnL:"+str(round(trade.pnl_pct or 0,2))+"% reason:"+reason)
         log.info("Lessons: "+str(lessons))
@@ -2537,7 +2538,7 @@ class SimConfig:
     extreme_filter_long_threshold: float = 0.85
     extreme_filter_short_threshold: float = 0.15
     cooldown_hours_after_2_sl: float = 12.0
-    max_daily_short_ratio: float = 0.60
+    max_daily_short_ratio: float = 0.80
 
     # Performance
     max_concurrent_kimi_calls: int = 15
@@ -3236,6 +3237,7 @@ class VirtualPosition:
     liq_price: float = field(init=False)
     _peak_pnl_pct: float = field(default=0.0, repr=False)
     _trailing_active: bool = field(default=False, repr=False)
+    _sl_moved: bool = field(default=False, repr=False)
 
     def __post_init__(self):
         if self.side == "long":
@@ -3349,7 +3351,7 @@ class TradingEngine:
             "symbol": symbol, "side": pos.side,
             "entry": pos.entry_price, "exit": exit_price,
             "sl": pos.sl_price, "tp": pos.tp_price,
-            "pnl_pct": round(pnl_pct, 4), "reason": reason,
+            "pnl_pct": round(pnl_pct * 100, 2), "reason": reason,
             "opened": pos.entry_time.isoformat(),
             "closed": exit_time.isoformat(),
             "hold_minutes": round(hold_time, 1),
@@ -3372,10 +3374,12 @@ class TradingEngine:
                     trail_sl = pos.entry_price * (1 + pos._peak_pnl_pct - give)
                     if trail_sl > pos.sl_price:
                         pos.sl_price = trail_sl
+                        pos._sl_moved = True
                 else:
                     trail_sl = pos.entry_price * (1 - pos._peak_pnl_pct + give)
                     if trail_sl < pos.sl_price:
                         pos.sl_price = trail_sl
+                        pos._sl_moved = True
             return
 
         # --- optimized mode ---
@@ -3389,6 +3393,7 @@ class TradingEngine:
                 new_sl = pos.entry_price * (1 + self.cfg.optimized_trail_sl_buffer_pct)
                 if new_sl > pos.sl_price:
                     pos.sl_price = new_sl
+                    pos._sl_moved = True
         else:
             tp_dist = pos.entry_price - pos.tp_price
             if tp_dist <= 0:
@@ -3398,6 +3403,7 @@ class TradingEngine:
                 new_sl = pos.entry_price * (1 - self.cfg.optimized_trail_sl_buffer_pct)
                 if new_sl < pos.sl_price:
                     pos.sl_price = new_sl
+                    pos._sl_moved = True
 
     def process_candle(self, symbol: str, candle: pd.Series, idx: int, current_time: datetime):
         if symbol not in self.positions:
