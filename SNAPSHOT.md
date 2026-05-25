@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-25 07:00:01 UTC
+Generated: 2026-05-25 08:00:01 UTC
 
 ## agents.py
 ```python
@@ -1843,7 +1843,7 @@ class SimConfig:
     # Unified Kimi API
     kimi_api_key: str = field(default_factory=lambda: os.getenv("KIMI_API_KEY", ""))
     kimi_base_url: str = "https://api.moonshot.ai/v1"
-    kimi_model: str = "kimi-k2.6"
+    kimi_model: str = "moonshot-v1-auto"
 
     # Filters
     extreme_filter_long_threshold: float = 0.85
@@ -2259,8 +2259,8 @@ class UnifiedKimiJudge:
             resp = await client.chat.completions.create(
                 model=self.cfg.kimi_model,
                 messages=[{"role": "user", "content": prompt}],
-                temperature=0.15,
-                max_tokens=256,
+                temperature=1.0,
+                max_tokens=512,
                 timeout=self.cfg.request_timeout
             )
             text = resp.choices[0].message.content.strip()
