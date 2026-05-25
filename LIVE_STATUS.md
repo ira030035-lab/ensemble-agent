@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 10:30:01 UTC
+Generated: 2026-05-25 10:40:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      812670  0.0  1.2 209160 50560 ?        Ssl  May19   1:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   1:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root      915939  0.0  2.2 649648 88256 ?        Ssl  May23   1:20 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
@@ -976,11 +976,6 @@ root      915939  0.0  2.2 649648 88256 ?        Ssl  May23   1:20 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 10:28:49,627 [INFO] main: LINKUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-25 10:28:49,627 [INFO] main: LINKUSDT | RL adj=70.0%
-2026-05-25 10:28:53,885 [INFO] main: SOLUSDT | Bull:long(45%) Bear:short(70%)
-2026-05-25 10:28:58,448 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 10:28:58,450 [INFO] main: SOLUSDT | Judge:HOLD conf=70% size=0.0%
 2026-05-25 10:28:58,450 [INFO] main: SOLUSDT | RL adj=70.0%
 2026-05-25 10:29:02,371 [INFO] main: NILUSDT | Bull:long(80%) Bear:short(80%)
 2026-05-25 10:29:08,318 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -1006,6 +1001,11 @@ root      915939  0.0  2.2 649648 88256 ?        Ssl  May23   1:20 /opt/ensemble
 2026-05-25 10:29:59,561 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-25 10:29:59,563 [INFO] main: DOGEUSDT | Judge:HOLD conf=72% size=0.0%
 2026-05-25 10:29:59,563 [INFO] main: DOGEUSDT | RL adj=72.0%
+2026-05-25 10:30:03,605 [INFO] main: ETHUSDT | Bull:long(50%) Bear:short(70%)
+2026-05-25 10:30:08,142 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 10:30:08,144 [INFO] main: ETHUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-25 10:30:08,144 [INFO] main: ETHUSDT | RL adj=70.0%
+2026-05-25 10:30:10,146 [INFO] main: Next scan in 60min (weekday-active)
 ```
 
 ## Disk
@@ -1013,7 +1013,7 @@ root      915939  0.0  2.2 649648 88256 ?        Ssl  May23   1:20 /opt/ensemble
 Filesystem      Size  Used Avail Use% Mounted on
 tmpfs           382M  880K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
-/dev/sda1        75G  6.1G   66G   9% /
+/dev/sda1        75G  8.1G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
 tmpfs           5.0M     0  5.0M   0% /run/lock
 /dev/sda15      253M  146K  252M   1% /boot/efi
@@ -1023,14 +1023,13 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.0Gi       166Mi       4.8Mi       2.8Gi       2.7Gi
-Swap:             0B          0B          0B
+Mem:           3.7Gi       1.1Gi       217Mi       4.8Mi       2.7Gi       2.6Gi
+Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
 ## Crontab
 ```
 SHELL=/bin/bash
-@reboot nohup /opt/trading-agent/venv/bin/python -u /opt/trading-agent/main.py >> /opt/trading-agent/bot.log 2>&1 &
 0 0 * * * /opt/trading-agent/backup.sh >> /opt/trading-agent/backup.log 2>&1
 0 * * * * /opt/ensemble-agent/snapshot.sh >> /opt/ensemble-agent/snapshot.log 2>&1
 */10 * * * * /opt/ensemble-agent/live_status.sh >> /opt/ensemble-agent/status.log 2>&1
