@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 09:10:01 UTC
+Generated: 2026-05-25 09:20:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   0:59 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      915939  0.0  2.2 649960 88560 ?        Ssl  May23   1:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      915939  0.0  2.2 649960 88572 ?        Ssl  May23   1:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -958,7 +958,6 @@ root      915939  0.0  2.2 649960 88560 ?        Ssl  May23   1:13 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 08:20:01,998 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-25 08:20:01,999 [INFO] main: BEATUSDT | Judge:HOLD conf=80% size=0.0%
 2026-05-25 08:20:01,999 [INFO] main: BEATUSDT | RL adj=80.0%
 2026-05-25 08:20:05,742 [INFO] main: BSBUSDT | Bull:long(45%) Bear:short(85%)
@@ -988,6 +987,7 @@ root      915939  0.0  2.2 649960 88560 ?        Ssl  May23   1:13 /opt/ensemble
 2026-05-25 08:46:00,205 [INFO] positions: LOSS WLDUSDT short PnL:-3.11% reason:stop_loss
 2026-05-25 08:46:00,206 [INFO] positions: Lessons: The trade was closed at a loss due to stop loss, with a PnL of -3.11%. The original reasoning was based on a strong bearish conviction and alignment with the trending_down regime, but the MACD bullish signal was a caution flag that was not heeded. The reduced position size helped limit losses, and this experience should reinforce the importance of considering caution flags and being prepared for mean-reversion whipsaws in trending regimes.
 2026-05-25 08:46:00,208 [INFO] rl: RL learned from short WLDUSDT: loss -3.11% | weights bull=0.969 bear=1.014 judge=1.017 threshold=65.08
+2026-05-25 09:19:47,869 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1005,7 +1005,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       602Mi       771Mi       4.8Mi       2.7Gi       3.1Gi
+Mem:           3.7Gi       606Mi       767Mi       4.8Mi       2.7Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
