@@ -1,12 +1,23 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-25 11:00:01 UTC
+Generated: 2026-05-25 12:00:01 UTC
 
 ## agents.py
 ```python
 import asyncio,logging,json,re,aiohttp,time
 from dataclasses import dataclass
+from http_pool import session as _http_session
 log=logging.getLogger("agents")
+
+def _mask(api_key:str)->str:
+    """Mask API key for safe logging — show only last 4 chars."""
+    if not api_key: return "***"
+    return "***"+api_key[-4:] if len(api_key)>=4 else "***"
+
+def _clamp(v,lo,hi):
+    try: v=float(v)
+    except: return lo
+    return max(lo,min(hi,v))
 
 @dataclass
 class AgentVerdict:
@@ -67,7 +78,6 @@ class BullAgent:
     def __init__(self,cfg):
         self.cfg=cfg
         self._key_cd={}
-        self._key_rr_g=0
         self._key_rr_q=0
     async def analyze(self,market_text):
         prompt="Analyze and make bullish case:\n"+market_text
@@ -80,9 +90,7 @@ class BullAgent:
             if side not in ("long","flat"):
                 log.warning("Bull: unparseable response → flat/25. raw="+(text or "")[:160].replace("\n"," "))
                 return AgentVerdict("flat",25,"Unparseable: "+(text or "")[:200])
-            conf=d.get("confidence")
-            try: conf=int(conf)
-            except: conf=50
+            conf=int(_clamp(d.get("confidence",50),0,100))
             return AgentVerdict(side,conf,d.get("reasoning",text))
         except Exception as e: log.error("Bull: "+str(e)); return AgentVerdict("flat",25,"Error: "+str(e))
     async def _claude(self,prompt):
@@ -102,68 +110,27 @@ class BullAgent:
             ordered=fresh[self._key_rr_q:]+fresh[:self._key_rr_q]
             for api_key in ordered:
                 try:
-                    async with aiohttp.ClientSession() as s:
-                        async with s.post("https://api.groq.com/openai/v1/chat/completions",
-                            json={"model":model,"messages":[{"role":"system","content":BULL_SYS},{"role":"user","content":prompt}],"max_tokens":300,"temperature":0.3,"response_format":{"type":"json_object"}},
-                            headers={"Authorization":"Bearer "+api_key,"Content-Type":"application/json"},
-                            timeout=aiohttp.ClientTimeout(total=20)) as r:
-                            try: d=await r.json()
-                            except: d={}
-                            if r.status==429:
-                                self._key_cd[("groq",model,api_key)]=time.time()+3600
-                                last_err=model+" 429 ("+api_key[:10]+")"; continue
-                            if r.status==401:
-                                for m in models: self._key_cd[("groq",m,api_key)]=time.time()+86400
-                                last_err=model+" 401 "+api_key[:10]; continue
-                            if r.status!=200:
-                                last_err=model+" "+str(r.status); continue
-                            txt=(d.get("choices") or [{}])[0].get("message",{}).get("content","").strip()
-                            if txt: return txt
-                            last_err=model+" empty"
+                    s=await _http_session()
+                    async with s.post("https://api.groq.com/openai/v1/chat/completions",
+                        json={"model":model,"messages":[{"role":"system","content":BULL_SYS},{"role":"user","content":prompt}],"max_tokens":300,"temperature":0.3,"response_format":{"type":"json_object"}},
+                        headers={"Authorization":"Bearer "+api_key,"Content-Type":"application/json"},
+                        timeout=aiohttp.ClientTimeout(total=20)) as r:
+                        try: d=await r.json()
+                        except: d={}
+                        if r.status==429:
+                            self._key_cd[("groq",model,api_key)]=time.time()+3600
+                            last_err=model+" 429 ("+_mask(api_key)+")"; continue
+                        if r.status==401:
+                            for m in models: self._key_cd[("groq",m,api_key)]=time.time()+86400
+                            last_err=model+" 401 "+_mask(api_key); continue
+                        if r.status!=200:
+                            last_err=model+" "+str(r.status); continue
+                        txt=(d.get("choices") or [{}])[0].get("message",{}).get("content","").strip()
+                        if txt: return txt
+                        last_err=model+" empty"
                 except Exception as e:
                     last_err=model+" exc: "+str(e)[:80]; continue
         if last_err: log.debug("Bull-Groq: "+last_err)
-        return ""
-    async def _gemini(self,prompt):
-        keys=[k for k in (getattr(self.cfg,'GEMINI_API_KEYS',None) or [self.cfg.GEMINI_API_KEY]) if k]
-        now=time.time()
-        models=getattr(self.cfg,'BULL_MODELS_FALLBACK',None) or [self.cfg.BULL_MODEL]
-        last_err=""
-        for model in models:
-            fresh=[k for k in keys if self._key_cd.get(("gemini",model,k),0)<=now]
-            if fresh:
-                self._key_rr_g=(self._key_rr_g+1)%len(fresh)
-                ordered=fresh[self._key_rr_g:]+fresh[:self._key_rr_g]
-            else:
-                ordered=[]
-            for api_key in ordered:
-                url="https://generativelanguage.googleapis.com/v1beta/models/"+model+":generateContent"
-                payload={"system_instruction":{"parts":[{"text":BULL_SYS}]},"contents":[{"parts":[{"text":prompt}]}],"generationConfig":{"temperature":0.3,"maxOutputTokens":500,"responseMimeType":"application/json","thinkingConfig":{"thinkingBudget":0}}}
-                try:
-                    async with aiohttp.ClientSession() as s:
-                        async with s.post(url,json=payload,params={"key":api_key},timeout=aiohttp.ClientTimeout(total=20)) as r:
-                            d=await r.json()
-                            if r.status==429:
-                                self._key_cd[("gemini",model,api_key)]=time.time()+3600
-                                last_err=model+" 429 ("+api_key[:10]+")"; continue
-                            if r.status==400:
-                                blob=str(d)
-                                if "API_KEY_INVALID" in blob:
-                                    for m in models: self._key_cd[("gemini",m,api_key)]=time.time()+86400
-                                    last_err="bad key "+api_key[:10]; continue
-                                if "expired" in blob.lower():
-                                    self._key_cd[("gemini",model,api_key)]=time.time()+86400
-                                    last_err=model+" expired "+api_key[:10]; continue
-                            if r.status!=200:
-                                last_err=model+" "+str(r.status); continue
-                            parts=(d.get("candidates") or [{}])[0].get("content",{}).get("parts") or []
-                            text="".join(p.get("text","") for p in parts).strip()
-                            if not text:
-                                last_err=model+" empty"; continue
-                            return text
-                except Exception as e:
-                    last_err=model+" exc: "+str(e)[:80]; continue
-        if last_err: log.debug("Bull-Gemini: "+last_err)
         return ""
     async def _kimi(self,prompt):
         key=getattr(self.cfg,"KIMI_API_KEY",None)
@@ -203,7 +170,6 @@ class BearAgent:
         self.cfg=cfg
         self._key_cd={}
         self._key_rr_q=0
-        self._key_rr_g=0
     async def analyze(self,market_text):
         prompt="Analyze and make the bearish/cautious case for this market data:\n"+market_text
         try:
@@ -215,9 +181,7 @@ class BearAgent:
             if side not in ("short","flat","long"):
                 log.warning("Bear: unparseable response → flat/25. raw="+(text or "")[:160].replace("\n"," "))
                 return AgentVerdict("flat",25,"Unparseable: "+(text or "")[:200])
-            conf=d.get("confidence")
-            try: conf=int(conf)
-            except: conf=50
+            conf=int(_clamp(d.get("confidence",50),0,100))
             return AgentVerdict(side,conf,d.get("reasoning",text))
         except Exception as e: log.error("Bear: "+str(e)); return AgentVerdict("flat",25,"Error: "+str(e))
     async def _groq(self,prompt):
@@ -232,65 +196,27 @@ class BearAgent:
             ordered=fresh[self._key_rr_q:]+fresh[:self._key_rr_q]
             for api_key in ordered:
                 try:
-                    async with aiohttp.ClientSession() as s:
-                        async with s.post("https://api.groq.com/openai/v1/chat/completions",
-                            json={"model":model,"messages":[{"role":"system","content":BEAR_SYS},{"role":"user","content":prompt}],"max_tokens":300,"temperature":0.3,"response_format":{"type":"json_object"}},
-                            headers={"Authorization":"Bearer "+api_key,"Content-Type":"application/json"},
-                            timeout=aiohttp.ClientTimeout(total=20)) as r:
-                            try: d=await r.json()
-                            except: d={}
-                            if r.status==429:
-                                self._key_cd[("groq",model,api_key)]=time.time()+3600
-                                last_err=model+" 429 ("+api_key[:10]+")"; continue
-                            if r.status==401:
-                                for m in models: self._key_cd[("groq",m,api_key)]=time.time()+86400
-                                last_err=model+" 401 "+api_key[:10]; continue
-                            if r.status!=200:
-                                last_err=model+" "+str(r.status); continue
-                            txt=(d.get("choices") or [{}])[0].get("message",{}).get("content","").strip()
-                            if txt: return txt
-                            last_err=model+" empty"
+                    s=await _http_session()
+                    async with s.post("https://api.groq.com/openai/v1/chat/completions",
+                        json={"model":model,"messages":[{"role":"system","content":BEAR_SYS},{"role":"user","content":prompt}],"max_tokens":300,"temperature":0.3,"response_format":{"type":"json_object"}},
+                        headers={"Authorization":"Bearer "+api_key,"Content-Type":"application/json"},
+                        timeout=aiohttp.ClientTimeout(total=20)) as r:
+                        try: d=await r.json()
+                        except: d={}
+                        if r.status==429:
+                            self._key_cd[("groq",model,api_key)]=time.time()+3600
+                            last_err=model+" 429 ("+_mask(api_key)+")"; continue
+                        if r.status==401:
+                            for m in models: self._key_cd[("groq",m,api_key)]=time.time()+86400
+                            last_err=model+" 401 "+_mask(api_key); continue
+                        if r.status!=200:
+                            last_err=model+" "+str(r.status); continue
+                        txt=(d.get("choices") or [{}])[0].get("message",{}).get("content","").strip()
+                        if txt: return txt
+                        last_err=model+" empty"
                 except Exception as e:
                     last_err=model+" exc: "+str(e)[:80]; continue
         if last_err: log.debug("Bear-Groq: "+last_err)
-        return ""
-    async def _gemini(self,prompt):
-        keys=list(getattr(self.cfg,"GEMINI_API_KEYS",[]) or [])
-        if not keys: return ""
-        models=getattr(self.cfg,"BEAR_MODELS_GEMINI",None) or ["gemini-2.5-flash"]
-        now=time.time(); last_err=""
-        for model in models:
-            fresh=[k for k in keys if self._key_cd.get(("gemini",model,k),0)<=now]
-            if not fresh: continue
-            self._key_rr_g=(self._key_rr_g+1)%len(fresh)
-            ordered=fresh[self._key_rr_g:]+fresh[:self._key_rr_g]
-            for api_key in ordered:
-                url="https://generativelanguage.googleapis.com/v1beta/models/"+model+":generateContent"
-                payload={"system_instruction":{"parts":[{"text":BEAR_SYS}]},"contents":[{"parts":[{"text":prompt}]}],"generationConfig":{"temperature":0.3,"maxOutputTokens":500,"responseMimeType":"application/json","thinkingConfig":{"thinkingBudget":0}}}
-                try:
-                    async with aiohttp.ClientSession() as s:
-                        async with s.post(url,json=payload,params={"key":api_key},timeout=aiohttp.ClientTimeout(total=20)) as r:
-                            d=await r.json()
-                            if r.status==429:
-                                self._key_cd[("gemini",model,api_key)]=time.time()+3600
-                                last_err=model+" 429 ("+api_key[:10]+")"; continue
-                            if r.status==400:
-                                blob=str(d)
-                                if "API_KEY_INVALID" in blob:
-                                    for m in models: self._key_cd[("gemini",m,api_key)]=time.time()+86400
-                                    last_err="bad key "+api_key[:10]; continue
-                                if "expired" in blob.lower():
-                                    self._key_cd[("gemini",model,api_key)]=time.time()+86400
-                                    last_err=model+" expired "+api_key[:10]; continue
-                            if r.status!=200:
-                                last_err=model+" "+str(r.status); continue
-                            parts=(d.get("candidates") or [{}])[0].get("content",{}).get("parts") or []
-                            txt="".join(p.get("text","") for p in parts).strip()
-                            if txt: return txt
-                            last_err=model+" empty"
-                except Exception as e:
-                    last_err=model+" exc: "+str(e)[:80]; continue
-        if last_err: log.debug("Bear-Gemini: "+last_err)
         return ""
     async def _kimi(self,prompt):
         key=getattr(self.cfg,"KIMI_API_KEY",None)
@@ -357,22 +283,22 @@ class Judge:
                 if json_mode: payload["response_format"]={"type":"json_object"}
                 headers={"Authorization":"Bearer "+api_key,"Content-Type":"application/json"}
                 try:
-                    async with aiohttp.ClientSession() as s:
-                        async with s.post(url,json=payload,headers=headers,timeout=aiohttp.ClientTimeout(total=20)) as r:
-                            try: d=await r.json()
-                            except: d={}
-                            if r.status==429:
-                                self._key_cd[(model,api_key)]=time.time()+3600
-                                last_err=model+" 429 ("+api_key[:10]+" cooldown 1h)"; continue
-                            if r.status==401:
-                                for m in models: self._key_cd[(m,api_key)]=time.time()+86400
-                                last_err=model+" 401 bad key "+api_key[:10]; continue
-                            if r.status!=200:
-                                last_err=model+" status "+str(r.status)+": "+str(d)[:120]; continue
-                            text=(d.get("choices") or [{}])[0].get("message",{}).get("content","").strip()
-                            if not text:
-                                last_err=model+" empty"; continue
-                            return text
+                    s=await _http_session()
+                    async with s.post(url,json=payload,headers=headers,timeout=aiohttp.ClientTimeout(total=20)) as r:
+                        try: d=await r.json()
+                        except: d={}
+                        if r.status==429:
+                            self._key_cd[(model,api_key)]=time.time()+3600
+                            last_err=model+" 429 ("+_mask(api_key)+" cooldown 1h)"; continue
+                        if r.status==401:
+                            for m in models: self._key_cd[(m,api_key)]=time.time()+86400
+                            last_err=model+" 401 bad key "+_mask(api_key); continue
+                        if r.status!=200:
+                            last_err=model+" status "+str(r.status)+": "+str(d)[:120]; continue
+                        text=(d.get("choices") or [{}])[0].get("message",{}).get("content","").strip()
+                        if not text:
+                            last_err=model+" empty"; continue
+                        return text
                 except Exception as e:
                     last_err=model+" exc: "+str(e)[:120]; continue
         if last_err: log.warning("Judge-Groq all failed: "+last_err)
@@ -382,7 +308,12 @@ class Judge:
         try:
             r=await self._claude(prompt)
             d=self._parse(r)
-            return JudgeDecision(d.get("action","hold"),int(d.get("confidence",50)),float(d.get("position_size_pct",0.03)),d.get("reasoning",r),d.get("lessons_from_memory",""))
+            action=d.get("action","hold")
+            if action not in ("long","short","hold"): action="hold"
+            conf=int(_clamp(d.get("confidence",50),0,100))
+            size=_clamp(d.get("position_size_pct",0.03),0.0,0.15)
+            if action=="hold": size=0.0
+            return JudgeDecision(action,conf,size,d.get("reasoning",r),d.get("lessons_from_memory",""))
         except Exception as e: log.error("Judge: "+str(e)); return JudgeDecision("hold",0,0,"Error: "+str(e),"")
     async def reflect(self,trade,outcome):
         prompt="Trade closed: "+trade.symbol+" "+trade.side+" PnL:"+str(round(trade.pnl_pct or 0,2))+"% Regime:"+trade.regime+"\nOriginal reasoning:"+trade.judge_reasoning+"\nOutcome:"+outcome+"\nIn 2-3 sentences what should be remembered? Plain text only, no JSON, no markdown fences."
@@ -682,14 +613,83 @@ if __name__ == "__main__":
 
 ## bitget_client.py
 ```python
-import hmac,hashlib,base64,time,aiohttp,logging
+import hmac,hashlib,base64,time,asyncio,json,aiohttp,logging
 log=logging.getLogger("bitget")
+
+# Retry/CB tuning
+_REQUEST_TIMEOUT_S=15
+_RETRY_ATTEMPTS_GET=3
+_RETRY_BACKOFF=(0.5,1.5,3.0)  # delays in seconds for retries 1..N
+_CB_FAILURE_THRESHOLD=5
+_CB_COOLDOWN_S=60
+
+class BitgetCircuitOpen(Exception):
+    """Raised when too many consecutive Bitget failures triggered the breaker."""
+
 class BitgetClient:
  def __init__(self,cfg):
   self.cfg=cfg;self.base=cfg.BITGET_BASE_URL;self.session=None
+  self._contract_specs={}  # symbol -> raw contract spec dict
+  self._contracts_ts=0
+  self._cb_failures=0
+  self._cb_open_until=0.0
  async def start(self):self.session=aiohttp.ClientSession()
  async def close(self):
   if self.session:await self.session.close()
+ async def _request(self,method,path,params=None,body=None):
+  """Single Bitget call with timeout, retry-on-GET, and circuit breaker.
+
+  Uses time.monotonic() for breaker state so NTP jumps cannot reopen prematurely.
+  HTTP 5xx is raised unconditionally — caught by the retry handler and re-raised
+  if attempts are exhausted, never silently returned as a success payload.
+  Failures increment _cb_failures per attempt (not per request), so a single
+  cascade of retries can trip the breaker without amplifying load.
+  """
+  if time.monotonic()<self._cb_open_until:
+   remaining=int(self._cb_open_until-time.monotonic())
+   raise BitgetCircuitOpen("Bitget circuit OPEN, "+str(remaining)+"s remaining")
+  do_retry=(method=="GET")
+  attempts=_RETRY_ATTEMPTS_GET if do_retry else 1
+  bs=json.dumps(body) if (method=="POST" and body is not None) else ""
+  timeout=aiohttp.ClientTimeout(total=_REQUEST_TIMEOUT_S)
+  last_err=None
+  for attempt in range(attempts):
+   try:
+    if method=="GET":
+     async with self.session.get(self.base+path,headers=self._headers("GET",path),params=params,timeout=timeout) as r:
+      if 500<=r.status<600: raise RuntimeError("HTTP "+str(r.status)+" on "+path)
+      d=await r.json()
+    else:
+     async with self.session.post(self.base+path,headers=self._headers("POST",path,bs),data=bs,timeout=timeout) as r:
+      if 500<=r.status<600: raise RuntimeError("HTTP "+str(r.status)+" on "+path)
+      d=await r.json()
+    if self._cb_failures>0:
+     log.info("Bitget recovered after "+str(self._cb_failures)+" failures")
+    self._cb_failures=0
+    return d
+   except (aiohttp.ClientError,asyncio.TimeoutError,RuntimeError) as e:
+    last_err=e
+    self._cb_failures+=1
+    if self._cb_failures>=_CB_FAILURE_THRESHOLD:
+     self._cb_open_until=time.monotonic()+_CB_COOLDOWN_S
+     log.error("Bitget circuit OPEN for "+str(_CB_COOLDOWN_S)+"s after "+str(self._cb_failures)+" consecutive failures: "+str(last_err)[:200])
+     break  # CB tripped, stop retrying this request
+    if attempt<attempts-1:
+     wait=_RETRY_BACKOFF[min(attempt,len(_RETRY_BACKOFF)-1)]
+     log.warning("Bitget "+method+" "+path+" retry "+str(attempt+1)+"/"+str(attempts)+" after "+str(e)[:120]+" — sleep "+str(wait)+"s")
+     await asyncio.sleep(wait)
+    else: break
+  raise last_err if last_err else RuntimeError("Bitget "+method+" "+path+" failed")
+ async def _ensure_contracts(self):
+  if time.time()-self._contracts_ts<3600 and self._contract_specs: return
+  try:
+   data=await self.get("/api/v2/mix/market/contracts",{"productType":"USDT-FUTURES"})
+   for c in data.get("data",[]) or []:
+    sym=c.get("symbol")
+    if sym: self._contract_specs[sym]=c
+   self._contracts_ts=time.time()
+   log.info("Contract specs cached: "+str(len(self._contract_specs))+" symbols")
+  except Exception as e: log.warning("contracts refresh: "+str(e))
  def _sign(self,ts,method,path,body=""):
   import hmac,hashlib,base64
   msg=f"{ts}{method.upper()}{path}{body}"
@@ -698,10 +698,9 @@ class BitgetClient:
   import time;ts=str(int(time.time()*1000))
   return {"ACCESS-KEY":self.cfg.BITGET_API_KEY,"ACCESS-SIGN":self._sign(ts,method,path,body),"ACCESS-TIMESTAMP":ts,"ACCESS-PASSPHRASE":self.cfg.BITGET_PASSPHRASE,"Content-Type":"application/json","locale":"en-US"}
  async def get(self,path,params=None):
-  async with self.session.get(self.base+path,headers=self._headers("GET",path),params=params) as r:return await r.json()
+  return await self._request("GET",path,params=params)
  async def post(self,path,body):
-  import json;bs=json.dumps(body)
-  async with self.session.post(self.base+path,headers=self._headers("POST",path,bs),data=bs) as r:return await r.json()
+  return await self._request("POST",path,body=body)
  async def get_top_symbols(self,n=50):
   data=await self.get("/api/v2/mix/market/tickers",{"productType":"USDT-FUTURES"})
   try:
@@ -730,9 +729,27 @@ class BitgetClient:
   data=await self.get("/api/v2/mix/position/all-position",{"productType":"USDT-FUTURES"})
   return [p for p in (data or {}).get("data",[]) if float(p.get("total",0))>0]
  async def place_order(self,symbol,side,size,leverage=5):
+  await self._ensure_contracts()
+  spec=self._contract_specs.get(symbol,{})
+  try: min_usdt=float(spec.get("minTradeUSDT") or 5)
+  except: min_usdt=5
+  if size<min_usdt:
+   log.warning("place_order "+symbol+": notional $"+str(round(size,2))+" below min $"+str(min_usdt))
+   return {"code":"LOCAL_MIN_NOTIONAL","msg":"size $"+str(round(size,2))+" below minTradeUSDT "+str(min_usdt)}
   await self.post("/api/v2/mix/account/set-leverage",{"symbol":symbol,"productType":"USDT-FUTURES","marginCoin":"USDT","leverage":str(leverage),"holdSide":side})
   t=await self.get("/api/v2/mix/market/ticker",{"symbol":symbol,"productType":"USDT-FUTURES"})
   price=float(t["data"][0]["lastPr"]);qty=round(size/price,4)
+  try: min_qty=float(spec.get("minTradeNum") or 0)
+  except: min_qty=0
+  if min_qty>0 and qty<min_qty:
+   log.warning("place_order "+symbol+": qty "+str(qty)+" below minTradeNum "+str(min_qty))
+   return {"code":"LOCAL_MIN_QTY","msg":"qty "+str(qty)+" below "+str(min_qty)}
+  try:
+   sz_place=spec.get("sizeMultiplier") or spec.get("volumePlace")
+   if sz_place:
+    places=int(float(sz_place))
+    qty=round(qty,places)
+  except: pass
   return await self.post("/api/v2/mix/order/place-order",{"symbol":symbol,"productType":"USDT-FUTURES","marginMode":"isolated","marginCoin":"USDT","size":str(qty),"side":"open_long" if side=="long" else "open_short","orderType":"market","tradeSide":"open"})
  async def close_position(self,symbol,side):
   return await self.post("/api/v2/mix/order/place-order",{"symbol":symbol,"productType":"USDT-FUTURES","marginMode":"isolated","marginCoin":"USDT","size":"0","side":"close_long" if side=="long" else "close_short","orderType":"market","tradeSide":"close","reduceOnly":"YES"})
@@ -750,18 +767,12 @@ class Config:
     BITGET_PASSPHRASE = os.getenv("BITGET_PASSPHRASE")
     BITGET_BASE_URL = "https://api.bitget.com"
     ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
-    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-    GEMINI_API_KEY2 = os.getenv("GEMINI_API_KEY2")
-    GEMINI_API_KEYS = [k for k in [os.getenv("GEMINI_API_KEY"+(str(i) if i>1 else "")) for i in range(1,6)] if k]
     GROQ_API_KEYS = [k for k in [os.getenv("GROQ_API_KEY"+(str(i) if i>1 else "")) for i in range(1,6)] if k]
     KIMI_API_KEY = os.getenv("KIMI_API_KEY")
     KIMI_BASE_URL = "https://api.moonshot.ai/v1"
     KIMI_MODEL = "kimi-k2.6"
-    BULL_MODEL = "gemini-2.5-flash"
-    BULL_MODELS_FALLBACK = ["gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-2.0-flash-lite"]
     BULL_MODELS_GROQ = ["llama-3.3-70b-versatile", "openai/gpt-oss-120b"]
     BEAR_MODELS_GROQ = ["llama-3.3-70b-versatile", "openai/gpt-oss-120b"]
-    BEAR_MODELS_GEMINI = ["gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-2.0-flash-lite"]
     JUDGE_MODELS_GROQ = ["llama-3.3-70b-versatile", "openai/gpt-oss-120b"]
     BEAR_MODEL = "claude-haiku-4-5-20251001"
     JUDGE_MODEL = "claude-haiku-4-5-20251001"
@@ -769,6 +780,8 @@ class Config:
     SCAN_INTERVAL = 3600
     MAX_POSITIONS = 5
     MAX_SAME_SIDE = 3
+    MAX_CORRELATION = 0.85
+    CORR_LOOKBACK_BARS = 24
     MIN_CONFIDENCE = 70
     THRESHOLD_SLACK = 3
     MIN_HOLD_SEC = 7200
@@ -789,20 +802,17 @@ class Config:
     TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
     TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
-# Paper Trading Mode
-PAPER_MODE = True
-PAPER_BALANCE = 1000.0  # виртуальный баланс в USDT
-
 ```
 
 ## dashboard_api.py
 ```python
 import asyncio, json, re, os, logging, time
-from datetime import datetime
+from datetime import datetime, timezone
 from aiohttp import web, ClientSession, ClientTimeout
 from dotenv import load_dotenv
 load_dotenv("/opt/ensemble-agent/.env")
-from config import PAPER_BALANCE
+from config import Config
+PAPER_BALANCE = Config.PAPER_BALANCE
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 log = logging.getLogger("dashboard")
 
@@ -852,7 +862,7 @@ async def _enrich_positions(positions):
         age_sec = 0
         try:
             opened = datetime.fromisoformat(pos["opened_at"])
-            age_sec = int((datetime.utcnow() - opened).total_seconds())
+            age_sec = int((datetime.now(timezone.utc).replace(tzinfo=None) - opened).total_seconds())
         except Exception:
             pass
         enriched.append({
@@ -1014,6 +1024,7 @@ if __name__ == "__main__":
 ```python
 import logging,numpy as np,aiohttp,time
 from dataclasses import dataclass
+from http_pool import session as _http_session
 log = logging.getLogger("data_engine")
 
 class SentimentCache:
@@ -1022,19 +1033,19 @@ class SentimentCache:
     async def get_fear_greed(self):
         if self._fg is not None and time.time()-self._fg_ts<self.ttl: return self._fg
         try:
-            async with aiohttp.ClientSession() as s:
-                async with s.get("https://api.alternative.me/fng/?limit=1",timeout=aiohttp.ClientTimeout(total=10)) as r:
-                    j=await r.json(); d=j.get("data",[{}])[0]
-                    val=int(d.get("value",0)); label=d.get("value_classification","")
-                    self._fg=(val,label); self._fg_ts=time.time(); return self._fg
+            s=await _http_session()
+            async with s.get("https://api.alternative.me/fng/?limit=1",timeout=aiohttp.ClientTimeout(total=10)) as r:
+                j=await r.json(); d=j.get("data",[{}])[0]
+                val=int(d.get("value",0)); label=d.get("value_classification","")
+                self._fg=(val,label); self._fg_ts=time.time(); return self._fg
         except Exception as e: log.warning("F&G fetch: "+str(e)); return self._fg
     async def get_btc_dominance(self):
         if self._dom is not None and time.time()-self._dom_ts<self.ttl: return self._dom
         try:
-            async with aiohttp.ClientSession() as s:
-                async with s.get("https://api.coinpaprika.com/v1/global",timeout=aiohttp.ClientTimeout(total=10)) as r:
-                    j=await r.json(); val=float(j.get("bitcoin_dominance_percentage",0))
-                    self._dom=val; self._dom_ts=time.time(); return self._dom
+            s=await _http_session()
+            async with s.get("https://api.coinpaprika.com/v1/global",timeout=aiohttp.ClientTimeout(total=10)) as r:
+                j=await r.json(); val=float(j.get("bitcoin_dominance_percentage",0))
+                self._dom=val; self._dom_ts=time.time(); return self._dom
         except Exception as e: log.warning("BTC.D fetch: "+str(e)); return self._dom
 
 @dataclass
@@ -1069,23 +1080,62 @@ class MarketSnapshot:
         return "\n".join(lines)
 
 class DataEngine:
-    def __init__(self,bitget): self.bitget=bitget; self.sentiment=SentimentCache()
+    def __init__(self,bitget):
+        self.bitget=bitget
+        self.sentiment=SentimentCache()
+        self._cache={}  # key -> (ts, value); TTL chosen per data freshness
+    async def _cached(self,key,ttl,coro_factory):
+        now=time.time()
+        rec=self._cache.get(key)
+        if rec and now-rec[0]<ttl: return rec[1]
+        val=await coro_factory()
+        self._cache[key]=(now,val)
+        # opportunistic cleanup of stale keys (>1h old) to bound memory
+        if len(self._cache)>500:
+            stale=[k for k,v in self._cache.items() if now-v[0]>3600]
+            for k in stale: self._cache.pop(k,None)
+        return val
+    async def get_closes(self,symbol,granularity="1H",limit=25):
+        """Cached helper that returns just the close-price series for a symbol."""
+        ttl={"15m":60,"1H":300,"4H":900}.get(granularity,300)
+        candles=await self._cached(("c"+granularity.lower(),symbol,limit),ttl,
+            lambda:self.bitget.get_candles(symbol,granularity,limit))
+        if not candles: return []
+        try: return [float(x[4]) for x in candles]
+        except Exception as e:
+            log.warning("get_closes "+symbol+" "+granularity+": "+str(e)); return []
+    async def correlation(self,symbol_a,symbol_b,granularity="1H",n=24):
+        """Pearson correlation of returns over the last n+1 bars. Returns 0.0 on failure."""
+        if symbol_a==symbol_b: return 1.0
+        ca=await self.get_closes(symbol_a,granularity,n+1)
+        cb=await self.get_closes(symbol_b,granularity,n+1)
+        if len(ca)<n+1 or len(cb)<n+1: return 0.0
+        ra=np.diff(ca)/ca[:-1]
+        rb=np.diff(cb)/cb[:-1]
+        if len(ra)<2 or len(rb)<2: return 0.0
+        # numpy.corrcoef returns nan for zero-variance series
+        with np.errstate(invalid="ignore"):
+            c=np.corrcoef(ra,rb)[0,1]
+        return float(c) if np.isfinite(c) else 0.0
     async def get_snapshot(self,symbol):
         try:
-            c15=await self.bitget.get_candles(symbol,"15m",100)
-            c1h=await self.bitget.get_candles(symbol,"1H",50)
-            c4h=await self.bitget.get_candles(symbol,"4H",30)
+            c15=await self._cached(("c15",symbol),60,lambda:self.bitget.get_candles(symbol,"15m",100))
+            c1h=await self._cached(("c1h",symbol),300,lambda:self.bitget.get_candles(symbol,"1H",50))
+            c4h=await self._cached(("c4h",symbol),900,lambda:self.bitget.get_candles(symbol,"4H",30))
             if not c15 or not c1h or not c4h: return None
             def parse(c): return {"close":[float(x[4]) for x in c],"volume":[float(x[5]) for x in c]}
             d15,d1h,d4h=parse(c15),parse(c1h),parse(c4h)
+            if len(d15["close"])<2 or len(d1h["close"])<2 or len(d15["volume"])<1:
+                log.warning("DataEngine "+symbol+": insufficient candle data (15m="+str(len(d15["close"]))+", 1h="+str(len(d1h["close"]))+")")
+                return None
             price=d15["close"][-1]
             pc15=(d15["close"][-1]/d15["close"][-2]-1)*100
             pc1h=(d1h["close"][-1]/d1h["close"][-2]-1)*100
             pc4h=(d4h["close"][-1]/d4h["close"][-5]-1)*100 if len(d4h["close"])>=5 else 0
-            vol15=d15["volume"][-1]; avg=float(np.mean(d15["volume"][-20:]))
+            vol15=d15["volume"][-1]; avg=float(np.mean(d15["volume"][-20:])) if len(d15["volume"])>=1 else 0.0
             vr=vol15/avg if avg>0 else 1.0
-            funding=await self.bitget.get_funding_rate(symbol)
-            ob=await self.bitget.get_orderbook(symbol)
+            funding=await self._cached(("fund",symbol),600,lambda:self.bitget.get_funding_rate(symbol))
+            ob=await self._cached(("ob",symbol),20,lambda:self.bitget.get_orderbook(symbol))
             bids=ob.get("bids",[]); asks=ob.get("asks",[])
             bv=sum(float(b[1]) for b in bids[:10]); av=sum(float(a[1]) for a in asks[:10])
             imb=(bv-av)/(bv+av) if bv+av>0 else 0
@@ -1135,10 +1185,40 @@ class DataEngine:
 
 ```
 
+## http_pool.py
+```python
+"""Shared aiohttp.ClientSession to avoid TCP/TLS handshake on every request.
+
+Lazy-initialized within the event loop; closed by Orchestrator on shutdown.
+"""
+import aiohttp, logging
+log = logging.getLogger("http_pool")
+
+_session: aiohttp.ClientSession | None = None
+
+async def session() -> aiohttp.ClientSession:
+    global _session
+    if _session is None or _session.closed:
+        _session = aiohttp.ClientSession(
+            connector=aiohttp.TCPConnector(limit=100, ttl_dns_cache=300, keepalive_timeout=60),
+        )
+        log.info("Shared aiohttp.ClientSession created")
+    return _session
+
+async def close() -> None:
+    global _session
+    if _session is not None and not _session.closed:
+        await _session.close()
+        log.info("Shared aiohttp.ClientSession closed")
+    _session = None
+
+```
+
 ## main.py
 ```python
 #!/usr/bin/env python3
 import asyncio,logging,signal,sys,random
+from logging.handlers import RotatingFileHandler
 from datetime import datetime,timezone
 from config import Config
 from bitget_client import BitgetClient
@@ -1147,9 +1227,15 @@ from agents import BullAgent,BearAgent,Judge
 from memory import Memory
 from rl_agent import RLAgent
 from position_manager import PositionManager
+import http_pool
 
-logging.basicConfig(level=logging.INFO,format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
-    handlers=[logging.FileHandler("/opt/ensemble-agent/ensemble.log")])
+_log_handler=RotatingFileHandler(
+    "/opt/ensemble-agent/ensemble.log",
+    maxBytes=50*1024*1024,backupCount=5,encoding="utf-8")
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    handlers=[_log_handler])
 log=logging.getLogger("main")
 
 class Orchestrator:
@@ -1159,17 +1245,18 @@ class Orchestrator:
         self.bear=BearAgent(self.cfg); self.judge=Judge(self.cfg)
         self.memory=Memory(self.cfg)
         self.rl=RLAgent(self.cfg)
-        self.positions=PositionManager(self.bitget,self.cfg,self.memory,self.judge,self.rl)
+        self.positions=PositionManager(self.bitget,self.cfg,self.memory,self.judge,self.rl,data=self.data)
         self.running=True; self.symbols=[]; self._stop_event=asyncio.Event()
     async def _wait(self,timeout):
         try: await asyncio.wait_for(self._stop_event.wait(),timeout=timeout)
         except asyncio.TimeoutError: pass
     async def start(self):
         await self.bitget.start()
+        await self.positions.setup()
         log.info("=== Adversarial Trading Agent started ===")
-        bull_keys=len(getattr(self.cfg,"GEMINI_API_KEYS",[]) or [])
+        kimi_on=bool(getattr(self.cfg,"KIMI_API_KEY",None))
         groq_keys=len(getattr(self.cfg,"GROQ_API_KEYS",[]) or [])
-        log.info("Bull: race(Gemini x"+str(bull_keys)+", Groq x"+str(groq_keys)+") → Haiku fb | Bear: race(Groq x"+str(groq_keys)+", Gemini x"+str(bull_keys)+") → Haiku fb | Judge: Haiku (decide) + Groq Llama (exit/dir/reflect)")
+        log.info("Bull: race(Kimi x"+("1" if kimi_on else "0")+", Groq x"+str(groq_keys)+") → Haiku fb | Bear: race(Groq x"+str(groq_keys)+", Kimi x"+("1" if kimi_on else "0")+") → Haiku fb | Judge: Haiku (decide) + Groq Llama (exit/dir/reflect)")
         loop=asyncio.get_event_loop()
         for sig in (signal.SIGINT,signal.SIGTERM): loop.add_signal_handler(sig,self.stop)
         closed_in_memory=sum(1 for t in self.memory.trades if t.outcome in ("profit","loss") and not getattr(t,"orphan",False))
@@ -1182,8 +1269,22 @@ class Orchestrator:
         try:
             await asyncio.gather(self.scan_loop(),self.positions.monitor_loop(self._stop_event),self.symbol_refresh_loop())
         finally:
+            # Best-effort drain of in-flight save tasks before exit
+            try:
+                pending=[t for t in asyncio.all_tasks() if t is not asyncio.current_task() and not t.done()]
+                if pending:
+                    log.info("Draining "+str(len(pending))+" pending tasks before close")
+                    await asyncio.wait(pending,timeout=5)
+            except Exception as e: log.error("drain: "+str(e))
+            # Final synchronous saves to ensure durability after pending tasks finish/timeout
+            try: self.memory._save_sync()
+            except Exception as e: log.error("memory final save: "+str(e))
+            try: self.rl._save_sync()
+            except Exception as e: log.error("rl final save: "+str(e))
             try: await self.bitget.close()
             except Exception as e: log.error("bitget close: "+str(e))
+            try: await http_pool.close()
+            except Exception as e: log.error("http_pool close: "+str(e))
     def stop(self): log.info("Shutting down..."); self.running=False; self._stop_event.set()
     async def symbol_refresh_loop(self):
         while self.running:
@@ -1254,7 +1355,7 @@ asyncio.run(Orchestrator().start())
 
 ## memory.py
 ```python
-import json,logging,os,uuid,threading
+import json,logging,os,uuid,threading,asyncio
 from dataclasses import dataclass,asdict,field
 from typing import Optional
 from datetime import datetime
@@ -1277,7 +1378,8 @@ class Memory:
         with _MEM_LOCK:
             if os.path.exists(self.path):
                 try:
-                    data=json.load(open(self.path))
+                    with open(self.path) as f:
+                        data=json.load(f)
                     self.trades=[]
                     valid_fields=set(TradeMemory.__dataclass_fields__.keys())
                     for t in data:
@@ -1285,7 +1387,7 @@ class Memory:
                         self.trades.append(TradeMemory(**clean))
                     log.info("Memory loaded: "+str(len(self.trades))+" trades")
                 except Exception as e: log.error("Memory load: "+str(e)); self.trades=[]
-    def _save(self):
+    def _save_sync(self):
         with _MEM_LOCK:
             try:
                 tmp=self.path+".tmp"
@@ -1294,6 +1396,13 @@ class Memory:
                     f.flush(); os.fsync(f.fileno())
                 os.replace(tmp,self.path)
             except Exception as e: log.error("Memory save: "+str(e))
+    def _save(self):
+        """Offload save to a worker thread when an event loop is running, else save inline."""
+        try:
+            loop=asyncio.get_running_loop()
+            loop.create_task(asyncio.to_thread(self._save_sync))
+        except RuntimeError:
+            self._save_sync()
     def add_trade(self,trade):
         with _MEM_LOCK: self.trades.append(trade); self._save()
     def update_trade(self,tid,**kw):
@@ -1341,9 +1450,12 @@ import os
 import time
 import threading
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 
 log = logging.getLogger(__name__)
+
+def _utcnow_iso():
+    return datetime.now(timezone.utc).replace(tzinfo=None).isoformat()
 
 PAPER_STATE_FILE = "/opt/ensemble-agent/paper_state.json"
 _STATE_LOCK = threading.RLock()
@@ -1362,6 +1474,13 @@ def _load_state():
             }
 
 def _save_state(state):
+    """Persist paper state synchronously.
+
+    Must remain sync: _load_state() reads from disk each call (no in-memory cache),
+    so off-loop saves would race with subsequent paper_open/paper_close that read
+    a stale snapshot before the prior write lands. The dashboard process also reads
+    this file, so the disk is the cross-process source of truth.
+    """
     with _STATE_LOCK:
         tmp = PAPER_STATE_FILE + ".tmp"
         with open(tmp, "w") as f:
@@ -1391,7 +1510,7 @@ def paper_open(symbol, side, price, qty, confidence, leverage=5):
             "entry_price": price,
             "qty": qty,
             "confidence": confidence,
-            "opened_at": datetime.utcnow().isoformat(),
+            "opened_at": _utcnow_iso(),
             "cost": margin,
             "notional": notional,
             "leverage": leverage
@@ -1416,6 +1535,10 @@ def paper_close(symbol, current_price, reason="judge_exit"):
         else:
             pnl = (entry - current_price) / entry * 100
             pnl_usdt = (entry - current_price) * qty
+        margin = pos.get("cost", 0.0)
+        if margin > 0 and pnl_usdt < -margin:
+            log.warning(f"[PAPER] {symbol} loss exceeds margin: raw={pnl_usdt:.2f} USDT, capped at -{margin:.2f}")
+            pnl_usdt = -margin
         state["balance"] += pos["cost"] + pnl_usdt
         state["total_pnl"] += pnl_usdt
         trade_record = {
@@ -1423,7 +1546,7 @@ def paper_close(symbol, current_price, reason="judge_exit"):
             "exit_price": current_price,
             "pnl_pct": round(pnl, 2),
             "pnl_usdt": round(pnl_usdt, 2),
-            "closed_at": datetime.utcnow().isoformat(),
+            "closed_at": _utcnow_iso(),
             "reason": reason,
             "outcome": "profit" if pnl_usdt > 0 else "loss"
         }
@@ -1460,17 +1583,64 @@ def paper_get_stats():
 ## position_manager.py
 ```python
 import paper_trading
-import asyncio,logging,uuid
-from datetime import datetime
+import asyncio,logging,uuid,time,traceback
+from datetime import datetime,timezone
 from typing import Optional
 log=logging.getLogger("positions")
 
+def _utcnow_iso():
+    """Naive UTC ISO string (replaces deprecated datetime.utcnow().isoformat())."""
+    return datetime.now(timezone.utc).replace(tzinfo=None).isoformat()
+def _utcnow():
+    """Naive UTC datetime (replaces deprecated datetime.utcnow())."""
+    return datetime.now(timezone.utc).replace(tzinfo=None)
+
 class PositionManager:
-    def __init__(self,bitget,cfg,memory,judge,rl=None):
+    def __init__(self,bitget,cfg,memory,judge,rl=None,data=None):
         self.bitget=bitget; self.cfg=cfg; self.memory=memory; self.judge=judge; self.rl=rl
+        self.data=data  # DataEngine, optional — used for correlation checks
         self.open_trades={}
         self._peak_pnl={}
-        if getattr(cfg,"PAPER_MODE",False): self._restore_paper_state()
+    async def setup(self):
+        """Async restore of positions on startup. Dispatches paper vs live."""
+        if getattr(self.cfg,"PAPER_MODE",False):
+            self._restore_paper_state()
+        else:
+            await self._restore_live_state()
+    async def _restore_live_state(self):
+        try:
+            positions=await self.bitget.get_positions() or []
+            if not positions:
+                log.info("live: no open positions on Bitget"); return
+            from memory import TradeMemory
+            for p in positions:
+                symbol=p.get("symbol")
+                if not symbol: continue
+                side=p.get("holdSide") or p.get("posSide") or "long"
+                if side not in ("long","short"): side="long"
+                try: entry_price=float(p.get("openPriceAvg") or p.get("averageOpenPrice") or p.get("markPrice") or 0)
+                except: entry_price=0.0
+                if entry_price<=0:
+                    log.warning("live restore: skipping "+symbol+", no entry price"); continue
+                matches=[t for t in self.memory.trades if t.symbol==symbol and t.side==side and t.outcome=="open"]
+                existing=max(matches,key=lambda t:t.opened_at) if matches else None
+                if existing:
+                    self.open_trades[symbol]=existing; continue
+                log.warning("Synthesizing TradeMemory for live orphan: "+symbol+" "+side+" @"+str(entry_price))
+                t=TradeMemory(
+                    id=str(uuid.uuid4()),symbol=symbol,side=side,
+                    entry_price=entry_price,exit_price=None,pnl_pct=None,
+                    regime="unknown",rsi_at_entry=0.0,funding_at_entry=0.0,
+                    volume_ratio_at_entry=0.0,bull_confidence=0,bear_confidence=0,
+                    judge_confidence=0,judge_reasoning="restored from live positions",
+                    outcome="open",opened_at=_utcnow_iso(),
+                    closed_at=None,lessons=None,orphan=True)
+                self.memory.add_trade(t); self.open_trades[symbol]=t
+            longs=sum(1 for t in self.open_trades.values() if t.side=="long")
+            shorts=sum(1 for t in self.open_trades.values() if t.side=="short")
+            log.info("Restored "+str(len(self.open_trades))+" live positions ("+str(longs)+"L/"+str(shorts)+"S)")
+        except Exception as e:
+            log.error("Live restore: "+str(e)); log.error(traceback.format_exc())
     def _restore_paper_state(self):
         try:
             state=paper_trading._load_state()
@@ -1485,20 +1655,20 @@ class PositionManager:
                     self.open_trades[symbol]=existing; continue
                 log.warning("Synthesizing TradeMemory for orphan: "+symbol+" "+p["side"]+" @"+str(p["entry_price"]))
                 t=TradeMemory(
-                    id=str(uuid.uuid4())[:8],symbol=symbol,side=p["side"],
+                    id=str(uuid.uuid4()),symbol=symbol,side=p["side"],
                     entry_price=p["entry_price"],exit_price=None,pnl_pct=None,
                     regime="unknown",rsi_at_entry=0.0,funding_at_entry=0.0,
                     volume_ratio_at_entry=0.0,bull_confidence=0,bear_confidence=0,
                     judge_confidence=p.get("confidence",0),
                     judge_reasoning="restored from paper_state",outcome="open",
-                    opened_at=p.get("opened_at",datetime.utcnow().isoformat()),
+                    opened_at=p.get("opened_at",_utcnow_iso()),
                     closed_at=None,lessons=None,orphan=True)
                 self.memory.add_trade(t); self.open_trades[symbol]=t
             longs=sum(1 for t in self.open_trades.values() if t.side=="long")
             shorts=sum(1 for t in self.open_trades.values() if t.side=="short")
             log.info("Restored "+str(len(self.open_trades))+" positions from paper_state ("+str(longs)+"L/"+str(shorts)+"S)")
         except Exception as e:
-            import traceback; log.error("Restore: "+str(e)); log.error(traceback.format_exc())
+            log.error("Restore: "+str(e)); log.error(traceback.format_exc())
     async def open_position(self,symbol,decision,snapshot):
         from memory import TradeMemory
         if self.cfg.PAPER_MODE:
@@ -1520,6 +1690,16 @@ class PositionManager:
             if total>=3 and same_side/total > 2/3:
                 log.info("2/3 rule: skip "+decision.action.upper()+" "+symbol+" ("+str(same_side)+"/"+str(total)+" already "+decision.action+")")
                 return None
+        if self.data is not None:
+            max_corr=getattr(self.cfg,"MAX_CORRELATION",0.85)
+            n=getattr(self.cfg,"CORR_LOOKBACK_BARS",24)
+            same_side_open=[s for s,t in self.open_trades.items() if t.side==decision.action and s!=symbol]
+            for open_sym in same_side_open:
+                try: c=await self.data.correlation(symbol,open_sym,granularity="1H",n=n)
+                except Exception as e: log.warning("correlation "+symbol+"/"+open_sym+": "+str(e)); c=0.0
+                if c>=max_corr:
+                    log.info("Correlation block: skip "+decision.action.upper()+" "+symbol+" (corr "+str(round(c,2))+" >= "+str(max_corr)+" with "+open_sym+" "+decision.action+")")
+                    return None
         if self.cfg.PAPER_MODE:
             balance=ps["balance"]
             size=balance*decision.position_size_pct
@@ -1536,13 +1716,13 @@ class PositionManager:
             result=await self.bitget.place_order(symbol,decision.action,size)
             if result.get("code")!="00000": log.error("Order failed: "+str(result)); return None
         trade=TradeMemory(
-            id=str(uuid.uuid4())[:8],symbol=symbol,side=decision.action,
+            id=str(uuid.uuid4()),symbol=symbol,side=decision.action,
             entry_price=snapshot.price,exit_price=None,pnl_pct=None,
             regime=snapshot.regime,rsi_at_entry=snapshot.rsi_15m,
             funding_at_entry=snapshot.funding_rate,volume_ratio_at_entry=snapshot.volume_ratio,
             bull_confidence=0,bear_confidence=0,judge_confidence=decision.confidence,
             judge_reasoning=decision.reasoning,outcome="open",
-            opened_at=datetime.utcnow().isoformat(),closed_at=None,lessons=None)
+            opened_at=_utcnow_iso(),closed_at=None,lessons=None)
         self.open_trades[symbol]=trade; self.memory.add_trade(trade)
         return trade
     async def _paper_price(self,symbol):
@@ -1573,13 +1753,16 @@ class PositionManager:
         trail_arm=getattr(self.cfg,"TRAIL_ARM_PCT",1.5)
         trail_give=getattr(self.cfg,"TRAIL_GIVEBACK_PCT",1.0)
         emerg_pct=getattr(self.cfg,"EMERGENCY_STOP_PCT",-15.0)
+        leverage=getattr(self.cfg,"LEVERAGE",5)
+        # Liquidation threshold: at L× leverage, price moving -100/L % wipes margin.
+        # Use safety margin of 1% to ensure close before broker liquidates in live mode.
+        liquidation_pct=-(100.0/max(leverage,1))+1.0
         min_hold=getattr(self.cfg,"MIN_HOLD_SEC",7200)
         ask_interval=getattr(self.cfg,"JUDGE_EXIT_INTERVAL_SEC",3600)
         noise_band=getattr(self.cfg,"JUDGE_EXIT_NOISE_BAND_PCT",1.0)
         while True:
             if stop_event is not None and stop_event.is_set(): log.info("Position monitor stopped"); return
             try:
-                import time
                 now=time.time()
                 try:
                     if self.cfg.PAPER_MODE:
@@ -1606,6 +1789,9 @@ class PositionManager:
                     peak=self._peak_pnl.get(symbol,pnl)
                     if pnl>peak: peak=pnl
                     self._peak_pnl[symbol]=peak
+                    if pnl<=liquidation_pct:
+                        log.warning("LIQUIDATION "+symbol+" "+trade.side+" PnL:"+str(round(pnl,2))+"% (threshold "+str(round(liquidation_pct,2))+"% at "+str(leverage)+"x)")
+                        await self._close(symbol,trade,cp,pnl,"liquidation"); continue
                     if pnl<=emerg_pct:
                         log.warning("EMERGENCY STOP "+symbol+" "+trade.side+" PnL:"+str(round(pnl,2))+"%")
                         await self._close(symbol,trade,cp,pnl,"emergency_stop"); continue
@@ -1618,10 +1804,10 @@ class PositionManager:
                     if peak>=trail_arm and pnl<=peak-trail_give:
                         log.info("TRAILING-STOP "+symbol+" "+trade.side+" peak:"+str(round(peak,2))+"% now:"+str(round(pnl,2))+"%")
                         await self._close(symbol,trade,cp,pnl,"trailing_stop"); continue
-                    from datetime import datetime as _dt
                     try:
-                        opened_dt=_dt.fromisoformat(trade.opened_at.replace("Z",""))
-                        hold_sec=(_dt.utcnow()-opened_dt).total_seconds()
+                        opened_dt=datetime.fromisoformat(trade.opened_at.replace("Z",""))
+                        if opened_dt.tzinfo is not None: opened_dt=opened_dt.replace(tzinfo=None)
+                        hold_sec=(_utcnow()-opened_dt).total_seconds()
                     except Exception: hold_sec=1e9
                     t=last_check.get(symbol,0)
                     in_noise=abs(pnl)<noise_band and peak<trail_arm
@@ -1631,7 +1817,6 @@ class PositionManager:
                         if should_exit:
                             await self._close(symbol,trade,cp,pnl,"judge_exit")
             except Exception as e:
-                import traceback
                 log.error("Monitor: "+str(e))
                 log.error(traceback.format_exc())
             if stop_event is not None:
@@ -1640,7 +1825,7 @@ class PositionManager:
             else:
                 await asyncio.sleep(30)
     async def _finalize(self,trade,reason):
-        trade.closed_at=__import__("datetime").datetime.utcnow().isoformat()
+        trade.closed_at=_utcnow_iso()
         trade.outcome="profit" if (trade.pnl_pct or 0)>0 else "loss"
         lessons=await self.judge.reflect(trade,reason+" PnL:"+str(round(trade.pnl_pct or 0,2))+"%")
         trade.lessons=lessons
@@ -1656,7 +1841,7 @@ class PositionManager:
 
 ## rl_agent.py
 ```python
-import json, os, math, logging
+import json, os, math, logging, asyncio
 from dataclasses import dataclass, asdict
 from typing import List, Optional
 
@@ -1683,7 +1868,8 @@ class RLAgent:
     def _load(self):
         try:
             if os.path.exists(self.path):
-                d = json.load(open(self.path))
+                with open(self.path) as f:
+                    d = json.load(f)
                 w = RLWeights(**d)
                 log.info(f"RL weights loaded: bull={w.bull_weight:.3f} bear={w.bear_weight:.3f} judge={w.judge_weight:.3f} episodes={w.episodes}")
                 return w
@@ -1691,7 +1877,7 @@ class RLAgent:
             log.error(f"RL load error: {e}")
         return RLWeights()
     
-    def _save(self):
+    def _save_sync(self):
         try:
             tmp = self.path + ".tmp"
             with open(tmp, "w") as f:
@@ -1700,6 +1886,13 @@ class RLAgent:
             os.replace(tmp, self.path)
         except Exception as e:
             log.error(f"RL save error: {e}")
+    def _save(self):
+        """Offload save to a worker thread when an event loop is running."""
+        try:
+            loop=asyncio.get_running_loop()
+            loop.create_task(asyncio.to_thread(self._save_sync))
+        except RuntimeError:
+            self._save_sync()
     
     def get_adjusted_confidence(self, bull_conf: int, bear_conf: int, judge_conf: int, action: str, bull_side: str = "long", bear_side: str = "short") -> float:
         """Apply learned weights to compute final confidence score.
