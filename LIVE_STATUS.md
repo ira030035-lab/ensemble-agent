@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 15:40:01 UTC
+Generated: 2026-05-25 15:50:01 UTC
 
 ## Services
 ```
@@ -10,15 +10,15 @@ ensemble-dashboard.service: inactive
 
 ## Processes
 ```
-root      944698  0.0  3.0 711824 117728 ?       Ssl  12:15   0:08 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      944698  0.0  3.0 711824 118528 ?       Ssl  12:15   0:09 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      946105  0.0  0.0   2800  1916 ?        Ss   13:50   0:00 sh -c while true; do ./venv/bin/python dashboard_api.py >> dashboard_api.log 2>&1; echo "[RESTART] $(date)" >> dashboard_api.log; sleep 2; done
-root      946106  0.2  1.2 133528 48208 ?        Sl   13:50   0:14 ./venv/bin/python dashboard_api.py
+root      946106  0.2  1.2 133528 48464 ?        Sl   13:50   0:16 ./venv/bin/python dashboard_api.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 701.2426574676952,
+  "balance": 691.4252657316952,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779630553",
@@ -66,6 +66,18 @@ root      946106  0.2  1.2 133528 48208 ?        Sl   13:50   0:14 ./venv/bin/py
       "opened_at": "2026-05-25T15:36:39.410029",
       "cost": 12.853666379999998,
       "notional": 64.26833189999999,
+      "leverage": 5
+    },
+    "TONUSDT": {
+      "id": "PAPER_TONUSDT_1779724021",
+      "symbol": "TONUSDT",
+      "side": "short",
+      "entry_price": 1.9282,
+      "qty": 25.4574,
+      "confidence": 72,
+      "opened_at": "2026-05-25T15:47:01.855702",
+      "cost": 9.817391736,
+      "notional": 49.086958679999995,
       "leverage": 5
     }
   },
@@ -1061,36 +1073,36 @@ root      946106  0.2  1.2 133528 48208 ?        Sl   13:50   0:14 ./venv/bin/py
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 15:34:55,702 [INFO] main: WLDUSDT | Judge:HOLD conf=62% size=0.0%
-2026-05-25 15:34:55,702 [INFO] main: WLDUSDT | RL adj=62.0%
-2026-05-25 15:35:29,335 [INFO] openai._base_client: Retrying request to /chat/completions in 0.466303 seconds
-2026-05-25 15:35:29,356 [INFO] openai._base_client: Retrying request to /chat/completions in 0.394851 seconds
-2026-05-25 15:35:59,784 [INFO] openai._base_client: Retrying request to /chat/completions in 0.945411 seconds
-2026-05-25 15:35:59,825 [INFO] openai._base_client: Retrying request to /chat/completions in 0.760557 seconds
-2026-05-25 15:36:33,552 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 15:36:33,636 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 15:36:33,637 [INFO] main: LINKUSDT | Bull:long(62%) Bear:flat(45%)
-2026-05-25 15:36:39,056 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 15:36:39,058 [INFO] main: LINKUSDT | Judge:LONG conf=68% size=9.0%
-2026-05-25 15:36:39,058 [INFO] main: LINKUSDT | RL adj=77.2%
-2026-05-25 15:36:39,058 [INFO] main: LINKUSDT | gate PASS (Judge 68/70 RL 77.2/65.1 slack=±3)
-2026-05-25 15:36:39,409 [INFO] positions: [PAPER] Opening LONG LINKUSDT notional=$64.3 conf=68%
-2026-05-25 15:36:39,413 [INFO] paper_trading: [PAPER] ОТКРЫТА LONG LINKUSDT @ 9.5910 qty=6.7009 notional=64.27 margin=12.85 x5 | Баланс: 701.24
-2026-05-25 15:37:11,771 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 15:37:12,948 [INFO] openai._base_client: Retrying request to /chat/completions in 0.465513 seconds
-2026-05-25 15:37:43,458 [INFO] openai._base_client: Retrying request to /chat/completions in 0.939955 seconds
-2026-05-25 15:38:16,612 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 15:38:16,614 [INFO] main: NILUSDT | Bull:flat(35%) Bear:short(68%)
-2026-05-25 15:38:22,368 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 15:38:22,369 [INFO] main: NILUSDT | Judge:HOLD conf=68% size=0.0%
-2026-05-25 15:38:22,370 [INFO] main: NILUSDT | RL adj=68.0%
-2026-05-25 15:38:55,887 [INFO] openai._base_client: Retrying request to /chat/completions in 0.416178 seconds
-2026-05-25 15:38:55,891 [INFO] openai._base_client: Retrying request to /chat/completions in 0.460019 seconds
-2026-05-25 15:39:26,350 [INFO] openai._base_client: Retrying request to /chat/completions in 0.961981 seconds
-2026-05-25 15:39:26,380 [INFO] openai._base_client: Retrying request to /chat/completions in 0.930040 seconds
-2026-05-25 15:40:00,183 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 15:40:00,433 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 15:40:00,435 [INFO] main: BSBUSDT | Bull:flat(25%) Bear:short(78%)
+2026-05-25 15:42:23,831 [INFO] openai._base_client: Retrying request to /chat/completions in 0.392399 seconds
+2026-05-25 15:42:54,270 [INFO] openai._base_client: Retrying request to /chat/completions in 0.776548 seconds
+2026-05-25 15:43:28,238 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 15:43:28,239 [INFO] main: FIDAUSDT | Bull:long(50%) Bear:short(72%)
+2026-05-25 15:43:33,342 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 15:43:33,343 [INFO] main: FIDAUSDT | Judge:HOLD conf=72% size=0.0%
+2026-05-25 15:43:33,344 [INFO] main: FIDAUSDT | RL adj=72.0%
+2026-05-25 15:44:06,830 [INFO] openai._base_client: Retrying request to /chat/completions in 0.387367 seconds
+2026-05-25 15:44:37,240 [INFO] openai._base_client: Retrying request to /chat/completions in 0.797281 seconds
+2026-05-25 15:45:11,702 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 15:45:11,703 [INFO] main: SKYAIUSDT | Bull:flat(25%) Bear:short(78%)
+2026-05-25 15:45:17,828 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 15:45:17,829 [INFO] main: SKYAIUSDT | Judge:SHORT conf=72% size=6.0%
+2026-05-25 15:45:17,830 [INFO] main: SKYAIUSDT | RL adj=83.5%
+2026-05-25 15:45:17,830 [INFO] main: SKYAIUSDT | regime BLOCK (volatile)
+2026-05-25 15:45:51,347 [INFO] openai._base_client: Retrying request to /chat/completions in 0.389307 seconds
+2026-05-25 15:45:51,348 [INFO] openai._base_client: Retrying request to /chat/completions in 0.487235 seconds
+2026-05-25 15:46:21,774 [INFO] openai._base_client: Retrying request to /chat/completions in 0.982984 seconds
+2026-05-25 15:46:21,875 [INFO] openai._base_client: Retrying request to /chat/completions in 0.750929 seconds
+2026-05-25 15:46:55,240 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 15:46:55,813 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 15:46:55,814 [INFO] main: TONUSDT | Bull:flat(25%) Bear:short(78%)
+2026-05-25 15:47:01,170 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 15:47:01,173 [INFO] main: TONUSDT | Judge:SHORT conf=72% size=7.0%
+2026-05-25 15:47:01,173 [INFO] main: TONUSDT | RL adj=83.5%
+2026-05-25 15:47:01,173 [INFO] main: TONUSDT | gate PASS (Judge 72/70 RL 83.5/65.1 slack=±3)
+2026-05-25 15:47:01,854 [INFO] positions: [PAPER] Opening SHORT TONUSDT notional=$49.1 conf=72%
+2026-05-25 15:47:01,860 [INFO] paper_trading: [PAPER] ОТКРЫТА SHORT TONUSDT @ 1.9282 qty=25.4574 notional=49.09 margin=9.82 x5 | Баланс: 691.43
+2026-05-25 15:47:03,863 [INFO] main: Max positions
+2026-05-25 15:47:03,863 [INFO] main: Next scan in 60min (weekday-active)
 ```
 
 ## Disk
@@ -1108,7 +1120,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.0Gi       597Mi       4.8Mi       2.4Gi       2.7Gi
+Mem:           3.7Gi       1.1Gi       504Mi       4.8Mi       2.4Gi       2.6Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
