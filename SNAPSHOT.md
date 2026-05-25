@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-25 10:00:01 UTC
+Generated: 2026-05-25 11:00:01 UTC
 
 ## agents.py
 ```python
@@ -73,7 +73,7 @@ class BullAgent:
         prompt="Analyze and make bullish case:\n"+market_text
         try:
             text=await _race(
-                [self._gemini(prompt), self._groq(prompt)],
+                [self._kimi(prompt), self._groq(prompt)],
                 self._claude(prompt))
             d=self._parse(text)
             side=d.get("side")
@@ -165,6 +165,22 @@ class BullAgent:
                     last_err=model+" exc: "+str(e)[:80]; continue
         if last_err: log.debug("Bull-Gemini: "+last_err)
         return ""
+    async def _kimi(self,prompt):
+        key=getattr(self.cfg,"KIMI_API_KEY",None)
+        if not key: return ""
+        try:
+            import openai
+            client=openai.AsyncOpenAI(api_key=key,base_url=getattr(self.cfg,"KIMI_BASE_URL","https://api.moonshot.ai/v1"))
+            r=await client.chat.completions.create(
+                model=getattr(self.cfg,"KIMI_MODEL","kimi-k2.6"),
+                messages=[{"role":"system","content":BULL_SYS},{"role":"user","content":prompt}],
+                max_tokens=2048,temperature=1.0,
+                response_format={"type":"json_object"},
+                timeout=30)
+            return (r.choices[0].message.content or "").strip()
+        except Exception as e:
+            log.debug("Bull-Kimi: "+str(e)[:120])
+            return ""
     def _parse(self,t):
         if not t: return {}
         t=re.sub(r"```json|```","",t).strip()
@@ -192,7 +208,7 @@ class BearAgent:
         prompt="Analyze and make the bearish/cautious case for this market data:\n"+market_text
         try:
             text=await _race(
-                [self._groq(prompt), self._gemini(prompt)],
+                [self._groq(prompt), self._kimi(prompt)],
                 self._claude(prompt))
             d=self._parse(text)
             side=d.get("side")
@@ -276,6 +292,22 @@ class BearAgent:
                     last_err=model+" exc: "+str(e)[:80]; continue
         if last_err: log.debug("Bear-Gemini: "+last_err)
         return ""
+    async def _kimi(self,prompt):
+        key=getattr(self.cfg,"KIMI_API_KEY",None)
+        if not key: return ""
+        try:
+            import openai
+            client=openai.AsyncOpenAI(api_key=key,base_url=getattr(self.cfg,"KIMI_BASE_URL","https://api.moonshot.ai/v1"))
+            r=await client.chat.completions.create(
+                model=getattr(self.cfg,"KIMI_MODEL","kimi-k2.6"),
+                messages=[{"role":"system","content":BEAR_SYS},{"role":"user","content":prompt}],
+                max_tokens=2048,temperature=1.0,
+                response_format={"type":"json_object"},
+                timeout=30)
+            return (r.choices[0].message.content or "").strip()
+        except Exception as e:
+            log.debug("Bear-Kimi: "+str(e)[:120])
+            return ""
     async def _claude(self,prompt):
         import anthropic
         c=anthropic.AsyncAnthropic(api_key=self.cfg.ANTHROPIC_API_KEY)
@@ -722,6 +754,9 @@ class Config:
     GEMINI_API_KEY2 = os.getenv("GEMINI_API_KEY2")
     GEMINI_API_KEYS = [k for k in [os.getenv("GEMINI_API_KEY"+(str(i) if i>1 else "")) for i in range(1,6)] if k]
     GROQ_API_KEYS = [k for k in [os.getenv("GROQ_API_KEY"+(str(i) if i>1 else "")) for i in range(1,6)] if k]
+    KIMI_API_KEY = os.getenv("KIMI_API_KEY")
+    KIMI_BASE_URL = "https://api.moonshot.ai/v1"
+    KIMI_MODEL = "kimi-k2.6"
     BULL_MODEL = "gemini-2.5-flash"
     BULL_MODELS_FALLBACK = ["gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-2.0-flash-lite"]
     BULL_MODELS_GROQ = ["llama-3.3-70b-versatile", "openai/gpt-oss-120b"]
@@ -2105,6 +2140,8 @@ class EntryFilter:
         if side == "long":
             sl = min(entry * (1 - self.cfg.base_sl_pct), support * 0.995)
             tp = resistance * 1.005
+            # Cap TP at 3×ATR from entry
+            tp = min(tp, entry + 3.0 * atr)
             sl_atr = entry - 1.5 * atr
             if sl_atr > sl:
                 sl = sl_atr
@@ -2112,6 +2149,8 @@ class EntryFilter:
         else:
             sl = max(entry * (1 + self.cfg.base_sl_pct), resistance * 1.005)
             tp = support * 0.995
+            # Cap TP at 3×ATR from entry
+            tp = max(tp, entry - 3.0 * atr)
             sl_atr = entry + 1.5 * atr
             if sl_atr < sl:
                 sl = sl_atr
