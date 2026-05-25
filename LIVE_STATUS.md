@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 08:40:01 UTC
+Generated: 2026-05-25 08:50:01 UTC
 
 ## Services
 ```
@@ -17,7 +17,7 @@ root      915939  0.0  2.2 649960 88560 ?        Ssl  May23   1:13 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 708.1761208716953,
+  "balance": 715.5584967276952,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1779497565",
@@ -41,18 +41,6 @@ root      915939  0.0  2.2 649960 88560 ?        Ssl  May23   1:13 /opt/ensemble
       "opened_at": "2026-05-24T13:49:13.547795",
       "cost": 11.549037600000002,
       "notional": 57.745188000000006,
-      "leverage": 5
-    },
-    "WLDUSDT": {
-      "id": "PAPER_WLDUSDT_1779689734",
-      "symbol": "WLDUSDT",
-      "side": "short",
-      "entry_price": 0.2927,
-      "qty": 149.3199,
-      "confidence": 72,
-      "opened_at": "2026-05-25T06:15:34.324670",
-      "cost": 8.741186946000001,
-      "notional": 43.70593473,
       "leverage": 5
     },
     "ASTERUSDT": {
@@ -944,19 +932,32 @@ root      915939  0.0  2.2 649960 88560 ?        Ssl  May23   1:13 /opt/ensemble
       "closed_at": "2026-05-25T05:05:12.418418",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_WLDUSDT_1779689734",
+      "symbol": "WLDUSDT",
+      "side": "short",
+      "entry_price": 0.2927,
+      "qty": 149.3199,
+      "confidence": 72,
+      "opened_at": "2026-05-25T06:15:34.324670",
+      "cost": 8.741186946000001,
+      "notional": 43.70593473,
+      "leverage": 5,
+      "exit_price": 0.3018,
+      "pnl_pct": -3.11,
+      "pnl_usdt": -1.36,
+      "closed_at": "2026-05-25T08:45:59.705335",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -1.83785356630472
+  "total_pnl": -3.196664656304719
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 08:19:53,902 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 08:19:53,903 [INFO] main: INUSDT | Judge:LONG conf=72% size=8.0%
-2026-05-25 08:19:53,903 [INFO] main: INUSDT | RL adj=71.4%
-2026-05-25 08:19:53,903 [INFO] main: INUSDT | regime BLOCK (volatile)
-2026-05-25 08:19:57,517 [INFO] main: BEATUSDT | Bull:long(45%) Bear:short(80%)
 2026-05-25 08:20:01,998 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-25 08:20:01,999 [INFO] main: BEATUSDT | Judge:HOLD conf=80% size=0.0%
 2026-05-25 08:20:01,999 [INFO] main: BEATUSDT | RL adj=80.0%
@@ -982,12 +983,17 @@ root      915939  0.0  2.2 649960 88560 ?        Ssl  May23   1:13 /opt/ensemble
 2026-05-25 08:20:48,791 [INFO] main: GENIUSUSDT | Judge:HOLD conf=80% size=0.0%
 2026-05-25 08:20:48,792 [INFO] main: GENIUSUSDT | RL adj=80.0%
 2026-05-25 08:20:50,794 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-25 08:45:59,704 [INFO] positions: STOP-LOSS WLDUSDT short PnL:-3.11%
+2026-05-25 08:45:59,708 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT WLDUSDT @ 0.3018 PnL: -3.11% (-1.36 USDT) | Баланс: 715.56
+2026-05-25 08:46:00,205 [INFO] positions: LOSS WLDUSDT short PnL:-3.11% reason:stop_loss
+2026-05-25 08:46:00,206 [INFO] positions: Lessons: The trade was closed at a loss due to stop loss, with a PnL of -3.11%. The original reasoning was based on a strong bearish conviction and alignment with the trending_down regime, but the MACD bullish signal was a caution flag that was not heeded. The reduced position size helped limit losses, and this experience should reinforce the importance of considering caution flags and being prepared for mean-reversion whipsaws in trending regimes.
+2026-05-25 08:46:00,208 [INFO] rl: RL learned from short WLDUSDT: loss -3.11% | weights bull=0.969 bear=1.014 judge=1.017 threshold=65.08
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  880K  381M   1% /run
+tmpfs           382M  872K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  6.0G   66G   9% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -999,7 +1005,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       756Mi       617Mi       4.8Mi       2.7Gi       3.0Gi
+Mem:           3.7Gi       605Mi       768Mi       4.8Mi       2.7Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
