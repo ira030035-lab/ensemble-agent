@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 15:20:01 UTC
+Generated: 2026-05-25 15:30:01 UTC
 
 ## Services
 ```
@@ -10,9 +10,9 @@ ensemble-dashboard.service: inactive
 
 ## Processes
 ```
-root      944698  0.0  2.8 632272 112132 ?       Ssl  12:15   0:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      944698  0.0  2.9 709400 115600 ?       Ssl  12:15   0:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      946105  0.0  0.0   2800  1916 ?        Ss   13:50   0:00 sh -c while true; do ./venv/bin/python dashboard_api.py >> dashboard_api.log 2>&1; echo "[RESTART] $(date)" >> dashboard_api.log; sleep 2; done
-root      946106  0.2  1.2 132032 47096 ?        Sl   13:50   0:12 ./venv/bin/python dashboard_api.py
+root      946106  0.2  1.2 133528 48192 ?        Sl   13:50   0:13 ./venv/bin/python dashboard_api.py
 ```
 
 ## Paper state
@@ -1049,36 +1049,36 @@ root      946106  0.2  1.2 132032 47096 ?        Sl   13:50   0:12 ./venv/bin/py
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 13:17:26,397 [INFO] main: Next scan in 60min (weekday-active)
-2026-05-25 14:15:30,523 [INFO] main: Symbols: 30
-2026-05-25 14:17:26,398 [INFO] main: Scanning 26 symbols...
-2026-05-25 14:17:26,398 [INFO] main: Max positions
-2026-05-25 14:17:26,398 [INFO] main: Next scan in 60min (weekday-active)
-2026-05-25 14:32:41,316 [INFO] positions: TRAILING-STOP TONUSDT long peak:2.69% now:1.68%
-2026-05-25 14:32:41,321 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG TONUSDT @ 1.8393 PnL: 1.68% (+1.06 USDT) | Баланс: 699.13
-2026-05-25 14:32:41,697 [INFO] positions: OK TONUSDT long PnL:1.68% reason:trailing_stop
-2026-05-25 14:32:41,698 [INFO] positions: Lessons: A long position in TONUSDT was closed with a 1.68% profit, validating the original BULL conviction and trending_up regime alignment. The trade outcome supports the notion that low-volume uptrends in trending regimes can be continuation signals rather than exhaustion warnings. This experience should be remembered as a successful example of navigating headwinds and executing a trade based on conviction and regime alignment.
-2026-05-25 14:32:41,698 [INFO] rl: RL learned from long TONUSDT: profit 1.68% | weights bull=0.990 bear=0.988 judge=1.022 threshold=65.13
-2026-05-25 14:45:40,805 [INFO] positions: TRAILING-STOP ZECUSDT long peak:1.76% now:0.73%
-2026-05-25 14:45:40,811 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG ZECUSDT @ 675.0700 PnL: 0.73% (+0.53 USDT) | Баланс: 714.10
-2026-05-25 14:45:41,432 [INFO] positions: OK ZECUSDT long PnL:0.73% reason:trailing_stop
-2026-05-25 14:45:41,432 [INFO] positions: Lessons: The trade was closed with a 0.73% profit due to a trailing stop. The initial long setup was based on a strong bullish conviction and a trending_up regime, which was validated by prior similar setups. The key factors to remember are the combination of a strong conviction spread, a trending_up regime, and a healthy RSI zone, which can form a repeatable long setup.
-2026-05-25 14:45:41,432 [INFO] rl: RL learned from long ZECUSDT: profit 0.73% | weights bull=0.992 bear=0.986 judge=1.023 threshold=65.1
-2026-05-25 15:15:31,230 [INFO] main: Symbols: 30
-2026-05-25 15:17:26,400 [INFO] main: Scanning 28 symbols...
-2026-05-25 15:17:28,761 [INFO] main: XRPUSDT | Bull:long(60%) Bear:short(70%)
-2026-05-25 15:17:34,728 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 15:17:34,730 [INFO] main: XRPUSDT | Judge:HOLD conf=68% size=0.0%
-2026-05-25 15:17:34,730 [INFO] main: XRPUSDT | RL adj=68.0%
-2026-05-25 15:18:08,215 [INFO] openai._base_client: Retrying request to /chat/completions in 0.459408 seconds
-2026-05-25 15:18:38,699 [INFO] openai._base_client: Retrying request to /chat/completions in 0.942061 seconds
-2026-05-25 15:19:11,818 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 15:19:11,819 [INFO] main: INUSDT | Bull:flat(35%) Bear:short(80%)
-2026-05-25 15:19:17,337 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 15:19:17,339 [INFO] main: INUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-25 15:19:17,339 [INFO] main: INUSDT | RL adj=80.0%
-2026-05-25 15:19:50,865 [INFO] openai._base_client: Retrying request to /chat/completions in 0.470074 seconds
-2026-05-25 15:19:50,865 [INFO] openai._base_client: Retrying request to /chat/completions in 0.414266 seconds
+2026-05-25 15:24:25,831 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 15:24:25,833 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 15:24:25,834 [INFO] main: UBUSDT | Bull:long(62%) Bear:short(72%)
+2026-05-25 15:24:31,832 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 15:24:31,834 [INFO] main: UBUSDT | Judge:HOLD conf=72% size=0.0%
+2026-05-25 15:24:31,834 [INFO] main: UBUSDT | RL adj=72.0%
+2026-05-25 15:25:05,386 [INFO] openai._base_client: Retrying request to /chat/completions in 0.436321 seconds
+2026-05-25 15:25:35,864 [INFO] openai._base_client: Retrying request to /chat/completions in 0.937716 seconds
+2026-05-25 15:26:10,245 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 15:26:10,247 [INFO] main: XANUSDT | Bull:long(52%) Bear:short(70%)
+2026-05-25 15:26:15,666 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 15:26:15,667 [INFO] main: XANUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-25 15:26:15,667 [INFO] main: XANUSDT | RL adj=70.0%
+2026-05-25 15:26:49,229 [INFO] openai._base_client: Retrying request to /chat/completions in 0.384772 seconds
+2026-05-25 15:26:49,255 [INFO] openai._base_client: Retrying request to /chat/completions in 0.401767 seconds
+2026-05-25 15:27:19,638 [INFO] openai._base_client: Retrying request to /chat/completions in 0.762328 seconds
+2026-05-25 15:27:19,689 [INFO] openai._base_client: Retrying request to /chat/completions in 0.913866 seconds
+2026-05-25 15:27:53,082 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 15:27:53,667 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 15:27:53,670 [INFO] main: GRASSUSDT | Bull:flat(35%) Bear:short(72%)
+2026-05-25 15:28:00,231 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 15:28:00,232 [INFO] main: GRASSUSDT | Judge:HOLD conf=72% size=0.0%
+2026-05-25 15:28:00,232 [INFO] main: GRASSUSDT | RL adj=72.0%
+2026-05-25 15:28:33,784 [INFO] openai._base_client: Retrying request to /chat/completions in 0.430689 seconds
+2026-05-25 15:29:04,254 [INFO] openai._base_client: Retrying request to /chat/completions in 0.758333 seconds
+2026-05-25 15:29:37,407 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 15:29:37,408 [INFO] main: ESPORTSUSDT | Bull:flat(25%) Bear:short(82%)
+2026-05-25 15:29:43,301 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 15:29:43,303 [INFO] main: ESPORTSUSDT | Judge:HOLD conf=82% size=0.0%
+2026-05-25 15:29:43,303 [INFO] main: ESPORTSUSDT | RL adj=82.0%
 ```
 
 ## Disk
@@ -1096,7 +1096,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       928Mi       694Mi       4.8Mi       2.4Gi       2.8Gi
+Mem:           3.7Gi       874Mi       749Mi       4.8Mi       2.4Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
