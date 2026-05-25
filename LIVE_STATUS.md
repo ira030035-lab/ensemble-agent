@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 11:40:01 UTC
+Generated: 2026-05-25 11:50:01 UTC
 
 ## Services
 ```
@@ -10,8 +10,8 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   1:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      943884  1.3  3.2 688936 127024 ?       Ssl  11:33   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      812670  0.0  1.2 209160 50560 ?        Ssl  May19   1:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      944054  0.5  2.8 451504 110396 ?       Ssl  11:42   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -994,36 +994,36 @@ root      943884  1.3  3.2 688936 127024 ?       Ssl  11:33   0:04 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 11:37:19,270 [INFO] main: XANUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-25 11:37:19,270 [INFO] main: XANUSDT | RL adj=80.0%
-2026-05-25 11:37:22,921 [INFO] main: GRASSUSDT | Bull:long(65%) Bear:short(72%)
-2026-05-25 11:37:27,282 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 11:37:27,284 [INFO] main: GRASSUSDT | Judge:HOLD conf=72% size=0.0%
-2026-05-25 11:37:27,284 [INFO] main: GRASSUSDT | RL adj=72.0%
-2026-05-25 11:37:30,992 [INFO] main: SUIUSDT | Bull:long(55%) Bear:short(80%)
-2026-05-25 11:37:36,153 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 11:37:36,154 [INFO] main: SUIUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-25 11:37:36,155 [INFO] main: SUIUSDT | RL adj=80.0%
-2026-05-25 11:37:39,881 [INFO] main: DOGEUSDT | Bull:long(65%) Bear:short(70%)
-2026-05-25 11:37:44,805 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 11:37:44,806 [INFO] main: DOGEUSDT | Judge:HOLD conf=68% size=0.0%
-2026-05-25 11:37:44,806 [INFO] main: DOGEUSDT | RL adj=68.0%
-2026-05-25 11:37:50,727 [INFO] main: NEARUSDT | Bull:long(65%) Bear:short(70%)
-2026-05-25 11:37:56,498 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 11:37:56,500 [INFO] main: NEARUSDT | Judge:HOLD conf=68% size=0.0%
-2026-05-25 11:37:56,500 [INFO] main: NEARUSDT | RL adj=68.0%
-2026-05-25 11:38:00,166 [INFO] main: LINKUSDT | Bull:long(65%) Bear:short(70%)
-2026-05-25 11:38:05,784 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 11:38:05,786 [INFO] main: LINKUSDT | Judge:HOLD conf=68% size=0.0%
-2026-05-25 11:38:05,786 [INFO] main: LINKUSDT | RL adj=68.0%
-2026-05-25 11:38:09,521 [INFO] main: ZECUSDT | Bull:long(80%) Bear:short(72%)
-2026-05-25 11:38:14,904 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 11:38:14,905 [INFO] main: ZECUSDT | Judge:LONG conf=78% size=10.0%
-2026-05-25 11:38:14,905 [INFO] main: ZECUSDT | RL adj=79.0%
-2026-05-25 11:38:14,906 [INFO] main: ZECUSDT | gate PASS (Judge 78/70 RL 79.0/65.18 slack=±3)
-2026-05-25 11:38:14,906 [INFO] positions: [PAPER] Opening LONG ZECUSDT notional=$72.2 conf=78%
-2026-05-25 11:38:14,907 [INFO] paper_trading: [PAPER] ОТКРЫТА LONG ZECUSDT @ 670.1600 qty=0.1077 notional=72.18 margin=14.44 x5 | Баланс: 707.46
-2026-05-25 11:38:16,910 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-25 11:43:14,656 [INFO] main: SKYAIUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-25 11:43:14,656 [INFO] main: SKYAIUSDT | RL adj=80.0%
+2026-05-25 11:43:48,194 [INFO] openai._base_client: Retrying request to /chat/completions in 0.418706 seconds
+2026-05-25 11:44:18,652 [INFO] openai._base_client: Retrying request to /chat/completions in 0.878664 seconds
+2026-05-25 11:44:53,382 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 11:44:53,384 [INFO] main: HYPEUSDT | Bull:long(52%) Bear:short(70%)
+2026-05-25 11:45:00,041 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 11:45:00,043 [INFO] main: HYPEUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-25 11:45:00,043 [INFO] main: HYPEUSDT | RL adj=70.0%
+2026-05-25 11:45:33,589 [INFO] openai._base_client: Retrying request to /chat/completions in 0.394639 seconds
+2026-05-25 11:46:04,033 [INFO] openai._base_client: Retrying request to /chat/completions in 0.818104 seconds
+2026-05-25 11:46:38,753 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 11:46:38,755 [INFO] main: ONDOUSDT | Bull:flat(25%) Bear:short(80%)
+2026-05-25 11:46:44,063 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 11:46:44,064 [INFO] main: ONDOUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-25 11:46:44,064 [INFO] main: ONDOUSDT | RL adj=80.0%
+2026-05-25 11:47:17,555 [INFO] openai._base_client: Retrying request to /chat/completions in 0.433406 seconds
+2026-05-25 11:47:17,556 [INFO] openai._base_client: Retrying request to /chat/completions in 0.470616 seconds
+2026-05-25 11:47:38,606 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 11:47:48,063 [INFO] openai._base_client: Retrying request to /chat/completions in 0.934542 seconds
+2026-05-25 11:48:22,153 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 11:48:22,154 [INFO] main: FIDAUSDT | Bull:long(45%) Bear:short(72%)
+2026-05-25 11:48:27,910 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 11:48:27,912 [INFO] main: FIDAUSDT | Judge:HOLD conf=72% size=0.0%
+2026-05-25 11:48:27,912 [INFO] main: FIDAUSDT | RL adj=72.0%
+2026-05-25 11:49:01,416 [INFO] openai._base_client: Retrying request to /chat/completions in 0.473782 seconds
+2026-05-25 11:49:01,416 [INFO] openai._base_client: Retrying request to /chat/completions in 0.452429 seconds
+2026-05-25 11:49:31,908 [INFO] openai._base_client: Retrying request to /chat/completions in 0.915289 seconds
+2026-05-25 11:49:31,922 [INFO] openai._base_client: Retrying request to /chat/completions in 0.950430 seconds
+2026-05-25 11:49:50,858 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 ```
 
 ## Disk
@@ -1041,7 +1041,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.0Gi       253Mi       4.8Mi       2.8Gi       2.7Gi
+Mem:           3.7Gi       1.0Gi       267Mi       4.8Mi       2.8Gi       2.7Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
