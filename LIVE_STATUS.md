@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 20:00:01 UTC
+Generated: 2026-05-25 20:10:01 UTC
 
 ## Services
 ```
@@ -10,9 +10,7 @@ ensemble-dashboard.service: inactive
 
 ## Processes
 ```
-root      946105  0.0  0.0   2800  1916 ?        Ss   13:50   0:00 sh -c while true; do ./venv/bin/python dashboard_api.py >> dashboard_api.log 2>&1; echo "[RESTART] $(date)" >> dashboard_api.log; sleep 2; done
-root      946106  0.1  1.2 132032 47112 ?        Sl   13:50   0:27 ./venv/bin/python dashboard_api.py
-root      949381  0.1  3.3 725044 131404 ?       Sl   17:19   0:14 python3 main.py
+(no matching processes)
 ```
 
 ## Paper state
@@ -1151,24 +1149,6 @@ root      949381  0.1  3.3 725044 131404 ?       Sl   17:19   0:14 python3 main.
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 19:35:18,702 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 19:35:18,703 [INFO] main: ADAUSDT | Judge:HOLD conf=60% size=0.0%
-2026-05-25 19:35:18,703 [INFO] main: ADAUSDT | RL adj=60.0%
-2026-05-25 19:35:24,442 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 19:35:25,298 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 19:35:25,299 [INFO] main: ONDOUSDT | Bull:flat(40%) Bear:short(75%)
-2026-05-25 19:35:30,188 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 19:35:30,189 [INFO] main: ONDOUSDT | Judge:SHORT conf=72% size=6.0%
-2026-05-25 19:35:30,189 [INFO] main: ONDOUSDT | RL adj=83.0%
-2026-05-25 19:35:30,189 [INFO] main: ONDOUSDT | gate PASS (Judge 72/70 RL 83.0/65.14 slack=±3)
-2026-05-25 19:35:30,190 [INFO] positions: Same-side cap: skip SHORT ONDOUSDT (3/3 already short)
-2026-05-25 19:35:36,121 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 19:35:36,745 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 19:35:36,748 [INFO] main: BEATUSDT | Bull:long(40%) Bear:short(75%)
-2026-05-25 19:35:43,186 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 19:35:43,188 [INFO] main: BEATUSDT | Judge:HOLD conf=75% size=0.0%
-2026-05-25 19:35:43,188 [INFO] main: BEATUSDT | RL adj=75.0%
-2026-05-25 19:35:49,270 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-25 19:35:50,568 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-25 19:35:50,569 [INFO] main: SUIUSDT | Bull:long(70%) Bear:short(80%)
 2026-05-25 19:35:56,136 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -1181,12 +1161,30 @@ root      949381  0.1  3.3 725044 131404 ?       Sl   17:19   0:14 python3 main.
 2026-05-25 19:38:03,360 [INFO] positions: Lessons: The TAOUSDT long trade closed with a 0.91% profit. The original reasoning was based on a narrow margin between BULL and BEAR conviction, with BULL conviction at 70% and BEAR conviction at 75%. The trade was ultimately closed by a trailing stop, resulting in a small gain.
 2026-05-25 19:38:03,360 [INFO] rl: RL learned from long TAOUSDT: profit 0.91% | weights bull=0.999 bear=0.974 judge=1.026 threshold=65.11
 2026-05-25 19:59:10,572 [INFO] main: Symbols: 30
+2026-05-25 20:01:09,243 [WARNING] bitget: Bitget GET /api/v2/mix/market/ticker retry 1/3 after  — sleep 0.5s
+2026-05-25 20:01:10,304 [INFO] bitget: Bitget recovered after 1 failures
+2026-05-25 20:07:55,325 [INFO] main: Shutting down...
+2026-05-25 20:07:55,326 [INFO] positions: Position monitor stopped
+2026-05-25 20:07:55,347 [INFO] http_pool: Shared aiohttp.ClientSession closed
+2026-05-25 20:08:09,216 [INFO] memory: Memory loaded: 82 trades
+2026-05-25 20:08:09,216 [INFO] rl: RL weights loaded: bull=1.001 bear=0.975 judge=1.025 episodes=23
+2026-05-25 20:08:09,217 [INFO] positions: Restored 4 positions from paper_state (1L/3S)
+2026-05-25 20:08:09,217 [INFO] main: === Adversarial Trading Agent started ===
+2026-05-25 20:08:09,217 [INFO] main: Bull: race(Kimi x1, Groq x2) → Haiku fb | Bear: race(Groq x2, Kimi x1) → Haiku fb | Judge: Haiku (decide) + Groq Llama (exit/dir/reflect)
+2026-05-25 20:08:09,897 [INFO] main: Symbols: 30
+2026-05-25 20:08:09,897 [INFO] main: Scanning 26 symbols...
+2026-05-25 20:08:09,898 [INFO] positions: Position monitor started
+2026-05-25 20:08:11,306 [INFO] http_pool: Shared aiohttp.ClientSession created
+2026-05-25 20:08:12,677 [INFO] main: GRASSUSDT | Bull:long(70%) Bear:short(70%)
+2026-05-25 20:08:23,520 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 20:08:23,556 [INFO] main: GRASSUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-25 20:08:23,556 [INFO] main: GRASSUSDT | RL adj=70.0%
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  900K  381M   1% /run
+tmpfs           382M  884K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  8.2G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -1198,7 +1196,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.0Gi       296Mi       4.8Mi       2.7Gi       2.7Gi
+Mem:           3.7Gi       801Mi       522Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
