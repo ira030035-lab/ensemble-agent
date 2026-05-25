@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 19:50:01 UTC
+Generated: 2026-05-25 20:00:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: inactive
 ## Processes
 ```
 root      946105  0.0  0.0   2800  1916 ?        Ss   13:50   0:00 sh -c while true; do ./venv/bin/python dashboard_api.py >> dashboard_api.log 2>&1; echo "[RESTART] $(date)" >> dashboard_api.log; sleep 2; done
-root      946106  0.1  1.2 134080 48788 ?        Sl   13:50   0:26 ./venv/bin/python dashboard_api.py
+root      946106  0.1  1.2 132032 47112 ?        Sl   13:50   0:27 ./venv/bin/python dashboard_api.py
 root      949381  0.1  3.3 725044 131404 ?       Sl   17:19   0:14 python3 main.py
 ```
 
@@ -1151,7 +1151,6 @@ root      949381  0.1  3.3 725044 131404 ?       Sl   17:19   0:14 python3 main.
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 19:35:12,258 [INFO] main: ADAUSDT | Bull:long(40%) Bear:short(60%)
 2026-05-25 19:35:18,702 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-25 19:35:18,703 [INFO] main: ADAUSDT | Judge:HOLD conf=60% size=0.0%
 2026-05-25 19:35:18,703 [INFO] main: ADAUSDT | RL adj=60.0%
@@ -1181,6 +1180,7 @@ root      949381  0.1  3.3 725044 131404 ?       Sl   17:19   0:14 python3 main.
 2026-05-25 19:38:03,360 [INFO] positions: OK TAOUSDT long PnL:0.91% reason:trailing_stop
 2026-05-25 19:38:03,360 [INFO] positions: Lessons: The TAOUSDT long trade closed with a 0.91% profit. The original reasoning was based on a narrow margin between BULL and BEAR conviction, with BULL conviction at 70% and BEAR conviction at 75%. The trade was ultimately closed by a trailing stop, resulting in a small gain.
 2026-05-25 19:38:03,360 [INFO] rl: RL learned from long TAOUSDT: profit 0.91% | weights bull=0.999 bear=0.974 judge=1.026 threshold=65.11
+2026-05-25 19:59:10,572 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1192,13 +1192,13 @@ efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 tmpfs           1.9G     0  1.9G   0% /dev/shm
 tmpfs           5.0M     0  5.0M   0% /run/lock
 /dev/sda15      253M  146K  252M   1% /boot/efi
-tmpfs           382M   16K  382M   1% /run/user/0
+tmpfs           382M   12K  382M   1% /run/user/0
 ```
 
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.1Gi       206Mi       4.8Mi       2.7Gi       2.6Gi
+Mem:           3.7Gi       1.0Gi       296Mi       4.8Mi       2.7Gi       2.7Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
