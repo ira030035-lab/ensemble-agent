@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 11:00:01 UTC
+Generated: 2026-05-25 11:10:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   1:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      915939  0.0  2.2 649648 88256 ?        Ssl  May23   1:20 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      943170  1.2  3.0 682872 120984 ?       Ssl  11:03   0:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -982,36 +982,36 @@ root      915939  0.0  2.2 649648 88256 ?        Ssl  May23   1:20 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 10:29:12,262 [INFO] main: INJUSDT | Bull:long(70%) Bear:short(70%)
-2026-05-25 10:29:17,369 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 10:29:17,371 [INFO] main: INJUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-25 10:29:17,371 [INFO] main: INJUSDT | RL adj=70.0%
-2026-05-25 10:29:21,160 [INFO] main: GENIUSUSDT | Bull:long(45%) Bear:short(80%)
-2026-05-25 10:29:27,346 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 10:29:27,348 [INFO] main: GENIUSUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-25 10:29:27,348 [INFO] main: GENIUSUSDT | RL adj=80.0%
-2026-05-25 10:29:31,220 [INFO] main: XANUSDT | Bull:long(55%) Bear:short(80%)
-2026-05-25 10:29:37,035 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 10:29:37,037 [INFO] main: XANUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-25 10:29:37,037 [INFO] main: XANUSDT | RL adj=80.0%
-2026-05-25 10:29:40,959 [INFO] main: XRPUSDT | Bull:long(45%) Bear:short(72%)
-2026-05-25 10:29:50,563 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 10:29:50,565 [INFO] main: XRPUSDT | Judge:HOLD conf=72% size=0.0%
-2026-05-25 10:29:50,565 [INFO] main: XRPUSDT | RL adj=72.0%
-2026-05-25 10:29:54,401 [INFO] main: DOGEUSDT | Bull:long(45%) Bear:short(72%)
-2026-05-25 10:29:59,561 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 10:29:59,563 [INFO] main: DOGEUSDT | Judge:HOLD conf=72% size=0.0%
-2026-05-25 10:29:59,563 [INFO] main: DOGEUSDT | RL adj=72.0%
-2026-05-25 10:30:03,605 [INFO] main: ETHUSDT | Bull:long(50%) Bear:short(70%)
-2026-05-25 10:30:08,142 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 10:30:08,144 [INFO] main: ETHUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-25 10:30:08,144 [INFO] main: ETHUSDT | RL adj=70.0%
-2026-05-25 10:30:10,146 [INFO] main: Next scan in 60min (weekday-active)
-2026-05-25 10:49:36,593 [INFO] positions: STOP-LOSS NEARUSDT short PnL:-3.11%
-2026-05-25 10:49:36,600 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT NEARUSDT @ 2.4563 PnL: -3.11% (-1.34 USDT) | Баланс: 721.90
-2026-05-25 10:49:37,018 [INFO] positions: LOSS NEARUSDT short PnL:-3.11% reason:stop_loss
-2026-05-25 10:49:37,018 [INFO] positions: Lessons: The trade was closed at a loss of 3.11% due to hitting the stop loss. The initial analysis correctly identified a strong bearish trend but was unable to prevent a loss. The key takeaway is that a high conviction bearish view was not enough to overcome the market's movement, highlighting the importance of risk management and stop loss placement.
-2026-05-25 10:49:37,020 [INFO] rl: RL learned from short NEARUSDT: loss -3.11% | weights bull=0.981 bear=1.001 judge=1.019 threshold=65.18
+2026-05-25 11:06:39,896 [INFO] main: SOLUSDT | RL adj=70.0%
+2026-05-25 11:06:43,781 [INFO] main: HYPEUSDT | Bull:long(55%) Bear:short(70%)
+2026-05-25 11:06:49,977 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 11:06:49,978 [INFO] main: HYPEUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-25 11:06:49,978 [INFO] main: HYPEUSDT | RL adj=70.0%
+2026-05-25 11:06:53,727 [INFO] main: ONDOUSDT | Bull:long(55%) Bear:short(80%)
+2026-05-25 11:06:58,599 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 11:06:58,601 [INFO] main: ONDOUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-25 11:06:58,601 [INFO] main: ONDOUSDT | RL adj=80.0%
+2026-05-25 11:07:02,353 [INFO] main: BEATUSDT | Bull:long(55%) Bear:short(70%)
+2026-05-25 11:07:06,681 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 11:07:06,683 [INFO] main: BEATUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-25 11:07:06,683 [INFO] main: BEATUSDT | RL adj=70.0%
+2026-05-25 11:07:10,464 [INFO] main: TAOUSDT | Bull:long(65%) Bear:short(70%)
+2026-05-25 11:07:15,948 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 11:07:15,949 [INFO] main: TAOUSDT | Judge:HOLD conf=68% size=0.0%
+2026-05-25 11:07:15,949 [INFO] main: TAOUSDT | RL adj=68.0%
+2026-05-25 11:07:19,731 [INFO] main: WLDUSDT | Bull:long(60%) Bear:short(70%)
+2026-05-25 11:07:23,799 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 11:07:23,801 [INFO] main: WLDUSDT | Judge:HOLD conf=68% size=0.0%
+2026-05-25 11:07:23,801 [INFO] main: WLDUSDT | RL adj=68.0%
+2026-05-25 11:07:27,692 [INFO] main: UBUSDT | Bull:long(55%) Bear:short(72%)
+2026-05-25 11:07:33,149 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 11:07:33,151 [INFO] main: UBUSDT | Judge:HOLD conf=72% size=0.0%
+2026-05-25 11:07:33,151 [INFO] main: UBUSDT | RL adj=72.0%
+2026-05-25 11:07:37,185 [INFO] main: ZECUSDT | Bull:long(65%) Bear:short(70%)
+2026-05-25 11:07:43,120 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 11:07:43,121 [INFO] main: ZECUSDT | Judge:LONG conf=62% size=6.0%
+2026-05-25 11:07:43,121 [INFO] main: ZECUSDT | RL adj=61.1%
+2026-05-25 11:07:45,123 [INFO] main: Next scan in 60min (weekday-active)
 ```
 
 ## Disk
@@ -1029,14 +1029,13 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       907Mi       426Mi       4.8Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       937Mi       354Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
 ## Crontab
 ```
 SHELL=/bin/bash
-0 0 * * * /opt/trading-agent/backup.sh >> /opt/trading-agent/backup.log 2>&1
 0 * * * * /opt/ensemble-agent/snapshot.sh >> /opt/ensemble-agent/snapshot.log 2>&1
 */10 * * * * /opt/ensemble-agent/live_status.sh >> /opt/ensemble-agent/status.log 2>&1
 ```
