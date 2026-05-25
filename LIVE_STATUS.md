@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 16:20:01 UTC
+Generated: 2026-05-25 16:30:01 UTC
 
 ## Services
 ```
@@ -11,15 +11,15 @@ ensemble-dashboard.service: inactive
 ## Processes
 ```
 root      946105  0.0  0.0   2800  1916 ?        Ss   13:50   0:00 sh -c while true; do ./venv/bin/python dashboard_api.py >> dashboard_api.log 2>&1; echo "[RESTART] $(date)" >> dashboard_api.log; sleep 2; done
-root      946106  0.2  1.2 133328 47804 ?        Sl   13:50   0:18 ./venv/bin/python dashboard_api.py
-root      948217  0.0  0.0   7340  2304 ?        S    16:19   0:00 /bin/bash -c cd '/root' && cd /opt/ensemble-agent && kill 948201 2>/dev/null; sleep 1 source venv/bin/activate && python3 main.py > ensemble.log 2>&1 & echo "PID: $!" sleep 5 tail -n 10 ensemble.log
-root      948219  4.2  2.7 376292 108616 ?       Sl   16:19   0:01 python3 main.py
+root      946106  0.1  1.2 133604 48316 ?        Sl   13:50   0:19 ./venv/bin/python dashboard_api.py
+root      948329  0.0  0.0   7340  3828 ?        Ss   16:20   0:00 bash -c cd /opt/ensemble-agent && source venv/bin/activate && python3 main.py > ensemble.log 2>&1
+root      948331  0.0  1.4 251796 57268 ?        Sl   16:20   0:00 python3 main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 697.8822806676951,
+  "balance": 688.1119338156951,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779630553",
@@ -67,6 +67,18 @@ root      948219  4.2  2.7 376292 108616 ?       Sl   16:19   0:01 python3 main.
       "opened_at": "2026-05-25T15:36:39.410029",
       "cost": 12.853666379999998,
       "notional": 64.26833189999999,
+      "leverage": 5
+    },
+    "GRASSUSDT": {
+      "id": "PAPER_GRASSUSDT_1779726006",
+      "symbol": "GRASSUSDT",
+      "side": "long",
+      "entry_price": 0.5362,
+      "qty": 91.1073,
+      "confidence": 68,
+      "opened_at": "2026-05-25T16:20:06.383763",
+      "cost": 9.770346852,
+      "notional": 48.85173426,
       "leverage": 5
     }
   },
@@ -1080,29 +1092,17 @@ root      948219  4.2  2.7 376292 108616 ?       Sl   16:19   0:01 python3 main.
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 16:19:26,581 [INFO] memory: Memory loaded: 79 trades
-2026-05-25 16:19:26,581 [INFO] rl: RL weights loaded: bull=1.005 bear=0.971 judge=1.024 episodes=22
-2026-05-25 16:19:26,581 [INFO] positions: Restored 4 positions from paper_state (2L/2S)
-2026-05-25 16:19:26,582 [INFO] main: === Adversarial Trading Agent started ===
-2026-05-25 16:19:26,582 [INFO] main: Bull: race(Kimi x1, Groq x2) → Haiku fb | Bear: race(Groq x2, Kimi x1) → Haiku fb | Judge: Haiku (decide) + Groq Llama (exit/dir/reflect)
-2026-05-25 16:19:27,270 [INFO] main: Symbols: 30
-2026-05-25 16:19:27,271 [INFO] main: Scanning 27 symbols...
-2026-05-25 16:19:27,271 [INFO] positions: Position monitor started
-2026-05-25 16:19:28,387 [INFO] http_pool: Shared aiohttp.ClientSession created
-2026-05-25 16:19:32,282 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 16:19:35,493 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 16:19:35,495 [INFO] main: WLDUSDT | Bull:long(65%) Bear:short(60%)
-2026-05-25 16:19:40,792 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 16:19:40,805 [INFO] main: WLDUSDT | Judge:LONG conf=62% size=6.0%
-2026-05-25 16:19:40,805 [INFO] main: WLDUSDT | RL adj=63.1%
-2026-05-25 16:19:47,303 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 16:19:47,304 [INFO] main: BILLUSDT | Bull:long(50%) Bear:short(82%)
-2026-05-25 16:19:51,899 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 16:19:51,900 [INFO] main: BILLUSDT | Judge:HOLD conf=82% size=0.0%
-2026-05-25 16:19:51,900 [INFO] main: BILLUSDT | RL adj=82.0%
-2026-05-25 16:19:59,538 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 16:20:00,494 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 16:20:00,496 [INFO] main: GRASSUSDT | Bull:long(70%) Bear:short(65%)
+2026-05-25 16:20:40,325 [INFO] memory: Memory loaded: 80 trades
+2026-05-25 16:20:40,325 [INFO] rl: RL weights loaded: bull=1.005 bear=0.971 judge=1.024 episodes=22
+2026-05-25 16:20:40,328 [INFO] positions: Restored 5 positions from paper_state (3L/2S)
+2026-05-25 16:20:40,328 [INFO] main: === Adversarial Trading Agent started ===
+2026-05-25 16:20:40,328 [INFO] main: Bull: race(Kimi x1, Groq x2) → Haiku fb | Bear: race(Groq x2, Kimi x1) → Haiku fb | Judge: Haiku (decide) + Groq Llama (exit/dir/reflect)
+2026-05-25 16:20:40,986 [INFO] main: Symbols: 30
+2026-05-25 16:20:40,986 [INFO] main: Scanning 26 symbols...
+2026-05-25 16:20:40,986 [INFO] main: Max positions
+2026-05-25 16:20:40,986 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-25 16:20:40,987 [INFO] positions: Position monitor started
+2026-05-25 16:20:42,367 [INFO] http_pool: Shared aiohttp.ClientSession created
 ```
 
 ## Disk
@@ -1120,7 +1120,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       932Mi       683Mi       4.8Mi       2.4Gi       2.8Gi
+Mem:           3.7Gi       872Mi       743Mi       4.8Mi       2.4Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
