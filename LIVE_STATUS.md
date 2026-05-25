@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 14:10:01 UTC
+Generated: 2026-05-25 14:20:01 UTC
 
 ## Services
 ```
@@ -10,9 +10,9 @@ ensemble-dashboard.service: inactive
 
 ## Processes
 ```
-root      944698  0.0  2.8 555448 109372 ?       Ssl  12:15   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      944698  0.0  2.8 557756 110924 ?       Ssl  12:15   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      946105  0.0  0.0   2800  1916 ?        Ss   13:50   0:00 sh -c while true; do ./venv/bin/python dashboard_api.py >> dashboard_api.log 2>&1; echo "[RESTART] $(date)" >> dashboard_api.log; sleep 2; done
-root      946106  0.2  1.2 134592 49280 ?        Sl   13:50   0:02 ./venv/bin/python dashboard_api.py
+root      946106  0.2  1.2 134080 49124 ?        Sl   13:50   0:04 ./venv/bin/python dashboard_api.py
 ```
 
 ## Paper state
@@ -1037,10 +1037,6 @@ root      946106  0.2  1.2 134592 49280 ?        Sl   13:50   0:02 ./venv/bin/py
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 12:15:28,637 [INFO] positions: Position monitor started
-2026-05-25 12:15:30,033 [INFO] http_pool: Shared aiohttp.ClientSession created
-2026-05-25 12:40:39,054 [INFO] positions: TAKE-PROFIT INJUSDT long PnL:3.08%
-2026-05-25 12:40:39,059 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG INJUSDT @ 5.6530 PnL: 3.08% (+1.93 USDT) | Баланс: 698.08
 2026-05-25 12:40:39,426 [INFO] positions: OK INJUSDT long PnL:3.08% reason:take_profit
 2026-05-25 12:40:39,426 [INFO] positions: Lessons: The trade was successful with a 3.08% profit, validating the BULL conviction and trending_up regime. Key factors included a strong momentum and volume ratio, bullish MACD, and negative funding signaling crowded shorts. The combination of a trending_up regime, BULL conviction, and negative funding with RSI between 60-75 can be a repeatable long continuation signal.
 2026-05-25 12:40:39,426 [INFO] rl: RL learned from long INJUSDT: profit 3.08% | weights bull=0.987 bear=0.992 judge=1.021 threshold=65.16
@@ -1067,6 +1063,10 @@ root      946106  0.2  1.2 134592 49280 ?        Sl   13:50   0:02 ./venv/bin/py
 2026-05-25 13:17:24,394 [INFO] paper_trading: [PAPER] ОТКРЫТА LONG TONUSDT @ 1.8089 qty=34.7321 notional=62.83 margin=12.57 x5 | Баланс: 685.51
 2026-05-25 13:17:26,397 [INFO] main: Max positions
 2026-05-25 13:17:26,397 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-25 14:15:30,523 [INFO] main: Symbols: 30
+2026-05-25 14:17:26,398 [INFO] main: Scanning 26 symbols...
+2026-05-25 14:17:26,398 [INFO] main: Max positions
+2026-05-25 14:17:26,398 [INFO] main: Next scan in 60min (weekday-active)
 ```
 
 ## Disk
@@ -1084,7 +1084,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.4Gi       188Mi       4.8Mi       2.4Gi       2.3Gi
+Mem:           3.7Gi       994Mi       634Mi       4.8Mi       2.4Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
