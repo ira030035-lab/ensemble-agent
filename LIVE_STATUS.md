@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 12:40:01 UTC
+Generated: 2026-05-25 12:50:01 UTC
 
 ## Services
 ```
@@ -10,14 +10,14 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   1:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      944698  0.0  1.4 250836 56312 ?        Ssl  12:15   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   1:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      944698  0.0  1.4 324584 56432 ?        Ssl  12:15   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 683.6150293476952,
+  "balance": 698.0764146076953,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779630553",
@@ -65,18 +65,6 @@ root      944698  0.0  1.4 250836 56312 ?        Ssl  12:15   0:00 /opt/ensemble
       "opened_at": "2026-05-25T12:04:25.035975",
       "cost": 11.318919359999999,
       "notional": 56.5945968,
-      "leverage": 5
-    },
-    "INJUSDT": {
-      "id": "PAPER_INJUSDT_1779711040",
-      "symbol": "INJUSDT",
-      "side": "long",
-      "entry_price": 5.484,
-      "qty": 11.4247,
-      "confidence": 72,
-      "opened_at": "2026-05-25T12:10:40.793340",
-      "cost": 12.53061096,
-      "notional": 62.6530548,
       "leverage": 5
     }
   },
@@ -1010,19 +998,32 @@ root      944698  0.0  1.4 250836 56312 ?        Ssl  12:15   0:00 /opt/ensemble
       "closed_at": "2026-05-25T10:49:36.594349",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_INJUSDT_1779711040",
+      "symbol": "INJUSDT",
+      "side": "long",
+      "entry_price": 5.484,
+      "qty": 11.4247,
+      "confidence": 72,
+      "opened_at": "2026-05-25T12:10:40.793340",
+      "cost": 12.53061096,
+      "notional": 62.6530548,
+      "leverage": 5,
+      "exit_price": 5.653,
+      "pnl_pct": 3.08,
+      "pnl_usdt": 1.93,
+      "closed_at": "2026-05-25T12:40:39.054921",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -5.895519316304721
+  "total_pnl": -3.964745016304726
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 12:08:56,048 [INFO] main: PEPEUSDT | Judge:HOLD conf=65% size=0.0%
-2026-05-25 12:08:56,049 [INFO] main: PEPEUSDT | RL adj=65.0%
-2026-05-25 12:09:29,520 [INFO] openai._base_client: Retrying request to /chat/completions in 0.464472 seconds
-2026-05-25 12:09:29,522 [INFO] openai._base_client: Retrying request to /chat/completions in 0.450316 seconds
-2026-05-25 12:09:59,132 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-25 12:10:00,007 [INFO] openai._base_client: Retrying request to /chat/completions in 0.870751 seconds
 2026-05-25 12:10:34,363 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-25 12:10:34,365 [INFO] main: INJUSDT | Bull:long(72%) Bear:flat(45%)
@@ -1048,6 +1049,11 @@ root      944698  0.0  1.4 250836 56312 ?        Ssl  12:15   0:00 /opt/ensemble
 2026-05-25 12:15:28,637 [INFO] main: Next scan in 60min (weekday-active)
 2026-05-25 12:15:28,637 [INFO] positions: Position monitor started
 2026-05-25 12:15:30,033 [INFO] http_pool: Shared aiohttp.ClientSession created
+2026-05-25 12:40:39,054 [INFO] positions: TAKE-PROFIT INJUSDT long PnL:3.08%
+2026-05-25 12:40:39,059 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG INJUSDT @ 5.6530 PnL: 3.08% (+1.93 USDT) | Баланс: 698.08
+2026-05-25 12:40:39,426 [INFO] positions: OK INJUSDT long PnL:3.08% reason:take_profit
+2026-05-25 12:40:39,426 [INFO] positions: Lessons: The trade was successful with a 3.08% profit, validating the BULL conviction and trending_up regime. Key factors included a strong momentum and volume ratio, bullish MACD, and negative funding signaling crowded shorts. The combination of a trending_up regime, BULL conviction, and negative funding with RSI between 60-75 can be a repeatable long continuation signal.
+2026-05-25 12:40:39,426 [INFO] rl: RL learned from long INJUSDT: profit 3.08% | weights bull=0.987 bear=0.992 judge=1.021 threshold=65.16
 ```
 
 ## Disk
@@ -1065,7 +1071,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       758Mi       523Mi       4.8Mi       2.8Gi       3.0Gi
+Mem:           3.7Gi       1.0Gi       241Mi       4.8Mi       2.8Gi       2.7Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
