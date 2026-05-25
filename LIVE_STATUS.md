@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 12:10:01 UTC
+Generated: 2026-05-25 12:20:01 UTC
 
 ## Services
 ```
@@ -10,14 +10,14 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   1:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      944520  0.5  2.9 561704 114652 ?       Ssl  12:02   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      812670  0.0  1.2 208136 49552 ?        Ssl  May19   1:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      944698  0.1  1.4 250836 56308 ?        Ssl  12:15   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 696.1456403076952,
+  "balance": 683.6150293476952,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779630553",
@@ -65,6 +65,18 @@ root      944520  0.5  2.9 561704 114652 ?       Ssl  12:02   0:02 /opt/ensemble
       "opened_at": "2026-05-25T12:04:25.035975",
       "cost": 11.318919359999999,
       "notional": 56.5945968,
+      "leverage": 5
+    },
+    "INJUSDT": {
+      "id": "PAPER_INJUSDT_1779711040",
+      "symbol": "INJUSDT",
+      "side": "long",
+      "entry_price": 5.484,
+      "qty": 11.4247,
+      "confidence": 72,
+      "opened_at": "2026-05-25T12:10:40.793340",
+      "cost": 12.53061096,
+      "notional": 62.6530548,
       "leverage": 5
     }
   },
@@ -1006,36 +1018,36 @@ root      944520  0.5  2.9 561704 114652 ?       Ssl  12:02   0:02 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 12:04:24,753 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 12:04:24,755 [INFO] main: HYPEUSDT | Judge:SHORT conf=68% size=8.0%
-2026-05-25 12:04:24,755 [INFO] main: HYPEUSDT | RL adj=78.8%
-2026-05-25 12:04:24,755 [INFO] main: HYPEUSDT | gate PASS (Judge 68/70 RL 78.8/65.18 slack=±3)
-2026-05-25 12:04:25,035 [INFO] positions: [PAPER] Opening SHORT HYPEUSDT notional=$56.6 conf=68%
-2026-05-25 12:04:25,041 [INFO] paper_trading: [PAPER] ОТКРЫТА SHORT HYPEUSDT @ 63.3120 qty=0.8939 notional=56.59 margin=11.32 x5 | Баланс: 696.15
-2026-05-25 12:04:58,558 [INFO] openai._base_client: Retrying request to /chat/completions in 0.394658 seconds
-2026-05-25 12:05:28,994 [INFO] openai._base_client: Retrying request to /chat/completions in 0.861634 seconds
-2026-05-25 12:06:04,438 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 12:06:04,439 [INFO] main: XRPUSDT | Bull:long(48%) Bear:short(68%)
-2026-05-25 12:06:09,636 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 12:06:09,638 [INFO] main: XRPUSDT | Judge:HOLD conf=68% size=0.0%
-2026-05-25 12:06:09,638 [INFO] main: XRPUSDT | RL adj=68.0%
-2026-05-25 12:06:43,172 [INFO] openai._base_client: Retrying request to /chat/completions in 0.485851 seconds
-2026-05-25 12:07:13,700 [INFO] openai._base_client: Retrying request to /chat/completions in 0.771738 seconds
-2026-05-25 12:07:47,050 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 12:07:47,051 [INFO] main: LINKUSDT | Bull:flat(25%) Bear:short(68%)
-2026-05-25 12:07:52,093 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 12:07:52,095 [INFO] main: LINKUSDT | Judge:HOLD conf=68% size=0.0%
-2026-05-25 12:07:52,095 [INFO] main: LINKUSDT | RL adj=68.0%
-2026-05-25 12:08:25,612 [INFO] openai._base_client: Retrying request to /chat/completions in 0.411102 seconds
-2026-05-25 12:08:50,901 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 12:08:50,911 [INFO] main: PEPEUSDT | Bull:long(45%) Bear:short(65%)
-2026-05-25 12:08:56,046 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-25 12:08:56,048 [INFO] main: PEPEUSDT | Judge:HOLD conf=65% size=0.0%
 2026-05-25 12:08:56,049 [INFO] main: PEPEUSDT | RL adj=65.0%
 2026-05-25 12:09:29,520 [INFO] openai._base_client: Retrying request to /chat/completions in 0.464472 seconds
 2026-05-25 12:09:29,522 [INFO] openai._base_client: Retrying request to /chat/completions in 0.450316 seconds
 2026-05-25 12:09:59,132 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-25 12:10:00,007 [INFO] openai._base_client: Retrying request to /chat/completions in 0.870751 seconds
+2026-05-25 12:10:34,363 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 12:10:34,365 [INFO] main: INJUSDT | Bull:long(72%) Bear:flat(45%)
+2026-05-25 12:10:40,239 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 12:10:40,240 [INFO] main: INJUSDT | Judge:LONG conf=72% size=9.0%
+2026-05-25 12:10:40,240 [INFO] main: INJUSDT | RL adj=82.6%
+2026-05-25 12:10:40,240 [INFO] main: INJUSDT | gate PASS (Judge 72/70 RL 82.6/65.18 slack=±3)
+2026-05-25 12:10:40,792 [INFO] positions: [PAPER] Opening LONG INJUSDT notional=$62.7 conf=72%
+2026-05-25 12:10:40,796 [INFO] paper_trading: [PAPER] ОТКРЫТА LONG INJUSDT @ 5.4840 qty=11.4247 notional=62.65 margin=12.53 x5 | Баланс: 683.62
+2026-05-25 12:10:42,799 [INFO] main: Max positions
+2026-05-25 12:10:42,799 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-25 12:15:27,483 [INFO] main: Shutting down...
+2026-05-25 12:15:27,483 [INFO] positions: Position monitor stopped
+2026-05-25 12:15:27,492 [INFO] http_pool: Shared aiohttp.ClientSession closed
+2026-05-25 12:15:27,969 [INFO] memory: Memory loaded: 76 trades
+2026-05-25 12:15:27,969 [INFO] rl: RL weights loaded: bull=0.981 bear=1.001 judge=1.019 episodes=18
+2026-05-25 12:15:27,969 [INFO] positions: Restored 5 positions from paper_state (3L/2S)
+2026-05-25 12:15:27,969 [INFO] main: === Adversarial Trading Agent started ===
+2026-05-25 12:15:27,970 [INFO] main: Bull: race(Kimi x1, Groq x2) → Haiku fb | Bear: race(Groq x2, Kimi x1) → Haiku fb | Judge: Haiku (decide) + Groq Llama (exit/dir/reflect)
+2026-05-25 12:15:28,636 [INFO] main: Symbols: 30
+2026-05-25 12:15:28,637 [INFO] main: Scanning 27 symbols...
+2026-05-25 12:15:28,637 [INFO] main: Max positions
+2026-05-25 12:15:28,637 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-25 12:15:28,637 [INFO] positions: Position monitor started
+2026-05-25 12:15:30,033 [INFO] http_pool: Shared aiohttp.ClientSession created
 ```
 
 ## Disk
@@ -1053,7 +1065,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.0Gi       239Mi       4.8Mi       2.8Gi       2.7Gi
+Mem:           3.7Gi       598Mi       690Mi       4.8Mi       2.8Gi       3.1Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
