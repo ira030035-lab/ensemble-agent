@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 15:10:01 UTC
+Generated: 2026-05-25 15:20:01 UTC
 
 ## Services
 ```
@@ -10,9 +10,9 @@ ensemble-dashboard.service: inactive
 
 ## Processes
 ```
-root      944698  0.0  2.8 557756 111048 ?       Ssl  12:15   0:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      944698  0.0  2.8 632272 112132 ?       Ssl  12:15   0:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      946105  0.0  0.0   2800  1916 ?        Ss   13:50   0:00 sh -c while true; do ./venv/bin/python dashboard_api.py >> dashboard_api.log 2>&1; echo "[RESTART] $(date)" >> dashboard_api.log; sleep 2; done
-root      946106  0.2  1.2 132032 47096 ?        Sl   13:50   0:10 ./venv/bin/python dashboard_api.py
+root      946106  0.2  1.2 132032 47096 ?        Sl   13:50   0:12 ./venv/bin/python dashboard_api.py
 ```
 
 ## Paper state
@@ -1049,21 +1049,6 @@ root      946106  0.2  1.2 132032 47096 ?        Sl   13:50   0:10 ./venv/bin/py
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 13:16:01,356 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 13:16:10,718 [INFO] openai._base_client: Retrying request to /chat/completions in 0.417357 seconds
-2026-05-25 13:16:10,719 [INFO] openai._base_client: Retrying request to /chat/completions in 0.483231 seconds
-2026-05-25 13:16:41,174 [INFO] openai._base_client: Retrying request to /chat/completions in 0.970762 seconds
-2026-05-25 13:16:41,239 [INFO] openai._base_client: Retrying request to /chat/completions in 0.791873 seconds
-2026-05-25 13:17:15,094 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 13:17:17,904 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 13:17:17,905 [INFO] main: TONUSDT | Bull:long(62%) Bear:flat(45%)
-2026-05-25 13:17:23,794 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 13:17:23,795 [INFO] main: TONUSDT | Judge:LONG conf=68% size=9.0%
-2026-05-25 13:17:23,795 [INFO] main: TONUSDT | RL adj=77.2%
-2026-05-25 13:17:23,795 [INFO] main: TONUSDT | gate PASS (Judge 68/70 RL 77.2/65.16 slack=±3)
-2026-05-25 13:17:24,390 [INFO] positions: [PAPER] Opening LONG TONUSDT notional=$62.8 conf=68%
-2026-05-25 13:17:24,394 [INFO] paper_trading: [PAPER] ОТКРЫТА LONG TONUSDT @ 1.8089 qty=34.7321 notional=62.83 margin=12.57 x5 | Баланс: 685.51
-2026-05-25 13:17:26,397 [INFO] main: Max positions
 2026-05-25 13:17:26,397 [INFO] main: Next scan in 60min (weekday-active)
 2026-05-25 14:15:30,523 [INFO] main: Symbols: 30
 2026-05-25 14:17:26,398 [INFO] main: Scanning 26 symbols...
@@ -1079,6 +1064,21 @@ root      946106  0.2  1.2 132032 47096 ?        Sl   13:50   0:10 ./venv/bin/py
 2026-05-25 14:45:41,432 [INFO] positions: OK ZECUSDT long PnL:0.73% reason:trailing_stop
 2026-05-25 14:45:41,432 [INFO] positions: Lessons: The trade was closed with a 0.73% profit due to a trailing stop. The initial long setup was based on a strong bullish conviction and a trending_up regime, which was validated by prior similar setups. The key factors to remember are the combination of a strong conviction spread, a trending_up regime, and a healthy RSI zone, which can form a repeatable long setup.
 2026-05-25 14:45:41,432 [INFO] rl: RL learned from long ZECUSDT: profit 0.73% | weights bull=0.992 bear=0.986 judge=1.023 threshold=65.1
+2026-05-25 15:15:31,230 [INFO] main: Symbols: 30
+2026-05-25 15:17:26,400 [INFO] main: Scanning 28 symbols...
+2026-05-25 15:17:28,761 [INFO] main: XRPUSDT | Bull:long(60%) Bear:short(70%)
+2026-05-25 15:17:34,728 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 15:17:34,730 [INFO] main: XRPUSDT | Judge:HOLD conf=68% size=0.0%
+2026-05-25 15:17:34,730 [INFO] main: XRPUSDT | RL adj=68.0%
+2026-05-25 15:18:08,215 [INFO] openai._base_client: Retrying request to /chat/completions in 0.459408 seconds
+2026-05-25 15:18:38,699 [INFO] openai._base_client: Retrying request to /chat/completions in 0.942061 seconds
+2026-05-25 15:19:11,818 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 15:19:11,819 [INFO] main: INUSDT | Bull:flat(35%) Bear:short(80%)
+2026-05-25 15:19:17,337 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 15:19:17,339 [INFO] main: INUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-25 15:19:17,339 [INFO] main: INUSDT | RL adj=80.0%
+2026-05-25 15:19:50,865 [INFO] openai._base_client: Retrying request to /chat/completions in 0.470074 seconds
+2026-05-25 15:19:50,865 [INFO] openai._base_client: Retrying request to /chat/completions in 0.414266 seconds
 ```
 
 ## Disk
@@ -1096,7 +1096,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       930Mi       692Mi       4.8Mi       2.4Gi       2.8Gi
+Mem:           3.7Gi       928Mi       694Mi       4.8Mi       2.4Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
