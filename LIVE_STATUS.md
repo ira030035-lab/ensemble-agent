@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 14:40:01 UTC
+Generated: 2026-05-25 14:50:01 UTC
 
 ## Services
 ```
@@ -10,15 +10,15 @@ ensemble-dashboard.service: inactive
 
 ## Processes
 ```
-root      944698  0.0  2.8 557756 110992 ?       Ssl  12:15   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      944698  0.0  2.8 557756 111048 ?       Ssl  12:15   0:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      946105  0.0  0.0   2800  1916 ?        Ss   13:50   0:00 sh -c while true; do ./venv/bin/python dashboard_api.py >> dashboard_api.log 2>&1; echo "[RESTART] $(date)" >> dashboard_api.log; sleep 2; done
-root      946106  0.2  1.2 133572 48396 ?        Sl   13:50   0:06 ./venv/bin/python dashboard_api.py
+root      946106  0.2  1.2 133572 48396 ?        Sl   13:50   0:08 ./venv/bin/python dashboard_api.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 699.1322704476952,
+  "balance": 714.0963238476952,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779630553",
@@ -42,18 +42,6 @@ root      946106  0.2  1.2 133572 48396 ?        Sl   13:50   0:06 ./venv/bin/py
       "opened_at": "2026-05-25T08:18:32.165573",
       "cost": 11.515060578,
       "notional": 57.57530289,
-      "leverage": 5
-    },
-    "ZECUSDT": {
-      "id": "PAPER_ZECUSDT_1779709094",
-      "symbol": "ZECUSDT",
-      "side": "long",
-      "entry_price": 670.16,
-      "qty": 0.1077,
-      "confidence": 78,
-      "opened_at": "2026-05-25T11:38:14.907388",
-      "cost": 14.4352464,
-      "notional": 72.176232,
       "leverage": 5
     },
     "HYPEUSDT": {
@@ -1035,19 +1023,32 @@ root      946106  0.2  1.2 133572 48396 ?        Sl   13:50   0:06 ./venv/bin/py
       "closed_at": "2026-05-25T14:32:41.316894",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ZECUSDT_1779709094",
+      "symbol": "ZECUSDT",
+      "side": "long",
+      "entry_price": 670.16,
+      "qty": 0.1077,
+      "confidence": 78,
+      "opened_at": "2026-05-25T11:38:14.907388",
+      "cost": 14.4352464,
+      "notional": 72.176232,
+      "leverage": 5,
+      "exit_price": 675.07,
+      "pnl_pct": 0.73,
+      "pnl_usdt": 0.53,
+      "closed_at": "2026-05-25T14:45:40.806585",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -2.9088891763047267
+  "total_pnl": -2.3800821763047177
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 13:15:31,449 [INFO] main: GENIUSUSDT | Bull:long(45%) Bear:short(80%)
-2026-05-25 13:15:37,223 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 13:15:37,236 [INFO] main: GENIUSUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-25 13:15:37,236 [INFO] main: GENIUSUSDT | RL adj=80.0%
-2026-05-25 13:15:59,174 [WARNING] agents: Judge-Groq all failed: openai/gpt-oss-120b empty
 2026-05-25 13:16:01,356 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-25 13:16:10,718 [INFO] openai._base_client: Retrying request to /chat/completions in 0.417357 seconds
 2026-05-25 13:16:10,719 [INFO] openai._base_client: Retrying request to /chat/completions in 0.483231 seconds
@@ -1073,6 +1074,11 @@ root      946106  0.2  1.2 133572 48396 ?        Sl   13:50   0:06 ./venv/bin/py
 2026-05-25 14:32:41,697 [INFO] positions: OK TONUSDT long PnL:1.68% reason:trailing_stop
 2026-05-25 14:32:41,698 [INFO] positions: Lessons: A long position in TONUSDT was closed with a 1.68% profit, validating the original BULL conviction and trending_up regime alignment. The trade outcome supports the notion that low-volume uptrends in trending regimes can be continuation signals rather than exhaustion warnings. This experience should be remembered as a successful example of navigating headwinds and executing a trade based on conviction and regime alignment.
 2026-05-25 14:32:41,698 [INFO] rl: RL learned from long TONUSDT: profit 1.68% | weights bull=0.990 bear=0.988 judge=1.022 threshold=65.13
+2026-05-25 14:45:40,805 [INFO] positions: TRAILING-STOP ZECUSDT long peak:1.76% now:0.73%
+2026-05-25 14:45:40,811 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG ZECUSDT @ 675.0700 PnL: 0.73% (+0.53 USDT) | Баланс: 714.10
+2026-05-25 14:45:41,432 [INFO] positions: OK ZECUSDT long PnL:0.73% reason:trailing_stop
+2026-05-25 14:45:41,432 [INFO] positions: Lessons: The trade was closed with a 0.73% profit due to a trailing stop. The initial long setup was based on a strong bullish conviction and a trending_up regime, which was validated by prior similar setups. The key factors to remember are the combination of a strong conviction spread, a trending_up regime, and a healthy RSI zone, which can form a repeatable long setup.
+2026-05-25 14:45:41,432 [INFO] rl: RL learned from long ZECUSDT: profit 0.73% | weights bull=0.992 bear=0.986 judge=1.023 threshold=65.1
 ```
 
 ## Disk
@@ -1090,7 +1096,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.1Gi       491Mi       4.8Mi       2.4Gi       2.6Gi
+Mem:           3.7Gi       1.0Gi       573Mi       4.8Mi       2.4Gi       2.7Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
