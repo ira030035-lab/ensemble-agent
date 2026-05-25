@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 16:30:01 UTC
+Generated: 2026-05-25 16:40:01 UTC
 
 ## Services
 ```
@@ -11,15 +11,13 @@ ensemble-dashboard.service: inactive
 ## Processes
 ```
 root      946105  0.0  0.0   2800  1916 ?        Ss   13:50   0:00 sh -c while true; do ./venv/bin/python dashboard_api.py >> dashboard_api.log 2>&1; echo "[RESTART] $(date)" >> dashboard_api.log; sleep 2; done
-root      946106  0.1  1.2 133604 48316 ?        Sl   13:50   0:19 ./venv/bin/python dashboard_api.py
-root      948329  0.0  0.0   7340  3828 ?        Ss   16:20   0:00 bash -c cd /opt/ensemble-agent && source venv/bin/activate && python3 main.py > ensemble.log 2>&1
-root      948331  0.0  1.4 251796 57268 ?        Sl   16:20   0:00 python3 main.py
+root      946106  0.1  1.2 133604 48324 ?        Sl   13:50   0:19 ./venv/bin/python dashboard_api.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 688.1119338156951,
+  "balance": 700.3319043756951,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779630553",
@@ -43,18 +41,6 @@ root      948331  0.0  1.4 251796 57268 ?        Sl   16:20   0:00 python3 main.
       "opened_at": "2026-05-25T08:18:32.165573",
       "cost": 11.515060578,
       "notional": 57.57530289,
-      "leverage": 5
-    },
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1779710665",
-      "symbol": "HYPEUSDT",
-      "side": "short",
-      "entry_price": 63.312,
-      "qty": 0.8939,
-      "confidence": 68,
-      "opened_at": "2026-05-25T12:04:25.035975",
-      "cost": 11.318919359999999,
-      "notional": 56.5945968,
       "leverage": 5
     },
     "LINKUSDT": {
@@ -1084,25 +1070,62 @@ root      948331  0.0  1.4 251796 57268 ?        Sl   16:20   0:00 python3 main.
       "closed_at": "2026-05-25T16:18:19.537185",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1779710665",
+      "symbol": "HYPEUSDT",
+      "side": "short",
+      "entry_price": 63.312,
+      "qty": 0.8939,
+      "confidence": 68,
+      "opened_at": "2026-05-25T12:04:25.035975",
+      "cost": 11.318919359999999,
+      "notional": 56.5945968,
+      "leverage": 5,
+      "exit_price": 62.304,
+      "pnl_pct": 7.96,
+      "pnl_usdt": 0.9,
+      "closed_at": "2026-05-25T16:33:03.381026",
+      "reason": "judge_exit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -5.740458976304721
+  "total_pnl": -4.839407776304725
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 16:20:40,325 [INFO] memory: Memory loaded: 80 trades
-2026-05-25 16:20:40,325 [INFO] rl: RL weights loaded: bull=1.005 bear=0.971 judge=1.024 episodes=22
-2026-05-25 16:20:40,328 [INFO] positions: Restored 5 positions from paper_state (3L/2S)
-2026-05-25 16:20:40,328 [INFO] main: === Adversarial Trading Agent started ===
-2026-05-25 16:20:40,328 [INFO] main: Bull: race(Kimi x1, Groq x2) → Haiku fb | Bear: race(Groq x2, Kimi x1) → Haiku fb | Judge: Haiku (decide) + Groq Llama (exit/dir/reflect)
-2026-05-25 16:20:40,986 [INFO] main: Symbols: 30
-2026-05-25 16:20:40,986 [INFO] main: Scanning 26 symbols...
-2026-05-25 16:20:40,986 [INFO] main: Max positions
-2026-05-25 16:20:40,986 [INFO] main: Next scan in 60min (weekday-active)
-2026-05-25 16:20:40,987 [INFO] positions: Position monitor started
-2026-05-25 16:20:42,367 [INFO] http_pool: Shared aiohttp.ClientSession created
+2026-05-25 16:33:27,868 [INFO] main: TONUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-25 16:33:27,868 [INFO] main: TONUSDT | RL adj=70.0%
+2026-05-25 16:33:33,803 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 16:33:34,598 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 16:33:34,599 [INFO] main: WLDUSDT | Bull:long(65%) Bear:short(80%)
+2026-05-25 16:33:40,740 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 16:33:40,741 [INFO] main: WLDUSDT | Judge:HOLD conf=65% size=0.0%
+2026-05-25 16:33:40,741 [INFO] main: WLDUSDT | RL adj=65.0%
+2026-05-25 16:33:47,374 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 16:33:48,569 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 16:33:48,570 [INFO] main: ETHUSDT | Bull:long(75%) Bear:short(75%)
+2026-05-25 16:33:58,438 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 16:33:58,439 [INFO] main: ETHUSDT | Judge:HOLD conf=75% size=0.0%
+2026-05-25 16:33:58,439 [INFO] main: ETHUSDT | RL adj=75.0%
+2026-05-25 16:34:05,059 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 16:34:05,172 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 16:34:05,173 [INFO] main: XRPUSDT | Bull:long(65%) Bear:short(80%)
+2026-05-25 16:34:09,619 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 16:34:09,621 [INFO] main: XRPUSDT | Judge:HOLD conf=65% size=0.0%
+2026-05-25 16:34:09,621 [INFO] main: XRPUSDT | RL adj=65.0%
+2026-05-25 16:34:15,798 [INFO] main: Shutting down...
+2026-05-25 16:34:15,798 [INFO] positions: Position monitor stopped
+2026-05-25 16:34:16,487 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 16:34:16,495 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-25 16:34:16,496 [INFO] main: ESPORTSUSDT | Bull:long(65%) Bear:short(75%)
+2026-05-25 16:34:39,687 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-25 16:34:39,689 [INFO] main: ESPORTSUSDT | Judge:HOLD conf=75% size=0.0%
+2026-05-25 16:34:39,689 [INFO] main: ESPORTSUSDT | RL adj=75.0%
+2026-05-25 16:34:39,689 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-25 16:34:39,701 [INFO] http_pool: Shared aiohttp.ClientSession closed
 ```
 
 ## Disk
@@ -1120,7 +1143,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       872Mi       743Mi       4.8Mi       2.4Gi       2.9Gi
+Mem:           3.7Gi       842Mi       773Mi       4.8Mi       2.4Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
