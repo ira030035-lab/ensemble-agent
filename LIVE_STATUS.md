@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-25 02:10:01 UTC
+Generated: 2026-05-25 02:20:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      812670  0.0  1.2 209160 50560 ?        Ssl  May19   0:57 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      915939  0.0  2.2 648720 86840 ?        Ssl  May23   0:58 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      915939  0.0  2.2 647688 86200 ?        Ssl  May23   0:59 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -922,7 +922,6 @@ root      915939  0.0  2.2 648720 86840 ?        Ssl  May23   0:58 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 02:06:50,241 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-25 02:06:50,243 [INFO] main: FIDAUSDT | Judge:HOLD conf=70% size=0.0%
 2026-05-25 02:06:50,243 [INFO] main: FIDAUSDT | RL adj=70.0%
 2026-05-25 02:06:53,888 [INFO] main: ONDOUSDT | Bull:long(70%) Bear:short(70%)
@@ -952,6 +951,7 @@ root      915939  0.0  2.2 648720 86840 ?        Ssl  May23   0:58 /opt/ensemble
 2026-05-25 02:07:40,167 [INFO] main: TAOUSDT | gate PASS (Judge 68/70 RL 70.9/64.98 slack=±3)
 2026-05-25 02:07:40,168 [INFO] positions: Same-side cap: skip SHORT TAOUSDT (3/3 already short)
 2026-05-25 02:07:42,171 [INFO] main: Next scan in 120min (weekday-quiet)
+2026-05-25 02:19:43,168 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -969,7 +969,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       620Mi       1.1Gi       4.8Mi       2.3Gi       3.1Gi
+Mem:           3.7Gi       614Mi       1.1Gi       4.8Mi       2.3Gi       3.1Gi
 Swap:             0B          0B          0B
 ```
 
