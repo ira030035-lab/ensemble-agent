@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-25 14:00:01 UTC
+Generated: 2026-05-25 15:00:01 UTC
 
 ## agents.py
 ```python
@@ -415,33 +415,20 @@ class KimiJudge(Judge):
             return ""
 
     async def decide(self, market_text, bull, bear, memory_ctx):
-        """Unified Kimi decision — one call replaces Claude decide."""
-        prompt = f"""You are the JUDGE in an adversarial trading ensemble. BULL argues for LONG; BEAR argues for SHORT/avoid. A "flat" side from either agent means NEUTRAL — it is NOT opposition, just absence of conviction.
+        """Unified Kimi decision — compact prompt for moonshot-v1-auto."""
+        prompt = f"""You are a trading judge. Output ONLY JSON.
 
-## MARKET DATA
-{market_text}
+Market: {market_text}
+Bull: {bull.confidence}% | {bull.reasoning[:80]}
+Bear: {bear.confidence}% | {bear.reasoning[:80]}
+Memory: {memory_ctx[:100]}
 
-## BULL ({bull.confidence}%)
-{bull.reasoning}
+Rules:
+- LONG if bull>=55 and (bear flat or bear<bull)
+- SHORT if bear>=55 and (bull flat or bull<bear)
+- HOLD if both conflict or both flat
 
-## BEAR ({bear.confidence}%)
-{bear.reasoning}
-
-## MEMORY
-{memory_ctx}
-
-## DECISION CRITERIA
-- LONG if: BULL conviction >= 55 AND (BEAR is flat OR BEAR conviction < BULL conviction)
-- SHORT if: BEAR conviction >= 55 AND (BULL is flat OR BULL conviction < BEAR conviction)
-- HOLD only when: signals genuinely conflict (both > 60 in opposite directions) OR both agree it is flat/unclear. HOLD is a real cost — missed opportunity.
-
-Market sentiment (Fear & Greed) is a soft signal, not a blocker.
-
-For action="long" or "short": confidence in 50-95 reflecting how aligned the evidence is; position_size_pct in 0.03-0.12 (bigger when conviction higher, smaller when conflicting).
-For action="hold": confidence = max conviction of either side; position_size_pct = 0.0.
-
-Respond ONLY with valid JSON, no prose, no markdown fences:
-{{"action":"long|short|hold","confidence":0-100,"position_size_pct":0.0-0.15,"reasoning":"brief","lessons_from_memory":"brief"}}"""
+JSON: {{"action":"long|short|hold","confidence":0-100,"position_size_pct":0.0-0.15,"reasoning":"brief","lessons_from_memory":"brief"}}"""
 
         try:
             r = await self._claude(prompt)
@@ -461,7 +448,6 @@ Respond ONLY with valid JSON, no prose, no markdown fences:
         except Exception as e:
             log.error("KimiJudge decide: " + str(e))
             return JudgeDecision("hold", 0, 0.0, "KimiJudge error: " + str(e)[:100], "")
-
 ```
 
 ## audit.py
@@ -858,7 +844,7 @@ class Config:
     GROQ_API_KEYS = [k for k in [os.getenv("GROQ_API_KEY"+(str(i) if i>1 else "")) for i in range(1,6)] if k]
     KIMI_API_KEY = os.getenv("KIMI_API_KEY")
     KIMI_BASE_URL = "https://api.moonshot.ai/v1"
-    KIMI_MODEL = "kimi-k2.6"
+    KIMI_MODEL = "moonshot-v1-auto"
     BULL_MODELS_GROQ = ["llama-3.3-70b-versatile", "openai/gpt-oss-120b"]
     BEAR_MODELS_GROQ = ["llama-3.3-70b-versatile", "openai/gpt-oss-120b"]
     JUDGE_MODELS_GROQ = ["llama-3.3-70b-versatile", "openai/gpt-oss-120b"]
@@ -2485,12 +2471,17 @@ import time
 import asyncio
 import argparse
 import logging
+import hashlib
+import random
 from dataclasses import dataclass, field, asdict
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Tuple, Any
 from pathlib import Path
-from collections import defaultdict
+from collections import defaultdict, Counter
 import traceback
+
+import hashlib
+import random
 
 import numpy as np
 import pandas as pd
@@ -2552,6 +2543,11 @@ class SimConfig:
     max_concurrent_kimi_calls: int = 15
     request_timeout: float = 45.0
 
+    # Mock / Cache
+    mock_judge: bool = False
+    mock_judge_signal_rate: float = 0.15
+    kimi_cache_dir: Path = Path("./simulator_kimi_cache")
+
     # Paths
     data_cache_dir: Path = Path("./simulator_cache")
     output_dir: Path = Path("./simulator_output")
@@ -2559,6 +2555,7 @@ class SimConfig:
     def __post_init__(self):
         self.data_cache_dir.mkdir(parents=True, exist_ok=True)
         self.output_dir.mkdir(parents=True, exist_ok=True)
+        self.kimi_cache_dir.mkdir(parents=True, exist_ok=True)
         if self.mode not in ("live_mirror", "optimized"):
             raise ValueError(f"Invalid mode: {self.mode}. Use 'live_mirror' or 'optimized'.")
 
@@ -2690,7 +2687,8 @@ class TechnicalIndicators:
         avg_gain = gain.ewm(alpha=1/period, min_periods=period).mean()
         avg_loss = loss.ewm(alpha=1/period, min_periods=period).mean()
         rs = avg_gain / avg_loss
-        return 100 - (100 / (1 + rs))
+        rsi = 100 - (100 / (1 + rs))
+        return rsi.replace([np.inf, -np.inf], 50).fillna(50)
 
     @staticmethod
     def nearest_levels(df: pd.DataFrame, lookback: int = 50) -> Tuple[float, float]:
@@ -2757,6 +2755,36 @@ class SymbolMemory:
                 return last_sl + timedelta(hours=cooldown_hours)
         return None
 
+
+
+
+# ---------------------------------------------------------------------------
+# Reject Logger
+# ---------------------------------------------------------------------------
+
+class RejectLogger:
+    """Считает причины отказа по символам и глобально."""
+    def __init__(self):
+        self.global_counts: Counter = Counter()
+        self.symbol_counts: Dict[str, Counter] = defaultdict(Counter)
+        self.hold_reasons: Dict[str, Counter] = defaultdict(Counter)
+
+    def record(self, symbol: str, reason: str):
+        self.global_counts[reason] += 1
+        self.symbol_counts[symbol][reason] += 1
+
+    def record_kimi_hold(self, symbol: str, reasoning: str):
+        self.record(symbol, "KIMI_HOLD")
+        # bucket reasoning by first word
+        bucket = reasoning.split()[0] if reasoning else "empty"
+        self.hold_reasons[symbol][bucket] += 1
+
+    def summary(self) -> Dict:
+        return {
+            "global": dict(self.global_counts.most_common()),
+            "by_symbol": {s: dict(c.most_common()) for s, c in self.symbol_counts.items()},
+            "hold_reasoning_samples": {s: dict(c.most_common(5)) for s, c in self.hold_reasons.items()}
+        }
 
 # ---------------------------------------------------------------------------
 # Regime Detector
@@ -2856,6 +2884,57 @@ class UnifiedKimiJudge:
     def __init__(self, config: SimConfig):
         self.cfg = config
         self._client = None
+        self._cache_hits = 0
+        self._cache_misses = 0
+
+    def _cache_path(self, prompt: str) -> Path:
+        h = hashlib.sha256(prompt.encode("utf-8")).hexdigest()[:16]
+        return self.cfg.kimi_cache_dir / f"{h}.json"
+
+    def _load_cache(self, prompt: str) -> Optional[Dict]:
+        path = self._cache_path(prompt)
+        if path.exists():
+            try:
+                with open(path, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except Exception:
+                return None
+        return None
+
+    def _save_cache(self, prompt: str, data: Dict):
+        path = self._cache_path(prompt)
+        try:
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+        except Exception as e:
+            logger.warning(f"Cache save failed: {e}")
+
+    def _mock_decision(self, symbol: str) -> Dict:
+        """Random signal for testing filters/engine without API."""
+        if random.random() < self.cfg.mock_judge_signal_rate:
+            side = random.choice(["LONG", "SHORT"])
+            bull = random.uniform(0.55, 0.95)
+            bear = random.uniform(0.55, 0.95)
+            if side == "LONG":
+                bear = random.uniform(0.1, 0.4)
+            else:
+                bull = random.uniform(0.1, 0.4)
+            return {
+                "bull_confidence": round(bull, 2),
+                "bear_confidence": round(bear, 2),
+                "decision": side,
+                "confidence": random.randint(50, 90),
+                "size": 5.0,
+                "reasoning": f"mock_{side.lower()}"
+            }
+        return {
+            "bull_confidence": 0.0,
+            "bear_confidence": 0.0,
+            "decision": "HOLD",
+            "confidence": 0,
+            "size": 0.0,
+            "reasoning": "mock_hold"
+        }
 
     def _get_client(self):
         import openai
@@ -2969,10 +3048,21 @@ class UnifiedKimiJudge:
     ) -> Dict:
         """Один вызов Kimi. Возвращает полный decision object."""
 
+        # Mock mode — no API calls
+        if self.cfg.mock_judge:
+            return self._mock_decision(symbol)
+
         prompt = self._build_prompt(
             symbol, df, price, ema20, ema50, atr, rsi,
             support, resistance, day_high, day_low, regime, memory
         )
+
+        # Try cache
+        cached = self._load_cache(prompt)
+        if cached is not None:
+            self._cache_hits += 1
+            return cached
+        self._cache_misses += 1
 
         client = self._get_client()
         try:
@@ -2984,7 +3074,9 @@ class UnifiedKimiJudge:
                 timeout=self.cfg.request_timeout
             )
             text = resp.choices[0].message.content.strip()
-            return self._parse_response(text, symbol)
+            result = self._parse_response(text, symbol)
+            self._save_cache(prompt, result)
+            return result
         except Exception as e:
             logger.warning(f"Kimi unified call failed for {symbol}: {e}")
             return {
@@ -3075,7 +3167,7 @@ class RLState:
     consecutive_same_side_signals: int
 
     def to_vector(self) -> np.ndarray:
-        return np.array([
+        vec = np.array([
             self.bull_confidence,
             self.bear_confidence,
             self.entry_position_in_range,
@@ -3086,6 +3178,7 @@ class RLState:
             self.time_of_day_utc / 24.0,
             self.consecutive_same_side_signals / 5.0
         ], dtype=np.float32)
+        return np.nan_to_num(vec, nan=0.0, posinf=1.0, neginf=-1.0)
 
 
 class RewardShaper:
@@ -3362,6 +3455,9 @@ class Simulator:
         self.memories: Dict[str, SymbolMemory] = defaultdict(lambda: SymbolMemory(""))
         self.consecutive_signals: Dict[str, Dict] = defaultdict(lambda: {"long": 0, "short": 0})
         self.pending_states: Dict[str, Dict] = {}
+        self.reject_logger = RejectLogger()
+        self._candles_processed = 0
+        self._entries_attempted = 0
 
     async def run(self):
         logger.info("=" * 60)
@@ -3393,8 +3489,9 @@ class Simulator:
             logger.info(f"[SYNC] Common timeline: {len(common_idx)} candles")
 
             for i, ts in enumerate(common_idx):
+                self._candles_processed += 1
                 if i % 500 == 0:
-                    logger.info(f"[PROGRESS] {i}/{len(common_idx)} | Closed: {len(self.engine.closed_trades)} | Open: {len(self.engine.positions)}")
+                    logger.info(f"[PROGRESS] {i}/{len(common_idx)} | Closed: {len(self.engine.closed_trades)} | Open: {len(self.engine.positions)} | Attempted: {self._entries_attempted}")
 
                 # 1. Обработка открытых позиций
                 for sym, df in data_map.items():
@@ -3481,14 +3578,16 @@ class Simulator:
 
                 side = decision.get("decision", "HOLD").lower()
                 if side == "hold":
+                    self.reject_logger.record_kimi_hold(sym, decision.get("reasoning", ""))
                     return
 
                 bull_conf = decision.get("bull_confidence", 0)
                 bear_conf = decision.get("bear_confidence", 0)
 
                 # Python-фильтры (не в промпте)
-                ok_extreme, _ = self.entry_filter.check_extreme(side, price, day_high, day_low)
+                ok_extreme, extreme_reason = self.entry_filter.check_extreme(side, price, day_high, day_low)
                 if not ok_extreme:
+                    self.reject_logger.record(sym, f"EXTREME_FILTER:{extreme_reason}")
                     return
 
                 min_rr = self.cfg.min_rr if self.cfg.mode == "optimized" else 1.0
@@ -3496,13 +3595,18 @@ class Simulator:
                     side, price, atr, support, resistance, min_rr
                 )
                 if not ok_levels:
+                    reason = levels.get("reason", "R_R_TOO_LOW") if isinstance(levels, dict) else "R_R_TOO_LOW"
+                    self.reject_logger.record(sym, f"LEVELS:{reason}")
                     return
 
                 can_open, reject_reason = self.engine.can_open(
                     sym, side, mem, regime, bull_conf, bear_conf, ts
                 )
                 if not can_open:
+                    self.reject_logger.record(sym, f"ENGINE:{reject_reason}")
                     return
+
+                self._entries_attempted += 1
 
                 # Открытие позиции
                 sl = levels["sl"]
@@ -3554,6 +3658,11 @@ class Simulator:
         self.rl_builder.save(rl_path)
 
         stats = self._compute_stats()
+        stats["reject_stats"] = self.reject_logger.summary()
+        stats["candles_processed"] = self._candles_processed
+        stats["entries_attempted"] = self._entries_attempted
+        stats["kimi_cache_hits"] = getattr(self.judge, '_cache_hits', 0)
+        stats["kimi_cache_misses"] = getattr(self.judge, '_cache_misses', 0)
         stats_path = out / "stats.json"
         with open(stats_path, "w", encoding="utf-8") as f:
             json.dump(stats, f, ensure_ascii=False, indent=2)
@@ -3562,6 +3671,12 @@ class Simulator:
         if self.engine.closed_trades:
             df = pd.DataFrame(self.engine.closed_trades)
             df.to_csv(out / "trades.csv", index=False)
+
+        # Save reject details
+        reject_path = out / "rejects.json"
+        with open(reject_path, "w", encoding="utf-8") as f:
+            json.dump(self.reject_logger.summary(), f, ensure_ascii=False, indent=2)
+        logger.info(f"[SAVE] Rejects: {reject_path}")
 
     def _compute_stats(self) -> Dict:
         trades = self.engine.closed_trades
@@ -3602,6 +3717,8 @@ def main():
     parser.add_argument("--leverage", type=float, default=5.0)
     parser.add_argument("--mode", type=str, default="optimized", choices=["live_mirror","optimized"])
     parser.add_argument("--max-concurrent", type=int, default=15, help="Max concurrent Kimi calls")
+    parser.add_argument("--mock-judge", action="store_true", help="Use random signals instead of Kimi API")
+    parser.add_argument("--mock-rate", type=float, default=0.15, help="Signal probability in mock mode")
     args = parser.parse_args()
 
     cfg = SimConfig(
@@ -3610,7 +3727,9 @@ def main():
         interval=args.interval,
         leverage=args.leverage,
         mode=args.mode,
-        max_concurrent_kimi_calls=args.max_concurrent
+        max_concurrent_kimi_calls=args.max_concurrent,
+        mock_judge=args.mock_judge,
+        mock_judge_signal_rate=args.mock_rate
     )
 
     sim = Simulator(cfg)
