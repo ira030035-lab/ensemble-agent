@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-26 11:00:01 UTC
+Generated: 2026-05-26 12:00:01 UTC
 
 ## ab_test_analyze_apply.py
 ```python
@@ -2868,6 +2868,73 @@ class PositionManager:
 
 ```
 
+## reset_rl_kimi.py
+```python
+#!/usr/bin/env python3
+"""
+Reset RL weights for Kimi branch and re-prime from memory_kimi.json.
+Run this while main_kimi_ab.py is STOPPED.
+"""
+import json
+import os
+import sys
+
+# 1. Create isolated RL weights for Kimi
+kimi_rl_path = "/opt/ensemble-agent/rl_weights_kimi.json"
+main_rl_path = "/opt/ensemble-agent/rl_weights.json"
+
+# Default clean weights
+clean_weights = {
+    "bull_weight": 1.0,
+    "bear_weight": 1.0,
+    "judge_weight": 1.0,
+    "conf_threshold": 65.0,
+    "learning_rate": 0.05,
+    "episodes": 0,
+    "total_reward": 0.0
+}
+
+with open(kimi_rl_path, "w") as f:
+    json.dump(clean_weights, f, indent=2)
+print(f"[OK] Clean RL weights written to {kimi_rl_path}")
+
+# 2. Patch rl_agent.py to use isolated path when MEMORY_FILE contains 'kimi'
+# (idempotent patch)
+rl_agent_path = "/opt/ensemble-agent/rl_agent.py"
+with open(rl_agent_path) as f:
+    content = f.read()
+
+if "rl_weights_kimi.json" not in content:
+    old_line = 'self.path = os.path.join(os.path.dirname(cfg.MEMORY_FILE), "rl_weights.json")'
+    new_lines = '''self.path = os.path.join(os.path.dirname(cfg.MEMORY_FILE), "rl_weights_kimi.json" if "kimi" in cfg.MEMORY_FILE else "rl_weights.json")'''
+    content = content.replace(old_line, new_lines)
+    with open(rl_agent_path, "w") as f:
+        f.write(content)
+    print("[OK] rl_agent.py patched to use isolated weights for Kimi branch")
+else:
+    print("[INFO] rl_agent.py already patched")
+
+# 3. Show projected learning from current memory_kimi.json
+mem = json.load(open("/opt/ensemble-agent/memory_kimi.json"))
+if isinstance(mem, list):
+    trades = mem
+else:
+    trades = mem.get("trades", [])
+
+closed = [t for t in trades if t.get("outcome") in ("profit", "loss")]
+wins = [t for t in closed if (t.get("pnl_pct") or 0) > 0]
+losses = [t for t in closed if (t.get("pnl_pct") or 0) <= 0]
+total_pnl = sum(t.get("pnl_pct", 0) for t in closed)
+
+print(f"\n[STATS] memory_kimi.json:")
+print(f"  Closed trades: {len(closed)}")
+print(f"  Wins: {len(wins)} | Losses: {len(losses)}")
+print(f"  Total PnL if re-learned: {total_pnl:+.2f}%")
+print(f"\nAfter restart, main_kimi_ab.py will auto-prime RL from these trades.")
+print(f"Expected total_reward after re-prime: {total_pnl:+.2f}%")
+
+```
+
 ## rl_agent.py
 ```python
 import json, os, math, logging, asyncio
@@ -2891,7 +2958,7 @@ class RLAgent:
     
     def __init__(self, cfg):
         self.cfg = cfg
-        self.path = os.path.join(os.path.dirname(cfg.MEMORY_FILE), "rl_weights.json")
+        self.path = os.path.join(os.path.dirname(cfg.MEMORY_FILE), "rl_weights_kimi.json" if "kimi" in cfg.MEMORY_FILE else "rl_weights.json")
         self.weights = self._load()
     
     def _load(self):
