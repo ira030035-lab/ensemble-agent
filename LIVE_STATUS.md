@@ -1,17 +1,17 @@
 # Live status
 
-Generated: 2026-05-26 13:10:01 UTC
+Generated: 2026-05-26 13:20:01 UTC
 
 ## Services
 ```
 ensemble-agent.service:     active
-ensemble-dashboard.service: activating
+ensemble-dashboard.service: active
 ```
 
 ## Processes
 ```
-root      957148  0.0  1.1 353800 46656 ?        Ssl  06:53   0:08 ./venv/bin/python3 dashboard_api.py
-root      966464  0.9  3.0 682716 120288 ?       Ssl  13:02   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      966464  0.4  3.0 682716 120524 ?       Ssl  13:02   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      966808  0.1  1.1 130744 45224 ?        Ssl  13:12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 ```
 
 ## Paper state
@@ -1228,19 +1228,6 @@ root      966464  0.9  3.0 682716 120288 ?       Ssl  13:02   0:04 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-26 13:08:47,770 [INFO] main: TONUSDT | Bull:long(75%) Bear:short(65%)
-2026-05-26 13:08:53,824 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-26 13:08:53,826 [INFO] main: TONUSDT | Judge:LONG conf=68% size=8.0%
-2026-05-26 13:08:53,826 [INFO] main: TONUSDT | RL adj=69.3%
-2026-05-26 13:08:53,827 [INFO] main: TONUSDT | regime BLOCK (volatile)
-2026-05-26 13:09:01,494 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 13:09:04,409 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 13:09:04,411 [INFO] main: SUIUSDT | Bull:long(60%) Bear:short(65%)
-2026-05-26 13:09:09,399 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-26 13:09:09,400 [INFO] main: SUIUSDT | Judge:HOLD conf=65% size=0.0%
-2026-05-26 13:09:09,401 [INFO] main: SUIUSDT | RL adj=65.0%
-2026-05-26 13:09:16,357 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 13:09:19,516 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-26 13:09:19,518 [INFO] main: WLDUSDT | Bull:long(60%) Bear:short(80%)
 2026-05-26 13:09:25,601 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-26 13:09:25,602 [INFO] main: WLDUSDT | Judge:HOLD conf=80% size=0.0%
@@ -1258,12 +1245,25 @@ root      966464  0.9  3.0 682716 120288 ?       Ssl  13:02   0:04 /opt/ensemble
 2026-05-26 13:09:54,950 [INFO] main: INJUSDT | Judge:LONG conf=62% size=8.0%
 2026-05-26 13:09:54,951 [INFO] main: INJUSDT | RL adj=62.6%
 2026-05-26 13:09:54,951 [INFO] main: INJUSDT | regime BLOCK (volatile)
+2026-05-26 13:10:02,625 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-26 13:10:06,245 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-26 13:10:06,246 [INFO] main: TIAUSDT | Bull:long(60%) Bear:short(60%)
+2026-05-26 13:10:12,439 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-26 13:10:12,440 [INFO] main: TIAUSDT | Judge:HOLD conf=60% size=0.0%
+2026-05-26 13:10:12,440 [INFO] main: TIAUSDT | RL adj=60.0%
+2026-05-26 13:10:20,043 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-26 13:10:21,112 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-26 13:10:21,114 [INFO] main: UBUSDT | Bull:long(60%) Bear:short(70%)
+2026-05-26 13:10:27,172 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-26 13:10:27,174 [INFO] main: UBUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-26 13:10:27,174 [INFO] main: UBUSDT | RL adj=70.0%
+2026-05-26 13:10:29,176 [INFO] main: Next scan in 60min (weekday-active)
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  908K  381M   1% /run
+tmpfs           382M  900K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  8.3G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -1275,7 +1275,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       995Mi       224Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       1.0Gi       216Mi       4.8Mi       2.8Gi       2.7Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
