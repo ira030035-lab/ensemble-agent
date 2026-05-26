@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-26 10:40:01 UTC
+Generated: 2026-05-26 10:50:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: activating
 
 ## Processes
 ```
-root      957148  0.0  1.1 131276 46060 ?        Ssl  06:53   0:02 ./venv/bin/python3 dashboard_api.py
+root      957148  0.0  1.1 131276 46092 ?        Ssl  06:53   0:03 ./venv/bin/python3 dashboard_api.py
 root      957764  0.1  3.3 723640 130208 ?       Ssl  08:17   0:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
@@ -1221,7 +1221,7 @@ root      957764  0.1  3.3 723640 130208 ?       Ssl  08:17   0:14 /opt/ensemble
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  892K  381M   1% /run
+tmpfs           382M  896K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  8.3G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -1233,7 +1233,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       864Mi       227Mi       4.8Mi       3.0Gi       2.9Gi
+Mem:           3.7Gi       986Mi       200Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
