@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-26 15:00:01 UTC
+Generated: 2026-05-26 16:00:01 UTC
 
 ## ab_test_analyze_apply.py
 ```python
@@ -970,6 +970,12 @@ BALANCE_WARNING = 600.0
 CONSECUTIVE_LOSS_THRESHOLD = 5
 
 
+def html_escape(text):
+    if not isinstance(text, str):
+        text = str(text)
+    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
 def log(msg):
     ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
     line = f"[{ts}] {msg}"
@@ -1358,7 +1364,7 @@ def main_cycle():
 
     elif action == "alert":
         if now - state["last_alert_ts"] > CD_ALERT:
-            tg_send(f"<b>📢 Оповещение советника [{urgency.upper()}]</b>\n{message}\n\nПричина: {reason}")
+            tg_send(f"<b>📢 Оповещение советника [{urgency.upper()}]</b>\n{html_escape(message)}\n\nПричина: {html_escape(reason)}")
             state["last_alert_ts"] = now
             executed = True
         else:
@@ -1374,7 +1380,7 @@ def main_cycle():
                 if close_position(sym):
                     closed.append(sym)
             if closed:
-                msg = f"<b>🔒 Советник закрыл позиции</b>\n{', '.join(closed)}\nПричина: {reason}"
+                msg = f"<b>🔒 Советник закрыл позиции</b>\n{', '.join(closed)}\nПричина: {html_escape(reason)}"
                 tg_send(msg)
             state["last_close_ts"] = now
             executed = True
@@ -1384,7 +1390,7 @@ def main_cycle():
     elif action == "restart_service":
         if now - state["last_restart_ts"] > CD_RESTART:
             if restart_ensemble():
-                tg_send(f"<b>🔄 Советник перезапустил Ensemble</b>\nПричина: {reason}")
+                tg_send(f"<b>🔄 Советник перезапустил Ensemble</b>\nПричина: {html_escape(reason)}")
                 state["last_restart_ts"] = now
                 executed = True
         else:
@@ -1395,7 +1401,7 @@ def main_cycle():
             updates = details.get("params_to_adjust", {})
             if updates:
                 if adjust_config(updates):
-                    msg = f"<b>⚙️ Советник изменил конфиг</b>\n{json.dumps(updates)}\nПричина: {reason}"
+                    msg = f"<b>⚙️ Советник изменил конфиг</b>\n{html_escape(json.dumps(updates))}\nПричина: {html_escape(reason)}"
                     tg_send(msg)
                 state["last_adjust_ts"] = now
                 executed = True
@@ -2617,7 +2623,7 @@ class DataEngine:
 """
 Explorer Agent — data mining через постоянное открытие LONG/SHORT.
 Цель: собрать датасет прибыльных паттернов для RL.
-Размер позиций минимальный ($5), отдельный state (не мешает основному боту).
+Теперь с реальными TP/SL как у основного бота.
 """
 import os
 import sys
@@ -2644,11 +2650,16 @@ TRADES_FILE = "/opt/ensemble-agent/explorer_trades.json"
 LOG_FILE = "/opt/ensemble-agent/explorer.log"
 
 # Settings
-POSITION_SIZE_USD = 5.0  # $5 на сделку
+POSITION_SIZE_USD = 5.0   # $5 на сделку
 LEVERAGE = 5
-HOLD_HOURS = 4.0
-SCAN_INTERVAL = 7200     # 2 часа между сессиями
-N_SYMBOLS = 10           # сколько символов исследовать
+SCAN_INTERVAL = 7200      # 2 часа между открытиями
+N_SYMBOLS = 10            # сколько символов исследовать
+
+# TP/SL как у основного бота
+TP_PCT = 4.0              # +4%
+SL_PCT = -2.0             # -2%
+MAX_HOLD_HOURS = 24.0     # макс удержание 24ч (как у основного)
+MONITOR_INTERVAL = 15     # проверять цены каждые 15 сек
 
 
 def log(msg):
@@ -2674,6 +2685,8 @@ def save_state(state):
     os.replace(tmp, STATE_FILE)
 
 
+TRADES_RETENTION_DAYS = 7
+
 def record_trade(trade):
     try:
         with open(TRADES_FILE) as f:
@@ -2685,6 +2698,35 @@ def record_trade(trade):
     with open(tmp, "w") as f:
         json.dump(trades, f, indent=2)
     os.replace(tmp, TRADES_FILE)
+    # Async rotate in background (no blocking)
+    rotate_old_trades()
+
+
+def rotate_old_trades():
+    """Keep only last 7 days of trades to prevent disk bloat."""
+    try:
+        with open(TRADES_FILE) as f:
+            trades = json.load(f)
+        cutoff = datetime.now(timezone.utc).timestamp() - TRADES_RETENTION_DAYS * 86400
+        fresh = []
+        removed = 0
+        for t in trades:
+            try:
+                ts = datetime.fromisoformat(t["closed_at"].replace("Z", "")).replace(tzinfo=timezone.utc).timestamp()
+                if ts > cutoff:
+                    fresh.append(t)
+                else:
+                    removed += 1
+            except Exception:
+                fresh.append(t)
+        if removed:
+            tmp = TRADES_FILE + ".tmp"
+            with open(tmp, "w") as f:
+                json.dump(fresh, f, indent=2)
+            os.replace(tmp, TRADES_FILE)
+            log(f"Ротация trades: удалено {removed} старых, осталось {len(fresh)}")
+    except Exception:
+        pass
 
 
 async def fetch_price(session, symbol):
@@ -2694,7 +2736,91 @@ async def fetch_price(session, symbol):
         return float(data["data"][0]["lastPr"])
 
 
+def calc_pnl_pct(entry, current, side, leverage):
+    """Расчёт PnL % с учётом плеча."""
+    if side == "long":
+        return (current - entry) / entry * 100 * leverage
+    else:
+        return (entry - current) / entry * 100 * leverage
+
+
+async def monitor_positions():
+    """Real-time мониторинг: проверяет TP/SL/max_hold каждые 15 сек."""
+    while True:
+        try:
+            state = load_state()
+            if not state["positions"]:
+                await asyncio.sleep(MONITOR_INTERVAL)
+                continue
+
+            now = datetime.now(timezone.utc)
+            to_close = []
+            keep = []
+            closed_any = False
+
+            async with aiohttp.ClientSession() as session:
+                for pos in state["positions"]:
+                    try:
+                        symbol = pos["symbol"]
+                        entry = pos["entry_price"]
+                        qty = pos["qty"]
+                        side = pos["side"]
+                        margin = pos["margin"]
+                        snap = pos.get("snapshot", {})
+
+                        price = await fetch_price(session, symbol)
+                        pnl_pct = calc_pnl_pct(entry, price, side, LEVERAGE)
+
+                        opened = datetime.fromisoformat(pos["opened_at"].replace("Z", "")).replace(tzinfo=timezone.utc)
+                        hours = (now - opened).total_seconds() / 3600
+
+                        exit_reason = None
+                        if pnl_pct >= TP_PCT:
+                            exit_reason = "tp"
+                        elif pnl_pct <= SL_PCT:
+                            exit_reason = "sl"
+                        elif hours >= MAX_HOLD_HOURS:
+                            exit_reason = "hold"
+
+                        if exit_reason:
+                            pnl_usdt = pnl_pct / 100 * margin  # pnl_pct уже с плечом
+                            state["balance"] += margin + pnl_usdt
+                            state["total_pnl"] += pnl_usdt
+
+                            trade = {
+                                **pos,
+                                "exit_price": price,
+                                "pnl_usdt": round(pnl_usdt, 4),
+                                "pnl_pct": round(pnl_pct, 2),
+                                "outcome": "profit" if pnl_usdt > 0 else "loss",
+                                "hold_hours": round(hours, 1),
+                                "closed_at": now.isoformat(),
+                                "exit_reason": exit_reason,
+                            }
+                            record_trade(trade)
+                            to_close.append(pos["id"])
+                            closed_any = True
+                            log(f"CLOSED {symbol} {side.upper()} | {exit_reason.upper()} | PnL: {pnl_pct:+.2f}% | Hold: {hours:.1f}ч")
+                        else:
+                            keep.append(pos)
+                    except Exception as e:
+                        log(f"Monitor error {pos.get('symbol')}: {e}")
+                        keep.append(pos)
+
+            state["positions"] = keep
+            save_state(state)
+            if closed_any:
+                log(f"Monitor: закрыто {len(to_close)}, осталось {len(keep)}. Баланс: {state['balance']:.2f} PnL: {state['total_pnl']:+.2f}")
+                await learn_from_closed()
+
+        except Exception as e:
+            log(f"Monitor cycle error: {e}")
+
+        await asyncio.sleep(MONITOR_INTERVAL)
+
+
 async def open_positions():
+    """Открывает новые позиции раз в 2 часа."""
     cfg = Config()
     bitget = BitgetClient(cfg)
     await bitget.start()
@@ -2760,60 +2886,29 @@ async def open_positions():
         await bitget.close()
 
 
-async def close_positions():
-    state = load_state()
-    if not state["positions"]:
-        return
+async def learn_from_closed():
+    """Скормить закрытые explorer-сделки ContextRL."""
+    try:
+        from rl_context import ContextRL
+        crl = ContextRL()
+        count = crl.learn_from_explorer(TRADES_FILE)
+        if count:
+            log(f"ContextRL обучен на {count} explorer-сделках")
+            top = crl.get_top_patterns(3)
+            if top:
+                log(f"ContextRL топ-паттерн: {top[0][0]}={top[0][1]} avg PnL {top[0][2]:+.2f}%")
+    except Exception as e:
+        log(f"ContextRL learn error: {e}")
 
-    now = datetime.now(timezone.utc)
-    to_close = []
-    keep = []
 
-    async with aiohttp.ClientSession() as session:
-        for pos in state["positions"]:
-            try:
-                opened = datetime.fromisoformat(pos["opened_at"].replace("Z", "")).replace(tzinfo=timezone.utc)
-                hours = (now - opened).total_seconds() / 3600
-
-                price = await fetch_price(session, pos["symbol"])
-                entry = pos["entry_price"]
-                qty = pos["qty"]
-                side = pos["side"]
-                margin = pos["margin"]
-
-                if side == "long":
-                    pnl_usdt = (price - entry) * qty
-                else:
-                    pnl_usdt = (entry - price) * qty
-
-                if hours >= HOLD_HOURS:
-                    state["balance"] += margin + pnl_usdt
-                    state["total_pnl"] += pnl_usdt
-
-                    trade = {
-                        **pos,
-                        "exit_price": price,
-                        "pnl_usdt": round(pnl_usdt, 4),
-                        "pnl_pct": round(pnl_usdt / margin * 100, 2),
-                        "outcome": "profit" if pnl_usdt > 0 else "loss",
-                        "hold_hours": round(hours, 1),
-                        "closed_at": now.isoformat(),
-                    }
-                    record_trade(trade)
-                    to_close.append(pos["id"])
-                else:
-                    keep.append(pos)
-            except Exception as e:
-                log(f"Ошибка закрытия {pos.get('symbol')}: {e}")
-                keep.append(pos)
-
-    state["positions"] = keep
-    save_state(state)
-    log(f"Закрыто {len(to_close)}, осталось {len(keep)}. Баланс: {state['balance']:.2f} PnL: {state['total_pnl']:+.2f}")
+def html_escape(text):
+    if not isinstance(text, str):
+        text = str(text)
+    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
 async def daily_report():
-    """Отправить в Telegram только прибыльные сделки за сутки."""
+    """Отправить в Telegram прибыльные сделки за сутки + аналитику по exit_reason."""
     try:
         with open(TRADES_FILE) as f:
             trades = json.load(f)
@@ -2823,22 +2918,39 @@ async def daily_report():
     cutoff = datetime.now(timezone.utc).timestamp() - 86400
     recent = [t for t in trades if datetime.fromisoformat(t["closed_at"].replace("Z", "")).replace(tzinfo=timezone.utc).timestamp() > cutoff]
     profits = [t for t in recent if t["outcome"] == "profit"]
+    losses = [t for t in recent if t["outcome"] == "loss"]
 
-    if not profits:
+    if not recent:
         return
 
-    lines = [f"<b>🧪 EXPLORER — прибыльные сделки (24ч)</b>\nВсего: {len(profits)}\n"]
+    # Stats by exit reason
+    tp_trades = [t for t in recent if t.get("exit_reason") == "tp"]
+    sl_trades = [t for t in recent if t.get("exit_reason") == "sl"]
+    hold_trades = [t for t in recent if t.get("exit_reason") == "hold"]
+
+    lines = [f"<b>🧪 EXPLORER — отчёт (24ч)</b>\nВсего: {len(recent)} | 🟢{len(profits)} | 🔴{len(losses)}\n"]
+
+    if tp_trades:
+        tp_wr = sum(1 for t in tp_trades if t["outcome"] == "profit") / len(tp_trades) * 100
+        lines.append(f"📈 TP-закрытия: {len(tp_trades)} (WR {tp_wr:.0f}%)")
+    if sl_trades:
+        sl_wr = sum(1 for t in sl_trades if t["outcome"] == "profit") / len(sl_trades) * 100
+        lines.append(f"📉 SL-закрытия: {len(sl_trades)} (WR {sl_wr:.0f}%)")
+    if hold_trades:
+        hold_wr = sum(1 for t in hold_trades if t["outcome"] == "profit") / len(hold_trades) * 100
+        lines.append(f"⏱ Hold-закрытия: {len(hold_trades)} (WR {hold_wr:.0f}%)")
+
+    lines.append("")
+
     for t in sorted(profits, key=lambda x: x["pnl_usdt"], reverse=True)[:10]:
         snap = t.get("snapshot", {})
+        reason_emoji = {"tp": "🎯", "sl": "🛑", "hold": "⏱"}.get(t.get("exit_reason"), "❓")
         lines.append(
-            f"🟢 {t['symbol']} {t['side'].upper()} | "
-            f"PnL: {t['pnl_usdt']:+.2f} USDT ({t['pnl_pct']:+.1f}%) | "
-            f"RSI: {snap.get('rsi_15m','?')} | Regime: {snap.get('regime','?')}\n"
-            f"   MACD: {snap.get('macd','?')} | Vol: {snap.get('volume_ratio','?')} | "
-            f"Funding: {snap.get('funding','?')} | Hold: {t['hold_hours']:.1f}ч"
+            f"{reason_emoji} {html_escape(t['symbol'])} {html_escape(t['side'].upper())} | "
+            f"PnL: {t['pnl_usdt']:+.2f} ({t['pnl_pct']:+.1f}%) | {t.get('exit_reason','?').upper()} | {t['hold_hours']:.1f}ч\n"
+            f"   RSI: {snap.get('rsi_15m','?')} | Regime: {html_escape(snap.get('regime','?'))} | MACD: {html_escape(snap.get('macd','?'))}"
         )
 
-    # Telegram
     TOKEN = "8702211361:AAFPTNQ8kyEka02VD7-KUIkeUidBvTQmupU"
     CHAT_ID = "6349919785"
     text = "\n\n".join(lines)
@@ -2861,29 +2973,59 @@ async def daily_report():
         log(f"Telegram error: {e}")
 
 
-async def main_loop():
-    log("=" * 50)
-    log("EXPLORER AGENT ЗАПУЩЕН")
-    log(f"Размер: ${POSITION_SIZE_USD} | Плечо: {LEVERAGE}x | Hold: {HOLD_HOURS}ч | Интервал: {SCAN_INTERVAL//3600}ч")
-
+async def open_cycle():
+    """Цикл открытия позиций раз в 2 часа."""
     while True:
         try:
-            await close_positions()
             await open_positions()
         except Exception as e:
-            log(f"Цикл ошибка: {e}")
+            log(f"Open cycle error: {e}")
 
-        # Проверяем, не пора ли daily report (08:00 UTC)
         now = datetime.now(timezone.utc)
         if now.hour == 8 and now.minute < 5:
             await daily_report()
 
-        log(f"Спим {SCAN_INTERVAL}с...")
+        log(f"Спим {SCAN_INTERVAL}с до следующего открытия...")
         await asyncio.sleep(SCAN_INTERVAL)
+
+
+async def main_loop():
+    log("=" * 50)
+    log("EXPLORER AGENT ЗАПУЩЕН (v2: TP/SL real-time)")
+    log(f"Размер: ${POSITION_SIZE_USD} | Плечо: {LEVERAGE}x | TP: {TP_PCT}% | SL: {SL_PCT}% | Монитор: {MONITOR_INTERVAL}с")
+
+    # Две параллельные задачи: мониторинг + открытие
+    await asyncio.gather(
+        monitor_positions(),
+        open_cycle(),
+    )
 
 
 if __name__ == "__main__":
     asyncio.run(main_loop())
+
+```
+
+## feed_explorer_to_rl.py
+```python
+#!/usr/bin/env python3
+"""
+Скрипт для скармливания explorer-сделок ContextRL.
+Запускать после закрытия explorer позиций (вручную или по cron).
+"""
+import os, sys
+os.chdir("/opt/ensemble-agent")
+sys.path.insert(0, "/opt/ensemble-agent")
+
+from rl_context import ContextRL
+
+crl = ContextRL()
+count = crl.learn_from_explorer("/opt/ensemble-agent/explorer_trades.json")
+if count:
+    print(crl.report())
+    print(f"\n✅ ContextRL обновлён: {count} сделок")
+else:
+    print("ℹ️  Нет новых explorer-сделок для обучения.")
 
 ```
 
@@ -3624,6 +3766,7 @@ from data_engine import DataEngine
 from agents import BullAgent,BearAgent,Judge
 from memory import Memory
 from rl_agent import RLAgent
+from rl_context import ContextRL
 from position_manager import PositionManager
 import http_pool
 
@@ -3643,6 +3786,7 @@ class Orchestrator:
         self.bear=BearAgent(self.cfg); self.judge=Judge(self.cfg)
         self.memory=Memory(self.cfg)
         self.rl=RLAgent(self.cfg)
+        self.ctx=ContextRL()
         self.positions=PositionManager(self.bitget,self.cfg,self.memory,self.judge,self.rl,data=self.data)
         self.running=True; self.symbols=[]; self._stop_event=asyncio.Event()
     async def _wait(self,timeout):
@@ -3728,6 +3872,14 @@ class Orchestrator:
         rl_ok=self.rl.should_trade(rl_conf)
         log.info(str(symbol)+" | RL adj="+str(round(rl_conf,1))+"%")
         if decision.action in ("long","short"):
+            # Explorer-learned context filter
+            ctx_score=self.ctx.score(snapshot,decision.action)
+            log.info(symbol+" | Context score="+str(round(ctx_score,2)))
+            if ctx_score < -0.15:
+                log.info(symbol+" | context BLOCK (explorer pattern score="+str(round(ctx_score,2))+")")
+                return
+            elif ctx_score >= 0.20:
+                log.info(symbol+" | context BOOST (explorer pattern score="+str(round(ctx_score,2))+")")
             if snapshot.regime in ("volatile","unknown"):
                 log.info(symbol+" | regime BLOCK ("+snapshot.regime+")"); return
             btc_regime=await self.data.get_btc_regime()
@@ -4504,6 +4656,255 @@ class RLAgent:
 
 ```
 
+## rl_context.py
+```python
+#!/usr/bin/env python3
+"""
+Context-based RL filter — learns profitable patterns from Explorer trades.
+Operates on market snapshot features (RSI, regime, MACD, funding, volume, etc.)
+and produces a context_score in [-1, +1] that the main agent uses to filter trades.
+"""
+import json
+import os
+import math
+import time
+from collections import defaultdict
+
+STATE_FILE = "/opt/ensemble-agent/rl_context.json"
+EXPLORER_TRADES = "/opt/ensemble-agent/explorer_trades.json"
+
+
+class ContextRL:
+    """
+    Lightweight pattern learner.  For each feature bucket keeps avg PnL.
+    Score = mean of matching-bucket avg-PnLs across all features.
+    """
+
+    # bucket definitions --------------------------------------------------
+    BUCKETS = {
+        "rsi_15m":    [30, 45, 55, 70],
+        "rsi_1h":     [30, 45, 55, 70],
+        "volume_ratio": [0.5, 1.0, 2.0],
+        "funding":    [-0.0001, 0.0, 0.0001, 0.0005],
+        "bb_position": [0.2, 0.5, 0.8],
+        "price_change_1h": [-5.0, -2.0, 0.0, 2.0, 5.0],
+        "price_change_4h": [-10.0, -5.0, 0.0, 5.0, 10.0],
+        "fear_greed": [20, 40, 60, 80],
+    }
+
+    CATEGORICAL = {"regime", "macd", "side"}
+
+    def __init__(self, state_file=STATE_FILE):
+        self.state_file = state_file
+        self.stats = self._load()
+
+    def _load(self):
+        if os.path.exists(self.state_file):
+            try:
+                with open(self.state_file) as f:
+                    raw = json.load(f)
+                meta = raw.pop("_meta", {})
+                self._last_decay = meta.get("last_decay", 0)
+                # convert back to defaultdict structure
+                stats = defaultdict(lambda: defaultdict(lambda: {"sum": 0.0, "n": 0}))
+                for feat, buckets in raw.items():
+                    for bucket_key, vals in buckets.items():
+                        stats[feat][bucket_key] = vals
+                return stats
+            except Exception as e:
+                print(f"[ContextRL] load error: {e}")
+        self._last_decay = 0
+        return defaultdict(lambda: defaultdict(lambda: {"sum": 0.0, "n": 0}))
+
+    def _save(self):
+        try:
+            # convert defaultdict to plain dict for JSON
+            plain = {}
+            for feat, buckets in self.stats.items():
+                plain[feat] = {}
+                for bucket_key, vals in buckets.items():
+                    plain[feat][bucket_key] = vals
+            # add last_decay timestamp
+            plain["_meta"] = {"last_decay": getattr(self, "_last_decay", 0)}
+            tmp = self.state_file + ".tmp"
+            with open(tmp, "w") as f:
+                json.dump(plain, f, indent=2)
+            os.replace(tmp, self.state_file)
+        except Exception as e:
+            print(f"[ContextRL] save error: {e}")
+
+    def apply_decay(self, daily_factor=0.90):
+        """Age old stats so recent trades dominate. Run once per day."""
+        now = time.time()
+        last = getattr(self, "_last_decay", 0)
+        if now - last < 20 * 3600:  # less than 20h ago — skip
+            return False
+        decayed = 0
+        for feature in list(self.stats.keys()):
+            for bucket in list(self.stats[feature].keys()):
+                self.stats[feature][bucket]["sum"] *= daily_factor
+                self.stats[feature][bucket]["n"] *= daily_factor
+                # prune near-zero buckets to keep file small
+                if self.stats[feature][bucket]["n"] < 0.01:
+                    del self.stats[feature][bucket]
+                    decayed += 1
+                else:
+                    decayed += 1
+        self._last_decay = now
+        self._save()
+        print(f"[ContextRL] decay applied: {decayed} buckets aged (factor={daily_factor})")
+        return True
+
+    # ------------------------------------------------------------------
+    def _bucket(self, feature, value):
+        """Return string bucket key for a numeric or categorical value."""
+        if feature in self.CATEGORICAL:
+            return str(value).lower()
+        thresholds = self.BUCKETS.get(feature)
+        if thresholds is None:
+            return "all"
+        if value is None:
+            return "unknown"
+        try:
+            v = float(value)
+        except (TypeError, ValueError):
+            return "unknown"
+        prev = None
+        for t in thresholds:
+            if v < t:
+                return f"{prev if prev is not None else '-inf'}_to_{t}"
+            prev = t
+        return f"{prev}_to_inf"
+
+    def _bucket_pnl(self, feature, bucket_key):
+        """Average PnL for a given feature bucket."""
+        s = self.stats[feature].get(bucket_key, {"sum": 0.0, "n": 0})
+        if s["n"] == 0:
+            return 0.0
+        return s["sum"] / s["n"]
+
+    # ------------------------------------------------------------------
+    def learn_trade(self, snapshot, side, pnl_pct):
+        """Ingest one explorer trade and update buckets."""
+        feats = dict(snapshot) if isinstance(snapshot, dict) else {}
+        feats["side"] = side.lower()
+        for feature, value in feats.items():
+            bucket_key = self._bucket(feature, value)
+            self.stats[feature][bucket_key]["sum"] += pnl_pct
+            self.stats[feature][bucket_key]["n"] += 1
+        self._save()
+
+    def learn_from_explorer(self, trades_file=EXPLORER_TRADES):
+        """Batch-learn from explorer_trades.json. Returns count learned."""
+        # Age old stats once per day
+        self.apply_decay(daily_factor=0.90)
+        if not os.path.exists(trades_file):
+            return 0
+        with open(trades_file) as f:
+            trades = json.load(f)
+        count = 0
+        for t in trades:
+            snap = t.get("snapshot")
+            side = t.get("side")
+            pnl = t.get("pnl_pct")
+            if snap and side and pnl is not None:
+                self.learn_trade(snap, side, pnl)
+                count += 1
+        print(f"[ContextRL] learned from {count} explorer trades")
+        return count
+
+    # ------------------------------------------------------------------
+    def score(self, snapshot, side):
+        """
+        Compute context score for a prospective trade.
+        snapshot: DataEngine Snapshot object or dict with attributes.
+        Returns float in [-1, +1]  (higher = more explorer-proven pattern).
+        """
+        if isinstance(snapshot, dict):
+            feats = dict(snapshot)
+        else:
+            # extract from Snapshot dataclass/object
+            feats = {
+                "rsi_15m": getattr(snapshot, "rsi_15m", None),
+                "rsi_1h": getattr(snapshot, "rsi_1h", None),
+                "regime": getattr(snapshot, "regime", None),
+                "macd": getattr(snapshot, "macd_signal", None),
+                "funding": getattr(snapshot, "funding_rate", None),
+                "volume_ratio": getattr(snapshot, "volume_ratio", None),
+                "price_change_1h": getattr(snapshot, "price_change_1h", None),
+                "price_change_4h": getattr(snapshot, "price_change_4h", None),
+                "bb_position": getattr(snapshot, "bb_position", None),
+                "fear_greed": getattr(snapshot, "fear_greed", None),
+                "btc_dominance": getattr(snapshot, "btc_dominance", None),
+            }
+        feats["side"] = side.lower()
+
+        scores = []
+        for feature, value in feats.items():
+            bucket_key = self._bucket(feature, value)
+            pnl = self._bucket_pnl(feature, bucket_key)
+            # clamp to [-50, +50] % to avoid outliers dominating
+            scores.append(max(-50.0, min(50.0, pnl)))
+
+        if not scores:
+            return 0.0
+        # Normalize: typical single-feature pnl is ±5-20%, we want [-1, 1]
+        return sum(scores) / len(scores) / 20.0
+
+    def should_trade(self, snapshot, side, min_score=0.05):
+        """Return True if context score >= min_score."""
+        return self.score(snapshot, side) >= min_score
+
+    def get_top_patterns(self, n=5):
+        """Return best (feature, bucket, avg_pnl) patterns for inspection."""
+        flat = []
+        for feature, buckets in self.stats.items():
+            for bucket_key, vals in buckets.items():
+                if vals["n"] >= 3:  # minimum sample size
+                    avg = vals["sum"] / vals["n"]
+                    flat.append((feature, bucket_key, avg, vals["n"]))
+        flat.sort(key=lambda x: x[2], reverse=True)
+        return flat[:n]
+
+    def get_worst_patterns(self, n=5):
+        """Return worst patterns to avoid."""
+        flat = []
+        for feature, buckets in self.stats.items():
+            for bucket_key, vals in buckets.items():
+                if vals["n"] >= 3:
+                    avg = vals["sum"] / vals["n"]
+                    flat.append((feature, bucket_key, avg, vals["n"]))
+        flat.sort(key=lambda x: x[2])
+        return flat[:n]
+
+    def report(self):
+        """Human-readable report of learned patterns."""
+        lines = ["🧠 ContextRL Report", f"   State file: {self.state_file}"]
+        total_samples = sum(v["n"] for b in self.stats.values() for v in b.values())
+        lines.append(f"   Total bucket updates: {total_samples}")
+        best = self.get_top_patterns(5)
+        worst = self.get_worst_patterns(5)
+        if best:
+            lines.append("   ✅ Top patterns:")
+            for feat, bucket, avg, n in best:
+                lines.append(f"      {feat}={bucket} → avg PnL {avg:+.2f}% (n={n})")
+        if worst:
+            lines.append("   ❌ Worst patterns:")
+            for feat, bucket, avg, n in worst:
+                lines.append(f"      {feat}={bucket} → avg PnL {avg:+.2f}% (n={n})")
+        return "\n".join(lines)
+
+
+if __name__ == "__main__":
+    crl = ContextRL()
+    count = crl.learn_from_explorer()
+    if count:
+        print(crl.report())
+    else:
+        print("No explorer trades yet. Run this again after explorer closes positions.")
+
+```
+
 ## send_live_report.py
 ```python
 #!/usr/bin/env python3
@@ -4519,6 +4920,12 @@ os.chdir("/opt/ensemble-agent")
 TOKEN = "8702211361:AAFPTNQ8kyEka02VD7-KUIkeUidBvTQmupU"
 CHAT_ID = "6349919785"
 PAPER_STATE = "/opt/ensemble-agent/paper_state.json"
+
+
+def html_escape(text):
+    if not isinstance(text, str):
+        text = str(text)
+    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
 def tg_send(text):
@@ -4606,7 +5013,7 @@ def main():
         hours = (now - opened).total_seconds() / 3600
 
         line = (
-            f"<b>{sym}</b> {side}\n"
+            f"<b>{html_escape(sym)}</b> {html_escape(side)}\n"
             f"  Вход: {entry} | Текущая: {price_str}\n"
             f"  {pnl_emoji_sym} Незакрытый PnL: {pnl_sym:+.2f}% ({pnl_usdt:+.2f} USDT)\n"
             f"  Плечо: {lev}x | Маржа: {margin:.2f} USDT\n"
@@ -4621,8 +5028,8 @@ def main():
     for t in reversed(recent):
         emoji = "🟢" if t.get("outcome") == "profit" else "🔴"
         recent_lines.append(
-            f"{emoji} {t['symbol']} {t['side'].upper()} | "
-            f"{t.get('pnl_pct', 0):.2f}% | {t.get('reason', 'неизвестно')}"
+            f"{emoji} {html_escape(t['symbol'])} {html_escape(t['side'].upper())} | "
+            f"{t.get('pnl_pct', 0):.2f}% | {html_escape(t.get('reason', 'неизвестно'))}"
         )
 
     try:
