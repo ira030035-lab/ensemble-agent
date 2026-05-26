@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-26 14:20:01 UTC
+Generated: 2026-05-26 14:30:01 UTC
 
 ## Services
 ```
@@ -10,8 +10,8 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      966808  0.0  1.1 130732 45424 ?        Ssl  13:12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      967251  0.1  3.1 685612 123100 ?       Ssl  13:28   0:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      966808  0.0  1.1 130732 45428 ?        Ssl  13:12   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      967251  0.1  3.1 686652 124528 ?       Ssl  13:28   0:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -1234,7 +1234,6 @@ root      967251  0.1  3.1 685612 123100 ?       Ssl  13:28   0:05 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-26 13:33:53,907 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-26 13:33:55,592 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-26 13:33:55,594 [INFO] main: SUIUSDT | Bull:flat(55%) Bear:short(75%)
 2026-05-26 13:34:00,367 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -1264,6 +1263,7 @@ root      967251  0.1  3.1 685612 123100 ?       Ssl  13:28   0:05 /opt/ensemble
 2026-05-26 13:49:44,596 [INFO] positions: LOSS ONDOUSDT short PnL:-0.12% reason:breakeven_stop
 2026-05-26 13:49:44,596 [INFO] positions: Lessons: The trade was closed at breakeven due to a stop loss, resulting in a small loss of 0.12%. The original analysis correctly identified a strong bearish trend but was unable to capitalize on it, highlighting the importance of precise stop loss placement. This trade serves as a reminder to balance conviction with risk management and to be cautious of RSI exhaustion risk in trending markets.
 2026-05-26 13:49:44,596 [INFO] rl: RL learned from short ONDOUSDT: loss -0.12% | weights bull=0.977 bear=0.992 judge=1.031 threshold=64.99
+2026-05-26 14:28:37,528 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1281,7 +1281,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       961Mi       306Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       962Mi       302Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
