@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-26 12:10:01 UTC
+Generated: 2026-05-26 12:20:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: activating
 ## Processes
 ```
 root      957148  0.0  1.1 131528 46260 ?        Ssl  06:53   0:05 ./venv/bin/python3 dashboard_api.py
-root      957764  0.1  3.3 724552 131396 ?       Ssl  08:17   0:20 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      957764  0.1  3.3 726548 132780 ?       Ssl  08:17   0:20 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -1198,7 +1198,6 @@ root      957764  0.1  3.3 724552 131396 ?       Ssl  08:17   0:20 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-26 11:41:10,078 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-26 11:41:10,080 [INFO] main: ZECUSDT | Bull:long(65%) Bear:short(72%)
 2026-05-26 11:41:16,217 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-26 11:41:16,218 [INFO] main: ZECUSDT | Judge:HOLD conf=72% size=0.0%
@@ -1228,6 +1227,7 @@ root      957764  0.1  3.3 724552 131396 ?       Ssl  08:17   0:20 /opt/ensemble
 2026-05-26 11:43:31,163 [INFO] main: FETUSDT | Judge:HOLD conf=72% size=0.0%
 2026-05-26 11:43:31,163 [INFO] main: FETUSDT | RL adj=72.0%
 2026-05-26 11:43:33,165 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-26 12:17:04,947 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1245,7 +1245,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       979Mi       227Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       825Mi       517Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
