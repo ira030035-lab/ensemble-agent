@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-26 21:20:01 UTC
+Generated: 2026-05-26 21:30:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      966808  0.0  1.1 131756 45560 ?        Ssl  13:12   0:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      968862  0.1  3.4 730824 136052 ?       Ssl  15:29   0:28 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      968862  0.1  3.4 730824 136236 ?       Ssl  15:29   0:28 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -1264,7 +1264,6 @@ root      968862  0.1  3.4 730824 136052 ?       Ssl  15:29   0:28 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-26 21:08:35,363 [INFO] main: BTCUSDT | Judge:SHORT conf=68% size=6.0%
 2026-05-26 21:08:35,363 [INFO] main: BTCUSDT | RL adj=70.4%
 2026-05-26 21:08:35,363 [INFO] main: BTCUSDT | Context score=0.04
 2026-05-26 21:08:35,363 [INFO] main: BTCUSDT | gate PASS (Judge 68/70 RL 70.4/65.04 slack=±3)
@@ -1294,6 +1293,7 @@ root      968862  0.1  3.4 730824 136052 ?       Ssl  15:29   0:28 /opt/ensemble
 2026-05-26 21:09:28,312 [INFO] main: ADAUSDT | Judge:HOLD conf=70% size=0.0%
 2026-05-26 21:09:28,313 [INFO] main: ADAUSDT | RL adj=70.0%
 2026-05-26 21:09:30,315 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-26 21:29:40,293 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1311,7 +1311,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       758Mi       461Mi       4.8Mi       2.8Gi       3.0Gi
+Mem:           3.7Gi       769Mi       450Mi       4.8Mi       2.8Gi       3.0Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
