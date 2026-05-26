@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-26 23:20:01 UTC
+Generated: 2026-05-26 23:30:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      966808  0.0  1.1 131756 45560 ?        Ssl  13:12   0:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      968862  0.1  3.5 734356 140072 ?       Ssl  15:29   0:34 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      968862  0.1  3.5 734640 140368 ?       Ssl  15:29   0:34 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -1264,7 +1264,6 @@ root      968862  0.1  3.5 734356 140072 ?       Ssl  15:29   0:34 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-26 22:14:10,786 [INFO] main: BEATUSDT | RL adj=70.0%
 2026-05-26 22:14:16,210 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-26 22:14:18,036 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-26 22:14:18,037 [INFO] main: FILUSDT | Bull:long(55%) Bear:short(76%)
@@ -1294,6 +1293,7 @@ root      968862  0.1  3.5 734356 140072 ?       Ssl  15:29   0:34 /opt/ensemble
 2026-05-26 22:15:00,624 [INFO] main: FETUSDT | regime BLOCK (volatile)
 2026-05-26 22:15:02,626 [INFO] main: Next scan in 120min (weekday-quiet)
 2026-05-26 22:29:40,965 [INFO] main: Symbols: 30
+2026-05-26 23:29:41,624 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1311,7 +1311,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       769Mi       446Mi       4.8Mi       2.8Gi       3.0Gi
+Mem:           3.7Gi       778Mi       437Mi       4.8Mi       2.8Gi       3.0Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
