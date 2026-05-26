@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-26 22:00:01 UTC
+Generated: 2026-05-26 22:10:01 UTC
 
 ## Services
 ```
@@ -1264,19 +1264,6 @@ root      968862  0.1  3.4 730824 136236 ?       Ssl  15:29   0:29 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-26 21:08:35,363 [INFO] main: BTCUSDT | RL adj=70.4%
-2026-05-26 21:08:35,363 [INFO] main: BTCUSDT | Context score=0.04
-2026-05-26 21:08:35,363 [INFO] main: BTCUSDT | gate PASS (Judge 68/70 RL 70.4/65.04 slack=±3)
-2026-05-26 21:08:35,364 [INFO] positions: Max positions reached (3/3 dyn)
-2026-05-26 21:08:41,090 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 21:08:43,415 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 21:08:43,416 [INFO] main: ZECUSDT | Bull:long(70%) Bear:short(75%)
-2026-05-26 21:08:49,337 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-26 21:08:49,338 [INFO] main: ZECUSDT | Judge:HOLD conf=75% size=0.0%
-2026-05-26 21:08:49,338 [INFO] main: ZECUSDT | RL adj=75.0%
-2026-05-26 21:08:56,751 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 21:08:57,073 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 21:08:57,075 [INFO] main: WLDUSDT | Bull:long(60%) Bear:short(70%)
 2026-05-26 21:09:02,251 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-26 21:09:02,252 [INFO] main: WLDUSDT | Judge:HOLD conf=70% size=0.0%
 2026-05-26 21:09:02,252 [INFO] main: WLDUSDT | RL adj=70.0%
@@ -1294,6 +1281,19 @@ root      968862  0.1  3.4 730824 136236 ?       Ssl  15:29   0:29 /opt/ensemble
 2026-05-26 21:09:28,313 [INFO] main: ADAUSDT | RL adj=70.0%
 2026-05-26 21:09:30,315 [INFO] main: Next scan in 60min (weekday-active)
 2026-05-26 21:29:40,293 [INFO] main: Symbols: 30
+2026-05-26 22:09:30,323 [INFO] main: Scanning 27 symbols...
+2026-05-26 22:09:32,578 [INFO] main: DRIFTUSDT | Bull:long(70%) Bear:short(80%)
+2026-05-26 22:09:38,998 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-26 22:09:38,999 [INFO] main: DRIFTUSDT | Judge:HOLD conf=72% size=0.0%
+2026-05-26 22:09:39,000 [INFO] main: DRIFTUSDT | RL adj=72.0%
+2026-05-26 22:09:42,806 [INFO] main: PHAUSDT | Bull:long(70%) Bear:short(80%)
+2026-05-26 22:09:48,236 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-26 22:09:48,238 [INFO] main: PHAUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-26 22:09:48,238 [INFO] main: PHAUSDT | RL adj=80.0%
+2026-05-26 22:09:52,206 [INFO] main: ZECUSDT | Bull:long(72%) Bear:short(72%)
+2026-05-26 22:09:58,369 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-26 22:09:58,371 [INFO] main: ZECUSDT | Judge:HOLD conf=72% size=0.0%
+2026-05-26 22:09:58,371 [INFO] main: ZECUSDT | RL adj=72.0%
 ```
 
 ## Disk
@@ -1311,7 +1311,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       770Mi       448Mi       4.8Mi       2.8Gi       3.0Gi
+Mem:           3.7Gi       765Mi       452Mi       4.8Mi       2.8Gi       3.0Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
