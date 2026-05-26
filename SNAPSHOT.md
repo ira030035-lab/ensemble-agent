@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-26 14:00:01 UTC
+Generated: 2026-05-26 15:00:01 UTC
 
 ## ab_test_analyze_apply.py
 ```python
@@ -2140,8 +2140,8 @@ class Config:
     MIN_HOLD_SEC = 7200
     JUDGE_EXIT_INTERVAL_SEC = 7200
     JUDGE_EXIT_NOISE_BAND_PCT = 2.5
-    STOP_LOSS_PCT = -3.0
-    TAKE_PROFIT_PCT = 3.0
+    STOP_LOSS_PCT = -2.0
+    TAKE_PROFIT_PCT = 4.0
     TRAIL_ARM_PCT = 2.5
     TRAIL_GIVEBACK_PCT = 0.8
     EMERGENCY_STOP_PCT = -15.0
@@ -2160,7 +2160,7 @@ class Config:
     TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
     TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
     KIMI_JUDGE_ENABLED = False
-    KIMI_PROMPT_VERSION = "baseline"  # "baseline" | "asymmetry"
+    KIMI_PROMPT_VERSION = "asymmetry"
 
 ```
 
