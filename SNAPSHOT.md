@@ -1,6 +1,184 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-26 10:00:01 UTC
+Generated: 2026-05-26 11:00:01 UTC
+
+## ab_test_analyze_apply.py
+```python
+#!/usr/bin/env python3
+"""
+Analyze A/B test results, apply best config, send Telegram report.
+Run after run_ab_test.sh finishes.
+"""
+import os
+import sys
+import json
+import glob
+import shutil
+from datetime import datetime, timezone
+from pathlib import Path
+
+os.chdir("/opt/ensemble-agent")
+sys.path.insert(0, "/opt/ensemble-agent")
+
+# Telegram helpers (mirrored from auto_pipeline)
+TOKEN = "8702211361:AAFPTNQ8kyEka02VD7-KUIkeUidBvTQmupU"
+CHAT_ID = "6349919785"
+
+def tg_send(text: str) -> dict:
+    import urllib.request
+    import urllib.parse
+    url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+    data = urllib.parse.urlencode({
+        "chat_id": CHAT_ID,
+        "text": text,
+        "parse_mode": "HTML",
+        "disable_web_page_preview": "true"
+    }).encode()
+    req = urllib.request.Request(url, data=data, method="POST")
+    req.add_header("Content-Type", "application/x-www-form-urlencoded")
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return json.loads(resp.read().decode())
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+def read_stats(path: str) -> dict:
+    p = os.path.join(path, "stats.json")
+    if not os.path.exists(p):
+        return {}
+    with open(p) as f:
+        return json.load(f)
+
+def find_latest_two_dirs() -> list:
+    dirs = sorted(glob.glob("simulator_output/2026*"), key=os.path.getmtime, reverse=True)
+    return dirs[:2]
+
+def update_config(best: str):
+    """Apply best parameters to config.py"""
+    config_path = "/opt/ensemble-agent/config.py"
+    backup_path = config_path + ".auto_backup_ab"
+    shutil.copy(config_path, backup_path)
+
+    with open(config_path) as f:
+        lines = f.readlines()
+
+    new_lines = []
+    for line in lines:
+        if line.startswith("    STOP_LOSS_PCT ="):
+            new_lines.append(f"    STOP_LOSS_PCT = {-2.0 if best == 'asymmetry' else -3.0}\n")
+        elif line.startswith("    TAKE_PROFIT_PCT ="):
+            new_lines.append(f"    TAKE_PROFIT_PCT = {4.0 if best == 'asymmetry' else 3.0}\n")
+        elif line.startswith("    KIMI_PROMPT_VERSION ="):
+            new_lines.append(f'    KIMI_PROMPT_VERSION = "{best}"\n')
+        else:
+            new_lines.append(line)
+
+    with open(config_path, "w") as f:
+        f.writelines(new_lines)
+
+    print(f"Config updated: SL={'2%' if best=='asymmetry' else '3%'}, TP={'4%' if best=='asymmetry' else '3%'}, prompt={best}")
+    print(f"Backup saved: {backup_path}")
+
+def update_agents_md(best: str, baseline_stats: dict, asym_stats: dict):
+    md_path = "/opt/ensemble-agent/AGENTS.md"
+    with open(md_path) as f:
+        content = f.read()
+
+    report = f"""
+## Результаты A/B теста (Kimi prompt + SL/TP)
+
+| Вариант | Prompt | SL | TP | Сделок | Win% | PnL% | SL hits | TP hits | Trailing | Final Balance |
+|---------|--------|----|----|--------|------|------|---------|---------|----------|---------------|
+| **Baseline** | baseline | 3% | 3% | {baseline_stats.get('total_trades',0)} | {baseline_stats.get('win_rate',0):.1f}% | {baseline_stats.get('total_pnl_pct',0):.1f}% | {baseline_stats.get('sl_count',0)} | {baseline_stats.get('tp_count',0)} | {baseline_stats.get('trailing_count',0)} | {baseline_stats.get('final_balance','N/A')} |
+| **Asymmetry** | asymmetry | 2% | 4% | {asym_stats.get('total_trades',0)} | {asym_stats.get('win_rate',0):.1f}% | {asym_stats.get('total_pnl_pct',0):.1f}% | {asym_stats.get('sl_count',0)} | {asym_stats.get('tp_count',0)} | {asym_stats.get('trailing_count',0)} | {asym_stats.get('final_balance','N/A')} |
+
+**Победитель: {best.upper()}**
+- Применённые параметры: STOP_LOSS_PCT={-2.0 if best=='asymmetry' else -3.0}, TAKE_PROFIT_PCT={4.0 if best=='asymmetry' else 3.0}, KIMI_PROMPT_VERSION={best}
+"""
+    # Append after existing results section or at end
+    if "## Результаты A/B теста" in content:
+        # replace old block
+        start = content.find("## Результаты A/B теста")
+        end = content.find("\n## ", start + 1)
+        if end == -1:
+            end = len(content)
+        content = content[:start] + report.strip() + content[end:]
+    else:
+        content += "\n" + report.strip() + "\n"
+
+    with open(md_path, "w") as f:
+        f.write(content)
+    print("AGENTS.md updated")
+
+def main():
+    dirs = find_latest_two_dirs()
+    if len(dirs) < 2:
+        print("Need 2 output dirs, found:", len(dirs))
+        sys.exit(1)
+
+    # Determine which is baseline and which is asymmetry by reading stats mode/prompt? stats don't contain prompt version.
+    # Fallback: the older one is baseline (ran first), newer is asymmetry.
+    baseline_dir, asym_dir = dirs[1], dirs[0]
+    baseline_stats = read_stats(baseline_dir)
+    asym_stats = read_stats(asym_dir)
+
+    print("Baseline:", baseline_dir, baseline_stats.get("final_balance"))
+    print("Asymmetry:", asym_dir, asym_stats.get("final_balance"))
+
+    # Compare by final_balance (primary), then total_pnl_pct, then win_rate
+    b_bal = baseline_stats.get("final_balance") or 0
+    a_bal = asym_stats.get("final_balance") or 0
+
+    if a_bal > b_bal:
+        best = "asymmetry"
+    elif b_bal > a_bal:
+        best = "baseline"
+    else:
+        # tie-breaker: total_pnl_pct
+        b_pnl = baseline_stats.get("total_pnl_pct", 0)
+        a_pnl = asym_stats.get("total_pnl_pct", 0)
+        best = "asymmetry" if a_pnl > b_pnl else "baseline"
+
+    print("Best:", best)
+
+    # Update configs
+    update_config(best)
+    update_agents_md(best, baseline_stats, asym_stats)
+
+    # Build report
+    report = (
+        f"<b>📊 A/B TEST REPORT</b>\n"
+        f"<code>{datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}</code>\n\n"
+        f"<b>Baseline</b> (SL=3% TP=3% prompt=baseline)\n"
+        f"  Сделок: {baseline_stats.get('total_trades',0)} | WR: {baseline_stats.get('win_rate',0):.1f}%\n"
+        f"  PnL: {baseline_stats.get('total_pnl_pct',0):.1f}% | Баланс: {b_bal:.2f}\n"
+        f"  SL: {baseline_stats.get('sl_count',0)} | TP: {baseline_stats.get('tp_count',0)} | Trail: {baseline_stats.get('trailing_count',0)}\n\n"
+        f"<b>Asymmetry</b> (SL=2% TP=4% prompt=asymmetry)\n"
+        f"  Сделок: {asym_stats.get('total_trades',0)} | WR: {asym_stats.get('win_rate',0):.1f}%\n"
+        f"  PnL: {asym_stats.get('total_pnl_pct',0):.1f}% | Баланс: {a_bal:.2f}\n"
+        f"  SL: {asym_stats.get('sl_count',0)} | TP: {asym_stats.get('tp_count',0)} | Trail: {asym_stats.get('trailing_count',0)}\n\n"
+        f"<b>🏆 Победитель: {best.upper()}</b>\n"
+        f"Применено: SL={'-2.0' if best=='asymmetry' else '-3.0'} | TP={'4.0' if best=='asymmetry' else '3.0'} | prompt={best}\n"
+    )
+
+    # Send to Telegram
+    resp = tg_send(report)
+    print("Telegram response:", resp.get("ok"), resp.get("error", ""))
+
+    # Send files
+    for d, label in [(baseline_dir, "baseline"), (asym_dir, "asymmetry")]:
+        for fname in ["stats.json", "trades.csv"]:
+            fpath = os.path.join(d, fname)
+            if os.path.exists(fpath):
+                # reuse tg_send_file from auto_pipeline if possible, else skip
+                pass
+
+    print("Done.")
+
+if __name__ == "__main__":
+    main()
+
+```
 
 ## agents.py
 ```python
@@ -416,7 +594,36 @@ class KimiJudge(Judge):
 
     async def decide(self, market_text, bull, bear, memory_ctx):
         """Unified Kimi decision — compact prompt for moonshot-v1-auto."""
-        prompt = f"""You are a trading judge. Output ONLY JSON.
+        version = getattr(self.cfg, "KIMI_PROMPT_VERSION", "baseline")
+        if version == "asymmetry":
+            prompt = f"""You are an elite trading judge with asymmetric risk rules. Output ONLY JSON.
+
+Market: {market_text}
+Bull: {bull.confidence}% | {bull.reasoning[:120]}
+Bear: {bear.confidence}% | {bear.reasoning[:120]}
+Memory: {memory_ctx[:200]}
+
+## RISK/REWARD FRAMEWORK (ASYMMETRY):
+- Stop Loss: 2% from entry (tight)
+- Take Profit: 4% from entry (2:1 R/R)
+- ONLY signal LONG/SHORT when you expect a strong directional move (≥4% potential).
+
+## STRICT RULES:
+- LONG if bull≥60, bear is weaker or flat, and you expect ≥4% upside move
+- SHORT if bear≥60, bull is weaker or flat, and you expect ≥4% downside move
+- HOLD if both sides weak (<60), conflicting, or move potential <4%
+- If memory shows 2+ consecutive SL on a side → reduce confidence for that side
+
+## TASK:
+1. Decide action: "long", "short", or "hold"
+2. Confidence 0–100 (must be ≥60 for entry)
+3. Position size 0.0–0.20 (0 for HOLD; 0.10 for conf 60-70; 0.15 for 70-85; 0.20 for 85+)
+4. Brief reasoning (1 sentence, mention expected R/R if entry)
+5. Lessons from memory (brief)
+
+JSON: {{"action":"long|short|hold","confidence":0-100,"position_size_pct":0.0-0.20,"reasoning":"brief","lessons_from_memory":"brief"}}"""
+        else:
+            prompt = f"""You are a trading judge. Output ONLY JSON.
 
 Market: {market_text}
 Bull: {bull.confidence}% | {bull.reasoning[:80]}
@@ -437,7 +644,8 @@ JSON: {{"action":"long|short|hold","confidence":0-100,"position_size_pct":0.0-0.
             if action not in ("long", "short", "hold"):
                 action = "hold"
             conf = int(_clamp(d.get("confidence", 50), 0, 100))
-            size = _clamp(d.get("position_size_pct", 0.03), 0.0, 0.15)
+            max_size = 0.20 if version == "asymmetry" else 0.15
+            size = _clamp(d.get("position_size_pct", 0.03), 0.0, max_size)
             if action == "hold":
                 size = 0.0
             return JudgeDecision(
@@ -1247,6 +1455,7 @@ class Config:
     TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
     TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
     KIMI_JUDGE_ENABLED = False
+    KIMI_PROMPT_VERSION = "baseline"  # "baseline" | "asymmetry"
 
 ```
 
@@ -2995,6 +3204,9 @@ class SimConfig:
     max_concurrent_kimi_calls: int = 15
     request_timeout: float = 45.0
 
+    # Prompt
+    prompt_version: str = "baseline"  # "baseline" | "asymmetry"
+
     # Mock / Cache
     mock_judge: bool = False
     mock_judge_signal_rate: float = 0.15
@@ -3407,7 +3619,7 @@ class UnifiedKimiJudge:
             )
         return "\n".join(lines)
 
-    def _build_prompt(
+    def _prepare_prompt_data(
         self,
         symbol: str,
         df: pd.DataFrame,
@@ -3422,11 +3634,9 @@ class UnifiedKimiJudge:
         day_low: float,
         regime: str,
         memory: SymbolMemory
-    ) -> str:
-        """Единый промпт для Kimi: анализ + сигналы + решение."""
-
+    ) -> dict:
+        """Prepare common prompt variables."""
         ohlcv_text = self._format_ohlcv(df, periods=50)
-
         mem_lines = []
         if memory.trades:
             recent = memory.trades[-5:]
@@ -3434,34 +3644,52 @@ class UnifiedKimiJudge:
                 mem_lines.append(f"- {t['side']} {t['reason']} PnL:{t['pnl_pct']:.2f}%")
         else:
             mem_lines.append("- No recent trades")
-
         consecutive_sl_long = memory.consecutive_sl_same_side("long")
         consecutive_sl_short = memory.consecutive_sl_same_side("short")
         winrate = memory.winrate_last_n(20)
+        return {
+            "symbol": symbol,
+            "price": price,
+            "ema20": ema20,
+            "ema50": ema50,
+            "atr": atr,
+            "rsi": rsi,
+            "support": support,
+            "resistance": resistance,
+            "day_high": day_high,
+            "day_low": day_low,
+            "regime": regime,
+            "ohlcv_text": ohlcv_text,
+            "mem_lines": "\n".join(mem_lines),
+            "consecutive_sl_long": consecutive_sl_long,
+            "consecutive_sl_short": consecutive_sl_short,
+            "winrate": winrate,
+        }
 
+    def _build_prompt_baseline(self, d: dict) -> str:
         return f"""You are an ensemble trading analyst. Analyze the provided market data and output a strict JSON decision.
 
-## SYMBOL: {symbol}
-## CURRENT PRICE: {price:.6f}
-## MARKET REGIME: {regime}
-## DAILY RANGE: High={day_high:.6f} Low={day_low:.6f}
+## SYMBOL: {d['symbol']}
+## CURRENT PRICE: {d['price']:.6f}
+## MARKET REGIME: {d['regime']}
+## DAILY RANGE: High={d['day_high']:.6f} Low={d['day_low']:.6f}
 
 ## TECHNICAL INDICATORS (current):
-- EMA20: {ema20:.6f}
-- EMA50: {ema50:.6f}
-- RSI14: {rsi:.2f}
-- ATR14: {atr:.6f}
-- Nearest Support: {support:.6f}
-- Nearest Resistance: {resistance:.6f}
+- EMA20: {d['ema20']:.6f}
+- EMA50: {d['ema50']:.6f}
+- RSI14: {d['rsi']:.2f}
+- ATR14: {d['atr']:.6f}
+- Nearest Support: {d['support']:.6f}
+- Nearest Resistance: {d['resistance']:.6f}
 
 ## RECENT PRICE ACTION (last 50 candles):
-{ohlcv_text}
+{d['ohlcv_text']}
 
 ## SYMBOL MEMORY (last 5 trades):
-{"\n".join(mem_lines)}
-- Win rate last 20: {winrate:.1%}
-- Consecutive SL (long): {consecutive_sl_long}
-- Consecutive SL (short): {consecutive_sl_short}
+{d['mem_lines']}
+- Win rate last 20: {d['winrate']:.1%}
+- Consecutive SL (long): {d['consecutive_sl_long']}
+- Consecutive SL (short): {d['consecutive_sl_short']}
 
 ## TASK:
 1. Evaluate BULL probability (breakout/upside continuation) → bull_confidence 0.0–1.0
@@ -3481,6 +3709,89 @@ class UnifiedKimiJudge:
 ## REQUIRED JSON FORMAT:
 {{"bull_confidence": 0.00, "bear_confidence": 0.00, "decision": "HOLD", "confidence": 0, "size": 0.0, "reasoning": "..."}}
 """
+
+    def _build_prompt_asymmetry(self, d: dict) -> str:
+        return f"""You are an elite quantitative trading analyst. Your task is to analyze market data and output a strict JSON decision with high precision.
+
+## SYMBOL: {d['symbol']}
+## CURRENT PRICE: {d['price']:.6f}
+## MARKET REGIME: {d['regime']}
+## DAILY RANGE: High={d['day_high']:.6f} Low={d['day_low']:.6f}
+
+## TECHNICAL INDICATORS:
+- EMA20: {d['ema20']:.6f}
+- EMA50: {d['ema50']:.6f}
+- RSI14: {d['rsi']:.2f}
+- ATR14: {d['atr']:.6f} (volatility measure)
+- Nearest Support: {d['support']:.6f}
+- Nearest Resistance: {d['resistance']:.6f}
+
+## TREND CONTEXT:
+- Price vs EMA20: {'above' if d['price'] > d['ema20'] else 'below'}
+- Price vs EMA50: {'above' if d['price'] > d['ema50'] else 'below'}
+- EMA20 vs EMA50: {'bullish' if d['ema20'] > d['ema50'] else 'bearish'} alignment
+
+## RECENT PRICE ACTION (last 50 candles):
+{d['ohlcv_text']}
+
+## SYMBOL MEMORY (last 5 trades):
+{d['mem_lines']}
+- Win rate last 20: {d['winrate']:.1%}
+- Consecutive SL (long): {d['consecutive_sl_long']}
+- Consecutive SL (short): {d['consecutive_sl_short']}
+
+## RISK/REWARD FRAMEWORK (ASYMMETRY):
+This system uses asymmetric risk management:
+- Stop Loss (SL): 2% from entry (tight stop)
+- Take Profit (TP): 4% from entry (2:1 reward/risk)
+- ONLY enter when you expect a STRONG directional move (≥4% potential).
+
+## TASK:
+1. Calculate BULL potential to resistance: {(d['resistance'] - d['price']) / d['price'] * 100:.2f}% available
+2. Calculate BEAR potential to support: {(d['price'] - d['support']) / d['price'] * 100:.2f}% available
+3. Evaluate BULL probability → bull_confidence 0.0–1.0 (high only if bull_potential ≥ 4% and trend supports)
+4. Evaluate BEAR probability → bear_confidence 0.0–1.0 (high only if bear_potential ≥ 4% and trend supports)
+5. Make final DECISION: "LONG", "SHORT", or "HOLD"
+6. Overall confidence 0–100 (must be ≥60 for entry)
+7. Brief reasoning (1 sentence, mention expected R/R)
+8. Position size 0.0–1.0 (0 for HOLD; 0.10 for conf 60-70; 0.15 for 70-80; 0.20 for 80+)
+
+## STRICT RULES:
+- LONG only if: price > EMA20, EMA20 > EMA50 (or very close), RSI < 70, no 2+ consecutive SL long, bull_potential ≥ 4%
+- SHORT only if: price < EMA20, EMA20 < EMA50 (or very close), RSI > 30, no 2+ consecutive SL short, bear_potential ≥ 4%
+- HOLD if: potential < 4% either side, trend contradicts direction, RSI extreme, or signals conflict
+- If price within 1% of daily high → REDUCE long confidence significantly
+- If price within 1% of daily low → REDUCE short confidence significantly
+- Respond ONLY with JSON below, no markdown, no explanation outside JSON.
+
+## REQUIRED JSON FORMAT:
+{{"bull_confidence": 0.00, "bear_confidence": 0.00, "decision": "HOLD", "confidence": 0, "size": 0.0, "reasoning": "..."}}
+"""
+
+    def _build_prompt(
+        self,
+        symbol: str,
+        df: pd.DataFrame,
+        price: float,
+        ema20: float,
+        ema50: float,
+        atr: float,
+        rsi: float,
+        support: float,
+        resistance: float,
+        day_high: float,
+        day_low: float,
+        regime: str,
+        memory: SymbolMemory
+    ) -> str:
+        """Dispatch to the selected prompt version."""
+        d = self._prepare_prompt_data(
+            symbol, df, price, ema20, ema50, atr, rsi,
+            support, resistance, day_high, day_low, regime, memory
+        )
+        if getattr(self.cfg, "prompt_version", "baseline") == "asymmetry":
+            return self._build_prompt_asymmetry(d)
+        return self._build_prompt_baseline(d)
 
     async def decide(
         self,
@@ -4188,21 +4499,30 @@ def main():
     parser.add_argument("--interval", type=str, default="15m", choices=["15m","1h","4h"])
     parser.add_argument("--leverage", type=float, default=5.0)
     parser.add_argument("--mode", type=str, default="optimized", choices=["live_mirror","optimized"])
+    parser.add_argument("--sl-pct", type=float, default=None, help="Override live_mirror SL pct (e.g. 0.02)")
+    parser.add_argument("--tp-pct", type=float, default=None, help="Override live_mirror TP pct (e.g. 0.04)")
+    parser.add_argument("--prompt-version", type=str, default="baseline", choices=["baseline","asymmetry"], help="Kimi prompt version")
     parser.add_argument("--max-concurrent", type=int, default=15, help="Max concurrent Kimi calls")
     parser.add_argument("--mock-judge", action="store_true", help="Use random signals instead of Kimi API")
     parser.add_argument("--mock-rate", type=float, default=0.15, help="Signal probability in mock mode")
     args = parser.parse_args()
 
-    cfg = SimConfig(
+    cfg_kwargs = dict(
         symbols=args.symbols.split(","),
         months=args.months,
         interval=args.interval,
         leverage=args.leverage,
         mode=args.mode,
+        prompt_version=args.prompt_version,
         max_concurrent_kimi_calls=args.max_concurrent,
         mock_judge=args.mock_judge,
         mock_judge_signal_rate=args.mock_rate
     )
+    if args.sl_pct is not None:
+        cfg_kwargs["live_mirror_sl_pct"] = args.sl_pct
+    if args.tp_pct is not None:
+        cfg_kwargs["live_mirror_tp_pct"] = args.tp_pct
+    cfg = SimConfig(**cfg_kwargs)
 
     sim = Simulator(cfg)
     asyncio.run(sim.run())
