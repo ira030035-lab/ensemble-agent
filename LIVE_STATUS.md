@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-26 09:20:01 UTC
+Generated: 2026-05-26 09:30:01 UTC
 
 ## Services
 ```
@@ -10,14 +10,14 @@ ensemble-dashboard.service: activating
 
 ## Processes
 ```
-root      957148  0.0  1.1 131272 45852 ?        Ssl  06:53   0:01 ./venv/bin/python3 dashboard_api.py
-root      957764  0.1  3.2 720504 126252 ?       Ssl  08:17   0:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      957148  0.0  1.1 131020 45900 ?        Ssl  06:53   0:01 ./venv/bin/python3 dashboard_api.py
+root      957764  0.2  3.2 721644 127420 ?       Ssl  08:17   0:09 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 693.7746225946951,
+  "balance": 673.7735811946951,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779630553",
@@ -65,6 +65,18 @@ root      957764  0.1  3.2 720504 126252 ?       Ssl  08:17   0:06 /opt/ensemble
       "opened_at": "2026-05-26T08:17:11.002660",
       "cost": 19.999999061000004,
       "notional": 99.99999530500001,
+      "leverage": 5
+    },
+    "TAOUSDT": {
+      "id": "PAPER_TAOUSDT_1779787490",
+      "symbol": "TAOUSDT",
+      "side": "long",
+      "entry_price": 286.63,
+      "qty": 0.3489,
+      "confidence": 68,
+      "opened_at": "2026-05-26T09:24:50.592448",
+      "cost": 20.0010414,
+      "notional": 100.005207,
       "leverage": 5
     }
   },
@@ -1168,36 +1180,36 @@ root      957764  0.1  3.2 720504 126252 ?       Ssl  08:17   0:06 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-26 08:20:02,451 [INFO] main: WLDUSDT | Bull:long(70%) Bear:short(80%)
-2026-05-26 08:20:07,336 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-26 08:20:07,337 [INFO] main: WLDUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-26 08:20:07,337 [INFO] main: WLDUSDT | RL adj=80.0%
-2026-05-26 08:20:11,085 [INFO] main: NILUSDT | Bull:long(55%) Bear:short(80%)
-2026-05-26 08:20:16,761 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-26 08:20:16,763 [INFO] main: NILUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-26 08:20:16,763 [INFO] main: NILUSDT | RL adj=80.0%
-2026-05-26 08:20:20,446 [INFO] main: ETHUSDT | Bull:long(60%) Bear:short(72%)
-2026-05-26 08:20:24,637 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-26 08:20:24,638 [INFO] main: ETHUSDT | Judge:HOLD conf=72% size=0.0%
-2026-05-26 08:20:24,639 [INFO] main: ETHUSDT | RL adj=72.0%
-2026-05-26 08:20:28,280 [INFO] main: TAOUSDT | Bull:long(55%) Bear:short(72%)
-2026-05-26 08:20:34,143 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-26 08:20:34,144 [INFO] main: TAOUSDT | Judge:HOLD conf=72% size=0.0%
-2026-05-26 08:20:34,144 [INFO] main: TAOUSDT | RL adj=72.0%
-2026-05-26 08:20:37,912 [INFO] main: ZECUSDT | Bull:long(55%) Bear:short(82%)
-2026-05-26 08:20:43,173 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-26 08:20:43,175 [INFO] main: ZECUSDT | Judge:HOLD conf=82% size=0.0%
-2026-05-26 08:20:43,175 [INFO] main: ZECUSDT | RL adj=82.0%
-2026-05-26 08:20:46,872 [INFO] main: BEATUSDT | Bull:long(45%) Bear:short(82%)
-2026-05-26 08:20:52,556 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-26 08:20:52,557 [INFO] main: BEATUSDT | Judge:HOLD conf=82% size=0.0%
-2026-05-26 08:20:52,558 [INFO] main: BEATUSDT | RL adj=82.0%
-2026-05-26 08:20:56,321 [INFO] main: XANUSDT | Bull:long(42%) Bear:short(72%)
-2026-05-26 08:21:02,195 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-26 08:21:02,196 [INFO] main: XANUSDT | Judge:HOLD conf=72% size=0.0%
-2026-05-26 08:21:02,196 [INFO] main: XANUSDT | RL adj=72.0%
-2026-05-26 08:21:04,198 [INFO] main: Next scan in 60min (weekday-active)
-2026-05-26 09:17:02,996 [INFO] main: Symbols: 30
+2026-05-26 09:24:18,738 [INFO] main: XRPUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-26 09:24:22,225 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-26 09:24:22,226 [INFO] main: XRPUSDT | Judge:SHORT conf=72% size=7.0%
+2026-05-26 09:24:22,226 [INFO] main: XRPUSDT | RL adj=77.3%
+2026-05-26 09:24:22,226 [INFO] main: XRPUSDT | gate PASS (Judge 72/70 RL 77.3/65.0 slack=±3)
+2026-05-26 09:24:22,227 [INFO] positions: Same-side cap: skip SHORT XRPUSDT (3/3 already short)
+2026-05-26 09:24:25,981 [INFO] main: ONDOUSDT | Bull:long(55%) Bear:short(72%)
+2026-05-26 09:24:31,096 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-26 09:24:31,098 [INFO] main: ONDOUSDT | Judge:SHORT conf=68% size=6.0%
+2026-05-26 09:24:31,098 [INFO] main: ONDOUSDT | RL adj=70.6%
+2026-05-26 09:24:31,098 [INFO] main: ONDOUSDT | gate PASS (Judge 68/70 RL 70.6/65.0 slack=±3)
+2026-05-26 09:24:31,098 [INFO] positions: Same-side cap: skip SHORT ONDOUSDT (3/3 already short)
+2026-05-26 09:24:34,761 [INFO] main: FETUSDT | Bull:long(70%) Bear:short(70%)
+2026-05-26 09:24:40,661 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-26 09:24:40,663 [INFO] main: FETUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-26 09:24:40,663 [INFO] main: FETUSDT | RL adj=70.0%
+2026-05-26 09:24:44,463 [INFO] main: TAOUSDT | Bull:long(70%) Bear:short(70%)
+2026-05-26 09:24:50,305 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-26 09:24:50,306 [INFO] main: TAOUSDT | Judge:LONG conf=68% size=7.0%
+2026-05-26 09:24:50,306 [INFO] main: TAOUSDT | RL adj=67.9%
+2026-05-26 09:24:50,307 [INFO] main: TAOUSDT | gate PASS (Judge 68/70 RL 67.9/65.0 slack=±3)
+2026-05-26 09:24:50,591 [INFO] positions: [PAPER] Opening LONG TAOUSDT notional=$100.0 conf=68%
+2026-05-26 09:24:50,595 [INFO] paper_trading: [PAPER] ОТКРЫТА LONG TAOUSDT @ 286.6300 qty=0.3489 notional=100.01 margin=20.00 x5 | Баланс: 673.77
+2026-05-26 09:25:02,450 [WARNING] bitget: Bitget GET /api/v2/mix/market/ticker retry 1/3 after [Errno 104] Connection reset by peer — sleep 0.5s
+2026-05-26 09:25:03,269 [INFO] bitget: Bitget recovered after 1 failures
+2026-05-26 09:25:07,579 [INFO] main: UBUSDT | Bull:long(70%) Bear:short(80%)
+2026-05-26 09:25:14,060 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-26 09:25:14,061 [INFO] main: UBUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-26 09:25:14,061 [INFO] main: UBUSDT | RL adj=80.0%
+2026-05-26 09:25:16,064 [INFO] main: Next scan in 60min (weekday-active)
 ```
 
 ## Disk
@@ -1215,7 +1227,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       710Mi       386Mi       4.8Mi       2.9Gi       3.0Gi
+Mem:           3.7Gi       720Mi       375Mi       4.8Mi       2.9Gi       3.0Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
