@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-26 09:10:01 UTC
+Generated: 2026-05-26 09:20:01 UTC
 
 ## Services
 ```
@@ -10,8 +10,8 @@ ensemble-dashboard.service: activating
 
 ## Processes
 ```
-root      957148  0.0  1.1 131272 45776 ?        Ssl  06:53   0:01 ./venv/bin/python3 dashboard_api.py
-root      957764  0.1  3.1 718156 123680 ?       Ssl  08:17   0:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      957148  0.0  1.1 131272 45852 ?        Ssl  06:53   0:01 ./venv/bin/python3 dashboard_api.py
+root      957764  0.1  3.2 720504 126252 ?       Ssl  08:17   0:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -1168,7 +1168,6 @@ root      957764  0.1  3.1 718156 123680 ?       Ssl  08:17   0:05 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-26 08:19:58,640 [INFO] main: TIAUSDT | RL adj=80.0%
 2026-05-26 08:20:02,451 [INFO] main: WLDUSDT | Bull:long(70%) Bear:short(80%)
 2026-05-26 08:20:07,336 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-26 08:20:07,337 [INFO] main: WLDUSDT | Judge:HOLD conf=80% size=0.0%
@@ -1198,6 +1197,7 @@ root      957764  0.1  3.1 718156 123680 ?       Ssl  08:17   0:05 /opt/ensemble
 2026-05-26 08:21:02,196 [INFO] main: XANUSDT | Judge:HOLD conf=72% size=0.0%
 2026-05-26 08:21:02,196 [INFO] main: XANUSDT | RL adj=72.0%
 2026-05-26 08:21:04,198 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-26 09:17:02,996 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1215,7 +1215,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       713Mi       384Mi       4.8Mi       2.9Gi       3.0Gi
+Mem:           3.7Gi       710Mi       386Mi       4.8Mi       2.9Gi       3.0Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
