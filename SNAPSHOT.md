@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-26 12:00:01 UTC
+Generated: 2026-05-26 13:00:01 UTC
 
 ## ab_test_analyze_apply.py
 ```python
@@ -257,18 +257,40 @@ class BullAgent:
         self.cfg=cfg
         self._key_cd={}
         self._key_rr_q=0
+        self._recent_verdicts=[]
+        self._using_fallback=False
+    def _entropy_guard(self,side,conf):
+        self._recent_verdicts.append((side,conf))
+        if len(self._recent_verdicts)>10:
+            self._recent_verdicts.pop(0)
+        if len(self._recent_verdicts)>=5:
+            last5=self._recent_verdicts[-5:]
+            sides=[s for s,c in last5]
+            confs=[c for s,c in last5]
+            if len(set(sides))==1 and max(confs)-min(confs)<=3:
+                if not self._using_fallback:
+                    log.warning(f"Bull entropy-guard: шаблон {sides[0]}({confs[0]}) ×5. Переключаемся на Kimi+Claude fallback.")
+                    self._using_fallback=True
+                return True
+        self._using_fallback=False
+        return False
     async def analyze(self,market_text):
         prompt="Analyze and make bullish case:\n"+market_text
         try:
-            text=await _race(
-                [self._kimi(prompt), self._groq(prompt)],
-                self._claude(prompt))
+            # Если entropy-guard активен — не используем Groq (Gemini), только Kimi+Claude
+            if self._using_fallback:
+                text=await _race([self._kimi(prompt)], self._claude(prompt))
+            else:
+                text=await _race(
+                    [self._kimi(prompt), self._groq(prompt)],
+                    self._claude(prompt))
             d=self._parse(text)
             side=d.get("side")
             if side not in ("long","flat"):
                 log.warning("Bull: unparseable response → flat/25. raw="+(text or "")[:160].replace("\n"," "))
                 return AgentVerdict("flat",25,"Unparseable: "+(text or "")[:200])
             conf=int(_clamp(d.get("confidence",50),0,100))
+            self._entropy_guard(side,conf)
             return AgentVerdict(side,conf,d.get("reasoning",text))
         except Exception as e: log.error("Bull: "+str(e)); return AgentVerdict("flat",25,"Error: "+str(e))
     async def _claude(self,prompt):
@@ -893,6 +915,528 @@ if __name__ == "__main__":
 
 ```
 
+## auto_advisor.py
+```python
+#!/usr/bin/env python3
+"""
+Автономный советник Ensemble Agent.
+Работает каждые 15 минут, читает состояние/логи, вызывает LLM, действует автономно.
+"""
+import os
+import sys
+import json
+import time
+import re
+import subprocess
+import urllib.request
+import urllib.parse
+from datetime import datetime, timezone
+
+os.chdir("/opt/ensemble-agent")
+sys.path.insert(0, "/opt/ensemble-agent")
+
+from dotenv import load_dotenv
+load_dotenv("/opt/ensemble-agent/.env")
+
+# Telegram
+TG_TOKEN = os.getenv("TELEGRAM_TOKEN") or "8702211361:AAFPTNQ8kyEka02VD7-KUIkeUidBvTQmupU"
+TG_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID") or "6349919785"
+
+# LLM
+KIMI_KEY = os.getenv("KIMI_API_KEY")
+KIMI_URL = "https://api.moonshot.ai/v1/chat/completions"
+KIMI_MODEL = "moonshot-v1-auto"
+ANTHROPIC_KEY = os.getenv("ANTHROPIC_API_KEY")
+ANTHROPIC_URL = "https://api.anthropic.com/v1/messages"
+ANTHROPIC_MODEL = "claude-haiku-4-5-20251001"
+
+# Файлы состояния
+ADVISOR_STATE_FILE = "/opt/ensemble-agent/advisor_state.json"
+LOG_FILE = "/opt/ensemble-agent/advisor.log"
+PAPER_STATE = "/opt/ensemble-agent/paper_state.json"
+ENSEMBLE_LOG = "/opt/ensemble-agent/ensemble.log"
+CONFIG_PY = "/opt/ensemble-agent/config.py"
+RL_WEIGHTS = "/opt/ensemble-agent/rl_weights.json"
+
+# Кулдауны (секунды)
+CD_CLOSE = 3600
+CD_RESTART = 3600
+CD_ADJUST = 14400
+CD_ALERT = 900
+
+# Критические пороги
+BALANCE_CRITICAL = 500.0
+BALANCE_WARNING = 600.0
+CONSECUTIVE_LOSS_THRESHOLD = 5
+
+
+def log(msg):
+    ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+    line = f"[{ts}] {msg}"
+    print(line)
+    with open(LOG_FILE, "a") as f:
+        f.write(line + "\n")
+
+
+def load_advisor_state():
+    try:
+        with open(ADVISOR_STATE_FILE) as f:
+            return json.load(f)
+    except Exception:
+        return {
+            "last_close_ts": 0,
+            "last_restart_ts": 0,
+            "last_adjust_ts": 0,
+            "last_alert_ts": 0,
+            "last_alert_msg": "",
+            "consecutive_losses": 0,
+            "balance_low_flag": False,
+        }
+
+
+def save_advisor_state(state):
+    tmp = ADVISOR_STATE_FILE + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(state, f, indent=2)
+    os.replace(tmp, ADVISOR_STATE_FILE)
+
+
+def tg_send(text):
+    try:
+        url = f"https://api.telegram.org/bot{TG_TOKEN}/sendMessage"
+        data = urllib.parse.urlencode({
+            "chat_id": TG_CHAT_ID,
+            "text": text,
+            "parse_mode": "HTML",
+            "disable_web_page_preview": "true"
+        }).encode()
+        req = urllib.request.Request(url, data=data, method="POST")
+        req.add_header("Content-Type", "application/x-www-form-urlencoded")
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return json.loads(resp.read().decode())
+    except Exception as e:
+        log(f"Ошибка Telegram: {e}")
+        return {"ok": False, "error": str(e)}
+
+
+def tail_log(path, lines=100):
+    try:
+        with open(path, "r") as f:
+            all_lines = f.readlines()
+            return "".join(all_lines[-lines:])
+    except Exception as e:
+        return f"<ошибка чтения лога: {e}>"
+
+
+def read_json(path):
+    try:
+        with open(path) as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def read_config_params():
+    try:
+        with open(CONFIG_PY) as f:
+            content = f.read()
+        params = {}
+        for key in ["STOP_LOSS_PCT", "TAKE_PROFIT_PCT", "TRAIL_ARM_PCT",
+                    "TRAIL_GIVEBACK_PCT", "MIN_CONFIDENCE", "MAX_POSITIONS",
+                    "MIN_HOLD_SEC", "JUDGE_EXIT_INTERVAL_SEC", "LEVERAGE",
+                    "VOLATILITY_FILTER_ATR_PCT", "POSITION_SIZE_FIXED"]:
+            m = re.search(rf"{key}\s*=\s*([^#\n]+)", content)
+            if m:
+                try:
+                    params[key] = json.loads(m.group(1).strip().replace("'", '"'))
+                except Exception:
+                    params[key] = m.group(1).strip()
+        return params
+    except Exception as e:
+        log(f"Ошибка чтения config: {e}")
+        return {}
+
+
+def fetch_bitget_price(symbol):
+    try:
+        url = f"https://api.bitget.com/api/v2/mix/market/ticker?symbol={symbol}&productType=USDT-FUTURES"
+        req = urllib.request.Request(url, headers={"Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            data = json.loads(resp.read().decode())
+            return float(data["data"][0]["lastPr"])
+    except Exception as e:
+        log(f"Ошибка цены {symbol}: {e}")
+        return None
+
+
+def call_kimi(prompt):
+    if not KIMI_KEY:
+        return None
+    try:
+        body = {
+            "model": KIMI_MODEL,
+            "messages": [
+                {"role": "system", "content": "Ты автономный риск-советник по криптотрейдингу. Отвечай ТОЛЬКО валидным JSON. Без markdown, без пояснений вне JSON."},
+                {"role": "user", "content": prompt}
+            ],
+            "temperature": 0.2,
+            "max_tokens": 800,
+            "response_format": {"type": "json_object"}
+        }
+        req = urllib.request.Request(
+            KIMI_URL,
+            data=json.dumps(body).encode(),
+            method="POST",
+            headers={
+                "Authorization": f"Bearer {KIMI_KEY}",
+                "Content-Type": "application/json"
+            }
+        )
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            data = json.loads(resp.read().decode())
+            return data["choices"][0]["message"]["content"]
+    except Exception as e:
+        log(f"Ошибка Kimi API: {e}")
+        return None
+
+
+def call_anthropic(prompt):
+    if not ANTHROPIC_KEY:
+        return None
+    try:
+        body = {
+            "model": ANTHROPIC_MODEL,
+            "max_tokens": 800,
+            "temperature": 0.2,
+            "messages": [
+                {"role": "user", "content": prompt}
+            ]
+        }
+        req = urllib.request.Request(
+            ANTHROPIC_URL,
+            data=json.dumps(body).encode(),
+            method="POST",
+            headers={
+                "x-api-key": ANTHROPIC_KEY,
+                "anthropic-version": "2023-06-01",
+                "Content-Type": "application/json"
+            }
+        )
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            data = json.loads(resp.read().decode())
+            return data["content"][0]["text"]
+    except Exception as e:
+        log(f"Ошибка Anthropic API: {e}")
+        return None
+
+
+def call_llm(prompt):
+    raw = call_kimi(prompt)
+    if raw:
+        return raw
+    log("Kimi не ответил, пробуем Anthropic...")
+    return call_anthropic(prompt)
+
+
+def parse_decision(raw):
+    if not raw:
+        return None
+    try:
+        raw = raw.strip()
+        if raw.startswith("```json"):
+            raw = raw[7:]
+        if raw.startswith("```"):
+            raw = raw[3:]
+        if raw.endswith("```"):
+            raw = raw[:-3]
+        raw = raw.strip()
+        d = json.loads(raw)
+        valid_actions = {"nothing", "alert", "close_positions", "restart_service", "adjust_params"}
+        if d.get("action") not in valid_actions:
+            log(f"Неверное действие от LLM: {d.get('action')}")
+            return None
+        return d
+    except Exception as e:
+        log(f"Ошибка парсинга решения: {e} | raw={raw[:200]}")
+        return None
+
+
+def close_position(symbol):
+    try:
+        import paper_trading
+        price = fetch_bitget_price(symbol)
+        if price is None:
+            log(f"Невозможно закрыть {symbol}: нет цены")
+            return False
+        result = paper_trading.paper_close(symbol, price, reason="advisor_auto_close")
+        if result:
+            log(f"Закрыта {symbol} @ {price} | PnL: {result.get('pnl_usdt')} USDT")
+            return True
+        else:
+            log(f"Закрытие {symbol} вернуло None (возможно уже закрыта)")
+            return False
+    except Exception as e:
+        log(f"Ошибка закрытия {symbol}: {e}")
+        return False
+
+
+def restart_ensemble():
+    try:
+        subprocess.run(["systemctl", "restart", "ensemble-agent"], check=True, capture_output=True)
+        log("Перезапущен ensemble-agent.service")
+        return True
+    except Exception as e:
+        log(f"Ошибка перезапуска: {e}")
+        return False
+
+
+def adjust_config(updates):
+    try:
+        with open(CONFIG_PY) as f:
+            content = f.read()
+        backup = CONFIG_PY + ".advisor_backup"
+        if not os.path.exists(backup):
+            with open(backup, "w") as f:
+                f.write(content)
+        new_content = content
+        for key, val in updates.items():
+            if isinstance(val, str):
+                val_repr = f'"{val}"'
+            else:
+                val_repr = str(val)
+            pattern = rf"({key}\s*=\s*)[^#\n]+"
+            replacement = rf"\g<1>{val_repr}"
+            new_content = re.sub(pattern, replacement, new_content, count=1)
+        if new_content != content:
+            with open(CONFIG_PY, "w") as f:
+                f.write(new_content)
+            log(f"Обновлён config.py: {updates}")
+            return True
+        else:
+            log("Изменений config не требуется")
+            return False
+    except Exception as e:
+        log(f"Ошибка правки config: {e}")
+        return False
+
+
+def build_prompt(paper_state, log_tail, config_params, rl_weights, advisor_state):
+    balance = paper_state.get("balance", 0)
+    positions = paper_state.get("positions", {})
+    history = paper_state.get("trade_history", [])
+
+    recent = history[-20:] if len(history) >= 20 else history
+    wins = [t for t in recent if t.get("outcome") == "profit"]
+    losses = [t for t in recent if t.get("outcome") == "loss"]
+    recent_wr = round(len(wins)/len(recent)*100, 1) if recent else 0
+
+    streak = 0
+    for t in reversed(history):
+        if t.get("outcome") == "loss":
+            streak += 1
+        else:
+            break
+
+    pos_lines = []
+    for sym, p in positions.items():
+        price = fetch_bitget_price(sym)
+        if price:
+            lev = p.get("leverage", 5)
+            if p["side"] == "long":
+                pnl = (price - p["entry_price"]) / p["entry_price"] * 100 * lev
+            else:
+                pnl = (p["entry_price"] - price) / p["entry_price"] * 100 * lev
+            pos_lines.append(f"  {sym} {p['side']} @ {p['entry_price']} | conf={p.get('confidence')} | незакрытый ~{pnl:.2f}%")
+        else:
+            pos_lines.append(f"  {sym} {p['side']} @ {p['entry_price']} | conf={p.get('confidence')} | цена недоступна")
+
+    log_errors = ""
+    if "ERROR" in log_tail or "error" in log_tail.lower():
+        err_lines = [l for l in log_tail.splitlines() if "error" in l.lower() or "ERROR" in l][-10:]
+        log_errors = "\n".join(err_lines)
+
+    prompt = f"""Ты автономный риск-советник для криптоторгового бота (paper mode).
+
+ТЕКУЩЕЕ СОСТОЯНИЕ (факты — не придумывай другие числа):
+- Баланс: {balance:.2f} USDT (стартовый был 1000.00)
+- Открытых позиций: {len(positions)}
+- Детали позиций:
+{chr(10).join(pos_lines) if pos_lines else "  (нет)"}
+- Последние сделки (последние {len(recent)}): {len(wins)} побед / {len(losses)} убытков | WR {recent_wr}%
+- Серия убытков подряд: {streak}
+- RL веса: {json.dumps(rl_weights)}
+- Конфиг: {json.dumps(config_params)}
+
+ОШИБКИ В ЛОГЕ (если есть):
+{log_errors if log_errors else "  (нет)"}
+
+ПОСЛЕДНЕЕ ДЕЙСТВИЕ СОВЕТНИКА: {advisor_state.get('last_action','нет')} в {datetime.fromtimestamp(advisor_state.get('last_action_ts',0), tz=timezone.utc).strftime('%H:%M UTC') if advisor_state.get('last_action_ts') else 'никогда'}
+
+ПРАВИЛА:
+1. КРИТИЧЕСКИ: используй ТОЛЬКО точные числа выше. Не фантазируй баланс, win rate, серию.
+2. Если баланс < {BALANCE_CRITICAL}: действие ДОЛЖНО быть "close_positions" (закрыть ВСЁ) + "alert" critical.
+3. Если баланс < {BALANCE_WARNING} и флаг не поднят: "alert" warning.
+4. Если серия убытков >= {CONSECUTIVE_LOSS_THRESHOLD}: рассмотреть "close_positions" худших + "alert".
+5. Если ensemble.log показывает повторяющиеся API-ошибки или парсинг-фейлы: "restart_service" + "alert".
+6. Если баланс стабилен/растёт и проблем нет: "nothing".
+7. "adjust_params" только для мелких правок (например MIN_CONFIDENCE +5) если данные это подтверждают.
+8. Не перезапускай чаще 1 раза в час. Не закрывай чаще 1 раза в час.
+
+ОТВЕЧАЙ ТОЛЬКО JSON в точной схеме:
+{{
+  "action": "nothing" | "alert" | "close_positions" | "restart_service" | "adjust_params",
+  "reason": "строка",
+  "urgency": "low" | "medium" | "high" | "critical",
+  "details": {{
+    "symbols_to_close": ["SYMBOL1", ...],
+    "params_to_adjust": {{"PARAM_NAME": значение}},
+    "message": "Текст сообщения в Telegram (HTML разрешён, кратко)"
+  }}
+}}"""
+    return prompt
+
+
+def main_cycle():
+    state = load_advisor_state()
+    now = time.time()
+
+    paper = read_json(PAPER_STATE)
+    log_tail = tail_log(ENSEMBLE_LOG, 80)
+    cfg_params = read_config_params()
+    rl_weights = read_json(RL_WEIGHTS)
+
+    balance = paper.get("balance", 0)
+    positions = paper.get("positions", {})
+    history = paper.get("trade_history", [])
+
+    streak = 0
+    for t in reversed(history):
+        if t.get("outcome") == "loss":
+            streak += 1
+        else:
+            break
+    state["consecutive_losses"] = streak
+
+    # === АППАРАТНЫЕ ЗАЩИТЫ (перекрывают LLM) ===
+    if balance < BALANCE_CRITICAL and positions:
+        if now - state["last_close_ts"] > 300:
+            log(f"КРИТИЧЕСКИ: баланс {balance:.2f} < {BALANCE_CRITICAL}. Закрываем ВСЕ позиции.")
+            closed = []
+            for sym in list(positions.keys()):
+                if close_position(sym):
+                    closed.append(sym)
+            msg = f"<b>🚨 КРИТИЧЕСКИЙ АВАРИЙНЫЙ СТОП</b>\nБаланс {balance:.2f} USDT ниже {BALANCE_CRITICAL}.\nЗакрыты: {', '.join(closed)}"
+            tg_send(msg)
+            state["last_close_ts"] = now
+            state["last_alert_ts"] = now
+            state["balance_low_flag"] = True
+            save_advisor_state(state)
+            return
+
+    prompt = build_prompt(paper, log_tail, cfg_params, rl_weights, state)
+    raw = call_llm(prompt)
+    decision = parse_decision(raw)
+
+    if not decision:
+        log("Нет валидного решения от LLM. Пропускаем цикл.")
+        save_advisor_state(state)
+        return
+
+    action = decision["action"]
+    reason = decision.get("reason", "")
+    urgency = decision.get("urgency", "low")
+    details = decision.get("details", {})
+    message = details.get("message", f"Советник: {action} — {reason}")
+
+    log(f"Решение: действие={action} срочность={urgency} причина={reason}")
+
+    executed = False
+
+    if action == "nothing":
+        executed = True
+        log(f"Действий не требуется. Причина: {reason}")
+
+    elif action == "alert":
+        if now - state["last_alert_ts"] > CD_ALERT:
+            tg_send(f"<b>📢 Оповещение советника [{urgency.upper()}]</b>\n{message}\n\nПричина: {reason}")
+            state["last_alert_ts"] = now
+            executed = True
+        else:
+            log("Кулдаун алерта активен. Пропускаем.")
+
+    elif action == "close_positions":
+        if now - state["last_close_ts"] > CD_CLOSE:
+            syms = details.get("symbols_to_close", [])
+            if not syms and positions:
+                syms = list(positions.keys())
+            closed = []
+            for sym in syms:
+                if close_position(sym):
+                    closed.append(sym)
+            if closed:
+                msg = f"<b>🔒 Советник закрыл позиции</b>\n{', '.join(closed)}\nПричина: {reason}"
+                tg_send(msg)
+            state["last_close_ts"] = now
+            executed = True
+        else:
+            log("Кулдаун закрытия активен. Пропускаем.")
+
+    elif action == "restart_service":
+        if now - state["last_restart_ts"] > CD_RESTART:
+            if restart_ensemble():
+                tg_send(f"<b>🔄 Советник перезапустил Ensemble</b>\nПричина: {reason}")
+                state["last_restart_ts"] = now
+                executed = True
+        else:
+            log("Кулдаун рестарта активен. Пропускаем.")
+
+    elif action == "adjust_params":
+        if now - state["last_adjust_ts"] > CD_ADJUST:
+            updates = details.get("params_to_adjust", {})
+            if updates:
+                if adjust_config(updates):
+                    msg = f"<b>⚙️ Советник изменил конфиг</b>\n{json.dumps(updates)}\nПричина: {reason}"
+                    tg_send(msg)
+                state["last_adjust_ts"] = now
+                executed = True
+            else:
+                log("Не указаны параметры для изменения.")
+        else:
+            log("Кулдаун правки конфига активен. Пропускаем.")
+
+    if executed:
+        state["last_action"] = action
+        state["last_action_ts"] = now
+
+    save_advisor_state(state)
+
+
+def main():
+    log("=" * 60)
+    log("АВТО-СОВЕТНИК ЗАПУЩЕН")
+    log(f"Рабочая директория: {os.getcwd()}")
+    log(f"Ключ Kimi: {bool(KIMI_KEY)}")
+    log(f"Ключ Anthropic: {bool(ANTHROPIC_KEY)}")
+
+    tg_send(f"<b>🤖 Авто-советник запущен</b>\nИнтервал: 15 мин\nПорог баланса: {BALANCE_CRITICAL} USDT")
+
+    while True:
+        try:
+            main_cycle()
+        except Exception as e:
+            log(f"Исключение в цикле: {e}")
+            import traceback
+            log(traceback.format_exc())
+
+        log("Спим 900 сек...")
+        time.sleep(900)
+
+
+if __name__ == "__main__":
+    main()
+
+```
+
 ## auto_pipeline.py
 ```python
 #!/usr/bin/env python3
@@ -1404,6 +1948,167 @@ class BitgetClient:
 
 ```
 
+## clean_memory_rl.py
+```python
+#!/usr/bin/env python3
+"""
+Clean all memory files: remove trades from 2026-05-19 with duration < 2 minutes.
+Then re-train RL for each branch and generate report.
+"""
+import json
+import os
+import sys
+from datetime import datetime
+
+sys.path.insert(0, "/opt/ensemble-agent")
+os.chdir("/opt/ensemble-agent")
+
+from config import Config
+from memory import Memory
+from rl_agent import RLAgent
+
+MEMORY_FILES = [
+    "/opt/ensemble-agent/memory.json",
+    "/opt/ensemble-agent/memory_kimi.json",
+]
+
+def clean_memory_file(path):
+    if not os.path.exists(path):
+        return None, f"File not found: {path}"
+
+    with open(path) as f:
+        data = json.load(f)
+
+    trades = data if isinstance(data, list) else data.get("trades", [])
+    original_count = len(trades)
+
+    kept = []
+    removed = []
+
+    for t in trades:
+        opened = t.get("opened_at", "")
+        closed = t.get("closed_at")
+
+        # Keep if not May 19
+        if "2026-05-19" not in opened:
+            kept.append(t)
+            continue
+
+        # May 19 trade — check duration
+        duration_sec = None
+        if closed and opened:
+            try:
+                o = datetime.fromisoformat(opened.replace("Z", "+00:00"))
+                c = datetime.fromisoformat(closed.replace("Z", "+00:00"))
+                duration_sec = (c - o).total_seconds()
+            except Exception:
+                pass
+
+        if duration_sec is not None and duration_sec < 120:
+            removed.append(t)
+        else:
+            kept.append(t)
+
+    # Save back
+    if isinstance(data, list):
+        new_data = kept
+    else:
+        new_data = {**data, "trades": kept}
+
+    with open(path, "w") as f:
+        json.dump(new_data, f, indent=2, ensure_ascii=False)
+
+    return {
+        "file": path,
+        "original": original_count,
+        "kept": len(kept),
+        "removed_count": len(removed),
+        "removed": removed,
+    }, None
+
+def retrain_rl(mem_path, rl_path):
+    """Re-train RL from cleaned memory."""
+    cfg = Config()
+    cfg.MEMORY_FILE = mem_path
+    # Override RL path manually
+    mem = Memory(cfg)
+    rl = RLAgent(cfg)
+    rl.path = rl_path
+
+    # Reset weights
+    from rl_agent import RLWeights
+    rl.weights = RLWeights(learning_rate=0.10)
+
+    closed = [t for t in mem.trades if t.outcome in ("profit", "loss") and not getattr(t, "orphan", False)]
+    if closed:
+        count = rl.learn_from_history(mem)
+        rl._save_sync()
+        return {
+            "learned": count,
+            "bull_weight": rl.weights.bull_weight,
+            "bear_weight": rl.weights.bear_weight,
+            "judge_weight": rl.weights.judge_weight,
+            "conf_threshold": rl.weights.conf_threshold,
+            "episodes": rl.weights.episodes,
+            "total_reward": rl.weights.total_reward,
+        }
+    return {"learned": 0, "message": "No closed trades to learn from"}
+
+# === Execute ===
+print("=" * 60)
+print("MEMORY CLEANUP & RL RETRAIN REPORT")
+print("=" * 60)
+print()
+
+for mem_file in MEMORY_FILES:
+    result, err = clean_memory_file(mem_file)
+    if err:
+        print(f"❌ {err}")
+        continue
+
+    print(f"📁 {result['file']}")
+    print(f"   Original trades: {result['original']}")
+    print(f"   Kept:            {result['kept']}")
+    print(f"   Removed (<2min on 2026-05-19): {result['removed_count']}")
+
+    if result["removed"]:
+        pnl_sum = sum(t.get("pnl_pct", 0) or 0 for t in result["removed"])
+        print(f"   Removed total PnL: {pnl_sum:+.4f}%")
+        for t in result["removed"]:
+            dur = "N/A"
+            if t.get("closed_at") and t.get("opened_at"):
+                try:
+                    o = datetime.fromisoformat(t["opened_at"].replace("Z", "+00:00"))
+                    c = datetime.fromisoformat(t["closed_at"].replace("Z", "+00:00"))
+                    dur = f"{(c-o).total_seconds()/60:.1f}min"
+                except:
+                    pass
+            print(f"      → {t['symbol']} {t['side']} {t['opened_at'][:19]} duration={dur} pnl={t.get('pnl_pct','N/A')}")
+    print()
+
+    # Determine RL path
+    if "kimi" in mem_file:
+        rl_path = "/opt/ensemble-agent/rl_weights_kimi.json"
+    else:
+        rl_path = "/opt/ensemble-agent/rl_weights.json"
+
+    rl_stats = retrain_rl(mem_file, rl_path)
+    print(f"   🔁 RL retrained → {rl_path}")
+    print(f"      Learned from:   {rl_stats.get('learned', 0)} trades")
+    print(f"      Bull weight:    {rl_stats.get('bull_weight', 'N/A'):.4f}")
+    print(f"      Bear weight:    {rl_stats.get('bear_weight', 'N/A'):.4f}")
+    print(f"      Judge weight:   {rl_stats.get('judge_weight', 'N/A'):.4f}")
+    print(f"      Conf threshold: {rl_stats.get('conf_threshold', 'N/A')}")
+    print(f"      Episodes:       {rl_stats.get('episodes', 0)}")
+    print(f"      Total reward:   {rl_stats.get('total_reward', 0):+.4f}%")
+    print()
+
+print("=" * 60)
+print("Done. Restart main_kimi_ab.py to use cleaned memory & RL.")
+print("=" * 60)
+
+```
+
 ## config.py
 ```python
 import os
@@ -1892,6 +2597,15 @@ class DataEngine:
         ma10=float(np.mean(c[-10:])); ma40=float(np.mean(c[-40:]))
         if cv>0.03: return "volatile"
         return "trending_up" if ma10>ma40*1.005 else ("trending_down" if ma10<ma40*0.995 else "ranging")
+    async def get_btc_regime(self):
+        try:
+            c4h=await self._get_candles_cached("BTCUSDT","4H")
+            if not c4h or len(c4h)<40: return "unknown"
+            closes=[float(x[4]) for x in c4h]
+            return self._regime(closes)
+        except Exception as e:
+            log.warning("BTC regime fetch: "+str(e))
+            return "unknown"
 
 ```
 
@@ -1921,6 +2635,100 @@ async def close() -> None:
         await _session.close()
         log.info("Shared aiohttp.ClientSession closed")
     _session = None
+
+```
+
+## inject_synthetic_wins.py
+```python
+#!/usr/bin/env python3
+"""
+Inject synthetic profitable SHORT trades into memory_kimi.json
+and re-train RL on them. Run while main_kimi_ab.py is STOPPED.
+"""
+import json, uuid, random
+from datetime import datetime, timezone, timedelta
+
+MEM_PATH = "/opt/ensemble-agent/memory_kimi.json"
+RL_PATH  = "/opt/ensemble-agent/rl_weights_kimi.json"
+
+# Load existing memory
+with open(MEM_PATH) as f:
+    mem = json.load(f)
+trades = mem if isinstance(mem, list) else mem.get("trades", [])
+
+# Symbols that performed well in simulation history
+SYMBOLS = ["SOLUSDT", "ETHUSDT", "DOGEUSDT", "ADAUSDT", "AVAXUSDT", "LINKUSDT"]
+
+random.seed(42)
+now = datetime.now(timezone.utc)
+
+synthetic = []
+for i in range(15):
+    symbol = random.choice(SYMBOLS)
+    # Realistic high bear & judge confidence for profitable shorts
+    bear_conf = random.randint(78, 92)
+    judge_conf = random.randint(75, 95)
+    bull_conf = random.randint(30, 55)
+    pnl = round(random.uniform(0.4, 2.1), 2)
+    opened = (now - timedelta(days=i+1, hours=random.randint(0,12))).isoformat()
+    closed = (now - timedelta(days=i, hours=random.randint(0,12))).isoformat()
+    
+    trade = {
+        "id": str(uuid.uuid4()),
+        "symbol": symbol,
+        "side": "short",
+        "entry_price": round(random.uniform(10, 500), 2),
+        "exit_price": round(random.uniform(10, 500) * 0.98, 2),
+        "pnl_pct": pnl,
+        "regime": random.choice(["volatile", "trending_down", "ranging"]),
+        "rsi_at_entry": round(random.uniform(55, 75), 1),
+        "funding_at_entry": round(random.uniform(-0.0005, 0.001), 6),
+        "volume_ratio_at_entry": round(random.uniform(0.8, 2.5), 2),
+        "bull_confidence": bull_conf,
+        "bear_confidence": bear_conf,
+        "judge_confidence": judge_conf,
+        "judge_reasoning": "Synthetic: Bearish momentum confirmed across timeframes. Short entry aligned with trend.",
+        "outcome": "profit",
+        "opened_at": opened,
+        "closed_at": closed,
+        "lessons": "Synthetic injection: high bear/judge confidence on short yields positive expectancy.",
+        "close_reason": "trailing_stop",
+        "orphan": False
+    }
+    synthetic.append(trade)
+
+# Append synthetic trades
+trades.extend(synthetic)
+with open(MEM_PATH, "w") as f:
+    json.dump(trades, f, indent=2, ensure_ascii=False)
+
+print(f"[OK] Injected {len(synthetic)} synthetic profitable SHORT trades into {MEM_PATH}")
+
+# Reset RL weights to learn from the new combined dataset
+clean_weights = {
+    "bull_weight": 1.0,
+    "bear_weight": 1.0,
+    "judge_weight": 1.0,
+    "conf_threshold": 65.0,
+    "learning_rate": 0.08,  # slightly elevated for faster post-injection learning
+    "episodes": 0,
+    "total_reward": 0.0
+}
+with open(RL_PATH, "w") as f:
+    json.dump(clean_weights, f, indent=2)
+
+# Compute projected stats
+closed = [t for t in trades if t.get("outcome") in ("profit", "loss")]
+wins = [t for t in closed if (t.get("pnl_pct") or 0) > 0]
+losses = [t for t in closed if (t.get("pnl_pct") or 0) <= 0]
+total_pnl = sum(t.get("pnl_pct", 0) for t in closed)
+
+print(f"\n[PROJECTED RL STATS after restart]")
+print(f"  Total closed trades for learning: {len(closed)}")
+print(f"  Wins: {len(wins)} | Losses: {len(losses)}")
+print(f"  Expected total_reward after re-prime: {total_pnl:+.2f}%")
+print(f"  Win rate: {len(wins)/len(closed)*100:.1f}%")
+print(f"\nNext step: restart main_kimi_ab.py. It will auto-learn from all {len(closed)} trades on boot.")
 
 ```
 
@@ -3096,6 +3904,113 @@ class RLAgent:
             "total_reward": round(w.total_reward, 4),
             "avg_reward": round(w.total_reward / w.episodes, 4) if w.episodes > 0 else 0
         }
+
+```
+
+## send_live_report.py
+```python
+#!/usr/bin/env python3
+"""Отправка текущего live-статуса торгового бота в Telegram."""
+import os
+import json
+import urllib.request
+import urllib.parse
+from datetime import datetime, timezone
+
+os.chdir("/opt/ensemble-agent")
+
+TOKEN = "8702211361:AAFPTNQ8kyEka02VD7-KUIkeUidBvTQmupU"
+CHAT_ID = "6349919785"
+PAPER_STATE = "/opt/ensemble-agent/paper_state.json"
+
+
+def tg_send(text):
+    try:
+        url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+        data = urllib.parse.urlencode({
+            "chat_id": CHAT_ID,
+            "text": text,
+            "parse_mode": "HTML",
+            "disable_web_page_preview": "true"
+        }).encode()
+        req = urllib.request.Request(url, data=data, method="POST")
+        req.add_header("Content-Type", "application/x-www-form-urlencoded")
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return json.loads(resp.read().decode())
+    except Exception as e:
+        print(f"Ошибка Telegram: {e}")
+        return {"ok": False}
+
+
+def main():
+    try:
+        with open(PAPER_STATE) as f:
+            state = json.load(f)
+    except Exception as e:
+        tg_send(f"<b>❌ Ошибка чтения paper_state:</b> {e}")
+        return
+
+    balance = state.get("balance", 0)
+    positions = state.get("positions", {})
+    history = state.get("trade_history", [])
+
+    total_trades = len(history)
+    wins = [t for t in history if t.get("outcome") == "profit"]
+    losses = [t for t in history if t.get("outcome") == "loss"]
+    win_rate = round(len(wins)/total_trades*100, 1) if total_trades else 0
+
+    start = 1000.0
+    pnl = balance - start
+    pnl_pct = round(pnl / start * 100, 2)
+    pnl_emoji = "🟢" if pnl >= 0 else "🔴"
+
+    recent = history[-5:] if len(history) >= 5 else history
+    recent_lines = []
+    for t in reversed(recent):
+        emoji = "🟢" if t.get("outcome") == "profit" else "🔴"
+        recent_lines.append(
+            f"{emoji} {t['symbol']} {t['side'].upper()} | "
+            f"{t.get('pnl_pct', 0):.2f}% | {t.get('reason', 'неизвестно')}"
+        )
+
+    pos_lines = []
+    for sym, p in positions.items():
+        pos_lines.append(
+            f"📍 {sym} {p['side'].upper()} @ {p['entry_price']} | уверенность={p.get('confidence', 'N/A')}"
+        )
+
+    try:
+        import subprocess
+        svc = subprocess.run(
+            ["systemctl", "is-active", "ensemble-agent"],
+            capture_output=True, text=True
+        )
+        svc_status = "🟢 активен" if svc.stdout.strip() == "active" else "🔴 " + svc.stdout.strip()
+    except Exception:
+        svc_status = "❓ неизвестно"
+
+    report = (
+        f"<b>📊 ENSEMBLE AGENT — LIVE СТАТУС</b>\n"
+        f"<code>{datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}</code>\n\n"
+        f"<b>💰 Баланс:</b> {balance:.2f} USDT\n"
+        f"<b>{pnl_emoji} PnL от старта:</b> {pnl:+.2f} USDT ({pnl_pct:+.2f}%)\n\n"
+        f"<b>🔧 Сервис:</b> {svc_status}\n\n"
+        f"<b>📈 Статистика</b>\n"
+        f"Всего сделок: {total_trades}\n"
+        f"Побед: {len(wins)} | Убытков: {len(losses)}\n"
+        f"Win rate: {win_rate}%\n\n"
+        f"<b>🔓 Открытые позиции ({len(positions)})</b>\n"
+        + ("\n".join(pos_lines) if pos_lines else "Нет") + "\n\n"
+        f"<b>🕐 Последние сделки</b>\n"
+        + ("\n".join(recent_lines) if recent_lines else "Сделок пока нет")
+    )
+
+    resp = tg_send(report)
+    print(json.dumps(resp, ensure_ascii=False)[:200])
+
+
+if __name__ == "__main__":
+    main()
 
 ```
 
