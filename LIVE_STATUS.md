@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-26 10:10:01 UTC
+Generated: 2026-05-26 10:20:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: activating
 ## Processes
 ```
 root      957148  0.0  1.1 131020 45992 ?        Ssl  06:53   0:01 ./venv/bin/python3 dashboard_api.py
-root      957764  0.1  3.2 721644 127420 ?       Ssl  08:17   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      957764  0.1  3.2 722420 128672 ?       Ssl  08:17   0:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -1180,7 +1180,6 @@ root      957764  0.1  3.2 721644 127420 ?       Ssl  08:17   0:10 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-26 09:24:18,738 [INFO] main: XRPUSDT | Bull:long(45%) Bear:short(80%)
 2026-05-26 09:24:22,225 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-26 09:24:22,226 [INFO] main: XRPUSDT | Judge:SHORT conf=72% size=7.0%
 2026-05-26 09:24:22,226 [INFO] main: XRPUSDT | RL adj=77.3%
@@ -1210,12 +1209,13 @@ root      957764  0.1  3.2 721644 127420 ?       Ssl  08:17   0:10 /opt/ensemble
 2026-05-26 09:25:14,061 [INFO] main: UBUSDT | Judge:HOLD conf=80% size=0.0%
 2026-05-26 09:25:14,061 [INFO] main: UBUSDT | RL adj=80.0%
 2026-05-26 09:25:16,064 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-26 10:17:03,652 [INFO] main: Symbols: 30
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  884K  381M   1% /run
+tmpfs           382M  892K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  8.3G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -1227,7 +1227,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       706Mi       387Mi       4.8Mi       2.9Gi       3.0Gi
+Mem:           3.7Gi       806Mi       287Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
