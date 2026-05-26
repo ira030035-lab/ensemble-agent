@@ -1,22 +1,23 @@
 # Live status
 
-Generated: 2026-05-26 08:10:01 UTC
+Generated: 2026-05-26 08:20:01 UTC
 
 ## Services
 ```
-ensemble-agent.service:     inactive
-ensemble-dashboard.service: inactive
+ensemble-agent.service:     active
+ensemble-dashboard.service: activating
 ```
 
 ## Processes
 ```
 root      957148  0.0  1.1 131272 45776 ?        Ssl  06:53   0:01 ./venv/bin/python3 dashboard_api.py
+root      957764  2.1  3.0 713100 119284 ?       Ssl  08:17   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 700.2290679756951,
+  "balance": 693.7746225946951,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1779630553",
@@ -42,18 +43,6 @@ root      957148  0.0  1.1 131272 45776 ?        Ssl  06:53   0:01 ./venv/bin/py
       "notional": 64.26833189999999,
       "leverage": 5
     },
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1779727999",
-      "symbol": "HYPEUSDT",
-      "side": "short",
-      "entry_price": 62.228,
-      "qty": 0.9003,
-      "confidence": 68,
-      "opened_at": "2026-05-25T16:53:19.352678",
-      "cost": 11.204773679999999,
-      "notional": 56.0238684,
-      "leverage": 5
-    },
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1779728592",
       "symbol": "BTCUSDT",
@@ -64,6 +53,18 @@ root      957148  0.0  1.1 131272 45776 ?        Ssl  06:53   0:01 ./venv/bin/py
       "opened_at": "2026-05-25T17:03:12.208650",
       "cost": 9.329447999999998,
       "notional": 46.64723999999999,
+      "leverage": 5
+    },
+    "DOGEUSDT": {
+      "id": "PAPER_DOGEUSDT_1779783431",
+      "symbol": "DOGEUSDT",
+      "side": "short",
+      "entry_price": 0.10115,
+      "qty": 988.6307,
+      "confidence": 72,
+      "opened_at": "2026-05-26T08:17:11.002660",
+      "cost": 19.999999061000004,
+      "notional": 99.99999530500001,
       "leverage": 5
     }
   },
@@ -1141,44 +1142,62 @@ root      957148  0.0  1.1 131272 45776 ?        Ssl  06:53   0:01 ./venv/bin/py
       "closed_at": "2026-05-25T19:38:03.028548",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1779727999",
+      "symbol": "HYPEUSDT",
+      "side": "short",
+      "entry_price": 62.228,
+      "qty": 0.9003,
+      "confidence": 68,
+      "opened_at": "2026-05-25T16:53:19.352678",
+      "cost": 11.204773679999999,
+      "notional": 56.0238684,
+      "leverage": 5,
+      "exit_price": 59.628,
+      "pnl_pct": 20.89,
+      "pnl_usdt": 2.34,
+      "closed_at": "2026-05-26T08:17:03.421756",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -5.6934299263047174
+  "total_pnl": -3.352649926304716
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-25 19:35:50,568 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-25 19:35:50,569 [INFO] main: SUIUSDT | Bull:long(70%) Bear:short(80%)
-2026-05-25 19:35:56,136 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 19:35:56,138 [INFO] main: SUIUSDT | Judge:LONG conf=62% size=6.0%
-2026-05-25 19:35:56,138 [INFO] main: SUIUSDT | RL adj=60.7%
-2026-05-25 19:35:58,140 [INFO] main: Next scan in 60min (weekday-active)
-2026-05-25 19:38:03,027 [INFO] positions: TRAILING-STOP TAOUSDT long peak:2.0% now:0.91%
-2026-05-25 19:38:03,040 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG TAOUSDT @ 282.7000 PnL: 4.55% (+0.44 USDT) | Баланс: 700.23
-2026-05-25 19:38:03,360 [INFO] positions: OK TAOUSDT long PnL:0.91% reason:trailing_stop
-2026-05-25 19:38:03,360 [INFO] positions: Lessons: The TAOUSDT long trade closed with a 0.91% profit. The original reasoning was based on a narrow margin between BULL and BEAR conviction, with BULL conviction at 70% and BEAR conviction at 75%. The trade was ultimately closed by a trailing stop, resulting in a small gain.
-2026-05-25 19:38:03,360 [INFO] rl: RL learned from long TAOUSDT: profit 0.91% | weights bull=0.999 bear=0.974 judge=1.026 threshold=65.11
-2026-05-25 19:59:10,572 [INFO] main: Symbols: 30
-2026-05-25 20:01:09,243 [WARNING] bitget: Bitget GET /api/v2/mix/market/ticker retry 1/3 after  — sleep 0.5s
-2026-05-25 20:01:10,304 [INFO] bitget: Bitget recovered after 1 failures
-2026-05-25 20:07:55,325 [INFO] main: Shutting down...
-2026-05-25 20:07:55,326 [INFO] positions: Position monitor stopped
-2026-05-25 20:07:55,347 [INFO] http_pool: Shared aiohttp.ClientSession closed
-2026-05-25 20:08:09,216 [INFO] memory: Memory loaded: 82 trades
-2026-05-25 20:08:09,216 [INFO] rl: RL weights loaded: bull=1.001 bear=0.975 judge=1.025 episodes=23
-2026-05-25 20:08:09,217 [INFO] positions: Restored 4 positions from paper_state (1L/3S)
-2026-05-25 20:08:09,217 [INFO] main: === Adversarial Trading Agent started ===
-2026-05-25 20:08:09,217 [INFO] main: Bull: race(Kimi x1, Groq x2) → Haiku fb | Bear: race(Groq x2, Kimi x1) → Haiku fb | Judge: Haiku (decide) + Groq Llama (exit/dir/reflect)
-2026-05-25 20:08:09,897 [INFO] main: Symbols: 30
-2026-05-25 20:08:09,897 [INFO] main: Scanning 26 symbols...
-2026-05-25 20:08:09,898 [INFO] positions: Position monitor started
-2026-05-25 20:08:11,306 [INFO] http_pool: Shared aiohttp.ClientSession created
-2026-05-25 20:08:12,677 [INFO] main: GRASSUSDT | Bull:long(70%) Bear:short(70%)
-2026-05-25 20:08:23,520 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-25 20:08:23,556 [INFO] main: GRASSUSDT | Judge:HOLD conf=70% size=0.0%
-2026-05-25 20:08:23,556 [INFO] main: GRASSUSDT | RL adj=70.0%
+2026-05-26 08:19:01,494 [INFO] main: PEPEUSDT | gate PASS (Judge 72/70 RL 77.6/65.0 slack=±3)
+2026-05-26 08:19:01,495 [INFO] positions: Same-side cap: skip SHORT PEPEUSDT (3/3 already short)
+2026-05-26 08:19:05,372 [INFO] main: NEARUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-26 08:19:11,526 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-26 08:19:11,528 [INFO] main: NEARUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-26 08:19:11,528 [INFO] main: NEARUSDT | RL adj=80.0%
+2026-05-26 08:19:15,290 [INFO] main: RENDERUSDT | Bull:long(70%) Bear:short(80%)
+2026-05-26 08:19:21,491 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-26 08:19:21,493 [INFO] main: RENDERUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-26 08:19:21,493 [INFO] main: RENDERUSDT | RL adj=80.0%
+2026-05-26 08:19:25,206 [INFO] main: ESPORTSUSDT | Bull:long(60%) Bear:short(80%)
+2026-05-26 08:19:30,961 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-26 08:19:30,962 [INFO] main: ESPORTSUSDT | Judge:HOLD conf=72% size=0.0%
+2026-05-26 08:19:30,963 [INFO] main: ESPORTSUSDT | RL adj=72.0%
+2026-05-26 08:19:34,637 [INFO] main: SUIUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-26 08:19:39,259 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-26 08:19:39,260 [INFO] main: SUIUSDT | Judge:SHORT conf=72% size=5.0%
+2026-05-26 08:19:39,260 [INFO] main: SUIUSDT | RL adj=77.3%
+2026-05-26 08:19:39,261 [INFO] main: SUIUSDT | gate PASS (Judge 72/70 RL 77.3/65.0 slack=±3)
+2026-05-26 08:19:39,261 [INFO] positions: Same-side cap: skip SHORT SUIUSDT (3/3 already short)
+2026-05-26 08:19:43,155 [INFO] main: XRPUSDT | Bull:long(45%) Bear:short(80%)
+2026-05-26 08:19:48,880 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-26 08:19:48,881 [INFO] main: XRPUSDT | Judge:SHORT conf=72% size=6.0%
+2026-05-26 08:19:48,881 [INFO] main: XRPUSDT | RL adj=77.3%
+2026-05-26 08:19:48,882 [INFO] main: XRPUSDT | gate PASS (Judge 72/70 RL 77.3/65.0 slack=±3)
+2026-05-26 08:19:48,882 [INFO] positions: Same-side cap: skip SHORT XRPUSDT (3/3 already short)
+2026-05-26 08:19:52,616 [INFO] main: TIAUSDT | Bull:long(65%) Bear:short(80%)
+2026-05-26 08:19:58,639 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-26 08:19:58,640 [INFO] main: TIAUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-26 08:19:58,640 [INFO] main: TIAUSDT | RL adj=80.0%
 ```
 
 ## Disk
@@ -1196,7 +1215,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       597Mi       502Mi       4.8Mi       2.9Gi       3.1Gi
+Mem:           3.7Gi       707Mi       392Mi       4.8Mi       2.9Gi       3.0Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
