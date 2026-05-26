@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-26 14:30:01 UTC
+Generated: 2026-05-26 14:40:01 UTC
 
 ## Services
 ```
@@ -11,13 +11,13 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      966808  0.0  1.1 130732 45428 ?        Ssl  13:12   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      967251  0.1  3.1 686652 124528 ?       Ssl  13:28   0:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      967251  0.2  3.2 690236 128340 ?       Ssl  13:28   0:08 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 707.7904729746951,
+  "balance": 727.4426143746952,
   "positions": {
     "DOGEUSDT": {
       "id": "PAPER_DOGEUSDT_1779783431",
@@ -29,18 +29,6 @@ root      967251  0.1  3.1 686652 124528 ?       Ssl  13:28   0:05 /opt/ensemble
       "opened_at": "2026-05-26T08:17:11.002660",
       "cost": 19.999999061000004,
       "notional": 99.99999530500001,
-      "leverage": 5
-    },
-    "TAOUSDT": {
-      "id": "PAPER_TAOUSDT_1779787490",
-      "symbol": "TAOUSDT",
-      "side": "long",
-      "entry_price": 286.63,
-      "qty": 0.3489,
-      "confidence": 68,
-      "opened_at": "2026-05-26T09:24:50.592448",
-      "cost": 20.0010414,
-      "notional": 100.005207,
       "leverage": 5
     }
   },
@@ -1226,44 +1214,62 @@ root      967251  0.1  3.1 686652 124528 ?       Ssl  13:28   0:05 /opt/ensemble
       "closed_at": "2026-05-26T13:49:44.053956",
       "reason": "breakeven_stop",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_TAOUSDT_1779787490",
+      "symbol": "TAOUSDT",
+      "side": "long",
+      "entry_price": 286.63,
+      "qty": 0.3489,
+      "confidence": 68,
+      "opened_at": "2026-05-26T09:24:50.592448",
+      "cost": 20.0010414,
+      "notional": 100.005207,
+      "leverage": 5,
+      "exit_price": 285.63,
+      "pnl_pct": -1.74,
+      "pnl_usdt": -0.35,
+      "closed_at": "2026-05-26T14:38:42.096007",
+      "reason": "breakeven_stop",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -3.0679101263047066
+  "total_pnl": -3.4168101263047066
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-26 13:33:55,592 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 13:33:55,594 [INFO] main: SUIUSDT | Bull:flat(55%) Bear:short(75%)
-2026-05-26 13:34:00,367 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-26 13:34:00,368 [INFO] main: SUIUSDT | Judge:HOLD conf=75% size=0.0%
-2026-05-26 13:34:00,368 [INFO] main: SUIUSDT | RL adj=75.0%
-2026-05-26 13:34:06,649 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 13:34:08,294 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 13:34:08,296 [INFO] main: BEATUSDT | Bull:long(75%) Bear:short(60%)
-2026-05-26 13:34:14,352 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-26 13:34:14,353 [INFO] main: BEATUSDT | Judge:HOLD conf=75% size=0.0%
-2026-05-26 13:34:14,354 [INFO] main: BEATUSDT | RL adj=75.0%
-2026-05-26 13:34:21,413 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 13:34:23,781 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 13:34:23,783 [INFO] main: DRIFTUSDT | Bull:long(50%) Bear:short(80%)
-2026-05-26 13:34:29,212 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-26 13:34:29,213 [INFO] main: DRIFTUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-26 13:34:29,213 [INFO] main: DRIFTUSDT | RL adj=80.0%
-2026-05-26 13:34:35,401 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 13:34:38,026 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 13:34:38,027 [INFO] main: LINKUSDT | Bull:long(75%) Bear:short(70%)
-2026-05-26 13:34:43,209 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-26 13:34:43,210 [INFO] main: LINKUSDT | Judge:HOLD conf=72% size=0.0%
-2026-05-26 13:34:43,211 [INFO] main: LINKUSDT | RL adj=72.0%
-2026-05-26 13:34:45,212 [INFO] main: Next scan in 60min (weekday-active)
-2026-05-26 13:49:44,053 [INFO] positions: BREAKEVEN_STOP ONDOUSDT short PnL:-0.12%
-2026-05-26 13:49:44,059 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ONDOUSDT @ 0.4211 PnL: -0.59% (-0.12 USDT) | Баланс: 707.79
-2026-05-26 13:49:44,596 [INFO] positions: LOSS ONDOUSDT short PnL:-0.12% reason:breakeven_stop
-2026-05-26 13:49:44,596 [INFO] positions: Lessons: The trade was closed at breakeven due to a stop loss, resulting in a small loss of 0.12%. The original analysis correctly identified a strong bearish trend but was unable to capitalize on it, highlighting the importance of precise stop loss placement. This trade serves as a reminder to balance conviction with risk management and to be cautious of RSI exhaustion risk in trending markets.
-2026-05-26 13:49:44,596 [INFO] rl: RL learned from short ONDOUSDT: loss -0.12% | weights bull=0.977 bear=0.992 judge=1.031 threshold=64.99
-2026-05-26 14:28:37,528 [INFO] main: Symbols: 30
+2026-05-26 14:38:57,150 [INFO] main: ONDOUSDT | Judge:SHORT conf=68% size=6.0%
+2026-05-26 14:38:57,150 [INFO] main: ONDOUSDT | RL adj=72.6%
+2026-05-26 14:38:57,151 [INFO] main: ONDOUSDT | regime BLOCK (short × trending_down × rsi1h=47.6; late-entry guard)
+2026-05-26 14:39:03,833 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-26 14:39:03,942 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-26 14:39:03,944 [INFO] main: ZECUSDT | Bull:long(60%) Bear:short(70%)
+2026-05-26 14:39:10,840 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-26 14:39:10,841 [INFO] main: ZECUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-26 14:39:10,841 [INFO] main: ZECUSDT | RL adj=70.0%
+2026-05-26 14:39:17,398 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-26 14:39:18,478 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-26 14:39:18,480 [INFO] main: ESPORTSUSDT | Bull:long(55%) Bear:short(80%)
+2026-05-26 14:39:24,312 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-26 14:39:24,314 [INFO] main: ESPORTSUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-26 14:39:24,314 [INFO] main: ESPORTSUSDT | RL adj=80.0%
+2026-05-26 14:39:34,868 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-26 14:39:34,878 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-26 14:39:34,879 [INFO] main: BSBUSDT | Bull:long(45%) Bear:short(90%)
+2026-05-26 14:39:40,864 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-26 14:39:40,865 [INFO] main: BSBUSDT | Judge:HOLD conf=90% size=0.0%
+2026-05-26 14:39:40,865 [INFO] main: BSBUSDT | RL adj=90.0%
+2026-05-26 14:39:48,130 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-26 14:39:48,472 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-26 14:39:48,473 [INFO] main: INUSDT | Bull:long(60%) Bear:short(80%)
+2026-05-26 14:39:53,965 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-26 14:39:53,966 [INFO] main: INUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-26 14:39:53,967 [INFO] main: INUSDT | RL adj=80.0%
+2026-05-26 14:40:00,263 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-26 14:40:01,228 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-26 14:40:01,229 [INFO] main: NILUSDT | Bull:long(80%) Bear:short(80%)
 ```
 
 ## Disk
@@ -1281,7 +1287,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       962Mi       302Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       966Mi       295Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
