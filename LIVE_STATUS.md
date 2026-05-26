@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-26 20:20:01 UTC
+Generated: 2026-05-26 20:30:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      966808  0.0  1.1 131756 45560 ?        Ssl  13:12   0:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      968862  0.1  3.4 729788 134940 ?       Ssl  15:29   0:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      968862  0.1  3.4 730824 135832 ?       Ssl  15:29   0:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -1252,7 +1252,6 @@ root      968862  0.1  3.4 729788 134940 ?       Ssl  15:29   0:24 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-26 20:02:53,442 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-26 20:02:53,443 [INFO] main: TIAUSDT | Judge:HOLD conf=70% size=0.0%
 2026-05-26 20:02:53,443 [INFO] main: TIAUSDT | RL adj=70.0%
 2026-05-26 20:02:59,908 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -1282,6 +1281,7 @@ root      968862  0.1  3.4 729788 134940 ?       Ssl  15:29   0:24 /opt/ensemble
 2026-05-26 20:03:41,899 [INFO] main: ADAUSDT | Judge:HOLD conf=75% size=0.0%
 2026-05-26 20:03:41,899 [INFO] main: ADAUSDT | RL adj=75.0%
 2026-05-26 20:03:43,901 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-26 20:29:39,631 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1299,7 +1299,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       756Mi       464Mi       4.8Mi       2.8Gi       3.0Gi
+Mem:           3.7Gi       764Mi       455Mi       4.8Mi       2.8Gi       3.0Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
