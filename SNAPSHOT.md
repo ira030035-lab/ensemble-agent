@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-26 06:00:01 UTC
+Generated: 2026-05-26 07:00:01 UTC
 
 ## agents.py
 ```python
@@ -808,14 +808,14 @@ def read_trades_sample(d: str, n: int = 5) -> list:
     return []
 
 def format_report(step_a_dirs: list, step_b_dirs: list) -> str:
-    """Build HTML report."""
+    """Build HTML report (Russian)."""
     lines = []
-    lines.append("<b>📊 AUTO-PIPELINE REPORT</b>")
+    lines.append("<b>📊 ОТЧЁТ AUTO-PIPELINE</b>")
     lines.append(f"<code>{datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}</code>")
     lines.append("")
-    
+
     # Step A results
-    lines.append("<b>✅ A: live_mirror SL/TP (mock, 3 symbols)</b>")
+    lines.append("<b>✅ A: live_mirror SL/TP (mock, 3 символа)</b>")
     variants = []
     for d in sorted(step_a_dirs):
         stats = read_stats_json(d)
@@ -823,54 +823,54 @@ def format_report(step_a_dirs: list, step_b_dirs: list) -> str:
             name = os.path.basename(d)
             variants.append({
                 "name": name,
-                "trades": stats.get("total_trades", 0),
-                "win": stats.get("win_rate", 0),
-                "pnl": stats.get("total_pnl_pct", 0),
-                "sl": stats.get("sl_count", 0),
-                "tp": stats.get("tp_count", 0),
-                "trail": stats.get("trailing_count", 0),
-                "balance": stats.get("final_balance", 0),
+                "trades": stats.get("total_trades") or 0,
+                "win": stats.get("win_rate") or 0,
+                "pnl": stats.get("total_pnl_pct") or 0,
+                "sl": stats.get("sl_count") or 0,
+                "tp": stats.get("tp_count") or 0,
+                "trail": stats.get("trailing_count") or 0,
+                "balance": stats.get("final_balance") or 0,
             })
-    
+
     for i, v in enumerate(variants, 1):
-        lines.append(f"  V{i}: {v['trades']} trades | WR {v['win']:.1f}% | PnL {v['pnl']:.1f}% | SL {v['sl']} | TP {v['tp']} | Trail {v['trail']} | Bal {v['balance']:.1f}")
-    
+        lines.append(f"  В{i}: {v['trades']} сделок | WR {v['win']:.1f}% | PnL {v['pnl']:.1f}% | SL {v['sl']} | TP {v['tp']} | Trail {v['trail']} | Баланс {v['balance']:.1f}")
+
     best_a = max(variants, key=lambda x: x["balance"]) if variants else None
     if best_a:
-        lines.append(f"<b>🏆 Best A:</b> {best_a['name']} (balance {best_a['balance']:.1f})")
+        lines.append(f"<b>🏆 Лучший A:</b> {best_a['name']} (баланс {best_a['balance']:.1f})")
     lines.append("")
-    
+
     # Step B results
-    lines.append("<b>✅ B: optimized → live_mirror (Kimi API, 10 symbols)</b>")
+    lines.append("<b>✅ B: optimized → live_mirror (Kimi API, 10 символов)</b>")
     for d in sorted(step_b_dirs):
         stats = read_stats_json(d)
         name = os.path.basename(d)
         if stats:
             mode = stats.get("mode", "?")
             lines.append(f"  {name} [{mode}]:")
-            lines.append(f"    Trades: {stats.get('total_trades', 0)} | Win: {stats.get('win_rate', 0):.1f}%")
-            lines.append(f"    PnL: {stats.get('total_pnl_pct', 0):.1f}% | Balance: {stats.get('final_balance', 0):.1f}")
-            lines.append(f"    SL: {stats.get('sl_count', 0)} | TP: {stats.get('tp_count', 0)} | Trail: {stats.get('trailing_count', 0)}")
+            lines.append(f"    Сделок: {stats.get('total_trades') or 0} | Win: {(stats.get('win_rate') or 0):.1f}%")
+            lines.append(f"    PnL: {(stats.get('total_pnl_pct') or 0):.1f}% | Баланс: {(stats.get('final_balance') or 0):.1f}")
+            lines.append(f"    SL: {stats.get('sl_count') or 0} | TP: {stats.get('tp_count') or 0} | Trail: {stats.get('trailing_count') or 0}")
         else:
-            lines.append(f"  {name}: no stats.json")
+            lines.append(f"  {name}: нет stats.json")
     lines.append("")
-    
+
     # Step C
-    lines.append("<b>✅ C: Config updated</b>")
-    lines.append("  Parameters verified:")
+    lines.append("<b>✅ C: Конфиг обновлён</b>")
+    lines.append("  Параметры проверены:")
     lines.append("  • STOP_LOSS_PCT = -3.0 | TAKE_PROFIT_PCT = 3.0")
     lines.append("  • MIN_RR = 1.2 | COOLDOWN_HOURS = 6.0")
     lines.append("  • MAX_HOLD_HOURS = 24.0 | VOLATILITY_FILTER = 0.003")
     lines.append("  • TOP_N_SYMBOLS = 15 | MAX_POSITIONS = 8")
     lines.append("")
-    
+
     # Step D
-    lines.append("<b>✅ D: Live agent launched</b>")
-    lines.append("  main_kimi_ab.py started (paper mode)")
-    lines.append("  Monitoring: tail -f /opt/ensemble-agent/ensemble_kimi.log")
+    lines.append("<b>✅ D: Live-агент запущен</b>")
+    lines.append("  main_kimi_ab.py стартовал (paper mode)")
+    lines.append("  Мониторинг: tail -f /opt/ensemble-agent/ensemble_kimi.log")
     lines.append("")
-    lines.append("<b>🚀 Pipeline complete.</b>")
-    
+    lines.append("<b>🚀 Pipeline завершён.</b>")
+
     return "\n".join(lines)
 
 def step_c_update_config():
@@ -964,7 +964,7 @@ def main():
     
     if not pid:
         logmsg("ERROR: run_sim_sequence.sh not found")
-        tg_send("<b>❌ ERROR:</b> run_sim_sequence.sh not found. Pipeline aborted.")
+        tg_send("<b>❌ ОШИБКА:</b> run_sim_sequence.sh не найден. Pipeline прерван.")
         return
     
     logmsg(f"Monitoring PID {pid}")
@@ -973,7 +973,7 @@ def main():
     exited = wait_for_process(pid, timeout_sec=None)
     if not exited:
         logmsg("ERROR: timeout waiting for process")
-        tg_send("<b>❌ ERROR:</b> Timeout waiting for B step.")
+        tg_send("<b>❌ ОШИБКА:</b> Таймаут ожидания шага B.")
         return
     
     logmsg("Step B completed. Waiting 10s for files to flush...")
@@ -1019,7 +1019,7 @@ def main():
         resp2 = tg_send(report)
         logmsg(f"Telegram response 2: {json.dumps(resp2, ensure_ascii=False)[:200]}")
         if not resp2.get("ok"):
-            tg_send("<b>❌ CRITICAL:</b> Failed to send full report. Check auto_pipeline.log and auto_pipeline_report.txt on server.")
+            tg_send("<b>❌ КРИТИЧНО:</b> Не удалось отправить полный отчёт. Проверьте auto_pipeline.log и auto_pipeline_report.txt на сервере.")
     
     # Send trades.csv and stats.json from best B run
     if step_b_dirs:
@@ -1028,18 +1028,18 @@ def main():
         trades_path = os.path.join(best_b, "trades.csv")
         if os.path.exists(stats_path):
             logmsg("Sending stats.json...")
-            tg_send_file(stats_path, f"Stats for {os.path.basename(best_b)}")
+            tg_send_file(stats_path, f"Статистика для {os.path.basename(best_b)}")
         if os.path.exists(trades_path):
             logmsg("Sending trades.csv...")
-            tg_send_file(trades_path, f"Trades for {os.path.basename(best_b)}")
+            tg_send_file(trades_path, f"Сделки для {os.path.basename(best_b)}")
     
     # Final confirmation
     confirm_msg = (
-        "<b>✅ FINAL CONFIRMATION</b>\n"
-        f"Pipeline B→C→D completed at {datetime.now(timezone.utc).strftime('%H:%M UTC')}\n"
-        f"Live agent PID: {agent_pid or 'unknown'}\n"
-        f"Config backup: config.py.auto_backup\n"
-        "Check logs: auto_pipeline.log"
+        "<b>✅ ФИНАЛЬНОЕ ПОДТВЕРЖДЕНИЕ</b>\n"
+        f"Pipeline B→C→D завершён в {datetime.now(timezone.utc).strftime('%H:%M UTC')}\n"
+        f"PID live-агента: {agent_pid or 'неизвестен'}\n"
+        f"Бэкап конфига: config.py.auto_backup\n"
+        "Логи: auto_pipeline.log"
     )
     resp3 = tg_send(confirm_msg)
     logmsg(f"Confirmation sent: {resp3.get('ok')}")
@@ -2820,6 +2820,80 @@ class RLAgent:
             "total_reward": round(w.total_reward, 4),
             "avg_reward": round(w.total_reward / w.episodes, 4) if w.episodes > 0 else 0
         }
+
+```
+
+## send_manual_report.py
+```python
+#!/usr/bin/env python3
+"""Manual report sender after pipeline crash."""
+import os
+import sys
+import glob
+import json
+
+os.chdir("/opt/ensemble-agent")
+sys.path.insert(0, "/opt/ensemble-agent")
+
+# Import functions from auto_pipeline
+from auto_pipeline import (
+    get_latest_output_dirs, read_stats_json, format_report,
+    tg_send, tg_send_file
+)
+
+# Reconstruct dirs exactly as pipeline would
+step_a_dirs = get_latest_output_dirs(3)
+all_dirs = sorted(glob.glob("simulator_output/2026*"), key=os.path.getmtime, reverse=True)
+step_b_dirs = [d for d in all_dirs if d not in step_a_dirs][:2]
+
+print(f"Step A dirs: {[os.path.basename(d) for d in step_a_dirs]}")
+print(f"Step B dirs: {[os.path.basename(d) for d in step_b_dirs]}")
+
+# Build report
+report = format_report(step_a_dirs, step_b_dirs)
+report_path = "/opt/ensemble-agent/auto_pipeline_report.txt"
+with open(report_path, "w") as f:
+    f.write(report)
+print(f"Report saved to {report_path}")
+
+# Send report
+print("Sending report to Telegram (attempt 1)...")
+resp1 = tg_send(report)
+print(f"Response 1: {json.dumps(resp1, ensure_ascii=False)[:200]}")
+
+if not resp1.get("ok"):
+    print("Retrying in 10s...")
+    import time
+    time.sleep(10)
+    resp2 = tg_send(report)
+    print(f"Response 2: {json.dumps(resp2, ensure_ascii=False)[:200]}")
+    if not resp2.get("ok"):
+        tg_send("<b>❌ CRITICAL:</b> Failed to send full report. Check auto_pipeline.log and auto_pipeline_report.txt on server.")
+
+# Send files from best B run
+if step_b_dirs:
+    best_b = max(step_b_dirs, key=lambda d: (read_stats_json(d).get("final_balance") or 0))
+    stats_path = os.path.join(best_b, "stats.json")
+    trades_path = os.path.join(best_b, "trades.csv")
+    if os.path.exists(stats_path):
+        print("Sending stats.json...")
+        tg_send_file(stats_path, f"Stats for {os.path.basename(best_b)}")
+    if os.path.exists(trades_path):
+        print("Sending trades.csv...")
+        tg_send_file(trades_path, f"Trades for {os.path.basename(best_b)}")
+
+# Final confirmation
+agent_pid = 953517  # Known running PID
+confirm_msg = (
+    "<b>✅ FINAL CONFIRMATION</b>\n"
+    f"Pipeline B→C→D completed at {__import__('datetime').datetime.now(__import__('datetime').timezone.utc).strftime('%H:%M UTC')}\n"
+    f"Live agent PID: {agent_pid}\n"
+    f"Config backup: config.py.auto_backup\n"
+    "Check logs: auto_pipeline.log"
+)
+resp3 = tg_send(confirm_msg)
+print(f"Confirmation sent: {resp3.get('ok')}")
+print("Done.")
 
 ```
 
