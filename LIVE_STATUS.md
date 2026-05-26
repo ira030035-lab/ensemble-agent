@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-26 11:10:01 UTC
+Generated: 2026-05-26 11:20:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: activating
 ## Processes
 ```
 root      957148  0.0  1.1 131276 46128 ?        Ssl  06:53   0:04 ./venv/bin/python3 dashboard_api.py
-root      957764  0.1  3.3 723640 130208 ?       Ssl  08:17   0:15 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      957764  0.1  3.3 724552 131308 ?       Ssl  08:17   0:15 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -1186,7 +1186,6 @@ root      957764  0.1  3.3 723640 130208 ?       Ssl  08:17   0:15 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-26 10:31:33,408 [INFO] main: SUIUSDT | RL adj=72.0%
 2026-05-26 10:31:44,379 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-26 10:31:47,532 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-26 10:31:47,533 [INFO] main: SOLUSDT | Bull:long(70%) Bear:short(80%)
@@ -1216,6 +1215,7 @@ root      957764  0.1  3.3 723640 130208 ?       Ssl  08:17   0:15 /opt/ensemble
 2026-05-26 10:36:42,746 [INFO] positions: OK BTCUSDT short PnL:0.5% reason:trailing_stop
 2026-05-26 10:36:42,747 [INFO] positions: Lessons: A 20 point conviction gap between BEAR and BULL, combined with overbought RSI and critically weak volume, can signal exhaustion in a trending_up regime. This setup can trigger sharp pullbacks, even in uptrends, as seen in similar historical trades. A tight stop is crucial when taking a contrarian short entry based on these indicators.
 2026-05-26 10:36:42,747 [INFO] rl: RL learned from short BTCUSDT: profit 0.50% | weights bull=0.978 bear=0.991 judge=1.030 threshold=64.97
+2026-05-26 11:17:04,294 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1233,7 +1233,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.0Gi       174Mi       4.8Mi       2.9Gi       2.7Gi
+Mem:           3.7Gi       981Mi       198Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
