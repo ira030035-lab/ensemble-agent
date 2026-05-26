@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-26 13:40:01 UTC
+Generated: 2026-05-26 13:50:01 UTC
 
 ## Services
 ```
@@ -10,14 +10,14 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      966808  0.1  1.1 130472 45420 ?        Ssl  13:12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      967251  0.6  3.1 685252 122980 ?       Ssl  13:28   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      966808  0.0  1.1 130732 45424 ?        Ssl  13:12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      967251  0.3  3.1 685612 123092 ?       Ssl  13:28   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 687.9093497026952,
+  "balance": 707.7904729746951,
   "positions": {
     "DOGEUSDT": {
       "id": "PAPER_DOGEUSDT_1779783431",
@@ -41,18 +41,6 @@ root      967251  0.6  3.1 685252 122980 ?       Ssl  13:28   0:04 /opt/ensemble
       "opened_at": "2026-05-26T09:24:50.592448",
       "cost": 20.0010414,
       "notional": 100.005207,
-      "leverage": 5
-    },
-    "ONDOUSDT": {
-      "id": "PAPER_ONDOUSDT_1779800312",
-      "symbol": "ONDOUSDT",
-      "side": "short",
-      "entry_price": 0.4206,
-      "qty": 237.7556,
-      "confidence": 72,
-      "opened_at": "2026-05-26T12:58:32.727942",
-      "cost": 20.000001071999996,
-      "notional": 100.00000535999999,
       "leverage": 5
     }
   },
@@ -1220,19 +1208,32 @@ root      967251  0.6  3.1 685252 122980 ?       Ssl  13:28   0:04 /opt/ensemble
       "closed_at": "2026-05-26T12:57:26.138068",
       "reason": "advisor_auto_close_long_hold",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ONDOUSDT_1779800312",
+      "symbol": "ONDOUSDT",
+      "side": "short",
+      "entry_price": 0.4206,
+      "qty": 237.7556,
+      "confidence": 72,
+      "opened_at": "2026-05-26T12:58:32.727942",
+      "cost": 20.000001071999996,
+      "notional": 100.00000535999999,
+      "leverage": 5,
+      "exit_price": 0.4211,
+      "pnl_pct": -0.59,
+      "pnl_usdt": -0.12,
+      "closed_at": "2026-05-26T13:49:44.053956",
+      "reason": "breakeven_stop",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -2.9490323263047067
+  "total_pnl": -3.0679101263047066
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-26 13:33:42,743 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 13:33:42,745 [INFO] main: TIAUSDT | Bull:flat(50%) Bear:short(75%)
-2026-05-26 13:33:47,958 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-26 13:33:47,959 [INFO] main: TIAUSDT | Judge:HOLD conf=75% size=0.0%
-2026-05-26 13:33:47,959 [INFO] main: TIAUSDT | RL adj=75.0%
 2026-05-26 13:33:53,907 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-26 13:33:55,592 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-26 13:33:55,594 [INFO] main: SUIUSDT | Bull:flat(55%) Bear:short(75%)
@@ -1258,6 +1259,11 @@ root      967251  0.6  3.1 685252 122980 ?       Ssl  13:28   0:04 /opt/ensemble
 2026-05-26 13:34:43,210 [INFO] main: LINKUSDT | Judge:HOLD conf=72% size=0.0%
 2026-05-26 13:34:43,211 [INFO] main: LINKUSDT | RL adj=72.0%
 2026-05-26 13:34:45,212 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-26 13:49:44,053 [INFO] positions: BREAKEVEN_STOP ONDOUSDT short PnL:-0.12%
+2026-05-26 13:49:44,059 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ONDOUSDT @ 0.4211 PnL: -0.59% (-0.12 USDT) | Баланс: 707.79
+2026-05-26 13:49:44,596 [INFO] positions: LOSS ONDOUSDT short PnL:-0.12% reason:breakeven_stop
+2026-05-26 13:49:44,596 [INFO] positions: Lessons: The trade was closed at breakeven due to a stop loss, resulting in a small loss of 0.12%. The original analysis correctly identified a strong bearish trend but was unable to capitalize on it, highlighting the importance of precise stop loss placement. This trade serves as a reminder to balance conviction with risk management and to be cautious of RSI exhaustion risk in trending markets.
+2026-05-26 13:49:44,596 [INFO] rl: RL learned from short ONDOUSDT: loss -0.12% | weights bull=0.977 bear=0.992 judge=1.031 threshold=64.99
 ```
 
 ## Disk
@@ -1275,7 +1281,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.0Gi       232Mi       4.8Mi       2.8Gi       2.7Gi
+Mem:           3.7Gi       958Mi       316Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
