@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-26 13:00:01 UTC
+Generated: 2026-05-26 14:00:01 UTC
 
 ## ab_test_analyze_apply.py
 ```python
@@ -205,7 +205,7 @@ class AgentVerdict:
 class JudgeDecision:
     action:str; confidence:int; position_size_pct:float; reasoning:str; lessons_from_memory:str
 
-BULL_SYS='You are the BULL agent in an adversarial ensemble — your job is to argue the LONG case rigorously. Default to side="long" with confidence reflecting how strong the evidence is (35-90). Use side="flat" ONLY when the data is genuinely directionless (no trend, mid RSI, neutral MACD, flat volume) — not just because risk exists. A weak-but-real bullish case is still side="long" with confidence 40-55, not "flat". Respond ONLY in JSON: {"side":"long|flat","confidence":0-100,"reasoning":"brief specific"}.'
+BULL_SYS='Ты агент BULL в adversarial ансамбле — твоя задача аргументировать LONG. Учитывай: (1) тренд BTC (4h), (2) RSI 15m/1h, (3) MA10/MA40, (4) funding rate, (5) volume ratio. Не давай confidence по умолчанию — каждое значение должно быть обосновано. side="flat" ТОЛЬКО если данные полностью нейтральны. Отвечай ТОЛЬКО JSON: {"side":"long|flat","confidence":0-100,"reasoning":"кратко и конкретно"}.'
 BEAR_SYS='You are the BEAR agent — a skeptical crypto analyst hunting for the strongest case to AVOID or SHORT this trade. Respond ONLY in JSON with no other text: {"side":"short|flat|long","confidence":0-100,"reasoning":"brief"}. Use side="short" if bearish, "flat" if unclear, "long" only if the data is overwhelmingly bullish. Be specific about why.'
 JUDGE_SYS="""You are the JUDGE in an adversarial trading ensemble. BULL argues for LONG; BEAR argues for SHORT/avoid. A "flat" side from either agent means NEUTRAL — it is NOT opposition, just absence of conviction. Past similar trades may be empty (paper bot, no history) — that is normal, do not let it bias you toward HOLD.
 
@@ -2142,8 +2142,8 @@ class Config:
     JUDGE_EXIT_NOISE_BAND_PCT = 2.5
     STOP_LOSS_PCT = -3.0
     TAKE_PROFIT_PCT = 3.0
-    TRAIL_ARM_PCT = 1.5
-    TRAIL_GIVEBACK_PCT = 1.0
+    TRAIL_ARM_PCT = 2.5
+    TRAIL_GIVEBACK_PCT = 0.8
     EMERGENCY_STOP_PCT = -15.0
     POSITION_SIZE_FIXED = 100.0  # $100 fixed per trade (optimized mode)
     MIN_RR = 1.2
@@ -2213,12 +2213,14 @@ async def _enrich_positions(positions):
         entry = float(pos.get("entry_price") or 0)
         qty = float(pos.get("qty") or 0)
         side = pos.get("side", "long")
+        lev = pos.get("leverage", 5)
         mark = price if price else entry
         if side == "long":
             pnl_usdt = (mark - entry) * qty
         else:
             pnl_usdt = (entry - mark) * qty
-        pnl_pct = ((mark - entry) / entry * 100 * (1 if side == "long" else -1)) if entry else 0
+        # PnL с учётом плеча (как в paper_trading)
+        pnl_pct = ((mark - entry) / entry * 100 * (1 if side == "long" else -1) * lev) if entry else 0
         age_sec = 0
         try:
             opened = datetime.fromisoformat(pos["opened_at"])
@@ -2606,6 +2608,588 @@ class DataEngine:
         except Exception as e:
             log.warning("BTC regime fetch: "+str(e))
             return "unknown"
+
+```
+
+## explorer.py
+```python
+#!/usr/bin/env python3
+"""
+Explorer Agent — data mining через постоянное открытие LONG/SHORT.
+Цель: собрать датасет прибыльных паттернов для RL.
+Размер позиций минимальный ($5), отдельный state (не мешает основному боту).
+"""
+import os
+import sys
+import json
+import time
+import asyncio
+import random
+from datetime import datetime, timezone
+
+os.chdir("/opt/ensemble-agent")
+sys.path.insert(0, "/opt/ensemble-agent")
+
+from dotenv import load_dotenv
+load_dotenv("/opt/ensemble-agent/.env")
+
+from config import Config
+from bitget_client import BitgetClient
+from data_engine import DataEngine
+import aiohttp
+
+# Files
+STATE_FILE = "/opt/ensemble-agent/explorer_state.json"
+TRADES_FILE = "/opt/ensemble-agent/explorer_trades.json"
+LOG_FILE = "/opt/ensemble-agent/explorer.log"
+
+# Settings
+POSITION_SIZE_USD = 5.0  # $5 на сделку
+LEVERAGE = 5
+HOLD_HOURS = 4.0
+SCAN_INTERVAL = 7200     # 2 часа между сессиями
+N_SYMBOLS = 10           # сколько символов исследовать
+
+
+def log(msg):
+    ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+    line = f"[{ts}] {msg}"
+    print(line)
+    with open(LOG_FILE, "a") as f:
+        f.write(line + "\n")
+
+
+def load_state():
+    try:
+        with open(STATE_FILE) as f:
+            return json.load(f)
+    except Exception:
+        return {"balance": 500.0, "positions": [], "total_pnl": 0.0}
+
+
+def save_state(state):
+    tmp = STATE_FILE + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(state, f, indent=2)
+    os.replace(tmp, STATE_FILE)
+
+
+def record_trade(trade):
+    try:
+        with open(TRADES_FILE) as f:
+            trades = json.load(f)
+    except Exception:
+        trades = []
+    trades.append(trade)
+    tmp = TRADES_FILE + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(trades, f, indent=2)
+    os.replace(tmp, TRADES_FILE)
+
+
+async def fetch_price(session, symbol):
+    url = f"https://api.bitget.com/api/v2/mix/market/ticker?symbol={symbol}&productType=USDT-FUTURES"
+    async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as resp:
+        data = await resp.json()
+        return float(data["data"][0]["lastPr"])
+
+
+async def open_positions():
+    cfg = Config()
+    bitget = BitgetClient(cfg)
+    await bitget.start()
+    data = DataEngine(bitget)
+
+    state = load_state()
+    if state["balance"] < POSITION_SIZE_USD * 4:
+        log("Недостаточно баланса для explorer. Ждём.")
+        await bitget.close()
+        return
+
+    try:
+        symbols = await bitget.get_top_symbols(20)
+        random.shuffle(symbols)
+        selected = symbols[:N_SYMBOLS]
+        log(f"Исследуем {len(selected)}: {selected}")
+
+        async with aiohttp.ClientSession() as session:
+            for sym in selected:
+                try:
+                    snapshot = await data.get_snapshot(sym)
+                    if not snapshot:
+                        continue
+                    price = snapshot.price
+
+                    qty = round(POSITION_SIZE_USD / price, 4)
+                    margin = POSITION_SIZE_USD / LEVERAGE
+                    now = datetime.now(timezone.utc).isoformat()
+                    snap_data = {
+                        "rsi_15m": round(snapshot.rsi_15m, 2),
+                        "rsi_1h": round(snapshot.rsi_1h, 2),
+                        "regime": snapshot.regime,
+                        "funding": round(snapshot.funding_rate, 6),
+                        "volume_ratio": round(snapshot.volume_ratio, 2),
+                        "macd": snapshot.macd_signal,
+                        "price_change_1h": round(snapshot.price_change_1h, 2),
+                        "price_change_4h": round(snapshot.price_change_4h, 2),
+                        "bb_position": round(snapshot.bb_position, 2),
+                        "fear_greed": snapshot.fear_greed,
+                        "btc_dominance": snapshot.btc_dominance,
+                    }
+
+                    for side in ("long", "short"):
+                        pos = {
+                            "id": f"EXP_{sym}_{side.upper()}_{int(time.time())}_{random.randint(1000,9999)}",
+                            "symbol": sym,
+                            "side": side,
+                            "entry_price": price,
+                            "qty": qty,
+                            "margin": margin,
+                            "opened_at": now,
+                            "snapshot": snap_data,
+                        }
+                        state["positions"].append(pos)
+                        state["balance"] -= margin
+
+                except Exception as e:
+                    log(f"Ошибка открытия {sym}: {e}")
+
+        save_state(state)
+        log(f"Открыто {len(state['positions'])} позиций. Баланс: {state['balance']:.2f}")
+    finally:
+        await bitget.close()
+
+
+async def close_positions():
+    state = load_state()
+    if not state["positions"]:
+        return
+
+    now = datetime.now(timezone.utc)
+    to_close = []
+    keep = []
+
+    async with aiohttp.ClientSession() as session:
+        for pos in state["positions"]:
+            try:
+                opened = datetime.fromisoformat(pos["opened_at"].replace("Z", "")).replace(tzinfo=timezone.utc)
+                hours = (now - opened).total_seconds() / 3600
+
+                price = await fetch_price(session, pos["symbol"])
+                entry = pos["entry_price"]
+                qty = pos["qty"]
+                side = pos["side"]
+                margin = pos["margin"]
+
+                if side == "long":
+                    pnl_usdt = (price - entry) * qty
+                else:
+                    pnl_usdt = (entry - price) * qty
+
+                if hours >= HOLD_HOURS:
+                    state["balance"] += margin + pnl_usdt
+                    state["total_pnl"] += pnl_usdt
+
+                    trade = {
+                        **pos,
+                        "exit_price": price,
+                        "pnl_usdt": round(pnl_usdt, 4),
+                        "pnl_pct": round(pnl_usdt / margin * 100, 2),
+                        "outcome": "profit" if pnl_usdt > 0 else "loss",
+                        "hold_hours": round(hours, 1),
+                        "closed_at": now.isoformat(),
+                    }
+                    record_trade(trade)
+                    to_close.append(pos["id"])
+                else:
+                    keep.append(pos)
+            except Exception as e:
+                log(f"Ошибка закрытия {pos.get('symbol')}: {e}")
+                keep.append(pos)
+
+    state["positions"] = keep
+    save_state(state)
+    log(f"Закрыто {len(to_close)}, осталось {len(keep)}. Баланс: {state['balance']:.2f} PnL: {state['total_pnl']:+.2f}")
+
+
+async def daily_report():
+    """Отправить в Telegram только прибыльные сделки за сутки."""
+    try:
+        with open(TRADES_FILE) as f:
+            trades = json.load(f)
+    except Exception:
+        return
+
+    cutoff = datetime.now(timezone.utc).timestamp() - 86400
+    recent = [t for t in trades if datetime.fromisoformat(t["closed_at"].replace("Z", "")).replace(tzinfo=timezone.utc).timestamp() > cutoff]
+    profits = [t for t in recent if t["outcome"] == "profit"]
+
+    if not profits:
+        return
+
+    lines = [f"<b>🧪 EXPLORER — прибыльные сделки (24ч)</b>\nВсего: {len(profits)}\n"]
+    for t in sorted(profits, key=lambda x: x["pnl_usdt"], reverse=True)[:10]:
+        snap = t.get("snapshot", {})
+        lines.append(
+            f"🟢 {t['symbol']} {t['side'].upper()} | "
+            f"PnL: {t['pnl_usdt']:+.2f} USDT ({t['pnl_pct']:+.1f}%) | "
+            f"RSI: {snap.get('rsi_15m','?')} | Regime: {snap.get('regime','?')}\n"
+            f"   MACD: {snap.get('macd','?')} | Vol: {snap.get('volume_ratio','?')} | "
+            f"Funding: {snap.get('funding','?')} | Hold: {t['hold_hours']:.1f}ч"
+        )
+
+    # Telegram
+    TOKEN = "8702211361:AAFPTNQ8kyEka02VD7-KUIkeUidBvTQmupU"
+    CHAT_ID = "6349919785"
+    text = "\n\n".join(lines)
+
+    import urllib.request
+    import urllib.parse
+    url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+    data = urllib.parse.urlencode({
+        "chat_id": CHAT_ID,
+        "text": text,
+        "parse_mode": "HTML",
+        "disable_web_page_preview": "true"
+    }).encode()
+    req = urllib.request.Request(url, data=data, method="POST")
+    req.add_header("Content-Type", "application/x-www-form-urlencoded")
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            log(f"Daily report sent: {json.loads(resp.read().decode()).get('ok')}")
+    except Exception as e:
+        log(f"Telegram error: {e}")
+
+
+async def main_loop():
+    log("=" * 50)
+    log("EXPLORER AGENT ЗАПУЩЕН")
+    log(f"Размер: ${POSITION_SIZE_USD} | Плечо: {LEVERAGE}x | Hold: {HOLD_HOURS}ч | Интервал: {SCAN_INTERVAL//3600}ч")
+
+    while True:
+        try:
+            await close_positions()
+            await open_positions()
+        except Exception as e:
+            log(f"Цикл ошибка: {e}")
+
+        # Проверяем, не пора ли daily report (08:00 UTC)
+        now = datetime.now(timezone.utc)
+        if now.hour == 8 and now.minute < 5:
+            await daily_report()
+
+        log(f"Спим {SCAN_INTERVAL}с...")
+        await asyncio.sleep(SCAN_INTERVAL)
+
+
+if __name__ == "__main__":
+    asyncio.run(main_loop())
+
+```
+
+## generate_rl_dataset.py
+```python
+#!/usr/bin/env python3
+"""
+Генерация RL-датасета из исторических свечей без API-вызовов.
+Использует технические индикаторы для synthetic decisions.
+"""
+import os
+import sys
+import json
+import numpy as np
+from pathlib import Path
+from datetime import datetime, timezone
+
+os.chdir("/opt/ensemble-agent")
+sys.path.insert(0, "/opt/ensemble-agent")
+
+try:
+    import pandas as pd
+except ImportError:
+    print("pandas не установлен. Устанавливаем...")
+    os.system("./venv/bin/pip install pandas pyarrow -q")
+    import pandas as pd
+
+CACHE_DIR = Path("simulator_cache")
+OUTPUT_DIR = Path("simulator_output")
+OUTPUT_DIR.mkdir(exist_ok=True)
+
+
+def ema(series, period):
+    return series.ewm(span=period, adjust=False).mean()
+
+
+def rsi(series, period=14):
+    delta = series.diff()
+    gain = delta.where(delta > 0, 0).rolling(window=period).mean()
+    loss = (-delta.where(delta < 0, 0)).rolling(window=period).mean()
+    rs = gain / loss
+    return 100 - (100 / (1 + rs))
+
+
+def atr(df, period=14):
+    high = df['high']
+    low = df['low']
+    close = df['close']
+    tr1 = high - low
+    tr2 = abs(high - close.shift())
+    tr3 = abs(low - close.shift())
+    tr = pd.concat([tr1, tr2, tr3], axis=1).max(axis=1)
+    return tr.rolling(window=period).mean()
+
+
+def generate_transitions(df, symbol):
+    """Генерирует (state, action, reward) transitions из свечей."""
+    transitions = []
+    df = df.copy()
+    df['ema20'] = ema(df['close'], 20)
+    df['ema50'] = ema(df['close'], 50)
+    df['rsi14'] = rsi(df['close'], 14)
+    df['atr14'] = atr(df, 14)
+    df['returns'] = df['close'].pct_change()
+    df['vol_ratio'] = df['volume'] / df['volume'].rolling(20).mean()
+
+    # Пропускаем NaN
+    df = df.dropna()
+
+    for i in range(len(df) - 24):  # нужно 24 свечи вперёд для reward
+        candle = df.iloc[i]
+        future = df.iloc[i+1:i+25]
+
+        price = candle['close']
+        ema20 = candle['ema20']
+        ema50 = candle['ema50']
+        rsi_val = candle['rsi14']
+        atr_val = candle['atr14']
+        vol = candle['vol_ratio']
+
+        # State vector
+        state = {
+            "price_norm": price / df['close'].mean(),
+            "ema_ratio": ema20 / ema50 if ema50 > 0 else 1.0,
+            "rsi": rsi_val / 100.0,
+            "atr_pct": (atr_val / price) * 100 if price > 0 else 0,
+            "vol_ratio": vol if not np.isnan(vol) else 1.0,
+            "price_change_1h": (price - df.iloc[i-4]['close']) / df.iloc[i-4]['close'] * 100 if i >= 4 else 0,
+            "price_change_4h": (price - df.iloc[i-16]['close']) / df.iloc[i-16]['close'] * 100 if i >= 16 else 0,
+        }
+
+        # Synthetic decision (правила, похожие на логику агентов)
+        bull_score = 0
+        bear_score = 0
+
+        if rsi_val < 30:
+            bull_score += 0.4
+        elif rsi_val > 70:
+            bear_score += 0.4
+
+        if ema20 > ema50 * 1.001:
+            bull_score += 0.3
+        elif ema20 < ema50 * 0.999:
+            bear_score += 0.3
+
+        if vol > 1.5:
+            bull_score += 0.1
+            bear_score += 0.1
+
+        # Action
+        if bull_score > bear_score + 0.15:
+            action = "long"
+            confidence = int(50 + bull_score * 50)
+        elif bear_score > bull_score + 0.15:
+            action = "short"
+            confidence = int(50 + bear_score * 50)
+        else:
+            action = "hold"
+            confidence = 50
+
+        if action == "hold":
+            continue  # Пропускаем HOLD для датасета (нет реварда)
+
+        # Simulate trade: entry -> hold 6h (24 свечи 15m)
+        entry = price
+        side = action
+        leverage = 5
+
+        # SL/TP
+        sl_dist = atr_val * 2
+        tp_dist = atr_val * 3
+
+        pnl_pct = 0
+        exited = False
+        for j, fc in enumerate(future.itertuples()):
+            if side == "long":
+                pnl_pct = (fc.close - entry) / entry * 100 * leverage
+                if fc.close <= entry - sl_dist:
+                    pnl_pct = -2.0  # SL hit
+                    exited = True
+                    break
+                if fc.close >= entry + tp_dist:
+                    pnl_pct = 3.0  # TP hit
+                    exited = True
+                    break
+            else:
+                pnl_pct = (entry - fc.close) / entry * 100 * leverage
+                if fc.close >= entry + sl_dist:
+                    pnl_pct = -2.0
+                    exited = True
+                    break
+                if fc.close <= entry - tp_dist:
+                    pnl_pct = 3.0
+                    exited = True
+                    break
+
+        if not exited:
+            # Close at end of period
+            last = future.iloc[-1]['close']
+            if side == "long":
+                pnl_pct = (last - entry) / entry * 100 * leverage
+            else:
+                pnl_pct = (entry - last) / entry * 100 * leverage
+
+        # Reward: PnL in USDT for $100 notional
+        reward = pnl_pct * 0.2  # $100 * leverage / 5 = $20 margin, reward = pnl% * 0.2
+
+        transitions.append({
+            "symbol": symbol,
+            "timestamp": str(df.index[i]) if hasattr(df.index, 'dtype') else i,
+            "state": state,
+            "action": action,
+            "confidence": confidence,
+            "reward": round(reward, 4),
+            "pnl_pct": round(pnl_pct, 2),
+            "hold_bars": j + 1 if exited else 24,
+        })
+
+    return transitions
+
+
+def main():
+    all_transitions = []
+    symbols_processed = 0
+
+    # Берём все parquet файлы 15m
+    files = sorted(CACHE_DIR.glob("*_15m_*.parquet"))
+    print(f"Найдено файлов: {len(files)}")
+
+    for fpath in files[:5]:  # Ограничиваем 5 символами для скорости
+        try:
+            symbol = fpath.name.split("_15m_")[0]
+            df = pd.read_parquet(fpath)
+            if len(df) < 100:
+                continue
+
+            # Ожидаемые колонки
+            needed = {'open', 'high', 'low', 'close', 'volume'}
+            if not needed.issubset(set(df.columns)):
+                # Попробуем стандартные имена
+                rename_map = {}
+                for c in df.columns:
+                    c_low = str(c).lower()
+                    if c_low in needed:
+                        rename_map[c] = c_low
+                df = df.rename(columns=rename_map)
+                if not needed.issubset(set(df.columns)):
+                    print(f"Пропуск {symbol}: нет нужных колонок ({df.columns.tolist()})")
+                    continue
+
+            trans = generate_transitions(df, symbol)
+            all_transitions.extend(trans)
+            symbols_processed += 1
+            print(f"{symbol}: {len(trans)} transitions")
+        except Exception as e:
+            print(f"Ошибка {fpath.name}: {e}")
+
+    print(f"\n=== ИТОГО ===")
+    print(f"Символов обработано: {symbols_processed}")
+    print(f"Transitions: {len(all_transitions)}")
+
+    if all_transitions:
+        wins = [t for t in all_transitions if t['reward'] > 0]
+        losses = [t for t in all_transitions if t['reward'] < 0]
+        avg_reward = sum(t['reward'] for t in all_transitions) / len(all_transitions)
+        print(f"Побед: {len(wins)} | Убытков: {len(losses)} | WR: {len(wins)/len(all_transitions)*100:.1f}%")
+        print(f"Средний reward: {avg_reward:.4f} USDT")
+
+        # Сохраняем
+        ts = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+        out_dir = OUTPUT_DIR / f"rl_dataset_{ts}"
+        out_dir.mkdir(exist_ok=True)
+
+        with open(out_dir / "rl_dataset.json", "w") as f:
+            json.dump(all_transitions, f, indent=2)
+
+        # Сохраняем CSV для анализа
+        import csv
+        with open(out_dir / "rl_dataset.csv", "w", newline="") as f:
+            if all_transitions:
+                writer = csv.DictWriter(f, fieldnames=all_transitions[0].keys())
+                writer.writeheader()
+                writer.writerows(all_transitions)
+
+        print(f"\nСохранено в: {out_dir}")
+
+        # Обучаем RL на датасете
+        print("\nОбучаем RL...")
+        train_rl(all_transitions)
+    else:
+        print("Нет transitions для обучения.")
+
+
+def train_rl(transitions):
+    """Простое offline RL обучение на transitions."""
+    import rl_agent
+    from config import Config
+
+    cfg = Config()
+    rl = rl_agent.RLAgent(cfg)
+
+    # Загружаем текущие веса
+    try:
+        with open("rl_weights.json") as f:
+            current = json.load(f)
+        rl.weights.bull_weight = current.get("bull_weight", 1.0)
+        rl.weights.bear_weight = current.get("bear_weight", 1.0)
+        rl.weights.judge_weight = current.get("judge_weight", 1.0)
+        rl.weights.conf_threshold = current.get("conf_threshold", 65.0)
+        rl.weights.episodes = current.get("episodes", 0)
+    except Exception:
+        pass
+
+    # Обучаем на transitions
+    lr = rl.weights.learning_rate
+    for t in transitions:
+        reward = t["reward"]
+        action = t["action"]
+        conf = t["confidence"]
+
+        # Простое обновление весов
+        if reward > 0:
+            if action == "long":
+                rl.weights.bull_weight += lr * 0.1
+            else:
+                rl.weights.bear_weight += lr * 0.1
+            rl.weights.conf_threshold = max(50, rl.weights.conf_threshold - lr * 0.5)
+        else:
+            if action == "long":
+                rl.weights.bull_weight -= lr * 0.05
+            else:
+                rl.weights.bear_weight -= lr * 0.05
+            rl.weights.conf_threshold = min(80, rl.weights.conf_threshold + lr * 0.3)
+
+        rl.weights.judge_weight += lr * (1 if reward > 0 else -0.5)
+        rl.weights.episodes += 1
+
+    # Сохраняем
+    rl._save_sync()
+    print(f"RL обновлён: bull={rl.weights.bull_weight:.4f} bear={rl.weights.bear_weight:.4f} "
+          f"judge={rl.weights.judge_weight:.4f} threshold={rl.weights.conf_threshold:.2f} "
+          f"episodes={rl.weights.episodes}")
+
+
+if __name__ == "__main__":
+    main()
 
 ```
 
@@ -3146,6 +3730,11 @@ class Orchestrator:
         if decision.action in ("long","short"):
             if snapshot.regime in ("volatile","unknown"):
                 log.info(symbol+" | regime BLOCK ("+snapshot.regime+")"); return
+            btc_regime=await self.data.get_btc_regime()
+            if decision.action=="short" and btc_regime=="trending_up":
+                log.info(symbol+" | macro BLOCK (short при BTC uptrend)"); return
+            if decision.action=="long" and btc_regime=="trending_down":
+                log.info(symbol+" | macro BLOCK (long при BTC downtrend)"); return
             if decision.action=="short" and snapshot.regime=="trending_down" and snapshot.rsi_1h>45:
                 log.info(symbol+" | regime BLOCK (short × trending_down × rsi1h="+str(round(snapshot.rsi_1h,1))+"; late-entry guard)"); return
             if decision.action=="short" and snapshot.regime=="trending_up" and snapshot.rsi_1h<55:
@@ -3501,7 +4090,10 @@ class PositionManager:
             open_syms=set(self.open_trades.keys())
             open_sides=[t.side for t in self.open_trades.values()]
         if symbol in open_syms: log.info("Already in "+symbol); return None
-        if len(open_syms)>=self.cfg.MAX_POSITIONS: log.info("Max positions reached ("+str(len(open_syms))+"/"+str(self.cfg.MAX_POSITIONS)+")"); return None
+        # Динамический лимит позиций по балансу
+        balance=ps["balance"] if self.cfg.PAPER_MODE else (await self.bitget.get_account_balance() or 0)
+        dyn_max=3 if balance<800 else (5 if balance<1000 else self.cfg.MAX_POSITIONS)
+        if len(open_syms)>=dyn_max: log.info("Max positions reached ("+str(len(open_syms))+"/"+str(dyn_max)+" dyn)"); return None
         total=len(open_sides)
         if total>0:
             same_side=sum(1 for s in open_sides if s==decision.action)
@@ -3625,9 +4217,14 @@ class PositionManager:
                     if pnl<=emerg_pct:
                         log.warning("EMERGENCY STOP "+symbol+" "+trade.side+" PnL:"+str(round(pnl,2))+"%")
                         await self._close(symbol,trade,cp,pnl,"emergency_stop"); continue
-                    if pnl<=sl_pct:
-                        log.info("STOP-LOSS "+symbol+" "+trade.side+" PnL:"+str(round(pnl,2))+"%")
-                        await self._close(symbol,trade,cp,pnl,"stop_loss"); continue
+                    # Breakeven: если цена прошла +1%, переносим SL на 0% (безубыток)
+                    effective_sl=sl_pct
+                    if peak>=1.0:
+                        effective_sl=0.0
+                    if pnl<=effective_sl:
+                        reason="breakeven_stop" if effective_sl==0.0 else "stop_loss"
+                        log.info(reason.upper()+" "+symbol+" "+trade.side+" PnL:"+str(round(pnl,2))+"%")
+                        await self._close(symbol,trade,cp,pnl,reason); continue
                     if pnl>=tp_pct:
                         log.info("TAKE-PROFIT "+symbol+" "+trade.side+" PnL:"+str(round(pnl,2))+"%")
                         await self._close(symbol,trade,cp,pnl,"take_profit"); continue
@@ -3942,6 +4539,17 @@ def tg_send(text):
         return {"ok": False}
 
 
+def fetch_price(symbol):
+    try:
+        url = f"https://api.bitget.com/api/v2/mix/market/ticker?symbol={symbol}&productType=USDT-FUTURES"
+        req = urllib.request.Request(url, headers={"Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            data = json.loads(resp.read().decode())
+            return float(data["data"][0]["lastPr"])
+    except Exception:
+        return None
+
+
 def main():
     try:
         with open(PAPER_STATE) as f:
@@ -3964,6 +4572,50 @@ def main():
     pnl_pct = round(pnl / start * 100, 2)
     pnl_emoji = "🟢" if pnl >= 0 else "🔴"
 
+    # --- Открытые позиции с деталями ---
+    pos_lines = []
+    total_unrealized = 0.0
+    now = datetime.now(timezone.utc)
+    for sym, p in positions.items():
+        price = fetch_price(sym)
+        entry = p["entry_price"]
+        lev = p.get("leverage", 5)
+        qty = p.get("qty", 0)
+        side = p["side"].upper()
+        margin = p.get("cost", 0)
+
+        if price:
+            if side == "LONG":
+                pnl_sym = (price - entry) / entry * 100 * lev
+                pnl_usdt = (price - entry) * qty
+            else:
+                pnl_sym = (entry - price) / entry * 100 * lev
+                pnl_usdt = (entry - price) * qty
+            total_unrealized += pnl_usdt
+            pnl_emoji_sym = "🟢" if pnl_sym >= 0 else "🔴"
+            breakeven = "✅ Безубыток" if pnl_sym >= 1.0 else ""
+            price_str = f"{price:.6f}" if price < 0.1 else f"{price:.2f}"
+        else:
+            pnl_sym = 0.0
+            pnl_usdt = 0.0
+            pnl_emoji_sym = "❓"
+            breakeven = ""
+            price_str = "н/д"
+
+        opened = datetime.fromisoformat(p["opened_at"].replace("Z", "")).replace(tzinfo=timezone.utc)
+        hours = (now - opened).total_seconds() / 3600
+
+        line = (
+            f"<b>{sym}</b> {side}\n"
+            f"  Вход: {entry} | Текущая: {price_str}\n"
+            f"  {pnl_emoji_sym} Незакрытый PnL: {pnl_sym:+.2f}% ({pnl_usdt:+.2f} USDT)\n"
+            f"  Плечо: {lev}x | Маржа: {margin:.2f} USDT\n"
+            f"  Открыта: {hours:.1f}ч назад | Уверенность: {p.get('confidence', 'N/A')}%\n"
+            f"  {breakeven}"
+        ).rstrip()
+        pos_lines.append(line)
+
+    # --- Последние сделки ---
     recent = history[-5:] if len(history) >= 5 else history
     recent_lines = []
     for t in reversed(recent):
@@ -3971,12 +4623,6 @@ def main():
         recent_lines.append(
             f"{emoji} {t['symbol']} {t['side'].upper()} | "
             f"{t.get('pnl_pct', 0):.2f}% | {t.get('reason', 'неизвестно')}"
-        )
-
-    pos_lines = []
-    for sym, p in positions.items():
-        pos_lines.append(
-            f"📍 {sym} {p['side'].upper()} @ {p['entry_price']} | уверенность={p.get('confidence', 'N/A')}"
         )
 
     try:
@@ -3989,18 +4635,21 @@ def main():
     except Exception:
         svc_status = "❓ неизвестно"
 
+    unrealized_emoji = "🟢" if total_unrealized >= 0 else "🔴"
+
     report = (
         f"<b>📊 ENSEMBLE AGENT — LIVE СТАТУС</b>\n"
         f"<code>{datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}</code>\n\n"
         f"<b>💰 Баланс:</b> {balance:.2f} USDT\n"
-        f"<b>{pnl_emoji} PnL от старта:</b> {pnl:+.2f} USDT ({pnl_pct:+.2f}%)\n\n"
+        f"<b>{pnl_emoji} PnL от старта:</b> {pnl:+.2f} USDT ({pnl_pct:+.2f}%)\n"
+        f"<b>{unrealized_emoji} Незакрытый PnL:</b> {total_unrealized:+.2f} USDT\n\n"
         f"<b>🔧 Сервис:</b> {svc_status}\n\n"
         f"<b>📈 Статистика</b>\n"
         f"Всего сделок: {total_trades}\n"
         f"Побед: {len(wins)} | Убытков: {len(losses)}\n"
         f"Win rate: {win_rate}%\n\n"
         f"<b>🔓 Открытые позиции ({len(positions)})</b>\n"
-        + ("\n".join(pos_lines) if pos_lines else "Нет") + "\n\n"
+        + ("\n\n".join(pos_lines) if pos_lines else "Нет открытых позиций") + "\n\n"
         f"<b>🕐 Последние сделки</b>\n"
         + ("\n".join(recent_lines) if recent_lines else "Сделок пока нет")
     )
