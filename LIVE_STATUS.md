@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-26 13:50:01 UTC
+Generated: 2026-05-26 14:00:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      966808  0.0  1.1 130732 45424 ?        Ssl  13:12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      967251  0.3  3.1 685612 123092 ?       Ssl  13:28   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      967251  0.2  3.1 685612 123100 ?       Ssl  13:28   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -1281,7 +1281,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       958Mi       316Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       961Mi       311Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
