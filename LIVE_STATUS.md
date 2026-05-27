@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 13:50:01 UTC
+Generated: 2026-05-27 14:00:01 UTC
 
 ## Services
 ```
@@ -10,14 +10,14 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      983538  0.0  1.1 130828 45104 ?        Ssl  12:06   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      983708  0.2  3.2 688068 125996 ?       Ssl  12:20   0:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      983538  0.0  1.1 130828 45172 ?        Ssl  12:06   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      983708  0.2  3.2 688068 126048 ?       Ssl  12:20   0:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 941.5366500693924,
+  "balance": 984.0433557693924,
   "positions": {
     "LINKUSDT": {
       "id": "PAPER_LINKUSDT_1779855776",
@@ -29,30 +29,6 @@ root      983708  0.2  3.2 688068 125996 ?       Ssl  12:20   0:13 /opt/ensemble
       "opened_at": "2026-05-27T04:22:56.413656",
       "cost": 20.000024,
       "notional": 100.00012,
-      "leverage": 5
-    },
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1779870952",
-      "symbol": "HYPEUSDT",
-      "side": "short",
-      "entry_price": 62.219,
-      "qty": 1.6072,
-      "confidence": 68,
-      "opened_at": "2026-05-27T08:35:52.416653",
-      "cost": 19.99967536,
-      "notional": 99.9983768,
-      "leverage": 5
-    },
-    "TONUSDT": {
-      "id": "PAPER_TONUSDT_1779878581",
-      "symbol": "TONUSDT",
-      "side": "short",
-      "entry_price": 1.8936,
-      "qty": 52.8095,
-      "confidence": 72,
-      "opened_at": "2026-05-27T10:43:01.437431",
-      "cost": 20.00001384,
-      "notional": 100.0000692,
       "leverage": 5
     }
   },
@@ -110,26 +86,50 @@ root      983708  0.2  3.2 688068 125996 ?       Ssl  12:20   0:13 /opt/ensemble
       "closed_at": "2026-05-27T10:01:19.768565",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1779870952",
+      "symbol": "HYPEUSDT",
+      "side": "short",
+      "entry_price": 62.219,
+      "qty": 1.6072,
+      "confidence": 68,
+      "opened_at": "2026-05-27T08:35:52.416653",
+      "cost": 19.99967536,
+      "notional": 99.9983768,
+      "leverage": 5,
+      "exit_price": 60.968,
+      "pnl_pct": 10.05,
+      "pnl_usdt": 2.01,
+      "closed_at": "2026-05-27T13:55:06.261562",
+      "reason": "trailing_stop",
+      "outcome": "profit"
+    },
+    {
+      "id": "PAPER_TONUSDT_1779878581",
+      "symbol": "TONUSDT",
+      "side": "short",
+      "entry_price": 1.8936,
+      "qty": 52.8095,
+      "confidence": 72,
+      "opened_at": "2026-05-27T10:43:01.437431",
+      "cost": 20.00001384,
+      "notional": 100.0000692,
+      "leverage": 5,
+      "exit_price": 1.8842,
+      "pnl_pct": 2.48,
+      "pnl_usdt": 0.5,
+      "closed_at": "2026-05-27T13:55:06.906522",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 1.5363632693924822
+  "total_pnl": 4.0433797693924705
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-27 13:36:01,210 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-27 13:36:02,414 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 13:36:02,416 [INFO] main: DOGEUSDT | Bull:flat(25%) Bear:short(80%)
-2026-05-27 13:36:10,742 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 13:36:10,743 [INFO] main: DOGEUSDT | Judge:SHORT conf=72% size=6.0%
-2026-05-27 13:36:10,744 [INFO] main: DOGEUSDT | RL adj=83.2%
-2026-05-27 13:36:10,748 [INFO] main: DOGEUSDT | Context score=-0.13 bias=0.12
-2026-05-27 13:36:10,748 [INFO] main: DOGEUSDT | gate PASS (Judge 72/70 RL 83.2/64.43 slack=±3)
-2026-05-27 13:36:10,748 [INFO] positions: Same-side cap: skip SHORT DOGEUSDT (3/3 already short)
-2026-05-27 13:36:17,563 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-27 13:36:17,767 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 13:36:17,769 [INFO] main: BTCUSDT | Bull:long(62%) Bear:short(80%)
 2026-05-27 13:36:23,184 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-27 13:36:23,186 [INFO] main: BTCUSDT | Judge:HOLD conf=80% size=0.0%
 2026-05-27 13:36:23,186 [INFO] main: BTCUSDT | RL adj=80.0%
@@ -148,6 +148,18 @@ root      983708  0.2  3.2 688068 125996 ?       Ssl  12:20   0:13 /opt/ensemble
 2026-05-27 13:36:47,720 [INFO] main: FILUSDT | Judge:HOLD conf=80% size=0.0%
 2026-05-27 13:36:47,720 [INFO] main: FILUSDT | RL adj=80.0%
 2026-05-27 13:36:49,723 [INFO] main: Next scan in 30min (weekday-active)
+2026-05-27 13:55:06,261 [INFO] positions: TRAILING-STOP HYPEUSDT short peak:2.84% now:2.01%
+2026-05-27 13:55:06,264 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT HYPEUSDT @ 60.9680 PnL: 10.05% (+2.01 USDT) | Баланс: 963.55
+2026-05-27 13:55:06,905 [INFO] positions: OK HYPEUSDT short PnL:2.01% reason:trailing_stop
+2026-05-27 13:55:06,905 [INFO] positions: Lessons: Bearish technical confluence can still be muted by low volume and a ranging regime, so keep position size modest and use tight stops. Past similar short setups that flopped remind us to treat overbought RSI and bearish MACD as warnings, not guarantees. A small, well‑managed trade can capture modest upside even when the signal isn’t overwhelming.
+2026-05-27 13:55:06,906 [INFO] rl: RL learned from short HYPEUSDT: profit 2.01% | weights bull=1.019 bear=0.937 judge=1.044 threshold=64.41
+2026-05-27 13:55:06,906 [INFO] positions: BREAKEVEN_STOP TONUSDT short PnL:0.5%
+2026-05-27 13:55:06,909 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT TONUSDT @ 1.8842 PnL: 2.48% (+0.50 USDT) | Баланс: 984.04
+2026-05-27 13:55:06,961 [WARNING] agents: Judge-Groq all failed: openai/gpt-oss-120b 429 (***7Czb cooldown 1h)
+2026-05-27 13:55:09,499 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 13:55:09,501 [INFO] positions: OK TONUSDT short PnL:0.5% reason:breakeven_stop
+2026-05-27 13:55:09,501 [INFO] positions: Lessons: The short captured a modest 0.5% gain in a trending_down regime where BEAR conviction (80%) clearly dominated BULL (72%), validating the directional bias despite RSI oversold conditions that could have triggered a false reversal. Conservative 0.06 sizing proved prudent—even strong bearish setups can fail or stall, so position sizing remains the primary risk lever when conviction margins are meaningful but not absolute. Memory: trending regimes with extreme sentiment (Fear 25) and negative funding favor continuation shorts, but always size for the scenario where the reversal happens anyway.
+2026-05-27 13:55:09,501 [INFO] rl: RL learned from short TONUSDT: profit 0.50% | weights bull=1.017 bear=0.938 judge=1.045 threshold=64.38
 ```
 
 ## Disk
@@ -165,7 +177,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       872Mi       270Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       888Mi       254Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
