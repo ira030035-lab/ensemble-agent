@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 11:10:01 UTC
+Generated: 2026-05-27 11:20:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      966808  0.0  1.1 131496 45740 ?        Ssl  May26   0:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      977418  0.1  3.4 730212 135796 ?       Ssl  04:18   0:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      977418  0.1  3.4 730472 136368 ?       Ssl  04:18   0:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -118,7 +118,6 @@ root      977418  0.1  3.4 730212 135796 ?       Ssl  04:18   0:26 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-27 10:48:31,982 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-27 10:48:35,026 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-27 10:48:35,028 [INFO] main: RENDERUSDT | Bull:long(70%) Bear:short(60%)
 2026-05-27 10:48:39,602 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -148,6 +147,7 @@ root      977418  0.1  3.4 730212 135796 ?       Ssl  04:18   0:26 /opt/ensemble
 2026-05-27 10:49:30,217 [INFO] main: LABUSDT | gate PASS (Judge 68/70 RL 68.6/64.43 slack=±3)
 2026-05-27 10:49:30,217 [INFO] positions: Same-side cap: skip SHORT LABUSDT (3/3 already short)
 2026-05-27 10:49:32,220 [INFO] main: Next scan in 60min (weekday-active)
+2026-05-27 11:18:55,778 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -165,7 +165,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       799Mi       308Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       783Mi       323Mi       4.8Mi       2.9Gi       3.0Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
