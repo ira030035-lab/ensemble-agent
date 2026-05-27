@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 14:40:01 UTC
+Generated: 2026-05-27 14:50:01 UTC
 
 ## Services
 ```
@@ -10,8 +10,8 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      983538  0.0  1.1 130828 45344 ?        Ssl  12:06   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      983708  0.2  3.2 721860 127076 ?       Ssl  12:20   0:18 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      983538  0.0  1.1 130828 45368 ?        Ssl  12:06   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      983708  0.2  3.2 721860 127076 ?       Ssl  12:20   0:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -154,36 +154,36 @@ root      983708  0.2  3.2 721860 127076 ?       Ssl  12:20   0:18 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-27 14:12:37,294 [INFO] main: ONDOUSDT | gate PASS (Judge 68/70 RL 77.9/64.38 slack=±3)
-2026-05-27 14:12:37,294 [INFO] positions: Same-side cap: skip SHORT ONDOUSDT (3/3 already short)
-2026-05-27 14:12:43,742 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-27 14:12:44,879 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 14:12:44,880 [INFO] main: XRPUSDT | Bull:flat(15%) Bear:short(70%)
-2026-05-27 14:12:49,951 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 14:12:49,952 [INFO] main: XRPUSDT | Judge:SHORT conf=68% size=6.0%
-2026-05-27 14:12:49,952 [INFO] main: XRPUSDT | RL adj=77.9%
-2026-05-27 14:12:49,954 [INFO] main: XRPUSDT | Context score=-0.13 bias=0.12
-2026-05-27 14:12:49,954 [INFO] main: XRPUSDT | gate PASS (Judge 68/70 RL 77.9/64.38 slack=±3)
-2026-05-27 14:12:49,954 [INFO] positions: Same-side cap: skip SHORT XRPUSDT (3/3 already short)
-2026-05-27 14:12:56,980 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 14:12:57,237 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-27 14:12:57,238 [INFO] main: ESPORTSUSDT | Bull:flat(25%) Bear:short(70%)
-2026-05-27 14:13:02,566 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 14:13:02,567 [INFO] main: ESPORTSUSDT | Judge:SHORT conf=68% size=6.0%
-2026-05-27 14:13:02,567 [INFO] main: ESPORTSUSDT | RL adj=77.9%
-2026-05-27 14:13:02,572 [INFO] main: ESPORTSUSDT | Context score=-0.13 bias=0.12
-2026-05-27 14:13:02,572 [INFO] main: ESPORTSUSDT | regime BLOCK (volatile)
-2026-05-27 14:13:09,643 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 14:13:10,202 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-27 14:13:10,204 [INFO] main: DOGEUSDT | Bull:long(58%) Bear:short(75%)
-2026-05-27 14:13:16,107 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 14:13:16,108 [INFO] main: DOGEUSDT | Judge:SHORT conf=68% size=6.0%
-2026-05-27 14:13:16,108 [INFO] main: DOGEUSDT | RL adj=69.7%
-2026-05-27 14:13:16,111 [INFO] main: DOGEUSDT | Context score=-0.14 bias=0.12
-2026-05-27 14:13:16,111 [INFO] main: DOGEUSDT | gate PASS (Judge 68/70 RL 69.7/64.38 slack=±3)
-2026-05-27 14:13:16,111 [INFO] positions: Same-side cap: skip SHORT DOGEUSDT (3/3 already short)
-2026-05-27 14:13:18,114 [INFO] main: Next scan in 30min (weekday-active)
-2026-05-27 14:20:18,038 [INFO] main: Symbols: 30
+2026-05-27 14:47:54,857 [INFO] main: DOGEUSDT | Bull:flat(15%) Bear:short(80%)
+2026-05-27 14:48:00,003 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 14:48:00,004 [INFO] main: DOGEUSDT | Judge:SHORT conf=72% size=6.0%
+2026-05-27 14:48:00,004 [INFO] main: DOGEUSDT | RL adj=83.3%
+2026-05-27 14:48:00,008 [INFO] main: DOGEUSDT | Context score=-0.11 bias=0.1
+2026-05-27 14:48:00,009 [INFO] main: DOGEUSDT | gate PASS (Judge 72/70 RL 83.3/64.38 slack=±3)
+2026-05-27 14:48:00,009 [INFO] positions: Same-side cap: skip SHORT DOGEUSDT (3/3 already short)
+2026-05-27 14:48:06,752 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 14:48:06,874 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-27 14:48:06,876 [INFO] main: HYPEUSDT | Bull:flat(15%) Bear:short(75%)
+2026-05-27 14:48:11,813 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 14:48:11,814 [INFO] main: HYPEUSDT | Judge:SHORT conf=72% size=6.0%
+2026-05-27 14:48:11,814 [INFO] main: HYPEUSDT | RL adj=82.6%
+2026-05-27 14:48:11,819 [INFO] main: HYPEUSDT | Context score=-0.11 bias=0.1
+2026-05-27 14:48:11,819 [INFO] main: HYPEUSDT | regime BLOCK (short × trending_up × rsi1h=45.6; counter-trend guard)
+2026-05-27 14:48:19,050 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 14:48:19,573 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-27 14:48:19,574 [INFO] main: BEATUSDT | Bull:flat(25%) Bear:short(75%)
+2026-05-27 14:48:29,055 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 14:48:29,057 [INFO] main: BEATUSDT | Judge:SHORT conf=68% size=6.0%
+2026-05-27 14:48:29,057 [INFO] main: BEATUSDT | RL adj=78.6%
+2026-05-27 14:48:29,061 [INFO] main: BEATUSDT | Context score=-0.11 bias=0.1
+2026-05-27 14:48:29,062 [INFO] main: BEATUSDT | regime BLOCK (volatile)
+2026-05-27 14:48:35,381 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-27 14:48:36,285 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 14:48:36,286 [INFO] main: UBUSDT | Bull:long(62%) Bear:short(70%)
+2026-05-27 14:48:41,969 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 14:48:41,971 [INFO] main: UBUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-27 14:48:41,971 [INFO] main: UBUSDT | RL adj=70.0%
+2026-05-27 14:48:43,973 [INFO] main: Next scan in 30min (weekday-active)
 ```
 
 ## Disk
@@ -201,7 +201,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       800Mi       341Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       782Mi       359Mi       4.8Mi       2.9Gi       3.0Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
