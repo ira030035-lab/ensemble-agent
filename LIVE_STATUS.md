@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 13:20:01 UTC
+Generated: 2026-05-27 13:30:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      983538  0.0  1.1 130828 45104 ?        Ssl  12:06   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      983708  0.2  3.2 687044 125316 ?       Ssl  12:20   0:09 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      983708  0.2  3.2 688068 125992 ?       Ssl  12:20   0:09 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -118,7 +118,6 @@ root      983708  0.2  3.2 687044 125316 ?       Ssl  12:20   0:09 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-27 13:00:42,531 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-27 13:00:42,532 [INFO] main: PHAUSDT | Judge:SHORT conf=68% size=6.0%
 2026-05-27 13:00:42,532 [INFO] main: PHAUSDT | RL adj=77.8%
 2026-05-27 13:00:42,536 [INFO] main: PHAUSDT | Context score=-0.13 bias=0.12
@@ -148,6 +147,7 @@ root      983708  0.2  3.2 687044 125316 ?       Ssl  12:20   0:09 /opt/ensemble
 2026-05-27 13:01:20,677 [INFO] main: ADAUSDT | Context score=-0.13 bias=0.12
 2026-05-27 13:01:20,677 [INFO] main: ADAUSDT | regime BLOCK (short × trending_down × rsi1h=52.1; late-entry guard)
 2026-05-27 13:01:22,681 [INFO] main: Next scan in 30min (weekday-active)
+2026-05-27 13:20:17,342 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -165,7 +165,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       874Mi       268Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       885Mi       258Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
