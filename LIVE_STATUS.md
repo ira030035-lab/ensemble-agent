@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 05:20:01 UTC
+Generated: 2026-05-27 05:30:01 UTC
 
 ## Services
 ```
@@ -11,26 +11,14 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      966808  0.0  1.1 131496 45740 ?        Ssl  May26   0:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      977418  0.1  3.1 718372 124300 ?       Ssl  04:18   0:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      977418  0.1  3.1 718372 124308 ?       Ssl  04:18   0:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 960.4268836093923,
+  "balance": 978.3938296093924,
   "positions": {
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1779855561",
-      "symbol": "HYPEUSDT",
-      "side": "short",
-      "entry_price": 59.775,
-      "qty": 1.6729,
-      "confidence": 72,
-      "opened_at": "2026-05-27T04:19:21.880839",
-      "cost": 19.999519499999998,
-      "notional": 99.9975975,
-      "leverage": 5
-    },
     "LINKUSDT": {
       "id": "PAPER_LINKUSDT_1779855776",
       "symbol": "LINKUSDT",
@@ -62,19 +50,32 @@ root      977418  0.1  3.1 718372 124300 ?       Ssl  04:18   0:05 /opt/ensemble
       "closed_at": "2026-05-27T04:58:57.087082",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1779855561",
+      "symbol": "HYPEUSDT",
+      "side": "short",
+      "entry_price": 59.775,
+      "qty": 1.6729,
+      "confidence": 72,
+      "opened_at": "2026-05-27T04:19:21.880839",
+      "cost": 19.999519499999998,
+      "notional": 99.9975975,
+      "leverage": 5,
+      "exit_price": 60.99,
+      "pnl_pct": -10.16,
+      "pnl_usdt": -2.03,
+      "closed_at": "2026-05-27T05:27:01.127399",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 0.4264271093924959
+  "total_pnl": -1.6061463906075097
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-27 04:24:09,831 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-27 04:24:09,831 [INFO] main: SOLUSDT | Bull:long(45%) Bear:short(80%)
-2026-05-27 04:24:18,424 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 04:24:18,426 [INFO] main: SOLUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-27 04:24:18,426 [INFO] main: SOLUSDT | RL adj=80.0%
 2026-05-27 04:24:24,091 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-27 04:24:26,016 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-27 04:24:26,017 [INFO] main: GRASSUSDT | Bull:long(60%) Bear:short(80%)
@@ -100,6 +101,11 @@ root      977418  0.1  3.1 718372 124300 ?       Ssl  04:18   0:05 /opt/ensemble
 2026-05-27 04:58:57,387 [INFO] positions: Lessons: The PEPEUSDT short trade resulted in a small profit of 0.43% due to a breakeven stop. The original reasoning for the trade was not explicitly stated as it was restored from a paper state. This trade can be considered a neutral outcome with minimal impact on overall performance.
 2026-05-27 04:58:57,387 [INFO] rl: RL learned from short PEPEUSDT: profit 0.43% | weights bull=1.030 bear=0.929 judge=1.040 threshold=64.41
 2026-05-27 05:18:51,580 [INFO] main: Symbols: 30
+2026-05-27 05:27:01,127 [INFO] positions: STOP_LOSS HYPEUSDT short PnL:-2.03%
+2026-05-27 05:27:01,129 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT HYPEUSDT @ 60.9900 PnL: -10.16% (-2.03 USDT) | Баланс: 978.39
+2026-05-27 05:27:01,496 [INFO] positions: LOSS HYPEUSDT short PnL:-2.03% reason:stop_loss
+2026-05-27 05:27:01,496 [INFO] positions: Lessons: The trade was closed at a 2.03% loss due to a stop loss being triggered. The original reasoning was based on a strong bearish conviction with multiple confluent signals, but the position was sized moderately to respect the downtrend momentum. The key takeaway is that a decisive bearish conviction and multiple bearish signals do not guarantee a profitable trade, and position sizing is crucial to managing risk.
+2026-05-27 05:27:01,496 [INFO] rl: RL learned from short HYPEUSDT: loss -2.03% | weights bull=1.034 bear=0.925 judge=1.040 threshold=64.46
 ```
 
 ## Disk
@@ -117,7 +123,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       768Mi       440Mi       4.8Mi       2.8Gi       3.0Gi
+Mem:           3.7Gi       757Mi       450Mi       4.8Mi       2.8Gi       3.0Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
