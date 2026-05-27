@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 01:00:01 UTC
+Generated: 2026-05-27 01:10:01 UTC
 
 ## Services
 ```
@@ -11,13 +11,13 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      966808  0.0  1.1 131756 45560 ?        Ssl  May26   0:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      968862  0.1  3.6 735928 141652 ?       Ssl  May26   0:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      968862  0.1  3.6 735928 141720 ?       Ssl  May26   0:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 687.4426265926952,
+  "balance": 707.2965321106952,
   "positions": {
     "DOGEUSDT": {
       "id": "PAPER_DOGEUSDT_1779783431",
@@ -41,18 +41,6 @@ root      968862  0.1  3.6 735928 141652 ?       Ssl  May26   0:40 /opt/ensemble
       "opened_at": "2026-05-26T14:41:09.876364",
       "cost": 19.999990243999996,
       "notional": 99.99995121999999,
-      "leverage": 5
-    },
-    "ONDOUSDT": {
-      "id": "PAPER_ONDOUSDT_1779829440",
-      "symbol": "ONDOUSDT",
-      "side": "short",
-      "entry_price": 0.4107,
-      "qty": 243.4867,
-      "confidence": 72,
-      "opened_at": "2026-05-26T21:04:00.630285",
-      "cost": 19.999997538000002,
-      "notional": 99.99998769000001,
       "leverage": 5
     }
   },
@@ -1256,19 +1244,32 @@ root      968862  0.1  3.6 735928 141652 ?       Ssl  May26   0:40 /opt/ensemble
       "closed_at": "2026-05-26T14:38:42.096007",
       "reason": "breakeven_stop",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ONDOUSDT_1779829440",
+      "symbol": "ONDOUSDT",
+      "side": "short",
+      "entry_price": 0.4107,
+      "qty": 243.4867,
+      "confidence": 72,
+      "opened_at": "2026-05-26T21:04:00.630285",
+      "cost": 19.999997538000002,
+      "notional": 99.99998769000001,
+      "leverage": 5,
+      "exit_price": 0.4113,
+      "pnl_pct": -0.73,
+      "pnl_usdt": -0.15,
+      "closed_at": "2026-05-27T01:03:33.523056",
+      "reason": "breakeven_stop",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -3.4168101263047066
+  "total_pnl": -3.562902146304704
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-27 00:19:00,283 [INFO] main: FETUSDT | Bull:long(85%) Bear:long(70%)
-2026-05-27 00:19:06,452 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 00:19:06,453 [INFO] main: FETUSDT | Judge:LONG conf=72% size=8.0%
-2026-05-27 00:19:06,454 [INFO] main: FETUSDT | RL adj=84.5%
-2026-05-27 00:19:06,454 [INFO] main: FETUSDT | Context score=0.05
 2026-05-27 00:19:06,454 [INFO] main: FETUSDT | regime BLOCK (volatile)
 2026-05-27 00:19:14,871 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-27 00:19:14,872 [INFO] main: WLDUSDT | Bull:long(50%) Bear:short(78%)
@@ -1294,6 +1295,11 @@ root      968862  0.1  3.6 735928 141652 ?       Ssl  May26   0:40 /opt/ensemble
 2026-05-27 00:20:03,563 [INFO] main: ETHUSDT | RL adj=72.0%
 2026-05-27 00:20:05,565 [INFO] main: Next scan in 120min (weekday-quiet)
 2026-05-27 00:29:42,288 [INFO] main: Symbols: 30
+2026-05-27 01:03:33,522 [INFO] positions: BREAKEVEN_STOP ONDOUSDT short PnL:-0.15%
+2026-05-27 01:03:33,528 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ONDOUSDT @ 0.4113 PnL: -0.73% (-0.15 USDT) | Баланс: 707.30
+2026-05-27 01:03:33,858 [INFO] positions: LOSS ONDOUSDT short PnL:-0.15% reason:breakeven_stop
+2026-05-27 01:03:33,858 [INFO] positions: Lessons: In trending_down regimes, MACD bullish divergence can precede whipsaws and should be treated as a reversal warning rather than a conviction blocker. Conservative position sizing is warranted in such cases to mitigate potential losses. The trade's breakeven stop outcome suggests that disciplined stops can help limit losses even when the initial conviction is not fully realized.
+2026-05-27 01:03:33,858 [INFO] rl: RL learned from short ONDOUSDT: loss -0.15% | weights bull=0.977 bear=0.992 judge=1.031 threshold=65.09
 ```
 
 ## Disk
@@ -1311,7 +1317,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       781Mi       373Mi       4.8Mi       2.9Gi       3.0Gi
+Mem:           3.7Gi       772Mi       382Mi       4.8Mi       2.9Gi       3.0Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
