@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 10:10:01 UTC
+Generated: 2026-05-27 10:20:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      966808  0.0  1.1 131496 45740 ?        Ssl  May26   0:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      977418  0.1  3.4 729172 134668 ?       Ssl  04:18   0:21 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      977418  0.1  3.4 730212 135760 ?       Ssl  04:18   0:21 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -106,7 +106,6 @@ root      977418  0.1  3.4 729172 134668 ?       Ssl  04:18   0:21 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-27 09:41:58,680 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-27 09:42:00,371 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-27 09:42:00,373 [INFO] main: ESPORTSUSDT | Bull:long(60%) Bear:short(80%)
 2026-05-27 09:42:05,053 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -136,6 +135,7 @@ root      977418  0.1  3.4 729172 134668 ?       Ssl  04:18   0:21 /opt/ensemble
 2026-05-27 10:01:20,220 [INFO] positions: OK ONDOUSDT short PnL:3.14% reason:take_profit
 2026-05-27 10:01:20,220 [INFO] positions: Lessons: A strong bearish conviction does not guarantee profit, as seen in the past similar trade HYPEUSDT short that resulted in a loss despite 72% judge confidence. Conservative position sizing, such as the 0.06 size used in this trade, can help mitigate potential losses. The combination of confluent bearish signals and a trending_down regime can still yield profitable trades, as demonstrated by the 3.14% gain in this ONDOUSDT short.
 2026-05-27 10:01:20,220 [INFO] rl: RL learned from short ONDOUSDT: profit 3.14% | weights bull=1.024 bear=0.933 judge=1.043 threshold=64.43
+2026-05-27 10:18:55,141 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -153,7 +153,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       783Mi       324Mi       4.8Mi       2.9Gi       3.0Gi
+Mem:           3.7Gi       795Mi       312Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
