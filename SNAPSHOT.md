@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-27 11:00:01 UTC
+Generated: 2026-05-27 12:00:01 UTC
 
 ## ab_test_analyze_apply.py
 ```python
@@ -3836,10 +3836,30 @@ class Orchestrator:
     async def _refresh_symbols(self):
         try: self.symbols=await self.bitget.get_top_symbols(self.cfg.TOP_N_SYMBOLS); log.info("Symbols: "+str(len(self.symbols)))
         except Exception as e: log.error("Symbol refresh: "+str(e))
+    def _get_dynamic_side_bias(self):
+        """Compute short penalty from explorer performance (last 24h window of trades)."""
+        try:
+            import json
+            with open("/opt/ensemble-agent/explorer_trades.json") as f:
+                trades=json.load(f)
+            longs=[t["pnl_pct"] for t in trades if t.get("side")=="long" and t.get("pnl_pct") is not None]
+            shorts=[t["pnl_pct"] for t in trades if t.get("side")=="short" and t.get("pnl_pct") is not None]
+            avg_long=sum(longs)/len(longs) if longs else 0.0
+            avg_short=sum(shorts)/len(shorts) if shorts else 0.0
+            diff=avg_long-avg_short
+            if diff>2.0:   return 0.15
+            if diff>1.0:   return 0.12
+            if diff>0.0:   return 0.10
+            if diff>-1.0:  return 0.05
+            return 0.0
+        except Exception:
+            return 0.10
+
     def _next_interval(self):
         now=datetime.now(timezone.utc); wd=now.weekday(); h=now.hour
         if wd>=5: return 10800,"weekend"
-        if 8<=h<22: return 3600,"weekday-active"
+        if 10<=h<20: return 1800,"weekday-active"      # 30 min in volatile hours
+        if 8<=h<22: return 3600,"weekday-warmup"      # 60 min in shoulder hours
         return 7200,"weekday-quiet"
     async def scan_loop(self):
         while self.running:
@@ -3874,10 +3894,11 @@ class Orchestrator:
         if decision.action in ("long","short"):
             # Explorer-learned context filter
             ctx_score=self.ctx.score(snapshot,decision.action)
-            # Side-bias penalty: explorer shows shorts avg -1.91%, longs +1.37% (bullish market)
+            # Dynamic side-bias penalty from explorer live stats
+            side_bias=self._get_dynamic_side_bias()
             if decision.action=="short":
-                ctx_score-=0.10
-            log.info(symbol+" | Context score="+str(round(ctx_score,2)))
+                ctx_score-=side_bias
+            log.info(symbol+" | Context score="+str(round(ctx_score,2))+" bias="+str(round(side_bias,2)))
             if ctx_score < -0.15:
                 log.info(symbol+" | context BLOCK (explorer pattern score="+str(round(ctx_score,2))+")")
                 return
@@ -4164,6 +4185,19 @@ class PositionManager:
         # Serializes open_position so concurrent scan paths can't bypass
         # correlation/same-side gates between check and insertion (TOCTOU).
         self._open_lock=asyncio.Lock()
+
+    @staticmethod
+    def _adaptive_min_hold(pnl,peak,base=7200):
+        """Adaptive min hold: profitable positions get faster exits.
+        • peak >= +1.5%  → 30 min (allow trailing/breakeven exit)
+        • |pnl| <= 0.5%  → base (2h, noise zone)
+        • otherwise      → 1h
+        """
+        if peak>=1.5:
+            return 1800
+        if abs(pnl)<=0.5:
+            return base
+        return 3600
     async def setup(self):
         """Async restore of positions on startup. Dispatches paper vs live."""
         if getattr(self.cfg,"PAPER_MODE",False):
@@ -4331,7 +4365,7 @@ class PositionManager:
         # Liquidation threshold: at L× leverage, price moving -100/L % wipes margin.
         # Use safety margin of 1% to ensure close before broker liquidates in live mode.
         liquidation_pct=-(100.0/max(leverage,1))+1.0
-        min_hold=getattr(self.cfg,"MIN_HOLD_SEC",7200)
+        base_min_hold=getattr(self.cfg,"MIN_HOLD_SEC",7200)
         ask_interval=getattr(self.cfg,"JUDGE_EXIT_INTERVAL_SEC",3600)
         noise_band=getattr(self.cfg,"JUDGE_EXIT_NOISE_BAND_PCT",1.0)
         while True:
@@ -4399,7 +4433,8 @@ class PositionManager:
                     t=last_check.get(symbol,0)
                     in_noise=abs(pnl)<noise_band and peak<trail_arm
                     emergency_exit=pnl<-1.0
-                    if (hold_sec>=min_hold or emergency_exit) and (now-t>ask_interval or emergency_exit) and not in_noise:
+                    adaptive_min=self._adaptive_min_hold(pnl,peak,base_min_hold)
+                    if (hold_sec>=adaptive_min or emergency_exit) and (now-t>ask_interval or emergency_exit) and not in_noise:
                         last_check[symbol]=now
                         should_exit=await self.judge.ask_exit(trade,cp,pnl,peak_pnl=peak)
                         if should_exit:
