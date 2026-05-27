@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-27 03:00:01 UTC
+Generated: 2026-05-27 04:00:01 UTC
 
 ## ab_test_analyze_apply.py
 ```python
@@ -2147,7 +2147,7 @@ class Config:
     JUDGE_EXIT_INTERVAL_SEC = 7200
     JUDGE_EXIT_NOISE_BAND_PCT = 2.5
     STOP_LOSS_PCT = -2.0
-    TAKE_PROFIT_PCT = 4.0
+    TAKE_PROFIT_PCT = 3.0
     TRAIL_ARM_PCT = 2.5
     TRAIL_GIVEBACK_PCT = 0.8
     EMERGENCY_STOP_PCT = -15.0
@@ -3874,6 +3874,9 @@ class Orchestrator:
         if decision.action in ("long","short"):
             # Explorer-learned context filter
             ctx_score=self.ctx.score(snapshot,decision.action)
+            # Side-bias penalty: explorer shows shorts avg -1.91%, longs +1.37% (bullish market)
+            if decision.action=="short":
+                ctx_score-=0.10
             log.info(symbol+" | Context score="+str(round(ctx_score,2)))
             if ctx_score < -0.15:
                 log.info(symbol+" | context BLOCK (explorer pattern score="+str(round(ctx_score,2))+")")
@@ -4369,12 +4372,22 @@ class PositionManager:
                     if pnl<=emerg_pct:
                         log.warning("EMERGENCY STOP "+symbol+" "+trade.side+" PnL:"+str(round(pnl,2))+"%")
                         await self._close(symbol,trade,cp,pnl,"emergency_stop"); continue
-                    # Breakeven: если цена прошла +1%, переносим SL на 0% (безубыток)
+                    # Max hold time enforced
+                    try:
+                        opened_dt=datetime.fromisoformat(trade.opened_at.replace("Z",""))
+                        if opened_dt.tzinfo is not None: opened_dt=opened_dt.replace(tzinfo=None)
+                        hold_sec=(_utcnow()-opened_dt).total_seconds()
+                    except Exception: hold_sec=1e9
+                    max_hold_hours=getattr(self.cfg,"MAX_HOLD_HOURS",24.0)
+                    if hold_sec>=max_hold_hours*3600:
+                        log.info("MAX_HOLD "+symbol+" "+trade.side+" hold:"+str(round(hold_sec/3600,1))+"h")
+                        await self._close(symbol,trade,cp,pnl,"max_hold"); continue
+                    # Breakeven: если цена прошла +1.5%, переносим SL на +0.5% (гарантия прибыли)
                     effective_sl=sl_pct
-                    if peak>=1.0:
-                        effective_sl=0.0
+                    if peak>=1.5:
+                        effective_sl=0.5
                     if pnl<=effective_sl:
-                        reason="breakeven_stop" if effective_sl==0.0 else "stop_loss"
+                        reason="breakeven_stop" if effective_sl>=0.0 else "stop_loss"
                         log.info(reason.upper()+" "+symbol+" "+trade.side+" PnL:"+str(round(pnl,2))+"%")
                         await self._close(symbol,trade,cp,pnl,reason); continue
                     if pnl>=tp_pct:
@@ -4383,14 +4396,10 @@ class PositionManager:
                     if peak>=trail_arm and pnl<=peak-trail_give:
                         log.info("TRAILING-STOP "+symbol+" "+trade.side+" peak:"+str(round(peak,2))+"% now:"+str(round(pnl,2))+"%")
                         await self._close(symbol,trade,cp,pnl,"trailing_stop"); continue
-                    try:
-                        opened_dt=datetime.fromisoformat(trade.opened_at.replace("Z",""))
-                        if opened_dt.tzinfo is not None: opened_dt=opened_dt.replace(tzinfo=None)
-                        hold_sec=(_utcnow()-opened_dt).total_seconds()
-                    except Exception: hold_sec=1e9
                     t=last_check.get(symbol,0)
                     in_noise=abs(pnl)<noise_band and peak<trail_arm
-                    if hold_sec>=min_hold and now-t>ask_interval and not in_noise:
+                    emergency_exit=pnl<-1.0
+                    if (hold_sec>=min_hold or emergency_exit) and (now-t>ask_interval or emergency_exit) and not in_noise:
                         last_check[symbol]=now
                         should_exit=await self.judge.ask_exit(trade,cp,pnl,peak_pnl=peak)
                         if should_exit:
