@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 14:30:01 UTC
+Generated: 2026-05-27 14:40:01 UTC
 
 ## Services
 ```
@@ -189,7 +189,7 @@ root      983708  0.2  3.2 721860 127076 ?       Ssl  12:20   0:18 /opt/ensemble
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  896K  381M   1% /run
+tmpfs           382M  888K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  8.4G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -201,7 +201,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       879Mi       262Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       800Mi       341Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
