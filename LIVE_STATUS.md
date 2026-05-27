@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 15:30:01 UTC
+Generated: 2026-05-27 15:40:01 UTC
 
 ## Services
 ```
@@ -10,14 +10,14 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      983538  0.0  1.1 130844 45440 ?        Ssl  12:06   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      983708  0.2  3.2 721860 127380 ?       Ssl  12:20   0:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      983538  0.0  1.1 130844 45472 ?        Ssl  12:06   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      983708  0.2  3.2 721860 127392 ?       Ssl  12:20   0:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 944.0433705694195,
+  "balance": 961.9548940789438,
   "positions": {
     "LINKUSDT": {
       "id": "PAPER_LINKUSDT_1779855776",
@@ -29,18 +29,6 @@ root      983708  0.2  3.2 721860 127380 ?       Ssl  12:20   0:26 /opt/ensemble
       "opened_at": "2026-05-27T04:22:56.413656",
       "cost": 20.000024,
       "notional": 100.00012,
-      "leverage": 5
-    },
-    "PEPEUSDT": {
-      "id": "PAPER_PEPEUSDT_1779890846",
-      "symbol": "PEPEUSDT",
-      "side": "short",
-      "entry_price": 3.5241e-06,
-      "qty": 28376039.2724,
-      "confidence": 68,
-      "opened_at": "2026-05-27T14:07:26.484925",
-      "cost": 19.999999999972964,
-      "notional": 99.99999999986483,
       "leverage": 5
     },
     "RENDERUSDT": {
@@ -146,19 +134,32 @@ root      983708  0.2  3.2 721860 127380 ?       Ssl  12:20   0:26 /opt/ensemble
       "closed_at": "2026-05-27T13:55:06.906522",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_PEPEUSDT_1779890846",
+      "symbol": "PEPEUSDT",
+      "side": "short",
+      "entry_price": 3.5241e-06,
+      "qty": 28376039.2724,
+      "confidence": 68,
+      "opened_at": "2026-05-27T14:07:26.484925",
+      "cost": 19.999999999972964,
+      "notional": 99.99999999986483,
+      "leverage": 5,
+      "exit_price": 3.5977e-06,
+      "pnl_pct": -10.44,
+      "pnl_usdt": -2.09,
+      "closed_at": "2026-05-27T15:31:16.865245",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 4.0433797693924705
+  "total_pnl": 1.9549032789438296
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-27 15:24:01,938 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 15:24:01,940 [INFO] main: FILUSDT | Judge:SHORT conf=68% size=6.0%
-2026-05-27 15:24:01,940 [INFO] main: FILUSDT | RL adj=68.4%
-2026-05-27 15:24:01,944 [INFO] main: FILUSDT | Context score=-0.12 bias=0.1
-2026-05-27 15:24:01,945 [INFO] main: FILUSDT | gate PASS (Judge 68/70 RL 68.4/64.38 slack=±3)
 2026-05-27 15:24:01,945 [INFO] positions: Same-side cap: skip SHORT FILUSDT (3/3 already short)
 2026-05-27 15:24:08,883 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-27 15:24:09,326 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -184,6 +185,11 @@ root      983708  0.2  3.2 721860 127380 ?       Ssl  12:20   0:26 /opt/ensemble
 2026-05-27 15:24:41,357 [INFO] main: INJUSDT | gate PASS (Judge 68/70 RL 78.6/64.38 slack=±3)
 2026-05-27 15:24:41,357 [INFO] positions: Same-side cap: skip SHORT INJUSDT (3/3 already short)
 2026-05-27 15:24:43,360 [INFO] main: Next scan in 30min (weekday-active)
+2026-05-27 15:31:16,864 [INFO] positions: STOP_LOSS PEPEUSDT short PnL:-2.09%
+2026-05-27 15:31:16,867 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT PEPEUSDT @ 0.0000 PnL: -10.44% (-2.09 USDT) | Баланс: 961.95
+2026-05-27 15:31:17,270 [INFO] positions: LOSS PEPEUSDT short PnL:-2.09% reason:stop_loss
+2026-05-27 15:31:17,270 [INFO] positions: Lessons: Ranging regimes with low volume limit downside conviction and increase the risk of false breakdowns. Conservative position sizing is key in such conditions to respect risk. Similar setups in the past, such as HYPEUSDT, yielded modest gains with tight stops, reinforcing the need for cautious approach in choppy markets.
+2026-05-27 15:31:17,270 [INFO] rl: RL learned from short PEPEUSDT: loss -2.09% | weights bull=1.021 bear=0.934 judge=1.045 threshold=64.43
 ```
 
 ## Disk
@@ -201,7 +207,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       794Mi       346Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       795Mi       346Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
