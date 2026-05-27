@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 16:20:01 UTC
+Generated: 2026-05-27 16:30:01 UTC
 
 ## Services
 ```
@@ -10,8 +10,8 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      983538  0.0  1.1 130976 45540 ?        Ssl  12:06   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      983708  0.2  3.2 721860 127432 ?       Ssl  12:20   0:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      983538  0.0  1.1 130976 45552 ?        Ssl  12:06   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      983708  0.2  3.2 721860 127444 ?       Ssl  12:20   0:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -172,7 +172,6 @@ root      983708  0.2  3.2 721860 127432 ?       Ssl  12:20   0:31 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-27 15:59:48,230 [INFO] main: FFUSDT | Judge:SHORT conf=72% size=6.0%
 2026-05-27 15:59:48,230 [INFO] main: FFUSDT | RL adj=83.2%
 2026-05-27 15:59:48,237 [INFO] main: FFUSDT | Context score=-0.11 bias=0.1
 2026-05-27 15:59:48,237 [INFO] main: FFUSDT | regime BLOCK (volatile)
@@ -202,6 +201,7 @@ root      983708  0.2  3.2 721860 127432 ?       Ssl  12:20   0:31 /opt/ensemble
 2026-05-27 16:00:29,314 [INFO] main: PEPEUSDT | gate PASS (Judge 72/70 RL 84.6/64.43 slack=±3)
 2026-05-27 16:00:29,315 [INFO] positions: Same-side cap: skip SHORT PEPEUSDT (3/3 already short)
 2026-05-27 16:00:31,317 [INFO] main: Next scan in 30min (weekday-active)
+2026-05-27 16:20:19,778 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -219,7 +219,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       788Mi       352Mi       4.8Mi       2.9Gi       3.0Gi
+Mem:           3.7Gi       796Mi       344Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
