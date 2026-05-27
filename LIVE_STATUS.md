@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 00:20:01 UTC
+Generated: 2026-05-27 00:30:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      966808  0.0  1.1 131756 45560 ?        Ssl  May26   0:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      968862  0.1  3.5 734624 140364 ?       Ssl  May26   0:39 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      968862  0.1  3.6 735928 141652 ?       Ssl  May26   0:39 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -1264,11 +1264,6 @@ root      968862  0.1  3.5 734624 140364 ?       Ssl  May26   0:39 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-27 00:18:52,557 [INFO] main: HYPEUSDT | Context score=0.04
-2026-05-27 00:18:52,557 [INFO] main: HYPEUSDT | gate PASS (Judge 68/70 RL 69.6/65.04 slack=±3)
-2026-05-27 00:18:52,558 [INFO] positions: Max positions reached (3/3 dyn)
-2026-05-27 00:18:58,605 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-27 00:19:00,282 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-27 00:19:00,283 [INFO] main: FETUSDT | Bull:long(85%) Bear:long(70%)
 2026-05-27 00:19:06,452 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-27 00:19:06,453 [INFO] main: FETUSDT | Judge:LONG conf=72% size=8.0%
@@ -1294,6 +1289,11 @@ root      968862  0.1  3.5 734624 140364 ?       Ssl  May26   0:39 /opt/ensemble
 2026-05-27 00:19:57,184 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-27 00:19:57,991 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-27 00:19:57,993 [INFO] main: ETHUSDT | Bull:long(60%) Bear:short(80%)
+2026-05-27 00:20:03,561 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 00:20:03,563 [INFO] main: ETHUSDT | Judge:HOLD conf=72% size=0.0%
+2026-05-27 00:20:03,563 [INFO] main: ETHUSDT | RL adj=72.0%
+2026-05-27 00:20:05,565 [INFO] main: Next scan in 120min (weekday-quiet)
+2026-05-27 00:29:42,288 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1311,7 +1311,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       770Mi       384Mi       4.8Mi       2.9Gi       3.0Gi
+Mem:           3.7Gi       780Mi       374Mi       4.8Mi       2.9Gi       3.0Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
