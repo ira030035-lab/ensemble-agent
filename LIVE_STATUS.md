@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 06:30:02 UTC
+Generated: 2026-05-27 06:40:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      966808  0.0  1.1 131496 45740 ?        Ssl  May26   0:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      977418  0.1  3.2 722640 128640 ?       Ssl  04:18   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      977418  0.1  3.2 722640 128664 ?       Ssl  04:18   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -88,21 +88,6 @@ root      977418  0.1  3.2 722640 128640 ?       Ssl  04:18   0:10 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-27 06:28:56,727 [INFO] main: BTCUSDT | RL adj=75.0%
-2026-05-27 06:29:03,313 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-27 06:29:05,113 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-27 06:29:05,115 [INFO] main: BILLUSDT | Bull:long(75%) Bear:short(70%)
-2026-05-27 06:29:09,924 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 06:29:09,926 [INFO] main: BILLUSDT | Judge:HOLD conf=72% size=0.0%
-2026-05-27 06:29:09,926 [INFO] main: BILLUSDT | RL adj=72.0%
-2026-05-27 06:29:17,996 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-27 06:29:21,204 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-27 06:29:21,205 [INFO] main: NEARUSDT | Bull:long(60%) Bear:short(60%)
-2026-05-27 06:29:25,241 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 06:29:25,242 [INFO] main: NEARUSDT | Judge:HOLD conf=60% size=0.0%
-2026-05-27 06:29:25,242 [INFO] main: NEARUSDT | RL adj=60.0%
-2026-05-27 06:29:32,748 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-27 06:29:32,749 [INFO] main: UBUSDT | Bull:long(72%) Bear:short(80%)
 2026-05-27 06:29:37,954 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-27 06:29:37,955 [INFO] main: UBUSDT | Judge:HOLD conf=80% size=0.0%
 2026-05-27 06:29:37,956 [INFO] main: UBUSDT | RL adj=80.0%
@@ -118,6 +103,21 @@ root      977418  0.1  3.2 722640 128640 ?       Ssl  04:18   0:10 /opt/ensemble
 2026-05-27 06:29:59,457 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-27 06:30:00,094 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-27 06:30:00,094 [INFO] main: ADAUSDT | Bull:long(60%) Bear:short(80%)
+2026-05-27 06:30:04,830 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 06:30:04,832 [INFO] main: ADAUSDT | Judge:HOLD conf=80% size=0.0%
+2026-05-27 06:30:04,832 [INFO] main: ADAUSDT | RL adj=80.0%
+2026-05-27 06:30:19,417 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-27 06:30:19,419 [INFO] main: XRPUSDT | Bull:long(60%) Bear:short(65%)
+2026-05-27 06:30:23,956 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 06:30:23,958 [INFO] main: XRPUSDT | Judge:HOLD conf=65% size=0.0%
+2026-05-27 06:30:23,958 [INFO] main: XRPUSDT | RL adj=65.0%
+2026-05-27 06:30:31,806 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-27 06:30:34,283 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-27 06:30:34,285 [INFO] main: ZECUSDT | Bull:long(70%) Bear:short(75%)
+2026-05-27 06:30:39,507 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 06:30:39,509 [INFO] main: ZECUSDT | Judge:HOLD conf=72% size=0.0%
+2026-05-27 06:30:39,509 [INFO] main: ZECUSDT | RL adj=72.0%
+2026-05-27 06:30:41,511 [INFO] main: Next scan in 120min (weekday-quiet)
 ```
 
 ## Disk
@@ -135,7 +135,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       759Mi       447Mi       4.8Mi       2.8Gi       3.0Gi
+Mem:           3.7Gi       777Mi       335Mi       4.8Mi       2.9Gi       3.0Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
