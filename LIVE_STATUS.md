@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 16:30:01 UTC
+Generated: 2026-05-27 16:40:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      983538  0.0  1.1 130976 45552 ?        Ssl  12:06   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      983708  0.2  3.2 721860 127444 ?       Ssl  12:20   0:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      983708  0.2  3.2 721860 127444 ?       Ssl  12:20   0:35 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -172,36 +172,36 @@ root      983708  0.2  3.2 721860 127444 ?       Ssl  12:20   0:31 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-27 15:59:48,230 [INFO] main: FFUSDT | RL adj=83.2%
-2026-05-27 15:59:48,237 [INFO] main: FFUSDT | Context score=-0.11 bias=0.1
-2026-05-27 15:59:48,237 [INFO] main: FFUSDT | regime BLOCK (volatile)
-2026-05-27 15:59:54,778 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-27 15:59:55,361 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 15:59:55,363 [INFO] main: PHAUSDT | Bull:long(62%) Bear:short(80%)
-2026-05-27 16:00:00,399 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 16:00:00,401 [INFO] main: PHAUSDT | Judge:SHORT conf=68% size=6.0%
-2026-05-27 16:00:00,401 [INFO] main: PHAUSDT | RL adj=69.7%
-2026-05-27 16:00:00,490 [INFO] main: PHAUSDT | Context score=-0.11 bias=0.1
-2026-05-27 16:00:00,490 [INFO] main: PHAUSDT | regime BLOCK (volatile)
-2026-05-27 16:00:06,187 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-27 16:00:07,745 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 16:00:07,746 [INFO] main: FILUSDT | Bull:long(72%) Bear:short(70%)
-2026-05-27 16:00:14,322 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 16:00:14,324 [INFO] main: FILUSDT | Judge:LONG conf=68% size=7.0%
-2026-05-27 16:00:14,324 [INFO] main: FILUSDT | RL adj=69.2%
-2026-05-27 16:00:14,328 [INFO] main: FILUSDT | Context score=-0.01 bias=0.1
-2026-05-27 16:00:14,329 [INFO] main: FILUSDT | macro BLOCK (long при BTC downtrend)
-2026-05-27 16:00:21,471 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 16:00:24,169 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-27 16:00:24,170 [INFO] main: PEPEUSDT | Bull:flat(25%) Bear:short(90%)
-2026-05-27 16:00:29,309 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 16:00:29,310 [INFO] main: PEPEUSDT | Judge:SHORT conf=72% size=6.0%
-2026-05-27 16:00:29,311 [INFO] main: PEPEUSDT | RL adj=84.6%
-2026-05-27 16:00:29,314 [INFO] main: PEPEUSDT | Context score=-0.12 bias=0.1
-2026-05-27 16:00:29,314 [INFO] main: PEPEUSDT | gate PASS (Judge 72/70 RL 84.6/64.43 slack=±3)
-2026-05-27 16:00:29,315 [INFO] positions: Same-side cap: skip SHORT PEPEUSDT (3/3 already short)
-2026-05-27 16:00:31,317 [INFO] main: Next scan in 30min (weekday-active)
-2026-05-27 16:20:19,778 [INFO] main: Symbols: 30
+2026-05-27 16:35:35,135 [INFO] main: BILLUSDT | Bull:flat(25%) Bear:short(70%)
+2026-05-27 16:35:39,613 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 16:35:39,613 [INFO] main: BILLUSDT | Judge:SHORT conf=68% size=6.0%
+2026-05-27 16:35:39,613 [INFO] main: BILLUSDT | RL adj=77.8%
+2026-05-27 16:35:39,615 [INFO] main: BILLUSDT | Context score=-0.12 bias=0.1
+2026-05-27 16:35:39,615 [INFO] main: BILLUSDT | regime BLOCK (volatile)
+2026-05-27 16:35:46,182 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-27 16:35:50,297 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 16:35:50,298 [INFO] main: SOLUSDT | Bull:flat(35%) Bear:short(70%)
+2026-05-27 16:35:54,681 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 16:35:54,682 [INFO] main: SOLUSDT | Judge:SHORT conf=62% size=5.0%
+2026-05-27 16:35:54,682 [INFO] main: SOLUSDT | RL adj=71.8%
+2026-05-27 16:35:54,687 [INFO] main: SOLUSDT | Context score=-0.11 bias=0.1
+2026-05-27 16:35:59,988 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-27 16:36:01,824 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 16:36:01,826 [INFO] main: BEATUSDT | Bull:flat(25%) Bear:short(75%)
+2026-05-27 16:36:07,439 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 16:36:07,440 [INFO] main: BEATUSDT | Judge:SHORT conf=72% size=6.0%
+2026-05-27 16:36:07,440 [INFO] main: BEATUSDT | RL adj=82.5%
+2026-05-27 16:36:07,445 [INFO] main: BEATUSDT | Context score=-0.11 bias=0.1
+2026-05-27 16:36:07,445 [INFO] main: BEATUSDT | regime BLOCK (volatile)
+2026-05-27 16:36:12,982 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-27 16:36:14,592 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 16:36:14,594 [INFO] main: WLDUSDT | Bull:flat(15%) Bear:short(70%)
+2026-05-27 16:36:20,265 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 16:36:20,267 [INFO] main: WLDUSDT | Judge:SHORT conf=68% size=6.0%
+2026-05-27 16:36:20,267 [INFO] main: WLDUSDT | RL adj=77.8%
+2026-05-27 16:36:20,271 [INFO] main: WLDUSDT | Context score=-0.11 bias=0.1
+2026-05-27 16:36:20,271 [INFO] main: WLDUSDT | regime BLOCK (volatile)
+2026-05-27 16:36:22,274 [INFO] main: Next scan in 30min (weekday-active)
 ```
 
 ## Disk
@@ -219,7 +219,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       796Mi       344Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       784Mi       356Mi       4.8Mi       2.9Gi       3.0Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
