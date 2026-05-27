@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 05:10:01 UTC
+Generated: 2026-05-27 05:20:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      966808  0.0  1.1 131496 45740 ?        Ssl  May26   0:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      977418  0.1  3.1 716720 122144 ?       Ssl  04:18   0:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      977418  0.1  3.1 718372 124300 ?       Ssl  04:18   0:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -70,7 +70,6 @@ root      977418  0.1  3.1 716720 122144 ?       Ssl  04:18   0:05 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-27 04:24:08,760 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-27 04:24:09,831 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-27 04:24:09,831 [INFO] main: SOLUSDT | Bull:long(45%) Bear:short(80%)
 2026-05-27 04:24:18,424 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -100,6 +99,7 @@ root      977418  0.1  3.1 716720 122144 ?       Ssl  04:18   0:05 /opt/ensemble
 2026-05-27 04:58:57,386 [INFO] positions: OK PEPEUSDT short PnL:0.43% reason:breakeven_stop
 2026-05-27 04:58:57,387 [INFO] positions: Lessons: The PEPEUSDT short trade resulted in a small profit of 0.43% due to a breakeven stop. The original reasoning for the trade was not explicitly stated as it was restored from a paper state. This trade can be considered a neutral outcome with minimal impact on overall performance.
 2026-05-27 04:58:57,387 [INFO] rl: RL learned from short PEPEUSDT: profit 0.43% | weights bull=1.030 bear=0.929 judge=1.040 threshold=64.41
+2026-05-27 05:18:51,580 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -117,7 +117,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       766Mi       442Mi       4.8Mi       2.8Gi       3.0Gi
+Mem:           3.7Gi       768Mi       440Mi       4.8Mi       2.8Gi       3.0Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
