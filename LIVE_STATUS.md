@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 23:20:01 UTC
+Generated: 2026-05-27 23:30:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      983538  0.0  1.1 132064 45824 ?        Ssl  12:06   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      983708  0.1  3.2 721860 128088 ?       Ssl  12:20   1:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      983708  0.1  3.2 721860 128108 ?       Ssl  12:20   1:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -190,7 +190,6 @@ root      983708  0.1  3.2 721860 128088 ?       Ssl  12:20   1:13 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-27 22:20:59,025 [INFO] main: ICPUSDT | Context score=-0.11 bias=0.1
 2026-05-27 22:20:59,025 [INFO] main: ICPUSDT | regime BLOCK (volatile)
 2026-05-27 22:21:04,654 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-27 22:21:05,158 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -220,6 +219,7 @@ root      983708  0.1  3.2 721860 128088 ?       Ssl  12:20   1:13 /opt/ensemble
 2026-05-27 22:21:32,846 [INFO] main: FFUSDT | Context score=-0.11 bias=0.1
 2026-05-27 22:21:32,846 [INFO] main: FFUSDT | regime BLOCK (volatile)
 2026-05-27 22:21:34,849 [INFO] main: Next scan in 120min (weekday-quiet)
+2026-05-27 23:20:24,337 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -237,7 +237,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       785Mi       345Mi       4.8Mi       2.9Gi       3.0Gi
+Mem:           3.7Gi       807Mi       322Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
