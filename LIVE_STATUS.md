@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 20:20:01 UTC
+Generated: 2026-05-27 20:30:01 UTC
 
 ## Services
 ```
@@ -190,7 +190,6 @@ root      983708  0.2  3.2 721860 127972 ?       Ssl  12:20   1:02 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-27 20:09:49,136 [INFO] main: BSBUSDT | Context score=-0.11 bias=0.1
 2026-05-27 20:09:49,136 [INFO] main: BSBUSDT | regime BLOCK (volatile)
 2026-05-27 20:09:55,071 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-27 20:09:55,306 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -220,6 +219,7 @@ root      983708  0.2  3.2 721860 127972 ?       Ssl  12:20   1:02 /opt/ensemble
 2026-05-27 20:10:24,197 [INFO] main: HYPEUSDT | gate PASS (Judge 68/70 RL 76.5/64.41 slack=±3)
 2026-05-27 20:10:24,197 [INFO] positions: Same-side cap: skip SHORT HYPEUSDT (3/3 already short)
 2026-05-27 20:10:26,200 [INFO] main: Next scan in 60min (weekday-warmup)
+2026-05-27 20:20:22,442 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -237,7 +237,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       785Mi       350Mi       4.8Mi       2.9Gi       3.0Gi
+Mem:           3.7Gi       793Mi       342Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
