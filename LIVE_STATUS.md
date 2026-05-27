@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 01:20:01 UTC
+Generated: 2026-05-27 01:30:01 UTC
 
 ## Services
 ```
@@ -1270,7 +1270,6 @@ root      968862  0.1  3.6 735928 141720 ?       Ssl  May26   0:40 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-27 00:19:06,454 [INFO] main: FETUSDT | regime BLOCK (volatile)
 2026-05-27 00:19:14,871 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-27 00:19:14,872 [INFO] main: WLDUSDT | Bull:long(50%) Bear:short(78%)
 2026-05-27 00:19:23,866 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -1300,6 +1299,7 @@ root      968862  0.1  3.6 735928 141720 ?       Ssl  May26   0:40 /opt/ensemble
 2026-05-27 01:03:33,858 [INFO] positions: LOSS ONDOUSDT short PnL:-0.15% reason:breakeven_stop
 2026-05-27 01:03:33,858 [INFO] positions: Lessons: In trending_down regimes, MACD bullish divergence can precede whipsaws and should be treated as a reversal warning rather than a conviction blocker. Conservative position sizing is warranted in such cases to mitigate potential losses. The trade's breakeven stop outcome suggests that disciplined stops can help limit losses even when the initial conviction is not fully realized.
 2026-05-27 01:03:33,858 [INFO] rl: RL learned from short ONDOUSDT: loss -0.15% | weights bull=0.977 bear=0.992 judge=1.031 threshold=65.09
+2026-05-27 01:29:42,918 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1317,7 +1317,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       774Mi       379Mi       4.8Mi       2.9Gi       3.0Gi
+Mem:           3.7Gi       786Mi       367Mi       4.8Mi       2.9Gi       3.0Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
