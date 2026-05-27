@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 04:50:01 UTC
+Generated: 2026-05-27 05:00:01 UTC
 
 ## Services
 ```
@@ -10,27 +10,15 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      966808  0.0  1.1 131752 45748 ?        Ssl  May26   0:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      977418  0.2  3.1 716720 122116 ?       Ssl  04:18   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      966808  0.0  1.1 131496 45740 ?        Ssl  May26   0:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      977418  0.2  3.1 716720 122140 ?       Ssl  04:18   0:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 940.0004565000124,
+  "balance": 960.4268836093923,
   "positions": {
-    "PEPEUSDT": {
-      "id": "PAPER_PEPEUSDT_1779855184",
-      "symbol": "PEPEUSDT",
-      "side": "short",
-      "entry_price": 3.5176e-06,
-      "qty": 28428473.9595,
-      "confidence": 72,
-      "opened_at": "2026-05-27T04:13:04.351442",
-      "cost": 19.99999999998744,
-      "notional": 99.9999999999372,
-      "leverage": 5
-    },
     "HYPEUSDT": {
       "id": "PAPER_HYPEUSDT_1779855561",
       "symbol": "HYPEUSDT",
@@ -56,18 +44,32 @@ root      977418  0.2  3.1 716720 122116 ?       Ssl  04:18   0:04 /opt/ensemble
       "leverage": 5
     }
   },
-  "trade_history": [],
-  "total_pnl": 0.0
+  "trade_history": [
+    {
+      "id": "PAPER_PEPEUSDT_1779855184",
+      "symbol": "PEPEUSDT",
+      "side": "short",
+      "entry_price": 3.5176e-06,
+      "qty": 28428473.9595,
+      "confidence": 72,
+      "opened_at": "2026-05-27T04:13:04.351442",
+      "cost": 19.99999999998744,
+      "notional": 99.9999999999372,
+      "leverage": 5,
+      "exit_price": 3.5026e-06,
+      "pnl_pct": 2.13,
+      "pnl_usdt": 0.43,
+      "closed_at": "2026-05-27T04:58:57.087082",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
+    }
+  ],
+  "total_pnl": 0.4264271093924959
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-27 04:23:57,379 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-27 04:23:57,380 [INFO] main: ETHUSDT | Bull:long(50%) Bear:short(90%)
-2026-05-27 04:24:02,166 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 04:24:02,168 [INFO] main: ETHUSDT | Judge:HOLD conf=90% size=0.0%
-2026-05-27 04:24:02,168 [INFO] main: ETHUSDT | RL adj=90.0%
 2026-05-27 04:24:08,760 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-27 04:24:09,831 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-27 04:24:09,831 [INFO] main: SOLUSDT | Bull:long(45%) Bear:short(80%)
@@ -93,6 +95,11 @@ root      977418  0.2  3.1 716720 122116 ?       Ssl  04:18   0:04 /opt/ensemble
 2026-05-27 04:24:55,397 [INFO] main: BILLUSDT | Judge:HOLD conf=80% size=0.0%
 2026-05-27 04:24:55,398 [INFO] main: BILLUSDT | RL adj=80.0%
 2026-05-27 04:24:57,400 [INFO] main: Next scan in 120min (weekday-quiet)
+2026-05-27 04:58:57,086 [INFO] positions: BREAKEVEN_STOP PEPEUSDT short PnL:0.43%
+2026-05-27 04:58:57,089 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT PEPEUSDT @ 0.0000 PnL: 2.13% (+0.43 USDT) | Баланс: 960.43
+2026-05-27 04:58:57,386 [INFO] positions: OK PEPEUSDT short PnL:0.43% reason:breakeven_stop
+2026-05-27 04:58:57,387 [INFO] positions: Lessons: The PEPEUSDT short trade resulted in a small profit of 0.43% due to a breakeven stop. The original reasoning for the trade was not explicitly stated as it was restored from a paper state. This trade can be considered a neutral outcome with minimal impact on overall performance.
+2026-05-27 04:58:57,387 [INFO] rl: RL learned from short PEPEUSDT: profit 0.43% | weights bull=1.030 bear=0.929 judge=1.040 threshold=64.41
 ```
 
 ## Disk
@@ -110,7 +117,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       944Mi       167Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       962Mi       148Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
