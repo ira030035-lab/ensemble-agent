@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 21:20:01 UTC
+Generated: 2026-05-27 21:30:01 UTC
 
 ## Services
 ```
@@ -190,7 +190,6 @@ root      983708  0.2  3.2 721860 127972 ?       Ssl  12:20   1:07 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-27 21:15:13,940 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-27 21:15:13,941 [INFO] main: ADAUSDT | Bull:flat(25%) Bear:short(60%)
 2026-05-27 21:15:19,029 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-27 21:15:19,030 [INFO] main: ADAUSDT | Judge:SHORT conf=62% size=5.0%
@@ -220,6 +219,7 @@ root      983708  0.2  3.2 721860 127972 ?       Ssl  12:20   1:07 /opt/ensemble
 2026-05-27 21:15:56,724 [INFO] main: ICPUSDT | Context score=-0.11 bias=0.1
 2026-05-27 21:15:56,724 [INFO] main: ICPUSDT | regime BLOCK (volatile)
 2026-05-27 21:15:58,726 [INFO] main: Next scan in 60min (weekday-warmup)
+2026-05-27 21:20:23,058 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -237,7 +237,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       786Mi       347Mi       4.8Mi       2.9Gi       3.0Gi
+Mem:           3.7Gi       798Mi       336Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
