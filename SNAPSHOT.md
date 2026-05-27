@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-27 12:00:01 UTC
+Generated: 2026-05-27 13:00:01 UTC
 
 ## ab_test_analyze_apply.py
 ```python
@@ -277,12 +277,13 @@ class BullAgent:
     async def analyze(self,market_text):
         prompt="Analyze and make bullish case:\n"+market_text
         try:
-            # Если entropy-guard активен — не используем Groq (Gemini), только Kimi+Claude
+            # Bull теперь только на Groq (экономия Kimi). Fallback — Claude Haiku.
             if self._using_fallback:
-                text=await _race([self._kimi(prompt)], self._claude(prompt))
+                log.warning(f"Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.")
+                text=await _race([self._groq(prompt)], self._claude(prompt))
             else:
                 text=await _race(
-                    [self._kimi(prompt), self._groq(prompt)],
+                    [self._groq(prompt)],
                     self._claude(prompt))
             d=self._parse(text)
             side=d.get("side")
@@ -296,7 +297,7 @@ class BullAgent:
     async def _claude(self,prompt):
         import anthropic
         c=anthropic.AsyncAnthropic(api_key=self.cfg.ANTHROPIC_API_KEY)
-        msg=await c.messages.create(model=self.cfg.BEAR_MODEL,max_tokens=300,system=BULL_SYS,messages=[{"role":"user","content":prompt}])
+        msg=await c.messages.create(model=self.cfg.BULL_MODEL,max_tokens=300,system=BULL_SYS,messages=[{"role":"user","content":prompt}])
         return msg.content[0].text
     async def _groq(self,prompt):
         keys=list(getattr(self.cfg,"GROQ_API_KEYS",[]) or [])
@@ -2133,6 +2134,7 @@ class Config:
     BULL_MODELS_GROQ = ["llama-3.3-70b-versatile", "openai/gpt-oss-120b"]
     BEAR_MODELS_GROQ = ["llama-3.3-70b-versatile", "openai/gpt-oss-120b"]
     JUDGE_MODELS_GROQ = ["llama-3.3-70b-versatile", "openai/gpt-oss-120b"]
+    BULL_MODEL = "claude-haiku-4-5-20251001"
     BEAR_MODEL = "claude-haiku-4-5-20251001"
     JUDGE_MODEL = "claude-haiku-4-5-20251001"
     TOP_N_SYMBOLS = 30
@@ -2172,7 +2174,7 @@ class Config:
 
 ## dashboard_api.py
 ```python
-import asyncio, json, re, os, logging, time
+import asyncio, json, re, os, logging, time, base64
 from datetime import datetime, timezone
 from aiohttp import web, ClientSession, ClientTimeout
 from dotenv import load_dotenv
@@ -2181,6 +2183,33 @@ from config import Config
 PAPER_BALANCE = Config.PAPER_BALANCE
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 log = logging.getLogger("dashboard")
+
+# Basic Auth credentials
+_AUTH_USER = "ensemble"
+_AUTH_PASS = os.getenv("DASHBOARD_PASS", "ensemble2024")
+
+
+@web.middleware
+async def basic_auth_middleware(request, handler):
+    """HTTP Basic Auth for all dashboard endpoints."""
+    auth_header = request.headers.get("Authorization")
+    if not auth_header:
+        return web.Response(status=401, headers={"WWW-Authenticate": 'Basic realm="Ensemble"'},
+                            text="Authentication required")
+    try:
+        scheme, credentials = auth_header.split(" ", 1)
+        if scheme.lower() != "basic":
+            raise ValueError()
+        decoded = base64.b64decode(credentials).decode("utf-8")
+        user, passwd = decoded.split(":", 1)
+    except Exception:
+        return web.Response(status=401, headers={"WWW-Authenticate": 'Basic realm="Ensemble"'},
+                            text="Invalid auth header")
+    if user != _AUTH_USER or passwd != _AUTH_PASS:
+        return web.Response(status=401, headers={"WWW-Authenticate": 'Basic realm="Ensemble"'},
+                            text="Invalid credentials")
+    return await handler(request)
+
 
 LOG_FILE = "/opt/ensemble-agent/ensemble.log"
 STATE_FILE = "/opt/ensemble-agent/paper_state.json"
@@ -2407,7 +2436,7 @@ async def handle_paper(request):
                         headers={"Access-Control-Allow-Origin": "*"})
 
 
-app = web.Application()
+app = web.Application(middlewares=[basic_auth_middleware])
 app.router.add_get("/ensemble-api", handle_api)
 app.router.add_get("/paper-api", handle_paper)
 app.router.add_get("/upcoming-api", handle_upcoming)
@@ -3798,7 +3827,7 @@ class Orchestrator:
         log.info("=== Adversarial Trading Agent started ===")
         kimi_on=bool(getattr(self.cfg,"KIMI_API_KEY",None))
         groq_keys=len(getattr(self.cfg,"GROQ_API_KEYS",[]) or [])
-        log.info("Bull: race(Kimi x"+("1" if kimi_on else "0")+", Groq x"+str(groq_keys)+") → Haiku fb | Bear: race(Groq x"+str(groq_keys)+", Kimi x"+("1" if kimi_on else "0")+") → Haiku fb | Judge: Haiku (decide) + Groq Llama (exit/dir/reflect)")
+        log.info("Bull: race(Groq x"+str(groq_keys)+") → Haiku fb | Bear: race(Groq x"+str(groq_keys)+", Kimi x"+("1" if kimi_on else "0")+") → Haiku fb | Judge: Haiku (decide) + Groq Llama (exit/dir/reflect)")
         loop=asyncio.get_event_loop()
         for sig in (signal.SIGINT,signal.SIGTERM): loop.add_signal_handler(sig,self.stop)
         closed_in_memory=sum(1 for t in self.memory.trades if t.outcome in ("profit","loss") and not getattr(t,"orphan",False))
