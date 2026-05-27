@@ -1,0 +1,30 @@
+# Secrets
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+venv/
+.venv/
+
+# Logs
+*.log
+*.log.old
+*.log.bak_*
+
+# State backups (keep only latest manually)
+*.bak_*
+*.auto_backup*
+*.auto_backup_ab
+
+# Simulator output
+simulator_cache/
+simulator_kimi_cache/
+simulator_output/
+
+# IDE
+.vscode/
+.idea/

@@ -1,0 +1,50 @@
+import os
+from dotenv import load_dotenv
+load_dotenv("/opt/ensemble-agent/.env")
+class Config:
+    BITGET_API_KEY = os.getenv("BITGET_API_KEY")
+    BITGET_SECRET = os.getenv("BITGET_SECRET")
+    BITGET_PASSPHRASE = os.getenv("BITGET_PASSPHRASE")
+    BITGET_BASE_URL = "https://api.bitget.com"
+    ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+    GROQ_API_KEYS = [k for k in [os.getenv("GROQ_API_KEY"+(str(i) if i>1 else "")) for i in range(1,6)] if k]
+    KIMI_API_KEY = os.getenv("KIMI_API_KEY")
+    KIMI_BASE_URL = "https://api.moonshot.ai/v1"
+    KIMI_MODEL = "moonshot-v1-auto"
+    BULL_MODELS_GROQ = ["llama-3.3-70b-versatile", "openai/gpt-oss-120b"]
+    BEAR_MODELS_GROQ = ["llama-3.3-70b-versatile", "openai/gpt-oss-120b"]
+    JUDGE_MODELS_GROQ = ["llama-3.3-70b-versatile", "openai/gpt-oss-120b"]
+    BEAR_MODEL = "claude-haiku-4-5-20251001"
+    JUDGE_MODEL = "claude-haiku-4-5-20251001"
+    TOP_N_SYMBOLS = 30
+    SCAN_INTERVAL = 3600
+    MAX_POSITIONS = 10
+    MAX_SAME_SIDE = 3
+    MAX_CORRELATION = 0.85
+    CORR_LOOKBACK_BARS = 24
+    MIN_CONFIDENCE = 70
+    THRESHOLD_SLACK = 3
+    MIN_HOLD_SEC = 7200
+    JUDGE_EXIT_INTERVAL_SEC = 7200
+    JUDGE_EXIT_NOISE_BAND_PCT = 2.5
+    STOP_LOSS_PCT = -2.0
+    TAKE_PROFIT_PCT = 3.0
+    TRAIL_ARM_PCT = 2.5
+    TRAIL_GIVEBACK_PCT = 0.8
+    EMERGENCY_STOP_PCT = -15.0
+    POSITION_SIZE_FIXED = 100.0  # $100 fixed per trade (optimized mode)
+    MIN_RR = 1.2
+    COOLDOWN_HOURS = 6.0
+    MAX_HOLD_HOURS = 24.0
+    VOLATILITY_FILTER_ATR_PCT = 0.003
+    PAPER_MODE = True
+    PAPER_BALANCE = 1000.0
+    LEVERAGE = 5
+    RL_PRIME_FROM_HISTORY = False
+    MEMORY_FILE = "/opt/ensemble-agent/memory.json"
+    TRADE_LOG = "/opt/ensemble-agent/trade_log.json"
+    STATE_FILE = "/opt/ensemble-agent/state.json"
+    TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+    TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+    KIMI_JUDGE_ENABLED = False
+    KIMI_PROMPT_VERSION = "asymmetry"
