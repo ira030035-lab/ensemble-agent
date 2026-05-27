@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 00:10:01 UTC
+Generated: 2026-05-27 00:20:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      966808  0.0  1.1 131756 45560 ?        Ssl  May26   0:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      968862  0.1  3.5 732624 138480 ?       Ssl  May26   0:35 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      968862  0.1  3.5 734624 140364 ?       Ssl  May26   0:39 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -1264,42 +1264,42 @@ root      968862  0.1  3.5 732624 138480 ?       Ssl  May26   0:35 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-26 22:14:16,210 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 22:14:18,036 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 22:14:18,037 [INFO] main: FILUSDT | Bull:long(55%) Bear:short(76%)
-2026-05-26 22:14:23,632 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-26 22:14:23,633 [INFO] main: FILUSDT | Judge:HOLD conf=76% size=0.0%
-2026-05-26 22:14:23,633 [INFO] main: FILUSDT | RL adj=76.0%
-2026-05-26 22:14:29,145 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 22:14:29,801 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 22:14:29,803 [INFO] main: BSBUSDT | Bull:long(60%) Bear:short(75%)
-2026-05-26 22:14:35,198 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-26 22:14:35,198 [INFO] main: BSBUSDT | Judge:HOLD conf=75% size=0.0%
-2026-05-26 22:14:35,199 [INFO] main: BSBUSDT | RL adj=75.0%
-2026-05-26 22:14:40,931 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 22:14:41,902 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 22:14:41,904 [INFO] main: PEPEUSDT | Bull:long(60%) Bear:short(70%)
-2026-05-26 22:14:47,215 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-26 22:14:47,217 [INFO] main: PEPEUSDT | Judge:SHORT conf=62% size=6.0%
-2026-05-26 22:14:47,217 [INFO] main: PEPEUSDT | RL adj=63.6%
-2026-05-26 22:14:47,217 [INFO] main: PEPEUSDT | Context score=0.04
-2026-05-26 22:14:53,813 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 22:14:54,065 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-26 22:14:54,067 [INFO] main: FETUSDT | Bull:long(70%) Bear:short(55%)
-2026-05-26 22:15:00,623 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-26 22:15:00,624 [INFO] main: FETUSDT | Judge:LONG conf=62% size=7.0%
-2026-05-26 22:15:00,624 [INFO] main: FETUSDT | RL adj=64.1%
-2026-05-26 22:15:00,624 [INFO] main: FETUSDT | Context score=0.1
-2026-05-26 22:15:00,624 [INFO] main: FETUSDT | regime BLOCK (volatile)
-2026-05-26 22:15:02,626 [INFO] main: Next scan in 120min (weekday-quiet)
-2026-05-26 22:29:40,965 [INFO] main: Symbols: 30
-2026-05-26 23:29:41,624 [INFO] main: Symbols: 30
+2026-05-27 00:18:52,557 [INFO] main: HYPEUSDT | Context score=0.04
+2026-05-27 00:18:52,557 [INFO] main: HYPEUSDT | gate PASS (Judge 68/70 RL 69.6/65.04 slack=±3)
+2026-05-27 00:18:52,558 [INFO] positions: Max positions reached (3/3 dyn)
+2026-05-27 00:18:58,605 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-27 00:19:00,282 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-27 00:19:00,283 [INFO] main: FETUSDT | Bull:long(85%) Bear:long(70%)
+2026-05-27 00:19:06,452 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 00:19:06,453 [INFO] main: FETUSDT | Judge:LONG conf=72% size=8.0%
+2026-05-27 00:19:06,454 [INFO] main: FETUSDT | RL adj=84.5%
+2026-05-27 00:19:06,454 [INFO] main: FETUSDT | Context score=0.05
+2026-05-27 00:19:06,454 [INFO] main: FETUSDT | regime BLOCK (volatile)
+2026-05-27 00:19:14,871 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-27 00:19:14,872 [INFO] main: WLDUSDT | Bull:long(50%) Bear:short(78%)
+2026-05-27 00:19:23,866 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 00:19:23,868 [INFO] main: WLDUSDT | Judge:HOLD conf=78% size=0.0%
+2026-05-27 00:19:23,868 [INFO] main: WLDUSDT | RL adj=78.0%
+2026-05-27 00:19:28,763 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-27 00:19:31,553 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-27 00:19:31,554 [INFO] main: BILLUSDT | Bull:long(70%) Bear:short(70%)
+2026-05-27 00:19:37,508 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 00:19:37,510 [INFO] main: BILLUSDT | Judge:HOLD conf=70% size=0.0%
+2026-05-27 00:19:37,510 [INFO] main: BILLUSDT | RL adj=70.0%
+2026-05-27 00:19:45,267 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-27 00:19:45,269 [INFO] main: TONUSDT | Bull:long(64%) Bear:short(68%)
+2026-05-27 00:19:50,026 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 00:19:50,027 [INFO] main: TONUSDT | Judge:HOLD conf=68% size=0.0%
+2026-05-27 00:19:50,027 [INFO] main: TONUSDT | RL adj=68.0%
+2026-05-27 00:19:57,184 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-27 00:19:57,991 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-27 00:19:57,993 [INFO] main: ETHUSDT | Bull:long(60%) Bear:short(80%)
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  892K  381M   1% /run
+tmpfs           382M  888K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  8.4G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -1311,7 +1311,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       772Mi       382Mi       4.8Mi       2.9Gi       3.0Gi
+Mem:           3.7Gi       770Mi       384Mi       4.8Mi       2.9Gi       3.0Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
