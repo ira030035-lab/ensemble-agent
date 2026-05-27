@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 17:20:01 UTC
+Generated: 2026-05-27 17:30:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      983538  0.0  1.1 130976 45552 ?        Ssl  12:06   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      983708  0.2  3.2 721860 127464 ?       Ssl  12:20   0:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      983708  0.2  3.2 721860 127788 ?       Ssl  12:20   0:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -178,7 +178,6 @@ root      983708  0.2  3.2 721860 127464 ?       Ssl  12:20   0:40 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-27 17:11:42,378 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-27 17:11:42,379 [INFO] main: ADAUSDT | Bull:flat(35%) Bear:short(75%)
 2026-05-27 17:11:47,995 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-27 17:11:47,997 [INFO] main: ADAUSDT | Judge:SHORT conf=68% size=5.0%
@@ -208,6 +207,7 @@ root      983708  0.2  3.2 721860 127464 ?       Ssl  12:20   0:40 /opt/ensemble
 2026-05-27 17:14:10,607 [INFO] positions: OK RENDERUSDT short PnL:3.17% reason:take_profit
 2026-05-27 17:14:10,608 [INFO] positions: Lessons: This trade's success can be attributed to correctly identifying a trending_down regime and confluent bearish signals, allowing for a 3.17% profit. The use of conservative position sizing at 0.06 limited potential drawdown and respected the downtrend momentum. Similar trades in the past have shown that discipline in position sizing is key to managing risk in trending_down regimes.
 2026-05-27 17:14:10,608 [INFO] rl: RL learned from short RENDERUSDT: profit 3.17% | weights bull=1.013 bear=0.941 judge=1.046 threshold=64.41
+2026-05-27 17:20:20,491 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -225,7 +225,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       786Mi       353Mi       4.8Mi       2.9Gi       3.0Gi
+Mem:           3.7Gi       794Mi       345Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
