@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-27 14:00:01 UTC
+Generated: 2026-05-27 14:10:01 UTC
 
 ## Services
 ```
@@ -10,14 +10,14 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      983538  0.0  1.1 130828 45172 ?        Ssl  12:06   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      983708  0.2  3.2 688068 126048 ?       Ssl  12:20   0:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      983538  0.0  1.1 130828 45212 ?        Ssl  12:06   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      983708  0.2  3.2 720836 126548 ?       Ssl  12:20   0:16 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 984.0433557693924,
+  "balance": 944.0433705694195,
   "positions": {
     "LINKUSDT": {
       "id": "PAPER_LINKUSDT_1779855776",
@@ -29,6 +29,30 @@ root      983708  0.2  3.2 688068 126048 ?       Ssl  12:20   0:13 /opt/ensemble
       "opened_at": "2026-05-27T04:22:56.413656",
       "cost": 20.000024,
       "notional": 100.00012,
+      "leverage": 5
+    },
+    "PEPEUSDT": {
+      "id": "PAPER_PEPEUSDT_1779890846",
+      "symbol": "PEPEUSDT",
+      "side": "short",
+      "entry_price": 3.5241e-06,
+      "qty": 28376039.2724,
+      "confidence": 68,
+      "opened_at": "2026-05-27T14:07:26.484925",
+      "cost": 19.999999999972964,
+      "notional": 99.99999999986483,
+      "leverage": 5
+    },
+    "RENDERUSDT": {
+      "id": "PAPER_RENDERUSDT_1779890875",
+      "symbol": "RENDERUSDT",
+      "side": "short",
+      "entry_price": 2.242,
+      "qty": 44.603,
+      "confidence": 72,
+      "opened_at": "2026-05-27T14:07:55.691992",
+      "cost": 19.9999852,
+      "notional": 99.999926,
       "leverage": 5
     }
   },
@@ -130,36 +154,36 @@ root      983708  0.2  3.2 688068 126048 ?       Ssl  12:20   0:13 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-27 13:36:23,184 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 13:36:23,186 [INFO] main: BTCUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-27 13:36:23,186 [INFO] main: BTCUSDT | RL adj=80.0%
-2026-05-27 13:36:28,897 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-27 13:36:31,215 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 13:36:31,216 [INFO] main: PHAUSDT | Bull:flat(15%) Bear:short(70%)
-2026-05-27 13:36:35,284 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 13:36:35,286 [INFO] main: PHAUSDT | Judge:SHORT conf=68% size=6.0%
-2026-05-27 13:36:35,286 [INFO] main: PHAUSDT | RL adj=77.8%
-2026-05-27 13:36:35,289 [INFO] main: PHAUSDT | Context score=-0.13 bias=0.12
-2026-05-27 13:36:35,289 [INFO] main: PHAUSDT | regime BLOCK (volatile)
-2026-05-27 13:36:41,656 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 13:36:42,011 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-27 13:36:42,013 [INFO] main: FILUSDT | Bull:long(62%) Bear:short(80%)
-2026-05-27 13:36:47,719 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 13:36:47,720 [INFO] main: FILUSDT | Judge:HOLD conf=80% size=0.0%
-2026-05-27 13:36:47,720 [INFO] main: FILUSDT | RL adj=80.0%
-2026-05-27 13:36:49,723 [INFO] main: Next scan in 30min (weekday-active)
-2026-05-27 13:55:06,261 [INFO] positions: TRAILING-STOP HYPEUSDT short peak:2.84% now:2.01%
-2026-05-27 13:55:06,264 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT HYPEUSDT @ 60.9680 PnL: 10.05% (+2.01 USDT) | Баланс: 963.55
-2026-05-27 13:55:06,905 [INFO] positions: OK HYPEUSDT short PnL:2.01% reason:trailing_stop
-2026-05-27 13:55:06,905 [INFO] positions: Lessons: Bearish technical confluence can still be muted by low volume and a ranging regime, so keep position size modest and use tight stops. Past similar short setups that flopped remind us to treat overbought RSI and bearish MACD as warnings, not guarantees. A small, well‑managed trade can capture modest upside even when the signal isn’t overwhelming.
-2026-05-27 13:55:06,906 [INFO] rl: RL learned from short HYPEUSDT: profit 2.01% | weights bull=1.019 bear=0.937 judge=1.044 threshold=64.41
-2026-05-27 13:55:06,906 [INFO] positions: BREAKEVEN_STOP TONUSDT short PnL:0.5%
-2026-05-27 13:55:06,909 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT TONUSDT @ 1.8842 PnL: 2.48% (+0.50 USDT) | Баланс: 984.04
-2026-05-27 13:55:06,961 [WARNING] agents: Judge-Groq all failed: openai/gpt-oss-120b 429 (***7Czb cooldown 1h)
-2026-05-27 13:55:09,499 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-27 13:55:09,501 [INFO] positions: OK TONUSDT short PnL:0.5% reason:breakeven_stop
-2026-05-27 13:55:09,501 [INFO] positions: Lessons: The short captured a modest 0.5% gain in a trending_down regime where BEAR conviction (80%) clearly dominated BULL (72%), validating the directional bias despite RSI oversold conditions that could have triggered a false reversal. Conservative 0.06 sizing proved prudent—even strong bearish setups can fail or stall, so position sizing remains the primary risk lever when conviction margins are meaningful but not absolute. Memory: trending regimes with extreme sentiment (Fear 25) and negative funding favor continuation shorts, but always size for the scenario where the reversal happens anyway.
-2026-05-27 13:55:09,501 [INFO] rl: RL learned from short TONUSDT: profit 0.50% | weights bull=1.017 bear=0.938 judge=1.045 threshold=64.38
+2026-05-27 14:09:09,557 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 14:09:09,559 [INFO] main: BSBUSDT | Bull:flat(15%) Bear:short(75%)
+2026-05-27 14:09:13,504 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 14:09:13,506 [INFO] main: BSBUSDT | Judge:SHORT conf=72% size=6.0%
+2026-05-27 14:09:13,506 [INFO] main: BSBUSDT | RL adj=82.6%
+2026-05-27 14:09:13,510 [INFO] main: BSBUSDT | Context score=-0.13 bias=0.12
+2026-05-27 14:09:13,510 [INFO] main: BSBUSDT | regime BLOCK (volatile)
+2026-05-27 14:09:19,265 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-27 14:09:20,969 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 14:09:20,971 [INFO] main: TAOUSDT | Bull:flat(15%) Bear:short(80%)
+2026-05-27 14:09:27,869 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 14:09:27,871 [INFO] main: TAOUSDT | Judge:SHORT conf=76% size=7.0%
+2026-05-27 14:09:27,871 [INFO] main: TAOUSDT | RL adj=87.3%
+2026-05-27 14:09:27,876 [INFO] main: TAOUSDT | Context score=-0.13 bias=0.12
+2026-05-27 14:09:27,877 [INFO] main: TAOUSDT | gate PASS (Judge 76/70 RL 87.3/64.38 slack=±3)
+2026-05-27 14:09:27,877 [INFO] positions: Same-side cap: skip SHORT TAOUSDT (3/3 already short)
+2026-05-27 14:09:33,503 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-27 14:09:34,669 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 14:09:34,671 [INFO] main: SOLUSDT | Bull:flat(25%) Bear:short(75%)
+2026-05-27 14:09:40,347 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 14:09:40,349 [INFO] main: SOLUSDT | Judge:HOLD conf=75% size=0.0%
+2026-05-27 14:09:40,349 [INFO] main: SOLUSDT | RL adj=75.0%
+2026-05-27 14:09:50,873 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 14:09:50,954 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-27 14:09:50,955 [INFO] main: FILUSDT | Bull:long(72%) Bear:short(70%)
+2026-05-27 14:09:57,339 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-27 14:09:57,341 [INFO] main: FILUSDT | Judge:LONG conf=68% size=8.0%
+2026-05-27 14:09:57,341 [INFO] main: FILUSDT | RL adj=69.1%
+2026-05-27 14:09:57,345 [INFO] main: FILUSDT | Context score=-0.01 bias=0.12
+2026-05-27 14:09:57,345 [INFO] main: FILUSDT | macro BLOCK (long при BTC downtrend)
 ```
 
 ## Disk
@@ -177,7 +201,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       888Mi       254Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       873Mi       268Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
