@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 17:30:01 UTC
+Generated: 2026-05-28 17:40:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.1 718324 124632 ?       Ssl  07:37   0:51 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.1 718324 124748 ?       Ssl  07:37   0:52 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133048 47548 ?        Ssl  10:43   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1001083  0.0  1.1  55888 43672 ?        Ss   11:50   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
@@ -377,7 +377,6 @@ root     1001083  0.0  1.1  55888 43672 ?        Ss   11:50   0:04 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 17:24:20,681 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-28 17:24:20,682 [INFO] main: BILLUSDT | Bull:flat(15%) Bear:short(75%)
 2026-05-28 17:24:23,247 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-28 17:24:23,248 [INFO] main: BILLUSDT | Judge:SHORT conf=85% size=15.0%
@@ -407,6 +406,7 @@ root     1001083  0.0  1.1  55888 43672 ?        Ss   11:50   0:04 /opt/ensemble
 2026-05-28 17:24:51,985 [INFO] main: BNBUSDT | Context score=-0.1 bias=0.1
 2026-05-28 17:24:51,986 [INFO] main: BNBUSDT | regime BLOCK (short × trending_down × rsi1h=54.8; late-entry guard)
 2026-05-28 17:24:53,987 [INFO] main: Next scan in 30min (weekday-active)
+2026-05-28 17:37:27,940 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -414,7 +414,7 @@ root     1001083  0.0  1.1  55888 43672 ?        Ss   11:50   0:04 /opt/ensemble
 Filesystem      Size  Used Avail Use% Mounted on
 tmpfs           382M  896K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
-/dev/sda1        75G  8.4G   64G  12% /
+/dev/sda1        75G  8.5G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
 tmpfs           5.0M     0  5.0M   0% /run/lock
 /dev/sda15      253M  146K  252M   1% /boot/efi
@@ -424,7 +424,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       824Mi       454Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       821Mi       457Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
