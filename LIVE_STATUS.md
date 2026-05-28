@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 06:40:01 UTC
+Generated: 2026-05-28 06:50:01 UTC
 
 ## Services
 ```
@@ -10,8 +10,8 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      983538  0.0  1.1 131932 45920 ?        Ssl  May27   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      983708  0.1  3.2 722884 128548 ?       Ssl  May27   1:33 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      983538  0.0  1.1 131680 45996 ?        Ssl  May27   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      983708  0.1  3.2 722884 128548 ?       Ssl  May27   1:37 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -262,36 +262,36 @@ root      983708  0.1  3.2 722884 128548 ?       Ssl  May27   1:33 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 04:39:17,696 [INFO] main: FETUSDT | RL adj=89.6%
-2026-05-28 04:39:17,703 [INFO] main: FETUSDT | Context score=-0.06 bias=0.05
-2026-05-28 04:39:17,703 [INFO] main: FETUSDT | regime BLOCK (volatile)
-2026-05-28 04:39:24,471 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-28 04:39:25,128 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 04:39:25,130 [INFO] main: ZECUSDT | Bull:flat(25%) Bear:short(75%)
-2026-05-28 04:39:29,498 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-28 04:39:29,499 [INFO] main: ZECUSDT | Judge:SHORT conf=68% size=6.0%
-2026-05-28 04:39:29,500 [INFO] main: ZECUSDT | RL adj=78.9%
-2026-05-28 04:39:29,506 [INFO] main: ZECUSDT | Context score=-0.06 bias=0.05
-2026-05-28 04:39:29,506 [INFO] main: ZECUSDT | regime BLOCK (volatile)
-2026-05-28 04:39:36,948 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-28 04:39:39,648 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 04:39:39,650 [INFO] main: ETHUSDT | Bull:flat(15%) Bear:short(80%)
-2026-05-28 04:39:45,251 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-28 04:39:45,252 [INFO] main: ETHUSDT | Judge:SHORT conf=72% size=6.0%
-2026-05-28 04:39:45,252 [INFO] main: ETHUSDT | RL adj=83.6%
-2026-05-28 04:39:45,258 [INFO] main: ETHUSDT | Context score=-0.06 bias=0.05
-2026-05-28 04:39:45,259 [INFO] main: ETHUSDT | gate PASS (Judge 72/70 RL 83.6/64.29 slack=±3)
-2026-05-28 04:39:45,259 [INFO] positions: Same-side cap: skip SHORT ETHUSDT (3/3 already short)
-2026-05-28 04:39:51,353 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-28 04:39:52,089 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 04:39:52,090 [INFO] main: BEATUSDT | Bull:flat(35%) Bear:flat(50%)
-2026-05-28 04:39:58,515 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-28 04:39:58,516 [INFO] main: BEATUSDT | Judge:HOLD conf=50% size=0.0%
-2026-05-28 04:39:58,516 [INFO] main: BEATUSDT | RL adj=50.0%
-2026-05-28 04:40:00,519 [INFO] main: Next scan in 120min (weekday-quiet)
-2026-05-28 05:20:28,356 [INFO] main: Symbols: 30
-2026-05-28 06:20:29,017 [INFO] main: Symbols: 30
-2026-05-28 06:40:00,522 [INFO] main: Scanning 27 symbols...
+2026-05-28 06:44:46,738 [INFO] positions: Same-side cap: skip SHORT TRUMPUSDT (3/3 already short)
+2026-05-28 06:44:49,937 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-05-28 06:44:53,142 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-28 06:44:53,517 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-28 06:44:53,518 [INFO] main: BTCUSDT | Bull:flat(15%) Bear:short(75%)
+2026-05-28 06:44:58,713 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-28 06:44:58,715 [INFO] main: BTCUSDT | Judge:SHORT conf=70% size=6.0%
+2026-05-28 06:44:58,715 [INFO] main: BTCUSDT | RL adj=80.9%
+2026-05-28 06:44:58,723 [INFO] main: BTCUSDT | Context score=-0.06 bias=0.05
+2026-05-28 06:44:58,724 [INFO] main: BTCUSDT | gate PASS (Judge 70/70 RL 80.9/64.29 slack=±3)
+2026-05-28 06:44:58,725 [INFO] positions: Same-side cap: skip SHORT BTCUSDT (3/3 already short)
+2026-05-28 06:45:02,210 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-05-28 06:45:04,502 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-28 06:45:05,740 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-28 06:45:05,742 [INFO] main: WLDUSDT | Bull:flat(8%) Bear:short(80%)
+2026-05-28 06:45:10,262 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-28 06:45:10,263 [INFO] main: WLDUSDT | Judge:SHORT conf=78% size=7.0%
+2026-05-28 06:45:10,264 [INFO] main: WLDUSDT | RL adj=89.6%
+2026-05-28 06:45:10,270 [INFO] main: WLDUSDT | Context score=-0.06 bias=0.05
+2026-05-28 06:45:10,270 [INFO] main: WLDUSDT | regime BLOCK (volatile)
+2026-05-28 06:45:17,047 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-28 06:45:17,817 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-28 06:45:17,818 [INFO] main: ENAUSDT | Bull:flat(15%) Bear:short(75%)
+2026-05-28 06:45:22,278 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-28 06:45:22,280 [INFO] main: ENAUSDT | Judge:SHORT conf=68% size=6.0%
+2026-05-28 06:45:22,280 [INFO] main: ENAUSDT | RL adj=78.9%
+2026-05-28 06:45:22,286 [INFO] main: ENAUSDT | Context score=-0.06 bias=0.05
+2026-05-28 06:45:22,287 [INFO] main: ENAUSDT | gate PASS (Judge 68/70 RL 78.9/64.29 slack=±3)
+2026-05-28 06:45:22,287 [INFO] positions: Same-side cap: skip SHORT ENAUSDT (3/3 already short)
+2026-05-28 06:45:24,290 [INFO] main: Next scan in 120min (weekday-quiet)
 ```
 
 ## Disk
