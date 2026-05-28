@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 13:30:01 UTC
+Generated: 2026-05-28 13:40:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root      996988  0.1  3.1 718324 124256 ?       Ssl  07:37   0:27 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133048 47548 ?        Ssl  10:43   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1001083  0.0  1.1  56112 43492 ?        Ss   11:50   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
+root     1001083  0.0  1.1  56140 43520 ?        Ss   11:50   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
 ## Paper state
@@ -335,7 +335,6 @@ root     1001083  0.0  1.1  56112 43492 ?        Ss   11:50   0:02 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 13:15:01,934 [INFO] main: FILUSDT | Judge:LONG conf=70% size=10.0%
 2026-05-28 13:15:01,935 [INFO] main: FILUSDT | RL adj=69.8%
 2026-05-28 13:15:01,945 [INFO] main: FILUSDT | Context score=-0.01 bias=0.1
 2026-05-28 13:15:01,945 [INFO] main: FILUSDT | regime BLOCK (volatile)
@@ -365,12 +364,13 @@ root     1001083  0.0  1.1  56112 43492 ?        Ss   11:50   0:02 /opt/ensemble
 2026-05-28 13:15:52,435 [INFO] main: DOGEUSDT | gate PASS (Judge 80/70 RL 90.1/64.33 slack=±3)
 2026-05-28 13:15:52,435 [INFO] positions: Same-side cap: skip SHORT DOGEUSDT (3/3 already short)
 2026-05-28 13:15:54,438 [INFO] main: Next scan in 30min (weekday-active)
+2026-05-28 13:37:25,066 [INFO] main: Symbols: 30
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  904K  381M   1% /run
+tmpfs           382M  896K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  8.4G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -382,7 +382,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       928Mi       356Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       825Mi       460Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
