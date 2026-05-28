@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 22:30:02 UTC
+Generated: 2026-05-28 22:40:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.2 718324 125040 ?       Ssl  07:37   1:17 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.2 718324 125256 ?       Ssl  07:37   1:17 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133048 47948 ?        Ssl  10:43   0:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1009861  0.0  1.0  55556 42552 ?        Ss   21:48   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
@@ -407,7 +407,6 @@ root     1009861  0.0  1.0  55556 42552 ?        Ss   21:48   0:00 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 22:29:03,367 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-28 22:29:03,369 [INFO] main: NEARUSDT | Judge:LONG conf=75% size=15.0%
 2026-05-28 22:29:03,369 [INFO] main: NEARUSDT | RL adj=75.7%
 2026-05-28 22:29:03,378 [INFO] main: NEARUSDT | Context score=-0.01 bias=0.05
@@ -437,6 +436,7 @@ root     1009861  0.0  1.0  55556 42552 ?        Ss   21:48   0:00 /opt/ensemble
 2026-05-28 22:29:33,968 [INFO] main: HYPEUSDT | Context score=-0.06 bias=0.05
 2026-05-28 22:29:33,968 [INFO] main: HYPEUSDT | regime BLOCK (volatile)
 2026-05-28 22:29:35,971 [INFO] main: Next scan in 120min (weekday-quiet)
+2026-05-28 22:37:31,914 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -454,7 +454,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       971Mi       293Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       964Mi       300Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
