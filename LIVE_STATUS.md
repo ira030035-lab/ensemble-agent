@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 04:20:01 UTC
+Generated: 2026-05-28 04:30:01 UTC
 
 ## Services
 ```
@@ -225,7 +225,6 @@ root      983708  0.1  3.2 721860 128196 ?       Ssl  May27   1:26 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 02:33:08,954 [INFO] main: BILLUSDT | Judge:SHORT conf=68% size=6.0%
 2026-05-28 02:33:08,954 [INFO] main: BILLUSDT | RL adj=69.3%
 2026-05-28 02:33:08,960 [INFO] main: BILLUSDT | Context score=-0.12 bias=0.1
 2026-05-28 02:33:08,960 [INFO] main: BILLUSDT | regime BLOCK (volatile)
@@ -255,6 +254,7 @@ root      983708  0.1  3.2 721860 128196 ?       Ssl  May27   1:26 /opt/ensemble
 2026-05-28 04:02:46,896 [INFO] positions: OK BTCUSDT short PnL:3.09% reason:take_profit
 2026-05-28 04:02:46,896 [INFO] positions: Lessons: The trade was successful with a 3.09% profit, validating the bearish conviction and analysis of oversold conditions, supply dominance, and weak buying. The trending_down regime and oversold RSI proved to be a profitable short setup despite the MACD bullish counterpoint. Conservative sizing helped manage the risk of potential false reversals or brief bounces before the trend continuation.
 2026-05-28 04:02:46,896 [INFO] rl: RL learned from short BTCUSDT: profit 3.09% | weights bull=0.982 bear=0.966 judge=1.052 threshold=64.29
+2026-05-28 04:20:27,689 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -272,7 +272,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       788Mi       330Mi       4.8Mi       2.9Gi       3.0Gi
+Mem:           3.7Gi       798Mi       319Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
