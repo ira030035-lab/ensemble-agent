@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 03:50:01 UTC
+Generated: 2026-05-28 04:00:01 UTC
 
 ## Services
 ```
@@ -11,13 +11,13 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      983538  0.0  1.1 131968 45880 ?        Ssl  May27   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      983708  0.1  3.2 721860 128184 ?       Ssl  May27   1:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      983708  0.1  3.2 721860 128192 ?       Ssl  May27   1:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 970.6619271989438,
+  "balance": 993.7218704489437,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1779897462",
@@ -29,18 +29,6 @@ root      983708  0.1  3.2 721860 128184 ?       Ssl  May27   1:26 /opt/ensemble
       "opened_at": "2026-05-27T15:57:42.344776",
       "cost": 19.569446,
       "notional": 97.84723,
-      "leverage": 5
-    },
-    "SUIUSDT": {
-      "id": "PAPER_SUIUSDT_1779935246",
-      "symbol": "SUIUSDT",
-      "side": "short",
-      "entry_price": 0.951,
-      "qty": 105.1525,
-      "confidence": 72,
-      "opened_at": "2026-05-28T02:27:26.184971",
-      "cost": 20.0000055,
-      "notional": 100.0000275,
       "leverage": 5
     }
   },
@@ -206,19 +194,32 @@ root      983708  0.1  3.2 721860 128184 ?       Ssl  May27   1:26 /opt/ensemble
       "closed_at": "2026-05-28T03:24:32.577475",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_SUIUSDT_1779935246",
+      "symbol": "SUIUSDT",
+      "side": "short",
+      "entry_price": 0.951,
+      "qty": 105.1525,
+      "confidence": 72,
+      "opened_at": "2026-05-28T02:27:26.184971",
+      "cost": 20.0000055,
+      "notional": 100.0000275,
+      "leverage": 5,
+      "exit_price": 0.9219,
+      "pnl_pct": 15.3,
+      "pnl_usdt": 3.06,
+      "closed_at": "2026-05-28T03:58:12.937999",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 10.23137869894383
+  "total_pnl": 13.291316448943821
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 02:32:42,227 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-28 02:32:42,228 [INFO] main: ENAUSDT | Judge:SHORT conf=72% size=6.0%
-2026-05-28 02:32:42,228 [INFO] main: ENAUSDT | RL adj=83.4%
-2026-05-28 02:32:42,234 [INFO] main: ENAUSDT | Context score=-0.11 bias=0.1
-2026-05-28 02:32:42,235 [INFO] main: ENAUSDT | gate PASS (Judge 72/70 RL 83.4/64.38 slack=±3)
 2026-05-28 02:32:42,235 [INFO] positions: Same-side cap: skip SHORT ENAUSDT (3/3 already short)
 2026-05-28 02:32:48,514 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-28 02:33:03,835 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -244,6 +245,11 @@ root      983708  0.1  3.2 721860 128184 ?       Ssl  May27   1:26 /opt/ensemble
 2026-05-28 03:24:32,961 [INFO] positions: OK XRPUSDT short PnL:2.02% reason:trailing_stop
 2026-05-28 03:24:32,962 [INFO] positions: Lessons: The trade was successful with a 2.02% profit, validating the original bearish bias and analysis of confluent bearish signals. The ranging regime limited downside but did not negate the directional bias, and conservative position sizing was key to managing risk in low-volume conditions. This setup serves as a reminder to respect low-volume ranging conditions and the potential for false breakdowns, highlighting the importance of disciplined position sizing.
 2026-05-28 03:24:32,962 [INFO] rl: RL learned from short XRPUSDT: profit 2.02% | weights bull=0.999 bear=0.953 judge=1.048 threshold=64.35
+2026-05-28 03:58:12,937 [INFO] positions: TAKE-PROFIT SUIUSDT short PnL:3.06%
+2026-05-28 03:58:12,940 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT SUIUSDT @ 0.9219 PnL: 15.30% (+3.06 USDT) | Баланс: 993.72
+2026-05-28 03:58:13,347 [INFO] positions: OK SUIUSDT short PnL:3.06% reason:take_profit
+2026-05-28 03:58:13,348 [INFO] positions: Lessons: A strong bearish setup with high conviction and confluent signals can still yield modest gains with disciplined position sizing. The combination of a trending_down regime, low volume, and oversold RSI within a downtrend context proved sufficient to overcome bullish counter-signals. Conservative sizing at 0.06 allowed for a 3.06% gain, consistent with prior lessons that similar setups can yield 0.5-3.2% gains with proper risk management.
+2026-05-28 03:58:13,348 [INFO] rl: RL learned from short SUIUSDT: profit 3.06% | weights bull=0.989 bear=0.960 judge=1.051 threshold=64.32
 ```
 
 ## Disk
@@ -261,7 +267,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       787Mi       331Mi       4.8Mi       2.9Gi       3.0Gi
+Mem:           3.7Gi       796Mi       323Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
