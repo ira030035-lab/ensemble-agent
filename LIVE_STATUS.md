@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 18:10:01 UTC
+Generated: 2026-05-28 18:20:01 UTC
 
 ## Services
 ```
@@ -10,15 +10,15 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.1 718324 124748 ?       Ssl  07:37   0:55 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
-root      999913  0.0  1.2 133048 47548 ?        Ssl  10:43   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      996988  0.1  3.1 718324 124768 ?       Ssl  07:37   0:55 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      999913  0.0  1.2 133048 47788 ?        Ssl  10:43   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1001083  0.0  1.1  55888 43672 ?        Ss   11:50   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 971.9796438109438,
+  "balance": 989.9133489589437,
   "positions": {
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1779978101",
@@ -30,18 +30,6 @@ root     1001083  0.0  1.1  55888 43672 ?        Ss   11:50   0:04 /opt/ensemble
       "opened_at": "2026-05-28T14:21:41.194598",
       "cost": 20.0165472,
       "notional": 100.08273600000001,
-      "leverage": 5
-    },
-    "ADAUSDT": {
-      "id": "PAPER_ADAUSDT_1779978240",
-      "symbol": "ADAUSDT",
-      "side": "short",
-      "entry_price": 0.2323,
-      "qty": 430.4778,
-      "confidence": 85,
-      "opened_at": "2026-05-28T14:24:00.849362",
-      "cost": 19.999998588,
-      "notional": 99.99999294,
       "leverage": 5
     }
   },
@@ -369,19 +357,32 @@ root     1001083  0.0  1.1  55888 43672 ?        Ss   11:50   0:04 /opt/ensemble
       "closed_at": "2026-05-28T14:18:53.365419",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ADAUSDT_1779978240",
+      "symbol": "ADAUSDT",
+      "side": "short",
+      "entry_price": 0.2323,
+      "qty": 430.4778,
+      "confidence": 85,
+      "opened_at": "2026-05-28T14:24:00.849362",
+      "cost": 19.999998588,
+      "notional": 99.99999294,
+      "leverage": 5,
+      "exit_price": 0.2371,
+      "pnl_pct": -10.33,
+      "pnl_usdt": -2.07,
+      "closed_at": "2026-05-28T18:13:11.807931",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 11.99618959894383
+  "total_pnl": 9.929896158943832
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 18:01:15,561 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-28 18:01:15,562 [INFO] main: DOGEUSDT | Bull:flat(15%) Bear:short(70%)
-2026-05-28 18:01:22,270 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 18:01:22,271 [INFO] main: DOGEUSDT | Judge:SHORT conf=75% size=15.0%
-2026-05-28 18:01:22,272 [INFO] main: DOGEUSDT | RL adj=85.0%
 2026-05-28 18:01:22,281 [INFO] main: DOGEUSDT | Context score=-0.1 bias=0.1
 2026-05-28 18:01:22,282 [INFO] main: DOGEUSDT | regime BLOCK (short × trending_down × rsi1h=64.8; late-entry guard)
 2026-05-28 18:01:28,538 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -407,6 +408,11 @@ root     1001083  0.0  1.1  55888 43672 ?        Ss   11:50   0:04 /opt/ensemble
 2026-05-28 18:02:16,927 [INFO] main: BEATUSDT | Context score=-0.11 bias=0.1
 2026-05-28 18:02:16,927 [INFO] main: BEATUSDT | regime BLOCK (volatile)
 2026-05-28 18:02:18,930 [INFO] main: Next scan in 30min (weekday-active)
+2026-05-28 18:13:11,807 [INFO] positions: STOP_LOSS ADAUSDT short PnL:-2.07%
+2026-05-28 18:13:11,810 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ADAUSDT @ 0.2371 PnL: -10.33% (-2.07 USDT) | Баланс: 989.91
+2026-05-28 18:13:12,108 [INFO] positions: LOSS ADAUSDT short PnL:-2.07% reason:stop_loss
+2026-05-28 18:13:12,108 [INFO] positions: Lessons: The trade was based on a strong bear conviction and potential for significant downside, but it still resulted in a 2.07% loss. The stop loss was triggered, limiting the loss to the expected amount. This trade reinforces the importance of asymmetric risk management and sticking to the original risk parameters.
+2026-05-28 18:13:12,108 [INFO] rl: RL learned from short ADAUSDT: loss -2.07% | weights bull=0.993 bear=0.953 judge=1.054 threshold=64.37
 ```
 
 ## Disk
@@ -424,7 +430,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       825Mi       451Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       824Mi       451Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
