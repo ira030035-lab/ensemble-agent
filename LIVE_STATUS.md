@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 11:30:01 UTC
+Generated: 2026-05-28 11:40:01 UTC
 
 ## Services
 ```
@@ -10,9 +10,9 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.1 717300 123952 ?       Ssl  07:37   0:16 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
-root      999913  0.1  1.1 132288 46576 ?        Ssl  10:43   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1000436  0.0  1.0  55752 42768 ?        Ss   11:20   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
+root      996988  0.1  3.1 718324 124124 ?       Ssl  07:37   0:16 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      999913  0.1  1.1 132288 46592 ?        Ssl  10:43   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1000436  0.0  1.0  55884 42964 ?        Ss   11:20   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
 ## Paper state
@@ -299,7 +299,6 @@ root     1000436  0.0  1.0  55752 42768 ?        Ss   11:20   0:00 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 11:29:24,289 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-28 11:29:24,291 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
 2026-05-28 11:29:24,574 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-28 11:29:24,576 [INFO] main: ETHUSDT | Bull:flat(15%) Bear:short(80%)
@@ -329,12 +328,13 @@ root     1000436  0.0  1.0  55752 42768 ?        Ss   11:20   0:00 /opt/ensemble
 2026-05-28 11:29:48,482 [INFO] main: LABUSDT | gate PASS (Judge 85/70 RL 95.8/64.39 slack=±3)
 2026-05-28 11:29:48,482 [INFO] positions: Same-side cap: skip SHORT LABUSDT (3/3 already short)
 2026-05-28 11:29:50,486 [INFO] main: Next scan in 30min (weekday-active)
+2026-05-28 11:37:23,510 [INFO] main: Symbols: 30
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  904K  381M   1% /run
+tmpfs           382M  912K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  8.4G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -346,7 +346,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       931Mi       321Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       1.0Gi       155Mi       4.8Mi       2.9Gi       2.7Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
