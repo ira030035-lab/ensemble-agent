@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 20:30:01 UTC
+Generated: 2026-05-28 20:40:01 UTC
 
 ## Services
 ```
@@ -10,8 +10,8 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.1 718324 124840 ?       Ssl  07:37   1:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
-root      999913  0.0  1.2 133048 47852 ?        Ssl  10:43   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      996988  0.1  3.1 718324 124944 ?       Ssl  07:37   1:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      999913  0.0  1.2 133048 47916 ?        Ssl  10:43   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1001083  0.0  1.1  55888 43672 ?        Ss   11:50   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
@@ -395,7 +395,6 @@ root     1001083  0.0  1.1  55888 43672 ?        Ss   11:50   0:04 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 20:20:21,771 [INFO] main: TAOUSDT | Judge:HOLD conf=55% size=0.0%
 2026-05-28 20:20:21,771 [INFO] main: TAOUSDT | RL adj=55.0%
 2026-05-28 20:20:28,384 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-28 20:20:28,385 [WARNING] agents: Bull entropy-guard: шаблон flat(25) ×5. Переключаемся на Kimi+Claude fallback.
@@ -425,12 +424,13 @@ root     1001083  0.0  1.1  55888 43672 ?        Ss   11:50   0:04 /opt/ensemble
 2026-05-28 20:20:51,583 [INFO] main: UBUSDT | Context score=-0.11 bias=0.1
 2026-05-28 20:20:51,583 [INFO] main: UBUSDT | regime BLOCK (volatile)
 2026-05-28 20:20:53,587 [INFO] main: Next scan in 60min (weekday-warmup)
+2026-05-28 20:37:30,444 [INFO] main: Symbols: 30
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  896K  381M   1% /run
+tmpfs           382M  904K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  8.5G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -442,7 +442,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       834Mi       435Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       955Mi       314Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
