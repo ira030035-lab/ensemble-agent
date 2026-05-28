@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 21:30:01 UTC
+Generated: 2026-05-28 21:40:01 UTC
 
 ## Services
 ```
@@ -10,9 +10,9 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.1 718324 124944 ?       Ssl  07:37   1:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
-root      999913  0.0  1.2 133048 47948 ?        Ssl  10:43   0:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1009718  0.7  1.0  55572 42512 ?        Ss   21:29   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
+root      996988  0.1  3.2 718324 125016 ?       Ssl  07:37   1:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      999913  0.0  1.2 133048 47948 ?        Ssl  10:43   0:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1009776  0.1  1.0  55496 42424 ?        Ss   21:33   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
 ## Paper state
@@ -395,7 +395,6 @@ root     1009718  0.7  1.0  55572 42512 ?        Ss   21:29   0:00 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 21:24:45,100 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-28 21:24:45,102 [INFO] main: SKYAIUSDT | Bull:flat(25%) Bear:short(65%)
 2026-05-28 21:24:47,072 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-28 21:24:47,074 [INFO] main: SKYAIUSDT | Judge:HOLD conf=55% size=0.0%
@@ -425,6 +424,7 @@ root     1009718  0.7  1.0  55572 42512 ?        Ss   21:29   0:00 /opt/ensemble
 2026-05-28 21:25:17,594 [INFO] main: BNBUSDT | Context score=-0.1 bias=0.1
 2026-05-28 21:25:17,595 [INFO] main: BNBUSDT | regime BLOCK (short × trending_down × rsi1h=67.8; late-entry guard)
 2026-05-28 21:25:19,599 [INFO] main: Next scan in 60min (weekday-warmup)
+2026-05-28 21:37:31,093 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -442,7 +442,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.0Gi       259Mi       4.8Mi       2.8Gi       2.7Gi
+Mem:           3.7Gi       1.0Gi       229Mi       4.8Mi       2.8Gi       2.7Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
