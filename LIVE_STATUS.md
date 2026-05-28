@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 10:30:01 UTC
+Generated: 2026-05-28 10:40:01 UTC
 
 ## Services
 ```
@@ -10,9 +10,9 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.0  3.1 717300 123276 ?       Ssl  07:37   0:09 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.0  3.1 717300 123948 ?       Ssl  07:37   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999185  0.0  1.0  55644 42880 ?        Ss   09:55   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root      999769  0.3  1.1 132096 46096 ?        Ssl  10:27   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      999769  0.1  1.2 132996 47368 ?        Ssl  10:27   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 ```
 
 ## Paper state
@@ -299,7 +299,6 @@ root      999769  0.3  1.1 132096 46096 ?        Ssl  10:27   0:00 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 09:49:26,645 [INFO] main: PEPEUSDT | RL adj=80.1%
 2026-05-28 09:49:26,652 [INFO] main: PEPEUSDT | Context score=-0.06 bias=0.05
 2026-05-28 09:49:26,652 [INFO] main: PEPEUSDT | gate PASS (Judge 70/70 RL 80.1/64.39 slack=±3)
 2026-05-28 09:49:26,652 [INFO] positions: Same-side cap: skip SHORT PEPEUSDT (3/3 already short)
@@ -329,12 +328,13 @@ root      999769  0.3  1.1 132096 46096 ?        Ssl  10:27   0:00 /opt/ensemble
 2026-05-28 09:50:33,295 [INFO] main: SKYAIUSDT | Context score=-0.05 bias=0.05
 2026-05-28 09:50:33,295 [INFO] main: SKYAIUSDT | regime BLOCK (volatile)
 2026-05-28 09:50:35,297 [INFO] main: Next scan in 60min (weekday-warmup)
+2026-05-28 10:37:22,797 [INFO] main: Symbols: 30
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  900K  381M   1% /run
+tmpfs           382M  904K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  8.4G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -346,7 +346,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       959Mi       296Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       977Mi       278Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
