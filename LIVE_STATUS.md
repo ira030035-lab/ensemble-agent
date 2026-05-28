@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 05:20:01 UTC
+Generated: 2026-05-28 05:30:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      983538  0.0  1.1 131968 45880 ?        Ssl  May27   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      983708  0.1  3.2 721860 128292 ?       Ssl  May27   1:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      983708  0.1  3.2 722884 128524 ?       Ssl  May27   1:32 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -262,7 +262,6 @@ root      983708  0.1  3.2 721860 128292 ?       Ssl  May27   1:31 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 04:39:13,383 [INFO] main: FETUSDT | Bull:flat(15%) Bear:short(80%)
 2026-05-28 04:39:17,695 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-28 04:39:17,696 [INFO] main: FETUSDT | Judge:SHORT conf=78% size=7.0%
 2026-05-28 04:39:17,696 [INFO] main: FETUSDT | RL adj=89.6%
@@ -292,6 +291,7 @@ root      983708  0.1  3.2 721860 128292 ?       Ssl  May27   1:31 /opt/ensemble
 2026-05-28 04:39:58,516 [INFO] main: BEATUSDT | Judge:HOLD conf=50% size=0.0%
 2026-05-28 04:39:58,516 [INFO] main: BEATUSDT | RL adj=50.0%
 2026-05-28 04:40:00,519 [INFO] main: Next scan in 120min (weekday-quiet)
+2026-05-28 05:20:28,356 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -309,7 +309,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       790Mi       327Mi       4.8Mi       2.9Gi       3.0Gi
+Mem:           3.7Gi       774Mi       299Mi       4.8Mi       3.0Gi       3.0Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
