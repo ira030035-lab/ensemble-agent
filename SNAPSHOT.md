@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-28 08:00:01 UTC
+Generated: 2026-05-28 09:00:01 UTC
 
 ## ab_test_analyze_apply.py
 ```python
@@ -2679,16 +2679,21 @@ TRADES_FILE = "/opt/ensemble-agent/explorer_trades.json"
 LOG_FILE = "/opt/ensemble-agent/explorer.log"
 
 # Settings
-POSITION_SIZE_USD = 5.0   # $5 на сделку
 LEVERAGE = 5
 SCAN_INTERVAL = 7200      # 2 часа между открытиями
 N_SYMBOLS = 10            # сколько символов исследовать
 
-# TP/SL как у основного бота
-TP_PCT = 4.0              # +4%
-SL_PCT = -2.0             # -2%
-MAX_HOLD_HOURS = 24.0     # макс удержание 24ч (как у основного)
+# TP/SL: оптимизировано для меньше шумовых SL и чаще TP
+TP_PCT = 3.0              # +3% (было 4%)
+SL_PCT = -3.0             # -3% (было -2%)
+MAX_HOLD_HOURS = 48.0     # макс удержание 48ч (было 24ч)
+MIN_HOLD_MINUTES = 20     # мин удержание 20 мин — фильтр молниеносных шумовых SL
 MONITOR_INTERVAL = 15     # проверять цены каждые 15 сек
+
+# Side-aware sizing: адаптация к текущему бычьему рынку
+# LONG убыточен (explorer data), SHORT прибылен — увеличиваем SHORT
+POSITION_SIZE_LONG = 3.0   # $3 на LONG
+POSITION_SIZE_SHORT = 7.0  # $7 на SHORT
 
 
 def log(msg):
@@ -2802,8 +2807,13 @@ async def monitor_positions():
 
                         opened = datetime.fromisoformat(pos["opened_at"].replace("Z", "")).replace(tzinfo=timezone.utc)
                         hours = (now - opened).total_seconds() / 3600
+                        minutes = (now - opened).total_seconds() / 60
 
                         exit_reason = None
+                        if minutes < MIN_HOLD_MINUTES:
+                            # Фильтр молниеносных шумовых SL — пропускаем проверку
+                            keep.append(pos)
+                            continue
                         if pnl_pct >= TP_PCT:
                             exit_reason = "tp"
                         elif pnl_pct <= SL_PCT:
@@ -2856,7 +2866,8 @@ async def open_positions():
     data = DataEngine(bitget)
 
     state = load_state()
-    if state["balance"] < POSITION_SIZE_USD * 4:
+    min_balance_needed = (POSITION_SIZE_LONG + POSITION_SIZE_SHORT) * 2
+    if state["balance"] < min_balance_needed:
         log("Недостаточно баланса для explorer. Ждём.")
         await bitget.close()
         return
@@ -2875,8 +2886,6 @@ async def open_positions():
                         continue
                     price = snapshot.price
 
-                    qty = round(POSITION_SIZE_USD / price, 4)
-                    margin = POSITION_SIZE_USD / LEVERAGE
                     now = datetime.now(timezone.utc).isoformat()
                     snap_data = {
                         "rsi_15m": round(snapshot.rsi_15m, 2),
@@ -2893,6 +2902,9 @@ async def open_positions():
                     }
 
                     for side in ("long", "short"):
+                        size_usd = POSITION_SIZE_LONG if side == "long" else POSITION_SIZE_SHORT
+                        qty = round(size_usd / price, 4)
+                        margin = size_usd / LEVERAGE
                         pos = {
                             "id": f"EXP_{sym}_{side.upper()}_{int(time.time())}_{random.randint(1000,9999)}",
                             "symbol": sym,
@@ -3020,8 +3032,8 @@ async def open_cycle():
 
 async def main_loop():
     log("=" * 50)
-    log("EXPLORER AGENT ЗАПУЩЕН (v2: TP/SL real-time)")
-    log(f"Размер: ${POSITION_SIZE_USD} | Плечо: {LEVERAGE}x | TP: {TP_PCT}% | SL: {SL_PCT}% | Монитор: {MONITOR_INTERVAL}с")
+    log("EXPLORER AGENT ЗАПУЩЕН (v3: combo optimized)")
+    log(f"LONG: ${POSITION_SIZE_LONG} | SHORT: ${POSITION_SIZE_SHORT} | Плечо: {LEVERAGE}x | TP: {TP_PCT}% | SL: {SL_PCT}% | MaxHold: {MAX_HOLD_HOURS}ч | MinHold: {MIN_HOLD_MINUTES}мин | Монитор: {MONITOR_INTERVAL}с")
 
     # Две параллельные задачи: мониторинг + открытие
     await asyncio.gather(
