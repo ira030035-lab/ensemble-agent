@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 11:50:01 UTC
+Generated: 2026-05-28 12:00:01 UTC
 
 ## Services
 ```
@@ -10,9 +10,9 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.1 718324 124124 ?       Ssl  07:37   0:16 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
-root      999913  0.0  1.2 133048 47548 ?        Ssl  10:43   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1000907  0.2  1.0  55600 42516 ?        Ss   11:47   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
+root      996988  0.1  3.1 718324 124124 ?       Ssl  07:37   0:17 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      999913  0.0  1.2 133048 47548 ?        Ssl  10:43   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1001083  0.0  1.0  55412 42380 ?        Ss   11:50   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
 ## Paper state
@@ -299,15 +299,6 @@ root     1000907  0.2  1.0  55600 42516 ?        Ss   11:47   0:00 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 11:29:24,291 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
-2026-05-28 11:29:24,574 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 11:29:24,576 [INFO] main: ETHUSDT | Bull:flat(15%) Bear:short(80%)
-2026-05-28 11:29:27,389 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 11:29:27,390 [INFO] main: ETHUSDT | Judge:SHORT conf=76% size=15.0%
-2026-05-28 11:29:27,391 [INFO] main: ETHUSDT | RL adj=87.5%
-2026-05-28 11:29:27,398 [INFO] main: ETHUSDT | Context score=-0.06 bias=0.05
-2026-05-28 11:29:27,398 [INFO] main: ETHUSDT | gate PASS (Judge 76/70 RL 87.5/64.39 slack=±3)
-2026-05-28 11:29:27,399 [INFO] positions: Same-side cap: skip SHORT ETHUSDT (3/3 already short)
 2026-05-28 11:29:30,950 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
 2026-05-28 11:29:33,058 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-28 11:29:35,406 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -329,6 +320,15 @@ root     1000907  0.2  1.0  55600 42516 ?        Ss   11:47   0:00 /opt/ensemble
 2026-05-28 11:29:48,482 [INFO] positions: Same-side cap: skip SHORT LABUSDT (3/3 already short)
 2026-05-28 11:29:50,486 [INFO] main: Next scan in 30min (weekday-active)
 2026-05-28 11:37:23,510 [INFO] main: Symbols: 30
+2026-05-28 11:59:50,488 [INFO] main: Scanning 27 symbols...
+2026-05-28 11:59:52,709 [INFO] main: SOLUSDT | Bull:long(68%) Bear:short(80%)
+2026-05-28 11:59:55,305 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-28 11:59:55,306 [INFO] main: SOLUSDT | Judge:SHORT conf=85% size=20.0%
+2026-05-28 11:59:55,307 [INFO] main: SOLUSDT | RL adj=86.4%
+2026-05-28 11:59:55,313 [INFO] main: SOLUSDT | Context score=-0.06 bias=0.05
+2026-05-28 11:59:55,605 [INFO] main: SOLUSDT | gate PASS (Judge 85/70 RL 86.4/64.39 slack=±3)
+2026-05-28 11:59:55,607 [INFO] positions: Same-side cap: skip SHORT SOLUSDT (3/3 already short)
+2026-05-28 11:59:59,550 [INFO] main: ONDOUSDT | Bull:long(70%) Bear:short(80%)
 ```
 
 ## Disk
@@ -346,7 +346,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.0Gi       122Mi       4.8Mi       2.9Gi       2.7Gi
+Mem:           3.7Gi       1.0Gi       121Mi       4.8Mi       2.9Gi       2.7Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
