@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 14:30:01 UTC
+Generated: 2026-05-28 14:40:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.1 718324 124392 ?       Ssl  07:37   0:33 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.1 718324 124624 ?       Ssl  07:37   0:34 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133048 47548 ?        Ssl  10:43   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1001083  0.0  1.1  55884 43648 ?        Ss   11:50   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
@@ -377,7 +377,6 @@ root     1001083  0.0  1.1  55884 43648 ?        Ss   11:50   0:03 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 14:25:18,418 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-28 14:25:18,420 [INFO] main: SUIUSDT | Bull:long(62%) Bear:short(60%)
 2026-05-28 14:25:21,472 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-28 14:25:21,474 [INFO] main: SUIUSDT | Judge:HOLD conf=50% size=0.0%
@@ -407,6 +406,7 @@ root     1001083  0.0  1.1  55884 43648 ?        Ss   11:50   0:03 /opt/ensemble
 2026-05-28 14:25:55,204 [INFO] main: ENAUSDT | Context score=-0.11 bias=0.1
 2026-05-28 14:25:55,204 [INFO] main: ENAUSDT | regime BLOCK (volatile)
 2026-05-28 14:25:57,207 [INFO] main: Next scan in 30min (weekday-active)
+2026-05-28 14:37:25,705 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -424,7 +424,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       835Mi       448Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       824Mi       459Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
