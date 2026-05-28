@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-28 07:00:01 UTC
+Generated: 2026-05-28 08:00:01 UTC
 
 ## ab_test_analyze_apply.py
 ```python
@@ -2167,7 +2167,7 @@ class Config:
     STATE_FILE = "/opt/ensemble-agent/state.json"
     TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
     TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
-    KIMI_JUDGE_ENABLED = False
+    KIMI_JUDGE_ENABLED = True
     KIMI_PROMPT_VERSION = "asymmetry"
 
 ```
@@ -3792,7 +3792,7 @@ from datetime import datetime,timezone
 from config import Config
 from bitget_client import BitgetClient
 from data_engine import DataEngine
-from agents import BullAgent,BearAgent,Judge
+from agents import BullAgent,BearAgent,Judge,KimiJudge
 from memory import Memory
 from rl_agent import RLAgent
 from rl_context import ContextRL
@@ -3812,7 +3812,8 @@ class Orchestrator:
     def __init__(self):
         self.cfg=Config(); self.bitget=BitgetClient(self.cfg)
         self.data=DataEngine(self.bitget); self.bull=BullAgent(self.cfg)
-        self.bear=BearAgent(self.cfg); self.judge=Judge(self.cfg)
+        self.bear=BearAgent(self.cfg)
+        self.judge=KimiJudge(self.cfg) if getattr(self.cfg,"KIMI_JUDGE_ENABLED",False) else Judge(self.cfg)
         self.memory=Memory(self.cfg)
         self.rl=RLAgent(self.cfg)
         self.ctx=ContextRL()
@@ -3827,7 +3828,8 @@ class Orchestrator:
         log.info("=== Adversarial Trading Agent started ===")
         kimi_on=bool(getattr(self.cfg,"KIMI_API_KEY",None))
         groq_keys=len(getattr(self.cfg,"GROQ_API_KEYS",[]) or [])
-        log.info("Bull: race(Groq x"+str(groq_keys)+") → Haiku fb | Bear: race(Groq x"+str(groq_keys)+", Kimi x"+("1" if kimi_on else "0")+") → Haiku fb | Judge: Haiku (decide) + Groq Llama (exit/dir/reflect)")
+        judge_label = "Kimi" if getattr(self.cfg,"KIMI_JUDGE_ENABLED",False) else "Haiku"
+        log.info("Bull: race(Groq x"+str(groq_keys)+") → Haiku fb | Bear: race(Groq x"+str(groq_keys)+", Kimi x"+("1" if kimi_on else "0")+") → Haiku fb | Judge: "+judge_label+" (decide) + Groq Llama (exit/dir/reflect)")
         loop=asyncio.get_event_loop()
         for sig in (signal.SIGINT,signal.SIGTERM): loop.add_signal_handler(sig,self.stop)
         closed_in_memory=sum(1 for t in self.memory.trades if t.outcome in ("profit","loss") and not getattr(t,"orphan",False))
@@ -4778,6 +4780,7 @@ class ContextRL:
                     raw = json.load(f)
                 meta = raw.pop("_meta", {})
                 self._last_decay = meta.get("last_decay", 0)
+                self._processed_ids = set(meta.get("processed_ids", []))
                 # convert back to defaultdict structure
                 stats = defaultdict(lambda: defaultdict(lambda: {"sum": 0.0, "n": 0}))
                 for feat, buckets in raw.items():
@@ -4787,6 +4790,7 @@ class ContextRL:
             except Exception as e:
                 print(f"[ContextRL] load error: {e}")
         self._last_decay = 0
+        self._processed_ids = set()
         return defaultdict(lambda: defaultdict(lambda: {"sum": 0.0, "n": 0}))
 
     def _save(self):
@@ -4797,8 +4801,11 @@ class ContextRL:
                 plain[feat] = {}
                 for bucket_key, vals in buckets.items():
                     plain[feat][bucket_key] = vals
-            # add last_decay timestamp
-            plain["_meta"] = {"last_decay": getattr(self, "_last_decay", 0)}
+            # add metadata
+            plain["_meta"] = {
+                "last_decay": getattr(self, "_last_decay", 0),
+                "processed_ids": list(getattr(self, "_processed_ids", set())),
+            }
             tmp = self.state_file + ".tmp"
             with open(tmp, "w") as f:
                 json.dump(plain, f, indent=2)
@@ -4857,8 +4864,12 @@ class ContextRL:
         return s["sum"] / s["n"]
 
     # ------------------------------------------------------------------
-    def learn_trade(self, snapshot, side, pnl_pct):
+    def learn_trade(self, snapshot, side, pnl_pct, trade_id=None):
         """Ingest one explorer trade and update buckets."""
+        if trade_id is not None:
+            if trade_id in getattr(self, "_processed_ids", set()):
+                return False
+            self._processed_ids.add(trade_id)
         feats = dict(snapshot) if isinstance(snapshot, dict) else {}
         feats["side"] = side.lower()
         for feature, value in feats.items():
@@ -4866,6 +4877,7 @@ class ContextRL:
             self.stats[feature][bucket_key]["sum"] += pnl_pct
             self.stats[feature][bucket_key]["n"] += 1
         self._save()
+        return True
 
     def learn_from_explorer(self, trades_file=EXPLORER_TRADES):
         """Batch-learn from explorer_trades.json. Returns count learned."""
@@ -4880,10 +4892,12 @@ class ContextRL:
             snap = t.get("snapshot")
             side = t.get("side")
             pnl = t.get("pnl_pct")
+            tid = t.get("id")
             if snap and side and pnl is not None:
-                self.learn_trade(snap, side, pnl)
-                count += 1
-        print(f"[ContextRL] learned from {count} explorer trades")
+                if self.learn_trade(snap, side, pnl, trade_id=tid):
+                    count += 1
+        if count:
+            print(f"[ContextRL] learned from {count} new explorer trades")
         return count
 
     # ------------------------------------------------------------------
