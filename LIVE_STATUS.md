@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 14:20:01 UTC
+Generated: 2026-05-28 14:30:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.1 718324 124328 ?       Ssl  07:37   0:30 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.1 718324 124392 ?       Ssl  07:37   0:33 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133048 47548 ?        Ssl  10:43   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1001083  0.0  1.1  55884 43648 ?        Ss   11:50   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
@@ -18,8 +18,33 @@ root     1001083  0.0  1.1  55884 43648 ?        Ss   11:50   0:03 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 1011.9961895989438,
-  "positions": {},
+  "balance": 971.9796438109438,
+  "positions": {
+    "ETHUSDT": {
+      "id": "PAPER_ETHUSDT_1779978101",
+      "symbol": "ETHUSDT",
+      "side": "short",
+      "entry_price": 1993.68,
+      "qty": 0.0502,
+      "confidence": 75,
+      "opened_at": "2026-05-28T14:21:41.194598",
+      "cost": 20.0165472,
+      "notional": 100.08273600000001,
+      "leverage": 5
+    },
+    "ADAUSDT": {
+      "id": "PAPER_ADAUSDT_1779978240",
+      "symbol": "ADAUSDT",
+      "side": "short",
+      "entry_price": 0.2323,
+      "qty": 430.4778,
+      "confidence": 85,
+      "opened_at": "2026-05-28T14:24:00.849362",
+      "cost": 19.999998588,
+      "notional": 99.99999294,
+      "leverage": 5
+    }
+  },
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -352,36 +377,36 @@ root     1001083  0.0  1.1  55884 43648 ?        Ss   11:50   0:03 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 13:50:23,119 [INFO] main: WLDUSDT | Bull:flat(15%) Bear:short(60%)
-2026-05-28 13:50:26,247 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 13:50:26,247 [INFO] main: WLDUSDT | Judge:LONG conf=76% size=15.0%
-2026-05-28 13:50:26,248 [INFO] main: WLDUSDT | RL adj=67.4%
-2026-05-28 13:50:26,255 [INFO] main: WLDUSDT | Context score=-0.01 bias=0.1
-2026-05-28 13:50:26,255 [INFO] main: WLDUSDT | regime BLOCK (volatile)
-2026-05-28 13:50:34,424 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-28 13:50:34,887 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 13:50:34,889 [INFO] main: ENAUSDT | Bull:flat(5%) Bear:short(80%)
-2026-05-28 13:50:37,458 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 13:50:37,459 [INFO] main: ENAUSDT | Judge:SHORT conf=80% size=15.0%
-2026-05-28 13:50:37,460 [INFO] main: ENAUSDT | RL adj=91.5%
-2026-05-28 13:50:37,467 [INFO] main: ENAUSDT | Context score=-0.11 bias=0.1
-2026-05-28 13:50:37,467 [INFO] main: ENAUSDT | regime BLOCK (volatile)
-2026-05-28 13:50:39,470 [INFO] main: Next scan in 30min (weekday-active)
-2026-05-28 14:14:48,506 [INFO] positions: BREAKEVEN_STOP TAOUSDT short PnL:0.48%
-2026-05-28 14:14:48,509 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT TAOUSDT @ 257.6700 PnL: 2.41% (+0.48 USDT) | Баланс: 973.69
-2026-05-28 14:14:48,848 [INFO] positions: OK TAOUSDT short PnL:0.48% reason:breakeven_stop
-2026-05-28 14:14:48,849 [INFO] positions: Lessons: The trade was a breakeven outcome with a 0.48% profit, meeting the minimum expectation. The initial bearish conviction and expected downside were not fully realized, but the trade was managed to limit losses. The asymmetry framework's rules and strong bearish signals were not enough to generate significant profits in this instance.
-2026-05-28 14:14:48,849 [INFO] rl: RL learned from short TAOUSDT: profit 0.48% | weights bull=0.986 bear=0.960 judge=1.053 threshold=64.3
-2026-05-28 14:17:21,881 [INFO] positions: STOP_LOSS XRPUSDT short PnL:-2.12%
-2026-05-28 14:17:21,885 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT XRPUSDT @ 1.3034 PnL: -10.62% (-2.12 USDT) | Баланс: 991.57
-2026-05-28 14:17:22,211 [INFO] positions: LOSS XRPUSDT short PnL:-2.12% reason:stop_loss
-2026-05-28 14:17:22,211 [INFO] positions: Lessons: High conviction short trades in trending_down regimes with deeply oversold RSI can still result in losses if volume support is lacking. Conservative sizing is crucial in such setups to limit potential losses. The absence of volume support and continuation of bearish technicals can weaken a reversal thesis and lead to stop loss outcomes.
-2026-05-28 14:17:22,212 [INFO] rl: RL learned from short XRPUSDT: loss -2.12% | weights bull=0.990 bear=0.956 judge=1.054 threshold=64.35
-2026-05-28 14:18:53,365 [INFO] positions: BREAKEVEN_STOP TRUMPUSDT short PnL:0.43%
-2026-05-28 14:18:53,367 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT TRUMPUSDT @ 1.8580 PnL: 2.14% (+0.43 USDT) | Баланс: 1012.00
-2026-05-28 14:18:54,211 [INFO] positions: OK TRUMPUSDT short PnL:0.43% reason:breakeven_stop
-2026-05-28 14:18:54,211 [INFO] positions: Lessons: The trade was closed at breakeven due to a stop loss, resulting in a 0.43% profit. The initial reasoning was based on high bear conviction and a trending_down regime, which aligned with the potential for a downside move. The outcome suggests that the trade management was effective in limiting losses and securing a small gain.
-2026-05-28 14:18:54,211 [INFO] rl: RL learned from short TRUMPUSDT: profit 0.43% | weights bull=0.989 bear=0.957 judge=1.054 threshold=64.32
+2026-05-28 14:25:18,418 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-28 14:25:18,420 [INFO] main: SUIUSDT | Bull:long(62%) Bear:short(60%)
+2026-05-28 14:25:21,472 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-28 14:25:21,474 [INFO] main: SUIUSDT | Judge:HOLD conf=50% size=0.0%
+2026-05-28 14:25:21,474 [INFO] main: SUIUSDT | RL adj=50.0%
+2026-05-28 14:25:28,994 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-28 14:25:29,694 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-28 14:25:29,695 [INFO] main: TONUSDT | Bull:flat(15%) Bear:short(75%)
+2026-05-28 14:25:33,656 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-28 14:25:33,656 [INFO] main: TONUSDT | Judge:SHORT conf=70% size=15.0%
+2026-05-28 14:25:33,657 [INFO] main: TONUSDT | RL adj=80.8%
+2026-05-28 14:25:33,660 [INFO] main: TONUSDT | Context score=-0.11 bias=0.1
+2026-05-28 14:25:33,660 [INFO] main: TONUSDT | regime BLOCK (volatile)
+2026-05-28 14:25:40,590 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-28 14:25:40,753 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-28 14:25:40,754 [INFO] main: FFUSDT | Bull:flat(15%) Bear:short(70%)
+2026-05-28 14:25:43,824 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-28 14:25:43,825 [INFO] main: FFUSDT | Judge:SHORT conf=85% size=15.0%
+2026-05-28 14:25:43,825 [INFO] main: FFUSDT | RL adj=95.0%
+2026-05-28 14:25:43,833 [INFO] main: FFUSDT | Context score=-0.11 bias=0.1
+2026-05-28 14:25:43,833 [INFO] main: FFUSDT | regime BLOCK (volatile)
+2026-05-28 14:25:50,848 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-28 14:25:51,338 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-28 14:25:51,339 [INFO] main: ENAUSDT | Bull:flat(35%) Bear:short(70%)
+2026-05-28 14:25:55,195 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-28 14:25:55,197 [INFO] main: ENAUSDT | Judge:SHORT conf=80% size=15.0%
+2026-05-28 14:25:55,197 [INFO] main: ENAUSDT | RL adj=90.0%
+2026-05-28 14:25:55,204 [INFO] main: ENAUSDT | Context score=-0.11 bias=0.1
+2026-05-28 14:25:55,204 [INFO] main: ENAUSDT | regime BLOCK (volatile)
+2026-05-28 14:25:57,207 [INFO] main: Next scan in 30min (weekday-active)
 ```
 
 ## Disk
@@ -399,7 +424,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       824Mi       459Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       835Mi       448Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
