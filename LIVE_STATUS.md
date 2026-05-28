@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 01:20:01 UTC
+Generated: 2026-05-28 01:30:01 UTC
 
 ## Services
 ```
@@ -11,26 +11,14 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      983538  0.0  1.1 131968 45872 ?        Ssl  May27   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      983708  0.1  3.2 721860 128112 ?       Ssl  May27   1:19 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      983708  0.1  3.2 721860 128120 ?       Ssl  May27   1:20 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 945.5522594069438,
+  "balance": 968.6431962069438,
   "positions": {
-    "LINKUSDT": {
-      "id": "PAPER_LINKUSDT_1779855776",
-      "symbol": "LINKUSDT",
-      "side": "short",
-      "entry_price": 9.35,
-      "qty": 10.6952,
-      "confidence": 72,
-      "opened_at": "2026-05-27T04:22:56.413656",
-      "cost": 20.000024,
-      "notional": 100.00012,
-      "leverage": 5
-    },
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1779897462",
       "symbol": "BTCUSDT",
@@ -182,20 +170,32 @@ root      983708  0.1  3.2 721860 128112 ?       Ssl  May27   1:19 /opt/ensemble
       "closed_at": "2026-05-27T17:14:09.873662",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_LINKUSDT_1779855776",
+      "symbol": "LINKUSDT",
+      "side": "short",
+      "entry_price": 9.35,
+      "qty": 10.6952,
+      "confidence": 72,
+      "opened_at": "2026-05-27T04:22:56.413656",
+      "cost": 20.000024,
+      "notional": 100.00012,
+      "leverage": 5,
+      "exit_price": 9.061,
+      "pnl_pct": 15.45,
+      "pnl_usdt": 3.09,
+      "closed_at": "2026-05-28T01:28:11.489436",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 5.121716278943838
+  "total_pnl": 8.212629078943834
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 00:26:25,193 [INFO] main: LABUSDT | Bull:flat(35%) Bear:flat(50%)
-2026-05-28 00:26:31,830 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-28 00:26:31,832 [INFO] main: LABUSDT | Judge:HOLD conf=50% size=0.0%
-2026-05-28 00:26:31,832 [INFO] main: LABUSDT | RL adj=50.0%
-2026-05-28 00:26:37,890 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 00:26:38,054 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-28 00:26:38,056 [INFO] main: BILLUSDT | Bull:flat(35%) Bear:short(80%)
 2026-05-28 00:26:43,261 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-28 00:26:43,262 [INFO] main: BILLUSDT | Judge:SHORT conf=72% size=6.0%
@@ -220,6 +220,12 @@ root      983708  0.1  3.2 721860 128112 ?       Ssl  May27   1:19 /opt/ensemble
 2026-05-28 00:27:07,672 [INFO] main: ENAUSDT | gate PASS (Judge 72/70 RL 81.9/64.41 slack=±3)
 2026-05-28 00:27:07,672 [INFO] positions: Same-side cap: skip SHORT ENAUSDT (3/3 already short)
 2026-05-28 00:27:09,675 [INFO] main: Next scan in 120min (weekday-quiet)
+2026-05-28 01:20:25,662 [INFO] main: Symbols: 30
+2026-05-28 01:28:11,489 [INFO] positions: TAKE-PROFIT LINKUSDT short PnL:3.09%
+2026-05-28 01:28:11,491 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT LINKUSDT @ 9.0610 PnL: 15.45% (+3.09 USDT) | Баланс: 968.64
+2026-05-28 01:28:11,953 [INFO] positions: OK LINKUSDT short PnL:3.09% reason:take_profit
+2026-05-28 01:28:11,953 [INFO] positions: Lessons: This trade was successful with a 3.09% profit, validating the bearish conviction based on multiple technical indicators and sentiment analysis. The key takeaway is that a strong bearish alignment can override oversold conditions and extreme fear sentiment, but position sizing should still account for potential bounces and whipsaws. The trade's outcome reinforces the importance of considering the overall trend and technical context when evaluating potential reversals.
+2026-05-28 01:28:11,954 [INFO] rl: RL learned from short LINKUSDT: profit 3.09% | weights bull=1.003 bear=0.949 judge=1.048 threshold=64.38
 ```
 
 ## Disk
@@ -237,7 +243,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       788Mi       338Mi       4.8Mi       2.9Gi       3.0Gi
+Mem:           3.7Gi       795Mi       331Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
