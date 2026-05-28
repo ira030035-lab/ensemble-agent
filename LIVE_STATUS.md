@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 04:00:01 UTC
+Generated: 2026-05-28 04:10:01 UTC
 
 ## Services
 ```
@@ -11,27 +11,14 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      983538  0.0  1.1 131968 45880 ?        Ssl  May27   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      983708  0.1  3.2 721860 128192 ?       Ssl  May27   1:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      983708  0.1  3.2 721860 128196 ?       Ssl  May27   1:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 993.7218704489437,
-  "positions": {
-    "BTCUSDT": {
-      "id": "PAPER_BTCUSDT_1779897462",
-      "symbol": "BTCUSDT",
-      "side": "short",
-      "entry_price": 75267.1,
-      "qty": 0.0013,
-      "confidence": 68,
-      "opened_at": "2026-05-27T15:57:42.344776",
-      "cost": 19.569446,
-      "notional": 97.84723,
-      "leverage": 5
-    }
-  },
+  "balance": 1016.3171964489437,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -212,19 +199,32 @@ root      983708  0.1  3.2 721860 128192 ?       Ssl  May27   1:26 /opt/ensemble
       "closed_at": "2026-05-28T03:58:12.937999",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BTCUSDT_1779897462",
+      "symbol": "BTCUSDT",
+      "side": "short",
+      "entry_price": 75267.1,
+      "qty": 0.0013,
+      "confidence": 68,
+      "opened_at": "2026-05-27T15:57:42.344776",
+      "cost": 19.569446,
+      "notional": 97.84723,
+      "leverage": 5,
+      "exit_price": 72939.5,
+      "pnl_pct": 15.46,
+      "pnl_usdt": 3.03,
+      "closed_at": "2026-05-28T04:02:46.579255",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 13.291316448943821
+  "total_pnl": 16.31719644894383
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 02:32:42,235 [INFO] positions: Same-side cap: skip SHORT ENAUSDT (3/3 already short)
-2026-05-28 02:32:48,514 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-28 02:33:03,835 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 02:33:03,836 [INFO] main: BILLUSDT | Bull:long(62%) Bear:short(75%)
-2026-05-28 02:33:08,953 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-28 02:33:08,954 [INFO] main: BILLUSDT | Judge:SHORT conf=68% size=6.0%
 2026-05-28 02:33:08,954 [INFO] main: BILLUSDT | RL adj=69.3%
 2026-05-28 02:33:08,960 [INFO] main: BILLUSDT | Context score=-0.12 bias=0.1
@@ -250,6 +250,11 @@ root      983708  0.1  3.2 721860 128192 ?       Ssl  May27   1:26 /opt/ensemble
 2026-05-28 03:58:13,347 [INFO] positions: OK SUIUSDT short PnL:3.06% reason:take_profit
 2026-05-28 03:58:13,348 [INFO] positions: Lessons: A strong bearish setup with high conviction and confluent signals can still yield modest gains with disciplined position sizing. The combination of a trending_down regime, low volume, and oversold RSI within a downtrend context proved sufficient to overcome bullish counter-signals. Conservative sizing at 0.06 allowed for a 3.06% gain, consistent with prior lessons that similar setups can yield 0.5-3.2% gains with proper risk management.
 2026-05-28 03:58:13,348 [INFO] rl: RL learned from short SUIUSDT: profit 3.06% | weights bull=0.989 bear=0.960 judge=1.051 threshold=64.32
+2026-05-28 04:02:46,578 [INFO] positions: TAKE-PROFIT BTCUSDT short PnL:3.09%
+2026-05-28 04:02:46,581 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT BTCUSDT @ 72939.5000 PnL: 15.46% (+3.03 USDT) | Баланс: 1016.32
+2026-05-28 04:02:46,896 [INFO] positions: OK BTCUSDT short PnL:3.09% reason:take_profit
+2026-05-28 04:02:46,896 [INFO] positions: Lessons: The trade was successful with a 3.09% profit, validating the bearish conviction and analysis of oversold conditions, supply dominance, and weak buying. The trending_down regime and oversold RSI proved to be a profitable short setup despite the MACD bullish counterpoint. Conservative sizing helped manage the risk of potential false reversals or brief bounces before the trend continuation.
+2026-05-28 04:02:46,896 [INFO] rl: RL learned from short BTCUSDT: profit 3.09% | weights bull=0.982 bear=0.966 judge=1.052 threshold=64.29
 ```
 
 ## Disk
@@ -267,7 +272,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       796Mi       323Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       786Mi       332Mi       4.8Mi       2.9Gi       3.0Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
