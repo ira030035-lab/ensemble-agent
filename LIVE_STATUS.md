@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 09:30:01 UTC
+Generated: 2026-05-28 09:40:01 UTC
 
 ## Services
 ```
@@ -10,8 +10,9 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      983538  0.0  1.1 132316 46368 ?        Ssl  May27   0:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      996988  0.0  3.1 717300 123124 ?       Ssl  07:37   0:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      983538  0.0  1.1 132316 46368 ?        Ssl  May27   0:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      996988  0.0  3.1 717300 123184 ?       Ssl  07:37   0:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      998426  0.0  1.0  54256 41752 ?        Ss   09:34   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
 ## Paper state
@@ -286,7 +287,6 @@ root      996988  0.0  3.1 717300 123124 ?       Ssl  07:37   0:06 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 07:41:47,564 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-28 07:41:47,565 [INFO] main: FETUSDT | Bull:flat(25%) Bear:short(90%)
 2026-05-28 07:41:50,344 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-28 07:41:50,346 [INFO] main: FETUSDT | Judge:SHORT conf=85% size=15.0%
@@ -316,12 +316,13 @@ root      996988  0.0  3.1 717300 123124 ?       Ssl  07:37   0:06 /opt/ensemble
 2026-05-28 09:25:36,778 [INFO] positions: LOSS TAOUSDT short PnL:-2.0% reason:stop_loss
 2026-05-28 09:25:36,778 [INFO] positions: Lessons: Trending_down regime with deeply oversold RSI and bearish MACD did not yield expected gains. Extreme Fear and negative funding supported the short bias but were not enough to prevent a stop loss. This trade highlights the importance of respecting stop losses even when conviction is high, as reversals can occur in trending_down regimes.
 2026-05-28 09:25:36,778 [INFO] rl: RL learned from short TAOUSDT: loss -2.00% | weights bull=0.990 bear=0.958 judge=1.052 threshold=64.39
+2026-05-28 09:37:22,114 [INFO] main: Symbols: 30
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  896K  381M   1% /run
+tmpfs           382M  904K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  8.4G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -333,7 +334,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       959Mi       206Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       1.0Gi       207Mi       4.8Mi       2.8Gi       2.7Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
