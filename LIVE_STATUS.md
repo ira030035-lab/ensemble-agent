@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 14:10:01 UTC
+Generated: 2026-05-28 14:20:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.1 718324 124260 ?       Ssl  07:37   0:30 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.1 718324 124328 ?       Ssl  07:37   0:30 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133048 47548 ?        Ssl  10:43   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1001083  0.0  1.1  55884 43648 ?        Ss   11:50   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
@@ -18,45 +18,8 @@ root     1001083  0.0  1.1  55884 43648 ?        Ss   11:50   0:03 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 953.2090438389438,
-  "positions": {
-    "XRPUSDT": {
-      "id": "PAPER_XRPUSDT_1779942822",
-      "symbol": "XRPUSDT",
-      "side": "short",
-      "entry_price": 1.2763,
-      "qty": 78.3515,
-      "confidence": 76,
-      "opened_at": "2026-05-28T04:33:42.931172",
-      "cost": 20.00000389,
-      "notional": 100.00001945,
-      "leverage": 5
-    },
-    "TRUMPUSDT": {
-      "id": "PAPER_TRUMPUSDT_1779973736",
-      "symbol": "TRUMPUSDT",
-      "side": "short",
-      "entry_price": 1.866,
-      "qty": 53.5906,
-      "confidence": 85,
-      "opened_at": "2026-05-28T13:08:56.593539",
-      "cost": 20.000011920000002,
-      "notional": 100.00005960000001,
-      "leverage": 5
-    },
-    "TAOUSDT": {
-      "id": "PAPER_TAOUSDT_1779973828",
-      "symbol": "TAOUSDT",
-      "side": "short",
-      "entry_price": 258.92,
-      "qty": 0.3862,
-      "confidence": 85,
-      "opened_at": "2026-05-28T13:10:28.351608",
-      "cost": 19.998980800000002,
-      "notional": 99.994904,
-      "leverage": 5
-    }
-  },
+  "balance": 1011.9961895989438,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -327,29 +290,68 @@ root     1001083  0.0  1.1  55884 43648 ?        Ss   11:50   0:03 /opt/ensemble
       "closed_at": "2026-05-28T13:01:47.611023",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_TAOUSDT_1779973828",
+      "symbol": "TAOUSDT",
+      "side": "short",
+      "entry_price": 258.92,
+      "qty": 0.3862,
+      "confidence": 85,
+      "opened_at": "2026-05-28T13:10:28.351608",
+      "cost": 19.998980800000002,
+      "notional": 99.994904,
+      "leverage": 5,
+      "exit_price": 257.67,
+      "pnl_pct": 2.41,
+      "pnl_usdt": 0.48,
+      "closed_at": "2026-05-28T14:14:48.506797",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
+    },
+    {
+      "id": "PAPER_XRPUSDT_1779942822",
+      "symbol": "XRPUSDT",
+      "side": "short",
+      "entry_price": 1.2763,
+      "qty": 78.3515,
+      "confidence": 76,
+      "opened_at": "2026-05-28T04:33:42.931172",
+      "cost": 20.00000389,
+      "notional": 100.00001945,
+      "leverage": 5,
+      "exit_price": 1.3034,
+      "pnl_pct": -10.62,
+      "pnl_usdt": -2.12,
+      "closed_at": "2026-05-28T14:17:21.882304",
+      "reason": "stop_loss",
+      "outcome": "loss"
+    },
+    {
+      "id": "PAPER_TRUMPUSDT_1779973736",
+      "symbol": "TRUMPUSDT",
+      "side": "short",
+      "entry_price": 1.866,
+      "qty": 53.5906,
+      "confidence": 85,
+      "opened_at": "2026-05-28T13:08:56.593539",
+      "cost": 20.000011920000002,
+      "notional": 100.00005960000001,
+      "leverage": 5,
+      "exit_price": 1.858,
+      "pnl_pct": 2.14,
+      "pnl_usdt": 0.43,
+      "closed_at": "2026-05-28T14:18:53.365419",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 13.208040448943823
+  "total_pnl": 11.99618959894383
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 13:50:02,156 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 13:50:02,157 [INFO] main: NEARUSDT | Bull:flat(15%) Bear:short(80%)
-2026-05-28 13:50:04,721 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 13:50:04,723 [INFO] main: NEARUSDT | Judge:SHORT conf=85% size=15.0%
-2026-05-28 13:50:04,723 [INFO] main: NEARUSDT | RL adj=96.5%
-2026-05-28 13:50:04,730 [INFO] main: NEARUSDT | Context score=-0.11 bias=0.1
-2026-05-28 13:50:04,730 [INFO] main: NEARUSDT | regime BLOCK (volatile)
-2026-05-28 13:50:10,502 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 13:50:11,625 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-28 13:50:11,627 [INFO] main: DOGEUSDT | Bull:flat(15%) Bear:short(85%)
-2026-05-28 13:50:15,071 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 13:50:15,072 [INFO] main: DOGEUSDT | Judge:HOLD conf=50% size=0.0%
-2026-05-28 13:50:15,072 [INFO] main: DOGEUSDT | RL adj=50.0%
-2026-05-28 13:50:21,614 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 13:50:23,118 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-28 13:50:23,119 [INFO] main: WLDUSDT | Bull:flat(15%) Bear:short(60%)
 2026-05-28 13:50:26,247 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-28 13:50:26,247 [INFO] main: WLDUSDT | Judge:LONG conf=76% size=15.0%
@@ -365,6 +367,21 @@ root     1001083  0.0  1.1  55884 43648 ?        Ss   11:50   0:03 /opt/ensemble
 2026-05-28 13:50:37,467 [INFO] main: ENAUSDT | Context score=-0.11 bias=0.1
 2026-05-28 13:50:37,467 [INFO] main: ENAUSDT | regime BLOCK (volatile)
 2026-05-28 13:50:39,470 [INFO] main: Next scan in 30min (weekday-active)
+2026-05-28 14:14:48,506 [INFO] positions: BREAKEVEN_STOP TAOUSDT short PnL:0.48%
+2026-05-28 14:14:48,509 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT TAOUSDT @ 257.6700 PnL: 2.41% (+0.48 USDT) | Баланс: 973.69
+2026-05-28 14:14:48,848 [INFO] positions: OK TAOUSDT short PnL:0.48% reason:breakeven_stop
+2026-05-28 14:14:48,849 [INFO] positions: Lessons: The trade was a breakeven outcome with a 0.48% profit, meeting the minimum expectation. The initial bearish conviction and expected downside were not fully realized, but the trade was managed to limit losses. The asymmetry framework's rules and strong bearish signals were not enough to generate significant profits in this instance.
+2026-05-28 14:14:48,849 [INFO] rl: RL learned from short TAOUSDT: profit 0.48% | weights bull=0.986 bear=0.960 judge=1.053 threshold=64.3
+2026-05-28 14:17:21,881 [INFO] positions: STOP_LOSS XRPUSDT short PnL:-2.12%
+2026-05-28 14:17:21,885 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT XRPUSDT @ 1.3034 PnL: -10.62% (-2.12 USDT) | Баланс: 991.57
+2026-05-28 14:17:22,211 [INFO] positions: LOSS XRPUSDT short PnL:-2.12% reason:stop_loss
+2026-05-28 14:17:22,211 [INFO] positions: Lessons: High conviction short trades in trending_down regimes with deeply oversold RSI can still result in losses if volume support is lacking. Conservative sizing is crucial in such setups to limit potential losses. The absence of volume support and continuation of bearish technicals can weaken a reversal thesis and lead to stop loss outcomes.
+2026-05-28 14:17:22,212 [INFO] rl: RL learned from short XRPUSDT: loss -2.12% | weights bull=0.990 bear=0.956 judge=1.054 threshold=64.35
+2026-05-28 14:18:53,365 [INFO] positions: BREAKEVEN_STOP TRUMPUSDT short PnL:0.43%
+2026-05-28 14:18:53,367 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT TRUMPUSDT @ 1.8580 PnL: 2.14% (+0.43 USDT) | Баланс: 1012.00
+2026-05-28 14:18:54,211 [INFO] positions: OK TRUMPUSDT short PnL:0.43% reason:breakeven_stop
+2026-05-28 14:18:54,211 [INFO] positions: Lessons: The trade was closed at breakeven due to a stop loss, resulting in a 0.43% profit. The initial reasoning was based on high bear conviction and a trending_down regime, which aligned with the potential for a downside move. The outcome suggests that the trade management was effective in limiting losses and securing a small gain.
+2026-05-28 14:18:54,211 [INFO] rl: RL learned from short TRUMPUSDT: profit 0.43% | weights bull=0.989 bear=0.957 judge=1.054 threshold=64.32
 ```
 
 ## Disk
@@ -382,7 +399,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       828Mi       455Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       824Mi       459Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
