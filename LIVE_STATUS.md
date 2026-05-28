@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 11:20:01 UTC
+Generated: 2026-05-28 11:30:01 UTC
 
 ## Services
 ```
@@ -10,8 +10,9 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.0  3.1 717300 123952 ?       Ssl  07:37   0:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
-root      999913  0.1  1.1 132288 46560 ?        Ssl  10:43   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      996988  0.1  3.1 717300 123952 ?       Ssl  07:37   0:16 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      999913  0.1  1.1 132288 46576 ?        Ssl  10:43   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1000436  0.0  1.0  55752 42768 ?        Ss   11:20   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
 ## Paper state
@@ -298,42 +299,42 @@ root      999913  0.1  1.1 132288 46560 ?        Ssl  10:43   0:02 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 10:54:41,105 [INFO] main: ADAUSDT | RL adj=99.3%
-2026-05-28 10:54:41,110 [INFO] main: ADAUSDT | Context score=-0.11 bias=0.1
-2026-05-28 10:54:41,111 [INFO] main: ADAUSDT | gate PASS (Judge 90/70 RL 99.3/64.39 slack=±3)
-2026-05-28 10:54:41,111 [INFO] positions: Same-side cap: skip SHORT ADAUSDT (3/3 already short)
-2026-05-28 10:54:47,459 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-28 10:54:47,923 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 10:54:47,924 [INFO] main: LABUSDT | Bull:long(62%) Bear:flat(55%)
-2026-05-28 10:54:50,312 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 10:54:50,314 [INFO] main: LABUSDT | Judge:LONG conf=70% size=15.0%
-2026-05-28 10:54:50,315 [INFO] main: LABUSDT | RL adj=79.2%
-2026-05-28 10:54:50,322 [INFO] main: LABUSDT | Context score=-0.01 bias=0.1
-2026-05-28 10:54:50,322 [INFO] main: LABUSDT | macro BLOCK (long при BTC downtrend)
-2026-05-28 10:54:57,343 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-28 10:54:57,466 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 10:54:57,466 [INFO] main: ETHUSDT | Bull:flat(15%) Bear:short(80%)
-2026-05-28 10:55:00,030 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 10:55:00,032 [INFO] main: ETHUSDT | Judge:SHORT conf=85% size=15.0%
-2026-05-28 10:55:00,032 [INFO] main: ETHUSDT | RL adj=96.5%
-2026-05-28 10:55:00,038 [INFO] main: ETHUSDT | Context score=-0.11 bias=0.1
-2026-05-28 10:55:00,039 [INFO] main: ETHUSDT | gate PASS (Judge 85/70 RL 96.5/64.39 slack=±3)
-2026-05-28 10:55:00,039 [INFO] positions: Same-side cap: skip SHORT ETHUSDT (3/3 already short)
-2026-05-28 10:55:06,459 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 10:55:06,507 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-28 10:55:06,508 [INFO] main: ENAUSDT | Bull:long(62%) Bear:short(75%)
-2026-05-28 10:55:09,926 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 10:55:09,927 [INFO] main: ENAUSDT | Judge:LONG conf=70% size=15.0%
-2026-05-28 10:55:09,927 [INFO] main: ENAUSDT | RL adj=68.4%
-2026-05-28 10:55:09,933 [INFO] main: ENAUSDT | Context score=-0.01 bias=0.1
-2026-05-28 10:55:09,933 [INFO] main: ENAUSDT | regime BLOCK (volatile)
-2026-05-28 10:55:11,936 [INFO] main: Next scan in 30min (weekday-active)
+2026-05-28 11:29:24,289 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-28 11:29:24,291 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
+2026-05-28 11:29:24,574 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-28 11:29:24,576 [INFO] main: ETHUSDT | Bull:flat(15%) Bear:short(80%)
+2026-05-28 11:29:27,389 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-28 11:29:27,390 [INFO] main: ETHUSDT | Judge:SHORT conf=76% size=15.0%
+2026-05-28 11:29:27,391 [INFO] main: ETHUSDT | RL adj=87.5%
+2026-05-28 11:29:27,398 [INFO] main: ETHUSDT | Context score=-0.06 bias=0.05
+2026-05-28 11:29:27,398 [INFO] main: ETHUSDT | gate PASS (Judge 76/70 RL 87.5/64.39 slack=±3)
+2026-05-28 11:29:27,399 [INFO] positions: Same-side cap: skip SHORT ETHUSDT (3/3 already short)
+2026-05-28 11:29:30,950 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-05-28 11:29:33,058 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-28 11:29:35,406 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-28 11:29:35,407 [INFO] main: FETUSDT | Bull:flat(15%) Bear:short(75%)
+2026-05-28 11:29:37,802 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-28 11:29:37,804 [INFO] main: FETUSDT | Judge:SHORT conf=80% size=15.0%
+2026-05-28 11:29:37,804 [INFO] main: FETUSDT | RL adj=90.8%
+2026-05-28 11:29:37,810 [INFO] main: FETUSDT | Context score=-0.06 bias=0.05
+2026-05-28 11:29:37,811 [INFO] main: FETUSDT | regime BLOCK (volatile)
+2026-05-28 11:29:41,368 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-05-28 11:29:44,588 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-28 11:29:45,422 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-28 11:29:45,423 [INFO] main: LABUSDT | Bull:flat(25%) Bear:short(75%)
+2026-05-28 11:29:48,477 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-28 11:29:48,478 [INFO] main: LABUSDT | Judge:SHORT conf=85% size=15.0%
+2026-05-28 11:29:48,478 [INFO] main: LABUSDT | RL adj=95.8%
+2026-05-28 11:29:48,482 [INFO] main: LABUSDT | Context score=-0.06 bias=0.05
+2026-05-28 11:29:48,482 [INFO] main: LABUSDT | gate PASS (Judge 85/70 RL 95.8/64.39 slack=±3)
+2026-05-28 11:29:48,482 [INFO] positions: Same-side cap: skip SHORT LABUSDT (3/3 already short)
+2026-05-28 11:29:50,486 [INFO] main: Next scan in 30min (weekday-active)
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  896K  381M   1% /run
+tmpfs           382M  904K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  8.4G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -345,7 +346,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       934Mi       319Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       931Mi       321Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
