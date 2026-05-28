@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 12:40:01 UTC
+Generated: 2026-05-28 12:50:01 UTC
 
 ## Services
 ```
@@ -10,15 +10,15 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.1 718324 124124 ?       Ssl  07:37   0:23 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.1 718324 124144 ?       Ssl  07:37   0:23 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133048 47548 ?        Ssl  10:43   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1001083  0.0  1.0  55840 42876 ?        Ss   11:50   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
+root     1001083  0.0  1.1  55976 43132 ?        Ss   11:50   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 952.2354810989438,
+  "balance": 972.7305821589438,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1779942822",
@@ -42,18 +42,6 @@ root     1001083  0.0  1.0  55840 42876 ?        Ss   11:50   0:00 /opt/ensemble
       "opened_at": "2026-05-28T07:38:53.513650",
       "cost": 20.000000800000002,
       "notional": 100.000004,
-      "leverage": 5
-    },
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1779961383",
-      "symbol": "HYPEUSDT",
-      "side": "short",
-      "entry_price": 57.349,
-      "qty": 1.7437,
-      "confidence": 85,
-      "opened_at": "2026-05-28T09:43:03.412095",
-      "cost": 19.999890259999997,
-      "notional": 99.99945129999999,
       "leverage": 5
     }
   },
@@ -291,19 +279,32 @@ root     1001083  0.0  1.0  55840 42876 ?        Ss   11:50   0:00 /opt/ensemble
       "closed_at": "2026-05-28T09:25:36.434966",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1779961383",
+      "symbol": "HYPEUSDT",
+      "side": "short",
+      "entry_price": 57.349,
+      "qty": 1.7437,
+      "confidence": 85,
+      "opened_at": "2026-05-28T09:43:03.412095",
+      "cost": 19.999890259999997,
+      "notional": 99.99945129999999,
+      "leverage": 5,
+      "exit_price": 57.065,
+      "pnl_pct": 2.48,
+      "pnl_usdt": 0.5,
+      "closed_at": "2026-05-28T12:45:27.361720",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 12.235376048943818
+  "total_pnl": 12.730586848943817
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 12:38:17,858 [INFO] main: SKYAIUSDT | RL adj=80.1%
-2026-05-28 12:38:17,862 [INFO] main: SKYAIUSDT | Context score=-0.04 bias=0.05
-2026-05-28 12:38:17,863 [INFO] main: SKYAIUSDT | regime BLOCK (volatile)
-2026-05-28 12:38:24,471 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 12:38:25,613 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-28 12:38:25,614 [INFO] main: PEPEUSDT | Bull:flat(15%) Bear:short(90%)
 2026-05-28 12:38:28,123 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-28 12:38:28,125 [INFO] main: PEPEUSDT | Judge:SHORT conf=80% size=15.0%
@@ -329,6 +330,11 @@ root     1001083  0.0  1.0  55840 42876 ?        Ss   11:50   0:00 /opt/ensemble
 2026-05-28 12:38:47,670 [INFO] main: SUIUSDT | Context score=-0.06 bias=0.05
 2026-05-28 12:38:47,670 [INFO] main: SUIUSDT | regime BLOCK (volatile)
 2026-05-28 12:38:49,672 [INFO] main: Next scan in 30min (weekday-active)
+2026-05-28 12:45:27,361 [INFO] positions: BREAKEVEN_STOP HYPEUSDT short PnL:0.5%
+2026-05-28 12:45:27,364 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT HYPEUSDT @ 57.0650 PnL: 2.48% (+0.50 USDT) | Баланс: 972.73
+2026-05-28 12:45:27,664 [INFO] positions: OK HYPEUSDT short PnL:0.5% reason:breakeven_stop
+2026-05-28 12:45:27,664 [INFO] positions: Lessons: The trade was based on strong bear conviction exceeding bull signal, indicating a likely downside move. The trade ultimately closed at breakeven stop with a 0.5% profit, not meeting the expected 2:1 risk-reward ratio. The outcome suggests that while the bear conviction was correct, the trade's timing or risk management may have been off.
+2026-05-28 12:45:27,664 [INFO] rl: RL learned from short HYPEUSDT: profit 0.50% | weights bull=0.989 bear=0.959 judge=1.053 threshold=64.36
 ```
 
 ## Disk
@@ -346,7 +352,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       917Mi       368Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       916Mi       369Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
