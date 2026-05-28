@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-28 03:20:01 UTC
+Generated: 2026-05-28 03:30:01 UTC
 
 ## Services
 ```
@@ -11,13 +11,13 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      983538  0.0  1.1 131968 45880 ?        Ssl  May27   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root      983708  0.1  3.2 721860 128164 ?       Ssl  May27   1:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      983708  0.1  3.2 721860 128184 ?       Ssl  May27   1:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 948.6431907069438,
+  "balance": 970.6619271989438,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1779897462",
@@ -29,18 +29,6 @@ root      983708  0.1  3.2 721860 128164 ?       Ssl  May27   1:25 /opt/ensemble
       "opened_at": "2026-05-27T15:57:42.344776",
       "cost": 19.569446,
       "notional": 97.84723,
-      "leverage": 5
-    },
-    "XRPUSDT": {
-      "id": "PAPER_XRPUSDT_1779903758",
-      "symbol": "XRPUSDT",
-      "side": "short",
-      "entry_price": 1.3226,
-      "qty": 75.6086,
-      "confidence": 68,
-      "opened_at": "2026-05-27T17:42:38.950713",
-      "cost": 19.999986872,
-      "notional": 99.99993436,
       "leverage": 5
     },
     "SUIUSDT": {
@@ -200,20 +188,32 @@ root      983708  0.1  3.2 721860 128164 ?       Ssl  May27   1:25 /opt/ensemble
       "closed_at": "2026-05-28T01:28:11.489436",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_XRPUSDT_1779903758",
+      "symbol": "XRPUSDT",
+      "side": "short",
+      "entry_price": 1.3226,
+      "qty": 75.6086,
+      "confidence": 68,
+      "opened_at": "2026-05-27T17:42:38.950713",
+      "cost": 19.999986872,
+      "notional": 99.99993436,
+      "leverage": 5,
+      "exit_price": 1.2959,
+      "pnl_pct": 10.09,
+      "pnl_usdt": 2.02,
+      "closed_at": "2026-05-28T03:24:32.577475",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 8.212629078943834
+  "total_pnl": 10.23137869894383
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-28 02:32:22,829 [INFO] main: FILUSDT | RL adj=78.7%
-2026-05-28 02:32:22,834 [INFO] main: FILUSDT | Context score=-0.12 bias=0.1
-2026-05-28 02:32:22,835 [INFO] main: FILUSDT | regime BLOCK (short × trending_up × rsi1h=38.6; counter-trend guard)
-2026-05-28 02:32:30,354 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-28 02:32:37,288 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-28 02:32:37,290 [INFO] main: ENAUSDT | Bull:flat(15%) Bear:short(80%)
 2026-05-28 02:32:42,227 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-28 02:32:42,228 [INFO] main: ENAUSDT | Judge:SHORT conf=72% size=6.0%
 2026-05-28 02:32:42,228 [INFO] main: ENAUSDT | RL adj=83.4%
@@ -238,6 +238,12 @@ root      983708  0.1  3.2 721860 128164 ?       Ssl  May27   1:25 /opt/ensemble
 2026-05-28 02:33:32,057 [INFO] main: DOGEUSDT | gate PASS (Judge 68/70 RL 76.5/64.38 slack=±3)
 2026-05-28 02:33:32,057 [INFO] positions: Same-side cap: skip SHORT DOGEUSDT (3/3 already short)
 2026-05-28 02:33:34,060 [INFO] main: Next scan in 120min (weekday-quiet)
+2026-05-28 03:20:26,978 [INFO] main: Symbols: 30
+2026-05-28 03:24:32,576 [INFO] positions: TRAILING-STOP XRPUSDT short peak:2.88% now:2.02%
+2026-05-28 03:24:32,580 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT XRPUSDT @ 1.2959 PnL: 10.09% (+2.02 USDT) | Баланс: 970.66
+2026-05-28 03:24:32,961 [INFO] positions: OK XRPUSDT short PnL:2.02% reason:trailing_stop
+2026-05-28 03:24:32,962 [INFO] positions: Lessons: The trade was successful with a 2.02% profit, validating the original bearish bias and analysis of confluent bearish signals. The ranging regime limited downside but did not negate the directional bias, and conservative position sizing was key to managing risk in low-volume conditions. This setup serves as a reminder to respect low-volume ranging conditions and the potential for false breakdowns, highlighting the importance of disciplined position sizing.
+2026-05-28 03:24:32,962 [INFO] rl: RL learned from short XRPUSDT: profit 2.02% | weights bull=0.999 bear=0.953 judge=1.048 threshold=64.35
 ```
 
 ## Disk
@@ -255,7 +261,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       786Mi       333Mi       4.8Mi       2.9Gi       3.0Gi
+Mem:           3.7Gi       799Mi       320Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
