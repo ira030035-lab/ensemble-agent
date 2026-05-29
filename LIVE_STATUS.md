@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-29 08:30:01 UTC
+Generated: 2026-05-29 08:40:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.2 719348 125824 ?       Ssl  May28   1:38 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.2 719348 125848 ?       Ssl  May28   1:38 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133340 47208 ?        Ssl  May28   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1017434  0.0  1.1  56208 43292 ?        Ss   05:56   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
@@ -419,7 +419,6 @@ root     1017434  0.0  1.1  56208 43292 ?        Ss   05:56   0:01 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-29 06:45:26,210 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-29 06:45:26,212 [INFO] main: ENAUSDT | Judge:HOLD conf=55% size=0.0%
 2026-05-29 06:45:26,212 [INFO] main: ENAUSDT | RL adj=55.0%
 2026-05-29 06:45:34,611 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -449,12 +448,13 @@ root     1017434  0.0  1.1  56208 43292 ?        Ss   05:56   0:01 /opt/ensemble
 2026-05-29 08:28:12,294 [INFO] positions: OK XRPUSDT short PnL:0.5% reason:breakeven_stop
 2026-05-29 08:28:12,294 [INFO] positions: Lessons: The trade was based on a bearish signal with high RSI and weak volume, expecting a 4% downside move. However, the trade ended up being a breakeven stop with a 0.5% profit, indicating the expected downside move did not occur. This outcome suggests that the bearish signal may not have been strong enough to overcome the ranging market regime.
 2026-05-29 08:28:12,295 [INFO] rl: RL learned from short XRPUSDT: profit 0.50% | weights bull=0.995 bear=0.951 judge=1.054 threshold=64.39
+2026-05-29 08:37:39,206 [INFO] main: Symbols: 30
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  904K  381M   1% /run
+tmpfs           382M  896K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  8.5G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -466,7 +466,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.0Gi       180Mi       4.8Mi       2.9Gi       2.7Gi
+Mem:           3.7Gi       847Mi       336Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
