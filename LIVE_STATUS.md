@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-29 11:30:01 UTC
+Generated: 2026-05-29 11:40:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root      996988  0.1  3.2 719348 126132 ?       Ssl  May28   1:52 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133340 47400 ?        Ssl  May28   0:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1017434  0.0  1.1  57524 44148 ?        Ss   05:56   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
+root     1017434  0.0  1.1  57268 44176 ?        Ss   05:56   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
 ## Paper state
@@ -443,7 +443,6 @@ root     1017434  0.0  1.1  57524 44148 ?        Ss   05:56   0:02 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-29 11:11:45,985 [INFO] positions: Same-side cap: skip SHORT ADAUSDT (3/3 already short)
 2026-05-29 11:11:52,908 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-29 11:11:53,419 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-29 11:11:53,420 [INFO] main: ZECUSDT | Bull:flat(25%) Bear:short(65%)
@@ -473,6 +472,7 @@ root     1017434  0.0  1.1  57524 44148 ?        Ss   05:56   0:02 /opt/ensemble
 2026-05-29 11:12:32,350 [INFO] main: WLDUSDT | Context score=-0.11 bias=0.1
 2026-05-29 11:12:32,350 [INFO] main: WLDUSDT | regime BLOCK (volatile)
 2026-05-29 11:12:34,353 [INFO] main: Next scan in 30min (weekday-active)
+2026-05-29 11:37:41,239 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -490,7 +490,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       962Mi       212Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       948Mi       226Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
