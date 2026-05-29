@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-29 09:30:01 UTC
+Generated: 2026-05-29 09:40:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.2 719348 126024 ?       Ssl  May28   1:42 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.2 719348 126096 ?       Ssl  May28   1:42 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133340 47208 ?        Ssl  May28   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1017434  0.0  1.1  56208 43292 ?        Ss   05:56   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
@@ -443,7 +443,6 @@ root     1017434  0.0  1.1  56208 43292 ?        Ss   05:56   0:01 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-29 08:57:00,294 [INFO] main: BILLUSDT | Bull:flat(15%) Bear:short(70%)
 2026-05-29 08:57:10,572 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-05-29 08:57:10,573 [INFO] openai._base_client: Retrying request to /chat/completions in 0.446867 seconds
 2026-05-29 08:57:21,243 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
@@ -473,6 +472,7 @@ root     1017434  0.0  1.1  56208 43292 ?        Ss   05:56   0:01 /opt/ensemble
 2026-05-29 08:58:59,099 [INFO] main: BTCUSDT | Judge:HOLD conf=50% size=0.0%
 2026-05-29 08:58:59,099 [INFO] main: BTCUSDT | RL adj=50.0%
 2026-05-29 08:59:01,101 [INFO] main: Next scan in 60min (weekday-warmup)
+2026-05-29 09:37:39,855 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -490,7 +490,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       860Mi       319Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       850Mi       328Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
