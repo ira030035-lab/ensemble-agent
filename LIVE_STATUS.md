@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-29 13:40:01 UTC
+Generated: 2026-05-29 13:50:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.2 719348 126308 ?       Ssl  May28   2:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.2 719348 126316 ?       Ssl  May28   2:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133340 47560 ?        Ssl  May28   0:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1023587  0.0  1.1  56204 43228 ?        Ss   12:24   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
@@ -18,7 +18,7 @@ root     1023587  0.0  1.1  56204 43228 ?        Ss   12:24   0:01 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 951.4471121629439,
+  "balance": 973.3764353389439,
   "positions": {
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1779978101",
@@ -30,18 +30,6 @@ root     1023587  0.0  1.1  56204 43228 ?        Ss   12:24   0:01 /opt/ensemble
       "opened_at": "2026-05-28T14:21:41.194598",
       "cost": 20.0165472,
       "notional": 100.08273600000001,
-      "leverage": 5
-    },
-    "SUIUSDT": {
-      "id": "PAPER_SUIUSDT_1780044712",
-      "symbol": "SUIUSDT",
-      "side": "short",
-      "entry_price": 0.9226,
-      "qty": 108.3893,
-      "confidence": 85,
-      "opened_at": "2026-05-29T08:51:52.564110",
-      "cost": 19.999993636,
-      "notional": 99.99996818,
       "leverage": 5
     },
     "TAOUSDT": {
@@ -453,19 +441,32 @@ root     1023587  0.0  1.1  56204 43228 ?        Ss   12:24   0:01 /opt/ensemble
       "closed_at": "2026-05-29T13:12:02.461268",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_SUIUSDT_1780044712",
+      "symbol": "SUIUSDT",
+      "side": "short",
+      "entry_price": 0.9226,
+      "qty": 108.3893,
+      "confidence": 85,
+      "opened_at": "2026-05-29T08:51:52.564110",
+      "cost": 19.999993636,
+      "notional": 99.99996818,
+      "leverage": 5,
+      "exit_price": 0.9048,
+      "pnl_pct": 9.65,
+      "pnl_usdt": 1.93,
+      "closed_at": "2026-05-29T13:43:49.621322",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 11.463051598943824
+  "total_pnl": 13.392381138943817
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-29 13:31:25,921 [INFO] main: PEPEUSDT | gate PASS (Judge 91/70 RL 100.0/64.36 slack=±3)
-2026-05-29 13:31:25,922 [INFO] positions: Same-side cap: skip SHORT PEPEUSDT (3/3 already short)
-2026-05-29 13:31:29,464 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-05-29 13:31:33,272 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-29 13:31:39,674 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-29 13:31:39,676 [INFO] main: WLDUSDT | Bull:flat(15%) Bear:short(75%)
 2026-05-29 13:31:45,639 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-29 13:31:45,640 [INFO] main: WLDUSDT | Judge:SHORT conf=85% size=15.0%
@@ -491,6 +492,11 @@ root     1023587  0.0  1.1  56204 43228 ?        Ss   12:24   0:01 /opt/ensemble
 2026-05-29 13:32:09,181 [INFO] positions: Same-side cap: skip SHORT FILUSDT (3/3 already short)
 2026-05-29 13:32:11,184 [INFO] main: Next scan in 30min (weekday-active)
 2026-05-29 13:37:42,699 [INFO] main: Symbols: 30
+2026-05-29 13:43:49,620 [INFO] positions: TRAILING-STOP SUIUSDT short peak:2.73% now:1.93%
+2026-05-29 13:43:49,624 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT SUIUSDT @ 0.9048 PnL: 9.65% (+1.93 USDT) | Баланс: 973.38
+2026-05-29 13:43:49,893 [INFO] positions: OK SUIUSDT short PnL:1.93% reason:trailing_stop
+2026-05-29 13:43:49,894 [INFO] positions: Lessons: This trade was successful with a 1.93% profit, meeting the expected downside move based on the risk/reward framework. The bear conviction being significantly higher than bull conviction at the time of entry was a key factor in the trade's success. The trailing stop helped to lock in the profit, resulting in a 1.93% gain.
+2026-05-29 13:43:49,894 [INFO] rl: RL learned from short SUIUSDT: profit 1.93% | weights bull=0.979 bear=0.963 judge=1.059 threshold=64.33
 ```
 
 ## Disk
@@ -508,7 +514,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       992Mi       272Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       993Mi       271Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
