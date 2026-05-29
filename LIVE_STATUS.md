@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-29 07:10:01 UTC
+Generated: 2026-05-29 07:20:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.2 719348 125748 ?       Ssl  May28   1:37 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.2 719348 125768 ?       Ssl  May28   1:37 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133340 47208 ?        Ssl  May28   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1017434  0.0  1.1  56208 43292 ?        Ss   05:56   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
@@ -18,7 +18,7 @@ root     1017434  0.0  1.1  56208 43292 ?        Ss   05:56   0:01 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 949.9133485349437,
+  "balance": 967.8411264749437,
   "positions": {
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1779978101",
@@ -42,18 +42,6 @@ root     1017434  0.0  1.1  56208 43292 ?        Ss   05:56   0:01 /opt/ensemble
       "opened_at": "2026-05-28T19:08:11.858357",
       "cost": 20.000007984,
       "notional": 100.00003991999999,
-      "leverage": 5
-    },
-    "TONUSDT": {
-      "id": "PAPER_TONUSDT_1780007297",
-      "symbol": "TONUSDT",
-      "side": "short",
-      "entry_price": 1.7614,
-      "qty": 56.773,
-      "confidence": 85,
-      "opened_at": "2026-05-28T22:28:17.444503",
-      "cost": 19.999992440000003,
-      "notional": 99.99996220000001,
       "leverage": 5
     }
   },
@@ -399,19 +387,32 @@ root     1017434  0.0  1.1  56208 43292 ?        Ss   05:56   0:01 /opt/ensemble
       "closed_at": "2026-05-28T18:13:11.807931",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_TONUSDT_1780007297",
+      "symbol": "TONUSDT",
+      "side": "short",
+      "entry_price": 1.7614,
+      "qty": 56.773,
+      "confidence": 85,
+      "opened_at": "2026-05-28T22:28:17.444503",
+      "cost": 19.999992440000003,
+      "notional": 99.99996220000001,
+      "leverage": 5,
+      "exit_price": 1.7979,
+      "pnl_pct": -10.36,
+      "pnl_usdt": -2.07,
+      "closed_at": "2026-05-29T07:10:35.224172",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 9.929896158943832
+  "total_pnl": 7.857681658943832
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-29 06:44:58,737 [INFO] main: BNBUSDT | Judge:HOLD conf=57% size=0.0%
-2026-05-29 06:44:58,737 [INFO] main: BNBUSDT | RL adj=57.0%
-2026-05-29 06:45:06,929 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-29 06:45:06,931 [INFO] main: BILLUSDT | Bull:flat(15%) Bear:short(68%)
-2026-05-29 06:45:10,486 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-29 06:45:10,488 [INFO] main: BILLUSDT | Judge:SHORT conf=72% size=15.0%
 2026-05-29 06:45:10,488 [INFO] main: BILLUSDT | RL adj=81.7%
 2026-05-29 06:45:10,498 [INFO] main: BILLUSDT | Context score=-0.1 bias=0.1
@@ -437,6 +438,11 @@ root     1017434  0.0  1.1  56208 43292 ?        Ss   05:56   0:01 /opt/ensemble
 2026-05-29 06:45:52,324 [INFO] main: XLMUSDT | Context score=-0.0 bias=0.1
 2026-05-29 06:45:52,324 [INFO] main: XLMUSDT | regime BLOCK (volatile)
 2026-05-29 06:45:54,327 [INFO] main: Next scan in 120min (weekday-quiet)
+2026-05-29 07:10:35,223 [INFO] positions: STOP_LOSS TONUSDT short PnL:-2.07%
+2026-05-29 07:10:35,226 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT TONUSDT @ 1.7979 PnL: -10.36% (-2.07 USDT) | Баланс: 967.84
+2026-05-29 07:10:35,777 [INFO] positions: LOSS TONUSDT short PnL:-2.07% reason:stop_loss
+2026-05-29 07:10:35,777 [INFO] positions: Lessons: The trade was based on a bearish conviction with strong trend and technical indicators supporting further downside. However, the trade resulted in a stop loss, incurring a 2.07% loss. This outcome suggests that the bearish conviction was not strong enough to overcome the current market conditions, and a reevaluation of the trend and indicators may be necessary.
+2026-05-29 07:10:35,777 [INFO] rl: RL learned from short TONUSDT: loss -2.07% | weights bull=0.997 bear=0.950 judge=1.054 threshold=64.42
 ```
 
 ## Disk
