@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-29 22:00:01 UTC
+Generated: 2026-05-29 22:10:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.2 720372 126884 ?       Ssl  May28   2:51 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.2 720372 126884 ?       Ssl  May28   2:52 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133336 47924 ?        Ssl  May28   0:16 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1023587  0.0  1.1  57192 44704 ?        Ss   12:24   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
@@ -18,7 +18,7 @@ root     1023587  0.0  1.1  57192 44704 ?        Ss   12:24   0:03 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 943.6196779651436,
+  "balance": 966.6899948191436,
   "positions": {
     "DOGEUSDT": {
       "id": "PAPER_DOGEUSDT_1780069731",
@@ -30,18 +30,6 @@ root     1023587  0.0  1.1  57192 44704 ?        Ss   12:24   0:03 /opt/ensemble
       "opened_at": "2026-05-29T15:48:51.356094",
       "cost": 19.9999997288,
       "notional": 99.999998644,
-      "leverage": 5
-    },
-    "FILUSDT": {
-      "id": "PAPER_FILUSDT_1780078135",
-      "symbol": "FILUSDT",
-      "side": "short",
-      "entry_price": 0.9771,
-      "qty": 102.3437,
-      "confidence": 75,
-      "opened_at": "2026-05-29T18:08:55.982497",
-      "cost": 20.000005854,
-      "notional": 100.00002927,
       "leverage": 5
     },
     "TRXUSDT": {
@@ -597,19 +585,32 @@ root     1023587  0.0  1.1  57192 44704 ?        Ss   12:24   0:03 /opt/ensemble
       "closed_at": "2026-05-29T20:25:16.349327",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_FILUSDT_1780078135",
+      "symbol": "FILUSDT",
+      "side": "short",
+      "entry_price": 0.9771,
+      "qty": 102.3437,
+      "confidence": 75,
+      "opened_at": "2026-05-29T18:08:55.982497",
+      "cost": 20.000005854,
+      "notional": 100.00002927,
+      "leverage": 5,
+      "exit_price": 0.9471,
+      "pnl_pct": 15.35,
+      "pnl_usdt": 3.07,
+      "closed_at": "2026-05-29T22:07:19.547477",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 3.6196834589438023
+  "total_pnl": 6.689994458943794
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-29 21:31:18,918 [INFO] main: BILLUSDT | Context score=-0.06 bias=0.05
-2026-05-29 21:31:18,918 [INFO] main: BILLUSDT | regime BLOCK (volatile)
-2026-05-29 21:31:22,278 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-05-29 21:31:25,919 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-29 21:31:26,141 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-29 21:31:26,142 [INFO] main: NEARUSDT | Bull:flat(15%) Bear:short(75%)
 2026-05-29 21:31:28,484 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-29 21:31:28,486 [INFO] main: NEARUSDT | Judge:SHORT conf=85% size=15.0%
@@ -635,6 +636,11 @@ root     1023587  0.0  1.1  57192 44704 ?        Ss   12:24   0:03 /opt/ensemble
 2026-05-29 21:31:46,201 [INFO] main: BTCUSDT | RL adj=65.0%
 2026-05-29 21:31:48,203 [INFO] main: Next scan in 60min (weekday-warmup)
 2026-05-29 21:37:47,851 [INFO] main: Symbols: 30
+2026-05-29 22:07:19,546 [INFO] positions: TAKE-PROFIT FILUSDT short PnL:3.07%
+2026-05-29 22:07:19,551 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT FILUSDT @ 0.9471 PnL: 15.35% (+3.07 USDT) | Баланс: 966.69
+2026-05-29 22:07:19,860 [INFO] positions: OK FILUSDT short PnL:3.07% reason:take_profit
+2026-05-29 22:07:19,861 [INFO] positions: Lessons: The trade was closed for a 3.07% profit, meeting less than half of the expected 4% downside move. The initial analysis correctly identified overbought conditions and extreme fear, but the move was not as large as anticipated. This trade highlights the importance of taking profits when targets are not met, rather than holding out for larger gains.
+2026-05-29 22:07:19,861 [INFO] rl: RL learned from short FILUSDT: profit 3.07% | weights bull=0.989 bear=0.948 judge=1.063 threshold=64.49
 ```
 
 ## Disk
@@ -652,7 +658,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       855Mi       395Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       836Mi       413Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
