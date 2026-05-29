@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-29 07:30:01 UTC
+Generated: 2026-05-29 07:40:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.2 719348 125768 ?       Ssl  May28   1:37 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.2 719348 125820 ?       Ssl  May28   1:37 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133340 47208 ?        Ssl  May28   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1017434  0.0  1.1  56208 43292 ?        Ss   05:56   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
@@ -413,7 +413,6 @@ root     1017434  0.0  1.1  56208 43292 ?        Ss   05:56   0:01 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-29 06:45:10,488 [INFO] main: BILLUSDT | Judge:SHORT conf=72% size=15.0%
 2026-05-29 06:45:10,488 [INFO] main: BILLUSDT | RL adj=81.7%
 2026-05-29 06:45:10,498 [INFO] main: BILLUSDT | Context score=-0.1 bias=0.1
 2026-05-29 06:45:10,498 [INFO] main: BILLUSDT | regime BLOCK (volatile)
@@ -443,6 +442,7 @@ root     1017434  0.0  1.1  56208 43292 ?        Ss   05:56   0:01 /opt/ensemble
 2026-05-29 07:10:35,777 [INFO] positions: LOSS TONUSDT short PnL:-2.07% reason:stop_loss
 2026-05-29 07:10:35,777 [INFO] positions: Lessons: The trade was based on a bearish conviction with strong trend and technical indicators supporting further downside. However, the trade resulted in a stop loss, incurring a 2.07% loss. This outcome suggests that the bearish conviction was not strong enough to overcome the current market conditions, and a reevaluation of the trend and indicators may be necessary.
 2026-05-29 07:10:35,777 [INFO] rl: RL learned from short TONUSDT: loss -2.07% | weights bull=0.997 bear=0.950 judge=1.054 threshold=64.42
+2026-05-29 07:37:38,386 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -460,7 +460,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.0Gi       183Mi       4.8Mi       2.9Gi       2.7Gi
+Mem:           3.7Gi       993Mi       191Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
