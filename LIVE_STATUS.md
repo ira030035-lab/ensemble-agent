@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-29 19:30:01 UTC
+Generated: 2026-05-29 19:40:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.2 720372 126860 ?       Ssl  May28   2:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.2 720372 126860 ?       Ssl  May28   2:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133340 47868 ?        Ssl  May28   0:15 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1023587  0.0  1.1  57124 44344 ?        Ss   12:24   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
@@ -18,7 +18,7 @@ root     1023587  0.0  1.1  57124 44344 ?        Ss   12:24   0:02 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 943.8406600761436,
+  "balance": 965.6567158761436,
   "positions": {
     "DOGEUSDT": {
       "id": "PAPER_DOGEUSDT_1780069731",
@@ -42,18 +42,6 @@ root     1023587  0.0  1.1  57124 44344 ?        Ss   12:24   0:02 /opt/ensemble
       "opened_at": "2026-05-29T18:08:55.982497",
       "cost": 20.000005854,
       "notional": 100.00002927,
-      "leverage": 5
-    },
-    "TAOUSDT": {
-      "id": "PAPER_TAOUSDT_1780080104",
-      "symbol": "TAOUSDT",
-      "side": "short",
-      "entry_price": 254.62,
-      "qty": 0.3927,
-      "confidence": 78,
-      "opened_at": "2026-05-29T18:41:44.883956",
-      "cost": 19.9978548,
-      "notional": 99.989274,
       "leverage": 5
     }
   },
@@ -561,20 +549,32 @@ root     1023587  0.0  1.1  57124 44344 ?        Ss   12:24   0:02 /opt/ensemble
       "closed_at": "2026-05-29T15:38:42.250323",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_TAOUSDT_1780080104",
+      "symbol": "TAOUSDT",
+      "side": "short",
+      "entry_price": 254.62,
+      "qty": 0.3927,
+      "confidence": 78,
+      "opened_at": "2026-05-29T18:41:44.883956",
+      "cost": 19.9978548,
+      "notional": 99.989274,
+      "leverage": 5,
+      "exit_price": 249.99,
+      "pnl_pct": 9.09,
+      "pnl_usdt": 1.82,
+      "closed_at": "2026-05-29T19:31:23.674784",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 3.8385204589438047
+  "total_pnl": 5.656721458943803
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-29 19:18:59,476 [INFO] main: LABUSDT | RL adj=55.0%
-2026-05-29 19:19:06,436 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 19:19:06,452 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-29 19:19:06,454 [INFO] main: BCHUSDT | Bull:flat(15%) Bear:short(80%)
-2026-05-29 19:19:08,553 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 19:19:08,554 [INFO] main: BCHUSDT | Judge:SHORT conf=85% size=15.0%
 2026-05-29 19:19:08,555 [INFO] main: BCHUSDT | RL adj=96.3%
 2026-05-29 19:19:08,564 [INFO] main: BCHUSDT | Context score=-0.06 bias=0.05
 2026-05-29 19:19:08,564 [INFO] main: BCHUSDT | regime BLOCK (volatile)
@@ -599,6 +599,12 @@ root     1023587  0.0  1.1  57124 44344 ?        Ss   12:24   0:02 /opt/ensemble
 2026-05-29 19:19:37,604 [INFO] main: INJUSDT | Judge:HOLD conf=55% size=0.0%
 2026-05-29 19:19:37,604 [INFO] main: INJUSDT | RL adj=55.0%
 2026-05-29 19:19:39,607 [INFO] main: Next scan in 30min (weekday-active)
+2026-05-29 19:31:23,674 [INFO] positions: TRAILING-STOP TAOUSDT short peak:2.86% now:1.82%
+2026-05-29 19:31:23,679 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT TAOUSDT @ 249.9900 PnL: 9.09% (+1.82 USDT) | Баланс: 965.66
+2026-05-29 19:31:23,930 [INFO] positions: OK TAOUSDT short PnL:1.82% reason:trailing_stop
+2026-05-29 19:31:23,930 [INFO] positions: Lessons: The trade was closed with a 1.82% profit due to a trailing stop. The original reasoning was based on a strong bear market situation with a high conviction level, expecting a significant downside move. This trade outcome aligns with the asymmetric risk rules, indicating a successful application of the trading strategy.
+2026-05-29 19:31:23,930 [INFO] rl: RL learned from short TAOUSDT: profit 1.82% | weights bull=0.993 bear=0.947 judge=1.060 threshold=64.47
+2026-05-29 19:37:46,606 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -616,7 +622,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       875Mi       379Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       865Mi       388Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
