@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-29 08:40:01 UTC
+Generated: 2026-05-29 08:50:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.2 719348 125848 ?       Ssl  May28   1:38 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.2 719348 125900 ?       Ssl  May28   1:39 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133340 47208 ?        Ssl  May28   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1017434  0.0  1.1  56208 43292 ?        Ss   05:56   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
@@ -18,7 +18,7 @@ root     1017434  0.0  1.1  56208 43292 ?        Ss   05:56   0:01 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 988.3378233989438,
+  "balance": 968.3398065989438,
   "positions": {
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1779978101",
@@ -30,6 +30,18 @@ root     1017434  0.0  1.1  56208 43292 ?        Ss   05:56   0:01 /opt/ensemble
       "opened_at": "2026-05-28T14:21:41.194598",
       "cost": 20.0165472,
       "notional": 100.08273600000001,
+      "leverage": 5
+    },
+    "TAOUSDT": {
+      "id": "PAPER_TAOUSDT_1780044588",
+      "symbol": "TAOUSDT",
+      "side": "short",
+      "entry_price": 257.64,
+      "qty": 0.3881,
+      "confidence": 80,
+      "opened_at": "2026-05-29T08:49:48.347952",
+      "cost": 19.9980168,
+      "notional": 99.990084,
       "leverage": 5
     }
   },
@@ -419,36 +431,36 @@ root     1017434  0.0  1.1  56208 43292 ?        Ss   05:56   0:01 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-29 06:45:26,212 [INFO] main: ENAUSDT | Judge:HOLD conf=55% size=0.0%
-2026-05-29 06:45:26,212 [INFO] main: ENAUSDT | RL adj=55.0%
-2026-05-29 06:45:34,611 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-29 06:45:34,612 [INFO] main: BEATUSDT | Bull:flat(25%) Bear:short(65%)
-2026-05-29 06:45:38,676 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 06:45:38,677 [INFO] main: BEATUSDT | Judge:SHORT conf=72% size=10.0%
-2026-05-29 06:45:38,677 [INFO] main: BEATUSDT | RL adj=81.3%
-2026-05-29 06:45:38,683 [INFO] main: BEATUSDT | Context score=-0.1 bias=0.1
-2026-05-29 06:45:38,683 [INFO] main: BEATUSDT | regime BLOCK (volatile)
-2026-05-29 06:45:46,753 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 06:45:47,727 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-29 06:45:47,729 [INFO] main: XLMUSDT | Bull:long(62%) Bear:short(75%)
-2026-05-29 06:45:52,318 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 06:45:52,319 [INFO] main: XLMUSDT | Judge:LONG conf=85% size=15.0%
-2026-05-29 06:45:52,319 [INFO] main: XLMUSDT | RL adj=83.5%
-2026-05-29 06:45:52,324 [INFO] main: XLMUSDT | Context score=-0.0 bias=0.1
-2026-05-29 06:45:52,324 [INFO] main: XLMUSDT | regime BLOCK (volatile)
-2026-05-29 06:45:54,327 [INFO] main: Next scan in 120min (weekday-quiet)
-2026-05-29 07:10:35,223 [INFO] positions: STOP_LOSS TONUSDT short PnL:-2.07%
-2026-05-29 07:10:35,226 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT TONUSDT @ 1.7979 PnL: -10.36% (-2.07 USDT) | Баланс: 967.84
-2026-05-29 07:10:35,777 [INFO] positions: LOSS TONUSDT short PnL:-2.07% reason:stop_loss
-2026-05-29 07:10:35,777 [INFO] positions: Lessons: The trade was based on a bearish conviction with strong trend and technical indicators supporting further downside. However, the trade resulted in a stop loss, incurring a 2.07% loss. This outcome suggests that the bearish conviction was not strong enough to overcome the current market conditions, and a reevaluation of the trend and indicators may be necessary.
-2026-05-29 07:10:35,777 [INFO] rl: RL learned from short TONUSDT: loss -2.07% | weights bull=0.997 bear=0.950 judge=1.054 threshold=64.42
-2026-05-29 07:37:38,386 [INFO] main: Symbols: 30
-2026-05-29 08:28:11,943 [INFO] positions: BREAKEVEN_STOP XRPUSDT short PnL:0.5%
-2026-05-29 08:28:11,947 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT XRPUSDT @ 1.3222 PnL: 2.48% (+0.50 USDT) | Баланс: 988.34
-2026-05-29 08:28:12,294 [INFO] positions: OK XRPUSDT short PnL:0.5% reason:breakeven_stop
-2026-05-29 08:28:12,294 [INFO] positions: Lessons: The trade was based on a bearish signal with high RSI and weak volume, expecting a 4% downside move. However, the trade ended up being a breakeven stop with a 0.5% profit, indicating the expected downside move did not occur. This outcome suggests that the bearish signal may not have been strong enough to overcome the ranging market regime.
-2026-05-29 08:28:12,295 [INFO] rl: RL learned from short XRPUSDT: profit 0.50% | weights bull=0.995 bear=0.951 judge=1.054 threshold=64.39
-2026-05-29 08:37:39,206 [INFO] main: Symbols: 30
+2026-05-29 08:49:02,806 [INFO] main: LINKUSDT | RL adj=60.0%
+2026-05-29 08:49:06,544 [WARNING] agents: Bull entropy-guard: шаблон long(70) ×5. Переключаемся на Kimi+Claude fallback.
+2026-05-29 08:49:06,544 [INFO] main: WLDUSDT | Bull:long(70%) Bear:short(80%)
+2026-05-29 08:49:12,325 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-29 08:49:12,326 [INFO] main: WLDUSDT | Judge:SHORT conf=75% size=15.0%
+2026-05-29 08:49:12,327 [INFO] main: WLDUSDT | RL adj=76.0%
+2026-05-29 08:49:12,336 [INFO] main: WLDUSDT | Context score=-0.11 bias=0.1
+2026-05-29 08:49:12,336 [INFO] main: WLDUSDT | regime BLOCK (volatile)
+2026-05-29 08:49:15,711 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-05-29 08:49:16,139 [INFO] main: TAOUSDT | Bull:long(72%) Bear:short(80%)
+2026-05-29 08:49:26,499 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-29 08:49:26,500 [INFO] openai._base_client: Retrying request to /chat/completions in 0.377231 seconds
+2026-05-29 08:49:37,050 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-29 08:49:37,050 [INFO] openai._base_client: Retrying request to /chat/completions in 0.969462 seconds
+2026-05-29 08:49:47,697 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-29 08:49:47,699 [INFO] main: TAOUSDT | Judge:SHORT conf=80% size=15.0%
+2026-05-29 08:49:47,699 [INFO] main: TAOUSDT | RL adj=80.7%
+2026-05-29 08:49:47,714 [INFO] main: TAOUSDT | Context score=-0.11 bias=0.1
+2026-05-29 08:49:48,061 [INFO] main: TAOUSDT | gate PASS (Judge 80/70 RL 80.7/64.39 slack=±3)
+2026-05-29 08:49:48,347 [INFO] positions: [PAPER] Opening SHORT TAOUSDT notional=$100.0 conf=80%
+2026-05-29 08:49:48,352 [INFO] paper_trading: [PAPER] ОТКРЫТА SHORT TAOUSDT @ 257.6400 qty=0.3881 notional=99.99 margin=20.00 x5 | Баланс: 968.34
+2026-05-29 08:49:51,778 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-05-29 08:49:52,230 [INFO] main: INJUSDT | Bull:long(70%) Bear:short(72%)
+2026-05-29 08:49:57,146 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-29 08:49:57,147 [INFO] main: INJUSDT | Judge:SHORT conf=70% size=15.0%
+2026-05-29 08:49:57,147 [INFO] main: INJUSDT | RL adj=69.8%
+2026-05-29 08:49:57,155 [INFO] main: INJUSDT | Context score=-0.1 bias=0.1
+2026-05-29 08:49:57,156 [INFO] main: INJUSDT | regime BLOCK (volatile)
+2026-05-29 08:50:00,558 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-05-29 08:50:00,942 [INFO] main: UBUSDT | Bull:long(72%) Bear:short(80%)
 ```
 
 ## Disk
@@ -466,7 +478,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       847Mi       336Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       846Mi       336Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
