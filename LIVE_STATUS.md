@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-29 23:30:01 UTC
+Generated: 2026-05-29 23:40:01 UTC
 
 ## Services
 ```
@@ -623,7 +623,6 @@ root     1023587  0.0  1.1  57192 44704 ?        Ss   12:24   0:03 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-29 22:35:35,224 [INFO] main: BTCUSDT | Context score=-0.06 bias=0.05
 2026-05-29 22:35:35,225 [INFO] main: BTCUSDT | gate PASS (Judge 70/70 RL 78.5/64.49 slack=±3)
 2026-05-29 22:35:35,225 [INFO] positions: Same-side cap: skip SHORT BTCUSDT (3/3 already short)
 2026-05-29 22:35:41,898 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -653,6 +652,7 @@ root     1023587  0.0  1.1  57192 44704 ?        Ss   12:24   0:03 /opt/ensemble
 2026-05-29 22:36:02,496 [INFO] positions: Same-side cap: skip SHORT XRPUSDT (3/3 already short)
 2026-05-29 22:36:04,499 [INFO] main: Next scan in 120min (weekday-quiet)
 2026-05-29 22:37:48,493 [INFO] main: Symbols: 30
+2026-05-29 23:37:49,144 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -670,7 +670,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       850Mi       398Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       843Mi       404Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
