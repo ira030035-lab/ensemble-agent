@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-29 04:30:01 UTC
+Generated: 2026-05-29 04:40:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.2 719348 125596 ?       Ssl  May28   1:29 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.2 719348 125612 ?       Ssl  May28   1:30 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 134072 47996 ?        Ssl  May28   0:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1009861  0.0  1.1  55768 43484 ?        Ss   May28   0:06 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
@@ -407,36 +407,36 @@ root     1009861  0.0  1.1  55768 43484 ?        Ss   May28   0:06 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-29 02:36:49,696 [INFO] main: FILUSDT | Context score=-0.06 bias=0.05
-2026-05-29 02:36:49,696 [INFO] main: FILUSDT | regime BLOCK (volatile)
-2026-05-29 02:36:58,100 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 02:36:58,316 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-29 02:36:58,318 [INFO] main: HBARUSDT | Bull:flat(15%) Bear:short(70%)
-2026-05-29 02:37:02,779 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 02:37:02,780 [INFO] main: HBARUSDT | Judge:HOLD conf=50% size=0.0%
-2026-05-29 02:37:02,780 [INFO] main: HBARUSDT | RL adj=50.0%
-2026-05-29 02:37:11,338 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-29 02:37:11,339 [INFO] main: LINKUSDT | Bull:flat(25%) Bear:short(70%)
-2026-05-29 02:37:13,969 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 02:37:13,970 [INFO] main: LINKUSDT | Judge:HOLD conf=55% size=0.0%
-2026-05-29 02:37:13,970 [INFO] main: LINKUSDT | RL adj=55.0%
-2026-05-29 02:37:23,313 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-29 02:37:23,315 [INFO] main: BNBUSDT | Bull:flat(15%) Bear:short(82%)
-2026-05-29 02:37:26,841 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 02:37:26,843 [INFO] main: BNBUSDT | Judge:SHORT conf=85% size=20.0%
-2026-05-29 02:37:26,843 [INFO] main: BNBUSDT | RL adj=96.7%
-2026-05-29 02:37:26,849 [INFO] main: BNBUSDT | Context score=-0.06 bias=0.05
-2026-05-29 02:37:26,849 [INFO] main: BNBUSDT | regime BLOCK (short × trending_down × rsi1h=55.4; late-entry guard)
-2026-05-29 02:37:34,513 [INFO] main: Symbols: 30
-2026-05-29 02:37:35,323 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-29 02:37:35,325 [INFO] main: SUIUSDT | Bull:flat(25%) Bear:short(72%)
-2026-05-29 02:37:38,687 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 02:37:38,688 [INFO] main: SUIUSDT | Judge:SHORT conf=85% size=15.0%
-2026-05-29 02:37:38,688 [INFO] main: SUIUSDT | RL adj=95.3%
-2026-05-29 02:37:38,693 [INFO] main: SUIUSDT | Context score=-0.06 bias=0.05
-2026-05-29 02:37:38,693 [INFO] main: SUIUSDT | regime BLOCK (volatile)
-2026-05-29 02:37:40,696 [INFO] main: Next scan in 120min (weekday-quiet)
-2026-05-29 03:37:35,206 [INFO] main: Symbols: 30
+2026-05-29 04:39:18,019 [INFO] main: PRLUSDT | RL adj=55.0%
+2026-05-29 04:39:21,496 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-05-29 04:39:21,831 [INFO] main: ENAUSDT | Bull:long(70%) Bear:short(80%)
+2026-05-29 04:39:24,314 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-29 04:39:24,315 [INFO] main: ENAUSDT | Judge:SHORT conf=65% size=10.0%
+2026-05-29 04:39:24,315 [INFO] main: ENAUSDT | RL adj=66.0%
+2026-05-29 04:39:24,324 [INFO] main: ENAUSDT | Context score=-0.06 bias=0.05
+2026-05-29 04:39:24,324 [INFO] main: ENAUSDT | regime BLOCK (volatile)
+2026-05-29 04:39:27,792 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-05-29 04:39:28,209 [INFO] main: WLDUSDT | Bull:long(72%) Bear:short(80%)
+2026-05-29 04:39:30,901 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-29 04:39:30,903 [INFO] main: WLDUSDT | Judge:HOLD conf=50% size=0.0%
+2026-05-29 04:39:30,903 [INFO] main: WLDUSDT | RL adj=50.0%
+2026-05-29 04:39:34,374 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-05-29 04:39:38,939 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-29 04:39:39,558 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-29 04:39:39,559 [INFO] main: DOGEUSDT | Bull:flat(15%) Bear:short(80%)
+2026-05-29 04:39:42,052 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-29 04:39:42,053 [INFO] main: DOGEUSDT | Judge:HOLD conf=35% size=0.0%
+2026-05-29 04:39:42,053 [INFO] main: DOGEUSDT | RL adj=35.0%
+2026-05-29 04:39:49,406 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-29 04:39:50,108 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-29 04:39:50,110 [INFO] main: XPLUSDT | Bull:flat(25%) Bear:short(70%)
+2026-05-29 04:39:53,384 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-29 04:39:53,385 [INFO] main: XPLUSDT | Judge:SHORT conf=80% size=15.0%
+2026-05-29 04:39:53,386 [INFO] main: XPLUSDT | RL adj=90.0%
+2026-05-29 04:39:53,396 [INFO] main: XPLUSDT | Context score=-0.05 bias=0.05
+2026-05-29 04:39:53,397 [INFO] main: XPLUSDT | regime BLOCK (volatile)
+2026-05-29 04:40:01,146 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-29 04:40:01,147 [INFO] main: LINKUSDT | Bull:flat(25%) Bear:short(82%)
 ```
 
 ## Disk
@@ -454,7 +454,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       846Mi       263Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       845Mi       264Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
