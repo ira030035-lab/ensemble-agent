@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-29 01:30:01 UTC
+Generated: 2026-05-29 01:40:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.2 718324 125376 ?       Ssl  May28   1:23 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.2 718324 125408 ?       Ssl  May28   1:23 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 134072 47980 ?        Ssl  May28   0:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1009861  0.0  1.1  55636 43080 ?        Ss   May28   0:06 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
@@ -407,7 +407,6 @@ root     1009861  0.0  1.1  55636 43080 ?        Ss   May28   0:06 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-29 00:32:44,234 [INFO] main: LABUSDT | Bull:flat(35%) Bear:short(80%)
 2026-05-29 00:32:46,768 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-29 00:32:46,769 [INFO] main: LABUSDT | Judge:SHORT conf=85% size=15.0%
 2026-05-29 00:32:46,769 [INFO] main: LABUSDT | RL adj=96.4%
@@ -437,6 +436,7 @@ root     1009861  0.0  1.1  55636 43080 ?        Ss   May28   0:06 /opt/ensemble
 2026-05-29 00:33:20,278 [INFO] main: ENAUSDT | RL adj=50.0%
 2026-05-29 00:33:22,279 [INFO] main: Next scan in 120min (weekday-quiet)
 2026-05-29 00:37:33,229 [INFO] main: Symbols: 30
+2026-05-29 01:37:33,872 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -454,7 +454,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       832Mi       421Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       827Mi       426Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
