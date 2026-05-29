@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-29 12:30:01 UTC
+Generated: 2026-05-29 12:40:01 UTC
 
 ## Services
 ```
@@ -10,9 +10,9 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.2 719348 126132 ?       Ssl  May28   1:59 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
-root      999913  0.0  1.2 133340 47496 ?        Ssl  May28   0:12 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1023587  0.0  1.0  55472 42336 ?        Ss   12:24   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
+root      996988  0.1  3.2 719348 126136 ?       Ssl  May28   1:59 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      999913  0.0  1.2 133340 47560 ?        Ssl  May28   0:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1023587  0.0  1.0  56028 42928 ?        Ss   12:24   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
 ## Paper state
@@ -443,7 +443,6 @@ root     1023587  0.0  1.0  55472 42336 ?        Ss   12:24   0:00 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-29 12:21:25,272 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-29 12:21:25,866 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-29 12:21:25,869 [INFO] main: BCHUSDT | Bull:flat(15%) Bear:short(75%)
 2026-05-29 12:21:28,500 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -473,6 +472,7 @@ root     1023587  0.0  1.0  55472 42336 ?        Ss   12:24   0:00 /opt/ensemble
 2026-05-29 12:21:57,726 [INFO] main: INJUSDT | Judge:HOLD conf=55% size=0.0%
 2026-05-29 12:21:57,726 [INFO] main: INJUSDT | RL adj=55.0%
 2026-05-29 12:21:59,728 [INFO] main: Next scan in 30min (weekday-active)
+2026-05-29 12:37:41,858 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -490,7 +490,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.1Gi       171Mi       4.8Mi       2.8Gi       2.7Gi
+Mem:           3.7Gi       1.1Gi       166Mi       4.8Mi       2.8Gi       2.7Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
