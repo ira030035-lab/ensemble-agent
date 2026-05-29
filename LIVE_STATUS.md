@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-29 05:30:01 UTC
+Generated: 2026-05-29 05:40:01 UTC
 
 ## Services
 ```
@@ -10,9 +10,9 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.2 719348 125612 ?       Ssl  May28   1:32 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.2 719348 125736 ?       Ssl  May28   1:33 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 134072 48048 ?        Ssl  May28   0:08 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1009861  0.0  1.1  56808 43752 ?        Ss   May28   0:08 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
+root     1017018  0.4  1.1  56724 43584 ?        Ss   05:36   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
 ## Paper state
@@ -407,7 +407,6 @@ root     1009861  0.0  1.1  56808 43752 ?        Ss   May28   0:08 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-29 04:41:02,251 [INFO] main: INJUSDT | Bull:long(62%) Bear:short(70%)
 2026-05-29 04:41:05,616 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-29 04:41:05,617 [INFO] main: INJUSDT | Judge:LONG conf=72% size=15.0%
 2026-05-29 04:41:05,617 [INFO] main: INJUSDT | RL adj=71.2%
@@ -437,6 +436,7 @@ root     1009861  0.0  1.1  56808 43752 ?        Ss   May28   0:08 /opt/ensemble
 2026-05-29 04:41:41,166 [INFO] main: BTCUSDT | Context score=-0.06 bias=0.05
 2026-05-29 04:41:41,167 [INFO] main: BTCUSDT | regime BLOCK (short × trending_down × rsi1h=56.6; late-entry guard)
 2026-05-29 04:41:43,170 [INFO] main: Next scan in 120min (weekday-quiet)
+2026-05-29 05:37:36,603 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -454,7 +454,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       961Mi       182Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       983Mi       159Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
