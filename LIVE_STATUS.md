@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-29 14:20:01 UTC
+Generated: 2026-05-29 14:30:01 UTC
 
 ## Services
 ```
@@ -10,28 +10,16 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.2 719348 126344 ?       Ssl  May28   2:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
-root      999913  0.0  1.2 133340 47560 ?        Ssl  May28   0:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1023587  0.0  1.1  56204 43228 ?        Ss   12:24   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
+root      996988  0.1  3.2 719348 126352 ?       Ssl  May28   2:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      999913  0.0  1.2 133340 47628 ?        Ssl  May28   0:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1023587  0.0  1.1  55952 43284 ?        Ss   12:24   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 953.3764334729439,
+  "balance": 973.7077346729438,
   "positions": {
-    "ETHUSDT": {
-      "id": "PAPER_ETHUSDT_1779978101",
-      "symbol": "ETHUSDT",
-      "side": "short",
-      "entry_price": 1993.68,
-      "qty": 0.0502,
-      "confidence": 75,
-      "opened_at": "2026-05-28T14:21:41.194598",
-      "cost": 20.0165472,
-      "notional": 100.08273600000001,
-      "leverage": 5
-    },
     "TAOUSDT": {
       "id": "PAPER_TAOUSDT_1780061245",
       "symbol": "TAOUSDT",
@@ -471,19 +459,32 @@ root     1023587  0.0  1.1  56204 43228 ?        Ss   12:24   0:01 /opt/ensemble
       "closed_at": "2026-05-29T13:43:49.621322",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ETHUSDT_1779978101",
+      "symbol": "ETHUSDT",
+      "side": "short",
+      "entry_price": 1993.68,
+      "qty": 0.0502,
+      "confidence": 75,
+      "opened_at": "2026-05-28T14:21:41.194598",
+      "cost": 20.0165472,
+      "notional": 100.08273600000001,
+      "leverage": 5,
+      "exit_price": 1987.41,
+      "pnl_pct": 1.57,
+      "pnl_usdt": 0.31,
+      "closed_at": "2026-05-29T14:21:44.323148",
+      "reason": "max_hold",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 13.392381138943817
+  "total_pnl": 13.707135138943816
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-29 14:06:55,817 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-29 14:06:56,418 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 14:06:56,419 [INFO] main: WLDUSDT | Bull:long(62%) Bear:short(73%)
-2026-05-29 14:06:59,426 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 14:06:59,427 [INFO] main: WLDUSDT | Judge:HOLD conf=55% size=0.0%
 2026-05-29 14:06:59,427 [INFO] main: WLDUSDT | RL adj=55.0%
 2026-05-29 14:07:05,930 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-29 14:07:06,104 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -509,6 +510,11 @@ root     1023587  0.0  1.1  56204 43228 ?        Ss   12:24   0:01 /opt/ensemble
 2026-05-29 14:07:30,663 [INFO] main: HYPEUSDT | Context score=-0.05 bias=0.05
 2026-05-29 14:07:30,664 [INFO] main: HYPEUSDT | regime BLOCK (volatile)
 2026-05-29 14:07:32,666 [INFO] main: Next scan in 30min (weekday-active)
+2026-05-29 14:21:44,322 [INFO] positions: MAX_HOLD ETHUSDT short hold:24.0h
+2026-05-29 14:21:44,326 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ETHUSDT @ 1987.4100 PnL: 1.57% (+0.31 USDT) | Баланс: 973.71
+2026-05-29 14:21:44,724 [INFO] positions: OK ETHUSDT short PnL:0.31% reason:max_hold
+2026-05-29 14:21:44,725 [INFO] positions: Lessons: The ETHUSDT short trade resulted in a 0.31% profit, aligning with the initial expectation of a 4% downside move in a trending down market. The trade's risk-reward ratio of 2:1 was maintained, and the bear conviction being higher than bull conviction at the time of entry was a key factor. This trade demonstrates the importance of considering market sentiment and trend when making trading decisions.
+2026-05-29 14:21:44,725 [INFO] rl: RL learned from short ETHUSDT: profit 0.31% | weights bull=0.978 bear=0.963 judge=1.059 threshold=64.3
 ```
 
 ## Disk
@@ -526,7 +532,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       995Mi       269Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       1.0Gi       263Mi       4.8Mi       2.8Gi       2.7Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
