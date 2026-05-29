@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-29 09:50:01 UTC
+Generated: 2026-05-29 10:00:01 UTC
 
 ## Services
 ```
@@ -10,8 +10,8 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.2 719348 126096 ?       Ssl  May28   1:42 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
-root      999913  0.0  1.2 133340 47304 ?        Ssl  May28   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root      996988  0.1  3.2 719348 126096 ?       Ssl  May28   1:43 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      999913  0.0  1.2 133340 47320 ?        Ssl  May28   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1017434  0.0  1.1  56500 44000 ?        Ss   05:56   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
@@ -443,36 +443,36 @@ root     1017434  0.0  1.1  56500 44000 ?        Ss   05:56   0:01 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-29 08:57:10,572 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-05-29 08:57:10,573 [INFO] openai._base_client: Retrying request to /chat/completions in 0.446867 seconds
-2026-05-29 08:57:21,243 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-05-29 08:57:21,244 [INFO] openai._base_client: Retrying request to /chat/completions in 0.994785 seconds
-2026-05-29 08:57:35,177 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 08:57:35,178 [INFO] main: BILLUSDT | Judge:SHORT conf=85% size=15.0%
-2026-05-29 08:57:35,179 [INFO] main: BILLUSDT | RL adj=95.0%
-2026-05-29 08:57:35,192 [INFO] main: BILLUSDT | Context score=-0.1 bias=0.1
-2026-05-29 08:57:35,192 [INFO] main: BILLUSDT | regime BLOCK (volatile)
-2026-05-29 08:57:54,178 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 08:57:54,179 [INFO] main: XRPUSDT | Bull:long(65%) Bear:short(60%)
-2026-05-29 08:58:00,619 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 08:58:00,620 [INFO] main: XRPUSDT | Judge:HOLD conf=60% size=0.0%
-2026-05-29 08:58:00,620 [INFO] main: XRPUSDT | RL adj=60.0%
-2026-05-29 08:58:09,340 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-29 08:58:14,202 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-05-29 08:58:14,203 [INFO] openai._base_client: Retrying request to /chat/completions in 0.446163 seconds
-2026-05-29 08:58:27,092 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 08:58:27,094 [INFO] main: BTCUSDT | Bull:flat(35%) Bear:flat(50%)
-2026-05-29 08:58:37,541 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-05-29 08:58:37,542 [INFO] openai._base_client: Retrying request to /chat/completions in 0.383359 seconds
-2026-05-29 08:58:48,092 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-05-29 08:58:48,093 [INFO] openai._base_client: Retrying request to /chat/completions in 0.955494 seconds
-2026-05-29 08:58:59,098 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-05-29 08:58:59,099 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
-2026-05-29 08:58:59,099 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
-2026-05-29 08:58:59,099 [INFO] main: BTCUSDT | Judge:HOLD conf=50% size=0.0%
-2026-05-29 08:58:59,099 [INFO] main: BTCUSDT | RL adj=50.0%
-2026-05-29 08:59:01,101 [INFO] main: Next scan in 60min (weekday-warmup)
-2026-05-29 09:37:39,855 [INFO] main: Symbols: 30
+2026-05-29 09:59:27,629 [INFO] main: SOLUSDT | Context score=-0.0 bias=0.1
+2026-05-29 09:59:27,906 [INFO] main: SOLUSDT | macro BLOCK (long при BTC downtrend)
+2026-05-29 09:59:31,813 [WARNING] agents: Bull entropy-guard: шаблон long(70) ×5. Переключаемся на Kimi+Claude fallback.
+2026-05-29 09:59:31,814 [INFO] main: ONDOUSDT | Bull:long(70%) Bear:short(70%)
+2026-05-29 09:59:34,990 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-29 09:59:34,992 [INFO] main: ONDOUSDT | Judge:SHORT conf=65% size=10.0%
+2026-05-29 09:59:34,992 [INFO] main: ONDOUSDT | RL adj=64.5%
+2026-05-29 09:59:35,000 [INFO] main: ONDOUSDT | Context score=-0.11 bias=0.1
+2026-05-29 09:59:35,001 [INFO] main: ONDOUSDT | regime BLOCK (volatile)
+2026-05-29 09:59:38,380 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-05-29 09:59:38,680 [INFO] main: LINKUSDT | Bull:long(72%) Bear:short(70%)
+2026-05-29 09:59:42,047 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-29 09:59:42,048 [INFO] main: LINKUSDT | Judge:HOLD conf=60% size=0.0%
+2026-05-29 09:59:42,048 [INFO] main: LINKUSDT | RL adj=60.0%
+2026-05-29 09:59:45,417 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-05-29 09:59:45,814 [INFO] main: WLDUSDT | Bull:long(70%) Bear:short(70%)
+2026-05-29 09:59:49,284 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-29 09:59:49,285 [INFO] main: WLDUSDT | Judge:SHORT conf=75% size=15.0%
+2026-05-29 09:59:49,286 [INFO] main: WLDUSDT | RL adj=74.5%
+2026-05-29 09:59:49,295 [INFO] main: WLDUSDT | Context score=-0.11 bias=0.1
+2026-05-29 09:59:49,295 [INFO] main: WLDUSDT | regime BLOCK (volatile)
+2026-05-29 09:59:52,692 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-05-29 09:59:53,051 [INFO] main: BILLUSDT | Bull:long(72%) Bear:short(80%)
+2026-05-29 09:59:56,443 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-29 09:59:56,444 [INFO] main: BILLUSDT | Judge:SHORT conf=70% size=15.0%
+2026-05-29 09:59:56,444 [INFO] main: BILLUSDT | RL adj=70.7%
+2026-05-29 09:59:56,453 [INFO] main: BILLUSDT | Context score=-0.1 bias=0.1
+2026-05-29 09:59:56,453 [INFO] main: BILLUSDT | regime BLOCK (volatile)
+2026-05-29 09:59:59,570 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-05-29 10:00:00,295 [INFO] main: BTCUSDT | Bull:long(72%) Bear:short(55%)
 ```
 
 ## Disk
@@ -490,7 +490,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       855Mi       323Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       861Mi       317Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
