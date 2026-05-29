@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-29 13:10:01 UTC
+Generated: 2026-05-29 13:20:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.2 719348 126184 ?       Ssl  May28   2:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.2 719348 126192 ?       Ssl  May28   2:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133340 47560 ?        Ssl  May28   0:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1023587  0.0  1.1  56204 43020 ?        Ss   12:24   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
@@ -18,7 +18,7 @@ root     1023587  0.0  1.1  56204 43020 ?        Ss   12:24   0:00 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 948.3398129629438,
+  "balance": 971.4465107629438,
   "positions": {
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1779978101",
@@ -30,18 +30,6 @@ root     1023587  0.0  1.1  56204 43020 ?        Ss   12:24   0:00 /opt/ensemble
       "opened_at": "2026-05-28T14:21:41.194598",
       "cost": 20.0165472,
       "notional": 100.08273600000001,
-      "leverage": 5
-    },
-    "TAOUSDT": {
-      "id": "PAPER_TAOUSDT_1780044588",
-      "symbol": "TAOUSDT",
-      "side": "short",
-      "entry_price": 257.64,
-      "qty": 0.3881,
-      "confidence": 80,
-      "opened_at": "2026-05-29T08:49:48.347952",
-      "cost": 19.9980168,
-      "notional": 99.990084,
       "leverage": 5
     },
     "SUIUSDT": {
@@ -435,19 +423,32 @@ root     1023587  0.0  1.1  56204 43020 ?        Ss   12:24   0:00 /opt/ensemble
       "closed_at": "2026-05-29T08:28:11.943930",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_TAOUSDT_1780044588",
+      "symbol": "TAOUSDT",
+      "side": "short",
+      "entry_price": 257.64,
+      "qty": 0.3881,
+      "confidence": 80,
+      "opened_at": "2026-05-29T08:49:48.347952",
+      "cost": 19.9980168,
+      "notional": 99.990084,
+      "leverage": 5,
+      "exit_price": 249.63,
+      "pnl_pct": 15.54,
+      "pnl_usdt": 3.11,
+      "closed_at": "2026-05-29T13:12:02.461268",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 8.354370598943827
+  "total_pnl": 11.463051598943824
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-29 12:55:46,801 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-29 12:55:48,033 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 12:55:48,035 [INFO] main: ADAUSDT | Bull:flat(15%) Bear:short(70%)
-2026-05-29 12:55:51,390 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 12:55:51,392 [INFO] main: ADAUSDT | Judge:HOLD conf=50% size=0.0%
 2026-05-29 12:55:51,392 [INFO] main: ADAUSDT | RL adj=50.0%
 2026-05-29 12:55:58,128 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-29 12:55:58,262 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -473,6 +474,11 @@ root     1023587  0.0  1.1  56204 43020 ?        Ss   12:24   0:00 /opt/ensemble
 2026-05-29 12:56:20,184 [INFO] main: HYPEUSDT | Context score=-0.06 bias=0.05
 2026-05-29 12:56:20,184 [INFO] main: HYPEUSDT | regime BLOCK (volatile)
 2026-05-29 12:56:22,187 [INFO] main: Next scan in 30min (weekday-active)
+2026-05-29 13:12:02,460 [INFO] positions: TAKE-PROFIT TAOUSDT short PnL:3.11%
+2026-05-29 13:12:02,464 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT TAOUSDT @ 249.6300 PnL: 15.54% (+3.11 USDT) | Баланс: 971.45
+2026-05-29 13:12:02,967 [INFO] positions: OK TAOUSDT short PnL:3.11% reason:take_profit
+2026-05-29 13:12:02,967 [INFO] positions: Lessons: TAOUSDT short trade was closed with a 3.11% profit, meeting the minimum expected downside move. The trade was driven by strong bear conviction, bearish MACD, low RSI, high BTC dominance, and extreme fear sentiment. This trade demonstrates the effectiveness of combining multiple bearish indicators to identify profitable short opportunities.
+2026-05-29 13:12:02,968 [INFO] rl: RL learned from short TAOUSDT: profit 3.11% | weights bull=0.985 bear=0.958 judge=1.057 threshold=64.36
 ```
 
 ## Disk
@@ -490,7 +496,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.1Gi       164Mi       4.8Mi       2.8Gi       2.6Gi
+Mem:           3.7Gi       1.1Gi       160Mi       4.8Mi       2.8Gi       2.6Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
