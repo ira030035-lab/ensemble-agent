@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-29 15:30:01 UTC
+Generated: 2026-05-29 15:40:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.2 719348 126528 ?       Ssl  May28   2:17 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.2 719348 126572 ?       Ssl  May28   2:17 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133340 47676 ?        Ssl  May28   0:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1023587  0.0  1.1  56336 43824 ?        Ss   12:24   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
@@ -18,33 +18,8 @@ root     1023587  0.0  1.1  56336 43824 ?        Ss   12:24   0:01 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 968.0110509129438,
-  "positions": {
-    "ADAUSDT": {
-      "id": "PAPER_ADAUSDT_1780063478",
-      "symbol": "ADAUSDT",
-      "side": "short",
-      "entry_price": 0.2327,
-      "qty": 429.7379,
-      "confidence": 85,
-      "opened_at": "2026-05-29T14:04:38.204190",
-      "cost": 20.000001865999998,
-      "notional": 100.00000933,
-      "leverage": 5
-    },
-    "ZECUSDT": {
-      "id": "PAPER_ZECUSDT_1780067702",
-      "symbol": "ZECUSDT",
-      "side": "short",
-      "entry_price": 535.41,
-      "qty": 0.1868,
-      "confidence": 75,
-      "opened_at": "2026-05-29T15:15:02.185519",
-      "cost": 20.002917599999996,
-      "notional": 100.01458799999999,
-      "leverage": 5
-    }
-  },
+  "balance": 1003.8385204589438,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -513,25 +488,50 @@ root     1023587  0.0  1.1  56336 43824 ?        Ss   12:24   0:01 /opt/ensemble
       "closed_at": "2026-05-29T15:28:29.774061",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ADAUSDT_1780063478",
+      "symbol": "ADAUSDT",
+      "side": "short",
+      "entry_price": 0.2327,
+      "qty": 429.7379,
+      "confidence": 85,
+      "opened_at": "2026-05-29T14:04:38.204190",
+      "cost": 20.000001865999998,
+      "notional": 100.00000933,
+      "leverage": 5,
+      "exit_price": 0.2375,
+      "pnl_pct": -10.31,
+      "pnl_usdt": -2.06,
+      "closed_at": "2026-05-29T15:36:40.516651",
+      "reason": "stop_loss",
+      "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ZECUSDT_1780067702",
+      "symbol": "ZECUSDT",
+      "side": "short",
+      "entry_price": 535.41,
+      "qty": 0.1868,
+      "confidence": 75,
+      "opened_at": "2026-05-29T15:15:02.185519",
+      "cost": 20.002917599999996,
+      "notional": 100.01458799999999,
+      "leverage": 5,
+      "exit_price": 546.72,
+      "pnl_pct": -10.56,
+      "pnl_usdt": -2.11,
+      "closed_at": "2026-05-29T15:38:42.250323",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 8.013970378943815
+  "total_pnl": 3.8385204589438047
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-29 15:16:34,747 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 15:16:34,748 [INFO] main: HBARUSDT | Judge:HOLD conf=59% size=0.0%
-2026-05-29 15:16:34,748 [INFO] main: HBARUSDT | RL adj=59.0%
-2026-05-29 15:16:41,251 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 15:16:41,784 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-29 15:16:41,785 [INFO] main: LABUSDT | Bull:flat(15%) Bear:short(70%)
-2026-05-29 15:16:43,701 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 15:16:43,702 [INFO] main: LABUSDT | Judge:HOLD conf=45% size=0.0%
-2026-05-29 15:16:43,703 [INFO] main: LABUSDT | RL adj=45.0%
-2026-05-29 15:16:50,461 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 15:16:50,608 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-29 15:16:50,609 [INFO] main: XRPUSDT | Bull:flat(35%) Bear:short(50%)
 2026-05-29 15:16:53,211 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-29 15:16:53,213 [INFO] main: XRPUSDT | Judge:HOLD conf=50% size=0.0%
@@ -551,6 +551,17 @@ root     1023587  0.0  1.1  56336 43824 ?        Ss   12:24   0:01 /opt/ensemble
 2026-05-29 15:28:30,189 [INFO] positions: LOSS TAOUSDT short PnL:-3.41% reason:stop_loss
 2026-05-29 15:28:30,189 [INFO] positions: Lessons: The trade was based on a strong bearish sentiment with 85% dominance, but it still resulted in a stop loss with a 3.41% loss. The expected downward move of at least 4% did not occur, indicating a potential misjudgment of market conditions. This trade highlights the importance of reevaluating risk management and market analysis techniques to improve future trading decisions.
 2026-05-29 15:28:30,189 [INFO] rl: RL learned from short TAOUSDT: loss -3.41% | weights bull=0.989 bear=0.951 judge=1.060 threshold=64.4
+2026-05-29 15:36:40,516 [INFO] positions: STOP_LOSS ADAUSDT short PnL:-2.06%
+2026-05-29 15:36:40,520 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ADAUSDT @ 0.2375 PnL: -10.31% (-2.06 USDT) | Баланс: 985.95
+2026-05-29 15:36:40,892 [INFO] positions: LOSS ADAUSDT short PnL:-2.06% reason:stop_loss
+2026-05-29 15:36:40,892 [INFO] positions: Lessons: Shorting ADAUSDT in a ranging regime resulted in a loss, indicating that the downtrend observed on the 4-hour chart was not strong enough to sustain the short position. The oversold RSI and extreme fear sentiment were not sufficient to guarantee a continuation of the downtrend. This trade highlights the importance of considering the overall market regime when making trading decisions.
+2026-05-29 15:36:40,893 [INFO] rl: RL learned from short ADAUSDT: loss -2.06% | weights bull=0.993 bear=0.948 judge=1.059 threshold=64.45
+2026-05-29 15:37:44,011 [INFO] main: Symbols: 30
+2026-05-29 15:38:42,249 [INFO] positions: STOP_LOSS ZECUSDT short PnL:-2.11%
+2026-05-29 15:38:42,254 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ZECUSDT @ 546.7200 PnL: -10.56% (-2.11 USDT) | Баланс: 1003.84
+2026-05-29 15:38:42,588 [INFO] positions: LOSS ZECUSDT short PnL:-2.11% reason:stop_loss
+2026-05-29 15:38:42,588 [INFO] positions: Lessons: The trade was closed at a loss of 2.11% due to a stop loss being triggered. The original bearish conviction was not realized, resulting in a failed trade. This trade highlights the importance of managing risk and adjusting conviction levels, as the expected 2:1 risk/reward ratio was not achieved.
+2026-05-29 15:38:42,588 [INFO] rl: RL learned from short ZECUSDT: loss -2.11% | weights bull=0.997 bear=0.944 judge=1.060 threshold=64.5
 ```
 
 ## Disk
@@ -568,7 +579,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       880Mi       381Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       864Mi       397Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
