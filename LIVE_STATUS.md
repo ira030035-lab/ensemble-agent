@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-29 15:20:01 UTC
+Generated: 2026-05-29 15:30:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1023587  0.0  1.1  56336 43824 ?        Ss   12:24   0:01 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 951.4245053129438,
+  "balance": 968.0110509129438,
   "positions": {
-    "TAOUSDT": {
-      "id": "PAPER_TAOUSDT_1780061245",
-      "symbol": "TAOUSDT",
-      "side": "short",
-      "entry_price": 249.93,
-      "qty": 0.4001,
-      "confidence": 85,
-      "opened_at": "2026-05-29T13:27:25.304836",
-      "cost": 19.9993986,
-      "notional": 99.996993,
-      "leverage": 5
-    },
     "ADAUSDT": {
       "id": "PAPER_ADAUSDT_1780063478",
       "symbol": "ADAUSDT",
@@ -507,19 +495,32 @@ root     1023587  0.0  1.1  56336 43824 ?        Ss   12:24   0:01 /opt/ensemble
       "closed_at": "2026-05-29T15:10:30.347208",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_TAOUSDT_1780061245",
+      "symbol": "TAOUSDT",
+      "side": "short",
+      "entry_price": 249.93,
+      "qty": 0.4001,
+      "confidence": 85,
+      "opened_at": "2026-05-29T13:27:25.304836",
+      "cost": 19.9993986,
+      "notional": 99.996993,
+      "leverage": 5,
+      "exit_price": 258.46,
+      "pnl_pct": -17.06,
+      "pnl_usdt": -3.41,
+      "closed_at": "2026-05-29T15:28:29.774061",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 11.426823378943805
+  "total_pnl": 8.013970378943815
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-29 15:16:25,501 [INFO] main: BSBUSDT | Judge:HOLD conf=50% size=0.0%
-2026-05-29 15:16:25,501 [INFO] main: BSBUSDT | RL adj=50.0%
-2026-05-29 15:16:30,718 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-29 15:16:32,375 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-29 15:16:32,377 [INFO] main: HBARUSDT | Bull:flat(35%) Bear:flat(65%)
 2026-05-29 15:16:34,747 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-29 15:16:34,748 [INFO] main: HBARUSDT | Judge:HOLD conf=59% size=0.0%
 2026-05-29 15:16:34,748 [INFO] main: HBARUSDT | RL adj=59.0%
@@ -545,6 +546,11 @@ root     1023587  0.0  1.1  56336 43824 ?        Ss   12:24   0:01 /opt/ensemble
 2026-05-29 15:17:07,511 [INFO] main: FILUSDT | gate PASS (Judge 75/70 RL 83.6/64.35 slack=±3)
 2026-05-29 15:17:07,512 [INFO] positions: Same-side cap: skip SHORT FILUSDT (3/3 already short)
 2026-05-29 15:17:09,513 [INFO] main: Next scan in 30min (weekday-active)
+2026-05-29 15:28:29,773 [INFO] positions: STOP_LOSS TAOUSDT short PnL:-3.41%
+2026-05-29 15:28:29,776 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT TAOUSDT @ 258.4600 PnL: -17.06% (-3.41 USDT) | Баланс: 968.01
+2026-05-29 15:28:30,189 [INFO] positions: LOSS TAOUSDT short PnL:-3.41% reason:stop_loss
+2026-05-29 15:28:30,189 [INFO] positions: Lessons: The trade was based on a strong bearish sentiment with 85% dominance, but it still resulted in a stop loss with a 3.41% loss. The expected downward move of at least 4% did not occur, indicating a potential misjudgment of market conditions. This trade highlights the importance of reevaluating risk management and market analysis techniques to improve future trading decisions.
+2026-05-29 15:28:30,189 [INFO] rl: RL learned from short TAOUSDT: loss -3.41% | weights bull=0.989 bear=0.951 judge=1.060 threshold=64.4
 ```
 
 ## Disk
@@ -562,7 +568,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       861Mi       401Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       880Mi       381Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
