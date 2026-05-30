@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-30 06:30:01 UTC
+Generated: 2026-05-30 06:40:01 UTC
 
 ## Services
 ```
@@ -641,7 +641,6 @@ root     1023587  0.0  1.1  57192 44704 ?        Ss   May29   0:03 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-30 03:43:56,970 [INFO] main: FETUSDT | Bull:flat(25%) Bear:short(72%)
 2026-05-30 03:44:07,466 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-30 03:44:07,467 [INFO] main: FETUSDT | Judge:HOLD conf=55% size=0.0%
 2026-05-30 03:44:07,467 [INFO] main: FETUSDT | RL adj=55.0%
@@ -671,6 +670,7 @@ root     1023587  0.0  1.1  57192 44704 ?        Ss   May29   0:03 /opt/ensemble
 2026-05-30 03:44:49,933 [INFO] main: Next scan in 180min (weekend)
 2026-05-30 04:37:52,600 [INFO] main: Symbols: 30
 2026-05-30 05:37:53,308 [INFO] main: Symbols: 30
+2026-05-30 06:37:53,917 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -688,7 +688,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       849Mi       379Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       847Mi       382Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
