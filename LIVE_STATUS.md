@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-30 10:30:01 UTC
+Generated: 2026-05-30 10:40:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.2 720372 127280 ?       Ssl  May28   3:18 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.2 720372 127280 ?       Ssl  May28   3:19 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133368 48108 ?        Ssl  May28   0:17 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1023587  0.0  1.2  60480 47036 ?        Ss   May29   0:06 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
@@ -641,7 +641,6 @@ root     1023587  0.0  1.2  60480 47036 ?        Ss   May29   0:06 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-30 09:51:54,646 [INFO] main: UBUSDT | Judge:SHORT conf=70% size=15.0%
 2026-05-30 09:51:54,646 [INFO] main: UBUSDT | RL adj=79.9%
 2026-05-30 09:51:54,656 [INFO] main: UBUSDT | Context score=-0.06 bias=0.05
 2026-05-30 09:51:54,656 [INFO] main: UBUSDT | regime BLOCK (volatile)
@@ -671,6 +670,7 @@ root     1023587  0.0  1.2  60480 47036 ?        Ss   May29   0:06 /opt/ensemble
 2026-05-30 09:52:45,970 [INFO] main: BTCUSDT | Judge:HOLD conf=50% size=0.0%
 2026-05-30 09:52:45,970 [INFO] main: BTCUSDT | RL adj=50.0%
 2026-05-30 09:52:47,972 [INFO] main: Next scan in 180min (weekend)
+2026-05-30 10:37:57,258 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -688,7 +688,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       880Mi       294Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       866Mi       308Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
