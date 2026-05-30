@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-30 18:40:01 UTC
+Generated: 2026-05-30 18:50:01 UTC
 
 ## Services
 ```
@@ -11,14 +11,14 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      999913  0.0  1.2 133404 48172 ?        Ssl  May28   0:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1046809  0.2  3.0 682684 120636 ?       Ssl  16:36   0:15 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1046809  0.1  3.0 682684 120680 ?       Ssl  16:36   0:15 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root     1046995  0.0  1.0  56068 42900 ?        Ss   16:53   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 944.2068701689435,
+  "balance": 964.7029438729435,
   "positions": {
     "TRXUSDT": {
       "id": "PAPER_TRXUSDT_1780086329",
@@ -30,18 +30,6 @@ root     1046995  0.0  1.0  56068 42900 ?        Ss   16:53   0:02 /opt/ensemble
       "opened_at": "2026-05-29T20:25:29.985317",
       "cost": 19.999999911,
       "notional": 99.999999555,
-      "leverage": 5
-    },
-    "NEARUSDT": {
-      "id": "PAPER_NEARUSDT_1780156673",
-      "symbol": "NEARUSDT",
-      "side": "short",
-      "entry_price": 2.3384,
-      "qty": 42.7643,
-      "confidence": 80,
-      "opened_at": "2026-05-30T15:57:53.753769",
-      "cost": 20.000007824,
-      "notional": 100.00003912,
       "leverage": 5
     },
     "SUIUSDT": {
@@ -669,19 +657,32 @@ root     1046995  0.0  1.0  56068 42900 ?        Ss   16:53   0:02 /opt/ensemble
       "closed_at": "2026-05-30T15:49:00.294227",
       "reason": "max_hold",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_NEARUSDT_1780156673",
+      "symbol": "NEARUSDT",
+      "side": "short",
+      "entry_price": 2.3384,
+      "qty": 42.7643,
+      "confidence": 80,
+      "opened_at": "2026-05-30T15:57:53.753769",
+      "cost": 20.000007824,
+      "notional": 100.00003912,
+      "leverage": 5,
+      "exit_price": 2.3268,
+      "pnl_pct": 2.48,
+      "pnl_usdt": 0.5,
+      "closed_at": "2026-05-30T18:41:17.333161",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 4.206871631943803
+  "total_pnl": 4.702937511943805
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-30 18:25:31,617 [INFO] main: BTCUSDT | Judge:HOLD conf=45% size=0.0%
-2026-05-30 18:25:31,617 [INFO] main: BTCUSDT | RL adj=45.0%
-2026-05-30 18:25:38,327 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-30 18:25:38,878 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-30 18:25:38,880 [INFO] main: BSBUSDT | Bull:flat(15%) Bear:short(75%)
 2026-05-30 18:25:40,949 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-30 18:25:40,951 [INFO] main: BSBUSDT | Judge:SHORT conf=75% size=15.0%
 2026-05-30 18:25:40,951 [INFO] main: BSBUSDT | RL adj=85.6%
@@ -707,6 +708,11 @@ root     1046995  0.0  1.0  56068 42900 ?        Ss   16:53   0:02 /opt/ensemble
 2026-05-30 18:26:11,301 [INFO] main: HBARUSDT | RL adj=50.0%
 2026-05-30 18:26:13,303 [INFO] main: Next scan in 30min (always-30min)
 2026-05-30 18:36:21,949 [INFO] main: Symbols: 30
+2026-05-30 18:41:17,332 [INFO] positions: BREAKEVEN_STOP NEARUSDT short PnL:0.5%
+2026-05-30 18:41:17,337 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT NEARUSDT @ 2.3268 PnL: 2.48% (+0.50 USDT) | Баланс: 964.70
+2026-05-30 18:41:17,630 [INFO] positions: OK NEARUSDT short PnL:0.5% reason:breakeven_stop
+2026-05-30 18:41:17,631 [INFO] positions: Lessons: The trade was based on strong bearish conviction from multiple indicators and market sentiment, but ultimately closed at breakeven due to a breakeven stop. The initial analysis correctly identified a trending_down regime but failed to yield the expected 4% downside move. The outcome highlights the importance of precise stop placement and risk management in trades with high conviction but uncertain outcomes.
+2026-05-30 18:41:17,631 [INFO] rl: RL learned from short NEARUSDT: profit 0.50% | weights bull=0.991 bear=0.945 judge=1.064 threshold=64.54
 ```
 
 ## Disk
@@ -724,7 +730,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       1.1Gi       284Mi       4.8Mi       2.7Gi       2.7Gi
+Mem:           3.7Gi       1.1Gi       286Mi       4.8Mi       2.7Gi       2.7Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
