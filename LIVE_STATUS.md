@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-30 20:30:01 UTC
+Generated: 2026-05-30 20:40:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      999913  0.0  1.2 133404 48140 ?        Ssl  May28   0:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1046809  0.1  3.1 716516 122864 ?       Ssl  16:36   0:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1046809  0.1  3.1 716516 122864 ?       Ssl  16:36   0:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root     1046995  0.0  1.0  56068 42912 ?        Ss   16:53   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
@@ -701,16 +701,6 @@ root     1046995  0.0  1.0  56068 42912 ?        Ss   16:53   0:02 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-30 20:09:15,113 [INFO] main: IDUSDT | regime BLOCK (volatile)
-2026-05-30 20:09:20,971 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-30 20:09:21,495 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-30 20:09:21,495 [INFO] main: ETHUSDT | Bull:flat(25%) Bear:short(70%)
-2026-05-30 20:09:23,987 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-30 20:09:23,989 [INFO] main: ETHUSDT | Judge:SHORT conf=75% size=15.0%
-2026-05-30 20:09:23,989 [INFO] main: ETHUSDT | RL adj=84.9%
-2026-05-30 20:09:24,003 [INFO] main: ETHUSDT | Context score=-0.05 bias=0.05
-2026-05-30 20:09:24,004 [INFO] main: ETHUSDT | gate PASS (Judge 75/70 RL 84.9/64.54 slack=±3)
-2026-05-30 20:09:24,004 [INFO] positions: 2/3 rule: skip SHORT ETHUSDT (3/3 already short)
 2026-05-30 20:09:30,126 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-30 20:09:30,945 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-30 20:09:30,947 [INFO] main: XRPUSDT | Bull:flat(35%) Bear:short(72%)
@@ -731,6 +721,16 @@ root     1046995  0.0  1.0  56068 42912 ?        Ss   16:53   0:02 /opt/ensemble
 2026-05-30 20:25:56,589 [INFO] positions: LOSS TRXUSDT short PnL:-1.1% reason:max_hold
 2026-05-30 20:25:56,589 [INFO] positions: Lessons: The trade was based on strong bear dominance and confirming indicators, expecting a 4% downside move. However, the trade only resulted in a 1.1% loss, failing to meet the expected downside potential. This suggests that the asymmetric risk rules may need to be reevaluated to better capture potential downsides in trending_down regimes.
 2026-05-30 20:25:56,589 [INFO] rl: RL learned from short TRXUSDT: loss -1.10% | weights bull=0.994 bear=0.943 judge=1.064 threshold=64.59
+2026-05-30 20:36:23,456 [INFO] main: Symbols: 30
+2026-05-30 20:39:44,144 [INFO] main: Scanning 28 symbols...
+2026-05-30 20:39:51,537 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 20:39:51,537 [INFO] main: BNBUSDT | Bull:flat(15%) Bear:short(82%)
+2026-05-30 20:39:53,949 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-30 20:39:53,950 [INFO] main: BNBUSDT | Judge:SHORT conf=82% size=15.0%
+2026-05-30 20:39:53,950 [INFO] main: BNBUSDT | RL adj=93.6%
+2026-05-30 20:39:53,959 [INFO] main: BNBUSDT | Context score=-0.05 bias=0.05
+2026-05-30 20:39:53,959 [INFO] main: BNBUSDT | regime BLOCK (volatile)
+2026-05-30 20:40:00,249 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 ```
 
 ## Disk
@@ -748,7 +748,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       866Mi       492Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       854Mi       503Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
