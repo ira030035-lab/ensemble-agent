@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-30 02:00:01 UTC
+Generated: 2026-05-30 02:10:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.2 720372 127048 ?       Ssl  May28   3:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.2 720372 127048 ?       Ssl  May28   3:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133336 47924 ?        Ssl  May28   0:16 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1023587  0.0  1.1  57192 44704 ?        Ss   May29   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
@@ -18,7 +18,7 @@ root     1023587  0.0  1.1  57192 44704 ?        Ss   May29   0:03 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 946.6899932591436,
+  "balance": 964.6745572691436,
   "positions": {
     "DOGEUSDT": {
       "id": "PAPER_DOGEUSDT_1780069731",
@@ -42,18 +42,6 @@ root     1023587  0.0  1.1  57192 44704 ?        Ss   May29   0:03 /opt/ensemble
       "opened_at": "2026-05-29T20:25:29.985317",
       "cost": 19.999999911,
       "notional": 99.999999555,
-      "leverage": 5
-    },
-    "ADAUSDT": {
-      "id": "PAPER_ADAUSDT_1780093926",
-      "symbol": "ADAUSDT",
-      "side": "short",
-      "entry_price": 0.2332,
-      "qty": 428.8165,
-      "confidence": 70,
-      "opened_at": "2026-05-29T22:32:06.926306",
-      "cost": 20.00000156,
-      "notional": 100.0000078,
       "leverage": 5
     }
   },
@@ -615,19 +603,32 @@ root     1023587  0.0  1.1  57192 44704 ?        Ss   May29   0:03 /opt/ensemble
       "closed_at": "2026-05-29T22:07:19.547477",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ADAUSDT_1780093926",
+      "symbol": "ADAUSDT",
+      "side": "short",
+      "entry_price": 0.2332,
+      "qty": 428.8165,
+      "confidence": 70,
+      "opened_at": "2026-05-29T22:32:06.926306",
+      "cost": 20.00000156,
+      "notional": 100.0000078,
+      "leverage": 5,
+      "exit_price": 0.2379,
+      "pnl_pct": -10.08,
+      "pnl_usdt": -2.02,
+      "closed_at": "2026-05-30T02:02:11.759336",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 6.689994458943794
+  "total_pnl": 4.6745569089437895
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-30 00:39:36,780 [INFO] main: ZECUSDT | Bull:flat(15%) Bear:short(78%)
-2026-05-30 00:39:39,750 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-30 00:39:39,752 [INFO] main: ZECUSDT | Judge:SHORT conf=85% size=15.0%
-2026-05-30 00:39:39,752 [INFO] main: ZECUSDT | RL adj=96.1%
-2026-05-30 00:39:39,765 [INFO] main: ZECUSDT | Context score=-0.06 bias=0.05
 2026-05-30 00:39:39,766 [INFO] main: ZECUSDT | regime BLOCK (short × trending_down × rsi1h=45.4; late-entry guard)
 2026-05-30 00:39:45,061 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-30 00:39:48,450 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -653,6 +654,11 @@ root     1023587  0.0  1.1  57192 44704 ?        Ss   May29   0:03 /opt/ensemble
 2026-05-30 00:40:10,714 [INFO] main: XPLUSDT | regime BLOCK (volatile)
 2026-05-30 00:40:12,715 [INFO] main: Next scan in 180min (weekend)
 2026-05-30 01:37:50,376 [INFO] main: Symbols: 30
+2026-05-30 02:02:11,758 [INFO] positions: STOP_LOSS ADAUSDT short PnL:-2.02%
+2026-05-30 02:02:11,761 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ADAUSDT @ 0.2379 PnL: -10.08% (-2.02 USDT) | Баланс: 964.67
+2026-05-30 02:02:12,079 [INFO] positions: LOSS ADAUSDT short PnL:-2.02% reason:stop_loss
+2026-05-30 02:02:12,080 [INFO] positions: Lessons: The trade was closed at a 2.02% loss due to a stop loss trigger. Despite initial expectations of a 4% downside, the market did not move in the anticipated direction. The lesson here is that extreme fear market sentiment does not always translate to immediate downward price movement.
+2026-05-30 02:02:12,080 [INFO] rl: RL learned from short ADAUSDT: loss -2.02% | weights bull=0.993 bear=0.945 judge=1.063 threshold=64.54
 ```
 
 ## Disk
@@ -670,7 +676,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       861Mi       377Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       843Mi       395Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
