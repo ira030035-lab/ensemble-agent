@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-30 15:30:01 UTC
+Generated: 2026-05-30 15:40:01 UTC
 
 ## Services
 ```
@@ -647,7 +647,6 @@ root     1023587  0.0  1.2  60480 47036 ?        Ss   May29   0:06 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-30 12:55:51,139 [INFO] main: ENAUSDT | RL adj=84.6%
 2026-05-30 12:55:51,145 [INFO] main: ENAUSDT | Context score=-0.1 bias=0.1
 2026-05-30 12:55:51,145 [INFO] main: ENAUSDT | gate PASS (Judge 75/70 RL 84.6/64.54 slack=±3)
 2026-05-30 12:55:51,145 [INFO] positions: Same-side cap: skip SHORT ENAUSDT (3/3 already short)
@@ -677,6 +676,7 @@ root     1023587  0.0  1.2  60480 47036 ?        Ss   May29   0:06 /opt/ensemble
 2026-05-30 15:14:43,817 [INFO] positions: OK ONDOUSDT short PnL:0.46% reason:breakeven_stop
 2026-05-30 15:14:43,817 [INFO] positions: Lessons: The trade was closed at breakeven due to the stop being triggered, resulting in a 0.46% profit. The initial analysis correctly identified a strong bearish conviction with the bear position at 80% and the trending_down regime, but the expected 4% downside move did not materialize. The outcome suggests that the trade was managed correctly with a stop in place to limit potential losses.
 2026-05-30 15:14:43,817 [INFO] rl: RL learned from short ONDOUSDT: profit 0.46% | weights bull=0.991 bear=0.946 judge=1.063 threshold=64.52
+2026-05-30 15:38:00,818 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -694,7 +694,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       877Mi       284Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       880Mi       281Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
