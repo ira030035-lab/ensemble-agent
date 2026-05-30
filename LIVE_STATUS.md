@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-30 15:40:01 UTC
+Generated: 2026-05-30 15:50:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1023587  0.0  1.2  60480 47036 ?        Ss   May29   0:06 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 965.1335359891436,
+  "balance": 984.2068717209436,
   "positions": {
-    "DOGEUSDT": {
-      "id": "PAPER_DOGEUSDT_1780069731",
-      "symbol": "DOGEUSDT",
-      "side": "short",
-      "entry_price": 0.10036,
-      "qty": 996.4129,
-      "confidence": 85,
-      "opened_at": "2026-05-29T15:48:51.356094",
-      "cost": 19.9999997288,
-      "notional": 99.999998644,
-      "leverage": 5
-    },
     "TRXUSDT": {
       "id": "PAPER_TRXUSDT_1780086329",
       "symbol": "TRXUSDT",
@@ -639,19 +627,32 @@ root     1023587  0.0  1.2  60480 47036 ?        Ss   May29   0:06 /opt/ensemble
       "closed_at": "2026-05-30T15:14:43.429212",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_DOGEUSDT_1780069731",
+      "symbol": "DOGEUSDT",
+      "side": "short",
+      "entry_price": 0.10036,
+      "qty": 996.4129,
+      "confidence": 85,
+      "opened_at": "2026-05-29T15:48:51.356094",
+      "cost": 19.9999997288,
+      "notional": 99.999998644,
+      "leverage": 5,
+      "exit_price": 0.10129,
+      "pnl_pct": -4.63,
+      "pnl_usdt": -0.93,
+      "closed_at": "2026-05-30T15:49:00.294227",
+      "reason": "max_hold",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 5.133535628943803
+  "total_pnl": 4.206871631943803
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-30 12:55:51,145 [INFO] main: ENAUSDT | Context score=-0.1 bias=0.1
-2026-05-30 12:55:51,145 [INFO] main: ENAUSDT | gate PASS (Judge 75/70 RL 84.6/64.54 slack=±3)
-2026-05-30 12:55:51,145 [INFO] positions: Same-side cap: skip SHORT ENAUSDT (3/3 already short)
-2026-05-30 12:55:59,170 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-30 12:55:59,171 [INFO] main: XMRUSDT | Bull:flat(15%) Bear:short(82%)
 2026-05-30 12:56:01,469 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-30 12:56:01,471 [INFO] main: XMRUSDT | Judge:SHORT conf=70% size=15.0%
 2026-05-30 12:56:01,471 [INFO] main: XMRUSDT | RL adj=81.6%
@@ -677,6 +678,11 @@ root     1023587  0.0  1.2  60480 47036 ?        Ss   May29   0:06 /opt/ensemble
 2026-05-30 15:14:43,817 [INFO] positions: Lessons: The trade was closed at breakeven due to the stop being triggered, resulting in a 0.46% profit. The initial analysis correctly identified a strong bearish conviction with the bear position at 80% and the trending_down regime, but the expected 4% downside move did not materialize. The outcome suggests that the trade was managed correctly with a stop in place to limit potential losses.
 2026-05-30 15:14:43,817 [INFO] rl: RL learned from short ONDOUSDT: profit 0.46% | weights bull=0.991 bear=0.946 judge=1.063 threshold=64.52
 2026-05-30 15:38:00,818 [INFO] main: Symbols: 30
+2026-05-30 15:49:00,293 [INFO] positions: MAX_HOLD DOGEUSDT short hold:24.0h
+2026-05-30 15:49:00,298 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT DOGEUSDT @ 0.1013 PnL: -4.63% (-0.93 USDT) | Баланс: 984.21
+2026-05-30 15:49:00,634 [INFO] positions: LOSS DOGEUSDT short PnL:-0.93% reason:max_hold
+2026-05-30 15:49:00,634 [INFO] positions: Lessons: The trade was based on bear dominance and low buying pressure but ultimately resulted in a small loss. The expected 4% downside move did not materialize, and the trade was closed at a 0.93% loss. This outcome suggests that the bear dominance and low volume ratio signals may not be reliable indicators of a downside move in a ranging regime.
+2026-05-30 15:49:00,634 [INFO] rl: RL learned from short DOGEUSDT: loss -0.93% | weights bull=0.993 bear=0.944 judge=1.063 threshold=64.57
 ```
 
 ## Disk
@@ -694,7 +700,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       880Mi       281Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       872Mi       289Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
