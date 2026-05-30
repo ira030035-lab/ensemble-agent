@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-30 08:30:01 UTC
+Generated: 2026-05-30 08:40:01 UTC
 
 ## Services
 ```
@@ -641,7 +641,6 @@ root     1023587  0.0  1.2  59212 47016 ?        Ss   May29   0:04 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-30 06:47:55,435 [INFO] main: PEPEUSDT | Bull:flat(25%) Bear:short(65%)
 2026-05-30 06:47:57,881 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-30 06:47:57,882 [INFO] main: PEPEUSDT | Judge:HOLD conf=55% size=0.0%
 2026-05-30 06:47:57,882 [INFO] main: PEPEUSDT | RL adj=55.0%
@@ -671,6 +670,7 @@ root     1023587  0.0  1.2  59212 47016 ?        Ss   May29   0:04 /opt/ensemble
 2026-05-30 06:48:31,966 [INFO] positions: Same-side cap: skip SHORT TAOUSDT (3/3 already short)
 2026-05-30 06:48:33,969 [INFO] main: Next scan in 180min (weekend)
 2026-05-30 07:37:54,712 [INFO] main: Symbols: 30
+2026-05-30 08:37:55,822 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -688,7 +688,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       859Mi       366Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       850Mi       375Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
