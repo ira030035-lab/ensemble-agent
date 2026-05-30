@@ -1,6 +1,6 @@
 # Ensemble-agent snapshot
 
-Generated: 2026-05-30 16:00:01 UTC
+Generated: 2026-05-30 17:00:01 UTC
 
 ## ab_test_analyze_apply.py
 ```python
@@ -679,6 +679,160 @@ JSON: {{"action":"long|short|hold","confidence":0-100,"position_size_pct":0.0-0.
         except Exception as e:
             log.error("KimiJudge decide: " + str(e))
             return JudgeDecision("hold", 0, 0.0, "KimiJudge error: " + str(e)[:100], "")
+```
+
+## audit_and_notify.py
+```python
+#!/usr/bin/env python3
+"""Run blocked-prediction audit and send result to Telegram."""
+import asyncio, json, os, sys, subprocess
+sys.path.insert(0, "/opt/ensemble-agent")
+
+from dotenv import load_dotenv
+load_dotenv("/opt/ensemble-agent/.env")
+
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+
+def send_telegram(text: str):
+    if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_ID:
+        print("No Telegram creds")
+        return
+    import urllib.request, urllib.parse
+    url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+    data = urllib.parse.urlencode({
+        "chat_id": TELEGRAM_CHAT_ID,
+        "text": text,
+        "parse_mode": "HTML"
+    }).encode()
+    req = urllib.request.Request(url, data=data, method="POST",
+                                 headers={"Content-Type": "application/x-www-form-urlencoded"})
+    try:
+        urllib.request.urlopen(req, timeout=15)
+    except Exception as e:
+        print("Telegram send error:", e)
+
+async def main():
+    proc = await asyncio.create_subprocess_exec(
+        sys.executable, "/opt/ensemble-agent/audit_blocked.py",
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+        cwd="/opt/ensemble-agent"
+    )
+    stdout, stderr = await proc.communicate()
+    report = stdout.decode()
+    if not report.strip():
+        report = "audit_blocked.py produced no output"
+
+    try:
+        with open("/opt/ensemble-agent/blocked_predictions.json") as f:
+            data = json.load(f)
+        pending = len(data.get("pending", []))
+        resolved = len(data.get("resolved", []))
+    except Exception:
+        pending = resolved = "?"
+
+    message = (
+        "📊 <b>Blocked Predictions Audit</b>\n\n"
+        f"Pending:  <code>{pending}</code>\n"
+        f"Resolved: <code>{resolved}</code>\n\n"
+        f"<pre>{report[:3500]}</pre>"
+    )
+    send_telegram(message)
+    print(report)
+
+if __name__ == "__main__":
+    asyncio.run(main())
+
+```
+
+## audit_blocked.py
+```python
+#!/usr/bin/env python3
+"""Resolve pending blocked predictions and print audit report."""
+import asyncio
+import json
+import sys
+import os
+import logging
+from datetime import datetime, timezone
+
+sys.path.insert(0, "/opt/ensemble-agent")
+
+from blocked_logger import BlockedLogger
+from bitget_client import BitgetClient
+from config import Config
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+)
+log = logging.getLogger("audit_blocked")
+
+
+async def main():
+    cfg = Config()
+    bitget = BitgetClient(cfg)
+    await bitget.start()
+
+    logger = BlockedLogger()
+    data = logger._load()
+    pending = data.get("pending", [])
+
+    if not pending:
+        log.info("No pending blocked predictions.")
+        await bitget.close()
+        print(logger.report())
+        return
+
+    now = datetime.now(timezone.utc)
+    to_check = []
+    for p in pending:
+        try:
+            check_after = datetime.fromisoformat(
+                p["check_after"].replace("Z", "+00:00")
+            )
+            if check_after <= now:
+                to_check.append(p)
+        except Exception as e:
+            log.warning(f"Bad check_after for {p.get('id')}: {e}")
+
+    if not to_check:
+        log.info(f"No predictions ready for check yet. {len(pending)} pending.")
+        await bitget.close()
+        print(logger.report())
+        return
+
+    log.info(f"Resolving {len(to_check)} blocked predictions...")
+    resolved_count = 0
+
+    for entry in to_check:
+        symbol = entry["symbol"]
+        try:
+            resp = await bitget.get(
+                "/api/v2/mix/market/ticker",
+                {"symbol": symbol, "productType": "USDT-FUTURES"},
+            )
+            price = float(resp["data"][0]["lastPr"])
+            result = logger.resolve(entry["id"], price)
+            if result:
+                log.info(
+                    f"  {symbol:12s} {entry['side'].upper():5s} "
+                    f"blocked={entry['block_reason']:25s} -> "
+                    f"{result['outcome']:12s} PnL={result['pnl_pct']:+.2f}%"
+                )
+                resolved_count += 1
+        except Exception as e:
+            log.error(f"  ERROR {symbol}: {e}")
+
+    log.info(f"Resolved {resolved_count}/{len(to_check)} predictions.")
+    await bitget.close()
+    print("\n" + logger.report())
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
+
 ```
 
 ## audit.py
@@ -1955,6 +2109,170 @@ class BitgetClient:
 
 ```
 
+## blocked_logger.py
+```python
+import json
+import os
+import uuid
+from datetime import datetime, timezone, timedelta
+from collections import defaultdict
+
+BLOCKED_FILE = "/opt/ensemble-agent/blocked_predictions.json"
+
+
+class BlockedLogger:
+    def __init__(self, filepath=None):
+        self.file = filepath or BLOCKED_FILE
+        self._ensure_file()
+
+    def _ensure_file(self):
+        if not os.path.exists(self.file):
+            with open(self.file, "w") as f:
+                json.dump({"pending": [], "resolved": []}, f, indent=2)
+
+    def _load(self):
+        try:
+            with open(self.file, "r") as f:
+                return json.load(f)
+        except Exception:
+            return {"pending": [], "resolved": []}
+
+    def _save(self, data):
+        with open(self.file, "w") as f:
+            json.dump(data, f, indent=2, default=str)
+
+    def log(self, symbol, decision, snapshot, block_reason, check_hours=4):
+        """Log a blocked prediction for later virtual audit."""
+        data = self._load()
+        entry = {
+            "id": str(uuid.uuid4()),
+            "symbol": symbol,
+            "side": decision.action,
+            "confidence": decision.confidence,
+            "position_size_pct": getattr(decision, "position_size_pct", 0),
+            "block_reason": block_reason,
+            "entry_price": getattr(snapshot, "price", None),
+            "regime": getattr(snapshot, "regime", None),
+            "rsi_15m": getattr(snapshot, "rsi_15m", None),
+            "rsi_1h": getattr(snapshot, "rsi_1h", None),
+            "funding_rate": getattr(snapshot, "funding_rate", None),
+            "volume_ratio": getattr(snapshot, "volume_ratio", None),
+            "blocked_at": datetime.now(timezone.utc).isoformat(),
+            "check_after": (
+                datetime.now(timezone.utc) + timedelta(hours=check_hours)
+            ).isoformat(),
+        }
+        data["pending"].append(entry)
+        if len(data["pending"]) > 5000:
+            data["pending"] = data["pending"][-5000:]
+        self._save(data)
+
+    def resolve(self, entry_id, exit_price, resolved_at=None):
+        """Resolve a pending prediction with actual exit price."""
+        data = self._load()
+        pending = data["pending"]
+        entry = None
+        idx = None
+        for i, p in enumerate(pending):
+            if p["id"] == entry_id:
+                entry = p
+                idx = i
+                break
+        if entry is None:
+            return None
+
+        del pending[idx]
+        entry_price = entry.get("entry_price")
+        if entry_price and entry_price > 0:
+            pnl = (exit_price - entry_price) / entry_price * 100
+            if entry["side"] == "short":
+                pnl = -pnl
+        else:
+            pnl = 0.0
+
+        entry["exit_price"] = exit_price
+        entry["pnl_pct"] = round(pnl, 4)
+        entry["outcome"] = "would_profit" if pnl > 0 else "would_loss"
+        entry["resolved_at"] = resolved_at or datetime.now(timezone.utc).isoformat()
+
+        try:
+            blocked_dt = datetime.fromisoformat(
+                entry["blocked_at"].replace("Z", "+00:00")
+            )
+            resolved_dt = datetime.fromisoformat(
+                entry["resolved_at"].replace("Z", "+00:00")
+            )
+            entry["hold_hours"] = round(
+                (resolved_dt - blocked_dt).total_seconds() / 3600, 2
+            )
+        except Exception:
+            entry["hold_hours"] = None
+
+        data["resolved"].append(entry)
+        if len(data["resolved"]) > 10000:
+            data["resolved"] = data["resolved"][-10000:]
+        self._save(data)
+        return entry
+
+    def report(self):
+        """Generate a human-readable report of resolved predictions."""
+        data = self._load()
+        resolved = data["resolved"]
+        pending = data["pending"]
+        lines = [
+            "=== Blocked Predictions Virtual Audit ===",
+            f"Pending:  {len(pending)}",
+            f"Resolved: {len(resolved)}",
+        ]
+        if not resolved:
+            lines.append("No resolved predictions yet.")
+            return "\n".join(lines)
+
+        total = len(resolved)
+        profits = [r for r in resolved if r["outcome"] == "would_profit"]
+        wr = len(profits) / total * 100
+        avg_pnl = sum(r["pnl_pct"] for r in resolved) / total
+
+        lines.extend(
+            [
+                f"Virtual Win Rate: {wr:.1f}% ({len(profits)} would-profit / {total - len(profits)} would-loss)",
+                f"Virtual Avg PnL:  {avg_pnl:.2f}%",
+                "",
+                "--- By Block Reason ---",
+            ]
+        )
+
+        by_reason = defaultdict(list)
+        for r in resolved:
+            by_reason[r["block_reason"]].append(r)
+
+        for reason in sorted(by_reason.keys()):
+            trades = by_reason[reason]
+            p = [t for t in trades if t["outcome"] == "would_profit"]
+            avg = sum(t["pnl_pct"] for t in trades) / len(trades)
+            lines.append(
+                f"  {reason:30s}: {len(trades):4d} trades  WR {len(p)/len(trades)*100:5.1f}%  avg {avg:+6.2f}%"
+            )
+
+        lines.append("")
+        lines.append("--- By Side ---")
+        by_side = defaultdict(list)
+        for r in resolved:
+            by_side[r["side"]].append(r)
+        for side in ("long", "short"):
+            trades = by_side[side]
+            if not trades:
+                continue
+            p = [t for t in trades if t["outcome"] == "would_profit"]
+            avg = sum(t["pnl_pct"] for t in trades) / len(trades)
+            lines.append(
+                f"  {side.upper():5s}: {len(trades):4d} trades  WR {len(p)/len(trades)*100:5.1f}%  avg {avg:+6.2f}%"
+            )
+
+        return "\n".join(lines)
+
+```
+
 ## clean_memory_rl.py
 ```python
 #!/usr/bin/env python3
@@ -2140,7 +2458,7 @@ class Config:
     TOP_N_SYMBOLS = 30
     SCAN_INTERVAL = 3600
     MAX_POSITIONS = 10
-    MAX_SAME_SIDE = 3
+    MAX_SAME_SIDE = 5
     MAX_CORRELATION = 0.85
     CORR_LOOKBACK_BARS = 24
     MIN_CONFIDENCE = 70
@@ -3809,6 +4127,7 @@ from memory import Memory
 from rl_agent import RLAgent
 from rl_context import ContextRL
 from position_manager import PositionManager
+from blocked_logger import BlockedLogger
 import http_pool
 
 _log_handler=RotatingFileHandler(
@@ -3830,6 +4149,7 @@ class Orchestrator:
         self.rl=RLAgent(self.cfg)
         self.ctx=ContextRL()
         self.positions=PositionManager(self.bitget,self.cfg,self.memory,self.judge,self.rl,data=self.data)
+        self.blocked_logger=BlockedLogger()
         self.running=True; self.symbols=[]; self._stop_event=asyncio.Event()
     async def _wait(self,timeout):
         try: await asyncio.wait_for(self._stop_event.wait(),timeout=timeout)
@@ -3898,12 +4218,14 @@ class Orchestrator:
         except Exception:
             return 0.10
 
+    def _log_blocked(self,symbol,decision,snapshot,reason):
+        """Log high-confidence blocked signals for virtual audit."""
+        if decision.confidence >= 75:
+            try: self.blocked_logger.log(symbol,decision,snapshot,reason)
+            except Exception as e: log.warning("Blocked log: "+str(e))
+
     def _next_interval(self):
-        now=datetime.now(timezone.utc); wd=now.weekday(); h=now.hour
-        if wd>=5: return 10800,"weekend"
-        if 10<=h<20: return 1800,"weekday-active"      # 30 min in volatile hours
-        if 8<=h<22: return 3600,"weekday-warmup"      # 60 min in shoulder hours
-        return 7200,"weekday-quiet"
+        return 1800,"always-30min"
     async def scan_loop(self):
         while self.running:
             try: await self.scan_all()
@@ -3942,26 +4264,45 @@ class Orchestrator:
             if decision.action=="short":
                 ctx_score-=side_bias
             log.info(symbol+" | Context score="+str(round(ctx_score,2))+" bias="+str(round(side_bias,2)))
-            if ctx_score < -0.15:
+            if decision.action=="short" and side_bias>=0.10:
+                log.info(symbol+" | side-bias BLOCK (market bullish, short forbidden)")
+                self._log_blocked(symbol,decision,snapshot,"side_bias_bullish")
+                return
+            if ctx_score < -0.22:
                 log.info(symbol+" | context BLOCK (explorer pattern score="+str(round(ctx_score,2))+")")
+                self._log_blocked(symbol,decision,snapshot,"context_score")
                 return
             elif ctx_score >= 0.20:
                 log.info(symbol+" | context BOOST (explorer pattern score="+str(round(ctx_score,2))+")")
             if snapshot.regime in ("volatile","unknown"):
-                log.info(symbol+" | regime BLOCK ("+snapshot.regime+")"); return
+                log.info(symbol+" | regime BLOCK ("+snapshot.regime+")")
+                self._log_blocked(symbol,decision,snapshot,"regime_"+snapshot.regime)
+                return
             btc_regime=await self.data.get_btc_regime()
             if decision.action=="short" and btc_regime=="trending_up":
-                log.info(symbol+" | macro BLOCK (short при BTC uptrend)"); return
+                log.info(symbol+" | macro BLOCK (short при BTC uptrend)")
+                self._log_blocked(symbol,decision,snapshot,"macro_short_btc_uptrend")
+                return
             if decision.action=="long" and btc_regime=="trending_down":
-                log.info(symbol+" | macro BLOCK (long при BTC downtrend)"); return
+                log.info(symbol+" | macro BLOCK (long при BTC downtrend)")
+                self._log_blocked(symbol,decision,snapshot,"macro_long_btc_downtrend")
+                return
             if decision.action=="short" and snapshot.regime=="trending_down" and snapshot.rsi_1h>45:
-                log.info(symbol+" | regime BLOCK (short × trending_down × rsi1h="+str(round(snapshot.rsi_1h,1))+"; late-entry guard)"); return
+                log.info(symbol+" | regime BLOCK (short × trending_down × rsi1h="+str(round(snapshot.rsi_1h,1))+"; late-entry guard)")
+                self._log_blocked(symbol,decision,snapshot,"regime_short_late_entry")
+                return
             if decision.action=="short" and snapshot.regime=="trending_up" and snapshot.rsi_1h<55:
-                log.info(symbol+" | regime BLOCK (short × trending_up × rsi1h="+str(round(snapshot.rsi_1h,1))+"; counter-trend guard)"); return
+                log.info(symbol+" | regime BLOCK (short × trending_up × rsi1h="+str(round(snapshot.rsi_1h,1))+"; counter-trend guard)")
+                self._log_blocked(symbol,decision,snapshot,"regime_short_counter_trend")
+                return
             if decision.action=="long" and snapshot.regime=="trending_down" and snapshot.rsi_1h>45:
-                log.info(symbol+" | regime BLOCK (long × trending_down × rsi1h="+str(round(snapshot.rsi_1h,1))+"; counter-trend guard)"); return
+                log.info(symbol+" | regime BLOCK (long × trending_down × rsi1h="+str(round(snapshot.rsi_1h,1))+"; counter-trend guard)")
+                self._log_blocked(symbol,decision,snapshot,"regime_long_counter_trend")
+                return
             if decision.action=="long" and snapshot.regime=="trending_up" and snapshot.rsi_1h<55:
-                log.info(symbol+" | regime BLOCK (long × trending_up × rsi1h="+str(round(snapshot.rsi_1h,1))+"; late-entry guard)"); return
+                log.info(symbol+" | regime BLOCK (long × trending_up × rsi1h="+str(round(snapshot.rsi_1h,1))+"; late-entry guard)")
+                self._log_blocked(symbol,decision,snapshot,"regime_long_late_entry")
+                return
             slack=getattr(self.cfg,"THRESHOLD_SLACK",3)
             j_base=self.cfg.MIN_CONFIDENCE; r_base=self.rl.weights.conf_threshold
             j_dev=decision.confidence-j_base; r_dev=rl_conf-r_base
