@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-30 20:20:01 UTC
+Generated: 2026-05-30 20:30:01 UTC
 
 ## Services
 ```
@@ -11,27 +11,15 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      999913  0.0  1.2 133404 48140 ?        Ssl  May28   0:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1046809  0.1  3.1 716516 122848 ?       Ssl  16:36   0:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1046809  0.1  3.1 716516 122864 ?       Ssl  16:36   0:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root     1046995  0.0  1.0  56068 42912 ?        Ss   16:53   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 944.7052738729435,
+  "balance": 963.6079719289435,
   "positions": {
-    "TRXUSDT": {
-      "id": "PAPER_TRXUSDT_1780086329",
-      "symbol": "TRXUSDT",
-      "side": "short",
-      "entry_price": 0.34357,
-      "qty": 291.0615,
-      "confidence": 80,
-      "opened_at": "2026-05-29T20:25:29.985317",
-      "cost": 19.999999911,
-      "notional": 99.999999555,
-      "leverage": 5
-    },
     "SUIUSDT": {
       "id": "PAPER_SUIUSDT_1780156745",
       "symbol": "SUIUSDT",
@@ -687,19 +675,32 @@ root     1046995  0.0  1.0  56068 42912 ?        Ss   16:53   0:02 /opt/ensemble
       "closed_at": "2026-05-30T18:41:17.333161",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_TRXUSDT_1780086329",
+      "symbol": "TRXUSDT",
+      "side": "short",
+      "entry_price": 0.34357,
+      "qty": 291.0615,
+      "confidence": 80,
+      "opened_at": "2026-05-29T20:25:29.985317",
+      "cost": 19.999999911,
+      "notional": 99.999999555,
+      "leverage": 5,
+      "exit_price": 0.34734,
+      "pnl_pct": -5.49,
+      "pnl_usdt": -1.1,
+      "closed_at": "2026-05-30T20:25:56.257422",
+      "reason": "max_hold",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 4.702937511943805
+  "total_pnl": 3.6056356569438064
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-30 20:09:12,853 [INFO] main: IDUSDT | Bull:flat(15%) Bear:short(85%)
-2026-05-30 20:09:15,097 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-30 20:09:15,099 [INFO] main: IDUSDT | Judge:SHORT conf=85% size=15.0%
-2026-05-30 20:09:15,099 [INFO] main: IDUSDT | RL adj=97.0%
-2026-05-30 20:09:15,113 [INFO] main: IDUSDT | Context score=-0.05 bias=0.05
 2026-05-30 20:09:15,113 [INFO] main: IDUSDT | regime BLOCK (volatile)
 2026-05-30 20:09:20,971 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-30 20:09:21,495 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -725,6 +726,11 @@ root     1046995  0.0  1.0  56068 42912 ?        Ss   16:53   0:02 /opt/ensemble
 2026-05-30 20:09:42,126 [INFO] main: HBARUSDT | Context score=-0.05 bias=0.05
 2026-05-30 20:09:42,126 [INFO] main: HBARUSDT | regime BLOCK (volatile)
 2026-05-30 20:09:44,133 [INFO] main: Next scan in 30min (always-30min)
+2026-05-30 20:25:56,256 [INFO] positions: MAX_HOLD TRXUSDT short hold:24.0h
+2026-05-30 20:25:56,261 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT TRXUSDT @ 0.3473 PnL: -5.49% (-1.10 USDT) | Баланс: 963.61
+2026-05-30 20:25:56,589 [INFO] positions: LOSS TRXUSDT short PnL:-1.1% reason:max_hold
+2026-05-30 20:25:56,589 [INFO] positions: Lessons: The trade was based on strong bear dominance and confirming indicators, expecting a 4% downside move. However, the trade only resulted in a 1.1% loss, failing to meet the expected downside potential. This suggests that the asymmetric risk rules may need to be reevaluated to better capture potential downsides in trending_down regimes.
+2026-05-30 20:25:56,589 [INFO] rl: RL learned from short TRXUSDT: loss -1.10% | weights bull=0.994 bear=0.943 judge=1.064 threshold=64.59
 ```
 
 ## Disk
@@ -742,7 +748,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       853Mi       504Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       866Mi       492Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
