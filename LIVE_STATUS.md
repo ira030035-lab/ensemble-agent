@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-30 23:30:01 UTC
+Generated: 2026-05-30 23:40:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      999913  0.0  1.2 133404 48140 ?        Ssl  May28   0:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1046809  0.1  3.1 715208 121844 ?       Ssl  16:36   0:43 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1046809  0.1  3.1 715508 122104 ?       Ssl  16:36   0:46 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root     1046995  0.0  1.0  56068 42912 ?        Ss   16:53   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
@@ -713,36 +713,36 @@ root     1046995  0.0  1.0  56068 42912 ?        Ss   16:53   0:02 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-30 22:59:59,085 [INFO] main: BSBUSDT | Bull:flat(25%) Bear:short(70%)
-2026-05-30 23:00:00,950 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-30 23:00:00,952 [INFO] main: BSBUSDT | Judge:SHORT conf=70% size=15.0%
-2026-05-30 23:00:00,952 [INFO] main: BSBUSDT | RL adj=79.9%
-2026-05-30 23:00:00,965 [INFO] main: BSBUSDT | Context score=-0.05 bias=0.05
-2026-05-30 23:00:00,965 [INFO] main: BSBUSDT | regime BLOCK (volatile)
-2026-05-30 23:00:07,116 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-30 23:00:07,628 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-30 23:00:07,630 [INFO] main: VTHOUSDT | Bull:flat(5%) Bear:short(85%)
-2026-05-30 23:00:10,260 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-30 23:00:10,261 [INFO] main: VTHOUSDT | Judge:SHORT conf=90% size=20.0%
-2026-05-30 23:00:10,261 [INFO] main: VTHOUSDT | RL adj=100.0%
-2026-05-30 23:00:10,274 [INFO] main: VTHOUSDT | Context score=-0.05 bias=0.05
-2026-05-30 23:00:10,274 [INFO] main: VTHOUSDT | regime BLOCK (volatile)
-2026-05-30 23:00:17,103 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-30 23:00:18,407 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-30 23:00:18,408 [INFO] main: BEATUSDT | Bull:flat(25%) Bear:short(80%)
-2026-05-30 23:00:21,192 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-30 23:00:21,194 [INFO] main: BEATUSDT | Judge:HOLD conf=50% size=0.0%
-2026-05-30 23:00:21,194 [INFO] main: BEATUSDT | RL adj=50.0%
-2026-05-30 23:00:27,337 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-30 23:00:27,934 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-30 23:00:27,935 [INFO] main: ADAUSDT | Bull:flat(25%) Bear:short(80%)
-2026-05-30 23:00:30,430 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-30 23:00:30,431 [INFO] main: ADAUSDT | Judge:SHORT conf=75% size=15.0%
-2026-05-30 23:00:30,432 [INFO] main: ADAUSDT | RL adj=86.3%
-2026-05-30 23:00:30,444 [INFO] main: ADAUSDT | Context score=-0.05 bias=0.05
-2026-05-30 23:00:30,445 [INFO] main: ADAUSDT | gate PASS (Judge 75/70 RL 86.3/64.59 slack=±3)
-2026-05-30 23:00:30,445 [INFO] positions: 2/3 rule: skip SHORT ADAUSDT (3/3 already short)
-2026-05-30 23:00:32,448 [INFO] main: Next scan in 30min (always-30min)
+2026-05-30 23:33:45,989 [INFO] main: BTCUSDT | Bull:flat(15%) Bear:short(80%)
+2026-05-30 23:33:47,962 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-30 23:33:47,963 [INFO] main: BTCUSDT | Judge:HOLD conf=50% size=0.0%
+2026-05-30 23:33:47,963 [INFO] main: BTCUSDT | RL adj=50.0%
+2026-05-30 23:33:53,987 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-30 23:33:54,413 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 23:33:54,414 [INFO] main: HYPEUSDT | Bull:flat(15%) Bear:short(75%)
+2026-05-30 23:33:56,225 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-30 23:33:56,227 [INFO] main: HYPEUSDT | Judge:HOLD conf=50% size=0.0%
+2026-05-30 23:33:56,227 [INFO] main: HYPEUSDT | RL adj=50.0%
+2026-05-30 23:34:02,336 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-30 23:34:03,870 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 23:34:03,872 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
+2026-05-30 23:34:03,872 [INFO] main: NEARUSDT | Bull:flat(15%) Bear:short(90%)
+2026-05-30 23:34:06,099 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-30 23:34:06,100 [INFO] main: NEARUSDT | Judge:SHORT conf=85% size=15.0%
+2026-05-30 23:34:06,100 [INFO] main: NEARUSDT | RL adj=97.7%
+2026-05-30 23:34:06,112 [INFO] main: NEARUSDT | Context score=-0.05 bias=0.05
+2026-05-30 23:34:06,112 [INFO] main: NEARUSDT | regime BLOCK (volatile)
+2026-05-30 23:34:09,615 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-05-30 23:34:12,299 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 23:34:12,789 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-30 23:34:12,790 [INFO] main: VTHOUSDT | Bull:flat(5%) Bear:short(85%)
+2026-05-30 23:34:14,970 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-30 23:34:14,971 [INFO] main: VTHOUSDT | Judge:SHORT conf=85% size=15.0%
+2026-05-30 23:34:14,972 [INFO] main: VTHOUSDT | RL adj=97.0%
+2026-05-30 23:34:14,984 [INFO] main: VTHOUSDT | Context score=-0.05 bias=0.05
+2026-05-30 23:34:14,984 [INFO] main: VTHOUSDT | regime BLOCK (volatile)
+2026-05-30 23:34:16,991 [INFO] main: Next scan in 30min (always-30min)
+2026-05-30 23:36:25,626 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -760,7 +760,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       864Mi       491Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       854Mi       500Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
