@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-30 02:30:02 UTC
+Generated: 2026-05-30 02:40:01 UTC
 
 ## Services
 ```
@@ -629,7 +629,6 @@ root     1023587  0.0  1.1  57192 44704 ?        Ss   May29   0:03 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-30 00:39:39,766 [INFO] main: ZECUSDT | regime BLOCK (short × trending_down × rsi1h=45.4; late-entry guard)
 2026-05-30 00:39:45,061 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-30 00:39:48,450 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-30 00:39:48,452 [INFO] main: LINKUSDT | Bull:long(62%) Bear:short(65%)
@@ -659,6 +658,7 @@ root     1023587  0.0  1.1  57192 44704 ?        Ss   May29   0:03 /opt/ensemble
 2026-05-30 02:02:12,079 [INFO] positions: LOSS ADAUSDT short PnL:-2.02% reason:stop_loss
 2026-05-30 02:02:12,080 [INFO] positions: Lessons: The trade was closed at a 2.02% loss due to a stop loss trigger. Despite initial expectations of a 4% downside, the market did not move in the anticipated direction. The lesson here is that extreme fear market sentiment does not always translate to immediate downward price movement.
 2026-05-30 02:02:12,080 [INFO] rl: RL learned from short ADAUSDT: loss -2.02% | weights bull=0.993 bear=0.945 judge=1.063 threshold=64.54
+2026-05-30 02:37:51,216 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -676,7 +676,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       855Mi       382Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       838Mi       399Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
