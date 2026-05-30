@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-30 14:30:01 UTC
+Generated: 2026-05-30 14:40:01 UTC
 
 ## Services
 ```
@@ -641,7 +641,6 @@ root     1023587  0.0  1.2  60480 47036 ?        Ss   May29   0:06 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-30 12:55:40,837 [INFO] main: FETUSDT | Context score=0.0 bias=0.1
 2026-05-30 12:55:40,837 [INFO] main: FETUSDT | regime BLOCK (volatile)
 2026-05-30 12:55:48,641 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-30 12:55:48,642 [INFO] main: ENAUSDT | Bull:flat(25%) Bear:short(68%)
@@ -671,6 +670,7 @@ root     1023587  0.0  1.2  60480 47036 ?        Ss   May29   0:06 /opt/ensemble
 2026-05-30 12:56:23,633 [INFO] main: ADAUSDT | RL adj=55.0%
 2026-05-30 12:56:25,636 [INFO] main: Next scan in 180min (weekend)
 2026-05-30 13:37:59,364 [INFO] main: Symbols: 30
+2026-05-30 14:38:00,136 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -688,7 +688,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       889Mi       275Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       866Mi       297Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
