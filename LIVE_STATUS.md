@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-30 15:10:01 UTC
+Generated: 2026-05-30 15:20:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      996988  0.1  3.2 720372 127332 ?       Ssl  May28   3:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      996988  0.1  3.2 720372 127332 ?       Ssl  May28   3:27 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root      999913  0.0  1.2 133368 48136 ?        Ssl  May28   0:18 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1023587  0.0  1.2  60480 47036 ?        Ss   May29   0:06 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
@@ -18,7 +18,7 @@ root     1023587  0.0  1.2  60480 47036 ?        Ss   May29   0:06 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 944.6745595451437,
+  "balance": 965.1335359891436,
   "positions": {
     "DOGEUSDT": {
       "id": "PAPER_DOGEUSDT_1780069731",
@@ -42,18 +42,6 @@ root     1023587  0.0  1.2  60480 47036 ?        Ss   May29   0:06 /opt/ensemble
       "opened_at": "2026-05-29T20:25:29.985317",
       "cost": 19.999999911,
       "notional": 99.999999555,
-      "leverage": 5
-    },
-    "ONDOUSDT": {
-      "id": "PAPER_ONDOUSDT_1780112426",
-      "symbol": "ONDOUSDT",
-      "side": "short",
-      "entry_price": 0.3486,
-      "qty": 286.8617,
-      "confidence": 80,
-      "opened_at": "2026-05-30T03:40:26.107387",
-      "cost": 19.999997724,
-      "notional": 99.99998862,
       "leverage": 5
     }
   },
@@ -633,19 +621,32 @@ root     1023587  0.0  1.2  60480 47036 ?        Ss   May29   0:06 /opt/ensemble
       "closed_at": "2026-05-30T02:02:11.759336",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ONDOUSDT_1780112426",
+      "symbol": "ONDOUSDT",
+      "side": "short",
+      "entry_price": 0.3486,
+      "qty": 286.8617,
+      "confidence": 80,
+      "opened_at": "2026-05-30T03:40:26.107387",
+      "cost": 19.999997724,
+      "notional": 99.99998862,
+      "leverage": 5,
+      "exit_price": 0.347,
+      "pnl_pct": 2.29,
+      "pnl_usdt": 0.46,
+      "closed_at": "2026-05-30T15:14:43.429212",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 4.6745569089437895
+  "total_pnl": 5.133535628943803
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-30 12:55:40,837 [INFO] main: FETUSDT | regime BLOCK (volatile)
-2026-05-30 12:55:48,641 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-30 12:55:48,642 [INFO] main: ENAUSDT | Bull:flat(25%) Bear:short(68%)
-2026-05-30 12:55:51,138 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-30 12:55:51,139 [INFO] main: ENAUSDT | Judge:SHORT conf=75% size=15.0%
 2026-05-30 12:55:51,139 [INFO] main: ENAUSDT | RL adj=84.6%
 2026-05-30 12:55:51,145 [INFO] main: ENAUSDT | Context score=-0.1 bias=0.1
 2026-05-30 12:55:51,145 [INFO] main: ENAUSDT | gate PASS (Judge 75/70 RL 84.6/64.54 slack=±3)
@@ -671,6 +672,11 @@ root     1023587  0.0  1.2  60480 47036 ?        Ss   May29   0:06 /opt/ensemble
 2026-05-30 12:56:25,636 [INFO] main: Next scan in 180min (weekend)
 2026-05-30 13:37:59,364 [INFO] main: Symbols: 30
 2026-05-30 14:38:00,136 [INFO] main: Symbols: 30
+2026-05-30 15:14:43,428 [INFO] positions: BREAKEVEN_STOP ONDOUSDT short PnL:0.46%
+2026-05-30 15:14:43,432 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ONDOUSDT @ 0.3470 PnL: 2.29% (+0.46 USDT) | Баланс: 965.13
+2026-05-30 15:14:43,817 [INFO] positions: OK ONDOUSDT short PnL:0.46% reason:breakeven_stop
+2026-05-30 15:14:43,817 [INFO] positions: Lessons: The trade was closed at breakeven due to the stop being triggered, resulting in a 0.46% profit. The initial analysis correctly identified a strong bearish conviction with the bear position at 80% and the trending_down regime, but the expected 4% downside move did not materialize. The outcome suggests that the trade was managed correctly with a stop in place to limit potential losses.
+2026-05-30 15:14:43,817 [INFO] rl: RL learned from short ONDOUSDT: profit 0.46% | weights bull=0.991 bear=0.946 judge=1.063 threshold=64.52
 ```
 
 ## Disk
@@ -688,7 +694,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       864Mi       297Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       874Mi       287Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       256Ki       2.0Gi
 ```
 
