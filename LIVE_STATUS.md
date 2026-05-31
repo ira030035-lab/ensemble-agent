@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-31 22:00:01 UTC
+Generated: 2026-05-31 22:10:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      999913  0.0  1.2 133480 48312 ?        Ssl  May28   0:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1046809  0.1  3.2 719780 125836 ?       Ssl  May30   3:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1046809  0.1  3.2 719780 125836 ?       Ssl  May30   3:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root     1060304  0.0  1.1  55936 43720 ?        Ss   06:59   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
@@ -779,18 +779,6 @@ root     1060304  0.0  1.1  55936 43720 ?        Ss   06:59   0:01 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-31 21:59:25,305 [INFO] main: XLMUSDT | RL adj=75.6%
-2026-05-31 21:59:25,322 [INFO] main: XLMUSDT | Context score=0.0 bias=0.1
-2026-05-31 21:59:25,323 [INFO] main: XLMUSDT | regime BLOCK (volatile)
-2026-05-31 21:59:31,872 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-31 21:59:32,356 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-31 21:59:32,358 [INFO] main: HBARUSDT | Bull:flat(25%) Bear:short(85%)
-2026-05-31 21:59:34,651 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-31 21:59:34,652 [INFO] main: HBARUSDT | Judge:SHORT conf=85% size=15.0%
-2026-05-31 21:59:34,653 [INFO] main: HBARUSDT | RL adj=97.1%
-2026-05-31 21:59:34,668 [INFO] main: HBARUSDT | Context score=-0.1 bias=0.1
-2026-05-31 21:59:34,668 [INFO] main: HBARUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-05-31 21:59:40,509 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-31 21:59:40,553 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-31 21:59:40,555 [INFO] main: STGUSDT | Bull:flat(15%) Bear:short(85%)
 2026-05-31 21:59:42,897 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -809,6 +797,18 @@ root     1060304  0.0  1.1  55936 43720 ?        Ss   06:59   0:01 /opt/ensemble
 2026-05-31 21:59:57,052 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-31 21:59:58,784 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-31 21:59:58,785 [INFO] main: NEARUSDT | Bull:flat(35%) Bear:short(70%)
+2026-05-31 22:00:01,282 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 22:00:01,283 [INFO] main: NEARUSDT | Judge:SHORT conf=70% size=15.0%
+2026-05-31 22:00:01,283 [INFO] main: NEARUSDT | RL adj=80.0%
+2026-05-31 22:00:01,292 [INFO] main: NEARUSDT | Context score=-0.1 bias=0.1
+2026-05-31 22:00:01,292 [INFO] main: NEARUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-05-31 22:00:07,393 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-31 22:00:07,769 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 22:00:07,771 [INFO] main: ASTERUSDT | Bull:flat(15%) Bear:flat(55%)
+2026-05-31 22:00:10,323 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 22:00:10,324 [INFO] main: ASTERUSDT | Judge:HOLD conf=45% size=0.0%
+2026-05-31 22:00:10,324 [INFO] main: ASTERUSDT | RL adj=45.0%
+2026-05-31 22:00:12,326 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -826,7 +826,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       857Mi       303Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       847Mi       313Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
