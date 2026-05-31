@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-31 14:10:01 UTC
+Generated: 2026-05-31 14:20:01 UTC
 
 ## Services
 ```
@@ -11,27 +11,15 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      999913  0.0  1.2 133480 48296 ?        Ssl  May28   0:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1046809  0.1  3.1 717900 124696 ?       Ssl  May30   2:17 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1046809  0.1  3.1 717900 124708 ?       Ssl  May30   2:17 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root     1060304  0.0  1.1  55948 43400 ?        Ss   06:59   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 962.5844068545435,
+  "balance": 987.4876532225435,
   "positions": {
-    "SUIUSDT": {
-      "id": "PAPER_SUIUSDT_1780156745",
-      "symbol": "SUIUSDT",
-      "side": "short",
-      "entry_price": 0.9096,
-      "qty": 109.9384,
-      "confidence": 85,
-      "opened_at": "2026-05-30T15:59:05.068308",
-      "cost": 19.999993728,
-      "notional": 99.99996863999999,
-      "leverage": 5
-    },
     "DOGEUSDT": {
       "id": "PAPER_DOGEUSDT_1780204766",
       "symbol": "DOGEUSDT",
@@ -765,19 +753,32 @@ root     1060304  0.0  1.1  55948 43400 ?        Ss   06:59   0:01 /opt/ensemble
       "closed_at": "2026-05-31T12:41:27.673319",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_SUIUSDT_1780156745",
+      "symbol": "SUIUSDT",
+      "side": "short",
+      "entry_price": 0.9096,
+      "qty": 109.9384,
+      "confidence": 85,
+      "opened_at": "2026-05-30T15:59:05.068308",
+      "cost": 19.999993728,
+      "notional": 99.99996863999999,
+      "leverage": 5,
+      "exit_price": 0.865,
+      "pnl_pct": 24.52,
+      "pnl_usdt": 4.9,
+      "closed_at": "2026-05-31T14:19:04.130731",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 2.5844009569438096
+  "total_pnl": 7.487653596943806
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-31 13:55:21,176 [INFO] main: BGBUSDT | RL adj=55.0%
-2026-05-31 13:55:28,007 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-31 13:55:28,888 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-31 13:55:28,889 [INFO] main: ONDOUSDT | Bull:flat(15%) Bear:short(80%)
-2026-05-31 13:55:32,023 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-31 13:55:32,026 [INFO] main: ONDOUSDT | Judge:SHORT conf=85% size=15.0%
 2026-05-31 13:55:32,026 [INFO] main: ONDOUSDT | RL adj=96.3%
 2026-05-31 13:55:32,040 [INFO] main: ONDOUSDT | Context score=-0.1 bias=0.1
@@ -803,6 +804,11 @@ root     1060304  0.0  1.1  55948 43400 ?        Ss   06:59   0:01 /opt/ensemble
 2026-05-31 13:56:01,044 [INFO] main: ZECUSDT | Context score=-0.0 bias=0.1
 2026-05-31 13:56:01,045 [INFO] main: ZECUSDT | macro BLOCK (long при BTC downtrend)
 2026-05-31 13:56:03,064 [INFO] main: Next scan in 30min (always-30min)
+2026-05-31 14:19:04,130 [INFO] positions: TAKE-PROFIT SUIUSDT short PnL:4.9%
+2026-05-31 14:19:04,133 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT SUIUSDT @ 0.8650 PnL: 24.52% (+4.90 USDT) | Баланс: 987.49
+2026-05-31 14:19:04,400 [INFO] positions: OK SUIUSDT short PnL:4.9% reason:take_profit
+2026-05-31 14:19:04,401 [INFO] positions: Lessons: The trade was successful with a 4.9% profit, meeting the expected potential. The combination of Extreme Fear market sentiment and overbought RSI proved to be a good indicator for a downside move. This trade reinforces the importance of considering sentiment and technical indicators when identifying potential trading opportunities.
+2026-05-31 14:19:04,401 [INFO] rl: RL learned from short SUIUSDT: profit 4.90% | weights bull=0.982 bear=0.951 judge=1.068 threshold=64.52
 ```
 
 ## Disk
@@ -820,7 +826,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       838Mi       431Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       839Mi       430Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
