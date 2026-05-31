@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-31 16:00:01 UTC
+Generated: 2026-05-31 16:10:01 UTC
 
 ## Services
 ```
@@ -779,12 +779,6 @@ root     1060304  0.0  1.1  55948 43400 ?        Ss   06:59   0:01 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-31 15:39:11,341 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-31 15:39:11,343 [INFO] main: TONUSDT | Bull:long(72%) Bear:short(60%)
-2026-05-31 15:39:14,062 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-31 15:39:14,063 [INFO] main: TONUSDT | Judge:LONG conf=85% size=15.0%
-2026-05-31 15:39:14,063 [INFO] main: TONUSDT | RL adj=87.0%
-2026-05-31 15:39:14,069 [INFO] main: TONUSDT | Context score=-0.0 bias=0.1
 2026-05-31 15:39:14,070 [INFO] main: TONUSDT | macro BLOCK (long при BTC downtrend)
 2026-05-31 15:39:20,860 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-31 15:39:21,783 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -809,6 +803,12 @@ root     1060304  0.0  1.1  55948 43400 ?        Ss   06:59   0:01 /opt/ensemble
 2026-05-31 15:39:42,792 [INFO] main: NEARUSDT | Judge:HOLD conf=55% size=0.0%
 2026-05-31 15:39:42,793 [INFO] main: NEARUSDT | RL adj=55.0%
 2026-05-31 15:39:44,795 [INFO] main: Next scan in 30min (always-30min)
+2026-05-31 16:09:44,799 [INFO] main: Scanning 29 symbols...
+2026-05-31 16:09:55,498 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-31 16:09:55,500 [INFO] main: SKYAIUSDT | Bull:flat(25%) Bear:short(70%)
+2026-05-31 16:09:58,028 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 16:09:58,029 [INFO] main: SKYAIUSDT | Judge:HOLD conf=55% size=0.0%
+2026-05-31 16:09:58,029 [INFO] main: SKYAIUSDT | RL adj=55.0%
 ```
 
 ## Disk
@@ -826,7 +826,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       856Mi       411Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       839Mi       427Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
