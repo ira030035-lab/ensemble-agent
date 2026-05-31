@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-31 05:30:01 UTC
+Generated: 2026-05-31 05:40:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      999913  0.0  1.2 133404 48140 ?        Ssl  May28   0:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1046809  0.1  3.1 716552 122720 ?       Ssl  May30   1:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1046809  0.1  3.1 715100 121368 ?       Ssl  May30   1:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root     1046995  0.0  1.0  56068 42912 ?        Ss   May30   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
@@ -749,7 +749,6 @@ root     1046995  0.0  1.0  56068 42912 ?        Ss   May30   0:02 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-31 05:19:35,562 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-31 05:19:35,564 [INFO] main: FETUSDT | Judge:HOLD conf=55% size=0.0%
 2026-05-31 05:19:35,564 [INFO] main: FETUSDT | RL adj=55.0%
 2026-05-31 05:19:41,968 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -779,6 +778,7 @@ root     1046995  0.0  1.0  56068 42912 ?        Ss   May30   0:02 /opt/ensemble
 2026-05-31 05:20:18,832 [INFO] main: STGUSDT | Judge:HOLD conf=48% size=0.0%
 2026-05-31 05:20:18,832 [INFO] main: STGUSDT | RL adj=48.0%
 2026-05-31 05:20:20,834 [INFO] main: Next scan in 30min (always-30min)
+2026-05-31 05:36:29,916 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -796,7 +796,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       828Mi       526Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       823Mi       531Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
