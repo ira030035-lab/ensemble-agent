@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-31 02:30:01 UTC
+Generated: 2026-05-31 02:40:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      999913  0.0  1.2 133404 48140 ?        Ssl  May28   0:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1046809  0.1  3.1 716264 122100 ?       Ssl  May30   1:03 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1046809  0.1  3.0 714836 120756 ?       Ssl  May30   1:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root     1046995  0.0  1.0  56068 42912 ?        Ss   May30   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
@@ -719,7 +719,6 @@ root     1046995  0.0  1.0  56068 42912 ?        Ss   May30   0:02 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-31 02:26:08,166 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-31 02:26:08,168 [INFO] main: SKYAIUSDT | Bull:long(62%) Bear:short(75%)
 2026-05-31 02:26:10,648 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-31 02:26:10,649 [INFO] main: SKYAIUSDT | Judge:SHORT conf=85% size=15.0%
@@ -749,6 +748,7 @@ root     1046995  0.0  1.0  56068 42912 ?        Ss   May30   0:02 /opt/ensemble
 2026-05-31 02:26:44,041 [INFO] main: ETHUSDT | Judge:HOLD conf=55% size=0.0%
 2026-05-31 02:26:44,041 [INFO] main: ETHUSDT | RL adj=55.0%
 2026-05-31 02:26:46,043 [INFO] main: Next scan in 30min (always-30min)
+2026-05-31 02:36:27,867 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -766,7 +766,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       840Mi       520Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       837Mi       523Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
