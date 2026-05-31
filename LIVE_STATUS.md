@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-31 08:30:01 UTC
+Generated: 2026-05-31 08:40:01 UTC
 
 ## Services
 ```
@@ -749,7 +749,6 @@ root     1060304  0.0  1.0  54320 42128 ?        Ss   06:59   0:00 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-31 08:11:34,416 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-05-31 08:11:34,418 [INFO] main: HUSDT | Bull:flat(25%) Bear:short(60%)
 2026-05-31 08:11:36,800 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-31 08:11:36,801 [INFO] main: HUSDT | Judge:SHORT conf=65% size=15.0%
@@ -779,6 +778,7 @@ root     1060304  0.0  1.0  54320 42128 ?        Ss   06:59   0:00 /opt/ensemble
 2026-05-31 08:12:06,071 [INFO] main: HBARUSDT | Judge:HOLD conf=55% size=0.0%
 2026-05-31 08:12:06,071 [INFO] main: HBARUSDT | RL adj=55.0%
 2026-05-31 08:12:08,072 [INFO] main: Next scan in 30min (always-30min)
+2026-05-31 08:36:31,984 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -796,7 +796,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       854Mi       426Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       840Mi       439Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
