@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-05-31 03:10:01 UTC
+Generated: 2026-05-31 03:20:01 UTC
 
 ## Services
 ```
@@ -11,14 +11,14 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      999913  0.0  1.2 133404 48140 ?        Ssl  May28   0:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1046809  0.1  3.0 715100 121064 ?       Ssl  May30   1:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1046809  0.1  3.1 715100 121084 ?       Ssl  May30   1:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root     1046995  0.0  1.0  56068 42912 ?        Ss   May30   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 963.7803799289434,
+  "balance": 981.7515249289434,
   "positions": {
     "SUIUSDT": {
       "id": "PAPER_SUIUSDT_1780156745",
@@ -30,18 +30,6 @@ root     1046995  0.0  1.0  56068 42912 ?        Ss   May30   0:02 /opt/ensemble
       "opened_at": "2026-05-30T15:59:05.068308",
       "cost": 19.999993728,
       "notional": 99.99996863999999,
-      "leverage": 5
-    },
-    "TAOUSDT": {
-      "id": "PAPER_TAOUSDT_1780167442",
-      "symbol": "TAOUSDT",
-      "side": "short",
-      "entry_price": 254.1,
-      "qty": 0.3935,
-      "confidence": 75,
-      "opened_at": "2026-05-30T18:57:22.393102",
-      "cost": 19.99767,
-      "notional": 99.98835,
       "leverage": 5
     }
   },
@@ -711,19 +699,32 @@ root     1046995  0.0  1.0  56068 42912 ?        Ss   May30   0:02 /opt/ensemble
       "closed_at": "2026-05-31T00:34:40.028413",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_TAOUSDT_1780167442",
+      "symbol": "TAOUSDT",
+      "side": "short",
+      "entry_price": 254.1,
+      "qty": 0.3935,
+      "confidence": 75,
+      "opened_at": "2026-05-30T18:57:22.393102",
+      "cost": 19.99767,
+      "notional": 99.98835,
+      "leverage": 5,
+      "exit_price": 259.25,
+      "pnl_pct": -10.13,
+      "pnl_usdt": -2.03,
+      "closed_at": "2026-05-31T03:18:51.676166",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 3.7780436569437987
+  "total_pnl": 1.7515186569437966
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-05-31 03:00:15,255 [INFO] main: BNBUSDT | RL adj=50.0%
-2026-05-31 03:00:21,872 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-05-31 03:00:22,450 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-05-31 03:00:22,452 [INFO] main: ONDOUSDT | Bull:flat(25%) Bear:short(80%)
-2026-05-31 03:00:25,503 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-31 03:00:25,505 [INFO] main: ONDOUSDT | Judge:HOLD conf=47% size=0.0%
 2026-05-31 03:00:25,505 [INFO] main: ONDOUSDT | RL adj=47.0%
 2026-05-31 03:00:32,034 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -749,6 +750,11 @@ root     1046995  0.0  1.0  56068 42912 ?        Ss   May30   0:02 /opt/ensemble
 2026-05-31 03:00:52,889 [INFO] main: ETHUSDT | Context score=-0.1 bias=0.1
 2026-05-31 03:00:52,889 [INFO] main: ETHUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-05-31 03:00:54,902 [INFO] main: Next scan in 30min (always-30min)
+2026-05-31 03:18:51,675 [INFO] positions: STOP_LOSS TAOUSDT short PnL:-2.03%
+2026-05-31 03:18:51,679 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT TAOUSDT @ 259.2500 PnL: -10.13% (-2.03 USDT) | Баланс: 981.75
+2026-05-31 03:18:51,946 [INFO] positions: LOSS TAOUSDT short PnL:-2.03% reason:stop_loss
+2026-05-31 03:18:51,946 [INFO] positions: Lessons: The bear case signals were not strong enough to overcome the ranging regime, resulting in a stop loss. The trade did not achieve the anticipated 4% price decline, instead closing at a 2.03% loss. This outcome highlights the importance of considering the prevailing market regime when evaluating trade opportunities.
+2026-05-31 03:18:51,946 [INFO] rl: RL learned from short TAOUSDT: loss -2.03% | weights bull=0.997 bear=0.939 judge=1.064 threshold=64.61
 ```
 
 ## Disk
@@ -766,7 +772,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       827Mi       532Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       828Mi       530Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
