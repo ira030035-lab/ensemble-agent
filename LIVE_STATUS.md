@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-01 23:30:01 UTC
+Generated: 2026-06-01 23:40:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      999913  0.0  1.2 133480 48312 ?        Ssl  May28   0:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1046809  0.1  3.1 717468 123648 ?       Ssl  May30   5:52 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1046809  0.1  3.1 718492 124412 ?       Ssl  May30   5:52 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root     1060304  0.0  1.1  57036 44008 ?        Ss   May31   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
@@ -784,7 +784,6 @@ root     1060304  0.0  1.1  57036 44008 ?        Ss   May31   0:01 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-01 23:18:05,928 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-01 23:18:05,929 [INFO] main: ETHUSDT | Bull:flat(25%) Bear:short(70%)
 2026-06-01 23:18:08,412 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-01 23:18:08,413 [INFO] main: ETHUSDT | Judge:HOLD conf=50% size=0.0%
@@ -814,6 +813,7 @@ root     1060304  0.0  1.1  57036 44008 ?        Ss   May31   0:01 /opt/ensemble
 2026-06-01 23:18:38,284 [INFO] main: INJUSDT | Context score=-0.1 bias=0.1
 2026-06-01 23:18:38,284 [INFO] main: INJUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-01 23:18:40,286 [INFO] main: Next scan in 30min (always-30min)
+2026-06-01 23:37:00,923 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -831,7 +831,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       855Mi       355Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       846Mi       363Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
