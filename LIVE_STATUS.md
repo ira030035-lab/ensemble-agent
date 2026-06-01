@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-01 13:30:01 UTC
+Generated: 2026-06-01 13:40:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      999913  0.0  1.2 133480 48312 ?        Ssl  May28   0:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1046809  0.1  3.2 718332 125328 ?       Ssl  May30   4:45 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1046809  0.1  3.2 718332 125328 ?       Ssl  May30   4:46 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root     1060304  0.0  1.1  57036 44008 ?        Ss   May31   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
@@ -784,7 +784,6 @@ root     1060304  0.0  1.1  57036 44008 ?        Ss   May31   0:01 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-01 13:17:34,053 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-01 13:17:34,054 [INFO] main: ASTERUSDT | Bull:flat(15%) Bear:short(90%)
 2026-06-01 13:17:38,058 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-01 13:17:38,060 [INFO] main: ASTERUSDT | Judge:SHORT conf=80% size=15.0%
@@ -814,6 +813,7 @@ root     1060304  0.0  1.1  57036 44008 ?        Ss   May31   0:01 /opt/ensemble
 2026-06-01 13:18:19,010 [INFO] main: DOGEUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-01 13:18:19,010 [INFO] main: DOGEUSDT | RL adj=55.0%
 2026-06-01 13:18:21,012 [INFO] main: Next scan in 30min (always-30min)
+2026-06-01 13:36:53,994 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -831,7 +831,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       846Mi       381Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       842Mi       384Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
