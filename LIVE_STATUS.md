@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-01 03:30:01 UTC
+Generated: 2026-06-01 03:40:01 UTC
 
 ## Services
 ```
@@ -784,7 +784,6 @@ root     1060304  0.0  1.1  57036 44008 ?        Ss   May31   0:01 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-01 03:17:14,536 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
 2026-06-01 03:17:17,493 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-01 03:17:17,945 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-01 03:17:17,946 [INFO] main: FETUSDT | Bull:long(62%) Bear:short(70%)
@@ -814,6 +813,7 @@ root     1060304  0.0  1.1  57036 44008 ?        Ss   May31   0:01 /opt/ensemble
 2026-06-01 03:17:51,266 [INFO] main: BCHUSDT | Context score=-0.11 bias=0.1
 2026-06-01 03:17:51,267 [INFO] main: BCHUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-01 03:17:53,283 [INFO] main: Next scan in 30min (always-30min)
+2026-06-01 03:36:46,953 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -831,7 +831,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       855Mi       296Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       851Mi       298Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
