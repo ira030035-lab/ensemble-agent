@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-01 19:00:01 UTC
+Generated: 2026-06-01 19:10:01 UTC
 
 ## Services
 ```
@@ -784,7 +784,6 @@ root     1060304  0.0  1.1  57036 44008 ?        Ss   May31   0:01 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-01 18:39:17,447 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-01 18:39:17,449 [INFO] main: ASTERUSDT | Bull:flat(25%) Bear:short(75%)
 2026-06-01 18:39:20,991 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-01 18:39:20,992 [INFO] main: ASTERUSDT | Judge:SHORT conf=85% size=15.0%
@@ -814,6 +813,7 @@ root     1060304  0.0  1.1  57036 44008 ?        Ss   May31   0:01 /opt/ensemble
 2026-06-01 18:39:59,119 [INFO] main: STGUSDT | Context score=-0.1 bias=0.1
 2026-06-01 18:39:59,119 [INFO] main: STGUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-01 18:40:01,160 [INFO] main: Next scan in 30min (always-30min)
+2026-06-01 19:10:01,186 [INFO] main: Scanning 30 symbols...
 ```
 
 ## Disk
@@ -831,7 +831,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       854Mi       362Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       847Mi       369Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
