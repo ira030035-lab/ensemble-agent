@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-01 10:30:01 UTC
+Generated: 2026-06-01 10:40:01 UTC
 
 ## Services
 ```
@@ -784,7 +784,6 @@ root     1060304  0.0  1.1  57036 44008 ?        Ss   May31   0:01 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-01 10:21:55,168 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-01 10:21:55,170 [INFO] main: DOGEUSDT | Judge:SHORT conf=70% size=15.0%
 2026-06-01 10:21:55,170 [INFO] main: DOGEUSDT | RL adj=80.0%
 2026-06-01 10:21:55,190 [INFO] main: DOGEUSDT | Context score=-0.1 bias=0.1
@@ -814,12 +813,13 @@ root     1060304  0.0  1.1  57036 44008 ?        Ss   May31   0:01 /opt/ensemble
 2026-06-01 10:22:26,677 [INFO] main: ALLOUSDT | Context score=-0.1 bias=0.1
 2026-06-01 10:22:26,677 [INFO] main: ALLOUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-01 10:22:28,680 [INFO] main: Next scan in 30min (always-30min)
+2026-06-01 10:36:51,867 [INFO] main: Symbols: 30
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  896K  381M   1% /run
+tmpfs           382M  900K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  8.6G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -831,7 +831,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       842Mi       392Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       833Mi       400Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
