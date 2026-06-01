@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-01 01:30:01 UTC
+Generated: 2026-06-01 01:40:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      999913  0.0  1.2 133480 48312 ?        Ssl  May28   0:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1046809  0.1  3.2 719968 126152 ?       Ssl  May30   3:32 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1046809  0.1  3.1 717972 124284 ?       Ssl  May30   3:32 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root     1060304  0.0  1.1  55936 43720 ?        Ss   May31   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
@@ -784,8 +784,6 @@ root     1060304  0.0  1.1  55936 43720 ?        Ss   May31   0:01 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-01 01:29:25,559 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-01 01:29:25,616 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-01 01:29:25,617 [INFO] main: HBARUSDT | Bull:flat(15%) Bear:short(75%)
 2026-06-01 01:29:27,966 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-01 01:29:27,967 [INFO] main: HBARUSDT | Judge:SHORT conf=75% size=15.0%
@@ -814,6 +812,8 @@ root     1060304  0.0  1.1  55936 43720 ?        Ss   May31   0:01 /opt/ensemble
 2026-06-01 01:30:00,296 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-01 01:30:00,298 [INFO] main: LABUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-01 01:30:00,298 [INFO] main: LABUSDT | RL adj=50.0%
+2026-06-01 01:30:02,300 [INFO] main: Next scan in 30min (always-30min)
+2026-06-01 01:36:45,419 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -831,7 +831,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       863Mi       292Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       841Mi       313Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
