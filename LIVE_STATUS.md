@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-01 06:30:01 UTC
+Generated: 2026-06-01 06:40:01 UTC
 
 ## Services
 ```
@@ -784,7 +784,6 @@ root     1060304  0.0  1.1  57036 44008 ?        Ss   May31   0:01 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-01 06:13:43,104 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-01 06:13:43,105 [INFO] main: HBARUSDT | Bull:flat(25%) Bear:short(70%)
 2026-06-01 06:13:46,002 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-01 06:13:46,003 [INFO] main: HBARUSDT | Judge:SHORT conf=75% size=15.0%
@@ -814,6 +813,7 @@ root     1060304  0.0  1.1  57036 44008 ?        Ss   May31   0:01 /opt/ensemble
 2026-06-01 06:14:29,479 [INFO] main: ZECUSDT | Context score=-0.1 bias=0.1
 2026-06-01 06:14:29,479 [INFO] main: ZECUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-01 06:14:31,503 [INFO] main: Next scan in 30min (always-30min)
+2026-06-01 06:36:49,090 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -831,7 +831,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       862Mi       379Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       843Mi       398Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
