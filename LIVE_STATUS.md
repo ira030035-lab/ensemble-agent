@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-01 21:20:01 UTC
+Generated: 2026-06-01 21:30:01 UTC
 
 ## Services
 ```
@@ -784,14 +784,6 @@ root     1060304  0.0  1.1  57036 44008 ?        Ss   May31   0:01 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-01 20:59:03,881 [INFO] main: DOGEUSDT | macro BLOCK (long при BTC downtrend)
-2026-06-01 20:59:10,133 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-01 20:59:10,755 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-01 20:59:10,756 [INFO] main: XLMUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-01 20:59:13,286 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-01 20:59:13,287 [INFO] main: XLMUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-01 20:59:13,287 [INFO] main: XLMUSDT | RL adj=86.4%
-2026-06-01 20:59:13,304 [INFO] main: XLMUSDT | Context score=-0.1 bias=0.1
 2026-06-01 20:59:13,304 [INFO] main: XLMUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-01 20:59:19,046 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-01 20:59:20,629 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -814,6 +806,14 @@ root     1060304  0.0  1.1  57036 44008 ?        Ss   May31   0:01 /opt/ensemble
 2026-06-01 20:59:42,908 [INFO] main: PEPEUSDT | Context score=-0.1 bias=0.1
 2026-06-01 20:59:42,908 [INFO] main: PEPEUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-01 20:59:44,954 [INFO] main: Next scan in 30min (always-30min)
+2026-06-01 21:29:44,960 [INFO] main: Scanning 30 symbols...
+2026-06-01 21:29:50,431 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-01 21:29:50,432 [INFO] main: DOGEUSDT | Bull:flat(15%) Bear:short(68%)
+2026-06-01 21:29:52,378 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-01 21:29:52,380 [INFO] main: DOGEUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-01 21:29:52,380 [INFO] main: DOGEUSDT | RL adj=50.0%
+2026-06-01 21:30:01,405 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-01 21:30:01,409 [INFO] main: BCHUSDT | Bull:flat(15%) Bear:short(78%)
 ```
 
 ## Disk
@@ -831,7 +831,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       845Mi       368Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       863Mi       350Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
