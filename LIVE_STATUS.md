@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-02 21:30:01 UTC
+Generated: 2026-06-02 21:40:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      999913  0.0  1.2 133480 48384 ?        Ssl  May28   0:29 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1046809  0.1  3.2 720700 127028 ?       Ssl  May30   8:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1046809  0.1  3.2 720700 127028 ?       Ssl  May30   8:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
@@ -941,7 +941,6 @@ root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-02 21:21:07,656 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-02 21:21:07,995 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-02 21:21:07,996 [INFO] main: STGUSDT | Bull:flat(15%) Bear:short(80%)
 2026-06-02 21:21:10,027 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -971,6 +970,7 @@ root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble
 2026-06-02 21:21:28,881 [INFO] main: NEARUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-02 21:21:28,881 [INFO] main: NEARUSDT | RL adj=55.0%
 2026-06-02 21:21:30,885 [INFO] main: Next scan in 30min (always-30min)
+2026-06-02 21:37:16,601 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -988,7 +988,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       855Mi       349Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       852Mi       353Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
