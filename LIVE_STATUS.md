@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-02 19:50:01 UTC
+Generated: 2026-06-02 20:00:01 UTC
 
 ## Services
 ```
@@ -11,40 +11,15 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      999913  0.0  1.2 133480 48312 ?        Ssl  May28   0:28 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1046809  0.1  3.2 720688 126848 ?       Ssl  May30   8:12 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1046809  0.1  3.2 720688 126864 ?       Ssl  May30   8:12 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 972.1176104249437,
-  "positions": {
-    "ETHUSDT": {
-      "id": "PAPER_ETHUSDT_1780420452",
-      "symbol": "ETHUSDT",
-      "side": "short",
-      "entry_price": 1923.21,
-      "qty": 0.052,
-      "confidence": 85,
-      "opened_at": "2026-06-02T17:14:12.757658",
-      "cost": 20.001383999999998,
-      "notional": 100.00692,
-      "leverage": 5
-    },
-    "BNBUSDT": {
-      "id": "PAPER_BNBUSDT_1780420583",
-      "symbol": "BNBUSDT",
-      "side": "short",
-      "entry_price": 664.68,
-      "qty": 0.1504,
-      "confidence": 90,
-      "opened_at": "2026-06-02T17:16:23.851714",
-      "cost": 19.9935744,
-      "notional": 99.967872,
-      "leverage": 5
-    }
-  },
+  "balance": 1013.0889608249437,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -855,24 +830,50 @@ root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble
       "closed_at": "2026-06-02T19:34:42.291820",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ETHUSDT_1780420452",
+      "symbol": "ETHUSDT",
+      "side": "short",
+      "entry_price": 1923.21,
+      "qty": 0.052,
+      "confidence": 85,
+      "opened_at": "2026-06-02T17:14:12.757658",
+      "cost": 20.001383999999998,
+      "notional": 100.00692,
+      "leverage": 5,
+      "exit_price": 1913.92,
+      "pnl_pct": 2.42,
+      "pnl_usdt": 0.48,
+      "closed_at": "2026-06-02T19:52:02.811555",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BNBUSDT_1780420583",
+      "symbol": "BNBUSDT",
+      "side": "short",
+      "entry_price": 664.68,
+      "qty": 0.1504,
+      "confidence": 90,
+      "opened_at": "2026-06-02T17:16:23.851714",
+      "cost": 19.9935744,
+      "notional": 99.967872,
+      "leverage": 5,
+      "exit_price": 661.4,
+      "pnl_pct": 2.47,
+      "pnl_usdt": 0.49,
+      "closed_at": "2026-06-02T19:52:03.231420",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 12.112568824943818
+  "total_pnl": 13.088960824943811
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-02 19:36:52,564 [INFO] main: DOGEUSDT | RL adj=91.5%
-2026-06-02 19:36:52,589 [INFO] main: DOGEUSDT | Context score=-0.05 bias=0.05
-2026-06-02 19:36:52,589 [INFO] main: DOGEUSDT | gate PASS (Judge 80/70 RL 91.5/64.49 slack=±3)
-2026-06-02 19:36:52,590 [INFO] positions: Correlation block: skip SHORT DOGEUSDT (corr 0.96 >= 0.85 with ETHUSDT short)
-2026-06-02 19:36:58,394 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-02 19:37:00,597 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-02 19:37:00,599 [INFO] main: FILUSDT | Bull:flat(15%) Bear:short(90%)
-2026-06-02 19:37:03,318 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-02 19:37:03,320 [INFO] main: FILUSDT | Judge:SHORT conf=90% size=20.0%
-2026-06-02 19:37:03,320 [INFO] main: FILUSDT | RL adj=100.0%
 2026-06-02 19:37:03,338 [INFO] main: FILUSDT | Context score=-0.05 bias=0.05
 2026-06-02 19:37:03,339 [INFO] main: FILUSDT | gate PASS (Judge 90/70 RL 100.0/64.49 slack=±3)
 2026-06-02 19:37:03,340 [INFO] positions: Correlation block: skip SHORT FILUSDT (corr 0.9 >= 0.85 with ETHUSDT short)
@@ -893,6 +894,16 @@ root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble
 2026-06-02 19:37:23,003 [INFO] main: TAOUSDT | gate PASS (Judge 88/70 RL 99.5/64.49 slack=±3)
 2026-06-02 19:37:23,004 [INFO] positions: Correlation block: skip SHORT TAOUSDT (corr 0.87 >= 0.85 with ETHUSDT short)
 2026-06-02 19:37:25,005 [INFO] main: Next scan in 30min (always-30min)
+2026-06-02 19:52:02,810 [INFO] positions: BREAKEVEN_STOP ETHUSDT short PnL:0.48%
+2026-06-02 19:52:02,815 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ETHUSDT @ 1913.9200 PnL: 2.42% (+0.48 USDT) | Баланс: 992.60
+2026-06-02 19:52:03,230 [INFO] positions: OK ETHUSDT short PnL:0.48% reason:breakeven_stop
+2026-06-02 19:52:03,230 [INFO] positions: Lessons: The downtrend signal was accurate, but the trade’s profit margin was marginal, and the stop‑loss was hit almost immediately, leaving only a breakeven gain. Low volume and high bearish sentiment can still produce choppy moves; avoid over‑reliance on sentiment alone. Keep position sizing tight and set realistic profit targets when the edge is small.
+2026-06-02 19:52:03,230 [INFO] rl: RL learned from short ETHUSDT: profit 0.48% | weights bull=0.967 bear=0.961 judge=1.071 threshold=64.46
+2026-06-02 19:52:03,230 [INFO] positions: BREAKEVEN_STOP BNBUSDT short PnL:0.49%
+2026-06-02 19:52:03,235 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT BNBUSDT @ 661.4000 PnL: 2.47% (+0.49 USDT) | Баланс: 1013.09
+2026-06-02 19:52:03,626 [INFO] positions: OK BNBUSDT short PnL:0.49% reason:breakeven_stop
+2026-06-02 19:52:03,627 [INFO] positions: Lessons: The short was entered with high conviction but the expected 4% drop never materialized, resulting only in a 0.49% gain from the breakeven stop. Over‑reliance on asymmetric risk assumptions and a weak bullish signal led to an overly optimistic target. Future trades should use tighter stop‑losses and validate conviction levels against real‑time market pressure.
+2026-06-02 19:52:03,627 [INFO] rl: RL learned from short BNBUSDT: profit 0.49% | weights bull=0.966 bear=0.962 judge=1.072 threshold=64.43
 ```
 
 ## Disk
@@ -910,7 +921,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       873Mi       333Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       880Mi       327Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
