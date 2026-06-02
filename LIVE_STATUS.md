@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-02 20:00:01 UTC
+Generated: 2026-06-02 20:10:01 UTC
 
 ## Services
 ```
@@ -11,15 +11,40 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      999913  0.0  1.2 133480 48312 ?        Ssl  May28   0:28 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1046809  0.1  3.2 720688 126864 ?       Ssl  May30   8:12 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1046809  0.1  3.2 720688 126912 ?       Ssl  May30   8:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 1013.0889608249437,
-  "positions": {},
+  "balance": 973.0889688609436,
+  "positions": {
+    "SUIUSDT": {
+      "id": "PAPER_SUIUSDT_1780430865",
+      "symbol": "SUIUSDT",
+      "side": "short",
+      "entry_price": 0.8299,
+      "qty": 120.4964,
+      "confidence": 70,
+      "opened_at": "2026-06-02T20:07:45.985424",
+      "cost": 19.999992472,
+      "notional": 99.99996236,
+      "leverage": 5
+    },
+    "ENAUSDT": {
+      "id": "PAPER_ENAUSDT_1780430923",
+      "symbol": "ENAUSDT",
+      "side": "short",
+      "entry_price": 0.09185,
+      "qty": 1088.7316,
+      "confidence": 80,
+      "opened_at": "2026-06-02T20:08:43.128152",
+      "cost": 19.999999492,
+      "notional": 99.99999746,
+      "leverage": 5
+    }
+  },
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -874,36 +899,36 @@ root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-02 19:37:03,338 [INFO] main: FILUSDT | Context score=-0.05 bias=0.05
-2026-06-02 19:37:03,339 [INFO] main: FILUSDT | gate PASS (Judge 90/70 RL 100.0/64.49 slack=±3)
-2026-06-02 19:37:03,340 [INFO] positions: Correlation block: skip SHORT FILUSDT (corr 0.9 >= 0.85 with ETHUSDT short)
-2026-06-02 19:37:09,572 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-02 19:37:10,718 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-02 19:37:10,721 [INFO] main: SKYAIUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-02 19:37:12,869 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-02 19:37:12,870 [INFO] main: SKYAIUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-02 19:37:12,871 [INFO] main: SKYAIUSDT | RL adj=50.0%
-2026-06-02 19:37:15,145 [INFO] main: Symbols: 30
-2026-06-02 19:37:19,841 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-02 19:37:20,609 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-02 19:37:20,611 [INFO] main: TAOUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-02 19:37:22,982 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-02 19:37:22,984 [INFO] main: TAOUSDT | Judge:SHORT conf=88% size=15.0%
-2026-06-02 19:37:22,984 [INFO] main: TAOUSDT | RL adj=99.5%
-2026-06-02 19:37:23,002 [INFO] main: TAOUSDT | Context score=-0.06 bias=0.05
-2026-06-02 19:37:23,003 [INFO] main: TAOUSDT | gate PASS (Judge 88/70 RL 99.5/64.49 slack=±3)
-2026-06-02 19:37:23,004 [INFO] positions: Correlation block: skip SHORT TAOUSDT (corr 0.87 >= 0.85 with ETHUSDT short)
-2026-06-02 19:37:25,005 [INFO] main: Next scan in 30min (always-30min)
-2026-06-02 19:52:02,810 [INFO] positions: BREAKEVEN_STOP ETHUSDT short PnL:0.48%
-2026-06-02 19:52:02,815 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ETHUSDT @ 1913.9200 PnL: 2.42% (+0.48 USDT) | Баланс: 992.60
-2026-06-02 19:52:03,230 [INFO] positions: OK ETHUSDT short PnL:0.48% reason:breakeven_stop
-2026-06-02 19:52:03,230 [INFO] positions: Lessons: The downtrend signal was accurate, but the trade’s profit margin was marginal, and the stop‑loss was hit almost immediately, leaving only a breakeven gain. Low volume and high bearish sentiment can still produce choppy moves; avoid over‑reliance on sentiment alone. Keep position sizing tight and set realistic profit targets when the edge is small.
-2026-06-02 19:52:03,230 [INFO] rl: RL learned from short ETHUSDT: profit 0.48% | weights bull=0.967 bear=0.961 judge=1.071 threshold=64.46
-2026-06-02 19:52:03,230 [INFO] positions: BREAKEVEN_STOP BNBUSDT short PnL:0.49%
-2026-06-02 19:52:03,235 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT BNBUSDT @ 661.4000 PnL: 2.47% (+0.49 USDT) | Баланс: 1013.09
-2026-06-02 19:52:03,626 [INFO] positions: OK BNBUSDT short PnL:0.49% reason:breakeven_stop
-2026-06-02 19:52:03,627 [INFO] positions: Lessons: The short was entered with high conviction but the expected 4% drop never materialized, resulting only in a 0.49% gain from the breakeven stop. Over‑reliance on asymmetric risk assumptions and a weak bullish signal led to an overly optimistic target. Future trades should use tighter stop‑losses and validate conviction levels against real‑time market pressure.
-2026-06-02 19:52:03,627 [INFO] rl: RL learned from short BNBUSDT: profit 0.49% | weights bull=0.966 bear=0.962 judge=1.072 threshold=64.43
+2026-06-02 20:09:23,514 [INFO] main: PEPEUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-02 20:09:27,493 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-02 20:09:27,495 [INFO] main: PEPEUSDT | Judge:SHORT conf=80% size=15.0%
+2026-06-02 20:09:27,495 [INFO] main: PEPEUSDT | RL adj=91.5%
+2026-06-02 20:09:27,517 [INFO] main: PEPEUSDT | Context score=-0.05 bias=0.05
+2026-06-02 20:09:27,518 [INFO] main: PEPEUSDT | gate PASS (Judge 80/70 RL 91.5/64.43 slack=±3)
+2026-06-02 20:09:27,519 [INFO] positions: Correlation block: skip SHORT PEPEUSDT (corr 0.91 >= 0.85 with SUIUSDT short)
+2026-06-02 20:09:35,087 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-02 20:09:36,212 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-02 20:09:36,213 [INFO] main: WLDUSDT | Bull:flat(15%) Bear:short(65%)
+2026-06-02 20:09:39,634 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-02 20:09:39,636 [INFO] main: WLDUSDT | Judge:SHORT conf=65% size=15.0%
+2026-06-02 20:09:39,636 [INFO] main: WLDUSDT | RL adj=74.4%
+2026-06-02 20:09:39,654 [INFO] main: WLDUSDT | Context score=-0.05 bias=0.05
+2026-06-02 20:09:39,654 [INFO] main: WLDUSDT | regime BLOCK (volatile)
+2026-06-02 20:09:46,226 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-02 20:09:46,929 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-02 20:09:46,930 [INFO] main: ETHUSDT | Bull:flat(15%) Bear:short(70%)
+2026-06-02 20:09:49,325 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-02 20:09:49,326 [INFO] main: ETHUSDT | Judge:SHORT conf=75% size=15.0%
+2026-06-02 20:09:49,327 [INFO] main: ETHUSDT | RL adj=85.1%
+2026-06-02 20:09:49,347 [INFO] main: ETHUSDT | Context score=-0.05 bias=0.05
+2026-06-02 20:09:49,347 [INFO] main: ETHUSDT | gate PASS (Judge 75/70 RL 85.1/64.43 slack=±3)
+2026-06-02 20:09:49,348 [INFO] positions: Correlation block: skip SHORT ETHUSDT (corr 0.89 >= 0.85 with SUIUSDT short)
+2026-06-02 20:09:55,705 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-02 20:09:56,243 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-02 20:09:56,245 [INFO] main: TONUSDT | Bull:long(58%) Bear:short(70%)
+2026-06-02 20:09:59,084 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-02 20:09:59,086 [INFO] main: TONUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-02 20:09:59,086 [INFO] main: TONUSDT | RL adj=50.0%
 ```
 
 ## Disk
@@ -921,7 +946,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       880Mi       327Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       874Mi       332Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
