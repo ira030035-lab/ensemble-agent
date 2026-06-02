@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-02 18:00:01 UTC
+Generated: 2026-06-02 18:10:01 UTC
 
 ## Services
 ```
@@ -10,15 +10,15 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root      999913  0.0  1.2 133480 48312 ?        Ssl  May28   0:27 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1046809  0.1  3.1 717468 124600 ?       Ssl  May30   7:59 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root      999913  0.0  1.2 133480 48312 ?        Ssl  May28   0:28 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1046809  0.1  3.1 717468 124612 ?       Ssl  May30   7:59 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 947.9874492569436,
+  "balance": 965.9599066469436,
   "positions": {
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1780420452",
@@ -30,18 +30,6 @@ root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble
       "opened_at": "2026-06-02T17:14:12.757658",
       "cost": 20.001383999999998,
       "notional": 100.00692,
-      "leverage": 5
-    },
-    "FETUSDT": {
-      "id": "PAPER_FETUSDT_1780420524",
-      "symbol": "FETUSDT",
-      "side": "short",
-      "entry_price": 0.2614,
-      "qty": 382.5555,
-      "confidence": 75,
-      "opened_at": "2026-06-02T17:15:24.790770",
-      "cost": 20.000001540000003,
-      "notional": 100.00000770000001,
       "leverage": 5
     },
     "BNBUSDT": {
@@ -813,19 +801,32 @@ root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble
       "closed_at": "2026-05-31T22:37:15.148368",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_FETUSDT_1780420524",
+      "symbol": "FETUSDT",
+      "side": "short",
+      "entry_price": 0.2614,
+      "qty": 382.5555,
+      "confidence": 75,
+      "opened_at": "2026-06-02T17:15:24.790770",
+      "cost": 20.000001540000003,
+      "notional": 100.00000770000001,
+      "leverage": 5,
+      "exit_price": 0.2667,
+      "pnl_pct": -10.14,
+      "pnl_usdt": -2.03,
+      "closed_at": "2026-06-02T18:01:47.465097",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 7.982409196943807
+  "total_pnl": 5.954865046943818
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-02 17:52:45,704 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-02 17:52:45,705 [INFO] main: EDGEUSDT | Judge:LONG conf=75% size=15.0%
-2026-06-02 17:52:45,705 [INFO] main: EDGEUSDT | RL adj=75.6%
-2026-06-02 17:52:45,714 [INFO] main: EDGEUSDT | Context score=-0.0 bias=0.05
-2026-06-02 17:52:45,714 [INFO] main: EDGEUSDT | regime BLOCK (volatile)
 2026-06-02 17:52:51,589 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-02 17:52:52,498 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-02 17:52:52,499 [INFO] main: HUSDT | Bull:flat(15%) Bear:short(75%)
@@ -851,6 +852,11 @@ root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble
 2026-06-02 17:53:13,186 [INFO] main: SKYAIUSDT | Context score=-0.05 bias=0.05
 2026-06-02 17:53:13,187 [INFO] main: SKYAIUSDT | regime BLOCK (volatile)
 2026-06-02 17:53:15,233 [INFO] main: Next scan in 30min (always-30min)
+2026-06-02 18:01:47,464 [INFO] positions: STOP_LOSS FETUSDT short PnL:-2.03%
+2026-06-02 18:01:47,469 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT FETUSDT @ 0.2667 PnL: -10.14% (-2.03 USDT) | Баланс: 965.96
+2026-06-02 18:01:47,746 [INFO] positions: LOSS FETUSDT short PnL:-2.03% reason:stop_loss
+2026-06-02 18:01:47,746 [INFO] positions: Lessons: The trade was based on bearish sentiment and a risk/reward framework indicating a potential 4% downside move. However, the stop loss was triggered, resulting in a 2.03% loss. This outcome suggests that the bearish sentiment was not strong enough to drive the expected price movement, and the risk/reward framework may need to be adjusted.
+2026-06-02 18:01:47,746 [INFO] rl: RL learned from short FETUSDT: loss -2.03% | weights bull=0.984 bear=0.948 judge=1.068 threshold=64.54
 ```
 
 ## Disk
@@ -868,7 +874,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       871Mi       339Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       857Mi       352Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
