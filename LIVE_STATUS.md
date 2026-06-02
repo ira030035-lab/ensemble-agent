@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-02 18:30:01 UTC
+Generated: 2026-06-02 18:40:01 UTC
 
 ## Services
 ```
@@ -839,7 +839,6 @@ root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-02 18:27:06,885 [INFO] main: ZECUSDT | Bull:long(62%) Bear:short(80%)
 2026-06-02 18:27:09,076 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-02 18:27:09,077 [INFO] main: ZECUSDT | Judge:LONG conf=70% size=15.0%
 2026-06-02 18:27:09,078 [INFO] main: ZECUSDT | RL adj=67.8%
@@ -869,6 +868,7 @@ root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble
 2026-06-02 18:27:36,683 [INFO] main: PEPEUSDT | gate PASS (Judge 70/70 RL 80.0/64.54 slack=±3)
 2026-06-02 18:27:36,684 [INFO] positions: 2/3 rule: skip SHORT PEPEUSDT (3/3 already short)
 2026-06-02 18:27:38,687 [INFO] main: Next scan in 30min (always-30min)
+2026-06-02 18:37:14,040 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -886,7 +886,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       868Mi       340Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       862Mi       347Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
