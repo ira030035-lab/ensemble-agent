@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-03 00:00:01 UTC
+Generated: 2026-06-03 00:10:01 UTC
 
 ## Services
 ```
@@ -946,7 +946,6 @@ root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-02 23:39:29,897 [INFO] main: LABUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-02 23:39:29,897 [INFO] main: LABUSDT | RL adj=55.0%
 2026-06-02 23:39:33,262 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
 2026-06-02 23:39:35,761 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -976,12 +975,13 @@ root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble
 2026-06-02 23:39:58,549 [INFO] main: SUIUSDT | Context score=-0.11 bias=0.1
 2026-06-02 23:39:58,549 [INFO] main: SUIUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-02 23:40:00,605 [INFO] main: Next scan in 30min (always-30min)
+2026-06-03 00:10:00,619 [INFO] main: Scanning 30 symbols...
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  900K  381M   1% /run
+tmpfs           382M  896K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  8.6G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -993,7 +993,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       866Mi       336Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       872Mi       329Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
