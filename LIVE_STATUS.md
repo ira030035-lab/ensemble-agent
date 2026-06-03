@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-03 13:40:01 UTC
+Generated: 2026-06-03 13:50:01 UTC
 
 ## Services
 ```
@@ -11,27 +11,15 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1121157  0.0  1.0  55332 41852 ?        Ss   06:46   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1121169  0.0  1.2 206032 47244 ?        Ssl  06:46   0:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.2  3.1 716720 122676 ?       Ssl  06:46   0:53 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121169  0.0  1.2 206032 47252 ?        Ssl  06:46   0:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1121216  0.2  3.1 716720 122700 ?       Ssl  06:46   0:53 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 952.6857316969437,
+  "balance": 973.0911166969437,
   "positions": {
-    "RENDERUSDT": {
-      "id": "PAPER_RENDERUSDT_1780486614",
-      "symbol": "RENDERUSDT",
-      "side": "long",
-      "entry_price": 2.22,
-      "qty": 45.045,
-      "confidence": 80,
-      "opened_at": "2026-06-03T11:36:54.110832",
-      "cost": 19.99998,
-      "notional": 99.99990000000001,
-      "leverage": 5
-    },
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1780488837",
       "symbol": "BNBUSDT",
@@ -1119,20 +1107,32 @@ root     1121216  0.2  3.1 716720 122676 ?       Ssl  06:46   0:53 /opt/ensemble
       "closed_at": "2026-06-03T10:58:11.388366",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_RENDERUSDT_1780486614",
+      "symbol": "RENDERUSDT",
+      "side": "long",
+      "entry_price": 2.22,
+      "qty": 45.045,
+      "confidence": 80,
+      "opened_at": "2026-06-03T11:36:54.110832",
+      "cost": 19.99998,
+      "notional": 99.99990000000001,
+      "leverage": 5,
+      "exit_price": 2.229,
+      "pnl_pct": 2.03,
+      "pnl_usdt": 0.41,
+      "closed_at": "2026-06-03T13:44:35.464368",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 12.684790356943804
+  "total_pnl": 13.090195356943799
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-03 13:25:20,709 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-03 13:25:20,711 [INFO] main: TAOUSDT | Bull:flat(35%) Bear:short(70%)
-2026-06-03 13:25:24,244 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-03 13:25:24,245 [INFO] main: TAOUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-03 13:25:24,245 [INFO] main: TAOUSDT | RL adj=85.0%
-2026-06-03 13:25:24,263 [INFO] main: TAOUSDT | Context score=-0.1 bias=0.1
 2026-06-03 13:25:24,263 [INFO] main: TAOUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-03 13:25:32,026 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-03 13:25:32,302 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -1157,6 +1157,12 @@ root     1121216  0.2  3.1 716720 122676 ?       Ssl  06:46   0:53 /opt/ensemble
 2026-06-03 13:25:59,435 [INFO] main: TONUSDT | Context score=-0.1 bias=0.1
 2026-06-03 13:25:59,435 [INFO] main: TONUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-03 13:26:01,497 [INFO] main: Next scan in 30min (always-30min)
+2026-06-03 13:44:35,463 [INFO] positions: BREAKEVEN_STOP RENDERUSDT long PnL:0.41%
+2026-06-03 13:44:35,469 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG RENDERUSDT @ 2.2290 PnL: 2.03% (+0.41 USDT) | Баланс: 973.09
+2026-06-03 13:44:35,754 [INFO] positions: OK RENDERUSDT long PnL:0.41% reason:breakeven_stop
+2026-06-03 13:44:35,755 [INFO] positions: Lessons: The trade was based on a bullish regime and positive 4h trend with potential for a 4% upside move. Despite this, the trade only reached breakeven and closed with a 0.41% profit. The high RSI and minor pullbacks were not enough to prevent the trade from reaching its full potential, resulting in a lower than expected return.
+2026-06-03 13:44:35,755 [INFO] rl: RL learned from long RENDERUSDT: profit 0.41% | weights bull=0.971 bear=0.950 judge=1.079 threshold=64.47
+2026-06-03 13:46:24,371 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1174,7 +1180,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       850Mi       523Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       857Mi       515Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
