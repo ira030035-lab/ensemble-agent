@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-03 06:30:01 UTC
+Generated: 2026-06-03 06:40:01 UTC
 
 ## Services
 ```
@@ -1067,7 +1067,6 @@ root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-03 06:11:06,226 [INFO] main: SKYAIUSDT | Judge:SHORT conf=85% size=15.0%
 2026-06-03 06:11:06,226 [INFO] main: SKYAIUSDT | RL adj=86.9%
 2026-06-03 06:11:06,253 [INFO] main: SKYAIUSDT | Context score=-0.1 bias=0.1
 2026-06-03 06:11:06,253 [INFO] main: SKYAIUSDT | side-bias BLOCK (market bullish, short forbidden)
@@ -1097,6 +1096,7 @@ root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble
 2026-06-03 06:17:13,044 [INFO] positions: LOSS XRPUSDT short PnL:-2.03% reason:stop_loss
 2026-06-03 06:17:13,044 [INFO] positions: Lessons: The trade was based on a bearish setup with strong bearish factors, but it ultimately resulted in a stop loss being hit. The 2:1 risk/reward ratio was not achieved, and the trade closed with a 2.03% loss. This outcome suggests that the bearish factors may not have been as strong as initially thought, or that the market was more resilient than expected.
 2026-06-03 06:17:13,044 [INFO] rl: RL learned from short XRPUSDT: loss -2.03% | weights bull=0.964 bear=0.962 judge=1.074 threshold=64.56
+2026-06-03 06:37:22,534 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1114,7 +1114,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       860Mi       309Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       859Mi       310Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
