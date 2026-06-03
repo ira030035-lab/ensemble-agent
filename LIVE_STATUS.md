@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-03 08:40:01 UTC
+Generated: 2026-06-03 08:50:01 UTC
 
 ## Services
 ```
@@ -1067,7 +1067,6 @@ root     1121216  0.2  3.1 684796 122240 ?       Ssl  06:46   0:18 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-03 08:35:17,747 [INFO] main: APRUSDT | RL adj=50.0%
 2026-06-03 08:35:23,715 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-03 08:35:25,229 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-03 08:35:25,231 [INFO] main: SKYAIUSDT | Bull:flat(15%) Bear:short(70%)
@@ -1097,6 +1096,7 @@ root     1121216  0.2  3.1 684796 122240 ?       Ssl  06:46   0:18 /opt/ensemble
 2026-06-03 08:36:02,749 [INFO] main: LINKUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-03 08:36:02,749 [INFO] main: LINKUSDT | RL adj=55.0%
 2026-06-03 08:36:04,751 [INFO] main: Next scan in 30min (always-30min)
+2026-06-03 08:46:20,927 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1114,7 +1114,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       844Mi       556Mi       4.8Mi       2.6Gi       2.9Gi
+Mem:           3.7Gi       853Mi       546Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
