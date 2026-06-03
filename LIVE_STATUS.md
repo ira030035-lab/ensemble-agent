@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-03 22:30:01 UTC
+Generated: 2026-06-03 22:40:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.0  55332 41852 ?        Ss   06:46   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206032 47464 ?        Ssl  06:46   0:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.2  3.1 717852 124516 ?       Ssl  06:46   2:00 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.2  3.1 717852 124528 ?       Ssl  06:46   2:00 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 965.5698480169436,
+  "balance": 986.0124680169437,
   "positions": {
-    "ETHUSDT": {
-      "id": "PAPER_ETHUSDT_1780522782",
-      "symbol": "ETHUSDT",
-      "side": "long",
-      "entry_price": 1816.92,
-      "qty": 0.055,
-      "confidence": 70,
-      "opened_at": "2026-06-03T21:39:42.330344",
-      "cost": 19.98612,
-      "notional": 99.9306,
-      "leverage": 5
-    },
     "HYPEUSDT": {
       "id": "PAPER_HYPEUSDT_1780524900",
       "symbol": "HYPEUSDT",
@@ -1233,19 +1221,32 @@ root     1121216  0.2  3.1 717852 124516 ?       Ssl  06:46   2:00 /opt/ensemble
       "closed_at": "2026-06-03T20:46:21.481071",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ETHUSDT_1780522782",
+      "symbol": "ETHUSDT",
+      "side": "long",
+      "entry_price": 1816.92,
+      "qty": 0.055,
+      "confidence": 70,
+      "opened_at": "2026-06-03T21:39:42.330344",
+      "cost": 19.98612,
+      "notional": 99.9306,
+      "leverage": 5,
+      "exit_price": 1825.22,
+      "pnl_pct": 2.28,
+      "pnl_usdt": 0.46,
+      "closed_at": "2026-06-03T22:37:42.234919",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 5.555468016943852
+  "total_pnl": 6.011968016943849
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-03 22:15:42,499 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-03 22:15:42,501 [INFO] main: INJUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-03 22:15:42,501 [INFO] main: INJUSDT | RL adj=86.5%
-2026-06-03 22:15:42,531 [INFO] main: INJUSDT | Context score=-0.1 bias=0.1
-2026-06-03 22:15:42,531 [INFO] main: INJUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-03 22:15:49,002 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-03 22:15:49,521 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-03 22:15:49,522 [INFO] main: OPNUSDT | Bull:flat(15%) Bear:short(75%)
@@ -1271,6 +1272,11 @@ root     1121216  0.2  3.1 717852 124516 ?       Ssl  06:46   2:00 /opt/ensemble
 2026-06-03 22:16:15,169 [INFO] main: ADAUSDT | Context score=-0.1 bias=0.1
 2026-06-03 22:16:15,169 [INFO] main: ADAUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-03 22:16:17,217 [INFO] main: Next scan in 30min (always-30min)
+2026-06-03 22:37:42,234 [INFO] positions: BREAKEVEN_STOP ETHUSDT long PnL:0.46%
+2026-06-03 22:37:42,239 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG ETHUSDT @ 1825.2200 PnL: 2.28% (+0.46 USDT) | Баланс: 986.01
+2026-06-03 22:37:42,555 [INFO] positions: OK ETHUSDT long PnL:0.46% reason:breakeven_stop
+2026-06-03 22:37:42,555 [INFO] positions: Lessons: The trade was based on an oversold setup expecting a strong upward move but ultimately closed at breakeven. The 2:1 risk/reward ratio was not achieved as the trade did not reach the 4% target. The outcome suggests that the trending_down regime may have been a more significant factor than the oversold setup.
+2026-06-03 22:37:42,555 [INFO] rl: RL learned from long ETHUSDT: profit 0.46% | weights bull=0.961 bear=0.960 judge=1.079 threshold=64.58
 ```
 
 ## Disk
@@ -1288,7 +1294,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       856Mi       483Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       848Mi       491Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
