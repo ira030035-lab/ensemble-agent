@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-03 20:40:01 UTC
+Generated: 2026-06-03 20:50:01 UTC
 
 ## Services
 ```
@@ -12,27 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.0  55332 41852 ?        Ss   06:46   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206032 47464 ?        Ssl  06:46   0:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.2  3.1 716720 123440 ?       Ssl  06:46   1:46 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.2  3.1 716720 123444 ?       Ssl  06:46   1:46 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 987.5673499089437,
-  "positions": {
-    "SUIUSDT": {
-      "id": "PAPER_SUIUSDT_1780510154",
-      "symbol": "SUIUSDT",
-      "side": "long",
-      "entry_price": 0.8251,
-      "qty": 121.1974,
-      "confidence": 75,
-      "opened_at": "2026-06-03T18:09:14.512216",
-      "cost": 19.999994948,
-      "notional": 99.99997474,
-      "leverage": 5
-    }
-  },
+  "balance": 1005.5554680169437,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -1203,20 +1190,32 @@ root     1121216  0.2  3.1 716720 123440 ?       Ssl  06:46   1:46 /opt/ensemble
       "closed_at": "2026-06-03T19:52:16.309373",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_SUIUSDT_1780510154",
+      "symbol": "SUIUSDT",
+      "side": "long",
+      "entry_price": 0.8251,
+      "qty": 121.1974,
+      "confidence": 75,
+      "opened_at": "2026-06-03T18:09:14.512216",
+      "cost": 19.999994948,
+      "notional": 99.99997474,
+      "leverage": 5,
+      "exit_price": 0.8085,
+      "pnl_pct": -10.06,
+      "pnl_usdt": -2.01,
+      "closed_at": "2026-06-03T20:46:21.481071",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 7.567344856943845
+  "total_pnl": 5.555468016943852
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-03 20:31:21,580 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-03 20:31:21,582 [INFO] main: ENAUSDT | Bull:long(62%) Bear:short(70%)
-2026-06-03 20:31:23,733 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-03 20:31:23,733 [INFO] main: ENAUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-03 20:31:23,733 [INFO] main: ENAUSDT | RL adj=55.0%
-2026-06-03 20:31:29,276 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-03 20:31:30,350 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-03 20:31:30,351 [INFO] main: XRPUSDT | Bull:flat(15%) Bear:short(90%)
 2026-06-03 20:31:32,589 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -1241,6 +1240,12 @@ root     1121216  0.2  3.1 716720 123440 ?       Ssl  06:46   1:46 /opt/ensemble
 2026-06-03 20:31:56,741 [INFO] main: APRUSDT | Context score=-0.1 bias=0.1
 2026-06-03 20:31:56,741 [INFO] main: APRUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-03 20:31:58,793 [INFO] main: Next scan in 30min (always-30min)
+2026-06-03 20:46:21,480 [INFO] positions: STOP_LOSS SUIUSDT long PnL:-2.01%
+2026-06-03 20:46:21,485 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG SUIUSDT @ 0.8085 PnL: -10.06% (-2.01 USDT) | Баланс: 1005.56
+2026-06-03 20:46:21,769 [INFO] positions: LOSS SUIUSDT long PnL:-2.01% reason:stop_loss
+2026-06-03 20:46:21,770 [INFO] positions: Lessons: Bull sentiment and MACD were not enough to overcome ranging market conditions. The asymmetric strategy's 2:1 risk/reward expectation was not met, resulting in a stop loss. This trade highlights the importance of considering market regime when making trading decisions.
+2026-06-03 20:46:21,770 [INFO] rl: RL learned from long SUIUSDT: loss -2.01% | weights bull=0.960 bear=0.961 judge=1.079 threshold=64.61
+2026-06-03 20:46:30,017 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1258,7 +1263,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       849Mi       497Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       852Mi       493Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
