@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-03 01:10:01 UTC
+Generated: 2026-06-03 01:20:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root      999913  0.0  1.2 133480 48384 ?        Ssl  May28   0:29 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1046809  0.1  3.2 720704 127044 ?       Ssl  May30   8:51 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1046809  0.1  3.1 718492 124960 ?       Ssl  May30   8:52 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 ```
 
@@ -946,27 +946,6 @@ root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-03 00:48:54,439 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-03 00:48:54,440 [INFO] main: BSBUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-03 00:48:57,236 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-03 00:48:57,238 [INFO] main: BSBUSDT | Judge:SHORT conf=70% size=15.0%
-2026-06-03 00:48:57,238 [INFO] main: BSBUSDT | RL adj=80.1%
-2026-06-03 00:48:57,256 [INFO] main: BSBUSDT | Context score=-0.1 bias=0.1
-2026-06-03 00:48:57,256 [INFO] main: BSBUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-06-03 00:49:04,141 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-03 00:49:04,640 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-03 00:49:04,641 [INFO] main: HYPEUSDT | Bull:flat(15%) Bear:short(60%)
-2026-06-03 00:49:07,752 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-03 00:49:07,754 [INFO] main: HYPEUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-03 00:49:07,754 [INFO] main: HYPEUSDT | RL adj=50.0%
-2026-06-03 00:49:14,228 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-03 00:49:15,415 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-03 00:49:15,417 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
-2026-06-03 00:49:15,417 [INFO] main: LINKUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-03 00:49:18,989 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-03 00:49:18,990 [INFO] main: LINKUSDT | Judge:SHORT conf=70% size=15.0%
-2026-06-03 00:49:18,991 [INFO] main: LINKUSDT | RL adj=80.8%
-2026-06-03 00:49:19,017 [INFO] main: LINKUSDT | Context score=-0.1 bias=0.1
 2026-06-03 00:49:19,017 [INFO] main: LINKUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-03 00:49:22,372 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
 2026-06-03 00:49:25,912 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -976,6 +955,27 @@ root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble
 2026-06-03 00:49:30,035 [INFO] main: EDGEUSDT | Judge:HOLD conf=45% size=0.0%
 2026-06-03 00:49:30,036 [INFO] main: EDGEUSDT | RL adj=45.0%
 2026-06-03 00:49:32,038 [INFO] main: Next scan in 30min (always-30min)
+2026-06-03 01:19:32,050 [INFO] main: Scanning 30 symbols...
+2026-06-03 01:19:34,183 [INFO] main: UBUSDT | Bull:long(72%) Bear:short(80%)
+2026-06-03 01:19:38,468 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 01:19:38,470 [INFO] main: UBUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-03 01:19:38,470 [INFO] main: UBUSDT | RL adj=55.0%
+2026-06-03 01:19:42,112 [INFO] main: TONUSDT | Bull:long(72%) Bear:short(70%)
+2026-06-03 01:19:45,106 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 01:19:45,108 [INFO] main: TONUSDT | Judge:LONG conf=70% size=15.0%
+2026-06-03 01:19:45,108 [INFO] main: TONUSDT | RL adj=70.4%
+2026-06-03 01:19:45,131 [INFO] main: TONUSDT | Context score=-0.0 bias=0.1
+2026-06-03 01:19:45,131 [INFO] main: TONUSDT | regime BLOCK (volatile)
+2026-06-03 01:19:49,032 [INFO] main: FETUSDT | Bull:long(70%) Bear:short(80%)
+2026-06-03 01:19:52,646 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 01:19:52,648 [INFO] main: FETUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-03 01:19:52,648 [INFO] main: FETUSDT | RL adj=50.0%
+2026-06-03 01:19:56,406 [INFO] main: EDGEUSDT | Bull:long(70%) Bear:short(80%)
+2026-06-03 01:20:00,279 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 01:20:00,280 [INFO] main: EDGEUSDT | Judge:SHORT conf=85% size=15.0%
+2026-06-03 01:20:00,280 [INFO] main: EDGEUSDT | RL adj=86.4%
+2026-06-03 01:20:00,379 [INFO] main: EDGEUSDT | Context score=-0.1 bias=0.1
+2026-06-03 01:20:00,379 [INFO] main: EDGEUSDT | side-bias BLOCK (market bullish, short forbidden)
 ```
 
 ## Disk
@@ -983,7 +983,7 @@ root     1060304  0.0  1.1  56904 44692 ?        Ss   May31   0:02 /opt/ensemble
 Filesystem      Size  Used Avail Use% Mounted on
 tmpfs           382M  896K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
-/dev/sda1        75G  8.6G   64G  12% /
+/dev/sda1        75G  8.7G   64G  13% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
 tmpfs           5.0M     0  5.0M   0% /run/lock
 /dev/sda15      253M  146K  252M   1% /boot/efi
@@ -993,7 +993,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       865Mi       334Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       867Mi       279Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
