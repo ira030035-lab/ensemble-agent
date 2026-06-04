@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-04 22:40:01 UTC
+Generated: 2026-06-04 22:50:01 UTC
 
 ## Services
 ```
@@ -1342,7 +1342,6 @@ root     1121216  0.2  3.2 720276 126792 ?       Ssl  Jun03   4:49 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-04 22:32:27,762 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-04 22:32:28,340 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-04 22:32:28,342 [INFO] main: HYPEUSDT | Bull:flat(15%) Bear:short(75%)
 2026-06-04 22:32:30,759 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -1372,6 +1371,7 @@ root     1121216  0.2  3.2 720276 126792 ?       Ssl  Jun03   4:49 /opt/ensemble
 2026-06-04 22:33:02,295 [INFO] main: DOGEUSDT | Context score=-0.1 bias=0.1
 2026-06-04 22:33:02,295 [INFO] main: DOGEUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-04 22:33:04,310 [INFO] main: Next scan in 30min (always-30min)
+2026-06-04 22:46:48,559 [INFO] main: Symbols: 30
 ```
 
 ## Disk
