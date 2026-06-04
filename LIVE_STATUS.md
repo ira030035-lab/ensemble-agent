@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-04 02:40:01 UTC
+Generated: 2026-06-04 02:50:01 UTC
 
 ## Services
 ```
@@ -1252,7 +1252,6 @@ root     1121216  0.2  3.1 716720 123548 ?       Ssl  Jun03   2:32 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-04 02:22:28,134 [INFO] main: HUSDT | Context score=-0.1 bias=0.1
 2026-06-04 02:22:28,135 [INFO] main: HUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-04 02:22:36,112 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-04 02:22:36,113 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
@@ -1282,6 +1281,7 @@ root     1121216  0.2  3.1 716720 123548 ?       Ssl  Jun03   2:32 /opt/ensemble
 2026-06-04 02:23:03,569 [INFO] main: ONDOUSDT | Context score=-0.1 bias=0.1
 2026-06-04 02:23:03,569 [INFO] main: ONDOUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-04 02:23:05,636 [INFO] main: Next scan in 30min (always-30min)
+2026-06-04 02:46:34,291 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1299,7 +1299,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       852Mi       471Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       852Mi       470Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
