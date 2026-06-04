@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-04 21:40:01 UTC
+Generated: 2026-06-04 21:50:01 UTC
 
 ## Services
 ```
@@ -12,27 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.0  55332 41852 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 205680 47140 ?        Ssl  Jun03   0:09 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.2  3.2 720276 126784 ?       Ssl  Jun03   4:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.2  3.2 720276 126788 ?       Ssl  Jun03   4:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 980.544402182575,
-  "positions": {
-    "AVAXUSDT": {
-      "id": "PAPER_AVAXUSDT_1780604016",
-      "symbol": "AVAXUSDT",
-      "side": "long",
-      "entry_price": 7.738,
-      "qty": 12.9232,
-      "confidence": 70,
-      "opened_at": "2026-06-04T20:13:36.346831",
-      "cost": 19.99994432,
-      "notional": 99.9997216,
-      "leverage": 5
-    }
-  },
+  "balance": 998.450788102575,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -1329,20 +1316,32 @@ root     1121216  0.2  3.2 720276 126784 ?       Ssl  Jun03   4:41 /opt/ensemble
       "closed_at": "2026-06-04T21:28:35.726592",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_AVAXUSDT_1780604016",
+      "symbol": "AVAXUSDT",
+      "side": "long",
+      "entry_price": 7.738,
+      "qty": 12.9232,
+      "confidence": 70,
+      "opened_at": "2026-06-04T20:13:36.346831",
+      "cost": 19.99994432,
+      "notional": 99.9997216,
+      "leverage": 5,
+      "exit_price": 7.576,
+      "pnl_pct": -10.47,
+      "pnl_usdt": -2.09,
+      "closed_at": "2026-06-04T21:41:14.162837",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 0.5443465025753378
+  "total_pnl": -1.5492118974246725
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-04 21:23:10,252 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-04 21:23:12,283 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-04 21:23:12,284 [INFO] main: BNBUSDT | Bull:flat(15%) Bear:short(78%)
-2026-06-04 21:23:14,479 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-04 21:23:14,480 [INFO] main: BNBUSDT | Judge:SHORT conf=80% size=15.0%
-2026-06-04 21:23:14,480 [INFO] main: BNBUSDT | RL adj=91.2%
 2026-06-04 21:23:14,499 [INFO] main: BNBUSDT | Context score=-0.1 bias=0.1
 2026-06-04 21:23:14,499 [INFO] main: BNBUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-04 21:23:20,857 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -1367,6 +1366,12 @@ root     1121216  0.2  3.2 720276 126784 ?       Ssl  Jun03   4:41 /opt/ensemble
 2026-06-04 21:28:36,290 [INFO] positions: LOSS BCHUSDT long PnL:-2.16% reason:stop_loss
 2026-06-04 21:28:36,291 [INFO] positions: Lessons: The trade was based on a bullish trend with a 3% upside potential but was stopped out for a 2.16% loss. The bullish signals from the MACD and 4h chart did not materialize. This trade highlights the importance of risk management and the potential for false signals in a trending market.
 2026-06-04 21:28:36,291 [INFO] rl: RL learned from long BCHUSDT: loss -2.16% | weights bull=0.952 bear=0.965 judge=1.083 threshold=64.75
+2026-06-04 21:41:14,162 [INFO] positions: STOP_LOSS AVAXUSDT long PnL:-2.09%
+2026-06-04 21:41:14,167 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG AVAXUSDT @ 7.5760 PnL: -10.47% (-2.09 USDT) | Баланс: 998.45
+2026-06-04 21:41:14,464 [INFO] positions: LOSS AVAXUSDT long PnL:-2.09% reason:stop_loss
+2026-06-04 21:41:14,464 [INFO] positions: Lessons: Bull sentiment was misinterpreted as the market continued trending down. The RSI 1h oversold signal failed to trigger a significant upside move. This trade highlights the importance of considering the overall trend when evaluating potential reversals.
+2026-06-04 21:41:14,464 [INFO] rl: RL learned from long AVAXUSDT: loss -2.09% | weights bull=0.949 bear=0.968 judge=1.083 threshold=64.8
+2026-06-04 21:46:47,906 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1384,7 +1389,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       862Mi       411Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       865Mi       408Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
