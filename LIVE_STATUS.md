@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-04 03:40:01 UTC
+Generated: 2026-06-04 03:50:01 UTC
 
 ## Services
 ```
@@ -11,28 +11,15 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1121157  0.0  1.0  55332 41852 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1121169  0.0  1.2 206032 47464 ?        Ssl  Jun03   0:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.2  3.1 717744 123588 ?       Ssl  Jun03   2:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121169  0.0  1.2 205680 47160 ?        Ssl  Jun03   0:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1121216  0.2  3.1 717744 123600 ?       Ssl  Jun03   2:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 983.6480271169637,
-  "positions": {
-    "PEPEUSDT": {
-      "id": "PAPER_PEPEUSDT_1780541592",
-      "symbol": "PEPEUSDT",
-      "side": "long",
-      "entry_price": 3.0006e-06,
-      "qty": 33326667.9997,
-      "confidence": 75,
-      "opened_at": "2026-06-04T02:53:12.379878",
-      "cost": 19.999999999979963,
-      "notional": 99.99999999989981,
-      "leverage": 5
-    }
-  },
+  "balance": 1006.7274112401159,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -1257,20 +1244,32 @@ root     1121216  0.2  3.1 717744 123588 ?       Ssl  Jun03   2:41 /opt/ensemble
       "closed_at": "2026-06-04T01:16:19.426237",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_PEPEUSDT_1780541592",
+      "symbol": "PEPEUSDT",
+      "side": "long",
+      "entry_price": 3.0006e-06,
+      "qty": 33326667.9997,
+      "confidence": 75,
+      "opened_at": "2026-06-04T02:53:12.379878",
+      "cost": 19.999999999979963,
+      "notional": 99.99999999989981,
+      "leverage": 5,
+      "exit_price": 3.093e-06,
+      "pnl_pct": 15.4,
+      "pnl_usdt": 3.08,
+      "closed_at": "2026-06-04T03:43:24.935945",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 3.6480271169438545
+  "total_pnl": 6.727411240116126
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-04 03:33:15,275 [INFO] main: DOGEUSDT | RL adj=70.0%
-2026-06-04 03:33:22,029 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-04 03:33:22,369 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-04 03:33:22,370 [INFO] main: ENAUSDT | Bull:flat(25%) Bear:short(60%)
-2026-06-04 03:33:25,623 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-04 03:33:25,624 [INFO] main: ENAUSDT | Judge:SHORT conf=60% size=10.0%
 2026-06-04 03:33:25,624 [INFO] main: ENAUSDT | RL adj=68.7%
 2026-06-04 03:33:25,642 [INFO] main: ENAUSDT | Context score=-0.1 bias=0.1
 2026-06-04 03:33:25,642 [INFO] main: ENAUSDT | side-bias BLOCK (market bullish, short forbidden)
@@ -1295,6 +1294,12 @@ root     1121216  0.2  3.1 717744 123588 ?       Ssl  Jun03   2:41 /opt/ensemble
 2026-06-04 03:34:01,483 [INFO] main: RENDERUSDT | Judge:HOLD conf=40% size=0.0%
 2026-06-04 03:34:01,483 [INFO] main: RENDERUSDT | RL adj=40.0%
 2026-06-04 03:34:03,486 [INFO] main: Next scan in 30min (always-30min)
+2026-06-04 03:43:24,935 [INFO] positions: TAKE-PROFIT PEPEUSDT long PnL:3.08%
+2026-06-04 03:43:24,940 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG PEPEUSDT @ 0.0000 PnL: 15.40% (+3.08 USDT) | Баланс: 1006.73
+2026-06-04 03:43:25,290 [INFO] positions: OK PEPEUSDT long PnL:3.08% reason:take_profit
+2026-06-04 03:43:25,291 [INFO] positions: Lessons: The trade was closed with a 3.08% profit, meeting the expected 4% upside move target, albeit partially. The initial analysis correctly identified the potential for a bounce given the oversold conditions and extreme fear sentiment. This outcome reinforces the effectiveness of using sentiment and technical indicators like RSI and MACD to identify potential reversal points in a trending_down regime.
+2026-06-04 03:43:25,291 [INFO] rl: RL learned from long PEPEUSDT: profit 3.08% | weights bull=0.963 bear=0.954 judge=1.083 threshold=64.6
+2026-06-04 03:46:35,010 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1312,7 +1317,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       861Mi       459Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       851Mi       469Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
