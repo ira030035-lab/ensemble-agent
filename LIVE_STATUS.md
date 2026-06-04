@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-04 09:20:01 UTC
+Generated: 2026-06-04 09:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.0  55332 41852 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 205680 47152 ?        Ssl  Jun03   0:08 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.2  3.1 717744 124120 ?       Ssl  Jun03   3:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.2  3.1 717744 124124 ?       Ssl  Jun03   3:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -1306,16 +1306,6 @@ root     1121216  0.2  3.1 717744 124120 ?       Ssl  Jun03   3:22 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-04 08:58:35,341 [INFO] main: LINKUSDT | Context score=-0.1 bias=0.1
-2026-06-04 08:58:35,342 [INFO] main: LINKUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-06-04 08:58:43,933 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-04 08:58:45,176 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-04 08:58:45,177 [INFO] main: MAGMAUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-04 08:58:49,295 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-04 08:58:49,297 [INFO] main: MAGMAUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-04 08:58:49,297 [INFO] main: MAGMAUSDT | RL adj=55.0%
-2026-06-04 08:58:55,563 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-04 08:58:56,756 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-04 08:58:56,757 [INFO] main: BTCUSDT | Bull:flat(15%) Bear:short(70%)
 2026-06-04 08:59:02,456 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-04 08:59:02,457 [INFO] main: BTCUSDT | Judge:SHORT conf=85% size=15.0%
@@ -1336,6 +1326,16 @@ root     1121216  0.2  3.1 717744 124120 ?       Ssl  Jun03   3:22 /opt/ensemble
 2026-06-04 09:12:39,889 [INFO] positions: LOSS PEPEUSDT long PnL:-2.0% reason:stop_loss
 2026-06-04 09:12:39,890 [INFO] positions: Lessons: The trade was based on a potential reversal due to oversold RSI and bullish sentiment but ultimately hit the stop loss. The 2:1 risk to reward ratio was not achieved as the trade closed at a 2% loss. This outcome suggests that relying solely on oversold conditions and sentiment may not be enough to guarantee a reversal in a trending down regime.
 2026-06-04 09:12:39,890 [INFO] rl: RL learned from long PEPEUSDT: loss -2.00% | weights bull=0.955 bear=0.961 judge=1.084 threshold=64.7
+2026-06-04 09:29:20,688 [INFO] main: Scanning 30 symbols...
+2026-06-04 09:29:25,584 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-04 09:29:36,628 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 09:29:36,629 [INFO] main: OPNUSDT | Bull:long(62%) Bear:short(75%)
+2026-06-04 09:29:45,316 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 09:29:45,318 [INFO] main: OPNUSDT | Judge:HOLD conf=58% size=0.0%
+2026-06-04 09:29:45,318 [INFO] main: OPNUSDT | RL adj=58.0%
+2026-06-04 09:29:52,677 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-04 09:29:57,304 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 09:29:57,305 [INFO] main: ADAUSDT | Bull:flat(15%) Bear:short(90%)
 ```
 
 ## Disk
@@ -1353,7 +1353,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       851Mi       454Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       856Mi       449Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
