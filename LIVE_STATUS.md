@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-04 05:00:01 UTC
+Generated: 2026-06-04 05:10:01 UTC
 
 ## Services
 ```
@@ -12,27 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.0  55332 41852 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 205680 47160 ?        Ssl  Jun03   0:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.2  3.1 717744 123756 ?       Ssl  Jun03   2:50 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.2  3.1 717744 123768 ?       Ssl  Jun03   2:50 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 986.7277584401158,
-  "positions": {
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1780545869",
-      "symbol": "HYPEUSDT",
-      "side": "long",
-      "entry_price": 74.315,
-      "qty": 1.3456,
-      "confidence": 85,
-      "opened_at": "2026-06-04T04:04:29.863752",
-      "cost": 19.9996528,
-      "notional": 99.99826399999999,
-      "leverage": 5
-    }
-  },
+  "balance": 1004.7049744401158,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -1275,19 +1262,32 @@ root     1121216  0.2  3.1 717744 123756 ?       Ssl  Jun03   2:50 /opt/ensemble
       "closed_at": "2026-06-04T03:43:24.935945",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1780545869",
+      "symbol": "HYPEUSDT",
+      "side": "long",
+      "entry_price": 74.315,
+      "qty": 1.3456,
+      "confidence": 85,
+      "opened_at": "2026-06-04T04:04:29.863752",
+      "cost": 19.9996528,
+      "notional": 99.99826399999999,
+      "leverage": 5,
+      "exit_price": 72.812,
+      "pnl_pct": -10.11,
+      "pnl_usdt": -2.02,
+      "closed_at": "2026-06-04T05:07:04.972094",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 6.727411240116126
+  "total_pnl": 4.704974440116127
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-04 04:43:16,733 [INFO] main: SOLUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-04 04:43:16,733 [INFO] main: SOLUSDT | RL adj=85.7%
-2026-06-04 04:43:16,752 [INFO] main: SOLUSDT | Context score=-0.1 bias=0.1
-2026-06-04 04:43:16,752 [INFO] main: SOLUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-06-04 04:43:24,252 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-04 04:43:24,590 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-04 04:43:24,591 [INFO] main: LABUSDT | Bull:long(62%) Bear:short(78%)
 2026-06-04 04:43:27,355 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -1313,6 +1313,11 @@ root     1121216  0.2  3.1 717744 123756 ?       Ssl  Jun03   2:50 /opt/ensemble
 2026-06-04 04:43:48,097 [INFO] main: XRPUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-04 04:43:50,160 [INFO] main: Next scan in 30min (always-30min)
 2026-06-04 04:46:35,982 [INFO] main: Symbols: 30
+2026-06-04 05:07:04,971 [INFO] positions: STOP_LOSS HYPEUSDT long PnL:-2.02%
+2026-06-04 05:07:04,976 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG HYPEUSDT @ 72.8120 PnL: -10.11% (-2.02 USDT) | Баланс: 1004.70
+2026-06-04 05:07:05,255 [INFO] positions: LOSS HYPEUSDT long PnL:-2.02% reason:stop_loss
+2026-06-04 05:07:05,255 [INFO] positions: Lessons: The trade was closed due to a stop loss, resulting in a 2.02% loss. Despite initially strong bullish sentiment and favorable technical indicators, the market ultimately moved against the position. This serves as a reminder that even with a solid setup, trades can still fail and stop losses are crucial for managing risk.
+2026-06-04 05:07:05,256 [INFO] rl: RL learned from long HYPEUSDT: loss -2.02% | weights bull=0.959 bear=0.958 judge=1.083 threshold=64.65
 ```
 
 ## Disk
@@ -1330,7 +1335,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       866Mi       452Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       856Mi       460Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
