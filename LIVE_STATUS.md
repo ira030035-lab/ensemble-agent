@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-04 09:10:01 UTC
+Generated: 2026-06-04 09:20:01 UTC
 
 ## Services
 ```
@@ -12,27 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.0  55332 41852 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 205680 47152 ?        Ssl  Jun03   0:08 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.2  3.1 717744 124112 ?       Ssl  Jun03   3:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.2  3.1 717744 124120 ?       Ssl  Jun03   3:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 984.7049744401005,
-  "positions": {
-    "PEPEUSDT": {
-      "id": "PAPER_PEPEUSDT_1780558870",
-      "symbol": "PEPEUSDT",
-      "side": "long",
-      "entry_price": 3.0259e-06,
-      "qty": 33048018.7713,
-      "confidence": 70,
-      "opened_at": "2026-06-04T07:41:10.819403",
-      "cost": 20.000000000015334,
-      "notional": 100.00000000007667,
-      "leverage": 5
-    }
-  },
+  "balance": 1002.7022645025751,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -1293,19 +1280,32 @@ root     1121216  0.2  3.1 717744 124112 ?       Ssl  Jun03   3:22 /opt/ensemble
       "closed_at": "2026-06-04T05:07:04.972094",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_PEPEUSDT_1780558870",
+      "symbol": "PEPEUSDT",
+      "side": "long",
+      "entry_price": 3.0259e-06,
+      "qty": 33048018.7713,
+      "confidence": 70,
+      "opened_at": "2026-06-04T07:41:10.819403",
+      "cost": 20.000000000015334,
+      "notional": 100.00000000007667,
+      "leverage": 5,
+      "exit_price": 2.9653e-06,
+      "pnl_pct": -10.01,
+      "pnl_usdt": -2.0,
+      "closed_at": "2026-06-04T09:12:39.513641",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 4.704974440116127
+  "total_pnl": 2.702264502575336
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-04 08:58:28,970 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-04 08:58:28,972 [INFO] main: LINKUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-04 08:58:35,323 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-04 08:58:35,324 [INFO] main: LINKUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-04 08:58:35,324 [INFO] main: LINKUSDT | RL adj=95.1%
 2026-06-04 08:58:35,341 [INFO] main: LINKUSDT | Context score=-0.1 bias=0.1
 2026-06-04 08:58:35,342 [INFO] main: LINKUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-04 08:58:43,933 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -1331,6 +1331,11 @@ root     1121216  0.2  3.1 717744 124112 ?       Ssl  Jun03   3:22 /opt/ensemble
 2026-06-04 08:59:18,602 [INFO] main: RENDERUSDT | Context score=-0.1 bias=0.1
 2026-06-04 08:59:18,602 [INFO] main: RENDERUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-04 08:59:20,676 [INFO] main: Next scan in 30min (always-30min)
+2026-06-04 09:12:39,513 [INFO] positions: STOP_LOSS PEPEUSDT long PnL:-2.0%
+2026-06-04 09:12:39,516 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG PEPEUSDT @ 0.0000 PnL: -10.01% (-2.00 USDT) | Баланс: 1002.70
+2026-06-04 09:12:39,889 [INFO] positions: LOSS PEPEUSDT long PnL:-2.0% reason:stop_loss
+2026-06-04 09:12:39,890 [INFO] positions: Lessons: The trade was based on a potential reversal due to oversold RSI and bullish sentiment but ultimately hit the stop loss. The 2:1 risk to reward ratio was not achieved as the trade closed at a 2% loss. This outcome suggests that relying solely on oversold conditions and sentiment may not be enough to guarantee a reversal in a trending down regime.
+2026-06-04 09:12:39,890 [INFO] rl: RL learned from long PEPEUSDT: loss -2.00% | weights bull=0.955 bear=0.961 judge=1.084 threshold=64.7
 ```
 
 ## Disk
@@ -1348,7 +1353,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       856Mi       449Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       851Mi       454Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
