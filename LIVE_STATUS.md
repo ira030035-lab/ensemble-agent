@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-04 20:00:01 UTC
+Generated: 2026-06-04 20:10:02 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.0  55332 41852 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 205680 47140 ?        Ssl  Jun03   0:09 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.2  3.2 720276 126740 ?       Ssl  Jun03   4:29 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.2  3.2 720276 126740 ?       Ssl  Jun03   4:30 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -1306,13 +1306,6 @@ root     1121216  0.2  3.2 720276 126740 ?       Ssl  Jun03   4:29 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-04 19:39:14,434 [INFO] main: SUIUSDT | Bull:flat(25%) Bear:short(78%)
-2026-06-04 19:39:17,451 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-04 19:39:17,452 [INFO] main: SUIUSDT | Judge:SHORT conf=80% size=15.0%
-2026-06-04 19:39:17,452 [INFO] main: SUIUSDT | RL adj=91.2%
-2026-06-04 19:39:17,471 [INFO] main: SUIUSDT | Context score=-0.1 bias=0.1
-2026-06-04 19:39:17,471 [INFO] main: SUIUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-06-04 19:39:23,372 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-04 19:39:25,413 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-04 19:39:25,414 [INFO] main: HYPEUSDT | Bull:flat(15%) Bear:short(90%)
 2026-06-04 19:39:27,802 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -1336,6 +1329,13 @@ root     1121216  0.2  3.2 720276 126740 ?       Ssl  Jun03   4:29 /opt/ensemble
 2026-06-04 19:39:46,110 [INFO] main: BEATUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-04 19:39:48,120 [INFO] main: Next scan in 30min (always-30min)
 2026-06-04 19:46:46,591 [INFO] main: Symbols: 30
+2026-06-04 20:09:48,132 [INFO] main: Scanning 30 symbols...
+2026-06-04 20:09:52,939 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-04 20:09:54,237 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 20:09:54,239 [INFO] main: RENDERUSDT | Bull:flat(25%) Bear:short(75%)
+2026-06-04 20:09:57,075 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 20:09:57,076 [INFO] main: RENDERUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-04 20:09:57,076 [INFO] main: RENDERUSDT | RL adj=50.0%
 ```
 
 ## Disk
@@ -1343,7 +1343,7 @@ root     1121216  0.2  3.2 720276 126740 ?       Ssl  Jun03   4:29 /opt/ensemble
 Filesystem      Size  Used Avail Use% Mounted on
 tmpfs           382M  896K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
-/dev/sda1        75G  8.6G   64G  12% /
+/dev/sda1        75G  8.7G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
 tmpfs           5.0M     0  5.0M   0% /run/lock
 /dev/sda15      253M  146K  252M   1% /boot/efi
@@ -1353,7 +1353,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       883Mi       394Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       868Mi       408Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
