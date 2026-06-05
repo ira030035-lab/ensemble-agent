@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-05 09:10:01 UTC
+Generated: 2026-06-05 09:20:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.0  55332 41852 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 205680 47164 ?        Ssl  Jun03   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.2 721452 127516 ?       Ssl  Jun03   5:54 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.2 721452 127528 ?       Ssl  Jun03   5:54 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 936.621330801075,
+  "balance": 954.554176401075,
   "positions": {
-    "BCHUSDT": {
-      "id": "PAPER_BCHUSDT_1780644073",
-      "symbol": "BCHUSDT",
-      "side": "short",
-      "entry_price": 221.36,
-      "qty": 0.4518,
-      "confidence": 75,
-      "opened_at": "2026-06-05T07:21:13.360119",
-      "cost": 20.002089599999998,
-      "notional": 100.010448,
-      "leverage": 5
-    },
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1780646174",
       "symbol": "BNBUSDT",
@@ -1407,19 +1395,32 @@ root     1121216  0.1  3.2 721452 127516 ?       Ssl  Jun03   5:54 /opt/ensemble
       "closed_at": "2026-06-05T08:37:35.526362",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BCHUSDT_1780644073",
+      "symbol": "BCHUSDT",
+      "side": "short",
+      "entry_price": 221.36,
+      "qty": 0.4518,
+      "confidence": 75,
+      "opened_at": "2026-06-05T07:21:13.360119",
+      "cost": 20.002089599999998,
+      "notional": 100.010448,
+      "leverage": 5,
+      "exit_price": 225.94,
+      "pnl_pct": -10.35,
+      "pnl_usdt": -2.07,
+      "closed_at": "2026-06-05T09:15:58.224033",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -3.3776868114246565
+  "total_pnl": -5.446930811424649
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-05 09:08:08,529 [INFO] main: LINKUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-05 09:08:11,183 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-05 09:08:11,184 [INFO] main: LINKUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-05 09:08:11,185 [INFO] main: LINKUSDT | RL adj=95.9%
-2026-06-05 09:08:11,287 [INFO] main: LINKUSDT | Context score=-0.05 bias=0.05
 2026-06-05 09:08:11,287 [INFO] main: LINKUSDT | gate PASS (Judge 85/70 RL 95.9/64.82 slack=±3)
 2026-06-05 09:08:11,287 [INFO] positions: 2/3 rule: skip SHORT LINKUSDT (3/3 already short)
 2026-06-05 09:08:17,940 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -1445,6 +1446,11 @@ root     1121216  0.1  3.2 721452 127516 ?       Ssl  Jun03   5:54 /opt/ensemble
 2026-06-05 09:08:41,748 [INFO] main: INJUSDT | Context score=-0.05 bias=0.05
 2026-06-05 09:08:41,748 [INFO] main: INJUSDT | regime BLOCK (volatile)
 2026-06-05 09:08:43,764 [INFO] main: Next scan in 30min (always-30min)
+2026-06-05 09:15:58,223 [INFO] positions: STOP_LOSS BCHUSDT short PnL:-2.07%
+2026-06-05 09:15:58,228 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT BCHUSDT @ 225.9400 PnL: -10.35% (-2.07 USDT) | Баланс: 954.55
+2026-06-05 09:15:58,567 [INFO] positions: LOSS BCHUSDT short PnL:-2.07% reason:stop_loss
+2026-06-05 09:15:58,568 [INFO] positions: Lessons: The trade was based on a trend following strategy with a bearish indication but resulted in a stop loss being hit, leading to a 2.07% loss. The expected 4% downside move did not materialize, and the trade did not achieve its 2:1 risk-reward ratio. This outcome highlights the importance of adjusting position sizing and reevaluating market sentiment in trending_down regimes.
+2026-06-05 09:15:58,568 [INFO] rl: RL learned from short BCHUSDT: loss -2.07% | weights bull=0.955 bear=0.961 judge=1.084 threshold=64.87
 ```
 
 ## Disk
@@ -1462,7 +1468,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       871Mi       431Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       872Mi       431Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
