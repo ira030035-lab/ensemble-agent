@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-05 14:40:01 UTC
+Generated: 2026-06-05 14:50:01 UTC
 
 ## Services
 ```
@@ -1589,7 +1589,6 @@ root     1121216  0.1  3.2 721452 127924 ?       Ssl  Jun03   6:29 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-05 14:22:13,619 [INFO] main: LINKUSDT | Judge:SHORT conf=85% size=15.0%
 2026-06-05 14:22:13,619 [INFO] main: LINKUSDT | RL adj=95.1%
 2026-06-05 14:22:13,638 [INFO] main: LINKUSDT | Context score=-0.05 bias=0.05
 2026-06-05 14:22:13,638 [INFO] main: LINKUSDT | regime BLOCK (volatile)
@@ -1619,6 +1618,7 @@ root     1121216  0.1  3.2 721452 127924 ?       Ssl  Jun03   6:29 /opt/ensemble
 2026-06-05 14:22:49,126 [INFO] main: BTCUSDT | gate PASS (Judge 70/70 RL 80.1/64.81 slack=±3)
 2026-06-05 14:22:49,127 [INFO] positions: Correlation block: skip SHORT BTCUSDT (corr 0.93 >= 0.85 with BNBUSDT short)
 2026-06-05 14:22:51,131 [INFO] main: Next scan in 30min (always-30min)
+2026-06-05 14:46:59,193 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1636,7 +1636,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       882Mi       413Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       879Mi       415Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
