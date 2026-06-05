@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-05 23:10:01 UTC
+Generated: 2026-06-05 23:20:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206484 47856 ?        Ssl  Jun03   0:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.3 724700 131664 ?       Ssl  Jun03   7:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.3 724700 131668 ?       Ssl  Jun03   7:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 942.136280804255,
+  "balance": 959.6801129795749,
   "positions": {
     "TRXUSDT": {
       "id": "PAPER_TRXUSDT_1780679673",
@@ -30,18 +30,6 @@ root     1121216  0.1  3.3 724700 131664 ?       Ssl  Jun03   7:26 /opt/ensemble
       "opened_at": "2026-06-05T17:14:33.323831",
       "cost": 19.9999969968,
       "notional": 99.999984984,
-      "leverage": 5
-    },
-    "BTWUSDT": {
-      "id": "PAPER_BTWUSDT_1780700333",
-      "symbol": "BTWUSDT",
-      "side": "short",
-      "entry_price": 0.050363,
-      "qty": 1985.5847,
-      "confidence": 75,
-      "opened_at": "2026-06-05T22:58:53.990324",
-      "cost": 20.00000044922,
-      "notional": 100.0000022461,
       "leverage": 5
     },
     "BTCUSDT": {
@@ -1749,19 +1737,32 @@ root     1121216  0.1  3.3 724700 131664 ?       Ssl  Jun03   7:26 /opt/ensemble
       "closed_at": "2026-06-05T23:00:48.004701",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BTWUSDT_1780700333",
+      "symbol": "BTWUSDT",
+      "side": "short",
+      "entry_price": 0.050363,
+      "qty": 1985.5847,
+      "confidence": 75,
+      "opened_at": "2026-06-05T22:58:53.990324",
+      "cost": 20.00000044922,
+      "notional": 100.0000022461,
+      "leverage": 5,
+      "exit_price": 0.0516,
+      "pnl_pct": -12.28,
+      "pnl_usdt": -2.46,
+      "closed_at": "2026-06-05T23:12:38.189616",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 1.8441182502753526
+  "total_pnl": -0.6120500236246513
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-05 23:01:10,776 [INFO] main: BTCUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-05 23:01:12,881 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-05 23:01:12,883 [INFO] main: BTCUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-05 23:01:12,883 [INFO] main: BTCUSDT | RL adj=96.0%
-2026-06-05 23:01:12,901 [INFO] main: BTCUSDT | Context score=-0.05 bias=0.05
 2026-06-05 23:01:12,902 [INFO] main: BTCUSDT | gate PASS (Judge 85/70 RL 96.0/64.81 slack=±3)
 2026-06-05 23:01:12,904 [INFO] positions: [PAPER] Opening SHORT BTCUSDT notional=$100.0 conf=85%
 2026-06-05 23:01:12,910 [INFO] paper_trading: [PAPER] ОТКРЫТА SHORT BTCUSDT @ 61587.0000 qty=0.0016 notional=98.54 margin=19.71 x5 | Баланс: 942.14
@@ -1787,6 +1788,11 @@ root     1121216  0.1  3.3 724700 131664 ?       Ssl  Jun03   7:26 /opt/ensemble
 2026-06-05 23:01:40,575 [INFO] main: PEPEUSDT | Context score=-0.05 bias=0.05
 2026-06-05 23:01:40,575 [INFO] main: PEPEUSDT | regime BLOCK (volatile)
 2026-06-05 23:01:42,577 [INFO] main: Next scan in 30min (always-30min)
+2026-06-05 23:12:38,188 [INFO] positions: STOP_LOSS BTWUSDT short PnL:-2.46%
+2026-06-05 23:12:38,194 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT BTWUSDT @ 0.0516 PnL: -12.28% (-2.46 USDT) | Баланс: 959.68
+2026-06-05 23:12:38,525 [INFO] positions: LOSS BTWUSDT short PnL:-2.46% reason:stop_loss
+2026-06-05 23:12:38,525 [INFO] positions: Lessons: The trade was closed at a 2.46% loss due to a stop loss, failing to achieve the expected 2:1 risk-reward ratio. The bear signals and ranging regime did not lead to the anticipated downside, resulting in a loss. This outcome highlights the importance of adjusting expectations and strategies in a ranging market.
+2026-06-05 23:12:38,525 [INFO] rl: RL learned from short BTWUSDT: loss -2.46% | weights bull=0.928 bear=0.972 judge=1.100 threshold=64.86
 ```
 
 ## Disk
@@ -1804,7 +1810,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       866Mi       469Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       869Mi       465Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
