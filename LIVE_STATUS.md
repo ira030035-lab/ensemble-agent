@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-05 13:50:01 UTC
+Generated: 2026-06-05 14:00:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206244 47328 ?        Ssl  Jun03   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.2 721452 127908 ?       Ssl  Jun03   6:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.2 721452 127912 ?       Ssl  Jun03   6:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 938.324746656075,
+  "balance": 956.3313466560751,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1780646174",
@@ -42,18 +42,6 @@ root     1121216  0.1  3.2 721452 127908 ?       Ssl  Jun03   6:25 /opt/ensemble
       "opened_at": "2026-06-05T12:00:21.507749",
       "cost": 20.0000003126,
       "notional": 100.00000156300001,
-      "leverage": 5
-    },
-    "ETHUSDT": {
-      "id": "PAPER_ETHUSDT_1780664884",
-      "symbol": "ETHUSDT",
-      "side": "long",
-      "entry_price": 1667.7,
-      "qty": 0.06,
-      "confidence": 70,
-      "opened_at": "2026-06-05T13:08:04.293078",
-      "cost": 20.0124,
-      "notional": 100.062,
       "leverage": 5
     }
   },
@@ -1551,19 +1539,32 @@ root     1121216  0.1  3.2 721452 127908 ?       Ssl  Jun03   6:25 /opt/ensemble
       "closed_at": "2026-06-05T13:10:29.892131",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ETHUSDT_1780664884",
+      "symbol": "ETHUSDT",
+      "side": "long",
+      "entry_price": 1667.7,
+      "qty": 0.06,
+      "confidence": 70,
+      "opened_at": "2026-06-05T13:08:04.293078",
+      "cost": 20.0124,
+      "notional": 100.062,
+      "leverage": 5,
+      "exit_price": 1634.27,
+      "pnl_pct": -10.02,
+      "pnl_usdt": -2.01,
+      "closed_at": "2026-06-05T13:52:14.014432",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -1.6639602313246526
+  "total_pnl": -3.6697602313246565
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-05 13:46:56,666 [INFO] main: BCHUSDT | Judge:SHORT conf=80% size=15.0%
-2026-06-05 13:46:56,666 [INFO] main: BCHUSDT | RL adj=91.4%
-2026-06-05 13:46:56,685 [INFO] main: BCHUSDT | Context score=-0.05 bias=0.05
-2026-06-05 13:46:56,686 [INFO] main: BCHUSDT | regime BLOCK (volatile)
-2026-06-05 13:46:58,507 [INFO] main: Symbols: 30
 2026-06-05 13:47:03,402 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-05 13:47:03,930 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-05 13:47:03,931 [INFO] main: HYPEUSDT | Bull:flat(25%) Bear:short(65%)
@@ -1589,6 +1590,11 @@ root     1121216  0.1  3.2 721452 127908 ?       Ssl  Jun03   6:25 /opt/ensemble
 2026-06-05 13:47:27,032 [INFO] main: BABYUSDT | Context score=-0.05 bias=0.05
 2026-06-05 13:47:27,033 [INFO] main: BABYUSDT | regime BLOCK (volatile)
 2026-06-05 13:47:29,038 [INFO] main: Next scan in 30min (always-30min)
+2026-06-05 13:52:14,013 [INFO] positions: STOP_LOSS ETHUSDT long PnL:-2.0%
+2026-06-05 13:52:14,019 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG ETHUSDT @ 1634.2700 PnL: -10.02% (-2.01 USDT) | Баланс: 956.33
+2026-06-05 13:52:14,322 [INFO] positions: LOSS ETHUSDT long PnL:-2.0% reason:stop_loss
+2026-06-05 13:52:14,322 [INFO] positions: Lessons: The trade was based on a potential bounce due to weakness in bear dominance and increasing RSI, but it ultimately resulted in a stop loss. The bear dominance at 80% proved too strong, overwhelming the expected bounce. This trade highlights the importance of considering the overall trend and bear dominance when anticipating a potential reversal.
+2026-06-05 13:52:14,322 [INFO] rl: RL learned from long ETHUSDT: loss -2.00% | weights bull=0.950 bear=0.957 judge=1.093 threshold=64.87
 ```
 
 ## Disk
@@ -1606,7 +1612,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       882Mi       415Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       884Mi       412Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
