@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-05 10:20:01 UTC
+Generated: 2026-06-05 10:30:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206244 47328 ?        Ssl  Jun03   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.2 721452 127580 ?       Ssl  Jun03   6:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.2 721452 127584 ?       Ssl  Jun03   6:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 955.072531541575,
+  "balance": 972.956489941575,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1780646174",
@@ -30,18 +30,6 @@ root     1121216  0.1  3.2 721452 127580 ?       Ssl  Jun03   6:02 /opt/ensemble
       "opened_at": "2026-06-05T07:56:14.337677",
       "cost": 19.9988928,
       "notional": 99.99446400000001,
-      "leverage": 5
-    },
-    "BCHUSDT": {
-      "id": "PAPER_BCHUSDT_1780652504",
-      "symbol": "BCHUSDT",
-      "side": "short",
-      "entry_price": 226.72,
-      "qty": 0.4411,
-      "confidence": 70,
-      "opened_at": "2026-06-05T09:41:44.873010",
-      "cost": 20.0012384,
-      "notional": 100.006192,
       "leverage": 5
     }
   },
@@ -1449,19 +1437,32 @@ root     1121216  0.1  3.2 721452 127580 ?       Ssl  Jun03   6:02 /opt/ensemble
       "closed_at": "2026-06-05T10:02:23.563681",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BCHUSDT_1780652504",
+      "symbol": "BCHUSDT",
+      "side": "short",
+      "entry_price": 226.72,
+      "qty": 0.4411,
+      "confidence": 70,
+      "opened_at": "2026-06-05T09:41:44.873010",
+      "cost": 20.0012384,
+      "notional": 100.006192,
+      "leverage": 5,
+      "exit_price": 231.52,
+      "pnl_pct": -10.59,
+      "pnl_usdt": -2.12,
+      "closed_at": "2026-06-05T10:23:49.473887",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -4.927337258424652
+  "total_pnl": -7.0446172584246565
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-05 10:18:56,184 [INFO] main: XLMUSDT | Bull:flat(25%) Bear:short(65%)
-2026-06-05 10:18:58,751 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-05 10:18:58,752 [INFO] main: XLMUSDT | Judge:SHORT conf=70% size=15.0%
-2026-06-05 10:18:58,752 [INFO] main: XLMUSDT | RL adj=79.4%
-2026-06-05 10:18:58,771 [INFO] main: XLMUSDT | Context score=-0.05 bias=0.05
 2026-06-05 10:18:58,771 [INFO] main: XLMUSDT | regime BLOCK (volatile)
 2026-06-05 10:19:05,089 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-05 10:19:05,941 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -1487,6 +1488,11 @@ root     1121216  0.1  3.2 721452 127580 ?       Ssl  Jun03   6:02 /opt/ensemble
 2026-06-05 10:19:32,836 [INFO] main: ONDOUSDT | Context score=-0.05 bias=0.05
 2026-06-05 10:19:32,836 [INFO] main: ONDOUSDT | regime BLOCK (volatile)
 2026-06-05 10:19:34,849 [INFO] main: Next scan in 30min (always-30min)
+2026-06-05 10:23:49,473 [INFO] positions: STOP_LOSS BCHUSDT short PnL:-2.12%
+2026-06-05 10:23:49,478 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT BCHUSDT @ 231.5200 PnL: -10.59% (-2.12 USDT) | Баланс: 972.96
+2026-06-05 10:23:49,844 [INFO] positions: LOSS BCHUSDT short PnL:-2.12% reason:stop_loss
+2026-06-05 10:23:49,845 [INFO] positions: Lessons: The trade was based on bearish market conditions with a downtrend and oversold RSI but still resulted in a stop loss. The expected 2:1 risk to reward ratio was not achieved, leading to a loss of 2.12%. This outcome suggests that relying solely on trend and RSI may not be sufficient in low volume conditions.
+2026-06-05 10:23:49,845 [INFO] rl: RL learned from short BCHUSDT: loss -2.12% | weights bull=0.959 bear=0.957 judge=1.085 threshold=64.86
 ```
 
 ## Disk
@@ -1504,7 +1510,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       885Mi       417Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       886Mi       415Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
