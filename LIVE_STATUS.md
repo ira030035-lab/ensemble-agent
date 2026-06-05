@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-05 16:10:01 UTC
+Generated: 2026-06-05 16:20:01 UTC
 
 ## Services
 ```
@@ -18,21 +18,8 @@ root     1121216  0.1  3.2 721452 127976 ?       Ssl  Jun03   6:40 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 978.8176200566751,
-  "positions": {
-    "BNBUSDT": {
-      "id": "PAPER_BNBUSDT_1780669112",
-      "symbol": "BNBUSDT",
-      "side": "short",
-      "entry_price": 587.13,
-      "qty": 0.1703,
-      "confidence": 72,
-      "opened_at": "2026-06-05T14:18:32.978579",
-      "cost": 19.997647800000003,
-      "notional": 99.98823900000001,
-      "leverage": 5
-    }
-  },
+  "balance": 1002.1122758566751,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -1581,19 +1568,32 @@ root     1121216  0.1  3.2 721452 127976 ?       Ssl  Jun03   6:40 /opt/ensemble
       "closed_at": "2026-06-05T14:08:33.895031",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BNBUSDT_1780669112",
+      "symbol": "BNBUSDT",
+      "side": "short",
+      "entry_price": 587.13,
+      "qty": 0.1703,
+      "confidence": 72,
+      "opened_at": "2026-06-05T14:18:32.978579",
+      "cost": 19.997647800000003,
+      "notional": 99.98823900000001,
+      "leverage": 5,
+      "exit_price": 567.77,
+      "pnl_pct": 16.49,
+      "pnl_usdt": 3.3,
+      "closed_at": "2026-06-05T16:12:17.510020",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -1.1847321433246516
+  "total_pnl": 2.112275856675351
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-05 16:06:54,984 [INFO] main: DOGEUSDT | Context score=-0.05 bias=0.05
-2026-06-05 16:06:54,985 [INFO] main: DOGEUSDT | regime BLOCK (volatile)
-2026-06-05 16:06:58,440 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-06-05 16:07:01,093 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-05 16:07:03,507 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-05 16:07:03,508 [INFO] main: ONDOUSDT | Bull:flat(15%) Bear:short(70%)
 2026-06-05 16:07:05,851 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-05 16:07:05,852 [INFO] main: ONDOUSDT | Judge:SHORT conf=85% size=15.0%
@@ -1619,6 +1619,11 @@ root     1121216  0.1  3.2 721452 127976 ?       Ssl  Jun03   6:40 /opt/ensemble
 2026-06-05 16:07:26,133 [INFO] main: LABUSDT | Context score=-0.05 bias=0.05
 2026-06-05 16:07:26,133 [INFO] main: LABUSDT | regime BLOCK (volatile)
 2026-06-05 16:07:28,140 [INFO] main: Next scan in 30min (always-30min)
+2026-06-05 16:12:17,508 [INFO] positions: TAKE-PROFIT BNBUSDT short PnL:3.3%
+2026-06-05 16:12:17,516 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT BNBUSDT @ 567.7700 PnL: 16.49% (+3.30 USDT) | Баланс: 1002.11
+2026-06-05 16:12:17,829 [INFO] positions: OK BNBUSDT short PnL:3.3% reason:take_profit
+2026-06-05 16:12:17,829 [INFO] positions: Lessons: The trade was closed with a 3.3% profit, meeting the initial expectation of a >=4% downside move potential. Bear dominance and negative indicators correctly predicted the downtrend. The take profit was triggered, locking in the 3.3% gain, and the trade can be considered a success based on the original reasoning.
+2026-06-05 16:12:17,829 [INFO] rl: RL learned from short BNBUSDT: profit 3.30% | weights bull=0.937 bear=0.968 judge=1.095 threshold=64.78
 ```
 
 ## Disk
@@ -1636,7 +1641,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       860Mi       488Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       862Mi       485Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
