@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-05 07:40:01 UTC
+Generated: 2026-06-05 07:50:01 UTC
 
 ## Services
 ```
@@ -1373,7 +1373,6 @@ root     1121216  0.1  3.2 720428 127124 ?       Ssl  Jun03   5:43 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-05 07:23:10,449 [INFO] main: TAOUSDT | Judge:SHORT conf=75% size=15.0%
 2026-06-05 07:23:10,450 [INFO] main: TAOUSDT | RL adj=85.9%
 2026-06-05 07:23:10,466 [INFO] main: TAOUSDT | Context score=-0.05 bias=0.05
 2026-06-05 07:23:10,467 [INFO] main: TAOUSDT | regime BLOCK (volatile)
@@ -1403,6 +1402,7 @@ root     1121216  0.1  3.2 720428 127124 ?       Ssl  Jun03   5:43 /opt/ensemble
 2026-06-05 07:35:58,873 [INFO] positions: LOSS XRPUSDT short PnL:-2.06% reason:stop_loss
 2026-06-05 07:35:58,873 [INFO] positions: Lessons: The trade was based on a strong bear conviction and downtrends on the 1-hour and 4-hour charts, indicating potential for a 4% downside move. The trade resulted in a stop loss being hit, with a loss of 2.06%. This outcome suggests that the bear conviction was not strong enough to achieve the expected downside move, and the risk/reward ratio was not favorable in this case.
 2026-06-05 07:35:58,873 [INFO] rl: RL learned from short XRPUSDT: loss -2.06% | weights bull=0.952 bear=0.964 judge=1.083 threshold=64.85
+2026-06-05 07:46:54,557 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1420,7 +1420,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       871Mi       436Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       872Mi       434Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
