@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-05 22:40:01 UTC
+Generated: 2026-06-05 22:50:01 UTC
 
 ## Services
 ```
@@ -1727,7 +1727,6 @@ root     1121216  0.1  3.3 724700 131648 ?       Ssl  Jun03   7:22 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-05 22:26:34,625 [INFO] main: OPNUSDT | regime BLOCK (volatile)
 2026-06-05 22:26:40,993 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-05 22:26:41,257 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-05 22:26:41,259 [INFO] main: HYPEUSDT | Bull:flat(15%) Bear:short(80%)
@@ -1757,6 +1756,7 @@ root     1121216  0.1  3.3 724700 131648 ?       Ssl  Jun03   7:22 /opt/ensemble
 2026-06-05 22:27:13,860 [INFO] main: ZECUSDT | Context score=-0.05 bias=0.05
 2026-06-05 22:27:13,860 [INFO] main: ZECUSDT | regime BLOCK (volatile)
 2026-06-05 22:27:15,873 [INFO] main: Next scan in 30min (always-30min)
+2026-06-05 22:47:04,997 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1764,7 +1764,7 @@ root     1121216  0.1  3.3 724700 131648 ?       Ssl  Jun03   7:22 /opt/ensemble
 Filesystem      Size  Used Avail Use% Mounted on
 tmpfs           382M  896K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
-/dev/sda1        75G  8.6G   64G  12% /
+/dev/sda1        75G  8.7G   64G  12% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
 tmpfs           5.0M     0  5.0M   0% /run/lock
 /dev/sda15      253M  146K  252M   1% /boot/efi
@@ -1774,7 +1774,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       869Mi       467Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       870Mi       465Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
