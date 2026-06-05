@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-05 11:40:01 UTC
+Generated: 2026-06-05 11:50:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206244 47328 ?        Ssl  Jun03   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.2 721452 127756 ?       Ssl  Jun03   6:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.2 721452 127756 ?       Ssl  Jun03   6:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -1505,7 +1505,6 @@ root     1121216  0.1  3.2 721452 127756 ?       Ssl  Jun03   6:10 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-05 11:28:19,451 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-05 11:28:19,453 [INFO] main: ONDOUSDT | Bull:flat(15%) Bear:short(75%)
 2026-06-05 11:28:22,156 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-05 11:28:22,157 [INFO] main: ONDOUSDT | Judge:SHORT conf=70% size=15.0%
@@ -1535,6 +1534,7 @@ root     1121216  0.1  3.2 721452 127756 ?       Ssl  Jun03   6:10 /opt/ensemble
 2026-06-05 11:28:49,903 [INFO] main: WLDUSDT | Judge:HOLD conf=45% size=0.0%
 2026-06-05 11:28:49,903 [INFO] main: WLDUSDT | RL adj=45.0%
 2026-06-05 11:28:51,906 [INFO] main: Next scan in 30min (always-30min)
+2026-06-05 11:46:57,183 [INFO] main: Symbols: 30
 ```
 
 ## Disk
