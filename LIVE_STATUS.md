@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-05 08:40:01 UTC
+Generated: 2026-06-05 08:50:01 UTC
 
 ## Services
 ```
@@ -1403,7 +1403,6 @@ root     1121216  0.1  3.2 720428 127348 ?       Ssl  Jun03   5:50 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-05 08:33:15,592 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-05 08:33:15,594 [INFO] main: FILUSDT | Bull:flat(15%) Bear:short(65%)
 2026-06-05 08:33:20,829 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-05 08:33:20,831 [INFO] main: FILUSDT | Judge:SHORT conf=75% size=15.0%
@@ -1433,6 +1432,7 @@ root     1121216  0.1  3.2 720428 127348 ?       Ssl  Jun03   5:50 /opt/ensemble
 2026-06-05 08:37:35,880 [INFO] positions: OK BTWUSDT short PnL:0.23% reason:breakeven_stop
 2026-06-05 08:37:35,880 [INFO] positions: Lessons: The trade was based on bearish indicators and sentiment but ultimately closed at breakeven. The overbought RSI, bearish MACD, and extreme fear sentiment did not lead to the expected reversal. This outcome suggests that in a ranging regime, these indicators may not be as reliable for predicting price movements.
 2026-06-05 08:37:35,880 [INFO] rl: RL learned from short BTWUSDT: profit 0.23% | weights bull=0.952 bear=0.965 judge=1.084 threshold=64.82
+2026-06-05 08:46:55,193 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1450,7 +1450,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       872Mi       432Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       884Mi       419Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
