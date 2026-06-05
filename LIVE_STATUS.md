@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-05 19:40:01 UTC
+Generated: 2026-06-05 19:50:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1121216  0.1  3.2 721988 128876 ?       Ssl  Jun03   7:03 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 962.0211316724751,
+  "balance": 982.3720592724751,
   "positions": {
-    "BNBUSDT": {
-      "id": "PAPER_BNBUSDT_1780677581",
-      "symbol": "BNBUSDT",
-      "side": "short",
-      "entry_price": 570.51,
-      "qty": 0.1753,
-      "confidence": 80,
-      "opened_at": "2026-06-05T16:39:41.278612",
-      "cost": 20.002080600000003,
-      "notional": 100.01040300000001,
-      "leverage": 5
-    },
     "TRXUSDT": {
       "id": "PAPER_TRXUSDT_1780679673",
       "symbol": "TRXUSDT",
@@ -1647,20 +1635,32 @@ root     1121216  0.1  3.2 721988 128876 ?       Ssl  Jun03   7:03 /opt/ensemble
       "closed_at": "2026-06-05T18:56:59.114169",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BNBUSDT_1780677581",
+      "symbol": "BNBUSDT",
+      "side": "short",
+      "entry_price": 570.51,
+      "qty": 0.1753,
+      "confidence": 80,
+      "opened_at": "2026-06-05T16:39:41.278612",
+      "cost": 20.002080600000003,
+      "notional": 100.01040300000001,
+      "leverage": 5,
+      "exit_price": 568.52,
+      "pnl_pct": 1.74,
+      "pnl_usdt": 0.35,
+      "closed_at": "2026-06-05T19:47:29.473429",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 2.0232092692753563
+  "total_pnl": 2.3720562692753577
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-05 19:34:02,446 [INFO] main: SUIUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-05 19:34:05,455 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-05 19:34:05,457 [INFO] main: SUIUSDT | Judge:SHORT conf=70% size=15.0%
-2026-06-05 19:34:05,457 [INFO] main: SUIUSDT | RL adj=80.2%
-2026-06-05 19:34:05,475 [INFO] main: SUIUSDT | Context score=-0.05 bias=0.05
-2026-06-05 19:34:05,475 [INFO] main: SUIUSDT | regime BLOCK (volatile)
 2026-06-05 19:34:09,032 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
 2026-06-05 19:34:11,693 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-05 19:34:12,490 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -1685,6 +1685,12 @@ root     1121216  0.1  3.2 721988 128876 ?       Ssl  Jun03   7:03 /opt/ensemble
 2026-06-05 19:34:34,850 [INFO] main: AAVEUSDT | Context score=-0.05 bias=0.05
 2026-06-05 19:34:34,850 [INFO] main: AAVEUSDT | regime BLOCK (volatile)
 2026-06-05 19:34:36,852 [INFO] main: Next scan in 30min (always-30min)
+2026-06-05 19:47:03,002 [INFO] main: Symbols: 30
+2026-06-05 19:47:29,472 [INFO] positions: BREAKEVEN_STOP BNBUSDT short PnL:0.35%
+2026-06-05 19:47:29,480 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT BNBUSDT @ 568.5200 PnL: 1.74% (+0.35 USDT) | Баланс: 982.37
+2026-06-05 19:47:29,795 [INFO] positions: OK BNBUSDT short PnL:0.35% reason:breakeven_stop
+2026-06-05 19:47:29,795 [INFO] positions: Lessons: The trade was based on bearish signals and extreme market fear, expecting a strong downside move. However, the trade ended up breakeven due to hitting the breakeven stop, resulting in a 0.35% profit. This outcome suggests that the expected strong downside move did not materialize, and the trade management strategy was effective in limiting losses and securing a small profit.
+2026-06-05 19:47:29,795 [INFO] rl: RL learned from short BNBUSDT: profit 0.35% | weights bull=0.929 bear=0.975 judge=1.096 threshold=64.77
 ```
 
 ## Disk
@@ -1702,7 +1708,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       862Mi       480Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       869Mi       472Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
