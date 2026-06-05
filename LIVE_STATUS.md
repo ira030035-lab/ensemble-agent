@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-05 12:10:01 UTC
+Generated: 2026-06-05 12:20:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206244 47328 ?        Ssl  Jun03   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.2 721452 127892 ?       Ssl  Jun03   6:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.2 721452 127896 ?       Ssl  Jun03   6:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 936.2121182518749,
+  "balance": 960.5404160544749,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1780646174",
@@ -30,18 +30,6 @@ root     1121216  0.1  3.2 721452 127892 ?       Ssl  Jun03   6:14 /opt/ensemble
       "opened_at": "2026-06-05T07:56:14.337677",
       "cost": 19.9988928,
       "notional": 99.99446400000001,
-      "leverage": 5
-    },
-    "BTWUSDT": {
-      "id": "PAPER_BTWUSDT_1780658681",
-      "symbol": "BTWUSDT",
-      "side": "long",
-      "entry_price": 0.042303,
-      "qty": 2363.8985,
-      "confidence": 75,
-      "opened_at": "2026-06-05T11:24:41.618215",
-      "cost": 19.999999649099998,
-      "notional": 99.9999982455,
       "leverage": 5
     },
     "DOGEUSDT": {
@@ -1515,19 +1503,32 @@ root     1121216  0.1  3.2 721452 127892 ?       Ssl  Jun03   6:14 /opt/ensemble
       "closed_at": "2026-06-05T12:02:30.679054",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BTWUSDT_1780658681",
+      "symbol": "BTWUSDT",
+      "side": "long",
+      "entry_price": 0.042303,
+      "qty": 2363.8985,
+      "confidence": 75,
+      "opened_at": "2026-06-05T11:24:41.618215",
+      "cost": 19.999999649099998,
+      "notional": 99.9999982455,
+      "leverage": 5,
+      "exit_price": 0.044134,
+      "pnl_pct": 21.64,
+      "pnl_usdt": 4.33,
+      "closed_at": "2026-06-05T12:13:50.744745",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -3.788988986424651
+  "total_pnl": 0.5393091670753467
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-05 12:02:35,350 [INFO] main: XLMUSDT | RL adj=96.6%
-2026-06-05 12:02:35,359 [INFO] main: XLMUSDT | Context score=-0.05 bias=0.05
-2026-06-05 12:02:35,359 [INFO] main: XLMUSDT | regime BLOCK (volatile)
-2026-06-05 12:02:38,779 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-06-05 12:02:41,704 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-05 12:02:43,624 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-05 12:02:43,626 [INFO] main: ETHUSDT | Bull:flat(15%) Bear:short(70%)
 2026-06-05 12:02:45,822 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -1553,6 +1554,11 @@ root     1121216  0.1  3.2 721452 127892 ?       Ssl  Jun03   6:14 /opt/ensemble
 2026-06-05 12:03:05,939 [INFO] main: FILUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-05 12:03:05,939 [INFO] main: FILUSDT | RL adj=50.0%
 2026-06-05 12:03:07,942 [INFO] main: Next scan in 30min (always-30min)
+2026-06-05 12:13:50,743 [INFO] positions: TAKE-PROFIT BTWUSDT long PnL:4.33%
+2026-06-05 12:13:50,749 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG BTWUSDT @ 0.0441 PnL: 21.64% (+4.33 USDT) | Баланс: 960.54
+2026-06-05 12:13:51,079 [INFO] positions: OK BTWUSDT long PnL:4.33% reason:take_profit
+2026-06-05 12:13:51,079 [INFO] positions: Lessons: The trade was successful with a 4.33% profit, hitting the take profit target. The initial analysis correctly identified a strong bull trend with potential upside, supported by a bullish MACD and recent price increase. This trade demonstrates the effectiveness of combining trend strength and technical indicators to inform trading decisions.
+2026-06-05 12:13:51,079 [INFO] rl: RL learned from long BTWUSDT: profit 4.33% | weights bull=0.958 bear=0.950 judge=1.092 threshold=64.77
 ```
 
 ## Disk
@@ -1570,7 +1576,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       883Mi       416Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       879Mi       419Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
