@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-06 12:00:01 UTC
+Generated: 2026-06-06 12:10:01 UTC
 
 ## Services
 ```
@@ -18,21 +18,8 @@ root     1121216  0.1  3.3 725680 132728 ?       Ssl  Jun03   8:52 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 978.8064292022747,
-  "positions": {
-    "XRPUSDT": {
-      "id": "PAPER_XRPUSDT_1780727272",
-      "symbol": "XRPUSDT",
-      "side": "short",
-      "entry_price": 1.0974,
-      "qty": 91.1245,
-      "confidence": 75,
-      "opened_at": "2026-06-06T06:27:52.007681",
-      "cost": 20.00000526,
-      "notional": 100.00002629999999,
-      "leverage": 5
-    }
-  },
+  "balance": 999.2620569622746,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -1941,19 +1928,32 @@ root     1121216  0.1  3.3 725680 132728 ?       Ssl  Jun03   8:52 /opt/ensemble
       "closed_at": "2026-06-06T06:15:32.392766",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_XRPUSDT_1780727272",
+      "symbol": "XRPUSDT",
+      "side": "short",
+      "entry_price": 1.0974,
+      "qty": 91.1245,
+      "confidence": 75,
+      "opened_at": "2026-06-06T06:27:52.007681",
+      "cost": 20.00000526,
+      "notional": 100.00002629999999,
+      "leverage": 5,
+      "exit_price": 1.0924,
+      "pnl_pct": 2.28,
+      "pnl_usdt": 0.46,
+      "closed_at": "2026-06-06T12:03:26.964610",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -1.1935655377246785
+  "total_pnl": -0.7379430377246883
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-06 11:41:49,029 [INFO] main: ZECUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-06 11:41:49,029 [INFO] main: ZECUSDT | RL adj=55.0%
-2026-06-06 11:41:54,981 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 11:41:55,468 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-06 11:41:55,470 [INFO] main: XLMUSDT | Bull:flat(25%) Bear:short(80%)
 2026-06-06 11:41:57,534 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-06 11:41:57,535 [INFO] main: XLMUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-06 11:41:57,535 [INFO] main: XLMUSDT | RL adj=50.0%
@@ -1979,6 +1979,11 @@ root     1121216  0.1  3.3 725680 132728 ?       Ssl  Jun03   8:52 /opt/ensemble
 2026-06-06 11:42:24,924 [INFO] main: ENAUSDT | RL adj=50.0%
 2026-06-06 11:42:26,927 [INFO] main: Next scan in 30min (always-30min)
 2026-06-06 11:47:13,592 [INFO] main: Symbols: 30
+2026-06-06 12:03:26,963 [INFO] positions: BREAKEVEN_STOP XRPUSDT short PnL:0.46%
+2026-06-06 12:03:26,970 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT XRPUSDT @ 1.0924 PnL: 2.28% (+0.46 USDT) | Баланс: 999.26
+2026-06-06 12:03:27,350 [INFO] positions: OK XRPUSDT short PnL:0.46% reason:breakeven_stop
+2026-06-06 12:03:27,350 [INFO] positions: Lessons: The trade was a short position in XRPUSDT that closed at a 0.46% profit, meeting the breakeven stop. The initial reasoning was based on bear conviction being stronger than bullish sentiment, with an expected downside potential of at least 4%. The trade achieved its risk/reward objective of 2:1, resulting in a small but successful outcome.
+2026-06-06 12:03:27,350 [INFO] rl: RL learned from short XRPUSDT: profit 0.46% | weights bull=0.937 bear=0.954 judge=1.108 threshold=64.91
 ```
 
 ## Disk
@@ -1996,7 +2001,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       899Mi       411Mi       4.8Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       881Mi       429Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
