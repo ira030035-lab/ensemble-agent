@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-06 06:00:01 UTC
+Generated: 2026-06-06 06:10:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206484 47856 ?        Ssl  Jun03   0:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.3 725680 132708 ?       Ssl  Jun03   8:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.3 725680 132720 ?       Ssl  Jun03   8:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 937.2805343194747,
+  "balance": 955.2808169194747,
   "positions": {
     "TRXUSDT": {
       "id": "PAPER_TRXUSDT_1780679673",
@@ -30,18 +30,6 @@ root     1121216  0.1  3.3 725680 132708 ?       Ssl  Jun03   8:14 /opt/ensemble
       "opened_at": "2026-06-05T17:14:33.323831",
       "cost": 19.9999969968,
       "notional": 99.999984984,
-      "leverage": 5
-    },
-    "BNBUSDT": {
-      "id": "PAPER_BNBUSDT_1780723210",
-      "symbol": "BNBUSDT",
-      "side": "short",
-      "entry_price": 565.37,
-      "qty": 0.1769,
-      "confidence": 85,
-      "opened_at": "2026-06-06T05:20:10.788795",
-      "cost": 20.0027906,
-      "notional": 100.013953,
       "leverage": 5
     },
     "XRPUSDT": {
@@ -1911,19 +1899,32 @@ root     1121216  0.1  3.3 725680 132708 ?       Ssl  Jun03   8:14 /opt/ensemble
       "closed_at": "2026-06-06T05:57:40.311352",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_BNBUSDT_1780723210",
+      "symbol": "BNBUSDT",
+      "side": "short",
+      "entry_price": 565.37,
+      "qty": 0.1769,
+      "confidence": 85,
+      "opened_at": "2026-06-06T05:20:10.788795",
+      "cost": 20.0027906,
+      "notional": 100.013953,
+      "leverage": 5,
+      "exit_price": 576.69,
+      "pnl_pct": -10.01,
+      "pnl_usdt": -2.0,
+      "closed_at": "2026-06-06T06:01:47.837153",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -2.7166844817246707
+  "total_pnl": -4.719192481724679
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-06 05:55:22,050 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 05:55:22,985 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-06 05:55:22,987 [INFO] main: PEPEUSDT | Bull:flat(25%) Bear:short(75%)
-2026-06-06 05:55:25,417 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 05:55:25,418 [INFO] main: PEPEUSDT | Judge:SHORT conf=70% size=15.0%
 2026-06-06 05:55:25,418 [INFO] main: PEPEUSDT | RL adj=80.9%
 2026-06-06 05:55:25,438 [INFO] main: PEPEUSDT | Context score=-0.05 bias=0.05
 2026-06-06 05:55:25,438 [INFO] main: PEPEUSDT | regime BLOCK (volatile)
@@ -1949,6 +1950,11 @@ root     1121216  0.1  3.3 725680 132708 ?       Ssl  Jun03   8:14 /opt/ensemble
 2026-06-06 05:57:40,663 [INFO] positions: LOSS BTWUSDT short PnL:-2.18% reason:stop_loss
 2026-06-06 05:57:40,664 [INFO] positions: Lessons: The trade was based on bear market sentiment with a high percentage of bearish signals, but it still resulted in a loss. The stop loss was triggered, resulting in a 2.18% loss, indicating that the downside move was not as expected. This trade highlights the importance of managing risk and adjusting expectations even when market sentiment appears to be one-sided.
 2026-06-06 05:57:40,664 [INFO] rl: RL learned from short BTWUSDT: loss -2.18% | weights bull=0.929 bear=0.967 judge=1.104 threshold=64.95
+2026-06-06 06:01:47,836 [INFO] positions: STOP_LOSS BNBUSDT short PnL:-2.0%
+2026-06-06 06:01:47,840 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT BNBUSDT @ 576.6900 PnL: -10.01% (-2.00 USDT) | Баланс: 955.28
+2026-06-06 06:01:48,160 [INFO] positions: LOSS BNBUSDT short PnL:-2.0% reason:stop_loss
+2026-06-06 06:01:48,160 [INFO] positions: Lessons: The trade was based on bearish signals and a downtrend but ultimately resulted in a 2% loss due to a stop loss. The expected risk to reward ratio of 2:1 was not achieved as the trade did not move in the expected direction. This trade highlights the importance of adjusting expectations and risk management in a trending down regime.
+2026-06-06 06:01:48,160 [INFO] rl: RL learned from short BNBUSDT: loss -2.00% | weights bull=0.933 bear=0.962 judge=1.105 threshold=65.0
 ```
 
 ## Disk
@@ -1966,7 +1972,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       891Mi       432Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       886Mi       436Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
