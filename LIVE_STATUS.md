@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-06 05:50:01 UTC
+Generated: 2026-06-06 06:00:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206484 47856 ?        Ssl  Jun03   0:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.3 725680 132708 ?       Ssl  Jun03   8:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.3 725680 132708 ?       Ssl  Jun03   8:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 939.4611357219746,
+  "balance": 937.2805343194747,
   "positions": {
     "TRXUSDT": {
       "id": "PAPER_TRXUSDT_1780679673",
@@ -1893,44 +1893,62 @@ root     1121216  0.1  3.3 725680 132708 ?       Ssl  Jun03   8:11 /opt/ensemble
       "closed_at": "2026-06-06T05:23:09.702436",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_BTWUSDT_1780725097",
+      "symbol": "BTWUSDT",
+      "side": "short",
+      "entry_price": 0.044529,
+      "qty": 2245.7275,
+      "confidence": 75,
+      "opened_at": "2026-06-06T05:51:37.359138",
+      "cost": 19.9999999695,
+      "notional": 99.99999984749999,
+      "leverage": 5,
+      "exit_price": 0.0455,
+      "pnl_pct": -10.9,
+      "pnl_usdt": -2.18,
+      "closed_at": "2026-06-06T05:57:40.311352",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -0.5360830792246716
+  "total_pnl": -2.7166844817246707
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-06 05:20:56,286 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 05:20:57,073 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-06 05:20:57,074 [INFO] main: ONDOUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-06 05:20:59,605 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 05:20:59,606 [INFO] main: ONDOUSDT | Judge:SHORT conf=80% size=15.0%
-2026-06-06 05:20:59,606 [INFO] main: ONDOUSDT | RL adj=91.7%
-2026-06-06 05:20:59,626 [INFO] main: ONDOUSDT | Context score=-0.05 bias=0.05
-2026-06-06 05:20:59,626 [INFO] main: ONDOUSDT | regime BLOCK (volatile)
-2026-06-06 05:21:05,832 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 05:21:06,562 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-06 05:21:06,563 [INFO] main: ZECUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-06 05:21:09,206 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 05:21:09,207 [INFO] main: ZECUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-06 05:21:09,207 [INFO] main: ZECUSDT | RL adj=55.0%
-2026-06-06 05:21:15,337 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 05:21:15,582 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-06 05:21:15,584 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
-2026-06-06 05:21:15,584 [INFO] main: DOGEUSDT | Bull:flat(15%) Bear:short(65%)
-2026-06-06 05:21:18,277 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 05:21:18,279 [INFO] main: DOGEUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-06 05:21:18,279 [INFO] main: DOGEUSDT | RL adj=84.5%
-2026-06-06 05:21:18,298 [INFO] main: DOGEUSDT | Context score=-0.05 bias=0.05
-2026-06-06 05:21:18,299 [INFO] main: DOGEUSDT | regime BLOCK (volatile)
-2026-06-06 05:21:20,319 [INFO] main: Next scan in 30min (always-30min)
-2026-06-06 05:23:09,701 [INFO] positions: STOP_LOSS LTCUSDT short PnL:-2.08%
-2026-06-06 05:23:09,708 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT LTCUSDT @ 41.7400 PnL: -10.39% (-2.08 USDT) | Баланс: 939.46
-2026-06-06 05:23:10,047 [INFO] positions: LOSS LTCUSDT short PnL:-2.08% reason:stop_loss
-2026-06-06 05:23:10,048 [INFO] positions: Lessons: The trade was based on a bearish trend with a high probability of a downside move, but it still resulted in a loss. The stop loss was triggered, resulting in a 2.08% loss. This trade highlights the importance of managing risk and having a solid stop loss strategy even when the market trend appears to be in favor of the trade.
-2026-06-06 05:23:10,048 [INFO] rl: RL learned from short LTCUSDT: loss -2.08% | weights bull=0.925 bear=0.971 judge=1.104 threshold=64.9
-2026-06-06 05:47:09,643 [INFO] main: Symbols: 30
+2026-06-06 05:55:22,050 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 05:55:22,985 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-06 05:55:22,987 [INFO] main: PEPEUSDT | Bull:flat(25%) Bear:short(75%)
+2026-06-06 05:55:25,417 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 05:55:25,418 [INFO] main: PEPEUSDT | Judge:SHORT conf=70% size=15.0%
+2026-06-06 05:55:25,418 [INFO] main: PEPEUSDT | RL adj=80.9%
+2026-06-06 05:55:25,438 [INFO] main: PEPEUSDT | Context score=-0.05 bias=0.05
+2026-06-06 05:55:25,438 [INFO] main: PEPEUSDT | regime BLOCK (volatile)
+2026-06-06 05:55:31,832 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 05:55:32,748 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-06 05:55:32,750 [INFO] main: ENAUSDT | Bull:long(68%) Bear:short(60%)
+2026-06-06 05:55:34,906 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 05:55:34,907 [INFO] main: ENAUSDT | Judge:LONG conf=75% size=15.0%
+2026-06-06 05:55:34,908 [INFO] main: ENAUSDT | RL adj=75.7%
+2026-06-06 05:55:34,925 [INFO] main: ENAUSDT | Context score=0.0 bias=0.05
+2026-06-06 05:55:34,925 [INFO] main: ENAUSDT | regime BLOCK (volatile)
+2026-06-06 05:55:40,358 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 05:55:42,079 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-06 05:55:42,080 [INFO] main: BEATUSDT | Bull:long(62%) Bear:short(70%)
+2026-06-06 05:55:44,505 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 05:55:44,507 [INFO] main: BEATUSDT | Judge:LONG conf=70% size=15.0%
+2026-06-06 05:55:44,507 [INFO] main: BEATUSDT | RL adj=68.4%
+2026-06-06 05:55:44,526 [INFO] main: BEATUSDT | Context score=0.0 bias=0.05
+2026-06-06 05:55:44,526 [INFO] main: BEATUSDT | regime BLOCK (volatile)
+2026-06-06 05:55:46,529 [INFO] main: Next scan in 30min (always-30min)
+2026-06-06 05:57:40,310 [INFO] positions: STOP_LOSS BTWUSDT short PnL:-2.18%
+2026-06-06 05:57:40,317 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT BTWUSDT @ 0.0455 PnL: -10.90% (-2.18 USDT) | Баланс: 937.28
+2026-06-06 05:57:40,663 [INFO] positions: LOSS BTWUSDT short PnL:-2.18% reason:stop_loss
+2026-06-06 05:57:40,664 [INFO] positions: Lessons: The trade was based on bear market sentiment with a high percentage of bearish signals, but it still resulted in a loss. The stop loss was triggered, resulting in a 2.18% loss, indicating that the downside move was not as expected. This trade highlights the importance of managing risk and adjusting expectations even when market sentiment appears to be one-sided.
+2026-06-06 05:57:40,664 [INFO] rl: RL learned from short BTWUSDT: loss -2.18% | weights bull=0.929 bear=0.967 judge=1.104 threshold=64.95
 ```
 
 ## Disk
@@ -1948,7 +1966,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       879Mi       444Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       891Mi       432Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
