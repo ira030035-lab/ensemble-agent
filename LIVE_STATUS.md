@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-06 02:10:01 UTC
+Generated: 2026-06-06 02:20:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.3 725680 132680 ?       Ssl  Jun03   7:46 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 940.2345100201347,
+  "balance": 959.5296067371747,
   "positions": {
     "TRXUSDT": {
       "id": "PAPER_TRXUSDT_1780679673",
@@ -42,18 +42,6 @@ root     1121216  0.1  3.3 725680 132680 ?       Ssl  Jun03   7:46 /opt/ensemble
       "opened_at": "2026-06-06T00:07:57.929357",
       "cost": 19.621503999999998,
       "notional": 98.10752,
-      "leverage": 5
-    },
-    "BTWUSDT": {
-      "id": "PAPER_BTWUSDT_1780710638",
-      "symbol": "BTWUSDT",
-      "side": "short",
-      "entry_price": 0.050929,
-      "qty": 1963.5178,
-      "confidence": 75,
-      "opened_at": "2026-06-06T01:50:38.789387",
-      "cost": 19.999999607240003,
-      "notional": 99.99999803620001,
       "leverage": 5
     }
   },
@@ -1821,19 +1809,32 @@ root     1121216  0.1  3.3 725680 132680 ?       Ssl  Jun03   7:46 /opt/ensemble
       "closed_at": "2026-06-06T00:44:28.003473",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_BTWUSDT_1780710638",
+      "symbol": "BTWUSDT",
+      "side": "short",
+      "entry_price": 0.050929,
+      "qty": 1963.5178,
+      "confidence": 75,
+      "opened_at": "2026-06-06T01:50:38.789387",
+      "cost": 19.999999607240003,
+      "notional": 99.99999803620001,
+      "leverage": 5,
+      "exit_price": 0.051288,
+      "pnl_pct": -3.52,
+      "pnl_usdt": -0.7,
+      "closed_at": "2026-06-06T02:18:30.718803",
+      "reason": "breakeven_stop",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -0.14398937582466553
+  "total_pnl": -0.8488922660246621
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-06 01:53:38,678 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-06 01:53:38,679 [INFO] main: BCHUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-06 01:53:40,641 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 01:53:40,642 [INFO] main: BCHUSDT | Judge:HOLD conf=45% size=0.0%
-2026-06-06 01:53:40,643 [INFO] main: BCHUSDT | RL adj=45.0%
 2026-06-06 01:53:47,007 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-06 01:53:47,091 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-06 01:53:47,093 [INFO] main: SOLUSDT | Bull:flat(25%) Bear:short(75%)
@@ -1859,6 +1860,11 @@ root     1121216  0.1  3.3 725680 132680 ?       Ssl  Jun03   7:46 /opt/ensemble
 2026-06-06 01:54:07,967 [INFO] main: PEPEUSDT | Context score=-0.05 bias=0.05
 2026-06-06 01:54:07,967 [INFO] main: PEPEUSDT | regime BLOCK (volatile)
 2026-06-06 01:54:09,975 [INFO] main: Next scan in 30min (always-30min)
+2026-06-06 02:18:30,717 [INFO] positions: BREAKEVEN_STOP BTWUSDT short PnL:-0.7%
+2026-06-06 02:18:30,725 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT BTWUSDT @ 0.0513 PnL: -3.52% (-0.70 USDT) | Баланс: 959.53
+2026-06-06 02:18:31,093 [INFO] positions: LOSS BTWUSDT short PnL:-0.7% reason:breakeven_stop
+2026-06-06 02:18:31,093 [INFO] positions: Lessons: The trade was based on bear sentiment and overbought conditions but ultimately closed at breakeven stop with a small loss of 0.7%. The expected downside move of 4% did not materialize, highlighting the need to adjust expectations in ranging markets. Tight stop losses helped limit potential losses in this case.
+2026-06-06 02:18:31,093 [INFO] rl: RL learned from short BTWUSDT: loss -0.70% | weights bull=0.926 bear=0.971 judge=1.102 threshold=64.9
 ```
 
 ## Disk
@@ -1876,7 +1882,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       868Mi       463Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       861Mi       470Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
