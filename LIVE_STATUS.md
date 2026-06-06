@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-06 16:00:02 UTC
+Generated: 2026-06-06 16:10:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 207508 48876 ?        Ssl  Jun03   0:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.3 725680 132792 ?       Ssl  Jun03   9:20 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.3 725680 132796 ?       Ssl  Jun03   9:20 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 937.0126556748746,
+  "balance": 958.7343632722747,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1780748074",
@@ -42,18 +42,6 @@ root     1121216  0.1  3.3 725680 132792 ?       Ssl  Jun03   9:20 /opt/ensemble
       "opened_at": "2026-06-06T15:06:50.879573",
       "cost": 20.000000826,
       "notional": 100.00000413000001,
-      "leverage": 5
-    },
-    "XLMUSDT": {
-      "id": "PAPER_XLMUSDT_1780760458",
-      "symbol": "XLMUSDT",
-      "side": "long",
-      "entry_price": 0.20561,
-      "qty": 486.3577,
-      "confidence": 85,
-      "opened_at": "2026-06-06T15:40:58.458410",
-      "cost": 20.0000013394,
-      "notional": 100.000006697,
       "leverage": 5
     }
   },
@@ -2001,19 +1989,32 @@ root     1121216  0.1  3.3 725680 132792 ?       Ssl  Jun03   9:20 /opt/ensemble
       "closed_at": "2026-06-06T14:05:35.026892",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_XLMUSDT_1780760458",
+      "symbol": "XLMUSDT",
+      "side": "long",
+      "entry_price": 0.20561,
+      "qty": 486.3577,
+      "confidence": 85,
+      "opened_at": "2026-06-06T15:40:58.458410",
+      "cost": 20.0000013394,
+      "notional": 100.000006697,
+      "leverage": 5,
+      "exit_price": 0.20915,
+      "pnl_pct": 8.61,
+      "pnl_usdt": 1.72,
+      "closed_at": "2026-06-06T16:00:24.755036",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -2.9873391197246892
+  "total_pnl": -1.2656328617246817
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-06 15:44:01,406 [INFO] main: WLDUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-06 15:44:01,406 [INFO] main: WLDUSDT | RL adj=86.4%
-2026-06-06 15:44:01,426 [INFO] main: WLDUSDT | Context score=-0.05 bias=0.05
-2026-06-06 15:44:01,427 [INFO] main: WLDUSDT | regime BLOCK (volatile)
-2026-06-06 15:44:07,557 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-06 15:44:07,573 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-06 15:44:07,574 [INFO] main: BABYUSDT | Bull:flat(15%) Bear:short(75%)
 2026-06-06 15:44:10,165 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -2039,6 +2040,11 @@ root     1121216  0.1  3.3 725680 132792 ?       Ssl  Jun03   9:20 /opt/ensemble
 2026-06-06 15:44:29,232 [INFO] main: ADAUSDT | regime BLOCK (short × trending_down × rsi1h=50.5; late-entry guard)
 2026-06-06 15:44:31,259 [INFO] main: Next scan in 30min (always-30min)
 2026-06-06 15:47:16,783 [INFO] main: Symbols: 30
+2026-06-06 16:00:24,753 [INFO] positions: TRAILING-STOP XLMUSDT long peak:2.84% now:1.72%
+2026-06-06 16:00:24,761 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG XLMUSDT @ 0.2092 PnL: 8.61% (+1.72 USDT) | Баланс: 958.73
+2026-06-06 16:00:25,327 [INFO] positions: OK XLMUSDT long PnL:1.72% reason:trailing_stop
+2026-06-06 16:00:25,327 [INFO] positions: Lessons: The trade was closed with a 1.72% profit due to a trailing stop. The initial reasoning was based on a combination of bull and bear signals, with an expected upside move of at least 4% and a 2:1 risk-reward ratio. This trade demonstrates the effectiveness of asymmetry rules in identifying profitable trades with a favorable risk-reward profile.
+2026-06-06 16:00:25,327 [INFO] rl: RL learned from long XLMUSDT: profit 1.72% | weights bull=0.946 bear=0.944 judge=1.110 threshold=64.93
 ```
 
 ## Disk
@@ -2056,7 +2062,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       901Mi       405Mi       4.8Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       883Mi       423Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
