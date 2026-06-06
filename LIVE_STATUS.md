@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-06 06:10:01 UTC
+Generated: 2026-06-06 06:20:01 UTC
 
 ## Services
 ```
@@ -12,39 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206484 47856 ?        Ssl  Jun03   0:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.3 725680 132720 ?       Ssl  Jun03   8:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.3 725680 132720 ?       Ssl  Jun03   8:15 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 955.2808169194747,
-  "positions": {
-    "TRXUSDT": {
-      "id": "PAPER_TRXUSDT_1780679673",
-      "symbol": "TRXUSDT",
-      "side": "short",
-      "entry_price": 0.32226,
-      "qty": 310.3084,
-      "confidence": 85,
-      "opened_at": "2026-06-05T17:14:33.323831",
-      "cost": 19.9999969968,
-      "notional": 99.999984984,
-      "leverage": 5
-    },
-    "XRPUSDT": {
-      "id": "PAPER_XRPUSDT_1780723230",
-      "symbol": "XRPUSDT",
-      "side": "long",
-      "entry_price": 1.0641,
-      "qty": 93.9761,
-      "confidence": 70,
-      "opened_at": "2026-06-06T05:20:30.760423",
-      "cost": 19.999993602,
-      "notional": 99.99996801,
-      "leverage": 5
-    }
-  },
+  "balance": 998.8064344622746,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -1917,24 +1892,50 @@ root     1121216  0.1  3.3 725680 132720 ?       Ssl  Jun03   8:14 /opt/ensemble
       "closed_at": "2026-06-06T06:01:47.837153",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_TRXUSDT_1780679673",
+      "symbol": "TRXUSDT",
+      "side": "short",
+      "entry_price": 0.32226,
+      "qty": 310.3084,
+      "confidence": 85,
+      "opened_at": "2026-06-05T17:14:33.323831",
+      "cost": 19.9999969968,
+      "notional": 99.999984984,
+      "leverage": 5,
+      "exit_price": 0.32065,
+      "pnl_pct": 2.5,
+      "pnl_usdt": 0.5,
+      "closed_at": "2026-06-06T06:12:30.252534",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
+    },
+    {
+      "id": "PAPER_XRPUSDT_1780723230",
+      "symbol": "XRPUSDT",
+      "side": "long",
+      "entry_price": 1.0641,
+      "qty": 93.9761,
+      "confidence": 70,
+      "opened_at": "2026-06-06T05:20:30.760423",
+      "cost": 19.999993602,
+      "notional": 99.99996801,
+      "leverage": 5,
+      "exit_price": 1.0963,
+      "pnl_pct": 15.13,
+      "pnl_usdt": 3.03,
+      "closed_at": "2026-06-06T06:15:32.392766",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -4.719192481724679
+  "total_pnl": -1.1935655377246785
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-06 05:55:25,418 [INFO] main: PEPEUSDT | RL adj=80.9%
-2026-06-06 05:55:25,438 [INFO] main: PEPEUSDT | Context score=-0.05 bias=0.05
-2026-06-06 05:55:25,438 [INFO] main: PEPEUSDT | regime BLOCK (volatile)
-2026-06-06 05:55:31,832 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 05:55:32,748 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-06 05:55:32,750 [INFO] main: ENAUSDT | Bull:long(68%) Bear:short(60%)
-2026-06-06 05:55:34,906 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 05:55:34,907 [INFO] main: ENAUSDT | Judge:LONG conf=75% size=15.0%
-2026-06-06 05:55:34,908 [INFO] main: ENAUSDT | RL adj=75.7%
-2026-06-06 05:55:34,925 [INFO] main: ENAUSDT | Context score=0.0 bias=0.05
 2026-06-06 05:55:34,925 [INFO] main: ENAUSDT | regime BLOCK (volatile)
 2026-06-06 05:55:40,358 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-06 05:55:42,079 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -1955,6 +1956,16 @@ root     1121216  0.1  3.3 725680 132720 ?       Ssl  Jun03   8:14 /opt/ensemble
 2026-06-06 06:01:48,160 [INFO] positions: LOSS BNBUSDT short PnL:-2.0% reason:stop_loss
 2026-06-06 06:01:48,160 [INFO] positions: Lessons: The trade was based on bearish signals and a downtrend but ultimately resulted in a 2% loss due to a stop loss. The expected risk to reward ratio of 2:1 was not achieved as the trade did not move in the expected direction. This trade highlights the importance of adjusting expectations and risk management in a trending down regime.
 2026-06-06 06:01:48,160 [INFO] rl: RL learned from short BNBUSDT: loss -2.00% | weights bull=0.933 bear=0.962 judge=1.105 threshold=65.0
+2026-06-06 06:12:30,251 [INFO] positions: BREAKEVEN_STOP TRXUSDT short PnL:0.5%
+2026-06-06 06:12:30,255 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT TRXUSDT @ 0.3206 PnL: 2.50% (+0.50 USDT) | Баланс: 975.78
+2026-06-06 06:12:30,552 [INFO] positions: OK TRXUSDT short PnL:0.5% reason:breakeven_stop
+2026-06-06 06:12:30,553 [INFO] positions: Lessons: The trade was a short position on TRXUSDT that closed with a 0.5% profit, meeting the breakeven stop. The original reasoning was based on strong bearish sentiment and negative price trends, expecting a downside move of at least 4%. This trade highlights the importance of setting breakeven stops to lock in profits when the expected move does not materialize.
+2026-06-06 06:12:30,553 [INFO] rl: RL learned from short TRXUSDT: profit 0.50% | weights bull=0.932 bear=0.963 judge=1.105 threshold=64.97
+2026-06-06 06:15:32,391 [INFO] positions: TAKE-PROFIT XRPUSDT long PnL:3.03%
+2026-06-06 06:15:32,399 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG XRPUSDT @ 1.0963 PnL: 15.13% (+3.03 USDT) | Баланс: 998.81
+2026-06-06 06:15:32,644 [INFO] positions: OK XRPUSDT long PnL:3.03% reason:take_profit
+2026-06-06 06:15:32,645 [INFO] positions: Lessons: The trade was based on a contrarian view of extreme fear sentiment and oversold conditions. It resulted in a 3.03% profit, hitting the take profit target. This outcome supports the idea of buying during periods of extreme fear when sentiment is overly bearish.
+2026-06-06 06:15:32,645 [INFO] rl: RL learned from long XRPUSDT: profit 3.03% | weights bull=0.938 bear=0.954 judge=1.108 threshold=64.94
 ```
 
 ## Disk
@@ -1972,7 +1983,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       886Mi       436Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       878Mi       444Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
