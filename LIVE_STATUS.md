@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-06 05:40:01 UTC
+Generated: 2026-06-06 05:50:01 UTC
 
 ## Services
 ```
@@ -1901,7 +1901,6 @@ root     1121216  0.1  3.3 725680 132708 ?       Ssl  Jun03   8:11 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-06 05:20:50,207 [INFO] main: TAOUSDT | regime BLOCK (volatile)
 2026-06-06 05:20:56,286 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-06 05:20:57,073 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-06 05:20:57,074 [INFO] main: ONDOUSDT | Bull:flat(15%) Bear:short(80%)
@@ -1931,6 +1930,7 @@ root     1121216  0.1  3.3 725680 132708 ?       Ssl  Jun03   8:11 /opt/ensemble
 2026-06-06 05:23:10,047 [INFO] positions: LOSS LTCUSDT short PnL:-2.08% reason:stop_loss
 2026-06-06 05:23:10,048 [INFO] positions: Lessons: The trade was based on a bearish trend with a high probability of a downside move, but it still resulted in a loss. The stop loss was triggered, resulting in a 2.08% loss. This trade highlights the importance of managing risk and having a solid stop loss strategy even when the market trend appears to be in favor of the trade.
 2026-06-06 05:23:10,048 [INFO] rl: RL learned from short LTCUSDT: loss -2.08% | weights bull=0.925 bear=0.971 judge=1.104 threshold=64.9
+2026-06-06 05:47:09,643 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1948,7 +1948,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       881Mi       442Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       879Mi       444Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
