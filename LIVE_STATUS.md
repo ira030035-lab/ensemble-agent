@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-06 22:00:01 UTC
+Generated: 2026-06-06 22:10:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 207268 48456 ?        Ssl  Jun03   0:18 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 726704 133012 ?       Ssl  Jun03  10:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 726704 133012 ?       Ssl  Jun03  10:03 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 901.8749854962748,
+  "balance": 924.9972511122747,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1780748074",
@@ -42,18 +42,6 @@ root     1121216  0.1  3.4 726704 133012 ?       Ssl  Jun03  10:02 /opt/ensemble
       "opened_at": "2026-06-06T15:06:50.879573",
       "cost": 20.000000826,
       "notional": 100.00000413000001,
-      "leverage": 5
-    },
-    "TONUSDT": {
-      "id": "PAPER_TONUSDT_1780766735",
-      "symbol": "TONUSDT",
-      "side": "long",
-      "entry_price": 1.5982,
-      "qty": 62.5704,
-      "confidence": 80,
-      "opened_at": "2026-06-06T17:25:35.782532",
-      "cost": 20.000002656,
-      "notional": 100.00001328,
       "leverage": 5
     },
     "BTCUSDT": {
@@ -2079,19 +2067,32 @@ root     1121216  0.1  3.4 726704 133012 ?       Ssl  Jun03  10:02 /opt/ensemble
       "closed_at": "2026-06-06T20:43:20.887720",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_TONUSDT_1780766735",
+      "symbol": "TONUSDT",
+      "side": "long",
+      "entry_price": 1.5982,
+      "qty": 62.5704,
+      "confidence": 80,
+      "opened_at": "2026-06-06T17:25:35.782532",
+      "cost": 20.000002656,
+      "notional": 100.00001328,
+      "leverage": 5,
+      "exit_price": 1.6481,
+      "pnl_pct": 15.61,
+      "pnl_usdt": 3.12,
+      "closed_at": "2026-06-06T22:02:52.089476",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 1.2809846382753176
+  "total_pnl": 4.403247598275307
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-06 21:57:33,518 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-06 21:57:33,520 [INFO] main: LTCUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-06 21:57:35,587 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 21:57:35,588 [INFO] main: LTCUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-06 21:57:35,588 [INFO] main: LTCUSDT | RL adj=95.0%
 2026-06-06 21:57:35,598 [INFO] main: LTCUSDT | Context score=-0.05 bias=0.05
 2026-06-06 21:57:35,598 [INFO] main: LTCUSDT | gate PASS (Judge 85/70 RL 95.0/64.88 slack=±3)
 2026-06-06 21:57:35,599 [INFO] positions: Max positions reached (5/5 dyn)
@@ -2117,6 +2118,11 @@ root     1121216  0.1  3.4 726704 133012 ?       Ssl  Jun03  10:02 /opt/ensemble
 2026-06-06 21:58:02,257 [INFO] main: BABYUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-06 21:58:02,258 [INFO] main: BABYUSDT | RL adj=50.0%
 2026-06-06 21:58:04,260 [INFO] main: Next scan in 30min (always-30min)
+2026-06-06 22:02:52,088 [INFO] positions: TAKE-PROFIT TONUSDT long PnL:3.12%
+2026-06-06 22:02:52,095 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG TONUSDT @ 1.6481 PnL: 15.61% (+3.12 USDT) | Баланс: 925.00
+2026-06-06 22:02:52,441 [INFO] positions: OK TONUSDT long PnL:3.12% reason:take_profit
+2026-06-06 22:02:52,442 [INFO] positions: Lessons: The trade was closed with a 3.12% profit, meeting the upside potential indicated by bull signals and a strong 4h uptrend. The RSI 1h overbought condition did not lead to a significant correction, allowing the trade to reach its take profit target. This outcome reinforces the effectiveness of combining bull signals, uptrend analysis, and MACD indicators in identifying profitable trades.
+2026-06-06 22:02:52,442 [INFO] rl: RL learned from long TONUSDT: profit 3.12% | weights bull=0.945 bear=0.940 judge=1.115 threshold=64.85
 ```
 
 ## Disk
@@ -2134,7 +2140,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       892Mi       408Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       882Mi       417Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
