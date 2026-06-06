@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-06 00:20:01 UTC
+Generated: 2026-06-06 00:30:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206484 47856 ?        Ssl  Jun03   0:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.3 725680 132660 ?       Ssl  Jun03   7:34 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.3 725680 132664 ?       Ssl  Jun03   7:34 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 940.2422894121349,
+  "balance": 963.5738406623749,
   "positions": {
     "TRXUSDT": {
       "id": "PAPER_TRXUSDT_1780679673",
@@ -42,18 +42,6 @@ root     1121216  0.1  3.3 725680 132660 ?       Ssl  Jun03   7:34 /opt/ensemble
       "opened_at": "2026-06-06T00:07:57.929357",
       "cost": 19.621503999999998,
       "notional": 98.10752,
-      "leverage": 5
-    },
-    "BTWUSDT": {
-      "id": "PAPER_BTWUSDT_1780704640",
-      "symbol": "BTWUSDT",
-      "side": "short",
-      "entry_price": 0.050517,
-      "qty": 1979.5316,
-      "confidence": 70,
-      "opened_at": "2026-06-06T00:10:40.613674",
-      "cost": 19.99999956744,
-      "notional": 99.9999978372,
       "leverage": 5
     }
   },
@@ -1785,19 +1773,32 @@ root     1121216  0.1  3.3 725680 132660 ?       Ssl  Jun03   7:34 /opt/ensemble
       "closed_at": "2026-06-06T00:04:06.850384",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BTWUSDT_1780704640",
+      "symbol": "BTWUSDT",
+      "side": "short",
+      "entry_price": 0.050517,
+      "qty": 1979.5316,
+      "confidence": 70,
+      "opened_at": "2026-06-06T00:10:40.613674",
+      "cost": 19.99999956744,
+      "notional": 99.9999978372,
+      "leverage": 5,
+      "exit_price": 0.048834,
+      "pnl_pct": 16.66,
+      "pnl_usdt": 3.33,
+      "closed_at": "2026-06-06T00:20:59.973099",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -0.13621002362464896
+  "total_pnl": 3.195341659175345
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-06 00:10:12,185 [INFO] main: SUIUSDT | Context score=0.0 bias=0.05
-2026-06-06 00:10:12,185 [INFO] main: SUIUSDT | regime BLOCK (volatile)
-2026-06-06 00:10:18,611 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 00:10:19,179 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-06 00:10:19,180 [INFO] main: XRPUSDT | Bull:flat(15%) Bear:short(80%)
 2026-06-06 00:10:22,291 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-06 00:10:22,292 [INFO] main: XRPUSDT | Judge:SHORT conf=85% size=15.0%
 2026-06-06 00:10:22,292 [INFO] main: XRPUSDT | RL adj=96.7%
@@ -1823,6 +1824,11 @@ root     1121216  0.1  3.3 725680 132660 ?       Ssl  Jun03   7:34 /opt/ensemble
 2026-06-06 00:10:40,613 [INFO] positions: [PAPER] Opening SHORT BTWUSDT notional=$100.0 conf=70%
 2026-06-06 00:10:40,617 [INFO] paper_trading: [PAPER] ОТКРЫТА SHORT BTWUSDT @ 0.0505 qty=1979.5316 notional=100.00 margin=20.00 x5 | Баланс: 940.24
 2026-06-06 00:10:42,618 [INFO] main: Next scan in 30min (always-30min)
+2026-06-06 00:20:59,971 [INFO] positions: TAKE-PROFIT BTWUSDT short PnL:3.33%
+2026-06-06 00:20:59,978 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT BTWUSDT @ 0.0488 PnL: 16.66% (+3.33 USDT) | Баланс: 963.57
+2026-06-06 00:21:00,542 [INFO] positions: OK BTWUSDT short PnL:3.33% reason:take_profit
+2026-06-06 00:21:00,543 [INFO] positions: Lessons: The trade was successful with a 3.33% profit, meeting the expected strong risk/reward ratio. The combination of bearish trend, bear strength, negative market sentiment, and bearish MACD provided a reliable signal for a short position. This regime's ranging nature allowed for a clean take-profit execution, validating the initial analysis.
+2026-06-06 00:21:00,543 [INFO] rl: RL learned from short BTWUSDT: profit 3.33% | weights bull=0.920 bear=0.979 judge=1.102 threshold=64.8
 ```
 
 ## Disk
@@ -1830,7 +1836,7 @@ root     1121216  0.1  3.3 725680 132660 ?       Ssl  Jun03   7:34 /opt/ensemble
 Filesystem      Size  Used Avail Use% Mounted on
 tmpfs           382M  896K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
-/dev/sda1        75G  8.7G   64G  12% /
+/dev/sda1        75G  8.7G   64G  13% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
 tmpfs           5.0M     0  5.0M   0% /run/lock
 /dev/sda15      253M  146K  252M   1% /boot/efi
@@ -1840,7 +1846,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       875Mi       458Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       885Mi       448Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
