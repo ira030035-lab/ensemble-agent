@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-06 02:40:01 UTC
+Generated: 2026-06-06 02:50:01 UTC
 
 ## Services
 ```
@@ -1835,7 +1835,6 @@ root     1121216  0.1  3.3 725680 132684 ?       Ssl  Jun03   7:50 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-06 02:28:09,297 [INFO] main: LABUSDT | Judge:SHORT conf=78% size=15.0%
 2026-06-06 02:28:09,297 [INFO] main: LABUSDT | RL adj=88.2%
 2026-06-06 02:28:09,321 [INFO] main: LABUSDT | Context score=-0.05 bias=0.05
 2026-06-06 02:28:09,322 [INFO] main: LABUSDT | regime BLOCK (volatile)
@@ -1865,6 +1864,7 @@ root     1121216  0.1  3.3 725680 132684 ?       Ssl  Jun03   7:50 /opt/ensemble
 2026-06-06 02:28:36,102 [INFO] main: NEARUSDT | Context score=-0.05 bias=0.05
 2026-06-06 02:28:36,102 [INFO] main: NEARUSDT | regime BLOCK (volatile)
 2026-06-06 02:28:38,105 [INFO] main: Next scan in 30min (always-30min)
+2026-06-06 02:47:07,674 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1882,7 +1882,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       884Mi       447Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       863Mi       468Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
