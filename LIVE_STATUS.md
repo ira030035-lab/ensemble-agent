@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-06 14:00:01 UTC
+Generated: 2026-06-06 14:10:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.3 725680 132764 ?       Ssl  Jun03   9:08 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 959.2620543958747,
+  "balance": 977.0126578402746,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1780748074",
@@ -30,18 +30,6 @@ root     1121216  0.1  3.3 725680 132764 ?       Ssl  Jun03   9:08 /opt/ensemble
       "opened_at": "2026-06-06T12:14:34.015139",
       "cost": 20.000003040000003,
       "notional": 100.0000152,
-      "leverage": 5
-    },
-    "XLMUSDT": {
-      "id": "PAPER_XLMUSDT_1780748207",
-      "symbol": "XLMUSDT",
-      "side": "short",
-      "entry_price": 0.19872,
-      "qty": 503.2206,
-      "confidence": 80,
-      "opened_at": "2026-06-06T12:16:47.184683",
-      "cost": 19.9999995264,
-      "notional": 99.999997632,
       "leverage": 5
     }
   },
@@ -1971,34 +1959,32 @@ root     1121216  0.1  3.3 725680 132764 ?       Ssl  Jun03   9:08 /opt/ensemble
       "closed_at": "2026-06-06T12:03:26.964610",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_XLMUSDT_1780748207",
+      "symbol": "XLMUSDT",
+      "side": "short",
+      "entry_price": 0.19872,
+      "qty": 503.2206,
+      "confidence": 80,
+      "opened_at": "2026-06-06T12:16:47.184683",
+      "cost": 19.9999995264,
+      "notional": 99.999997632,
+      "leverage": 5,
+      "exit_price": 0.20319,
+      "pnl_pct": -11.25,
+      "pnl_usdt": -2.25,
+      "closed_at": "2026-06-06T14:05:35.026892",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -0.7379430377246883
+  "total_pnl": -2.9873391197246892
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-06 13:59:26,581 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
-2026-06-06 13:59:26,581 [INFO] main: ZECUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-06 13:59:28,520 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 13:59:28,522 [INFO] main: ZECUSDT | Judge:HOLD conf=45% size=0.0%
-2026-06-06 13:59:28,522 [INFO] main: ZECUSDT | RL adj=45.0%
-2026-06-06 13:59:31,901 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-06-06 13:59:33,522 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 13:59:34,944 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-06 13:59:34,946 [INFO] main: BNBUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-06 13:59:37,134 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 13:59:37,135 [INFO] main: BNBUSDT | Judge:SHORT conf=72% size=15.0%
-2026-06-06 13:59:37,135 [INFO] main: BNBUSDT | RL adj=82.0%
-2026-06-06 13:59:37,162 [INFO] main: BNBUSDT | Context score=-0.05 bias=0.05
-2026-06-06 13:59:37,162 [INFO] main: BNBUSDT | regime BLOCK (short × trending_down × rsi1h=52.6; late-entry guard)
-2026-06-06 13:59:43,257 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-06 13:59:43,292 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 13:59:43,294 [INFO] main: BABYUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-06 13:59:45,722 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 13:59:45,723 [INFO] main: BABYUSDT | Judge:SHORT conf=70% size=15.0%
-2026-06-06 13:59:45,723 [INFO] main: BABYUSDT | RL adj=80.0%
 2026-06-06 13:59:45,744 [INFO] main: BABYUSDT | Context score=-0.05 bias=0.05
 2026-06-06 13:59:45,745 [INFO] main: BABYUSDT | regime BLOCK (volatile)
 2026-06-06 13:59:51,915 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -2009,6 +1995,26 @@ root     1121216  0.1  3.3 725680 132764 ?       Ssl  Jun03   9:08 /opt/ensemble
 2026-06-06 13:59:56,488 [INFO] main: WLDUSDT | RL adj=96.5%
 2026-06-06 13:59:56,505 [INFO] main: WLDUSDT | Context score=-0.05 bias=0.05
 2026-06-06 13:59:56,505 [INFO] main: WLDUSDT | regime BLOCK (volatile)
+2026-06-06 14:00:03,598 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 14:00:05,240 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-06 14:00:05,241 [INFO] main: OPNUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-06 14:00:15,266 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 14:00:15,268 [INFO] main: OPNUSDT | Judge:SHORT conf=85% size=20.0%
+2026-06-06 14:00:15,268 [INFO] main: OPNUSDT | RL adj=96.5%
+2026-06-06 14:00:15,288 [INFO] main: OPNUSDT | Context score=-0.05 bias=0.05
+2026-06-06 14:00:15,288 [INFO] main: OPNUSDT | regime BLOCK (volatile)
+2026-06-06 14:00:22,572 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 14:00:22,967 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-06 14:00:22,969 [INFO] main: SOLUSDT | Bull:long(62%) Bear:short(65%)
+2026-06-06 14:00:25,953 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 14:00:25,954 [INFO] main: SOLUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-06 14:00:25,954 [INFO] main: SOLUSDT | RL adj=50.0%
+2026-06-06 14:00:27,957 [INFO] main: Next scan in 30min (always-30min)
+2026-06-06 14:05:35,025 [INFO] positions: STOP_LOSS XLMUSDT short PnL:-2.25%
+2026-06-06 14:05:35,033 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT XLMUSDT @ 0.2032 PnL: -11.25% (-2.25 USDT) | Баланс: 977.01
+2026-06-06 14:05:35,327 [INFO] positions: LOSS XLMUSDT short PnL:-2.25% reason:stop_loss
+2026-06-06 14:05:35,327 [INFO] positions: Lessons: The trade was based on bearish market sentiment and technicals but ultimately stopped out for a 2.25% loss. The expected downside move of more than 4% did not materialize, highlighting the importance of risk management. This trade serves as a reminder to respect stop losses and not overstay in a ranging regime.
+2026-06-06 14:05:35,327 [INFO] rl: RL learned from short XLMUSDT: loss -2.25% | weights bull=0.941 bear=0.950 judge=1.109 threshold=64.96
 ```
 
 ## Disk
@@ -2026,7 +2032,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       892Mi       417Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       881Mi       427Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
