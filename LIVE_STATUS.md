@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-06 14:40:01 UTC
+Generated: 2026-06-06 14:50:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 207508 48876 ?        Ssl  Jun03   0:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.3 725680 132764 ?       Ssl  Jun03   9:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.3 725680 132764 ?       Ssl  Jun03   9:12 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -1985,7 +1985,6 @@ root     1121216  0.1  3.3 725680 132764 ?       Ssl  Jun03   9:11 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-06 14:34:51,648 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-06 14:34:51,650 [INFO] main: ADAUSDT | Judge:HOLD conf=45% size=0.0%
 2026-06-06 14:34:51,650 [INFO] main: ADAUSDT | RL adj=45.0%
 2026-06-06 14:34:58,115 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -2015,6 +2014,7 @@ root     1121216  0.1  3.3 725680 132764 ?       Ssl  Jun03   9:11 /opt/ensemble
 2026-06-06 14:35:34,397 [INFO] main: BEATUSDT | Context score=-0.05 bias=0.05
 2026-06-06 14:35:34,397 [INFO] main: BEATUSDT | regime BLOCK (volatile)
 2026-06-06 14:35:36,421 [INFO] main: Next scan in 30min (always-30min)
+2026-06-06 14:47:16,123 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -2032,7 +2032,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       882Mi       426Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       879Mi       428Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
