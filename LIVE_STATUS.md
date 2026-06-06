@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-06 04:50:01 UTC
+Generated: 2026-06-06 05:00:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206484 47856 ?        Ssl  Jun03   0:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.3 725680 132700 ?       Ssl  Jun03   8:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.3 725680 132704 ?       Ssl  Jun03   8:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 939.8613791239746,
+  "balance": 961.5425631239747,
   "positions": {
     "TRXUSDT": {
       "id": "PAPER_TRXUSDT_1780679673",
@@ -30,18 +30,6 @@ root     1121216  0.1  3.3 725680 132700 ?       Ssl  Jun03   8:06 /opt/ensemble
       "opened_at": "2026-06-05T17:14:33.323831",
       "cost": 19.9999969968,
       "notional": 99.999984984,
-      "leverage": 5
-    },
-    "BTCUSDT": {
-      "id": "PAPER_BTCUSDT_1780704477",
-      "symbol": "BTCUSDT",
-      "side": "short",
-      "entry_price": 61317.2,
-      "qty": 0.0016,
-      "confidence": 70,
-      "opened_at": "2026-06-06T00:07:57.929357",
-      "cost": 19.621503999999998,
-      "notional": 98.10752,
       "leverage": 5
     },
     "LTCUSDT": {
@@ -1857,19 +1845,32 @@ root     1121216  0.1  3.3 725680 132700 ?       Ssl  Jun03   8:06 /opt/ensemble
       "closed_at": "2026-06-06T04:12:41.764384",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BTCUSDT_1780704477",
+      "symbol": "BTCUSDT",
+      "side": "short",
+      "entry_price": 61317.2,
+      "qty": 0.0016,
+      "confidence": 70,
+      "opened_at": "2026-06-06T00:07:57.929357",
+      "cost": 19.621503999999998,
+      "notional": 98.10752,
+      "leverage": 5,
+      "exit_price": 60029.9,
+      "pnl_pct": 10.5,
+      "pnl_usdt": 2.06,
+      "closed_at": "2026-06-06T04:52:00.613943",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -0.5170030792246612
+  "total_pnl": 1.542676920775332
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-06 04:46:21,385 [INFO] main: PEPEUSDT | Bull:flat(5%) Bear:short(75%)
-2026-06-06 04:46:23,610 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 04:46:23,611 [INFO] main: PEPEUSDT | Judge:SHORT conf=70% size=15.0%
-2026-06-06 04:46:23,612 [INFO] main: PEPEUSDT | RL adj=80.9%
-2026-06-06 04:46:23,631 [INFO] main: PEPEUSDT | Context score=-0.05 bias=0.05
 2026-06-06 04:46:23,631 [INFO] main: PEPEUSDT | regime BLOCK (volatile)
 2026-06-06 04:46:29,266 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-06 04:46:29,907 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -1895,6 +1896,11 @@ root     1121216  0.1  3.3 725680 132700 ?       Ssl  Jun03   8:06 /opt/ensemble
 2026-06-06 04:46:55,611 [INFO] main: FILUSDT | regime BLOCK (volatile)
 2026-06-06 04:46:57,633 [INFO] main: Next scan in 30min (always-30min)
 2026-06-06 04:47:09,021 [INFO] main: Symbols: 30
+2026-06-06 04:52:00,612 [INFO] positions: TRAILING-STOP BTCUSDT short peak:2.94% now:2.1%
+2026-06-06 04:52:00,620 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT BTCUSDT @ 60029.9000 PnL: 10.50% (+2.06 USDT) | Баланс: 961.54
+2026-06-06 04:52:00,939 [INFO] positions: OK BTCUSDT short PnL:2.1% reason:trailing_stop
+2026-06-06 04:52:00,939 [INFO] positions: Lessons: The trade was closed due to a trailing stop, resulting in a 2.1% profit. The initial reasoning of bear conviction and market fear proved correct, leading to a ≥4% downside move. This trade demonstrates the effectiveness of identifying market sentiment and using trailing stops to lock in profits in a trending_down regime.
+2026-06-06 04:52:00,939 [INFO] rl: RL learned from short BTCUSDT: profit 2.10% | weights bull=0.921 bear=0.976 judge=1.103 threshold=64.85
 ```
 
 ## Disk
@@ -1912,7 +1918,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       875Mi       450Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       876Mi       448Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
