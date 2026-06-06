@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-06 07:40:01 UTC
+Generated: 2026-06-06 07:50:01 UTC
 
 ## Services
 ```
@@ -1949,13 +1949,6 @@ root     1121216  0.1  3.3 725680 132720 ?       Ssl  Jun03   8:25 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-06 07:39:22,365 [INFO] main: HYPEUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-06 07:39:22,365 [INFO] main: HYPEUSDT | RL adj=95.0%
-2026-06-06 07:39:22,383 [INFO] main: HYPEUSDT | Context score=-0.05 bias=0.05
-2026-06-06 07:39:22,383 [INFO] main: HYPEUSDT | regime BLOCK (volatile)
-2026-06-06 07:39:28,555 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 07:39:31,791 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-06 07:39:31,792 [INFO] main: XLMUSDT | Bull:flat(25%) Bear:short(80%)
 2026-06-06 07:39:34,646 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-06 07:39:34,647 [INFO] main: XLMUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-06 07:39:34,647 [INFO] main: XLMUSDT | RL adj=55.0%
@@ -1979,6 +1972,13 @@ root     1121216  0.1  3.3 725680 132720 ?       Ssl  Jun03   8:25 /opt/ensemble
 2026-06-06 07:40:01,149 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-06 07:40:01,370 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-06 07:40:01,372 [INFO] main: ASTERUSDT | Bull:flat(15%) Bear:short(70%)
+2026-06-06 07:40:04,048 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 07:40:04,050 [INFO] main: ASTERUSDT | Judge:SHORT conf=70% size=15.0%
+2026-06-06 07:40:04,050 [INFO] main: ASTERUSDT | RL adj=80.0%
+2026-06-06 07:40:04,068 [INFO] main: ASTERUSDT | Context score=-0.05 bias=0.05
+2026-06-06 07:40:04,069 [INFO] main: ASTERUSDT | regime BLOCK (volatile)
+2026-06-06 07:40:06,072 [INFO] main: Next scan in 30min (always-30min)
+2026-06-06 07:47:10,950 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -1996,7 +1996,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       893Mi       424Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       881Mi       436Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
