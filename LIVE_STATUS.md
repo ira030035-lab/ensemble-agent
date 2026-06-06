@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-06 04:10:01 UTC
+Generated: 2026-06-06 04:20:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206484 47856 ?        Ssl  Jun03   0:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.3 725680 132692 ?       Ssl  Jun03   8:00 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.3 725680 132696 ?       Ssl  Jun03   8:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 939.5296066157347,
+  "balance": 959.8614959239746,
   "positions": {
     "TRXUSDT": {
       "id": "PAPER_TRXUSDT_1780679673",
@@ -42,18 +42,6 @@ root     1121216  0.1  3.3 725680 132692 ?       Ssl  Jun03   8:00 /opt/ensemble
       "opened_at": "2026-06-06T00:07:57.929357",
       "cost": 19.621503999999998,
       "notional": 98.10752,
-      "leverage": 5
-    },
-    "BTWUSDT": {
-      "id": "PAPER_BTWUSDT_1780718982",
-      "symbol": "BTWUSDT",
-      "side": "short",
-      "entry_price": 0.050318,
-      "qty": 1987.3604,
-      "confidence": 85,
-      "opened_at": "2026-06-06T04:09:42.400451",
-      "cost": 20.000000121440003,
-      "notional": 100.00000060720001,
       "leverage": 5
     }
   },
@@ -1839,44 +1827,62 @@ root     1121216  0.1  3.3 725680 132692 ?       Ssl  Jun03   8:00 /opt/ensemble
       "closed_at": "2026-06-06T02:18:30.718803",
       "reason": "breakeven_stop",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_BTWUSDT_1780718982",
+      "symbol": "BTWUSDT",
+      "side": "short",
+      "entry_price": 0.050318,
+      "qty": 1987.3604,
+      "confidence": 85,
+      "opened_at": "2026-06-06T04:09:42.400451",
+      "cost": 20.000000121440003,
+      "notional": 100.00000060720001,
+      "leverage": 5,
+      "exit_price": 0.050151,
+      "pnl_pct": 1.66,
+      "pnl_usdt": 0.33,
+      "closed_at": "2026-06-06T04:12:41.764384",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -0.8488922660246621
+  "total_pnl": -0.5170030792246612
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-06 04:09:23,083 [INFO] positions: Correlation block: skip SHORT XRPUSDT (corr 0.93 >= 0.85 with BTCUSDT short)
-2026-06-06 04:09:29,917 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 04:09:29,962 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-06 04:09:29,964 [INFO] main: TONUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-06 04:09:32,355 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 04:09:32,357 [INFO] main: TONUSDT | Judge:SHORT conf=85% size=20.0%
-2026-06-06 04:09:32,357 [INFO] main: TONUSDT | RL adj=96.7%
-2026-06-06 04:09:32,378 [INFO] main: TONUSDT | Context score=-0.05 bias=0.05
-2026-06-06 04:09:32,378 [INFO] main: TONUSDT | regime BLOCK (volatile)
-2026-06-06 04:09:38,879 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-06 04:09:39,955 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 04:09:39,956 [INFO] main: BTWUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-06 04:09:42,374 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 04:09:42,376 [INFO] main: BTWUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-06 04:09:42,376 [INFO] main: BTWUSDT | RL adj=95.2%
-2026-06-06 04:09:42,397 [INFO] main: BTWUSDT | Context score=-0.05 bias=0.05
-2026-06-06 04:09:42,398 [INFO] main: BTWUSDT | gate PASS (Judge 85/70 RL 95.2/64.9 slack=±3)
-2026-06-06 04:09:42,399 [INFO] positions: [PAPER] Opening SHORT BTWUSDT notional=$100.0 conf=85%
-2026-06-06 04:09:42,407 [INFO] paper_trading: [PAPER] ОТКРЫТА SHORT BTWUSDT @ 0.0503 qty=1987.3604 notional=100.00 margin=20.00 x5 | Баланс: 939.53
-2026-06-06 04:09:49,545 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-06 04:09:49,701 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 04:09:49,703 [INFO] main: SOLUSDT | Bull:long(62%) Bear:short(80%)
-2026-06-06 04:09:52,161 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 04:09:52,163 [INFO] main: SOLUSDT | Judge:LONG conf=70% size=15.0%
-2026-06-06 04:09:52,163 [INFO] main: SOLUSDT | RL adj=67.0%
-2026-06-06 04:09:52,186 [INFO] main: SOLUSDT | Context score=-0.0 bias=0.05
-2026-06-06 04:09:52,186 [INFO] main: SOLUSDT | regime BLOCK (volatile)
-2026-06-06 04:09:58,950 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-06 04:09:59,859 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 04:09:59,861 [INFO] main: LINKUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-06 04:11:49,217 [INFO] main: FILUSDT | Bull:flat(15%) Bear:short(90%)
+2026-06-06 04:11:51,977 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 04:11:51,978 [INFO] main: FILUSDT | Judge:SHORT conf=90% size=20.0%
+2026-06-06 04:11:51,978 [INFO] main: FILUSDT | RL adj=100.0%
+2026-06-06 04:11:51,988 [INFO] main: FILUSDT | Context score=-0.05 bias=0.05
+2026-06-06 04:11:51,988 [INFO] main: FILUSDT | regime BLOCK (volatile)
+2026-06-06 04:11:55,346 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-06-06 04:11:58,371 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-06 04:11:58,432 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 04:11:58,434 [INFO] main: ONDOUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-06 04:12:02,103 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 04:12:02,104 [INFO] main: ONDOUSDT | Judge:SHORT conf=75% size=15.0%
+2026-06-06 04:12:02,105 [INFO] main: ONDOUSDT | RL adj=86.7%
+2026-06-06 04:12:02,125 [INFO] main: ONDOUSDT | Context score=-0.05 bias=0.05
+2026-06-06 04:12:02,125 [INFO] main: ONDOUSDT | regime BLOCK (volatile)
+2026-06-06 04:12:05,531 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-06-06 04:12:08,277 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-06 04:12:08,312 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 04:12:08,314 [INFO] main: BCHUSDT | Bull:flat(15%) Bear:short(75%)
+2026-06-06 04:12:10,550 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 04:12:10,552 [INFO] main: BCHUSDT | Judge:SHORT conf=85% size=15.0%
+2026-06-06 04:12:10,552 [INFO] main: BCHUSDT | RL adj=95.9%
+2026-06-06 04:12:10,572 [INFO] main: BCHUSDT | Context score=-0.05 bias=0.05
+2026-06-06 04:12:10,572 [INFO] main: BCHUSDT | regime BLOCK (volatile)
+2026-06-06 04:12:12,591 [INFO] main: Next scan in 30min (always-30min)
+2026-06-06 04:12:41,763 [INFO] positions: BREAKEVEN_STOP BTWUSDT short PnL:0.33%
+2026-06-06 04:12:41,773 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT BTWUSDT @ 0.0502 PnL: 1.66% (+0.33 USDT) | Баланс: 959.86
+2026-06-06 04:12:42,131 [INFO] positions: OK BTWUSDT short PnL:0.33% reason:breakeven_stop
+2026-06-06 04:12:42,131 [INFO] positions: Lessons: The trade was based on bear sentiment and strong downward signals but ultimately resulted in a breakeven stop with a small 0.33% profit. The expected 2:1 risk to reward ratio was not achieved, indicating the trade did not play out as anticipated. This outcome suggests reevaluating the stop loss and take profit framework for similar trades in the future.
+2026-06-06 04:12:42,131 [INFO] rl: RL learned from short BTWUSDT: profit 0.33% | weights bull=0.925 bear=0.972 judge=1.103 threshold=64.88
 ```
 
 ## Disk
@@ -1894,7 +1900,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       867Mi       461Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       860Mi       468Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
