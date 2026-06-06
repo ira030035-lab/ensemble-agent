@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-06 06:40:01 UTC
+Generated: 2026-06-06 06:50:01 UTC
 
 ## Services
 ```
@@ -1949,7 +1949,6 @@ root     1121216  0.1  3.3 725680 132720 ?       Ssl  Jun03   8:18 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-06 06:29:56,837 [INFO] main: FILUSDT | Bull:long(62%) Bear:short(70%)
 2026-06-06 06:29:59,172 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-06 06:29:59,173 [INFO] main: FILUSDT | Judge:LONG conf=65% size=10.0%
 2026-06-06 06:29:59,173 [INFO] main: FILUSDT | RL adj=63.7%
@@ -1979,12 +1978,13 @@ root     1121216  0.1  3.3 725680 132720 ?       Ssl  Jun03   8:18 /opt/ensemble
 2026-06-06 06:30:28,204 [INFO] main: LTCUSDT | gate PASS (Judge 80/70 RL 90.7/64.94 slack=±3)
 2026-06-06 06:30:28,206 [INFO] positions: Correlation block: skip SHORT LTCUSDT (corr 0.94 >= 0.85 with XRPUSDT short)
 2026-06-06 06:30:30,209 [INFO] main: Next scan in 30min (always-30min)
+2026-06-06 06:47:10,309 [INFO] main: Symbols: 30
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  896K  381M   1% /run
+tmpfs           382M  900K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  8.7G   64G  13% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -1996,7 +1996,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       893Mi       429Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       883Mi       435Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
