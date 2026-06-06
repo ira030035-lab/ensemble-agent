@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-06 06:20:01 UTC
+Generated: 2026-06-06 06:30:01 UTC
 
 ## Services
 ```
@@ -12,14 +12,27 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206484 47856 ?        Ssl  Jun03   0:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.3 725680 132720 ?       Ssl  Jun03   8:15 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.3 725680 132720 ?       Ssl  Jun03   8:17 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 998.8064344622746,
-  "positions": {},
+  "balance": 978.8064292022747,
+  "positions": {
+    "XRPUSDT": {
+      "id": "PAPER_XRPUSDT_1780727272",
+      "symbol": "XRPUSDT",
+      "side": "short",
+      "entry_price": 1.0974,
+      "qty": 91.1245,
+      "confidence": 75,
+      "opened_at": "2026-06-06T06:27:52.007681",
+      "cost": 20.00000526,
+      "notional": 100.00002629999999,
+      "leverage": 5
+    }
+  },
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -1936,36 +1949,36 @@ root     1121216  0.1  3.3 725680 132720 ?       Ssl  Jun03   8:15 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-06 05:55:34,925 [INFO] main: ENAUSDT | regime BLOCK (volatile)
-2026-06-06 05:55:40,358 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 05:55:42,079 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-06 05:55:42,080 [INFO] main: BEATUSDT | Bull:long(62%) Bear:short(70%)
-2026-06-06 05:55:44,505 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-06 05:55:44,507 [INFO] main: BEATUSDT | Judge:LONG conf=70% size=15.0%
-2026-06-06 05:55:44,507 [INFO] main: BEATUSDT | RL adj=68.4%
-2026-06-06 05:55:44,526 [INFO] main: BEATUSDT | Context score=0.0 bias=0.05
-2026-06-06 05:55:44,526 [INFO] main: BEATUSDT | regime BLOCK (volatile)
-2026-06-06 05:55:46,529 [INFO] main: Next scan in 30min (always-30min)
-2026-06-06 05:57:40,310 [INFO] positions: STOP_LOSS BTWUSDT short PnL:-2.18%
-2026-06-06 05:57:40,317 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT BTWUSDT @ 0.0455 PnL: -10.90% (-2.18 USDT) | Баланс: 937.28
-2026-06-06 05:57:40,663 [INFO] positions: LOSS BTWUSDT short PnL:-2.18% reason:stop_loss
-2026-06-06 05:57:40,664 [INFO] positions: Lessons: The trade was based on bear market sentiment with a high percentage of bearish signals, but it still resulted in a loss. The stop loss was triggered, resulting in a 2.18% loss, indicating that the downside move was not as expected. This trade highlights the importance of managing risk and adjusting expectations even when market sentiment appears to be one-sided.
-2026-06-06 05:57:40,664 [INFO] rl: RL learned from short BTWUSDT: loss -2.18% | weights bull=0.929 bear=0.967 judge=1.104 threshold=64.95
-2026-06-06 06:01:47,836 [INFO] positions: STOP_LOSS BNBUSDT short PnL:-2.0%
-2026-06-06 06:01:47,840 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT BNBUSDT @ 576.6900 PnL: -10.01% (-2.00 USDT) | Баланс: 955.28
-2026-06-06 06:01:48,160 [INFO] positions: LOSS BNBUSDT short PnL:-2.0% reason:stop_loss
-2026-06-06 06:01:48,160 [INFO] positions: Lessons: The trade was based on bearish signals and a downtrend but ultimately resulted in a 2% loss due to a stop loss. The expected risk to reward ratio of 2:1 was not achieved as the trade did not move in the expected direction. This trade highlights the importance of adjusting expectations and risk management in a trending down regime.
-2026-06-06 06:01:48,160 [INFO] rl: RL learned from short BNBUSDT: loss -2.00% | weights bull=0.933 bear=0.962 judge=1.105 threshold=65.0
-2026-06-06 06:12:30,251 [INFO] positions: BREAKEVEN_STOP TRXUSDT short PnL:0.5%
-2026-06-06 06:12:30,255 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT TRXUSDT @ 0.3206 PnL: 2.50% (+0.50 USDT) | Баланс: 975.78
-2026-06-06 06:12:30,552 [INFO] positions: OK TRXUSDT short PnL:0.5% reason:breakeven_stop
-2026-06-06 06:12:30,553 [INFO] positions: Lessons: The trade was a short position on TRXUSDT that closed with a 0.5% profit, meeting the breakeven stop. The original reasoning was based on strong bearish sentiment and negative price trends, expecting a downside move of at least 4%. This trade highlights the importance of setting breakeven stops to lock in profits when the expected move does not materialize.
-2026-06-06 06:12:30,553 [INFO] rl: RL learned from short TRXUSDT: profit 0.50% | weights bull=0.932 bear=0.963 judge=1.105 threshold=64.97
-2026-06-06 06:15:32,391 [INFO] positions: TAKE-PROFIT XRPUSDT long PnL:3.03%
-2026-06-06 06:15:32,399 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG XRPUSDT @ 1.0963 PnL: 15.13% (+3.03 USDT) | Баланс: 998.81
-2026-06-06 06:15:32,644 [INFO] positions: OK XRPUSDT long PnL:3.03% reason:take_profit
-2026-06-06 06:15:32,645 [INFO] positions: Lessons: The trade was based on a contrarian view of extreme fear sentiment and oversold conditions. It resulted in a 3.03% profit, hitting the take profit target. This outcome supports the idea of buying during periods of extreme fear when sentiment is overly bearish.
-2026-06-06 06:15:32,645 [INFO] rl: RL learned from long XRPUSDT: profit 3.03% | weights bull=0.938 bear=0.954 judge=1.108 threshold=64.94
+2026-06-06 06:29:19,419 [INFO] main: HYPEUSDT | Bull:long(62%) Bear:short(70%)
+2026-06-06 06:29:21,669 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 06:29:21,671 [INFO] main: HYPEUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-06 06:29:21,671 [INFO] main: HYPEUSDT | RL adj=55.0%
+2026-06-06 06:29:27,450 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 06:29:28,457 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-06 06:29:28,458 [INFO] main: BTWUSDT | Bull:flat(25%) Bear:short(75%)
+2026-06-06 06:29:30,668 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 06:29:30,670 [INFO] main: BTWUSDT | Judge:HOLD conf=60% size=0.0%
+2026-06-06 06:29:30,670 [INFO] main: BTWUSDT | RL adj=60.0%
+2026-06-06 06:29:36,005 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 06:29:37,765 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-06 06:29:37,766 [INFO] main: TONUSDT | Bull:long(62%) Bear:flat(58%)
+2026-06-06 06:29:40,138 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 06:29:40,139 [INFO] main: TONUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-06 06:29:40,139 [INFO] main: TONUSDT | RL adj=50.0%
+2026-06-06 06:29:46,731 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 06:29:46,998 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-06 06:29:46,999 [INFO] main: AVAXUSDT | Bull:flat(35%) Bear:short(60%)
+2026-06-06 06:29:49,357 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 06:29:49,358 [INFO] main: AVAXUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-06 06:29:49,358 [INFO] main: AVAXUSDT | RL adj=55.0%
+2026-06-06 06:29:56,722 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 06:29:56,835 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-06 06:29:56,837 [INFO] main: FILUSDT | Bull:long(62%) Bear:short(70%)
+2026-06-06 06:29:59,172 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 06:29:59,173 [INFO] main: FILUSDT | Judge:LONG conf=65% size=10.0%
+2026-06-06 06:29:59,173 [INFO] main: FILUSDT | RL adj=63.7%
+2026-06-06 06:29:59,194 [INFO] main: FILUSDT | Context score=0.0 bias=0.05
+2026-06-06 06:29:59,194 [INFO] main: FILUSDT | regime BLOCK (volatile)
 ```
 
 ## Disk
@@ -1983,7 +1996,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       878Mi       444Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       893Mi       429Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
