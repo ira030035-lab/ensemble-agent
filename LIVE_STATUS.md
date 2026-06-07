@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-07 18:40:01 UTC
+Generated: 2026-06-07 18:50:01 UTC
 
 ## Services
 ```
@@ -11,8 +11,8 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1121157  0.0  1.2  62860 50444 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1121169  0.0  1.1 206704 46832 ?        Ssl  Jun03   0:35 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 726704 133788 ?       Ssl  Jun03  12:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121169  0.0  1.1 206704 46836 ?        Ssl  Jun03   0:37 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1121216  0.1  3.4 726704 133788 ?       Ssl  Jun03  12:23 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -2429,7 +2429,6 @@ root     1121216  0.1  3.4 726704 133788 ?       Ssl  Jun03  12:22 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-07 18:28:10,375 [INFO] main: LABUSDT | Bull:flat(25%) Bear:short(60%)
 2026-06-07 18:28:13,158 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-07 18:28:13,159 [INFO] main: LABUSDT | Judge:SHORT conf=75% size=15.0%
 2026-06-07 18:28:13,160 [INFO] main: LABUSDT | RL adj=82.9%
@@ -2459,6 +2458,7 @@ root     1121216  0.1  3.4 726704 133788 ?       Ssl  Jun03  12:22 /opt/ensemble
 2026-06-07 18:28:41,107 [INFO] main: SOLUSDT | gate PASS (Judge 78/70 RL 79.5/65.05 slack=±3)
 2026-06-07 18:28:41,108 [INFO] positions: Max positions reached (5/5 dyn)
 2026-06-07 18:28:43,110 [INFO] main: Next scan in 30min (always-30min)
+2026-06-07 18:47:34,899 [INFO] main: Symbols: 30
 ```
 
 ## Disk
