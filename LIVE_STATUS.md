@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-07 22:20:01 UTC
+Generated: 2026-06-07 22:30:01 UTC
 
 ## Services
 ```
@@ -12,24 +12,36 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  62860 50444 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206704 47836 ?        Ssl  Jun03   0:50 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 726704 133788 ?       Ssl  Jun03  12:47 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 726704 133796 ?       Ssl  Jun03  12:51 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 990.055861427678,
+  "balance": 971.880984361678,
   "positions": {
-    "BNBUSDT": {
-      "id": "PAPER_BNBUSDT_1780828050",
-      "symbol": "BNBUSDT",
+    "ETHUSDT": {
+      "id": "PAPER_ETHUSDT_1780871165",
+      "symbol": "ETHUSDT",
       "side": "long",
-      "entry_price": 592.29,
-      "qty": 0.1688,
-      "confidence": 70,
-      "opened_at": "2026-06-07T10:27:30.248543",
-      "cost": 19.9957104,
-      "notional": 99.978552,
+      "entry_price": 1673.26,
+      "qty": 0.0598,
+      "confidence": 83,
+      "opened_at": "2026-06-07T22:26:05.993568",
+      "cost": 20.0121896,
+      "notional": 100.060948,
+      "leverage": 5
+    },
+    "NEARUSDT": {
+      "id": "PAPER_NEARUSDT_1780871401",
+      "symbol": "NEARUSDT",
+      "side": "long",
+      "entry_price": 2.0441,
+      "qty": 48.9213,
+      "confidence": 75,
+      "opened_at": "2026-06-07T22:30:01.723127",
+      "cost": 20.000005866,
+      "notional": 100.00002932999999,
       "leverage": 5
     }
   },
@@ -2463,44 +2475,62 @@ root     1121216  0.1  3.4 726704 133788 ?       Ssl  Jun03  12:47 /opt/ensemble
       "closed_at": "2026-06-07T22:15:33.525696",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BNBUSDT_1780828050",
+      "symbol": "BNBUSDT",
+      "side": "long",
+      "entry_price": 592.29,
+      "qty": 0.1688,
+      "confidence": 70,
+      "opened_at": "2026-06-07T10:27:30.248543",
+      "cost": 19.9957104,
+      "notional": 99.978552,
+      "leverage": 5,
+      "exit_price": 603.2,
+      "pnl_pct": 9.21,
+      "pnl_usdt": 1.84,
+      "closed_at": "2026-06-07T22:20:36.976441",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 10.051571827678409
+  "total_pnl": 11.893179827678422
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-07 21:55:18,455 [INFO] main: LINKUSDT | RL adj=45.0%
-2026-06-07 21:55:24,434 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 21:55:25,741 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-07 21:55:25,743 [INFO] main: BEATUSDT | Bull:flat(15%) Bear:short(85%)
-2026-06-07 21:55:28,037 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 21:55:28,038 [INFO] main: BEATUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-07 21:55:28,038 [INFO] main: BEATUSDT | RL adj=50.0%
-2026-06-07 21:55:30,041 [INFO] main: Next scan in 30min (always-30min)
-2026-06-07 22:12:24,555 [INFO] positions: STOP_LOSS ENAUSDT short PnL:-2.1%
-2026-06-07 22:12:24,563 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ENAUSDT @ 0.0890 PnL: -10.49% (-2.10 USDT) | Баланс: 924.87
-2026-06-07 22:12:24,889 [INFO] positions: LOSS ENAUSDT short PnL:-2.1% reason:stop_loss
-2026-06-07 22:12:24,889 [INFO] positions: Lessons: The trade was based on a bearish view due to weak bull strength and strong bearish signals, but it still resulted in a 2.1% loss. The stop loss was triggered, indicating the trade did not work out as expected. This outcome suggests reevaluating the weight given to sentiment and regime indicators in similar trades.
-2026-06-07 22:12:24,889 [INFO] rl: RL learned from short ENAUSDT: loss -2.10% | weights bull=0.986 bear=0.876 judge=1.137 threshold=65.07
-2026-06-07 22:15:00,802 [INFO] positions: STOP_LOSS BTCUSDT short PnL:-3.1%
-2026-06-07 22:15:00,810 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT BTCUSDT @ 63665.8000 PnL: -15.49% (-3.06 USDT) | Баланс: 941.57
-2026-06-07 22:15:01,294 [INFO] positions: LOSS BTCUSDT short PnL:-3.1% reason:stop_loss
-2026-06-07 22:15:01,294 [INFO] positions: Lessons: The short was taken despite a 70% bullish sentiment, ignoring the stronger 80% bear signal and the overbought 1‑hour RSI, low volume and extreme fear that all pointed to a likely reversal. In ranging markets, prioritize dominant sentiment and volume‑based confirmation over marginal bullish readings. Future shorts should wait for clearer bearish pressure and stronger risk‑reward alignment.
-2026-06-07 22:15:01,294 [INFO] rl: RL learned from short BTCUSDT: loss -3.10% | weights bull=0.993 bear=0.869 judge=1.138 threshold=65.12
-2026-06-07 22:15:01,604 [WARNING] agents: Judge-Groq all failed: openai/gpt-oss-120b empty
-2026-06-07 22:15:02,455 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 22:15:02,457 [INFO] positions: TAKE-PROFIT ETHUSDT long PnL:5.11%
-2026-06-07 22:15:02,465 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG ETHUSDT @ 1708.8500 PnL: 25.55% (+5.11 USDT) | Баланс: 966.67
-2026-06-07 22:15:02,925 [INFO] positions: OK ETHUSDT long PnL:5.11% reason:take_profit
-2026-06-07 22:15:02,925 [INFO] positions: Lessons: The 4‑hour bullish trend and moderate volume correctly signaled a short‑term upside, delivering a 5.1% gain and confirming the 2:1 R/R target. The trade hit the take‑profit before the full 4% move, suggesting the entry could have been tighter or the target reduced for a quicker exit. Future similar setups should still respect volume confirmation but consider scaling out earlier to lock in gains.
-2026-06-07 22:15:02,925 [INFO] rl: RL learned from long ETHUSDT: profit 5.11% | weights bull=1.005 bear=0.852 judge=1.143 threshold=65.09
-2026-06-07 22:15:33,524 [INFO] positions: TAKE-PROFIT DOGEUSDT long PnL:3.38%
-2026-06-07 22:15:33,532 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG DOGEUSDT @ 0.0874 PnL: 16.92% (+3.38 USDT) | Баланс: 990.06
-2026-06-07 22:15:33,880 [INFO] positions: OK DOGEUSDT long PnL:3.38% reason:take_profit
-2026-06-07 22:15:33,880 [INFO] positions: Lessons: The trade hit its 4 % target, delivering a 3.38 % gain and confirming the bullish bias indicated by the 4‑hour RSI and the expected move. The 2:1 risk‑reward ratio kept risk modest and allowed a clean exit at take‑profit. Future similar setups should maintain the same R/R discipline and verify momentum signals before sizing.
-2026-06-07 22:15:33,881 [INFO] rl: RL learned from long DOGEUSDT: profit 3.38% | weights bull=1.011 bear=0.843 judge=1.146 threshold=65.06
+2026-06-07 22:29:30,223 [INFO] main: BEATUSDT | Bull:long(62%) Bear:short(78%)
+2026-06-07 22:29:32,865 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 22:29:32,867 [INFO] main: BEATUSDT | Judge:SHORT conf=85% size=15.0%
+2026-06-07 22:29:32,867 [INFO] main: BEATUSDT | RL adj=85.4%
+2026-06-07 22:29:32,886 [INFO] main: BEATUSDT | Context score=-0.05 bias=0.05
+2026-06-07 22:29:32,886 [INFO] main: BEATUSDT | regime BLOCK (volatile)
+2026-06-07 22:29:39,623 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-07 22:29:39,744 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 22:29:39,745 [INFO] main: BTWUSDT | Bull:long(62%) Bear:short(70%)
+2026-06-07 22:29:42,630 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 22:29:42,632 [INFO] main: BTWUSDT | Judge:HOLD conf=65% size=0.0%
+2026-06-07 22:29:42,632 [INFO] main: BTWUSDT | RL adj=65.0%
+2026-06-07 22:29:49,515 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 22:29:49,617 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-07 22:29:49,618 [INFO] main: PEPEUSDT | Bull:long(72%) Bear:short(70%)
+2026-06-07 22:29:52,560 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 22:29:52,562 [INFO] main: PEPEUSDT | Judge:LONG conf=70% size=15.0%
+2026-06-07 22:29:52,562 [INFO] main: PEPEUSDT | RL adj=72.2%
+2026-06-07 22:29:52,582 [INFO] main: PEPEUSDT | Context score=0.0 bias=0.05
+2026-06-07 22:29:52,582 [INFO] main: PEPEUSDT | regime BLOCK (long × trending_up × rsi1h=54.2; late-entry guard)
+2026-06-07 22:29:58,714 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-07 22:29:58,834 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 22:29:58,836 [INFO] main: NEARUSDT | Bull:long(72%) Bear:short(60%)
+2026-06-07 22:30:01,698 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 22:30:01,699 [INFO] main: NEARUSDT | Judge:LONG conf=75% size=15.0%
+2026-06-07 22:30:01,699 [INFO] main: NEARUSDT | RL adj=78.4%
+2026-06-07 22:30:01,720 [INFO] main: NEARUSDT | Context score=0.0 bias=0.05
+2026-06-07 22:30:01,720 [INFO] main: NEARUSDT | gate PASS (Judge 75/70 RL 78.4/65.03 slack=±3)
+2026-06-07 22:30:01,722 [INFO] positions: [PAPER] Opening LONG NEARUSDT notional=$100.0 conf=75%
+2026-06-07 22:30:01,729 [INFO] paper_trading: [PAPER] ОТКРЫТА LONG NEARUSDT @ 2.0441 qty=48.9213 notional=100.00 margin=20.00 x5 | Баланс: 971.88
 ```
 
 ## Disk
@@ -2518,7 +2548,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       889Mi       299Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       897Mi       290Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
