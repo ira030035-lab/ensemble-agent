@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-07 06:30:01 UTC
+Generated: 2026-06-07 06:40:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.4 726704 133164 ?       Ssl  Jun03  11:00 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 906.5103443542749,
+  "balance": 924.4793707542749,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1780795197",
@@ -66,18 +66,6 @@ root     1121216  0.1  3.4 726704 133164 ?       Ssl  Jun03  11:00 /opt/ensemble
       "opened_at": "2026-06-07T05:17:08.021441",
       "cost": 20.0014656,
       "notional": 100.007328,
-      "leverage": 5
-    },
-    "TAOUSDT": {
-      "id": "PAPER_TAOUSDT_1780809469",
-      "symbol": "TAOUSDT",
-      "side": "short",
-      "entry_price": 204.02,
-      "qty": 0.4901,
-      "confidence": 80,
-      "opened_at": "2026-06-07T05:17:49.518374",
-      "cost": 19.9980404,
-      "notional": 99.990202,
       "leverage": 5
     }
   },
@@ -2223,19 +2211,32 @@ root     1121216  0.1  3.4 726704 133164 ?       Ssl  Jun03  11:00 /opt/ensemble
       "closed_at": "2026-06-07T05:10:04.204281",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_TAOUSDT_1780809469",
+      "symbol": "TAOUSDT",
+      "side": "short",
+      "entry_price": 204.02,
+      "qty": 0.4901,
+      "confidence": 80,
+      "opened_at": "2026-06-07T05:17:49.518374",
+      "cost": 19.9980404,
+      "notional": 99.990202,
+      "leverage": 5,
+      "exit_price": 208.16,
+      "pnl_pct": -10.15,
+      "pnl_usdt": -2.03,
+      "closed_at": "2026-06-07T06:39:54.676686",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 6.273915538275312
+  "total_pnl": 4.244901538275318
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-07 06:27:45,211 [INFO] main: HYPEUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-07 06:27:47,633 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 06:27:47,634 [INFO] main: HYPEUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-07 06:27:47,634 [INFO] main: HYPEUSDT | RL adj=95.0%
-2026-06-07 06:27:47,654 [INFO] main: HYPEUSDT | Context score=-0.05 bias=0.05
 2026-06-07 06:27:47,655 [INFO] main: HYPEUSDT | regime BLOCK (short × trending_down × rsi1h=62.9; late-entry guard)
 2026-06-07 06:27:53,478 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-07 06:27:54,514 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -2261,6 +2262,11 @@ root     1121216  0.1  3.4 726704 133164 ?       Ssl  Jun03  11:00 /opt/ensemble
 2026-06-07 06:28:15,337 [INFO] main: DOGEUSDT | gate PASS (Judge 85/70 RL 87.6/64.98 slack=±3)
 2026-06-07 06:28:15,338 [INFO] positions: Max positions reached (5/5 dyn)
 2026-06-07 06:28:17,340 [INFO] main: Next scan in 30min (always-30min)
+2026-06-07 06:39:54,675 [INFO] positions: STOP_LOSS TAOUSDT short PnL:-2.03%
+2026-06-07 06:39:54,683 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT TAOUSDT @ 208.1600 PnL: -10.15% (-2.03 USDT) | Баланс: 924.48
+2026-06-07 06:39:54,978 [INFO] positions: LOSS TAOUSDT short PnL:-2.03% reason:stop_loss
+2026-06-07 06:39:54,978 [INFO] positions: Lessons: The trade was based on bearish conditions with an expected downside move, but it resulted in a stop loss with a 2.03% loss. The original reasoning was flawed as the expected downside move did not materialize. This trade highlights the importance of reevaluating the bullish percentage threshold and bearish conditions to improve the accuracy of trade decisions.
+2026-06-07 06:39:54,978 [INFO] rl: RL learned from short TAOUSDT: loss -2.03% | weights bull=0.984 bear=0.889 judge=1.127 threshold=65.03
 ```
 
 ## Disk
@@ -2278,7 +2284,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       896Mi       361Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       890Mi       367Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
