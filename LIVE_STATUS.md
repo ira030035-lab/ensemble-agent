@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-07 07:40:01 UTC
+Generated: 2026-06-07 07:50:01 UTC
 
 ## Services
 ```
@@ -2249,7 +2249,6 @@ root     1121216  0.1  3.4 726704 133164 ?       Ssl  Jun03  11:08 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-07 07:36:14,812 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-07 07:36:14,813 [INFO] main: XLMUSDT | Judge:SHORT conf=70% size=15.0%
 2026-06-07 07:36:14,814 [INFO] main: XLMUSDT | RL adj=79.3%
 2026-06-07 07:36:14,834 [INFO] main: XLMUSDT | Context score=-0.05 bias=0.05
@@ -2279,6 +2278,7 @@ root     1121216  0.1  3.4 726704 133164 ?       Ssl  Jun03  11:08 /opt/ensemble
 2026-06-07 07:36:44,321 [INFO] main: ADAUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-07 07:36:44,322 [INFO] main: ADAUSDT | RL adj=55.0%
 2026-06-07 07:36:46,324 [INFO] main: Next scan in 30min (always-30min)
+2026-06-07 07:47:27,643 [INFO] main: Symbols: 30
 ```
 
 ## Disk
