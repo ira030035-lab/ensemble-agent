@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-07 01:40:01 UTC
+Generated: 2026-06-07 01:50:02 UTC
 
 ## Services
 ```
@@ -2153,7 +2153,6 @@ root     1121216  0.1  3.4 726704 133020 ?       Ssl  Jun03  10:26 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-07 01:20:50,017 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-07 01:20:50,019 [INFO] main: ALLOUSDT | Bull:long(62%) Bear:long(70%)
 2026-06-07 01:20:52,260 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-07 01:20:52,262 [INFO] main: ALLOUSDT | Judge:HOLD conf=50% size=0.0%
@@ -2183,6 +2182,7 @@ root     1121216  0.1  3.4 726704 133020 ?       Ssl  Jun03  10:26 /opt/ensemble
 2026-06-07 01:28:04,119 [INFO] positions: OK TONUSDT long PnL:3.62% reason:take_profit
 2026-06-07 01:28:04,119 [INFO] positions: Lessons: The trade was closed in profit with a 3.62% gain, meeting the expected 2:1 risk-reward ratio. The strong bull case with 72% and bullish signals supported the long position. This outcome reinforces the effectiveness of the trending_up regime and bull case analysis in identifying profitable trades.
 2026-06-07 01:28:04,119 [INFO] rl: RL learned from long TONUSDT: profit 3.62% | weights bull=0.967 bear=0.911 judge=1.122 threshold=64.91
+2026-06-07 01:47:23,558 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -2200,7 +2200,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       881Mi       400Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       882Mi       398Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
