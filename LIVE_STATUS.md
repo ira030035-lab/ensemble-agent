@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-07 04:50:01 UTC
+Generated: 2026-06-07 05:00:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 207268 48456 ?        Ssl  Jun03   0:18 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 726704 133148 ?       Ssl  Jun03  10:48 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 726704 133148 ?       Ssl  Jun03  10:49 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 907.6517058742749,
+  "balance": 948.291537474275,
   "positions": {
-    "BTCUSDT": {
-      "id": "PAPER_BTCUSDT_1780772857",
-      "symbol": "BTCUSDT",
-      "side": "short",
-      "entry_price": 60645.4,
-      "qty": 0.0016,
-      "confidence": 88,
-      "opened_at": "2026-06-06T19:07:37.873991",
-      "cost": 19.406528,
-      "notional": 97.03264,
-      "leverage": 5
-    },
     "HYPEUSDT": {
       "id": "PAPER_HYPEUSDT_1780795075",
       "symbol": "HYPEUSDT",
@@ -66,18 +54,6 @@ root     1121216  0.1  3.4 726704 133148 ?       Ssl  Jun03  10:48 /opt/ensemble
       "opened_at": "2026-06-07T01:52:11.227705",
       "cost": 20.000005984,
       "notional": 100.00002992,
-      "leverage": 5
-    },
-    "BCHUSDT": {
-      "id": "PAPER_BCHUSDT_1780799180",
-      "symbol": "BCHUSDT",
-      "side": "long",
-      "entry_price": 217.92,
-      "qty": 0.4589,
-      "confidence": 85,
-      "opened_at": "2026-06-07T02:26:20.231509",
-      "cost": 20.0006976,
-      "notional": 100.00348799999999,
       "leverage": 5
     }
   },
@@ -2169,24 +2145,50 @@ root     1121216  0.1  3.4 726704 133148 ?       Ssl  Jun03  10:48 /opt/ensemble
       "closed_at": "2026-06-07T01:28:03.839712",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BCHUSDT_1780799180",
+      "symbol": "BCHUSDT",
+      "side": "long",
+      "entry_price": 217.92,
+      "qty": 0.4589,
+      "confidence": 85,
+      "opened_at": "2026-06-07T02:26:20.231509",
+      "cost": 20.0006976,
+      "notional": 100.00348799999999,
+      "leverage": 5,
+      "exit_price": 224.86,
+      "pnl_pct": 15.92,
+      "pnl_usdt": 3.18,
+      "closed_at": "2026-06-07T04:53:34.054366",
+      "reason": "take_profit",
+      "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BTCUSDT_1780772857",
+      "symbol": "BTCUSDT",
+      "side": "short",
+      "entry_price": 60645.4,
+      "qty": 0.0016,
+      "confidence": 88,
+      "opened_at": "2026-06-06T19:07:37.873991",
+      "cost": 19.406528,
+      "notional": 97.03264,
+      "leverage": 5,
+      "exit_price": 61865.5,
+      "pnl_pct": -10.06,
+      "pnl_usdt": -1.95,
+      "closed_at": "2026-06-07T04:57:43.548081",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 7.0622863382752925
+  "total_pnl": 8.294892338275307
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-07 04:45:54,788 [INFO] main: BEATUSDT | Context score=-0.05 bias=0.05
-2026-06-07 04:45:54,789 [INFO] main: BEATUSDT | regime BLOCK (volatile)
-2026-06-07 04:46:01,511 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 04:46:01,825 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-07 04:46:01,827 [INFO] main: TAOUSDT | Bull:flat(35%) Bear:short(75%)
-2026-06-07 04:46:04,057 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 04:46:04,058 [INFO] main: TAOUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-07 04:46:04,059 [INFO] main: TAOUSDT | RL adj=85.2%
-2026-06-07 04:46:04,081 [INFO] main: TAOUSDT | Context score=-0.05 bias=0.05
-2026-06-07 04:46:04,082 [INFO] main: TAOUSDT | gate PASS (Judge 75/70 RL 85.2/64.91 slack=±3)
 2026-06-07 04:46:04,083 [INFO] positions: Max positions reached (5/5 dyn)
 2026-06-07 04:46:10,434 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-07 04:46:10,863 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -2207,6 +2209,16 @@ root     1121216  0.1  3.4 726704 133148 ?       Ssl  Jun03  10:48 /opt/ensemble
 2026-06-07 04:46:23,582 [INFO] positions: Max positions reached (5/5 dyn)
 2026-06-07 04:46:25,585 [INFO] main: Next scan in 30min (always-30min)
 2026-06-07 04:47:25,731 [INFO] main: Symbols: 30
+2026-06-07 04:53:34,053 [INFO] positions: TAKE-PROFIT BCHUSDT long PnL:3.18%
+2026-06-07 04:53:34,060 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG BCHUSDT @ 224.8600 PnL: 15.92% (+3.18 USDT) | Баланс: 930.84
+2026-06-07 04:53:34,329 [INFO] positions: OK BCHUSDT long PnL:3.18% reason:take_profit
+2026-06-07 04:53:34,329 [INFO] positions: Lessons: The trade was successful with a 3.18% profit, meeting the expected upside move in a ranging market. The bullish MACD and favorable RSI correctly indicated a dominant bull case. This trade reinforces the importance of using technical indicators to identify trends and potential price movements in a ranging regime.
+2026-06-07 04:53:34,329 [INFO] rl: RL learned from long BCHUSDT: profit 3.18% | weights bull=0.973 bear=0.901 judge=1.126 threshold=64.88
+2026-06-07 04:57:43,546 [INFO] positions: STOP_LOSS BTCUSDT short PnL:-2.01%
+2026-06-07 04:57:43,554 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT BTCUSDT @ 61865.5000 PnL: -10.06% (-1.95 USDT) | Баланс: 948.29
+2026-06-07 04:57:43,823 [INFO] positions: LOSS BTCUSDT short PnL:-2.01% reason:stop_loss
+2026-06-07 04:57:43,824 [INFO] positions: Lessons: Bear dominance at 80% was not enough to generate a significant downside move. The 2:1 risk/reward ratio was not achieved as the trade was stopped out for a 2.01% loss. This trade highlights the importance of considering other market factors beyond bear dominance when making trading decisions.
+2026-06-07 04:57:43,824 [INFO] rl: RL learned from short BTCUSDT: loss -2.01% | weights bull=0.977 bear=0.897 judge=1.126 threshold=64.93
 ```
 
 ## Disk
@@ -2224,7 +2236,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       883Mi       384Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       898Mi       368Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
