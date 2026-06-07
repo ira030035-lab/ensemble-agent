@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-07 15:40:01 UTC
+Generated: 2026-06-07 15:50:01 UTC
 
 ## Services
 ```
@@ -2429,7 +2429,6 @@ root     1121216  0.1  3.4 726704 133788 ?       Ssl  Jun03  12:03 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-07 15:37:15,224 [INFO] main: ADAUSDT | Judge:LONG conf=85% size=15.0%
 2026-06-07 15:37:15,224 [INFO] main: ADAUSDT | RL adj=86.4%
 2026-06-07 15:37:15,245 [INFO] main: ADAUSDT | Context score=-0.0 bias=0.05
 2026-06-07 15:37:15,246 [INFO] main: ADAUSDT | regime BLOCK (long × trending_up × rsi1h=54.5; late-entry guard)
@@ -2459,6 +2458,7 @@ root     1121216  0.1  3.4 726704 133788 ?       Ssl  Jun03  12:03 /opt/ensemble
 2026-06-07 15:37:44,551 [INFO] main: TONUSDT | Context score=0.0 bias=0.05
 2026-06-07 15:37:44,551 [INFO] main: TONUSDT | regime BLOCK (volatile)
 2026-06-07 15:37:46,554 [INFO] main: Next scan in 30min (always-30min)
+2026-06-07 15:47:32,955 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -2476,7 +2476,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       886Mi       331Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       884Mi       333Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
