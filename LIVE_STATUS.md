@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-07 06:40:01 UTC
+Generated: 2026-06-07 06:50:02 UTC
 
 ## Services
 ```
@@ -11,8 +11,8 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1121169  0.0  1.2 207268 48448 ?        Ssl  Jun03   0:19 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 726704 133164 ?       Ssl  Jun03  11:00 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121169  0.0  1.2 208292 49464 ?        Ssl  Jun03   0:19 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1121216  0.1  3.4 726704 133164 ?       Ssl  Jun03  11:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -2237,7 +2237,6 @@ root     1121216  0.1  3.4 726704 133164 ?       Ssl  Jun03  11:00 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-07 06:27:47,655 [INFO] main: HYPEUSDT | regime BLOCK (short × trending_down × rsi1h=62.9; late-entry guard)
 2026-06-07 06:27:53,478 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-07 06:27:54,514 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-07 06:27:54,515 [INFO] main: TONUSDT | Bull:flat(35%) Bear:short(80%)
@@ -2267,6 +2266,7 @@ root     1121216  0.1  3.4 726704 133164 ?       Ssl  Jun03  11:00 /opt/ensemble
 2026-06-07 06:39:54,978 [INFO] positions: LOSS TAOUSDT short PnL:-2.03% reason:stop_loss
 2026-06-07 06:39:54,978 [INFO] positions: Lessons: The trade was based on bearish conditions with an expected downside move, but it resulted in a stop loss with a 2.03% loss. The original reasoning was flawed as the expected downside move did not materialize. This trade highlights the importance of reevaluating the bullish percentage threshold and bearish conditions to improve the accuracy of trade decisions.
 2026-06-07 06:39:54,978 [INFO] rl: RL learned from short TAOUSDT: loss -2.03% | weights bull=0.984 bear=0.889 judge=1.127 threshold=65.03
+2026-06-07 06:47:27,024 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -2284,7 +2284,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       890Mi       367Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       900Mi       356Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
