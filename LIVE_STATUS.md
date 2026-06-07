@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-07 10:00:01 UTC
+Generated: 2026-06-07 10:10:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1121216  0.1  3.4 726704 133248 ?       Ssl  Jun03  11:23 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 905.4080731626749,
+  "balance": 925.834518506675,
   "positions": {
-    "SUIUSDT": {
-      "id": "PAPER_SUIUSDT_1780797131",
-      "symbol": "SUIUSDT",
-      "side": "long",
-      "entry_price": 0.7504,
-      "qty": 133.2623,
-      "confidence": 85,
-      "opened_at": "2026-06-07T01:52:11.227705",
-      "cost": 20.000005984,
-      "notional": 100.00002992,
-      "leverage": 5
-    },
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1780809403",
       "symbol": "BTCUSDT",
@@ -2277,19 +2265,32 @@ root     1121216  0.1  3.4 726704 133248 ?       Ssl  Jun03  11:23 /opt/ensemble
       "closed_at": "2026-06-07T08:59:56.574461",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_SUIUSDT_1780797131",
+      "symbol": "SUIUSDT",
+      "side": "long",
+      "entry_price": 0.7504,
+      "qty": 133.2623,
+      "confidence": 85,
+      "opened_at": "2026-06-07T01:52:11.227705",
+      "cost": 20.000005984,
+      "notional": 100.00002992,
+      "leverage": 5,
+      "exit_price": 0.7536,
+      "pnl_pct": 2.13,
+      "pnl_usdt": 0.43,
+      "closed_at": "2026-06-07T10:01:59.745405",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 5.17037672667532
+  "total_pnl": 5.596816086675332
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-07 09:53:22,559 [INFO] main: HUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-07 09:53:22,559 [INFO] main: HUSDT | RL adj=55.0%
-2026-06-07 09:53:29,114 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 09:53:29,251 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-07 09:53:29,253 [INFO] main: ONDOUSDT | Bull:flat(25%) Bear:short(80%)
 2026-06-07 09:53:31,830 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-07 09:53:31,832 [INFO] main: ONDOUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-07 09:53:31,832 [INFO] main: ONDOUSDT | RL adj=55.0%
@@ -2315,6 +2316,11 @@ root     1121216  0.1  3.4 726704 133248 ?       Ssl  Jun03  11:23 /opt/ensemble
 2026-06-07 09:54:00,380 [INFO] main: FIDAUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-07 09:54:00,381 [INFO] main: FIDAUSDT | RL adj=55.0%
 2026-06-07 09:54:02,383 [INFO] main: Next scan in 30min (always-30min)
+2026-06-07 10:01:59,744 [INFO] positions: BREAKEVEN_STOP SUIUSDT long PnL:0.43%
+2026-06-07 10:01:59,751 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG SUIUSDT @ 0.7536 PnL: 2.13% (+0.43 USDT) | Баланс: 925.83
+2026-06-07 10:02:00,050 [INFO] positions: OK SUIUSDT long PnL:0.43% reason:breakeven_stop
+2026-06-07 10:02:00,051 [INFO] positions: Lessons: The trade was based on a strong uptrend and positive indicators but ultimately closed at breakeven. The 2:1 risk/reward ratio was not fully realized, highlighting the importance of adjusting expectations. This outcome suggests that even with favorable conditions, trades can still result in minimal gains, emphasizing the need for disciplined risk management.
+2026-06-07 10:02:00,051 [INFO] rl: RL learned from long SUIUSDT: profit 0.43% | weights bull=0.996 bear=0.873 judge=1.131 threshold=65.02
 ```
 
 ## Disk
@@ -2332,7 +2338,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       889Mi       355Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       881Mi       361Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
