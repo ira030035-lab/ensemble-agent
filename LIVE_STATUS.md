@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-07 09:10:01 UTC
+Generated: 2026-06-07 09:20:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 205424 46928 ?        Ssl  Jun03   0:20 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 726704 133204 ?       Ssl  Jun03  11:16 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 726704 133204 ?       Ssl  Jun03  11:19 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 945.4080731426749,
+  "balance": 905.4080731626749,
   "positions": {
     "SUIUSDT": {
       "id": "PAPER_SUIUSDT_1780797131",
@@ -54,6 +54,30 @@ root     1121216  0.1  3.4 726704 133204 ?       Ssl  Jun03  11:16 /opt/ensemble
       "opened_at": "2026-06-07T05:17:08.021441",
       "cost": 20.0014656,
       "notional": 100.007328,
+      "leverage": 5
+    },
+    "PEPEUSDT": {
+      "id": "PAPER_PEPEUSDT_1780823767",
+      "symbol": "PEPEUSDT",
+      "side": "short",
+      "entry_price": 2.8093e-06,
+      "qty": 35596055.957,
+      "confidence": 90,
+      "opened_at": "2026-06-07T09:16:07.527198",
+      "cost": 20.00000000000002,
+      "notional": 100.0000000000001,
+      "leverage": 5
+    },
+    "ADAUSDT": {
+      "id": "PAPER_ADAUSDT_1780823850",
+      "symbol": "ADAUSDT",
+      "side": "short",
+      "entry_price": 0.1665,
+      "qty": 600.6006,
+      "confidence": 75,
+      "opened_at": "2026-06-07T09:17:30.786410",
+      "cost": 19.999999980000002,
+      "notional": 99.9999999,
       "leverage": 5
     }
   },
@@ -2261,36 +2285,36 @@ root     1121216  0.1  3.4 726704 133204 ?       Ssl  Jun03  11:16 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-07 08:44:48,559 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 08:44:48,560 [INFO] main: LABUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-07 08:44:48,560 [INFO] main: LABUSDT | RL adj=50.0%
-2026-06-07 08:44:55,528 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-07 08:44:56,377 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 08:44:56,378 [INFO] main: BEATUSDT | Bull:long(62%) Bear:short(70%)
-2026-06-07 08:44:59,869 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 08:44:59,870 [INFO] main: BEATUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-07 08:44:59,870 [INFO] main: BEATUSDT | RL adj=55.0%
-2026-06-07 08:45:06,214 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-07 08:45:06,622 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 08:45:06,624 [INFO] main: DOGEUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-07 08:45:10,142 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 08:45:10,144 [INFO] main: DOGEUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-07 08:45:10,144 [INFO] main: DOGEUSDT | RL adj=84.3%
-2026-06-07 08:45:10,168 [INFO] main: DOGEUSDT | Context score=-0.05 bias=0.05
-2026-06-07 08:45:10,168 [INFO] main: DOGEUSDT | gate PASS (Judge 75/70 RL 84.3/65.03 slack=±3)
-2026-06-07 08:45:10,169 [INFO] positions: Max positions reached (5/5 dyn)
-2026-06-07 08:45:12,172 [INFO] main: Next scan in 30min (always-30min)
-2026-06-07 08:47:28,359 [INFO] main: Symbols: 30
-2026-06-07 08:47:28,941 [INFO] positions: STOP_LOSS PENGUUSDT short PnL:-2.08%
-2026-06-07 08:47:28,947 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT PENGUUSDT @ 0.0069 PnL: -10.41% (-2.08 USDT) | Баланс: 922.40
-2026-06-07 08:47:29,318 [INFO] positions: LOSS PENGUUSDT short PnL:-2.08% reason:stop_loss
-2026-06-07 08:47:29,318 [INFO] positions: Lessons: The trade was closed at a 2.08% loss due to a stop loss trigger, failing to achieve the expected 4% downside move. The initial analysis correctly identified overbought conditions with an RSI of 82.1, but the market did not follow through with the anticipated bearish move. This outcome highlights the importance of adjusting position sizing and stop loss levels to account for potential false signals from technical indicators.
-2026-06-07 08:47:29,318 [INFO] rl: RL learned from short PENGUUSDT: loss -2.08% | weights bull=0.989 bear=0.884 judge=1.127 threshold=65.08
-2026-06-07 08:59:56,572 [INFO] positions: TAKE-PROFIT BNBUSDT long PnL:3.01%
-2026-06-07 08:59:56,581 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG BNBUSDT @ 597.5800 PnL: 15.03% (+3.01 USDT) | Баланс: 945.41
-2026-06-07 08:59:57,045 [INFO] positions: OK BNBUSDT long PnL:3.01% reason:take_profit
-2026-06-07 08:59:57,045 [INFO] positions: Lessons: This trade was successful due to a strong bullish confluence that outweighed overbought technicals. The 2:1 risk/reward ratio was achieved with a 3.01% profit. The key takeaway is that a clear bullish signal can sometimes overcome overbought conditions, especially in a ranging market regime.
-2026-06-07 08:59:57,046 [INFO] rl: RL learned from long BNBUSDT: profit 3.01% | weights bull=0.995 bear=0.874 judge=1.131 threshold=65.05
+2026-06-07 09:19:25,784 [INFO] main: BEATUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-07 09:19:25,784 [INFO] main: BEATUSDT | RL adj=55.0%
+2026-06-07 09:19:32,371 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 09:19:32,708 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-07 09:19:32,709 [INFO] main: WLDUSDT | Bull:flat(25%) Bear:short(75%)
+2026-06-07 09:19:35,932 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 09:19:35,933 [INFO] main: WLDUSDT | Judge:SHORT conf=75% size=15.0%
+2026-06-07 09:19:35,933 [INFO] main: WLDUSDT | RL adj=84.8%
+2026-06-07 09:19:35,943 [INFO] main: WLDUSDT | Context score=-0.05 bias=0.05
+2026-06-07 09:19:35,943 [INFO] main: WLDUSDT | regime BLOCK (volatile)
+2026-06-07 09:19:42,434 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-07 09:19:42,435 [WARNING] agents: Bull entropy-guard: шаблон flat(25) ×5. Переключаемся на Kimi+Claude fallback.
+2026-06-07 09:19:43,636 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 09:19:43,638 [INFO] main: BNBUSDT | Bull:flat(25%) Bear:short(90%)
+2026-06-07 09:19:46,722 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 09:19:46,723 [INFO] main: BNBUSDT | Judge:SHORT conf=90% size=15.0%
+2026-06-07 09:19:46,724 [INFO] main: BNBUSDT | RL adj=100.0%
+2026-06-07 09:19:46,744 [INFO] main: BNBUSDT | Context score=-0.05 bias=0.05
+2026-06-07 09:19:46,744 [INFO] main: BNBUSDT | gate PASS (Judge 90/70 RL 100.0/65.05 slack=±3)
+2026-06-07 09:19:46,745 [INFO] positions: Max positions reached (5/5 dyn)
+2026-06-07 09:19:50,177 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-06-07 09:19:52,801 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-07 09:19:53,381 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 09:19:53,383 [INFO] main: OPNUSDT | Bull:flat(15%) Bear:short(85%)
+2026-06-07 09:19:56,349 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 09:19:56,351 [INFO] main: OPNUSDT | Judge:SHORT conf=85% size=20.0%
+2026-06-07 09:19:56,351 [INFO] main: OPNUSDT | RL adj=96.1%
+2026-06-07 09:19:56,375 [INFO] main: OPNUSDT | Context score=-0.05 bias=0.05
+2026-06-07 09:19:56,376 [INFO] main: OPNUSDT | regime BLOCK (volatile)
+2026-06-07 09:19:58,410 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
