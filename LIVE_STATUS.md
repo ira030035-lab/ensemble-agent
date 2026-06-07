@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-07 01:00:01 UTC
+Generated: 2026-06-07 01:10:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 207268 48456 ?        Ssl  Jun03   0:18 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 726704 133012 ?       Ssl  Jun03  10:21 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 726704 133012 ?       Ssl  Jun03  10:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 904.9972671002747,
+  "balance": 946.0744310262747,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1780748074",
@@ -32,18 +32,6 @@ root     1121216  0.1  3.4 726704 133012 ?       Ssl  Jun03  10:21 /opt/ensemble
       "notional": 100.0000152,
       "leverage": 5
     },
-    "SUIUSDT": {
-      "id": "PAPER_SUIUSDT_1780758410",
-      "symbol": "SUIUSDT",
-      "side": "long",
-      "entry_price": 0.7137,
-      "qty": 140.1149,
-      "confidence": 70,
-      "opened_at": "2026-06-06T15:06:50.879573",
-      "cost": 20.000000826,
-      "notional": 100.00000413000001,
-      "leverage": 5
-    },
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1780772857",
       "symbol": "BTCUSDT",
@@ -54,18 +42,6 @@ root     1121216  0.1  3.4 726704 133012 ?       Ssl  Jun03  10:21 /opt/ensemble
       "opened_at": "2026-06-06T19:07:37.873991",
       "cost": 19.406528,
       "notional": 97.03264,
-      "leverage": 5
-    },
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1780778901",
-      "symbol": "HYPEUSDT",
-      "side": "short",
-      "entry_price": 56.327,
-      "qty": 1.7753,
-      "confidence": 85,
-      "opened_at": "2026-06-06T20:48:21.287122",
-      "cost": 19.99946462,
-      "notional": 99.9973231,
       "leverage": 5
     },
     "TONUSDT": {
@@ -2097,24 +2073,50 @@ root     1121216  0.1  3.4 726704 133012 ?       Ssl  Jun03  10:21 /opt/ensemble
       "closed_at": "2026-06-06T22:02:52.089476",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1780778901",
+      "symbol": "HYPEUSDT",
+      "side": "short",
+      "entry_price": 56.327,
+      "qty": 1.7753,
+      "confidence": 85,
+      "opened_at": "2026-06-06T20:48:21.287122",
+      "cost": 19.99946462,
+      "notional": 99.9973231,
+      "leverage": 5,
+      "exit_price": 57.551,
+      "pnl_pct": -10.87,
+      "pnl_usdt": -2.17,
+      "closed_at": "2026-06-07T01:04:13.657775",
+      "reason": "stop_loss",
+      "outcome": "loss"
+    },
+    {
+      "id": "PAPER_SUIUSDT_1780758410",
+      "symbol": "SUIUSDT",
+      "side": "long",
+      "entry_price": 0.7137,
+      "qty": 140.1149,
+      "confidence": 70,
+      "opened_at": "2026-06-06T15:06:50.879573",
+      "cost": 20.000000826,
+      "notional": 100.00000413000001,
+      "leverage": 5,
+      "exit_price": 0.7369,
+      "pnl_pct": 16.25,
+      "pnl_usdt": 3.25,
+      "closed_at": "2026-06-07T01:08:54.050396",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 4.403247598275307
+  "total_pnl": 5.4809460782753
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-07 00:46:23,087 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 00:46:24,724 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-07 00:46:24,726 [INFO] main: LINKUSDT | Bull:long(62%) Bear:short(70%)
-2026-06-07 00:46:27,058 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 00:46:27,060 [INFO] main: LINKUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-07 00:46:27,060 [INFO] main: LINKUSDT | RL adj=55.0%
-2026-06-07 00:46:33,026 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 00:46:34,262 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-07 00:46:34,264 [INFO] main: BEATUSDT | Bull:long(62%) Bear:short(90%)
-2026-06-07 00:46:37,494 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-07 00:46:37,495 [INFO] main: BEATUSDT | Judge:SHORT conf=90% size=15.0%
 2026-06-07 00:46:37,495 [INFO] main: BEATUSDT | RL adj=93.9%
 2026-06-07 00:46:37,516 [INFO] main: BEATUSDT | Context score=-0.05 bias=0.05
@@ -2135,6 +2137,16 @@ root     1121216  0.1  3.4 726704 133012 ?       Ssl  Jun03  10:21 /opt/ensemble
 2026-06-07 00:46:56,032 [INFO] main: XLMUSDT | RL adj=40.0%
 2026-06-07 00:46:58,033 [INFO] main: Next scan in 30min (always-30min)
 2026-06-07 00:47:22,851 [INFO] main: Symbols: 30
+2026-06-07 01:04:13,656 [INFO] positions: STOP_LOSS HYPEUSDT short PnL:-2.17%
+2026-06-07 01:04:13,663 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT HYPEUSDT @ 57.5510 PnL: -10.87% (-2.17 USDT) | Баланс: 922.82
+2026-06-07 01:04:13,947 [INFO] positions: LOSS HYPEUSDT short PnL:-2.17% reason:stop_loss
+2026-06-07 01:04:13,947 [INFO] positions: Lessons: The trade was based on strong bear sentiment and downtrend indicators, expecting a 4% downside move. However, the trade was stopped out for a 2.17% loss, failing to reach the expected target. This outcome suggests reevaluating the stop loss level and risk management strategy for similar trades in the future.
+2026-06-07 01:04:13,947 [INFO] rl: RL learned from short HYPEUSDT: loss -2.17% | weights bull=0.949 bear=0.936 judge=1.115 threshold=64.9
+2026-06-07 01:08:54,049 [INFO] positions: TAKE-PROFIT SUIUSDT long PnL:3.25%
+2026-06-07 01:08:54,058 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG SUIUSDT @ 0.7369 PnL: 16.25% (+3.25 USDT) | Баланс: 946.07
+2026-06-07 01:08:54,398 [INFO] positions: OK SUIUSDT long PnL:3.25% reason:take_profit
+2026-06-07 01:08:54,398 [INFO] positions: Lessons: The trade was successful with a 3.25% profit, meeting the expected upside potential. The strong bull sentiment and extended 4-hour uptrend supported the long position, while the RSI 15m indicated sufficient strength without overextension. This trade demonstrates the effectiveness of combining sentiment analysis with technical indicators to identify profitable opportunities in a ranging regime.
+2026-06-07 01:08:54,398 [INFO] rl: RL learned from long SUIUSDT: profit 3.25% | weights bull=0.956 bear=0.926 judge=1.118 threshold=64.88
 ```
 
 ## Disk
@@ -2152,7 +2164,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       894Mi       389Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       881Mi       402Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
