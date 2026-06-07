@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-07 22:10:01 UTC
+Generated: 2026-06-07 22:20:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1121216  0.1  3.4 726704 133788 ?       Ssl  Jun03  12:47 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 906.964257817678,
+  "balance": 990.055861427678,
   "positions": {
-    "BTCUSDT": {
-      "id": "PAPER_BTCUSDT_1780809403",
-      "symbol": "BTCUSDT",
-      "side": "short",
-      "entry_price": 61752.6,
-      "qty": 0.0016,
-      "confidence": 85,
-      "opened_at": "2026-06-07T05:16:43.148519",
-      "cost": 19.760832,
-      "notional": 98.80416,
-      "leverage": 5
-    },
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1780828050",
       "symbol": "BNBUSDT",
@@ -42,42 +30,6 @@ root     1121216  0.1  3.4 726704 133788 ?       Ssl  Jun03  12:47 /opt/ensemble
       "opened_at": "2026-06-07T10:27:30.248543",
       "cost": 19.9957104,
       "notional": 99.978552,
-      "leverage": 5
-    },
-    "ETHUSDT": {
-      "id": "PAPER_ETHUSDT_1780829911",
-      "symbol": "ETHUSDT",
-      "side": "long",
-      "entry_price": 1625.78,
-      "qty": 0.0615,
-      "confidence": 85,
-      "opened_at": "2026-06-07T10:58:31.532257",
-      "cost": 19.997093999999997,
-      "notional": 99.98546999999999,
-      "leverage": 5
-    },
-    "DOGEUSDT": {
-      "id": "PAPER_DOGEUSDT_1780844336",
-      "symbol": "DOGEUSDT",
-      "side": "long",
-      "entry_price": 0.0845,
-      "qty": 1183.432,
-      "confidence": 75,
-      "opened_at": "2026-06-07T14:58:56.642273",
-      "cost": 20.000000800000002,
-      "notional": 100.000004,
-      "leverage": 5
-    },
-    "ENAUSDT": {
-      "id": "PAPER_ENAUSDT_1780862875",
-      "symbol": "ENAUSDT",
-      "side": "short",
-      "entry_price": 0.0872,
-      "qty": 1146.789,
-      "confidence": 80,
-      "opened_at": "2026-06-07T20:07:55.028174",
-      "cost": 20.00000016,
-      "notional": 100.0000008,
       "leverage": 5
     }
   },
@@ -2439,36 +2391,86 @@ root     1121216  0.1  3.4 726704 133788 ?       Ssl  Jun03  12:47 /opt/ensemble
       "closed_at": "2026-06-07T19:44:59.506039",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ENAUSDT_1780862875",
+      "symbol": "ENAUSDT",
+      "side": "short",
+      "entry_price": 0.0872,
+      "qty": 1146.789,
+      "confidence": 80,
+      "opened_at": "2026-06-07T20:07:55.028174",
+      "cost": 20.00000016,
+      "notional": 100.0000008,
+      "leverage": 5,
+      "exit_price": 0.08903,
+      "pnl_pct": -10.49,
+      "pnl_usdt": -2.1,
+      "closed_at": "2026-06-07T22:12:24.556241",
+      "reason": "stop_loss",
+      "outcome": "loss"
+    },
+    {
+      "id": "PAPER_BTCUSDT_1780809403",
+      "symbol": "BTCUSDT",
+      "side": "short",
+      "entry_price": 61752.6,
+      "qty": 0.0016,
+      "confidence": 85,
+      "opened_at": "2026-06-07T05:16:43.148519",
+      "cost": 19.760832,
+      "notional": 98.80416,
+      "leverage": 5,
+      "exit_price": 63665.8,
+      "pnl_pct": -15.49,
+      "pnl_usdt": -3.06,
+      "closed_at": "2026-06-07T22:15:00.803641",
+      "reason": "stop_loss",
+      "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ETHUSDT_1780829911",
+      "symbol": "ETHUSDT",
+      "side": "long",
+      "entry_price": 1625.78,
+      "qty": 0.0615,
+      "confidence": 85,
+      "opened_at": "2026-06-07T10:58:31.532257",
+      "cost": 19.997093999999997,
+      "notional": 99.98546999999999,
+      "leverage": 5,
+      "exit_price": 1708.85,
+      "pnl_pct": 25.55,
+      "pnl_usdt": 5.11,
+      "closed_at": "2026-06-07T22:15:02.458326",
+      "reason": "take_profit",
+      "outcome": "profit"
+    },
+    {
+      "id": "PAPER_DOGEUSDT_1780844336",
+      "symbol": "DOGEUSDT",
+      "side": "long",
+      "entry_price": 0.0845,
+      "qty": 1183.432,
+      "confidence": 75,
+      "opened_at": "2026-06-07T14:58:56.642273",
+      "cost": 20.000000800000002,
+      "notional": 100.000004,
+      "leverage": 5,
+      "exit_price": 0.08736,
+      "pnl_pct": 16.92,
+      "pnl_usdt": 3.38,
+      "closed_at": "2026-06-07T22:15:33.525696",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 6.717895177678433
+  "total_pnl": 10.051571827678409
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-07 21:54:49,312 [INFO] main: PEPEUSDT | RL adj=79.2%
-2026-06-07 21:54:49,327 [INFO] main: PEPEUSDT | Context score=-0.05 bias=0.05
-2026-06-07 21:54:49,328 [INFO] main: PEPEUSDT | regime BLOCK (short × trending_up × rsi1h=44.2; counter-trend guard)
-2026-06-07 21:54:55,870 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 21:54:56,222 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-07 21:54:56,224 [INFO] main: SUIUSDT | Bull:flat(25%) Bear:short(80%)
-2026-06-07 21:54:59,514 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 21:54:59,515 [INFO] main: SUIUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-07 21:54:59,515 [INFO] main: SUIUSDT | RL adj=50.0%
-2026-06-07 21:55:05,368 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 21:55:06,196 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-07 21:55:06,198 [INFO] main: ONDOUSDT | Bull:flat(25%) Bear:short(60%)
-2026-06-07 21:55:08,853 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 21:55:08,855 [INFO] main: ONDOUSDT | Judge:SHORT conf=78% size=15.0%
-2026-06-07 21:55:08,855 [INFO] main: ONDOUSDT | RL adj=85.9%
-2026-06-07 21:55:08,873 [INFO] main: ONDOUSDT | Context score=-0.05 bias=0.05
-2026-06-07 21:55:08,873 [INFO] main: ONDOUSDT | regime BLOCK (short × trending_up × rsi1h=38.1; counter-trend guard)
-2026-06-07 21:55:15,582 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 21:55:15,910 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-07 21:55:15,912 [INFO] main: LINKUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-07 21:55:18,453 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 21:55:18,454 [INFO] main: LINKUSDT | Judge:HOLD conf=45% size=0.0%
 2026-06-07 21:55:18,455 [INFO] main: LINKUSDT | RL adj=45.0%
 2026-06-07 21:55:24,434 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-07 21:55:25,741 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -2477,6 +2479,28 @@ root     1121216  0.1  3.4 726704 133788 ?       Ssl  Jun03  12:47 /opt/ensemble
 2026-06-07 21:55:28,038 [INFO] main: BEATUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-07 21:55:28,038 [INFO] main: BEATUSDT | RL adj=50.0%
 2026-06-07 21:55:30,041 [INFO] main: Next scan in 30min (always-30min)
+2026-06-07 22:12:24,555 [INFO] positions: STOP_LOSS ENAUSDT short PnL:-2.1%
+2026-06-07 22:12:24,563 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ENAUSDT @ 0.0890 PnL: -10.49% (-2.10 USDT) | Баланс: 924.87
+2026-06-07 22:12:24,889 [INFO] positions: LOSS ENAUSDT short PnL:-2.1% reason:stop_loss
+2026-06-07 22:12:24,889 [INFO] positions: Lessons: The trade was based on a bearish view due to weak bull strength and strong bearish signals, but it still resulted in a 2.1% loss. The stop loss was triggered, indicating the trade did not work out as expected. This outcome suggests reevaluating the weight given to sentiment and regime indicators in similar trades.
+2026-06-07 22:12:24,889 [INFO] rl: RL learned from short ENAUSDT: loss -2.10% | weights bull=0.986 bear=0.876 judge=1.137 threshold=65.07
+2026-06-07 22:15:00,802 [INFO] positions: STOP_LOSS BTCUSDT short PnL:-3.1%
+2026-06-07 22:15:00,810 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT BTCUSDT @ 63665.8000 PnL: -15.49% (-3.06 USDT) | Баланс: 941.57
+2026-06-07 22:15:01,294 [INFO] positions: LOSS BTCUSDT short PnL:-3.1% reason:stop_loss
+2026-06-07 22:15:01,294 [INFO] positions: Lessons: The short was taken despite a 70% bullish sentiment, ignoring the stronger 80% bear signal and the overbought 1‑hour RSI, low volume and extreme fear that all pointed to a likely reversal. In ranging markets, prioritize dominant sentiment and volume‑based confirmation over marginal bullish readings. Future shorts should wait for clearer bearish pressure and stronger risk‑reward alignment.
+2026-06-07 22:15:01,294 [INFO] rl: RL learned from short BTCUSDT: loss -3.10% | weights bull=0.993 bear=0.869 judge=1.138 threshold=65.12
+2026-06-07 22:15:01,604 [WARNING] agents: Judge-Groq all failed: openai/gpt-oss-120b empty
+2026-06-07 22:15:02,455 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 22:15:02,457 [INFO] positions: TAKE-PROFIT ETHUSDT long PnL:5.11%
+2026-06-07 22:15:02,465 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG ETHUSDT @ 1708.8500 PnL: 25.55% (+5.11 USDT) | Баланс: 966.67
+2026-06-07 22:15:02,925 [INFO] positions: OK ETHUSDT long PnL:5.11% reason:take_profit
+2026-06-07 22:15:02,925 [INFO] positions: Lessons: The 4‑hour bullish trend and moderate volume correctly signaled a short‑term upside, delivering a 5.1% gain and confirming the 2:1 R/R target. The trade hit the take‑profit before the full 4% move, suggesting the entry could have been tighter or the target reduced for a quicker exit. Future similar setups should still respect volume confirmation but consider scaling out earlier to lock in gains.
+2026-06-07 22:15:02,925 [INFO] rl: RL learned from long ETHUSDT: profit 5.11% | weights bull=1.005 bear=0.852 judge=1.143 threshold=65.09
+2026-06-07 22:15:33,524 [INFO] positions: TAKE-PROFIT DOGEUSDT long PnL:3.38%
+2026-06-07 22:15:33,532 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG DOGEUSDT @ 0.0874 PnL: 16.92% (+3.38 USDT) | Баланс: 990.06
+2026-06-07 22:15:33,880 [INFO] positions: OK DOGEUSDT long PnL:3.38% reason:take_profit
+2026-06-07 22:15:33,880 [INFO] positions: Lessons: The trade hit its 4 % target, delivering a 3.38 % gain and confirming the bullish bias indicated by the 4‑hour RSI and the expected move. The 2:1 risk‑reward ratio kept risk modest and allowed a clean exit at take‑profit. Future similar setups should maintain the same R/R discipline and verify momentum signals before sizing.
+2026-06-07 22:15:33,881 [INFO] rl: RL learned from long DOGEUSDT: profit 3.38% | weights bull=1.011 bear=0.843 judge=1.146 threshold=65.06
 ```
 
 ## Disk
@@ -2494,7 +2518,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       887Mi       301Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       889Mi       299Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
