@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-07 08:50:01 UTC
+Generated: 2026-06-07 09:00:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 205424 46928 ?        Ssl  Jun03   0:20 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 726704 133200 ?       Ssl  Jun03  11:15 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 726704 133204 ?       Ssl  Jun03  11:15 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 922.3981899426749,
+  "balance": 945.4080731426749,
   "positions": {
-    "BNBUSDT": {
-      "id": "PAPER_BNBUSDT_1780795197",
-      "symbol": "BNBUSDT",
-      "side": "long",
-      "entry_price": 580.14,
-      "qty": 0.1724,
-      "confidence": 85,
-      "opened_at": "2026-06-07T01:19:57.528594",
-      "cost": 20.0032272,
-      "notional": 100.016136,
-      "leverage": 5
-    },
     "SUIUSDT": {
       "id": "PAPER_SUIUSDT_1780797131",
       "symbol": "SUIUSDT",
@@ -2247,19 +2235,32 @@ root     1121216  0.1  3.4 726704 133200 ?       Ssl  Jun03  11:15 /opt/ensemble
       "closed_at": "2026-06-07T08:47:28.942057",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_BNBUSDT_1780795197",
+      "symbol": "BNBUSDT",
+      "side": "long",
+      "entry_price": 580.14,
+      "qty": 0.1724,
+      "confidence": 85,
+      "opened_at": "2026-06-07T01:19:57.528594",
+      "cost": 20.0032272,
+      "notional": 100.016136,
+      "leverage": 5,
+      "exit_price": 597.58,
+      "pnl_pct": 15.03,
+      "pnl_usdt": 3.01,
+      "closed_at": "2026-06-07T08:59:56.574461",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 2.1637207266753107
+  "total_pnl": 5.17037672667532
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-07 08:44:38,308 [INFO] main: ZECUSDT | Context score=-0.05 bias=0.05
-2026-06-07 08:44:38,309 [INFO] main: ZECUSDT | regime BLOCK (volatile)
-2026-06-07 08:44:43,913 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 08:44:45,116 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-07 08:44:45,118 [INFO] main: LABUSDT | Bull:long(62%) Bear:short(70%)
 2026-06-07 08:44:48,559 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-07 08:44:48,560 [INFO] main: LABUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-07 08:44:48,560 [INFO] main: LABUSDT | RL adj=50.0%
@@ -2285,6 +2286,11 @@ root     1121216  0.1  3.4 726704 133200 ?       Ssl  Jun03  11:15 /opt/ensemble
 2026-06-07 08:47:29,318 [INFO] positions: LOSS PENGUUSDT short PnL:-2.08% reason:stop_loss
 2026-06-07 08:47:29,318 [INFO] positions: Lessons: The trade was closed at a 2.08% loss due to a stop loss trigger, failing to achieve the expected 4% downside move. The initial analysis correctly identified overbought conditions with an RSI of 82.1, but the market did not follow through with the anticipated bearish move. This outcome highlights the importance of adjusting position sizing and stop loss levels to account for potential false signals from technical indicators.
 2026-06-07 08:47:29,318 [INFO] rl: RL learned from short PENGUUSDT: loss -2.08% | weights bull=0.989 bear=0.884 judge=1.127 threshold=65.08
+2026-06-07 08:59:56,572 [INFO] positions: TAKE-PROFIT BNBUSDT long PnL:3.01%
+2026-06-07 08:59:56,581 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG BNBUSDT @ 597.5800 PnL: 15.03% (+3.01 USDT) | Баланс: 945.41
+2026-06-07 08:59:57,045 [INFO] positions: OK BNBUSDT long PnL:3.01% reason:take_profit
+2026-06-07 08:59:57,045 [INFO] positions: Lessons: This trade was successful due to a strong bullish confluence that outweighed overbought technicals. The 2:1 risk/reward ratio was achieved with a 3.01% profit. The key takeaway is that a clear bullish signal can sometimes overcome overbought conditions, especially in a ranging market regime.
+2026-06-07 08:59:57,046 [INFO] rl: RL learned from long BNBUSDT: profit 3.01% | weights bull=0.995 bear=0.874 judge=1.131 threshold=65.05
 ```
 
 ## Disk
@@ -2302,7 +2308,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       883Mi       365Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       893Mi       355Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
