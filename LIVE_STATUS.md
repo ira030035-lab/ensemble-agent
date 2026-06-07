@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-07 08:40:01 UTC
+Generated: 2026-06-07 08:50:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 205424 46928 ?        Ssl  Jun03   0:20 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 726704 133200 ?       Ssl  Jun03  11:12 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 726704 133200 ?       Ssl  Jun03  11:15 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 904.4793707562749,
+  "balance": 922.3981899426749,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1780795197",
@@ -66,18 +66,6 @@ root     1121216  0.1  3.4 726704 133200 ?       Ssl  Jun03  11:12 /opt/ensemble
       "opened_at": "2026-06-07T05:17:08.021441",
       "cost": 20.0014656,
       "notional": 100.007328,
-      "leverage": 5
-    },
-    "PENGUUSDT": {
-      "id": "PAPER_PENGUUSDT_1780815602",
-      "symbol": "PENGUUSDT",
-      "side": "short",
-      "entry_price": 0.006775,
-      "qty": 14760.1476,
-      "confidence": 85,
-      "opened_at": "2026-06-07T07:00:02.449252",
-      "cost": 19.999999998,
-      "notional": 99.99999998999999,
       "leverage": 5
     }
   },
@@ -2241,44 +2229,62 @@ root     1121216  0.1  3.4 726704 133200 ?       Ssl  Jun03  11:12 /opt/ensemble
       "closed_at": "2026-06-07T06:39:54.676686",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_PENGUUSDT_1780815602",
+      "symbol": "PENGUUSDT",
+      "side": "short",
+      "entry_price": 0.006775,
+      "qty": 14760.1476,
+      "confidence": 85,
+      "opened_at": "2026-06-07T07:00:02.449252",
+      "cost": 19.999999998,
+      "notional": 99.99999998999999,
+      "leverage": 5,
+      "exit_price": 0.006916,
+      "pnl_pct": -10.41,
+      "pnl_usdt": -2.08,
+      "closed_at": "2026-06-07T08:47:28.942057",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 4.244901538275318
+  "total_pnl": 2.1637207266753107
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-07 08:10:29,990 [INFO] main: XRPUSDT | Judge:LONG conf=80% size=15.0%
-2026-06-07 08:10:29,990 [INFO] main: XRPUSDT | RL adj=79.3%
-2026-06-07 08:10:30,017 [INFO] main: XRPUSDT | Context score=-0.0 bias=0.05
-2026-06-07 08:10:30,018 [INFO] main: XRPUSDT | gate PASS (Judge 80/70 RL 79.3/65.03 slack=±3)
-2026-06-07 08:10:30,019 [INFO] positions: Max positions reached (5/5 dyn)
-2026-06-07 08:10:36,738 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 08:10:38,074 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-07 08:10:38,076 [INFO] main: EPICUSDT | Bull:flat(25%) Bear:short(75%)
-2026-06-07 08:10:40,669 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 08:10:40,670 [INFO] main: EPICUSDT | Judge:HOLD conf=65% size=0.0%
-2026-06-07 08:10:40,670 [INFO] main: EPICUSDT | RL adj=65.0%
-2026-06-07 08:10:46,548 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-07 08:10:47,225 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 08:10:47,227 [INFO] main: TONUSDT | Bull:flat(25%) Bear:short(75%)
-2026-06-07 08:10:50,038 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 08:10:50,039 [INFO] main: TONUSDT | Judge:HOLD conf=40% size=0.0%
-2026-06-07 08:10:50,040 [INFO] main: TONUSDT | RL adj=40.0%
-2026-06-07 08:10:55,793 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 08:10:57,446 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-07 08:10:57,448 [INFO] main: FIDAUSDT | Bull:flat(25%) Bear:short(75%)
-2026-06-07 08:11:00,303 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 08:11:00,305 [INFO] main: FIDAUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-07 08:11:00,305 [INFO] main: FIDAUSDT | RL adj=55.0%
-2026-06-07 08:11:06,300 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 08:11:07,490 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-07 08:11:07,491 [INFO] main: ADAUSDT | Bull:flat(25%) Bear:short(78%)
-2026-06-07 08:11:10,730 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 08:11:10,732 [INFO] main: ADAUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-07 08:11:10,732 [INFO] main: ADAUSDT | RL adj=55.0%
-2026-06-07 08:11:12,735 [INFO] main: Next scan in 30min (always-30min)
+2026-06-07 08:44:38,308 [INFO] main: ZECUSDT | Context score=-0.05 bias=0.05
+2026-06-07 08:44:38,309 [INFO] main: ZECUSDT | regime BLOCK (volatile)
+2026-06-07 08:44:43,913 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 08:44:45,116 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-07 08:44:45,118 [INFO] main: LABUSDT | Bull:long(62%) Bear:short(70%)
+2026-06-07 08:44:48,559 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 08:44:48,560 [INFO] main: LABUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-07 08:44:48,560 [INFO] main: LABUSDT | RL adj=50.0%
+2026-06-07 08:44:55,528 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-07 08:44:56,377 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 08:44:56,378 [INFO] main: BEATUSDT | Bull:long(62%) Bear:short(70%)
+2026-06-07 08:44:59,869 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 08:44:59,870 [INFO] main: BEATUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-07 08:44:59,870 [INFO] main: BEATUSDT | RL adj=55.0%
+2026-06-07 08:45:06,214 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-07 08:45:06,622 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 08:45:06,624 [INFO] main: DOGEUSDT | Bull:flat(25%) Bear:short(70%)
+2026-06-07 08:45:10,142 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 08:45:10,144 [INFO] main: DOGEUSDT | Judge:SHORT conf=75% size=15.0%
+2026-06-07 08:45:10,144 [INFO] main: DOGEUSDT | RL adj=84.3%
+2026-06-07 08:45:10,168 [INFO] main: DOGEUSDT | Context score=-0.05 bias=0.05
+2026-06-07 08:45:10,168 [INFO] main: DOGEUSDT | gate PASS (Judge 75/70 RL 84.3/65.03 slack=±3)
+2026-06-07 08:45:10,169 [INFO] positions: Max positions reached (5/5 dyn)
+2026-06-07 08:45:12,172 [INFO] main: Next scan in 30min (always-30min)
+2026-06-07 08:47:28,359 [INFO] main: Symbols: 30
+2026-06-07 08:47:28,941 [INFO] positions: STOP_LOSS PENGUUSDT short PnL:-2.08%
+2026-06-07 08:47:28,947 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT PENGUUSDT @ 0.0069 PnL: -10.41% (-2.08 USDT) | Баланс: 922.40
+2026-06-07 08:47:29,318 [INFO] positions: LOSS PENGUUSDT short PnL:-2.08% reason:stop_loss
+2026-06-07 08:47:29,318 [INFO] positions: Lessons: The trade was closed at a 2.08% loss due to a stop loss trigger, failing to achieve the expected 4% downside move. The initial analysis correctly identified overbought conditions with an RSI of 82.1, but the market did not follow through with the anticipated bearish move. This outcome highlights the importance of adjusting position sizing and stop loss levels to account for potential false signals from technical indicators.
+2026-06-07 08:47:29,318 [INFO] rl: RL learned from short PENGUUSDT: loss -2.08% | weights bull=0.989 bear=0.884 judge=1.127 threshold=65.08
 ```
 
 ## Disk
