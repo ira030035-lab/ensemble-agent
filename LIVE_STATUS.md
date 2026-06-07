@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-07 14:10:01 UTC
+Generated: 2026-06-07 14:20:01 UTC
 
 ## Services
 ```
@@ -11,14 +11,14 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1121169  0.0  1.2 206704 47828 ?        Ssl  Jun03   0:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1121169  0.0  1.2 206704 47832 ?        Ssl  Jun03   0:23 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1121216  0.1  3.4 726704 133788 ?       Ssl  Jun03  11:51 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 905.4547202776781,
+  "balance": 923.4242102776781,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1780809403",
@@ -66,18 +66,6 @@ root     1121216  0.1  3.4 726704 133788 ?       Ssl  Jun03  11:51 /opt/ensemble
       "opened_at": "2026-06-07T12:41:24.388054",
       "cost": 20.000001149999996,
       "notional": 100.00000574999999,
-      "leverage": 5
-    },
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1780840313",
-      "symbol": "HYPEUSDT",
-      "side": "short",
-      "entry_price": 57.72,
-      "qty": 1.7325,
-      "confidence": 75,
-      "opened_at": "2026-06-07T13:51:53.320626",
-      "cost": 19.99998,
-      "notional": 99.9999,
       "leverage": 5
     }
   },
@@ -2385,19 +2373,32 @@ root     1121216  0.1  3.4 726704 133788 ?       Ssl  Jun03  11:51 /opt/ensemble
       "closed_at": "2026-06-07T13:27:52.010439",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1780840313",
+      "symbol": "HYPEUSDT",
+      "side": "short",
+      "entry_price": 57.72,
+      "qty": 1.7325,
+      "confidence": 75,
+      "opened_at": "2026-06-07T13:51:53.320626",
+      "cost": 19.99998,
+      "notional": 99.9999,
+      "leverage": 5,
+      "exit_price": 58.892,
+      "pnl_pct": -10.15,
+      "pnl_usdt": -2.03,
+      "closed_at": "2026-06-07T14:18:58.865877",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 5.20833782767844
+  "total_pnl": 3.1778478276784328
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-07 13:53:24,794 [INFO] main: EPICUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-07 13:53:24,795 [INFO] main: EPICUSDT | RL adj=84.9%
-2026-06-07 13:53:24,814 [INFO] main: EPICUSDT | Context score=-0.05 bias=0.05
-2026-06-07 13:53:24,814 [INFO] main: EPICUSDT | regime BLOCK (volatile)
-2026-06-07 13:53:31,560 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-07 13:53:32,127 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-07 13:53:32,129 [INFO] main: XLMUSDT | Bull:flat(15%) Bear:short(75%)
 2026-06-07 13:53:34,372 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -2423,6 +2424,11 @@ root     1121216  0.1  3.4 726704 133788 ?       Ssl  Jun03  11:51 /opt/ensemble
 2026-06-07 13:53:54,184 [INFO] main: ONDOUSDT | gate PASS (Judge 70/70 RL 69.5/65.03 slack=±3)
 2026-06-07 13:53:54,185 [INFO] positions: Max positions reached (5/5 dyn)
 2026-06-07 13:53:56,188 [INFO] main: Next scan in 30min (always-30min)
+2026-06-07 14:18:58,864 [INFO] positions: STOP_LOSS HYPEUSDT short PnL:-2.03%
+2026-06-07 14:18:58,873 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT HYPEUSDT @ 58.8920 PnL: -10.15% (-2.03 USDT) | Баланс: 923.42
+2026-06-07 14:18:59,200 [INFO] positions: LOSS HYPEUSDT short PnL:-2.03% reason:stop_loss
+2026-06-07 14:18:59,200 [INFO] positions: Lessons: The trade was closed at a 2.03% loss due to hitting the stop loss. Despite the original analysis indicating a potential downtrend and overbought conditions, the trade did not work out as expected. This highlights the importance of managing risk and adjusting to changing market conditions, even when the initial analysis seems favorable.
+2026-06-07 14:18:59,201 [INFO] rl: RL learned from short HYPEUSDT: loss -2.03% | weights bull=0.992 bear=0.875 judge=1.134 threshold=65.08
 ```
 
 ## Disk
@@ -2440,7 +2446,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       885Mi       344Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       884Mi       344Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
