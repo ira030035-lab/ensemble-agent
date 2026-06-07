@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-07 10:40:01 UTC
+Generated: 2026-06-07 10:50:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.4 726704 133464 ?       Ssl  Jun03  11:27 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 926.199168446675,
+  "balance": 946.665618046675,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1780809403",
@@ -30,18 +30,6 @@ root     1121216  0.1  3.4 726704 133464 ?       Ssl  Jun03  11:27 /opt/ensemble
       "opened_at": "2026-06-07T05:16:43.148519",
       "cost": 19.760832,
       "notional": 98.80416,
-      "leverage": 5
-    },
-    "BCHUSDT": {
-      "id": "PAPER_BCHUSDT_1780809428",
-      "symbol": "BCHUSDT",
-      "side": "long",
-      "entry_price": 223.68,
-      "qty": 0.4471,
-      "confidence": 80,
-      "opened_at": "2026-06-07T05:17:08.021441",
-      "cost": 20.0014656,
-      "notional": 100.007328,
       "leverage": 5
     },
     "PEPEUSDT": {
@@ -2301,20 +2289,32 @@ root     1121216  0.1  3.4 726704 133464 ?       Ssl  Jun03  11:27 /opt/ensemble
       "closed_at": "2026-06-07T10:30:35.443716",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BCHUSDT_1780809428",
+      "symbol": "BCHUSDT",
+      "side": "long",
+      "entry_price": 223.68,
+      "qty": 0.4471,
+      "confidence": 80,
+      "opened_at": "2026-06-07T05:17:08.021441",
+      "cost": 20.0014656,
+      "notional": 100.007328,
+      "leverage": 5,
+      "exit_price": 224.72,
+      "pnl_pct": 2.32,
+      "pnl_usdt": 0.46,
+      "closed_at": "2026-06-07T10:42:33.007154",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 5.9571764466753425
+  "total_pnl": 6.422160446675339
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-07 10:27:49,204 [INFO] main: HYPEUSDT | Context score=0.0 bias=0.05
-2026-06-07 10:27:56,124 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-07 10:27:56,401 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 10:27:56,403 [INFO] main: HUSDT | Bull:flat(25%) Bear:short(75%)
-2026-06-07 10:27:59,150 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 10:27:59,151 [INFO] main: HUSDT | Judge:SHORT conf=85% size=15.0%
 2026-06-07 10:27:59,151 [INFO] main: HUSDT | RL adj=94.8%
 2026-06-07 10:27:59,170 [INFO] main: HUSDT | Context score=-0.05 bias=0.05
 2026-06-07 10:27:59,170 [INFO] main: HUSDT | regime BLOCK (volatile)
@@ -2339,6 +2339,12 @@ root     1121216  0.1  3.4 726704 133464 ?       Ssl  Jun03  11:27 /opt/ensemble
 2026-06-07 10:30:35,809 [INFO] positions: OK ADAUSDT short PnL:0.36% reason:breakeven_stop
 2026-06-07 10:30:35,809 [INFO] positions: Lessons: The trade closed at breakeven due to the stop being triggered, resulting in a 0.36% profit. High RSI levels and bearish market sentiment initially suggested a potential downturn, but the market continued to trend upward. This outcome highlights the importance of adapting to changing market conditions and reevaluating trading strategies.
 2026-06-07 10:30:35,809 [INFO] rl: RL learned from short ADAUSDT: profit 0.36% | weights bull=0.995 bear=0.874 judge=1.131 threshold=64.99
+2026-06-07 10:42:33,005 [INFO] positions: BREAKEVEN_STOP BCHUSDT long PnL:0.46%
+2026-06-07 10:42:33,015 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG BCHUSDT @ 224.7200 PnL: 2.32% (+0.46 USDT) | Баланс: 946.67
+2026-06-07 10:42:33,312 [INFO] positions: OK BCHUSDT long PnL:0.46% reason:breakeven_stop
+2026-06-07 10:42:33,312 [INFO] positions: Lessons: The trade was based on a bullish market regime with a high bull percentage and positive 4h trend, indicating potential upside. The trade ultimately closed at breakeven, achieving a 0.46% profit. This outcome suggests that the initial analysis was partially correct, but the expected upside move did not fully materialize.
+2026-06-07 10:42:33,312 [INFO] rl: RL learned from long BCHUSDT: profit 0.46% | weights bull=0.996 bear=0.872 judge=1.132 threshold=64.96
+2026-06-07 10:47:29,633 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -2356,7 +2362,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       884Mi       357Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       882Mi       358Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
