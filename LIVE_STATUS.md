@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-07 10:30:01 UTC
+Generated: 2026-06-07 10:40:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  61836 48420 ?        Ss   Jun03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 205424 46928 ?        Ssl  Jun03   0:20 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 726704 133460 ?       Ssl  Jun03  11:27 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 726704 133464 ?       Ssl  Jun03  11:27 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 905.838808106675,
+  "balance": 926.199168446675,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1780809403",
@@ -54,18 +54,6 @@ root     1121216  0.1  3.4 726704 133460 ?       Ssl  Jun03  11:27 /opt/ensemble
       "opened_at": "2026-06-07T09:16:07.527198",
       "cost": 20.00000000000002,
       "notional": 100.0000000000001,
-      "leverage": 5
-    },
-    "ADAUSDT": {
-      "id": "PAPER_ADAUSDT_1780823850",
-      "symbol": "ADAUSDT",
-      "side": "short",
-      "entry_price": 0.1665,
-      "qty": 600.6006,
-      "confidence": 75,
-      "opened_at": "2026-06-07T09:17:30.786410",
-      "cost": 19.999999980000002,
-      "notional": 99.9999999,
       "leverage": 5
     },
     "BNBUSDT": {
@@ -2295,19 +2283,32 @@ root     1121216  0.1  3.4 726704 133460 ?       Ssl  Jun03  11:27 /opt/ensemble
       "closed_at": "2026-06-07T10:01:59.745405",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ADAUSDT_1780823850",
+      "symbol": "ADAUSDT",
+      "side": "short",
+      "entry_price": 0.1665,
+      "qty": 600.6006,
+      "confidence": 75,
+      "opened_at": "2026-06-07T09:17:30.786410",
+      "cost": 19.999999980000002,
+      "notional": 99.9999999,
+      "leverage": 5,
+      "exit_price": 0.1659,
+      "pnl_pct": 1.8,
+      "pnl_usdt": 0.36,
+      "closed_at": "2026-06-07T10:30:35.443716",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 5.596816086675332
+  "total_pnl": 5.9571764466753425
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-07 10:27:46,777 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-07 10:27:46,778 [INFO] main: HYPEUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-07 10:27:49,182 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-07 10:27:49,183 [INFO] main: HYPEUSDT | Judge:LONG conf=70% size=15.0%
-2026-06-07 10:27:49,183 [INFO] main: HYPEUSDT | RL adj=60.8%
 2026-06-07 10:27:49,204 [INFO] main: HYPEUSDT | Context score=0.0 bias=0.05
 2026-06-07 10:27:56,124 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-07 10:27:56,401 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -2333,6 +2334,11 @@ root     1121216  0.1  3.4 726704 133460 ?       Ssl  Jun03  11:27 /opt/ensemble
 2026-06-07 10:28:18,429 [INFO] main: ZECUSDT | Judge:HOLD conf=60% size=0.0%
 2026-06-07 10:28:18,429 [INFO] main: ZECUSDT | RL adj=60.0%
 2026-06-07 10:28:20,430 [INFO] main: Next scan in 30min (always-30min)
+2026-06-07 10:30:35,442 [INFO] positions: BREAKEVEN_STOP ADAUSDT short PnL:0.36%
+2026-06-07 10:30:35,450 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ADAUSDT @ 0.1659 PnL: 1.80% (+0.36 USDT) | Баланс: 926.20
+2026-06-07 10:30:35,809 [INFO] positions: OK ADAUSDT short PnL:0.36% reason:breakeven_stop
+2026-06-07 10:30:35,809 [INFO] positions: Lessons: The trade closed at breakeven due to the stop being triggered, resulting in a 0.36% profit. High RSI levels and bearish market sentiment initially suggested a potential downturn, but the market continued to trend upward. This outcome highlights the importance of adapting to changing market conditions and reevaluating trading strategies.
+2026-06-07 10:30:35,809 [INFO] rl: RL learned from short ADAUSDT: profit 0.36% | weights bull=0.995 bear=0.874 judge=1.131 threshold=64.99
 ```
 
 ## Disk
@@ -2350,7 +2356,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       894Mi       348Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       884Mi       357Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
