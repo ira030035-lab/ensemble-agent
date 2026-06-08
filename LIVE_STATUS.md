@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-08 23:00:01 UTC
+Generated: 2026-06-08 23:10:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.4 726300 133128 ?       Ssl  Jun03  15:03 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 909.3806525756817,
+  "balance": 932.5696807676817,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1780883817",
@@ -42,18 +42,6 @@ root     1121216  0.1  3.4 726300 133128 ?       Ssl  Jun03  15:03 /opt/ensemble
       "opened_at": "2026-06-08T18:13:39.272033",
       "cost": 19.999999999996128,
       "notional": 99.99999999998064,
-      "leverage": 5
-    },
-    "LABUSDT": {
-      "id": "PAPER_LABUSDT_1780952677",
-      "symbol": "LABUSDT",
-      "side": "short",
-      "entry_price": 12.18317,
-      "qty": 8.208,
-      "confidence": 80,
-      "opened_at": "2026-06-08T21:04:37.856538",
-      "cost": 19.999891872,
-      "notional": 99.99945936,
       "leverage": 5
     },
     "TONUSDT": {
@@ -2961,19 +2949,32 @@ root     1121216  0.1  3.4 726300 133128 ?       Ssl  Jun03  15:03 /opt/ensemble
       "closed_at": "2026-06-08T22:01:24.863770",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_LABUSDT_1780952677",
+      "symbol": "LABUSDT",
+      "side": "short",
+      "entry_price": 12.18317,
+      "qty": 8.208,
+      "confidence": 80,
+      "opened_at": "2026-06-08T21:04:37.856538",
+      "cost": 19.999891872,
+      "notional": 99.99945936,
+      "leverage": 5,
+      "exit_price": 11.79463,
+      "pnl_pct": 15.95,
+      "pnl_usdt": 3.19,
+      "closed_at": "2026-06-08T23:08:12.301346",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 9.607967967678398
+  "total_pnl": 12.797104287678405
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-08 22:48:18,561 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-08 22:48:18,562 [INFO] main: PIPPINUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-08 22:48:20,456 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 22:48:20,457 [INFO] main: PIPPINUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-08 22:48:20,458 [INFO] main: PIPPINUSDT | RL adj=55.0%
 2026-06-08 22:48:26,493 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-08 22:48:27,643 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-08 22:48:27,644 [INFO] main: XRPUSDT | Bull:long(62%) Bear:short(80%)
@@ -2999,6 +3000,11 @@ root     1121216  0.1  3.4 726300 133128 ?       Ssl  Jun03  15:03 /opt/ensemble
 2026-06-08 22:48:47,933 [INFO] main: ADAUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-08 22:48:47,933 [INFO] main: ADAUSDT | RL adj=55.0%
 2026-06-08 22:48:49,933 [INFO] main: Next scan in 30min (always-30min)
+2026-06-08 23:08:12,300 [INFO] positions: TAKE-PROFIT LABUSDT short PnL:3.19%
+2026-06-08 23:08:12,305 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT LABUSDT @ 11.7946 PnL: 15.95% (+3.19 USDT) | Баланс: 932.57
+2026-06-08 23:08:12,560 [INFO] positions: OK LABUSDT short PnL:3.19% reason:take_profit
+2026-06-08 23:08:12,560 [INFO] positions: Lessons: The trade was based on heavy bearish sentiment with 80% bearish dominance, expecting a 4% downside move. The trade was closed at a 3.19% profit, hitting the take profit target. This outcome suggests that identifying strong bearish sentiment can be a useful indicator for making profitable short trades.
+2026-06-08 23:08:12,560 [INFO] rl: RL learned from short LABUSDT: profit 3.19% | weights bull=0.999 bear=0.838 judge=1.163 threshold=65.17
 ```
 
 ## Disk
@@ -3016,7 +3022,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       905Mi       180Mi       4.8Mi       3.0Gi       2.8Gi
+Mem:           3.7Gi       895Mi       190Mi       4.8Mi       3.0Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
