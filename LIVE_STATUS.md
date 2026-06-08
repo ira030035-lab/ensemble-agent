@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-08 13:00:01 UTC
+Generated: 2026-06-08 13:10:01 UTC
 
 ## Services
 ```
@@ -2777,13 +2777,6 @@ root     1121216  0.1  3.3 726300 132800 ?       Ssl  Jun03  14:15 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-08 12:59:22,321 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-08 12:59:22,322 [INFO] main: BEATUSDT | Bull:long(72%) Bear:short(70%)
-2026-06-08 12:59:25,386 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 12:59:25,387 [INFO] main: BEATUSDT | Judge:LONG conf=85% size=20.0%
-2026-06-08 12:59:25,387 [INFO] main: BEATUSDT | RL adj=87.0%
-2026-06-08 12:59:25,398 [INFO] main: BEATUSDT | Context score=-0.0 bias=0.05
-2026-06-08 12:59:25,398 [INFO] main: BEATUSDT | regime BLOCK (volatile)
 2026-06-08 12:59:30,890 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-08 12:59:33,319 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-08 12:59:33,320 [INFO] main: ONDOUSDT | Bull:long(72%) Bear:short(70%)
@@ -2807,6 +2800,13 @@ root     1121216  0.1  3.3 726300 132800 ?       Ssl  Jun03  14:15 /opt/ensemble
 2026-06-08 12:59:56,739 [INFO] main: DOGEUSDT | Context score=0.0 bias=0.05
 2026-06-08 12:59:56,739 [INFO] main: DOGEUSDT | gate PASS (Judge 75/70 RL 75.8/65.02 slack=±3)
 2026-06-08 12:59:56,740 [INFO] positions: Correlation block: skip LONG DOGEUSDT (corr 0.99 >= 0.85 with SOLUSDT long)
+2026-06-08 13:00:03,397 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:00:04,398 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:00:04,399 [INFO] main: XLMUSDT | Bull:flat(25%) Bear:short(70%)
+2026-06-08 13:00:07,883 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 13:00:07,884 [INFO] main: XLMUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-08 13:00:07,884 [INFO] main: XLMUSDT | RL adj=55.0%
+2026-06-08 13:00:09,886 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -2824,7 +2824,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       902Mi       225Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       895Mi       231Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
