@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-08 20:10:01 UTC
+Generated: 2026-06-08 20:20:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.4 726300 133012 ?       Ssl  Jun03  14:49 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 908.6831075576819,
+  "balance": 926.5748139256818,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1780883817",
@@ -54,18 +54,6 @@ root     1121216  0.1  3.4 726300 133012 ?       Ssl  Jun03  14:49 /opt/ensemble
       "opened_at": "2026-06-08T18:13:39.272033",
       "cost": 19.999999999996128,
       "notional": 99.99999999998064,
-      "leverage": 5
-    },
-    "TONUSDT": {
-      "id": "PAPER_TONUSDT_1780944408",
-      "symbol": "TONUSDT",
-      "side": "long",
-      "entry_price": 1.8024,
-      "qty": 55.4816,
-      "confidence": 75,
-      "opened_at": "2026-06-08T18:46:48.992109",
-      "cost": 20.000007168,
-      "notional": 100.00003584,
       "leverage": 5
     },
     "LABUSDT": {
@@ -2889,19 +2877,32 @@ root     1121216  0.1  3.4 726300 133012 ?       Ssl  Jun03  14:49 /opt/ensemble
       "closed_at": "2026-06-08T18:02:39.982119",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_TONUSDT_1780944408",
+      "symbol": "TONUSDT",
+      "side": "long",
+      "entry_price": 1.8024,
+      "qty": 55.4816,
+      "confidence": 75,
+      "opened_at": "2026-06-08T18:46:48.992109",
+      "cost": 20.000007168,
+      "notional": 100.00003584,
+      "leverage": 5,
+      "exit_price": 1.7644,
+      "pnl_pct": -10.54,
+      "pnl_usdt": -2.11,
+      "closed_at": "2026-06-08T20:11:00.177826",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 8.910663513678411
+  "total_pnl": 6.802362713678409
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-08 19:57:23,198 [INFO] main: LINKUSDT | Context score=-0.0 bias=0.05
-2026-06-08 19:57:23,199 [INFO] main: LINKUSDT | gate PASS (Judge 70/70 RL 73.6/65.16 slack=±3)
-2026-06-08 19:57:23,200 [INFO] positions: Max positions reached (5/5 dyn)
-2026-06-08 19:57:30,792 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 19:57:30,931 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-08 19:57:30,932 [INFO] main: EPICUSDT | Bull:flat(15%) Bear:short(75%)
 2026-06-08 19:57:33,698 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-08 19:57:33,698 [INFO] main: EPICUSDT | Judge:SHORT conf=75% size=15.0%
@@ -2927,6 +2928,11 @@ root     1121216  0.1  3.4 726300 133012 ?       Ssl  Jun03  14:49 /opt/ensemble
 2026-06-08 19:58:01,609 [INFO] main: NEARUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-08 19:58:01,609 [INFO] main: NEARUSDT | RL adj=55.0%
 2026-06-08 19:58:03,611 [INFO] main: Next scan in 30min (always-30min)
+2026-06-08 20:11:00,176 [INFO] positions: STOP_LOSS TONUSDT long PnL:-2.11%
+2026-06-08 20:11:00,182 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG TONUSDT @ 1.7644 PnL: -10.54% (-2.11 USDT) | Баланс: 926.57
+2026-06-08 20:11:00,496 [INFO] positions: LOSS TONUSDT long PnL:-2.11% reason:stop_loss
+2026-06-08 20:11:00,496 [INFO] positions: Lessons: The trade was closed at a loss due to a stop loss being triggered, resulting in a 2.11% loss. Despite a strong 4h trend and bullish MACD, the trade did not work out as expected. This serves as a reminder that even with a favorable trend and momentum indicators, overbought signals like RSI can still lead to a reversal.
+2026-06-08 20:11:00,496 [INFO] rl: RL learned from long TONUSDT: loss -2.11% | weights bull=1.016 bear=0.825 judge=1.160 threshold=65.21
 ```
 
 ## Disk
@@ -2944,7 +2950,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       892Mi       207Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       890Mi       208Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
