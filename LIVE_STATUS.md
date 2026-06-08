@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-08 04:40:01 UTC
+Generated: 2026-06-08 04:50:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.3 725276 132504 ?       Ssl  Jun03  13:30 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 910.650073477878,
+  "balance": 932.453827368478,
   "positions": {
     "ENAUSDT": {
       "id": "PAPER_ENAUSDT_1780873343",
@@ -30,18 +30,6 @@ root     1121216  0.1  3.3 725276 132504 ?       Ssl  Jun03  13:30 /opt/ensemble
       "opened_at": "2026-06-07T23:02:23.867357",
       "cost": 20.0000008572,
       "notional": 100.00000428599999,
-      "leverage": 5
-    },
-    "XLMUSDT": {
-      "id": "PAPER_XLMUSDT_1780881605",
-      "symbol": "XLMUSDT",
-      "side": "short",
-      "entry_price": 0.20291,
-      "qty": 492.8293,
-      "confidence": 70,
-      "opened_at": "2026-06-08T01:20:05.203421",
-      "cost": 19.999998652600002,
-      "notional": 99.99999326300001,
       "leverage": 5
     },
     "BTCUSDT": {
@@ -2601,20 +2589,32 @@ root     1121216  0.1  3.3 725276 132504 ?       Ssl  Jun03  13:30 /opt/ensemble
       "closed_at": "2026-06-08T03:29:40.791454",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_XLMUSDT_1780881605",
+      "symbol": "XLMUSDT",
+      "side": "short",
+      "entry_price": 0.20291,
+      "qty": 492.8293,
+      "confidence": 70,
+      "opened_at": "2026-06-08T01:20:05.203421",
+      "cost": 19.999998652600002,
+      "notional": 99.99999326300001,
+      "leverage": 5,
+      "exit_price": 0.19925,
+      "pnl_pct": 9.02,
+      "pnl_usdt": 1.8,
+      "closed_at": "2026-06-08T04:46:58.579560",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 10.877192387678445
+  "total_pnl": 12.680947625678444
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-08 04:23:10,736 [INFO] main: ALLOUSDT | regime BLOCK (volatile)
-2026-06-08 04:23:17,358 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-08 04:23:17,515 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 04:23:17,516 [INFO] main: PEPEUSDT | Bull:flat(15%) Bear:short(60%)
-2026-06-08 04:23:20,948 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 04:23:20,949 [INFO] main: PEPEUSDT | Judge:SHORT conf=70% size=12.0%
 2026-06-08 04:23:20,949 [INFO] main: PEPEUSDT | RL adj=77.5%
 2026-06-08 04:23:20,970 [INFO] main: PEPEUSDT | Context score=-0.05 bias=0.05
 2026-06-08 04:23:20,971 [INFO] main: PEPEUSDT | regime BLOCK (short × trending_up × rsi1h=54.0; counter-trend guard)
@@ -2639,6 +2639,12 @@ root     1121216  0.1  3.3 725276 132504 ?       Ssl  Jun03  13:30 /opt/ensemble
 2026-06-08 04:23:50,712 [INFO] main: TAOUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-08 04:23:50,712 [INFO] main: TAOUSDT | RL adj=50.0%
 2026-06-08 04:23:52,714 [INFO] main: Next scan in 30min (always-30min)
+2026-06-08 04:46:58,578 [INFO] positions: TRAILING-STOP XLMUSDT short peak:2.61% now:1.8%
+2026-06-08 04:46:58,586 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT XLMUSDT @ 0.1993 PnL: 9.02% (+1.80 USDT) | Баланс: 932.45
+2026-06-08 04:46:58,932 [INFO] positions: OK XLMUSDT short PnL:1.8% reason:trailing_stop
+2026-06-08 04:46:58,932 [INFO] positions: Lessons: This trade was successful with a 1.8% profit, aligning with the initial bearish sentiment and expected downside move. The trailing stop effectively locked in the gain, demonstrating the importance of risk management in trending markets. The outcome reinforces the value of considering sentiment and statistical indicators in identifying potential trading opportunities.
+2026-06-08 04:46:58,933 [INFO] rl: RL learned from short XLMUSDT: profit 1.80% | weights bull=1.008 bear=0.842 judge=1.150 threshold=64.96
+2026-06-08 04:47:41,452 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -2656,7 +2662,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       890Mi       275Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       892Mi       273Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
