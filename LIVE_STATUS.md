@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-08 06:20:01 UTC
+Generated: 2026-06-08 06:30:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.3 725276 132512 ?       Ssl  Jun03  13:41 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 915.4814121916779,
+  "balance": 938.501836191678,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1780883817",
@@ -42,18 +42,6 @@ root     1121216  0.1  3.3 725276 132512 ?       Ssl  Jun03  13:41 /opt/ensemble
       "opened_at": "2026-06-08T02:31:52.664061",
       "cost": 19.9999842,
       "notional": 99.999921,
-      "leverage": 5
-    },
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1780890521",
-      "symbol": "HYPEUSDT",
-      "side": "long",
-      "entry_price": 60.945,
-      "qty": 1.6408,
-      "confidence": 70,
-      "opened_at": "2026-06-08T03:48:41.357780",
-      "cost": 19.9997112,
-      "notional": 99.99855600000001,
       "leverage": 5
     },
     "XLMUSDT": {
@@ -2637,19 +2625,32 @@ root     1121216  0.1  3.3 725276 132512 ?       Ssl  Jun03  13:41 /opt/ensemble
       "closed_at": "2026-06-08T05:07:18.029456",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1780890521",
+      "symbol": "HYPEUSDT",
+      "side": "long",
+      "entry_price": 60.945,
+      "qty": 1.6408,
+      "confidence": 70,
+      "opened_at": "2026-06-08T03:48:41.357780",
+      "cost": 19.9997112,
+      "notional": 99.99855600000001,
+      "leverage": 5,
+      "exit_price": 62.786,
+      "pnl_pct": 15.1,
+      "pnl_usdt": 3.02,
+      "closed_at": "2026-06-08T06:26:14.088818",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 15.708532415678437
+  "total_pnl": 18.72924521567844
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-08 06:06:03,877 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 06:06:03,878 [INFO] main: ETHUSDT | Judge:HOLD conf=45% size=0.0%
-2026-06-08 06:06:03,878 [INFO] main: ETHUSDT | RL adj=45.0%
-2026-06-08 06:06:10,231 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 06:06:10,894 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-08 06:06:10,895 [INFO] main: ALLOUSDT | Bull:flat(25%) Bear:short(75%)
 2026-06-08 06:06:12,950 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-08 06:06:12,951 [INFO] main: ALLOUSDT | Judge:HOLD conf=55% size=0.0%
@@ -2675,6 +2676,11 @@ root     1121216  0.1  3.3 725276 132512 ?       Ssl  Jun03  13:41 /opt/ensemble
 2026-06-08 06:06:40,184 [INFO] main: BEATUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-08 06:06:40,184 [INFO] main: BEATUSDT | RL adj=50.0%
 2026-06-08 06:06:42,187 [INFO] main: Next scan in 30min (always-30min)
+2026-06-08 06:26:14,088 [INFO] positions: TAKE-PROFIT HYPEUSDT long PnL:3.02%
+2026-06-08 06:26:14,092 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG HYPEUSDT @ 62.7860 PnL: 15.10% (+3.02 USDT) | Баланс: 938.50
+2026-06-08 06:26:14,586 [INFO] positions: OK HYPEUSDT long PnL:3.02% reason:take_profit
+2026-06-08 06:26:14,586 [INFO] positions: Lessons: The trade was closed in profit with a 3.02% gain, meeting the expected upside move based on asymmetric risk rules. The initial bull sentiment and uptrend analysis proved correct, validating the 2:1 risk/reward ratio. This trade demonstrates the effectiveness of combining sentiment analysis with technical trends to identify profitable opportunities.
+2026-06-08 06:26:14,587 [INFO] rl: RL learned from long HYPEUSDT: profit 3.02% | weights bull=1.006 bear=0.841 judge=1.153 threshold=64.91
 ```
 
 ## Disk
@@ -2692,7 +2698,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       891Mi       269Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       898Mi       258Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
