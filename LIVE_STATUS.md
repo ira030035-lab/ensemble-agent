@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-08 15:40:01 UTC
+Generated: 2026-06-08 15:50:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.4 726300 132868 ?       Ssl  Jun03  14:27 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 934.8867008276779,
+  "balance": 952.5697091716779,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1780883817",
@@ -54,18 +54,6 @@ root     1121216  0.1  3.4 726300 132868 ?       Ssl  Jun03  14:27 /opt/ensemble
       "opened_at": "2026-06-08T13:31:42.733771",
       "cost": 20.000000731999997,
       "notional": 100.00000365999999,
-      "leverage": 5
-    },
-    "LABUSDT": {
-      "id": "PAPER_LABUSDT_1780932000",
-      "symbol": "LABUSDT",
-      "side": "short",
-      "entry_price": 12.8888,
-      "qty": 7.7587,
-      "confidence": 75,
-      "opened_at": "2026-06-08T15:20:00.686041",
-      "cost": 20.000066512,
-      "notional": 100.00033256,
       "leverage": 5
     }
   },
@@ -2805,20 +2793,32 @@ root     1121216  0.1  3.4 726300 132868 ?       Ssl  Jun03  14:27 /opt/ensemble
       "closed_at": "2026-06-08T15:06:11.707400",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_LABUSDT_1780932000",
+      "symbol": "LABUSDT",
+      "side": "short",
+      "entry_price": 12.8888,
+      "qty": 7.7587,
+      "confidence": 75,
+      "opened_at": "2026-06-08T15:20:00.686041",
+      "cost": 20.000066512,
+      "notional": 100.00033256,
+      "leverage": 5,
+      "exit_price": 13.18744,
+      "pnl_pct": -11.59,
+      "pnl_usdt": -2.32,
+      "closed_at": "2026-06-08T15:41:22.808290",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 15.114176271678433
+  "total_pnl": 12.797118103678429
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-08 15:21:41,000 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 15:21:41,929 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-08 15:21:41,930 [INFO] main: HYPEUSDT | Bull:long(62%) Bear:short(60%)
-2026-06-08 15:21:44,082 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 15:21:44,083 [INFO] main: HYPEUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-08 15:21:44,083 [INFO] main: HYPEUSDT | RL adj=55.0%
 2026-06-08 15:21:49,777 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-08 15:21:50,822 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-08 15:21:50,822 [INFO] main: XRPUSDT | Bull:long(62%) Bear:short(70%)
@@ -2843,6 +2843,12 @@ root     1121216  0.1  3.4 726300 132868 ?       Ssl  Jun03  14:27 /opt/ensemble
 2026-06-08 15:22:12,929 [INFO] main: WLDUSDT | Judge:HOLD conf=32% size=0.0%
 2026-06-08 15:22:12,930 [INFO] main: WLDUSDT | RL adj=32.0%
 2026-06-08 15:22:14,932 [INFO] main: Next scan in 30min (always-30min)
+2026-06-08 15:41:22,807 [INFO] positions: STOP_LOSS LABUSDT short PnL:-2.32%
+2026-06-08 15:41:22,811 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT LABUSDT @ 13.1874 PnL: -11.59% (-2.32 USDT) | Баланс: 952.57
+2026-06-08 15:41:23,224 [INFO] positions: LOSS LABUSDT short PnL:-2.32% reason:stop_loss
+2026-06-08 15:41:23,225 [INFO] positions: Lessons: The trade on LABUSDT resulted in a 2.32% loss due to a stop loss being triggered. The original analysis correctly identified bearish signals but the trade did not play out as expected, highlighting the importance of risk management. This outcome emphasizes the need to continually reevaluate and adjust trading strategies to account for market unpredictability.
+2026-06-08 15:41:23,225 [INFO] rl: RL learned from short LABUSDT: loss -2.32% | weights bull=1.016 bear=0.825 judge=1.159 threshold=65.09
+2026-06-08 15:47:48,675 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -2860,7 +2866,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       888Mi       226Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       887Mi       227Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
