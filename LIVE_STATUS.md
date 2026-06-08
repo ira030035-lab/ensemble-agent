@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-08 20:40:01 UTC
+Generated: 2026-06-08 20:50:01 UTC
 
 ## Services
 ```
@@ -2903,7 +2903,6 @@ root     1121216  0.1  3.4 726300 133024 ?       Ssl  Jun03  14:52 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-08 20:31:29,575 [INFO] main: ADAUSDT | Context score=-0.05 bias=0.05
 2026-06-08 20:31:29,576 [INFO] main: ADAUSDT | gate PASS (Judge 70/70 RL 78.7/65.21 slack=±3)
 2026-06-08 20:31:29,577 [INFO] positions: 2/3 rule: skip SHORT ADAUSDT (3/4 already short)
 2026-06-08 20:31:35,009 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -2933,6 +2932,7 @@ root     1121216  0.1  3.4 726300 133024 ?       Ssl  Jun03  14:52 /opt/ensemble
 2026-06-08 20:32:07,447 [INFO] main: VELVETUSDT | Context score=-0.05 bias=0.05
 2026-06-08 20:32:07,447 [INFO] main: VELVETUSDT | regime BLOCK (volatile)
 2026-06-08 20:32:09,449 [INFO] main: Next scan in 30min (always-30min)
+2026-06-08 20:47:51,848 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -2950,7 +2950,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       895Mi       202Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       896Mi       201Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
