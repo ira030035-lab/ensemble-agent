@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-08 20:50:01 UTC
+Generated: 2026-06-08 21:00:01 UTC
 
 ## Services
 ```
@@ -11,14 +11,14 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1121157  0.0  1.2  62860 50444 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1121169  0.0  1.2 206920 48328 ?        Ssl  Jun03   1:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1121169  0.0  1.2 207944 49344 ?        Ssl  Jun03   1:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1121216  0.1  3.4 726300 133024 ?       Ssl  Jun03  14:52 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 926.5748139256818,
+  "balance": 948.4668867016818,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1780883817",
@@ -54,18 +54,6 @@ root     1121216  0.1  3.4 726300 133024 ?       Ssl  Jun03  14:52 /opt/ensemble
       "opened_at": "2026-06-08T18:13:39.272033",
       "cost": 19.999999999996128,
       "notional": 99.99999999998064,
-      "leverage": 5
-    },
-    "LABUSDT": {
-      "id": "PAPER_LABUSDT_1780948466",
-      "symbol": "LABUSDT",
-      "side": "short",
-      "entry_price": 12.3281,
-      "qty": 8.1116,
-      "confidence": 70,
-      "opened_at": "2026-06-08T19:54:26.386340",
-      "cost": 20.000123191999997,
-      "notional": 100.00061595999999,
       "leverage": 5
     }
   },
@@ -2895,19 +2883,32 @@ root     1121216  0.1  3.4 726300 133024 ?       Ssl  Jun03  14:52 /opt/ensemble
       "closed_at": "2026-06-08T20:11:00.177826",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_LABUSDT_1780948466",
+      "symbol": "LABUSDT",
+      "side": "short",
+      "entry_price": 12.3281,
+      "qty": 8.1116,
+      "confidence": 70,
+      "opened_at": "2026-06-08T19:54:26.386340",
+      "cost": 20.000123191999997,
+      "notional": 100.00061595999999,
+      "leverage": 5,
+      "exit_price": 12.09486,
+      "pnl_pct": 9.46,
+      "pnl_usdt": 1.89,
+      "closed_at": "2026-06-08T20:50:57.807650",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 6.802362713678409
+  "total_pnl": 8.694312297678398
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-08 20:31:29,576 [INFO] main: ADAUSDT | gate PASS (Judge 70/70 RL 78.7/65.21 slack=±3)
-2026-06-08 20:31:29,577 [INFO] positions: 2/3 rule: skip SHORT ADAUSDT (3/4 already short)
-2026-06-08 20:31:35,009 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 20:31:36,201 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-08 20:31:36,202 [INFO] main: TONUSDT | Bull:flat(35%) Bear:short(65%)
 2026-06-08 20:31:38,824 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-08 20:31:38,825 [INFO] main: TONUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-08 20:31:38,825 [INFO] main: TONUSDT | RL adj=55.0%
@@ -2933,6 +2934,11 @@ root     1121216  0.1  3.4 726300 133024 ?       Ssl  Jun03  14:52 /opt/ensemble
 2026-06-08 20:32:07,447 [INFO] main: VELVETUSDT | regime BLOCK (volatile)
 2026-06-08 20:32:09,449 [INFO] main: Next scan in 30min (always-30min)
 2026-06-08 20:47:51,848 [INFO] main: Symbols: 30
+2026-06-08 20:50:57,805 [INFO] positions: TRAILING-STOP LABUSDT short peak:2.71% now:1.89%
+2026-06-08 20:50:57,815 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT LABUSDT @ 12.0949 PnL: 9.46% (+1.89 USDT) | Баланс: 948.47
+2026-06-08 20:50:58,275 [INFO] positions: OK LABUSDT short PnL:1.89% reason:trailing_stop
+2026-06-08 20:50:58,275 [INFO] positions: Lessons: The LABUSDT short trade was successful with a 1.89% profit, meeting the expected downside move based on the asymmetric risk framework. The bearish signals with high conviction proved correct, similar to past trends in LINKUSDT. This trade demonstrates the effectiveness of the asymmetric risk framework in identifying profitable short opportunities in a trending_down regime.
+2026-06-08 20:50:58,275 [INFO] rl: RL learned from short LABUSDT: profit 1.89% | weights bull=1.011 bear=0.829 judge=1.160 threshold=65.18
 ```
 
 ## Disk
@@ -2950,7 +2956,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       896Mi       201Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       904Mi       192Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
