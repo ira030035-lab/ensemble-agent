@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-08 03:20:01 UTC
+Generated: 2026-06-08 03:30:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.3 725276 132492 ?       Ssl  Jun03  13:22 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 910.1646889378779,
+  "balance": 930.649784677878,
   "positions": {
     "ENAUSDT": {
       "id": "PAPER_ENAUSDT_1780873343",
@@ -54,18 +54,6 @@ root     1121216  0.1  3.3 725276 132492 ?       Ssl  Jun03  13:22 /opt/ensemble
       "opened_at": "2026-06-08T01:56:57.651658",
       "cost": 20.227424,
       "notional": 101.13712,
-      "leverage": 5
-    },
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1780885823",
-      "symbol": "HYPEUSDT",
-      "side": "long",
-      "entry_price": 61.047,
-      "qty": 1.6381,
-      "confidence": 85,
-      "opened_at": "2026-06-08T02:30:23.080766",
-      "cost": 20.000218139999998,
-      "notional": 100.00109069999999,
       "leverage": 5
     },
     "SOLUSDT": {
@@ -2583,19 +2571,32 @@ root     1121216  0.1  3.3 725276 132492 ?       Ssl  Jun03  13:22 /opt/ensemble
       "closed_at": "2026-06-08T01:29:34.163102",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1780885823",
+      "symbol": "HYPEUSDT",
+      "side": "long",
+      "entry_price": 61.047,
+      "qty": 1.6381,
+      "confidence": 85,
+      "opened_at": "2026-06-08T02:30:23.080766",
+      "cost": 20.000218139999998,
+      "notional": 100.00109069999999,
+      "leverage": 5,
+      "exit_price": 61.343,
+      "pnl_pct": 2.42,
+      "pnl_usdt": 0.48,
+      "closed_at": "2026-06-08T03:29:40.791454",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 10.392314787678433
+  "total_pnl": 10.877192387678445
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-08 03:12:31,294 [INFO] main: XRPUSDT | Bull:long(62%) Bear:short(65%)
-2026-06-08 03:12:35,048 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 03:12:35,048 [INFO] main: XRPUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-08 03:12:35,049 [INFO] main: XRPUSDT | RL adj=55.0%
-2026-06-08 03:12:41,801 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-08 03:12:52,906 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-08 03:12:52,907 [INFO] main: SKYAIUSDT | Bull:flat(15%) Bear:short(80%)
 2026-06-08 03:13:03,782 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -2621,6 +2622,11 @@ root     1121216  0.1  3.3 725276 132492 ?       Ssl  Jun03  13:22 /opt/ensemble
 2026-06-08 03:13:48,095 [INFO] main: NEARUSDT | Context score=0.0 bias=0.05
 2026-06-08 03:13:48,095 [INFO] main: NEARUSDT | regime BLOCK (volatile)
 2026-06-08 03:13:50,097 [INFO] main: Next scan in 30min (always-30min)
+2026-06-08 03:29:40,790 [INFO] positions: BREAKEVEN_STOP HYPEUSDT long PnL:0.48%
+2026-06-08 03:29:40,795 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG HYPEUSDT @ 61.3430 PnL: 2.42% (+0.48 USDT) | Баланс: 930.65
+2026-06-08 03:29:41,168 [INFO] positions: OK HYPEUSDT long PnL:0.48% reason:breakeven_stop
+2026-06-08 03:29:41,168 [INFO] positions: Lessons: The trade was based on bull conditions with high volume and positive sentiment, expecting a 4% upside move. However, the trade ended at breakeven stop with a 0.48% profit, failing to meet the expected upside. The key takeaway is that even with strong bullish alignment, trades can still result in limited gains if the expected move does not materialize.
+2026-06-08 03:29:41,168 [INFO] rl: RL learned from long HYPEUSDT: profit 0.48% | weights bull=1.012 bear=0.838 judge=1.149 threshold=64.99
 ```
 
 ## Disk
@@ -2638,7 +2644,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       892Mi       277Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       897Mi       272Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
