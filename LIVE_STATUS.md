@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-08 07:50:01 UTC
+Generated: 2026-06-08 08:00:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.3 725276 132516 ?       Ssl  Jun03  13:49 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 916.437448310678,
+  "balance": 934.395711899678,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1780883817",
@@ -42,18 +42,6 @@ root     1121216  0.1  3.3 725276 132516 ?       Ssl  Jun03  13:49 /opt/ensemble
       "opened_at": "2026-06-08T02:31:52.664061",
       "cost": 19.9999842,
       "notional": 99.999921,
-      "leverage": 5
-    },
-    "XLMUSDT": {
-      "id": "PAPER_XLMUSDT_1780894690",
-      "symbol": "XLMUSDT",
-      "side": "short",
-      "entry_price": 0.19934,
-      "qty": 501.6555,
-      "confidence": 80,
-      "opened_at": "2026-06-08T04:58:10.162161",
-      "cost": 20.000001473999998,
-      "notional": 100.00000736999999,
       "leverage": 5
     },
     "HYPEUSDT": {
@@ -2673,19 +2661,32 @@ root     1121216  0.1  3.3 725276 132516 ?       Ssl  Jun03  13:49 /opt/ensemble
       "closed_at": "2026-06-08T07:23:10.073009",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_XLMUSDT_1780894690",
+      "symbol": "XLMUSDT",
+      "side": "short",
+      "entry_price": 0.19934,
+      "qty": 501.6555,
+      "confidence": 80,
+      "opened_at": "2026-06-08T04:58:10.162161",
+      "cost": 20.000001473999998,
+      "notional": 100.00000736999999,
+      "leverage": 5,
+      "exit_price": 0.20341,
+      "pnl_pct": -10.21,
+      "pnl_usdt": -2.04,
+      "closed_at": "2026-06-08T07:51:44.580584",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 16.66465474067844
+  "total_pnl": 14.622916855678431
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-08 07:48:45,689 [INFO] main: XRPUSDT | regime BLOCK (long × trending_up × rsi1h=52.8; late-entry guard)
-2026-06-08 07:48:51,974 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 07:48:52,582 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-08 07:48:52,584 [INFO] main: RENDERUSDT | Bull:flat(35%) Bear:short(65%)
-2026-06-08 07:48:54,678 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-08 07:48:54,679 [INFO] main: RENDERUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-08 07:48:54,679 [INFO] main: RENDERUSDT | RL adj=55.0%
 2026-06-08 07:49:00,484 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -2711,6 +2712,11 @@ root     1121216  0.1  3.3 725276 132516 ?       Ssl  Jun03  13:49 /opt/ensemble
 2026-06-08 07:49:25,120 [INFO] main: FIDAUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-08 07:49:25,120 [INFO] main: FIDAUSDT | RL adj=55.0%
 2026-06-08 07:49:27,123 [INFO] main: Next scan in 30min (always-30min)
+2026-06-08 07:51:44,579 [INFO] positions: STOP_LOSS XLMUSDT short PnL:-2.04%
+2026-06-08 07:51:44,584 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT XLMUSDT @ 0.2034 PnL: -10.21% (-2.04 USDT) | Баланс: 934.40
+2026-06-08 07:51:44,872 [INFO] positions: LOSS XLMUSDT short PnL:-2.04% reason:stop_loss
+2026-06-08 07:51:44,872 [INFO] positions: Lessons: The trade was based on bearish market conditions with a strong downtrend, expecting a downside move. The stop loss was triggered, resulting in a 2.04% loss, which is within the asymmetric risk rules. This trade highlights the importance of adhering to risk management rules even when the expected outcome does not materialize.
+2026-06-08 07:51:44,872 [INFO] rl: RL learned from short XLMUSDT: loss -2.04% | weights bull=1.015 bear=0.831 judge=1.154 threshold=65.01
 ```
 
 ## Disk
@@ -2728,7 +2734,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       889Mi       261Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       909Mi       242Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
