@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-08 22:10:01 UTC
+Generated: 2026-06-08 22:20:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  62860 50444 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 207944 49344 ?        Ssl  Jun03   1:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 726300 133028 ?       Ssl  Jun03  14:58 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 726300 133080 ?       Ssl  Jun03  15:00 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 949.3806520956817,
+  "balance": 909.3806525756817,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1780883817",
@@ -54,6 +54,30 @@ root     1121216  0.1  3.4 726300 133028 ?       Ssl  Jun03  14:58 /opt/ensemble
       "opened_at": "2026-06-08T21:04:37.856538",
       "cost": 19.999891872,
       "notional": 99.99945936,
+      "leverage": 5
+    },
+    "TONUSDT": {
+      "id": "PAPER_TONUSDT_1780956746",
+      "symbol": "TONUSDT",
+      "side": "long",
+      "entry_price": 1.732,
+      "qty": 57.7367,
+      "confidence": 70,
+      "opened_at": "2026-06-08T22:12:26.799112",
+      "cost": 19.99999288,
+      "notional": 99.9999644,
+      "leverage": 5
+    },
+    "SUIUSDT": {
+      "id": "PAPER_SUIUSDT_1780956853",
+      "symbol": "SUIUSDT",
+      "side": "long",
+      "entry_price": 0.7585,
+      "qty": 131.8392,
+      "confidence": 70,
+      "opened_at": "2026-06-08T22:14:13.496177",
+      "cost": 20.000006640000002,
+      "notional": 100.0000332,
       "leverage": 5
     }
   },
@@ -2945,36 +2969,36 @@ root     1121216  0.1  3.4 726300 133028 ?       Ssl  Jun03  14:58 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-08 21:40:12,824 [INFO] main: SOLUSDT | gate PASS (Judge 75/70 RL 77.3/65.23 slack=±3)
-2026-06-08 21:40:12,826 [INFO] positions: Correlation block: skip LONG SOLUSDT (corr 0.94 >= 0.85 with PEPEUSDT long)
-2026-06-08 21:40:18,751 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 21:40:21,188 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-08 21:40:21,190 [INFO] main: ONDOUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-08 21:40:23,065 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 21:40:23,066 [INFO] main: ONDOUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-08 21:40:23,066 [INFO] main: ONDOUSDT | RL adj=55.0%
-2026-06-08 21:40:29,634 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 21:40:31,332 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-08 21:40:31,333 [INFO] main: ETHUSDT | Bull:flat(35%) Bear:short(85%)
-2026-06-08 21:40:33,357 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 21:40:33,357 [INFO] main: ETHUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-08 21:40:33,358 [INFO] main: ETHUSDT | RL adj=50.0%
-2026-06-08 21:40:39,055 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 21:40:42,099 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-08 21:40:42,101 [INFO] main: ESPORTSUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-08 21:40:44,389 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 21:40:44,391 [INFO] main: ESPORTSUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-08 21:40:44,391 [INFO] main: ESPORTSUSDT | RL adj=84.3%
-2026-06-08 21:40:44,413 [INFO] main: ESPORTSUSDT | Context score=-0.05 bias=0.05
-2026-06-08 21:40:44,413 [INFO] main: ESPORTSUSDT | regime BLOCK (volatile)
-2026-06-08 21:40:46,462 [INFO] main: Next scan in 30min (always-30min)
-2026-06-08 21:47:52,522 [INFO] main: Symbols: 30
-2026-06-08 21:57:15,975 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 22:01:24,862 [INFO] positions: TAKE-PROFIT TONUSDT short PnL:3.06%
-2026-06-08 22:01:24,871 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT TONUSDT @ 1.7224 PnL: 15.31% (+3.06 USDT) | Баланс: 949.38
-2026-06-08 22:01:25,194 [INFO] positions: OK TONUSDT short PnL:3.06% reason:take_profit
-2026-06-08 22:01:25,194 [INFO] positions: Lessons: The trade was a short position on TONUSDT that closed with a 3.06% profit. The original reasoning was based on strong bear sentiment and a bearish MACD, which correctly indicated a downtrend move. This trade outcome confirms the effectiveness of using sentiment and technical indicators to identify potential downtrend opportunities.
-2026-06-08 22:01:25,195 [INFO] rl: RL learned from short TONUSDT: profit 3.06% | weights bull=1.006 bear=0.831 judge=1.163 threshold=65.2
+2026-06-08 22:14:29,724 [INFO] main: NEARUSDT | Bull:flat(15%) Bear:short(70%)
+2026-06-08 22:14:31,709 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 22:14:31,710 [INFO] main: NEARUSDT | Judge:HOLD conf=60% size=0.0%
+2026-06-08 22:14:31,710 [INFO] main: NEARUSDT | RL adj=60.0%
+2026-06-08 22:14:37,785 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 22:14:39,178 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 22:14:39,179 [INFO] main: BSBUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-08 22:14:41,574 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 22:14:41,574 [INFO] main: BSBUSDT | Judge:SHORT conf=80% size=15.0%
+2026-06-08 22:14:41,575 [INFO] main: BSBUSDT | RL adj=90.0%
+2026-06-08 22:14:41,585 [INFO] main: BSBUSDT | Context score=-0.05 bias=0.05
+2026-06-08 22:14:41,585 [INFO] main: BSBUSDT | regime BLOCK (volatile)
+2026-06-08 22:14:47,679 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 22:14:48,530 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 22:14:48,531 [INFO] main: ZECUSDT | Bull:long(62%) Bear:short(70%)
+2026-06-08 22:14:50,766 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 22:14:50,767 [INFO] main: ZECUSDT | Judge:LONG conf=80% size=15.0%
+2026-06-08 22:14:50,767 [INFO] main: ZECUSDT | RL adj=80.6%
+2026-06-08 22:14:50,778 [INFO] main: ZECUSDT | Context score=0.0 bias=0.05
+2026-06-08 22:14:50,778 [INFO] main: ZECUSDT | regime BLOCK (volatile)
+2026-06-08 22:14:56,759 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 22:14:57,813 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 22:14:57,814 [INFO] main: ETHUSDT | Bull:long(62%) Bear:flat(55%)
+2026-06-08 22:15:00,251 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 22:15:00,252 [INFO] main: ETHUSDT | Judge:LONG conf=75% size=15.0%
+2026-06-08 22:15:00,252 [INFO] main: ETHUSDT | RL adj=84.4%
+2026-06-08 22:15:00,263 [INFO] main: ETHUSDT | Context score=0.0 bias=0.05
+2026-06-08 22:15:00,264 [INFO] main: ETHUSDT | gate PASS (Judge 75/70 RL 84.4/65.2 slack=±3)
+2026-06-08 22:15:00,264 [INFO] positions: Max positions reached (5/5 dyn)
+2026-06-08 22:15:02,267 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -2992,7 +3016,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       894Mi       198Mi       4.8Mi       3.0Gi       2.9Gi
+Mem:           3.7Gi       893Mi       194Mi       4.8Mi       3.0Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
