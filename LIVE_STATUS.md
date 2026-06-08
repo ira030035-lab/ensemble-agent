@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-08 07:20:01 UTC
+Generated: 2026-06-08 07:30:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.3 725276 132512 ?       Ssl  Jun03  13:46 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 918.5020397916779,
+  "balance": 936.4374486666779,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1780883817",
@@ -54,18 +54,6 @@ root     1121216  0.1  3.3 725276 132512 ?       Ssl  Jun03  13:46 /opt/ensemble
       "opened_at": "2026-06-08T04:58:10.162161",
       "cost": 20.000001473999998,
       "notional": 100.00000736999999,
-      "leverage": 5
-    },
-    "ENAUSDT": {
-      "id": "PAPER_ENAUSDT_1780896622",
-      "symbol": "ENAUSDT",
-      "side": "short",
-      "entry_price": 0.0867,
-      "qty": 1153.4025,
-      "confidence": 85,
-      "opened_at": "2026-06-08T05:30:22.763589",
-      "cost": 19.99999935,
-      "notional": 99.99999675,
       "leverage": 5
     },
     "HYPEUSDT": {
@@ -2655,19 +2643,32 @@ root     1121216  0.1  3.3 725276 132512 ?       Ssl  Jun03  13:46 /opt/ensemble
       "closed_at": "2026-06-08T06:26:14.088818",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ENAUSDT_1780896622",
+      "symbol": "ENAUSDT",
+      "side": "short",
+      "entry_price": 0.0867,
+      "qty": 1153.4025,
+      "confidence": 85,
+      "opened_at": "2026-06-08T05:30:22.763589",
+      "cost": 19.99999935,
+      "notional": 99.99999675,
+      "leverage": 5,
+      "exit_price": 0.08849,
+      "pnl_pct": -10.32,
+      "pnl_usdt": -2.06,
+      "closed_at": "2026-06-08T07:23:10.073009",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 18.72924521567844
+  "total_pnl": 16.66465474067844
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-08 07:14:31,094 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-08 07:14:31,096 [INFO] main: TAOUSDT | Bull:flat(25%) Bear:short(75%)
-2026-06-08 07:14:33,566 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 07:14:33,567 [INFO] main: TAOUSDT | Judge:SHORT conf=70% size=15.0%
-2026-06-08 07:14:33,568 [INFO] main: TAOUSDT | RL adj=79.5%
 2026-06-08 07:14:33,665 [INFO] main: TAOUSDT | Context score=-0.05 bias=0.05
 2026-06-08 07:14:33,665 [INFO] main: TAOUSDT | regime BLOCK (volatile)
 2026-06-08 07:14:39,960 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -2693,6 +2694,11 @@ root     1121216  0.1  3.3 725276 132512 ?       Ssl  Jun03  13:46 /opt/ensemble
 2026-06-08 07:15:03,201 [INFO] main: AVAXUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-08 07:15:03,201 [INFO] main: AVAXUSDT | RL adj=55.0%
 2026-06-08 07:15:05,203 [INFO] main: Next scan in 30min (always-30min)
+2026-06-08 07:23:10,072 [INFO] positions: STOP_LOSS ENAUSDT short PnL:-2.06%
+2026-06-08 07:23:10,076 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ENAUSDT @ 0.0885 PnL: -10.32% (-2.06 USDT) | Баланс: 936.44
+2026-06-08 07:23:10,420 [INFO] positions: LOSS ENAUSDT short PnL:-2.06% reason:stop_loss
+2026-06-08 07:23:10,420 [INFO] positions: Lessons: The trade was based on a strong bearish regime and oversold conditions but still resulted in a loss. The expected 2:1 risk/reward ratio was not achieved, highlighting the importance of adapting to changing market conditions. This loss serves as a reminder to reevaluate the effectiveness of using oversold RSI and negative momentum as sole indicators for short positions in a trending down regime.
+2026-06-08 07:23:10,420 [INFO] rl: RL learned from short ENAUSDT: loss -2.06% | weights bull=1.010 bear=0.836 judge=1.154 threshold=64.96
 ```
 
 ## Disk
@@ -2710,7 +2716,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       893Mi       260Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       913Mi       239Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
