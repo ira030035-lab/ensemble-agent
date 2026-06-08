@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-08 12:40:01 UTC
+Generated: 2026-06-08 12:50:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.3 726300 132800 ?       Ssl  Jun03  14:12 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 937.2052701716779,
+  "balance": 955.1973446716779,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1780883817",
@@ -42,18 +42,6 @@ root     1121216  0.1  3.3 726300 132800 ?       Ssl  Jun03  14:12 /opt/ensemble
       "opened_at": "2026-06-08T02:31:52.664061",
       "cost": 19.9999842,
       "notional": 99.999921,
-      "leverage": 5
-    },
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1780908870",
-      "symbol": "HYPEUSDT",
-      "side": "short",
-      "entry_price": 61.165,
-      "qty": 1.6349,
-      "confidence": 70,
-      "opened_at": "2026-06-08T08:54:30.852867",
-      "cost": 19.9997317,
-      "notional": 99.9986585,
       "leverage": 5
     },
     "BCHUSDT": {
@@ -2751,20 +2739,32 @@ root     1121216  0.1  3.3 726300 132800 ?       Ssl  Jun03  14:12 /opt/ensemble
       "closed_at": "2026-06-08T10:34:20.683372",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1780908870",
+      "symbol": "HYPEUSDT",
+      "side": "short",
+      "entry_price": 61.165,
+      "qty": 1.6349,
+      "confidence": 70,
+      "opened_at": "2026-06-08T08:54:30.852867",
+      "cost": 19.9997317,
+      "notional": 99.9986585,
+      "leverage": 5,
+      "exit_price": 62.393,
+      "pnl_pct": -10.04,
+      "pnl_usdt": -2.01,
+      "closed_at": "2026-06-08T12:44:03.874428",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 17.43332447167843
+  "total_pnl": 15.425667271678426
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-08 12:25:02,188 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 12:25:02,189 [INFO] main: HOMEUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-08 12:25:04,851 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 12:25:04,851 [INFO] main: HOMEUSDT | Judge:SHORT conf=70% size=15.0%
-2026-06-08 12:25:04,851 [INFO] main: HOMEUSDT | RL adj=78.9%
-2026-06-08 12:25:04,940 [INFO] main: HOMEUSDT | Context score=-0.05 bias=0.05
 2026-06-08 12:25:04,941 [INFO] main: HOMEUSDT | regime BLOCK (volatile)
 2026-06-08 12:25:11,129 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-08 12:25:12,123 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -2789,6 +2789,12 @@ root     1121216  0.1  3.3 726300 132800 ?       Ssl  Jun03  14:12 /opt/ensemble
 2026-06-08 12:25:33,516 [INFO] main: WLDUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-08 12:25:33,516 [INFO] main: WLDUSDT | RL adj=50.0%
 2026-06-08 12:25:35,518 [INFO] main: Next scan in 30min (always-30min)
+2026-06-08 12:44:03,873 [INFO] positions: STOP_LOSS HYPEUSDT short PnL:-2.01%
+2026-06-08 12:44:03,878 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT HYPEUSDT @ 62.3930 PnL: -10.04% (-2.01 USDT) | Баланс: 955.20
+2026-06-08 12:44:04,198 [INFO] positions: LOSS HYPEUSDT short PnL:-2.01% reason:stop_loss
+2026-06-08 12:44:04,198 [INFO] positions: Lessons: The trade was based on a bearish MACD signal and strong bear sentiment but ultimately resulted in a stop loss being hit. The 1:2 risk to reward ratio was not achieved as the trade closed at a 2.01% loss. This outcome suggests that the bearish signals were not strong enough to overcome the current trending up regime.
+2026-06-08 12:44:04,198 [INFO] rl: RL learned from short HYPEUSDT: loss -2.01% | weights bull=1.004 bear=0.840 judge=1.156 threshold=65.02
+2026-06-08 12:47:46,623 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -2806,7 +2812,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       891Mi       238Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       890Mi       237Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
