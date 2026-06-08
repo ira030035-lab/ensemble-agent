@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-08 13:20:01 UTC
+Generated: 2026-06-08 13:30:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.3 726300 132800 ?       Ssl  Jun03  14:15 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 935.1968221516779,
+  "balance": 956.986769671678,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1780883817",
@@ -54,18 +54,6 @@ root     1121216  0.1  3.3 726300 132800 ?       Ssl  Jun03  14:15 /opt/ensemble
       "opened_at": "2026-06-08T10:40:08.404057",
       "cost": 20.000914400000003,
       "notional": 100.00457200000001,
-      "leverage": 5
-    },
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1780923535",
-      "symbol": "HYPEUSDT",
-      "side": "long",
-      "entry_price": 62.871,
-      "qty": 1.5906,
-      "confidence": 80,
-      "opened_at": "2026-06-08T12:58:55.600470",
-      "cost": 20.00052252,
-      "notional": 100.0026126,
       "leverage": 5
     }
   },
@@ -2769,19 +2757,32 @@ root     1121216  0.1  3.3 726300 132800 ?       Ssl  Jun03  14:15 /opt/ensemble
       "closed_at": "2026-06-08T12:44:03.874428",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1780923535",
+      "symbol": "HYPEUSDT",
+      "side": "long",
+      "entry_price": 62.871,
+      "qty": 1.5906,
+      "confidence": 80,
+      "opened_at": "2026-06-08T12:58:55.600470",
+      "cost": 20.00052252,
+      "notional": 100.0026126,
+      "leverage": 5,
+      "exit_price": 63.996,
+      "pnl_pct": 8.95,
+      "pnl_usdt": 1.79,
+      "closed_at": "2026-06-08T13:25:29.161235",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 15.425667271678426
+  "total_pnl": 17.215092271678426
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-08 12:59:30,890 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 12:59:33,319 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-08 12:59:33,320 [INFO] main: ONDOUSDT | Bull:long(72%) Bear:short(70%)
-2026-06-08 12:59:35,744 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 12:59:35,745 [INFO] main: ONDOUSDT | Judge:LONG conf=75% size=15.0%
 2026-06-08 12:59:35,745 [INFO] main: ONDOUSDT | RL adj=77.0%
 2026-06-08 12:59:35,758 [INFO] main: ONDOUSDT | Context score=0.0 bias=0.05
 2026-06-08 12:59:35,758 [INFO] main: ONDOUSDT | regime BLOCK (volatile)
@@ -2807,6 +2808,11 @@ root     1121216  0.1  3.3 726300 132800 ?       Ssl  Jun03  14:15 /opt/ensemble
 2026-06-08 13:00:07,884 [INFO] main: XLMUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-08 13:00:07,884 [INFO] main: XLMUSDT | RL adj=55.0%
 2026-06-08 13:00:09,886 [INFO] main: Next scan in 30min (always-30min)
+2026-06-08 13:25:29,159 [INFO] positions: TRAILING-STOP HYPEUSDT long peak:2.61% now:1.79%
+2026-06-08 13:25:29,168 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG HYPEUSDT @ 63.9960 PnL: 8.95% (+1.79 USDT) | Баланс: 956.99
+2026-06-08 13:25:29,459 [INFO] positions: OK HYPEUSDT long PnL:1.79% reason:trailing_stop
+2026-06-08 13:25:29,459 [INFO] positions: Lessons: The trade was closed due to a trailing stop with a 1.79% profit. The initial bull case was correct but the 2:1 risk-reward ratio was not fully realized. The key takeaway is that even a strong bull case can be limited by overbought conditions and a trailing stop can help lock in profits.
+2026-06-08 13:25:29,459 [INFO] rl: RL learned from long HYPEUSDT: profit 1.79% | weights bull=1.007 bear=0.835 judge=1.158 threshold=64.99
 ```
 
 ## Disk
@@ -2824,7 +2830,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       895Mi       230Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       904Mi       219Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
