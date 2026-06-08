@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-08 05:00:01 UTC
+Generated: 2026-06-08 05:10:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  62860 50444 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206704 47824 ?        Ssl  Jun03   0:54 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.3 725276 132508 ?       Ssl  Jun03  13:33 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.3 725276 132508 ?       Ssl  Jun03  13:34 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 912.453825894478,
+  "balance": 935.481411541678,
   "positions": {
-    "ENAUSDT": {
-      "id": "PAPER_ENAUSDT_1780873343",
-      "symbol": "ENAUSDT",
-      "side": "short",
-      "entry_price": 0.08918,
-      "qty": 1121.3277,
-      "confidence": 72,
-      "opened_at": "2026-06-07T23:02:23.867357",
-      "cost": 20.0000008572,
-      "notional": 100.00000428599999,
-      "leverage": 5
-    },
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1780883817",
       "symbol": "BTCUSDT",
@@ -2619,19 +2607,32 @@ root     1121216  0.1  3.3 725276 132508 ?       Ssl  Jun03  13:33 /opt/ensemble
       "closed_at": "2026-06-08T04:46:58.579560",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ENAUSDT_1780873343",
+      "symbol": "ENAUSDT",
+      "side": "short",
+      "entry_price": 0.08918,
+      "qty": 1121.3277,
+      "confidence": 72,
+      "opened_at": "2026-06-07T23:02:23.867357",
+      "cost": 20.0000008572,
+      "notional": 100.00000428599999,
+      "leverage": 5,
+      "exit_price": 0.08648,
+      "pnl_pct": 15.14,
+      "pnl_usdt": 3.03,
+      "closed_at": "2026-06-08T05:07:18.029456",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 12.680947625678444
+  "total_pnl": 15.708532415678437
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-08 04:57:42,748 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 04:57:42,749 [INFO] main: RENDERUSDT | Judge:HOLD conf=30% size=0.0%
-2026-06-08 04:57:42,749 [INFO] main: RENDERUSDT | RL adj=30.0%
-2026-06-08 04:57:48,272 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 04:57:49,745 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-08 04:57:49,748 [INFO] main: LABUSDT | Bull:flat(15%) Bear:short(75%)
 2026-06-08 04:57:52,076 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-08 04:57:52,078 [INFO] main: LABUSDT | Judge:SHORT conf=75% size=15.0%
@@ -2657,6 +2658,11 @@ root     1121216  0.1  3.3 725276 132508 ?       Ssl  Jun03  13:33 /opt/ensemble
 2026-06-08 04:58:10,161 [INFO] positions: [PAPER] Opening SHORT XLMUSDT notional=$100.0 conf=80%
 2026-06-08 04:58:10,169 [INFO] paper_trading: [PAPER] ОТКРЫТА SHORT XLMUSDT @ 0.1993 qty=501.6555 notional=100.00 margin=20.00 x5 | Баланс: 912.45
 2026-06-08 04:58:12,172 [INFO] main: Next scan in 30min (always-30min)
+2026-06-08 05:07:18,028 [INFO] positions: TAKE-PROFIT ENAUSDT short PnL:3.03%
+2026-06-08 05:07:18,037 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ENAUSDT @ 0.0865 PnL: 15.14% (+3.03 USDT) | Баланс: 935.48
+2026-06-08 05:07:18,263 [INFO] positions: OK ENAUSDT short PnL:3.03% reason:take_profit
+2026-06-08 05:07:18,263 [INFO] positions: Lessons: The trade was successful with a 3.03% profit, meeting the expected 2:1 risk-reward ratio. The bear conviction exceeding bull conviction by a significant margin was a key factor in the trade's success. This outcome reinforces the importance of considering market sentiment and regime when making trading decisions.
+2026-06-08 05:07:18,263 [INFO] rl: RL learned from short ENAUSDT: profit 3.03% | weights bull=1.000 bear=0.850 judge=1.150 threshold=64.93
 ```
 
 ## Disk
@@ -2674,7 +2680,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       899Mi       266Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       893Mi       270Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
