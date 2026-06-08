@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-08 18:00:01 UTC
+Generated: 2026-06-08 18:10:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.4 726300 133004 ?       Ssl  Jun03  14:38 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 950.817271890878,
+  "balance": 968.6832379176781,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1780883817",
@@ -42,18 +42,6 @@ root     1121216  0.1  3.4 726300 133004 ?       Ssl  Jun03  14:38 /opt/ensemble
       "opened_at": "2026-06-08T15:53:26.693106",
       "cost": 20.000001596,
       "notional": 100.00000798,
-      "leverage": 5
-    },
-    "LABUSDT": {
-      "id": "PAPER_LABUSDT_1780936072",
-      "symbol": "LABUSDT",
-      "side": "long",
-      "entry_price": 12.99014,
-      "qty": 7.6981,
-      "confidence": 85,
-      "opened_at": "2026-06-08T16:27:52.306539",
-      "cost": 19.9998793468,
-      "notional": 99.999396734,
       "leverage": 5
     }
   },
@@ -2847,19 +2835,32 @@ root     1121216  0.1  3.4 726300 133004 ?       Ssl  Jun03  14:38 /opt/ensemble
       "closed_at": "2026-06-08T17:04:01.056242",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_LABUSDT_1780936072",
+      "symbol": "LABUSDT",
+      "side": "long",
+      "entry_price": 12.99014,
+      "qty": 7.6981,
+      "confidence": 85,
+      "opened_at": "2026-06-08T16:27:52.306539",
+      "cost": 19.9998793468,
+      "notional": 99.999396734,
+      "leverage": 5,
+      "exit_price": 12.71294,
+      "pnl_pct": -10.67,
+      "pnl_usdt": -2.13,
+      "closed_at": "2026-06-08T18:02:39.982119",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 11.044576833678416
+  "total_pnl": 8.910663513678411
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-08 17:40:12,029 [INFO] main: ADAUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-08 17:40:12,029 [INFO] main: ADAUSDT | RL adj=55.0%
-2026-06-08 17:40:18,267 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-08 17:40:18,957 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 17:40:18,958 [INFO] main: HYPEUSDT | Bull:flat(25%) Bear:short(70%)
 2026-06-08 17:40:21,379 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-08 17:40:21,380 [INFO] main: HYPEUSDT | Judge:SHORT conf=75% size=15.0%
 2026-06-08 17:40:21,380 [INFO] main: HYPEUSDT | RL adj=83.6%
@@ -2885,6 +2886,11 @@ root     1121216  0.1  3.4 726300 133004 ?       Ssl  Jun03  14:38 /opt/ensemble
 2026-06-08 17:40:48,949 [INFO] main: ALLOUSDT | RL adj=55.0%
 2026-06-08 17:40:50,951 [INFO] main: Next scan in 30min (always-30min)
 2026-06-08 17:47:49,973 [INFO] main: Symbols: 30
+2026-06-08 18:02:39,981 [INFO] positions: STOP_LOSS LABUSDT long PnL:-2.13%
+2026-06-08 18:02:39,986 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG LABUSDT @ 12.7129 PnL: -10.67% (-2.13 USDT) | Баланс: 968.68
+2026-06-08 18:02:40,346 [INFO] positions: LOSS LABUSDT long PnL:-2.13% reason:stop_loss
+2026-06-08 18:02:40,346 [INFO] positions: Lessons: The trade was based on higher bull conviction and an expected 2:1 risk-reward ratio but ultimately closed at a 2.13% loss due to a stop loss. The ranging regime likely contributed to the failure to achieve the desired upside move. This outcome highlights the importance of reassessing trade assumptions when market conditions are not trending.
+2026-06-08 18:02:40,347 [INFO] rl: RL learned from long LABUSDT: loss -2.13% | weights bull=1.018 bear=0.822 judge=1.160 threshold=65.16
 ```
 
 ## Disk
@@ -2902,7 +2908,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       901Mi       206Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       891Mi       215Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
