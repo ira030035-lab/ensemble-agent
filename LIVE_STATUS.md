@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-08 15:00:01 UTC
+Generated: 2026-06-08 15:10:01 UTC
 
 ## Services
 ```
@@ -11,14 +11,14 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1121157  0.0  1.2  62860 50444 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1121169  0.0  1.2 206448 47568 ?        Ssl  Jun03   0:59 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.3 726300 132800 ?       Ssl  Jun03  14:23 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121169  0.0  1.2 206448 46932 ?        Ssl  Jun03   0:59 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1121216  0.1  3.3 726300 132800 ?       Ssl  Jun03  14:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 936.986768939678,
+  "balance": 954.8867673396779,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1780883817",
@@ -42,18 +42,6 @@ root     1121216  0.1  3.3 726300 132800 ?       Ssl  Jun03  14:23 /opt/ensemble
       "opened_at": "2026-06-08T02:31:52.664061",
       "cost": 19.9999842,
       "notional": 99.999921,
-      "leverage": 5
-    },
-    "BCHUSDT": {
-      "id": "PAPER_BCHUSDT_1780915208",
-      "symbol": "BCHUSDT",
-      "side": "short",
-      "entry_price": 206.11,
-      "qty": 0.4852,
-      "confidence": 85,
-      "opened_at": "2026-06-08T10:40:08.404057",
-      "cost": 20.000914400000003,
-      "notional": 100.00457200000001,
       "leverage": 5
     },
     "ENAUSDT": {
@@ -2787,19 +2775,32 @@ root     1121216  0.1  3.3 726300 132800 ?       Ssl  Jun03  14:23 /opt/ensemble
       "closed_at": "2026-06-08T13:25:29.161235",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BCHUSDT_1780915208",
+      "symbol": "BCHUSDT",
+      "side": "short",
+      "entry_price": 206.11,
+      "qty": 0.4852,
+      "confidence": 85,
+      "opened_at": "2026-06-08T10:40:08.404057",
+      "cost": 20.000914400000003,
+      "notional": 100.00457200000001,
+      "leverage": 5,
+      "exit_price": 210.44,
+      "pnl_pct": -10.5,
+      "pnl_usdt": -2.1,
+      "closed_at": "2026-06-08T15:06:11.707400",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 17.215092271678426
+  "total_pnl": 15.114176271678433
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-08 14:46:48,563 [INFO] main: BSBUSDT | regime BLOCK (volatile)
-2026-06-08 14:46:56,068 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-08 14:46:56,954 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 14:46:56,955 [INFO] main: HOMEUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-08 14:46:59,709 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-08 14:46:59,710 [INFO] main: HOMEUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-08 14:46:59,710 [INFO] main: HOMEUSDT | RL adj=55.0%
 2026-06-08 14:47:06,969 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -2825,6 +2826,11 @@ root     1121216  0.1  3.3 726300 132800 ?       Ssl  Jun03  14:23 /opt/ensemble
 2026-06-08 14:47:33,254 [INFO] main: HYPEUSDT | RL adj=55.0%
 2026-06-08 14:47:35,257 [INFO] main: Next scan in 30min (always-30min)
 2026-06-08 14:47:48,019 [INFO] main: Symbols: 30
+2026-06-08 15:06:11,706 [INFO] positions: STOP_LOSS BCHUSDT short PnL:-2.1%
+2026-06-08 15:06:11,712 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT BCHUSDT @ 210.4400 PnL: -10.50% (-2.10 USDT) | Баланс: 954.89
+2026-06-08 15:06:12,178 [INFO] positions: LOSS BCHUSDT short PnL:-2.1% reason:stop_loss
+2026-06-08 15:06:12,178 [INFO] positions: Lessons: The trade was based on a strong bearish signal and a clear downtrend in BCHUSDT, with RSI and MACD indicators supporting the short position. However, the expected 4% drop did not occur, and the trade was stopped out at a 2.1% loss. This outcome suggests that the market's downward momentum was not as strong as anticipated, and a more cautious approach may be needed in similar situations.
+2026-06-08 15:06:12,178 [INFO] rl: RL learned from short BCHUSDT: loss -2.10% | weights bull=1.012 bear=0.830 judge=1.158 threshold=65.04
 ```
 
 ## Disk
@@ -2842,7 +2848,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       897Mi       220Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       890Mi       226Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
