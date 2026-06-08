@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-08 22:00:01 UTC
+Generated: 2026-06-08 22:10:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.4 726300 133028 ?       Ssl  Jun03  14:58 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 926.3189495356818,
+  "balance": 949.3806520956817,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1780883817",
@@ -54,18 +54,6 @@ root     1121216  0.1  3.4 726300 133028 ?       Ssl  Jun03  14:58 /opt/ensemble
       "opened_at": "2026-06-08T21:04:37.856538",
       "cost": 19.999891872,
       "notional": 99.99945936,
-      "leverage": 5
-    },
-    "TONUSDT": {
-      "id": "PAPER_TONUSDT_1780952724",
-      "symbol": "TONUSDT",
-      "side": "short",
-      "entry_price": 1.7768,
-      "qty": 56.281,
-      "confidence": 70,
-      "opened_at": "2026-06-08T21:05:24.071395",
-      "cost": 20.000016159999998,
-      "notional": 100.00008079999999,
       "leverage": 5
     }
   },
@@ -2931,19 +2919,32 @@ root     1121216  0.1  3.4 726300 133028 ?       Ssl  Jun03  14:58 /opt/ensemble
       "closed_at": "2026-06-08T21:00:46.386215",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_TONUSDT_1780952724",
+      "symbol": "TONUSDT",
+      "side": "short",
+      "entry_price": 1.7768,
+      "qty": 56.281,
+      "confidence": 70,
+      "opened_at": "2026-06-08T21:05:24.071395",
+      "cost": 20.000016159999998,
+      "notional": 100.00008079999999,
+      "leverage": 5,
+      "exit_price": 1.7224,
+      "pnl_pct": 15.31,
+      "pnl_usdt": 3.06,
+      "closed_at": "2026-06-08T22:01:24.863770",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 6.546281567678397
+  "total_pnl": 9.607967967678398
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-08 21:40:10,785 [INFO] main: SOLUSDT | Bull:long(72%) Bear:short(70%)
-2026-06-08 21:40:12,799 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-08 21:40:12,800 [INFO] main: SOLUSDT | Judge:LONG conf=75% size=15.0%
-2026-06-08 21:40:12,801 [INFO] main: SOLUSDT | RL adj=77.3%
-2026-06-08 21:40:12,824 [INFO] main: SOLUSDT | Context score=0.0 bias=0.05
 2026-06-08 21:40:12,824 [INFO] main: SOLUSDT | gate PASS (Judge 75/70 RL 77.3/65.23 slack=±3)
 2026-06-08 21:40:12,826 [INFO] positions: Correlation block: skip LONG SOLUSDT (corr 0.94 >= 0.85 with PEPEUSDT long)
 2026-06-08 21:40:18,751 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -2969,6 +2970,11 @@ root     1121216  0.1  3.4 726300 133028 ?       Ssl  Jun03  14:58 /opt/ensemble
 2026-06-08 21:40:46,462 [INFO] main: Next scan in 30min (always-30min)
 2026-06-08 21:47:52,522 [INFO] main: Symbols: 30
 2026-06-08 21:57:15,975 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-08 22:01:24,862 [INFO] positions: TAKE-PROFIT TONUSDT short PnL:3.06%
+2026-06-08 22:01:24,871 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT TONUSDT @ 1.7224 PnL: 15.31% (+3.06 USDT) | Баланс: 949.38
+2026-06-08 22:01:25,194 [INFO] positions: OK TONUSDT short PnL:3.06% reason:take_profit
+2026-06-08 22:01:25,194 [INFO] positions: Lessons: The trade was a short position on TONUSDT that closed with a 3.06% profit. The original reasoning was based on strong bear sentiment and a bearish MACD, which correctly indicated a downtrend move. This trade outcome confirms the effectiveness of using sentiment and technical indicators to identify potential downtrend opportunities.
+2026-06-08 22:01:25,195 [INFO] rl: RL learned from short TONUSDT: profit 3.06% | weights bull=1.006 bear=0.831 judge=1.163 threshold=65.2
 ```
 
 ## Disk
@@ -2986,7 +2992,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       908Mi       185Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       894Mi       198Mi       4.8Mi       3.0Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
