@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 09:10:01 UTC
+Generated: 2026-06-09 09:20:01 UTC
 
 ## Services
 ```
@@ -3119,7 +3119,6 @@ root     1121216  0.1  3.4 726300 133264 ?       Ssl  Jun03  15:52 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 09:09:08,277 [INFO] main: SAHARAUSDT | Bull:flat(15%) Bear:short(80%)
 2026-06-09 09:09:11,265 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-09 09:09:11,266 [INFO] main: SAHARAUSDT | Judge:SHORT conf=80% size=15.0%
 2026-06-09 09:09:11,267 [INFO] main: SAHARAUSDT | RL adj=90.2%
@@ -3149,6 +3148,7 @@ root     1121216  0.1  3.4 726300 133264 ?       Ssl  Jun03  15:52 /opt/ensemble
 2026-06-09 09:10:00,510 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-09 09:10:00,512 [INFO] main: ZECUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-09 09:10:00,512 [INFO] main: ZECUSDT | RL adj=55.0%
+2026-06-09 09:10:02,515 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -3166,7 +3166,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       887Mi       423Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       889Mi       421Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
