@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 21:40:01 UTC
+Generated: 2026-06-09 21:50:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206972 48384 ?        Ssl  Jun03   1:16 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:00 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -3353,15 +3353,6 @@ root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:00 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 21:19:18,036 [INFO] main: ONDOUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-09 21:19:18,036 [INFO] main: ONDOUSDT | RL adj=84.8%
-2026-06-09 21:19:18,046 [INFO] main: ONDOUSDT | Context score=-0.0 bias=0.0
-2026-06-09 21:19:18,046 [INFO] main: ONDOUSDT | gate PASS (Judge 75/70 RL 84.8/65.36 slack=±3)
-2026-06-09 21:19:18,047 [INFO] positions: 2/3 rule: skip SHORT ONDOUSDT (3/4 already short)
-2026-06-09 21:19:21,448 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-06-09 21:19:23,664 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 21:19:24,359 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 21:19:24,361 [INFO] main: XRPUSDT | Bull:flat(25%) Bear:short(88%)
 2026-06-09 21:19:27,431 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-09 21:19:27,432 [INFO] main: XRPUSDT | Judge:SHORT conf=82% size=15.0%
 2026-06-09 21:19:27,432 [INFO] main: XRPUSDT | RL adj=93.4%
@@ -3383,6 +3374,15 @@ root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:00 /opt/ensemble
 2026-06-09 21:19:47,372 [INFO] main: SAHARAUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-09 21:19:47,372 [INFO] main: SAHARAUSDT | RL adj=55.0%
 2026-06-09 21:19:49,375 [INFO] main: Next scan in 30min (always-30min)
+2026-06-09 21:48:07,781 [INFO] main: Symbols: 30
+2026-06-09 21:49:49,378 [INFO] main: Scanning 26 symbols...
+2026-06-09 21:49:51,452 [INFO] main: ONDOUSDT | Bull:long(70%) Bear:short(80%)
+2026-06-09 21:49:54,245 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 21:49:54,246 [INFO] main: ONDOUSDT | Judge:SHORT conf=80% size=15.0%
+2026-06-09 21:49:54,246 [INFO] main: ONDOUSDT | RL adj=80.4%
+2026-06-09 21:49:54,269 [INFO] main: ONDOUSDT | Context score=-0.0 bias=0.0
+2026-06-09 21:49:54,550 [INFO] main: ONDOUSDT | gate PASS (Judge 80/70 RL 80.4/65.36 slack=±3)
+2026-06-09 21:49:54,551 [INFO] positions: 2/3 rule: skip SHORT ONDOUSDT (3/4 already short)
 ```
 
 ## Disk
