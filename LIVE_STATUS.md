@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 00:40:01 UTC
+Generated: 2026-06-09 00:50:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.4 726300 133128 ?       Ssl  Jun03  15:12 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 950.3447375228059,
+  "balance": 970.6750129148058,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1780883817",
@@ -30,18 +30,6 @@ root     1121216  0.1  3.4 726300 133128 ?       Ssl  Jun03  15:12 /opt/ensemble
       "opened_at": "2026-06-08T01:56:57.651658",
       "cost": 20.227424,
       "notional": 101.13712,
-      "leverage": 5
-    },
-    "ENAUSDT": {
-      "id": "PAPER_ENAUSDT_1780964851",
-      "symbol": "ENAUSDT",
-      "side": "short",
-      "entry_price": 0.08175,
-      "qty": 1223.2416,
-      "confidence": 95,
-      "opened_at": "2026-06-09T00:27:31.302835",
-      "cost": 20.000000160000003,
-      "notional": 100.00000080000001,
       "leverage": 5
     },
     "XRPUSDT": {
@@ -3027,20 +3015,32 @@ root     1121216  0.1  3.4 726300 133128 ?       Ssl  Jun03  15:12 /opt/ensemble
       "closed_at": "2026-06-09T00:32:47.967929",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ENAUSDT_1780964851",
+      "symbol": "ENAUSDT",
+      "side": "short",
+      "entry_price": 0.08175,
+      "qty": 1223.2416,
+      "confidence": 95,
+      "opened_at": "2026-06-09T00:27:31.302835",
+      "cost": 20.000000160000003,
+      "notional": 100.00000080000001,
+      "leverage": 5,
+      "exit_price": 0.08148,
+      "pnl_pct": 1.65,
+      "pnl_usdt": 0.33,
+      "closed_at": "2026-06-09T00:42:03.575619",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 10.57215492880643
+  "total_pnl": 10.902430160806437
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 00:30:50,057 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 00:30:50,720 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 00:30:50,721 [INFO] main: ALLOUSDT | Bull:flat(25%) Bear:short(75%)
-2026-06-09 00:30:53,163 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 00:30:53,164 [INFO] main: ALLOUSDT | Judge:SHORT conf=70% size=15.0%
-2026-06-09 00:30:53,164 [INFO] main: ALLOUSDT | RL adj=79.6%
 2026-06-09 00:30:53,174 [INFO] main: ALLOUSDT | Context score=-0.05 bias=0.05
 2026-06-09 00:30:53,175 [INFO] main: ALLOUSDT | regime BLOCK (volatile)
 2026-06-09 00:30:59,044 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -3065,6 +3065,12 @@ root     1121216  0.1  3.4 726300 133128 ?       Ssl  Jun03  15:12 /opt/ensemble
 2026-06-09 00:32:48,279 [INFO] positions: LOSS SUIUSDT long PnL:-2.35% reason:stop_loss
 2026-06-09 00:32:48,279 [INFO] positions: Lessons: The trade was closed at a 2.35% loss due to a stop loss, despite initially bullish signals. The bull percent index being above 60 and RSI at 60.3 were not enough to overcome conflicting signals. This trade highlights the importance of managing risk and respecting stop losses even when indicators suggest a bullish trend.
 2026-06-09 00:32:48,279 [INFO] rl: RL learned from long SUIUSDT: loss -2.35% | weights bull=0.980 bear=0.855 judge=1.165 threshold=65.29
+2026-06-09 00:42:03,574 [INFO] positions: BREAKEVEN_STOP ENAUSDT short PnL:0.33%
+2026-06-09 00:42:03,579 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ENAUSDT @ 0.0815 PnL: 1.65% (+0.33 USDT) | Баланс: 970.68
+2026-06-09 00:42:03,850 [INFO] positions: OK ENAUSDT short PnL:0.33% reason:breakeven_stop
+2026-06-09 00:42:03,850 [INFO] positions: Lessons: The trade was based on strong bearish momentum with a high bear vs bull percentage, and a favorable risk/reward framework. The trade ultimately closed at breakeven stop with a small profit of 0.33%. This outcome suggests that the initial analysis was correct but the trade did not reach its full potential downside move.
+2026-06-09 00:42:03,850 [INFO] rl: RL learned from short ENAUSDT: profit 0.33% | weights bull=0.979 bear=0.856 judge=1.165 threshold=65.27
+2026-06-09 00:47:54,335 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -3082,7 +3088,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       895Mi       184Mi       4.8Mi       3.0Gi       2.9Gi
+Mem:           3.7Gi       896Mi       181Mi       4.8Mi       3.0Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
