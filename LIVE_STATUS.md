@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 22:50:01 UTC
+Generated: 2026-06-09 23:00:01 UTC
 
 ## Services
 ```
@@ -3377,36 +3377,36 @@ root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:07 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 22:28:20,575 [INFO] main: BTCUSDT | RL adj=85.4%
-2026-06-09 22:28:20,586 [INFO] main: BTCUSDT | Context score=-0.0 bias=0.0
-2026-06-09 22:28:20,586 [INFO] main: BTCUSDT | gate PASS (Judge 75/70 RL 85.4/65.3 slack=±3)
-2026-06-09 22:28:20,587 [INFO] positions: 2/3 rule: skip SHORT BTCUSDT (3/3 already short)
-2026-06-09 22:28:26,334 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 22:28:28,211 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 22:28:28,212 [INFO] main: ENAUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-09 22:28:31,606 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 22:28:31,608 [INFO] main: ENAUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-09 22:28:31,608 [INFO] main: ENAUSDT | RL adj=95.4%
-2026-06-09 22:28:31,629 [INFO] main: ENAUSDT | Context score=-0.0 bias=0.0
-2026-06-09 22:28:31,629 [INFO] main: ENAUSDT | regime BLOCK (volatile)
-2026-06-09 22:28:38,902 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 22:28:38,903 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
-2026-06-09 22:28:39,382 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 22:28:39,383 [INFO] main: ZECUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-09 22:28:43,992 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 22:28:43,994 [INFO] main: ZECUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-09 22:28:43,994 [INFO] main: ZECUSDT | RL adj=84.7%
-2026-06-09 22:28:44,013 [INFO] main: ZECUSDT | Context score=-0.0 bias=0.0
-2026-06-09 22:28:44,014 [INFO] main: ZECUSDT | regime BLOCK (volatile)
-2026-06-09 22:28:47,428 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-06-09 22:28:50,977 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 22:28:51,035 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 22:28:51,036 [INFO] main: SAHARAUSDT | Bull:flat(25%) Bear:short(65%)
-2026-06-09 22:28:53,427 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 22:28:53,428 [INFO] main: SAHARAUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-09 22:28:53,428 [INFO] main: SAHARAUSDT | RL adj=55.0%
-2026-06-09 22:28:55,431 [INFO] main: Next scan in 30min (always-30min)
-2026-06-09 22:48:08,419 [INFO] main: Symbols: 30
+2026-06-09 22:59:28,232 [INFO] main: ENAUSDT | Context score=-0.0 bias=0.0
+2026-06-09 22:59:28,232 [INFO] main: ENAUSDT | regime BLOCK (volatile)
+2026-06-09 22:59:33,957 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 22:59:34,548 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-09 22:59:34,550 [INFO] main: SUIUSDT | Bull:flat(15%) Bear:short(75%)
+2026-06-09 22:59:36,759 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 22:59:36,760 [INFO] main: SUIUSDT | Judge:SHORT conf=75% size=15.0%
+2026-06-09 22:59:36,760 [INFO] main: SUIUSDT | RL adj=84.7%
+2026-06-09 22:59:36,780 [INFO] main: SUIUSDT | Context score=-0.0 bias=0.0
+2026-06-09 22:59:36,780 [INFO] main: SUIUSDT | regime BLOCK (short × trending_down × rsi1h=48.2; late-entry guard)
+2026-06-09 22:59:42,070 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 22:59:43,037 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-09 22:59:43,038 [INFO] main: RENDERUSDT | Bull:flat(15%) Bear:short(75%)
+2026-06-09 22:59:45,259 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 22:59:45,260 [INFO] main: RENDERUSDT | Judge:SHORT conf=75% size=15.0%
+2026-06-09 22:59:45,260 [INFO] main: RENDERUSDT | RL adj=84.7%
+2026-06-09 22:59:45,272 [INFO] main: RENDERUSDT | Context score=-0.0 bias=0.0
+2026-06-09 22:59:45,272 [INFO] main: RENDERUSDT | gate PASS (Judge 75/70 RL 84.7/65.3 slack=±3)
+2026-06-09 22:59:45,273 [INFO] positions: 2/3 rule: skip SHORT RENDERUSDT (3/3 already short)
+2026-06-09 22:59:51,156 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 22:59:52,352 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-09 22:59:52,353 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
+2026-06-09 22:59:52,353 [INFO] main: ALLOUSDT | Bull:flat(15%) Bear:short(75%)
+2026-06-09 22:59:54,822 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 22:59:54,823 [INFO] main: ALLOUSDT | Judge:SHORT conf=85% size=15.0%
+2026-06-09 22:59:54,823 [INFO] main: ALLOUSDT | RL adj=94.7%
+2026-06-09 22:59:54,833 [INFO] main: ALLOUSDT | Context score=-0.0 bias=0.0
+2026-06-09 22:59:54,833 [INFO] main: ALLOUSDT | regime BLOCK (volatile)
+2026-06-09 22:59:58,254 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-06-09 23:00:01,060 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 ```
 
 ## Disk
@@ -3424,7 +3424,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       882Mi       399Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       894Mi       387Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
