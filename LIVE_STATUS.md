@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 05:30:01 UTC
+Generated: 2026-06-09 05:40:01 UTC
 
 ## Services
 ```
@@ -11,14 +11,14 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1121169  0.0  1.2 208392 49584 ?        Ssl  Jun03   1:03 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 726300 133208 ?       Ssl  Jun03  15:34 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121169  0.0  1.2 208272 49092 ?        Ssl  Jun03   1:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1121216  0.1  3.4 726300 133212 ?       Ssl  Jun03  15:35 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 949.4809245624058,
+  "balance": 909.4809245284058,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1780964960",
@@ -54,6 +54,30 @@ root     1121216  0.1  3.4 726300 133208 ?       Ssl  Jun03  15:34 /opt/ensemble
       "opened_at": "2026-06-09T02:10:59.016089",
       "cost": 20.086432,
       "notional": 100.43216,
+      "leverage": 5
+    },
+    "DOGEUSDT": {
+      "id": "PAPER_DOGEUSDT_1780983533",
+      "symbol": "DOGEUSDT",
+      "side": "long",
+      "entry_price": 0.08649,
+      "qty": 1156.203,
+      "confidence": 70,
+      "opened_at": "2026-06-09T05:38:53.604679",
+      "cost": 19.999999494,
+      "notional": 99.99999747,
+      "leverage": 5
+    },
+    "TONUSDT": {
+      "id": "PAPER_TONUSDT_1780983584",
+      "symbol": "TONUSDT",
+      "side": "short",
+      "entry_price": 1.7615,
+      "qty": 56.7698,
+      "confidence": 85,
+      "opened_at": "2026-06-09T05:39:44.273725",
+      "cost": 20.00000054,
+      "notional": 100.0000027,
       "leverage": 5
     }
   },
@@ -3089,36 +3113,36 @@ root     1121216  0.1  3.4 726300 133208 ?       Ssl  Jun03  15:34 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 05:07:16,580 [INFO] main: RENDERUSDT | RL adj=90.2%
-2026-06-09 05:07:16,601 [INFO] main: RENDERUSDT | Context score=-0.05 bias=0.05
-2026-06-09 05:07:16,865 [INFO] main: RENDERUSDT | regime BLOCK (short × trending_down × rsi1h=48.0; late-entry guard)
-2026-06-09 05:07:23,610 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 05:07:24,621 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 05:07:24,623 [INFO] main: HYPEUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-09 05:07:27,470 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 05:07:27,471 [INFO] main: HYPEUSDT | Judge:SHORT conf=80% size=15.0%
-2026-06-09 05:07:27,471 [INFO] main: HYPEUSDT | RL adj=90.2%
-2026-06-09 05:07:27,486 [INFO] main: HYPEUSDT | Context score=-0.05 bias=0.05
-2026-06-09 05:07:27,487 [INFO] main: HYPEUSDT | regime BLOCK (volatile)
-2026-06-09 05:07:35,088 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 05:07:36,005 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 05:07:36,007 [INFO] main: HUSDT | Bull:flat(15%) Bear:short(60%)
-2026-06-09 05:07:38,722 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 05:07:38,723 [INFO] main: HUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-09 05:07:38,723 [INFO] main: HUSDT | RL adj=50.0%
-2026-06-09 05:07:44,264 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 05:07:46,219 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 05:07:46,220 [INFO] main: LINKUSDT | Bull:flat(35%) Bear:short(65%)
-2026-06-09 05:07:48,703 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 05:07:48,704 [INFO] main: LINKUSDT | Judge:HOLD conf=60% size=0.0%
-2026-06-09 05:07:48,704 [INFO] main: LINKUSDT | RL adj=60.0%
-2026-06-09 05:07:54,661 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 05:07:56,072 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 05:07:56,074 [INFO] main: BCHUSDT | Bull:flat(25%) Bear:short(60%)
-2026-06-09 05:07:59,068 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 05:07:59,069 [INFO] main: BCHUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-09 05:07:59,069 [INFO] main: BCHUSDT | RL adj=55.0%
-2026-06-09 05:08:01,070 [INFO] main: Next scan in 30min (always-30min)
+2026-06-09 05:39:18,585 [WARNING] agents: Bull entropy-guard: шаблон long(70) ×5. Переключаемся на Kimi+Claude fallback.
+2026-06-09 05:39:20,535 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 05:39:20,536 [INFO] main: BCHUSDT | Bull:long(70%) Bear:short(60%)
+2026-06-09 05:39:23,098 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 05:39:23,099 [INFO] main: BCHUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-09 05:39:23,099 [INFO] main: BCHUSDT | RL adj=55.0%
+2026-06-09 05:39:26,450 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-06-09 05:39:29,286 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 05:39:30,984 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-09 05:39:30,985 [INFO] main: ONDOUSDT | Bull:flat(25%) Bear:short(70%)
+2026-06-09 05:39:33,287 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 05:39:33,288 [INFO] main: ONDOUSDT | Judge:HOLD conf=45% size=0.0%
+2026-06-09 05:39:33,288 [INFO] main: ONDOUSDT | RL adj=45.0%
+2026-06-09 05:39:39,772 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 05:39:41,383 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-09 05:39:41,384 [INFO] main: TONUSDT | Bull:long(62%) Bear:short(75%)
+2026-06-09 05:39:43,595 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 05:39:43,596 [INFO] main: TONUSDT | Judge:SHORT conf=85% size=15.0%
+2026-06-09 05:39:43,596 [INFO] main: TONUSDT | RL adj=85.5%
+2026-06-09 05:39:43,607 [INFO] main: TONUSDT | Context score=-0.05 bias=0.05
+2026-06-09 05:39:43,607 [INFO] main: TONUSDT | gate PASS (Judge 85/70 RL 85.5/65.29 slack=±3)
+2026-06-09 05:39:44,273 [INFO] positions: [PAPER] Opening SHORT TONUSDT notional=$100.0 conf=85%
+2026-06-09 05:39:44,277 [INFO] paper_trading: [PAPER] ОТКРЫТА SHORT TONUSDT @ 1.7615 qty=56.7698 notional=100.00 margin=20.00 x5 | Баланс: 909.48
+2026-06-09 05:39:49,498 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 05:39:52,836 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-09 05:39:52,836 [INFO] main: HYPEUSDT | Bull:flat(28%) Bear:short(60%)
+2026-06-09 05:39:55,340 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 05:39:55,341 [INFO] main: HYPEUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-09 05:39:55,341 [INFO] main: HYPEUSDT | RL adj=50.0%
+2026-06-09 05:40:01,298 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 ```
 
 ## Disk
@@ -3136,7 +3160,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       904Mi       159Mi       4.8Mi       3.0Gi       2.8Gi
+Mem:           3.7Gi       904Mi       342Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
