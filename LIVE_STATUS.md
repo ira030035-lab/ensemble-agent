@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 08:40:01 UTC
+Generated: 2026-06-09 08:50:01 UTC
 
 ## Services
 ```
@@ -3119,7 +3119,6 @@ root     1121216  0.1  3.4 726300 133264 ?       Ssl  Jun03  15:50 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 08:34:49,860 [INFO] main: XLMUSDT | Judge:SHORT conf=70% size=15.0%
 2026-06-09 08:34:49,860 [INFO] main: XLMUSDT | RL adj=79.5%
 2026-06-09 08:34:49,880 [INFO] main: XLMUSDT | Context score=-0.05 bias=0.05
 2026-06-09 08:34:49,881 [INFO] main: XLMUSDT | regime BLOCK (short × trending_down × rsi1h=49.7; late-entry guard)
@@ -3149,6 +3148,7 @@ root     1121216  0.1  3.4 726300 133264 ?       Ssl  Jun03  15:50 /opt/ensemble
 2026-06-09 08:35:24,593 [INFO] main: EPICUSDT | Context score=-0.05 bias=0.05
 2026-06-09 08:35:24,593 [INFO] main: EPICUSDT | regime BLOCK (volatile)
 2026-06-09 08:35:26,630 [INFO] main: Next scan in 30min (always-30min)
+2026-06-09 08:47:59,299 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -3166,7 +3166,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       889Mi       424Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       889Mi       423Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
