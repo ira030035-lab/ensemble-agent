@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 06:20:01 UTC
+Generated: 2026-06-09 06:30:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.4 726300 133260 ?       Ssl  Jun03  15:39 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 909.4809245284058,
+  "balance": 931.2532777588058,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1780964960",
@@ -30,18 +30,6 @@ root     1121216  0.1  3.4 726300 133260 ?       Ssl  Jun03  15:39 /opt/ensemble
       "opened_at": "2026-06-09T00:29:20.937427",
       "cost": 19.999993245999995,
       "notional": 99.99996622999998,
-      "leverage": 5
-    },
-    "XLMUSDT": {
-      "id": "PAPER_XLMUSDT_1780966913",
-      "symbol": "XLMUSDT",
-      "side": "long",
-      "entry_price": 0.19917,
-      "qty": 502.0836,
-      "confidence": 70,
-      "opened_at": "2026-06-09T01:01:53.147891",
-      "cost": 19.9999981224,
-      "notional": 99.999990612,
       "leverage": 5
     },
     "BTCUSDT": {
@@ -3105,19 +3093,32 @@ root     1121216  0.1  3.4 726300 133260 ?       Ssl  Jun03  15:39 /opt/ensemble
       "closed_at": "2026-06-09T04:50:00.412446",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_XLMUSDT_1780966913",
+      "symbol": "XLMUSDT",
+      "side": "long",
+      "entry_price": 0.19917,
+      "qty": 502.0836,
+      "confidence": 70,
+      "opened_at": "2026-06-09T01:01:53.147891",
+      "cost": 19.9999981224,
+      "notional": 99.999990612,
+      "leverage": 5,
+      "exit_price": 0.2027,
+      "pnl_pct": 8.86,
+      "pnl_usdt": 1.77,
+      "closed_at": "2026-06-09T06:27:00.224091",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 9.567347930806436
+  "total_pnl": 11.339703038806425
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 06:15:46,985 [INFO] positions: Max positions reached (5/5 dyn)
-2026-06-09 06:15:53,484 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 06:15:53,844 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 06:15:53,845 [INFO] main: WLDUSDT | Bull:flat(25%) Bear:short(78%)
-2026-06-09 06:15:56,990 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-09 06:15:56,991 [INFO] main: WLDUSDT | Judge:SHORT conf=80% size=15.0%
 2026-06-09 06:15:56,991 [INFO] main: WLDUSDT | RL adj=90.0%
 2026-06-09 06:15:57,013 [INFO] main: WLDUSDT | Context score=-0.05 bias=0.05
@@ -3143,6 +3144,11 @@ root     1121216  0.1  3.4 726300 133260 ?       Ssl  Jun03  15:39 /opt/ensemble
 2026-06-09 06:16:31,318 [INFO] main: ENAUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-09 06:16:31,318 [INFO] main: ENAUSDT | RL adj=50.0%
 2026-06-09 06:16:33,321 [INFO] main: Next scan in 30min (always-30min)
+2026-06-09 06:27:00,223 [INFO] positions: TRAILING-STOP XLMUSDT long peak:2.69% now:1.77%
+2026-06-09 06:27:00,228 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG XLMUSDT @ 0.2027 PnL: 8.86% (+1.77 USDT) | Баланс: 931.25
+2026-06-09 06:27:00,521 [INFO] positions: OK XLMUSDT long PnL:1.77% reason:trailing_stop
+2026-06-09 06:27:00,521 [INFO] positions: Lessons: This trade was closed by a trailing stop with a 1.77% profit, meeting the expected risk/reward ratio. The initial analysis correctly identified a ranging regime and potential for an upside move based on bullish signals. The outcome suggests that the risk management strategy was effective in locking in gains.
+2026-06-09 06:27:00,521 [INFO] rl: RL learned from long XLMUSDT: profit 1.77% | weights bull=0.985 bear=0.848 judge=1.167 threshold=65.27
 ```
 
 ## Disk
@@ -3160,7 +3166,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       887Mi       432Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       897Mi       421Mi       4.8Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
