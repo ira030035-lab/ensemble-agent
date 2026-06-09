@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 11:20:01 UTC
+Generated: 2026-06-09 11:30:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.4 726300 133264 ?       Ssl  Jun03  16:02 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 931.2532777588058,
+  "balance": 953.0074651188058,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1780964960",
@@ -54,18 +54,6 @@ root     1121216  0.1  3.4 726300 133264 ?       Ssl  Jun03  16:02 /opt/ensemble
       "opened_at": "2026-06-09T05:38:53.604679",
       "cost": 19.999999494,
       "notional": 99.99999747,
-      "leverage": 5
-    },
-    "TONUSDT": {
-      "id": "PAPER_TONUSDT_1780983584",
-      "symbol": "TONUSDT",
-      "side": "short",
-      "entry_price": 1.7615,
-      "qty": 56.7698,
-      "confidence": 85,
-      "opened_at": "2026-06-09T05:39:44.273725",
-      "cost": 20.00000054,
-      "notional": 100.0000027,
       "leverage": 5
     }
   },
@@ -3111,24 +3099,32 @@ root     1121216  0.1  3.4 726300 133264 ?       Ssl  Jun03  16:02 /opt/ensemble
       "closed_at": "2026-06-09T06:27:00.224091",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_TONUSDT_1780983584",
+      "symbol": "TONUSDT",
+      "side": "short",
+      "entry_price": 1.7615,
+      "qty": 56.7698,
+      "confidence": 85,
+      "opened_at": "2026-06-09T05:39:44.273725",
+      "cost": 20.00000054,
+      "notional": 100.0000027,
+      "leverage": 5,
+      "exit_price": 1.7306,
+      "pnl_pct": 8.77,
+      "pnl_usdt": 1.75,
+      "closed_at": "2026-06-09T11:25:53.783246",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 11.339703038806425
+  "total_pnl": 13.093889858806433
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 10:59:18,057 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 10:59:18,058 [INFO] main: ALLOUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-09 10:59:18,058 [INFO] main: ALLOUSDT | RL adj=96.5%
-2026-06-09 10:59:18,067 [INFO] main: ALLOUSDT | Context score=-0.05 bias=0.05
-2026-06-09 10:59:18,067 [INFO] main: ALLOUSDT | regime BLOCK (volatile)
-2026-06-09 10:59:24,810 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 10:59:27,287 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 10:59:27,287 [INFO] main: HYPEUSDT | Bull:flat(25%) Bear:short(75%)
-2026-06-09 10:59:29,871 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 10:59:29,873 [INFO] main: HYPEUSDT | Judge:SHORT conf=75% size=15.0%
 2026-06-09 10:59:29,873 [INFO] main: HYPEUSDT | RL adj=84.5%
 2026-06-09 10:59:29,895 [INFO] main: HYPEUSDT | Context score=-0.05 bias=0.05
 2026-06-09 10:59:29,895 [INFO] main: HYPEUSDT | gate PASS (Judge 75/70 RL 84.5/65.27 slack=±3)
@@ -3149,6 +3145,16 @@ root     1121216  0.1  3.4 726300 133264 ?       Ssl  Jun03  16:02 /opt/ensemble
 2026-06-09 10:59:48,163 [INFO] main: WLDUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-09 10:59:48,163 [INFO] main: WLDUSDT | RL adj=55.0%
 2026-06-09 10:59:50,165 [INFO] main: Next scan in 30min (always-30min)
+2026-06-09 11:25:53,781 [INFO] positions: TRAILING-STOP TONUSDT short peak:2.57% now:1.75%
+2026-06-09 11:25:53,792 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT TONUSDT @ 1.7306 PnL: 8.77% (+1.75 USDT) | Баланс: 953.01
+2026-06-09 11:25:54,084 [INFO] positions: OK TONUSDT short PnL:1.75% reason:trailing_stop
+2026-06-09 11:25:54,084 [INFO] positions: Lessons: The TONUSDT short trade closed with a 1.75% profit, meeting the expected safer gain. The bear case was strong with 75% agreement among indicators, supporting the trade decision. A 2% stop loss helped limit potential losses, and the trailing stop effectively locked in the 1.75% profit.
+2026-06-09 11:25:54,084 [INFO] rl: RL learned from short TONUSDT: profit 1.75% | weights bull=0.979 bear=0.853 judge=1.168 threshold=65.24
+2026-06-09 11:29:50,172 [INFO] main: Scanning 27 symbols...
+2026-06-09 11:29:52,375 [INFO] main: PIPPINUSDT | Bull:long(72%) Bear:short(80%)
+2026-06-09 11:29:54,418 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 11:29:54,419 [INFO] main: PIPPINUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-09 11:29:54,420 [INFO] main: PIPPINUSDT | RL adj=50.0%
 ```
 
 ## Disk
@@ -3166,7 +3172,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       893Mi       411Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       899Mi       404Mi       4.8Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
