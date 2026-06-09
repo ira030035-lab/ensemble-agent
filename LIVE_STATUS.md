@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 18:40:01 UTC
+Generated: 2026-06-09 18:50:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206972 48368 ?        Ssl  Jun03   1:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 728144 134648 ?       Ssl  Jun03  16:43 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 728144 134648 ?       Ssl  Jun03  16:44 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 909.6239710088057,
+  "balance": 931.3715296928057,
   "positions": {
     "HYPEUSDT": {
       "id": "PAPER_HYPEUSDT_1781019210",
@@ -42,18 +42,6 @@ root     1121216  0.1  3.4 728144 134648 ?       Ssl  Jun03  16:43 /opt/ensemble
       "opened_at": "2026-06-09T16:42:23.646660",
       "cost": 19.997463599999996,
       "notional": 99.98731799999999,
-      "leverage": 5
-    },
-    "NEARUSDT": {
-      "id": "PAPER_NEARUSDT_1781025466",
-      "symbol": "NEARUSDT",
-      "side": "long",
-      "entry_price": 2.1058,
-      "qty": 47.4879,
-      "confidence": 85,
-      "opened_at": "2026-06-09T17:17:46.436968",
-      "cost": 20.000003964,
-      "notional": 100.00001982,
       "leverage": 5
     },
     "ADAUSDT": {
@@ -3303,20 +3291,32 @@ root     1121216  0.1  3.4 728144 134648 ?       Ssl  Jun03  16:43 /opt/ensemble
       "closed_at": "2026-06-09T17:18:05.685231",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_NEARUSDT_1781025466",
+      "symbol": "NEARUSDT",
+      "side": "long",
+      "entry_price": 2.1058,
+      "qty": 47.4879,
+      "confidence": 85,
+      "opened_at": "2026-06-09T17:17:46.436968",
+      "cost": 20.000003964,
+      "notional": 100.00001982,
+      "leverage": 5,
+      "exit_price": 2.1426,
+      "pnl_pct": 8.74,
+      "pnl_usdt": 1.75,
+      "closed_at": "2026-06-09T18:45:03.624394",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 9.621255288806442
+  "total_pnl": 11.368810008806438
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 18:27:41,347 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 18:27:41,349 [INFO] main: ENAUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-09 18:27:41,349 [INFO] main: ENAUSDT | RL adj=55.0%
-2026-06-09 18:27:47,455 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 18:27:49,216 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 18:27:49,217 [INFO] main: DOGEUSDT | Bull:flat(25%) Bear:short(70%)
 2026-06-09 18:27:51,666 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-09 18:27:51,667 [INFO] main: DOGEUSDT | Judge:SHORT conf=70% size=15.0%
 2026-06-09 18:27:51,667 [INFO] main: DOGEUSDT | RL adj=79.2%
@@ -3341,6 +3341,12 @@ root     1121216  0.1  3.4 728144 134648 ?       Ssl  Jun03  16:43 /opt/ensemble
 2026-06-09 18:28:12,193 [INFO] main: EPICUSDT | Context score=0.0 bias=0.0
 2026-06-09 18:28:12,193 [INFO] main: EPICUSDT | regime BLOCK (volatile)
 2026-06-09 18:28:14,242 [INFO] main: Next scan in 30min (always-30min)
+2026-06-09 18:45:03,623 [INFO] positions: TRAILING-STOP NEARUSDT long peak:2.6% now:1.75%
+2026-06-09 18:45:03,628 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG NEARUSDT @ 2.1426 PnL: 8.74% (+1.75 USDT) | Баланс: 931.37
+2026-06-09 18:45:03,988 [INFO] positions: OK NEARUSDT long PnL:1.75% reason:trailing_stop
+2026-06-09 18:45:03,988 [INFO] positions: Lessons: The trade was closed with a 1.75% profit due to a trailing stop. The original bull signal and expected 4% move were correct, but the price did not exceed the expected move. The trade was managed properly with a trailing stop, locking in the 1.75% gain.
+2026-06-09 18:45:03,988 [INFO] rl: RL learned from long NEARUSDT: profit 1.75% | weights bull=0.953 bear=0.871 judge=1.176 threshold=65.34
+2026-06-09 18:48:05,826 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -3358,7 +3364,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       872Mi       417Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       871Mi       417Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
