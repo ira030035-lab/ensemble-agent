@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 01:50:01 UTC
+Generated: 2026-06-09 02:00:01 UTC
 
 ## Services
 ```
@@ -10,7 +10,7 @@ ensemble-dashboard.service: active
 
 ## Processes
 ```
-root     1121157  0.0  1.2  62860 50444 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
+root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 207944 49344 ?        Ssl  Jun03   1:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1121216  0.1  3.4 726300 133208 ?       Ssl  Jun03  15:17 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
@@ -18,20 +18,8 @@ root     1121216  0.1  3.4 726300 133208 ?       Ssl  Jun03  15:17 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 930.6750031104058,
+  "balance": 951.6099471104058,
   "positions": {
-    "BTCUSDT": {
-      "id": "PAPER_BTCUSDT_1780883817",
-      "symbol": "BTCUSDT",
-      "side": "short",
-      "entry_price": 63210.7,
-      "qty": 0.0016,
-      "confidence": 75,
-      "opened_at": "2026-06-08T01:56:57.651658",
-      "cost": 20.227424,
-      "notional": 101.13712,
-      "leverage": 5
-    },
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1780964960",
       "symbol": "XRPUSDT",
@@ -3057,19 +3045,32 @@ root     1121216  0.1  3.4 726300 133208 ?       Ssl  Jun03  15:17 /opt/ensemble
       "closed_at": "2026-06-09T00:42:03.575619",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BTCUSDT_1780883817",
+      "symbol": "BTCUSDT",
+      "side": "short",
+      "entry_price": 63210.7,
+      "qty": 0.0016,
+      "confidence": 75,
+      "opened_at": "2026-06-08T01:56:57.651658",
+      "cost": 20.227424,
+      "notional": 101.13712,
+      "leverage": 5,
+      "exit_price": 62768.5,
+      "pnl_pct": 3.5,
+      "pnl_usdt": 0.71,
+      "closed_at": "2026-06-09T01:57:26.074875",
+      "reason": "max_hold",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 10.902430160806437
+  "total_pnl": 11.609950160806433
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 01:39:31,872 [INFO] main: SUIUSDT | Bull:flat(25%) Bear:short(75%)
-2026-06-09 01:39:34,259 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 01:39:34,260 [INFO] main: SUIUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-09 01:39:34,260 [INFO] main: SUIUSDT | RL adj=84.6%
-2026-06-09 01:39:34,270 [INFO] main: SUIUSDT | Context score=-0.05 bias=0.05
 2026-06-09 01:39:34,271 [INFO] main: SUIUSDT | regime BLOCK (short × trending_up × rsi1h=39.0; counter-trend guard)
 2026-06-09 01:39:41,499 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-09 01:39:41,557 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -3095,6 +3096,11 @@ root     1121216  0.1  3.4 726300 133208 ?       Ssl  Jun03  15:17 /opt/ensemble
 2026-06-09 01:40:04,198 [INFO] main: EPICUSDT | regime BLOCK (volatile)
 2026-06-09 01:40:06,239 [INFO] main: Next scan in 30min (always-30min)
 2026-06-09 01:47:54,960 [INFO] main: Symbols: 30
+2026-06-09 01:57:26,074 [INFO] positions: MAX_HOLD BTCUSDT short hold:24.0h
+2026-06-09 01:57:26,078 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT BTCUSDT @ 62768.5000 PnL: 3.50% (+0.71 USDT) | Баланс: 951.61
+2026-06-09 01:57:26,479 [INFO] positions: OK BTCUSDT short PnL:0.7% reason:max_hold
+2026-06-09 01:57:26,479 [INFO] positions: Lessons: The trade was closed with a 0.7% profit, meeting the maximum potential. The original reasoning based on bearish indicators and market sentiment was correct, but the move was limited to less than expected. The key takeaway is that the trade management was proper, but the position sizing could be improved to maximize returns in similar trending regimes.
+2026-06-09 01:57:26,479 [INFO] rl: RL learned from short BTCUSDT: profit 0.70% | weights bull=0.977 bear=0.858 judge=1.165 threshold=65.24
 ```
 
 ## Disk
@@ -3112,7 +3118,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       893Mi       179Mi       4.8Mi       3.0Gi       2.9Gi
+Mem:           3.7Gi       908Mi       163Mi       4.8Mi       3.0Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
