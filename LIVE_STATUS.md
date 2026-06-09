@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 17:10:01 UTC
+Generated: 2026-06-09 17:20:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206972 48368 ?        Ssl  Jun03   1:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 728144 134632 ?       Ssl  Jun03  16:34 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 728144 134632 ?       Ssl  Jun03  16:37 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 931.2897168388058,
+  "balance": 909.6239710088057,
   "positions": {
-    "SOLUSDT": {
-      "id": "PAPER_SOLUSDT_1781017146",
-      "symbol": "SOLUSDT",
-      "side": "short",
-      "entry_price": 64.955,
-      "qty": 1.5395,
-      "confidence": 75,
-      "opened_at": "2026-06-09T14:59:06.186200",
-      "cost": 19.9996445,
-      "notional": 99.9982225,
-      "leverage": 5
-    },
     "HYPEUSDT": {
       "id": "PAPER_HYPEUSDT_1781019210",
       "symbol": "HYPEUSDT",
@@ -44,18 +32,6 @@ root     1121216  0.1  3.4 728144 134632 ?       Ssl  Jun03  16:34 /opt/ensemble
       "notional": 100.00020799999999,
       "leverage": 5
     },
-    "ONDOUSDT": {
-      "id": "PAPER_ONDOUSDT_1781023293",
-      "symbol": "ONDOUSDT",
-      "side": "short",
-      "entry_price": 0.35,
-      "qty": 285.7143,
-      "confidence": 85,
-      "opened_at": "2026-06-09T16:41:33.124223",
-      "cost": 20.000000999999997,
-      "notional": 100.00000499999999,
-      "leverage": 5
-    },
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1781023343",
       "symbol": "ETHUSDT",
@@ -66,6 +42,42 @@ root     1121216  0.1  3.4 728144 134632 ?       Ssl  Jun03  16:34 /opt/ensemble
       "opened_at": "2026-06-09T16:42:23.646660",
       "cost": 19.997463599999996,
       "notional": 99.98731799999999,
+      "leverage": 5
+    },
+    "NEARUSDT": {
+      "id": "PAPER_NEARUSDT_1781025466",
+      "symbol": "NEARUSDT",
+      "side": "long",
+      "entry_price": 2.1058,
+      "qty": 47.4879,
+      "confidence": 85,
+      "opened_at": "2026-06-09T17:17:46.436968",
+      "cost": 20.000003964,
+      "notional": 100.00001982,
+      "leverage": 5
+    },
+    "ADAUSDT": {
+      "id": "PAPER_ADAUSDT_1781025559",
+      "symbol": "ADAUSDT",
+      "side": "short",
+      "entry_price": 0.1652,
+      "qty": 605.3269,
+      "confidence": 70,
+      "opened_at": "2026-06-09T17:19:19.022321",
+      "cost": 20.000000776,
+      "notional": 100.00000388000001,
+      "leverage": 5
+    },
+    "SOLUSDT": {
+      "id": "PAPER_SOLUSDT_1781025568",
+      "symbol": "SOLUSDT",
+      "side": "short",
+      "entry_price": 65.023,
+      "qty": 1.5379,
+      "confidence": 75,
+      "opened_at": "2026-06-09T17:19:28.570261",
+      "cost": 19.99977434,
+      "notional": 99.9988717,
       "leverage": 5
     }
   },
@@ -3255,44 +3267,80 @@ root     1121216  0.1  3.4 728144 134632 ?       Ssl  Jun03  16:34 /opt/ensemble
       "closed_at": "2026-06-09T16:20:19.067826",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_SOLUSDT_1781017146",
+      "symbol": "SOLUSDT",
+      "side": "short",
+      "entry_price": 64.955,
+      "qty": 1.5395,
+      "confidence": 75,
+      "opened_at": "2026-06-09T14:59:06.186200",
+      "cost": 19.9996445,
+      "notional": 99.9982225,
+      "leverage": 5,
+      "exit_price": 64.645,
+      "pnl_pct": 2.39,
+      "pnl_usdt": 0.48,
+      "closed_at": "2026-06-09T17:15:30.737071",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ONDOUSDT_1781023293",
+      "symbol": "ONDOUSDT",
+      "side": "short",
+      "entry_price": 0.35,
+      "qty": 285.7143,
+      "confidence": 85,
+      "opened_at": "2026-06-09T16:41:33.124223",
+      "cost": 20.000000999999997,
+      "notional": 100.00000499999999,
+      "leverage": 5,
+      "exit_price": 0.3575,
+      "pnl_pct": -10.71,
+      "pnl_usdt": -2.14,
+      "closed_at": "2026-06-09T17:18:05.685231",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 11.28686753880644
+  "total_pnl": 9.621255288806442
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 16:45:19,324 [INFO] main: HUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-09 16:45:21,956 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 16:45:21,957 [INFO] main: HUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-09 16:45:21,958 [INFO] main: HUSDT | RL adj=50.0%
-2026-06-09 16:45:28,683 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 16:45:30,689 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 16:45:30,690 [INFO] main: LABUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-09 16:45:33,879 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 16:45:33,880 [INFO] main: LABUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-09 16:45:33,880 [INFO] main: LABUSDT | RL adj=55.0%
-2026-06-09 16:45:40,435 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 16:45:41,612 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 16:45:41,614 [INFO] main: BTCUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-09 16:45:43,951 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 16:45:43,952 [INFO] main: BTCUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-09 16:45:43,952 [INFO] main: BTCUSDT | RL adj=94.9%
-2026-06-09 16:45:43,962 [INFO] main: BTCUSDT | Context score=-0.0 bias=0.0
-2026-06-09 16:45:43,963 [INFO] main: BTCUSDT | gate PASS (Judge 85/70 RL 94.9/65.35 slack=±3)
-2026-06-09 16:45:43,963 [INFO] positions: 2/3 rule: skip SHORT BTCUSDT (3/4 already short)
-2026-06-09 16:45:50,162 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 16:45:50,732 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 16:45:50,733 [INFO] main: XLMUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-09 16:45:53,024 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 16:45:53,025 [INFO] main: XLMUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-09 16:45:53,025 [INFO] main: XLMUSDT | RL adj=85.6%
-2026-06-09 16:45:53,036 [INFO] main: XLMUSDT | Context score=-0.0 bias=0.0
-2026-06-09 16:45:53,036 [INFO] main: XLMUSDT | gate PASS (Judge 75/70 RL 85.6/65.35 slack=±3)
-2026-06-09 16:45:53,037 [INFO] positions: 2/3 rule: skip SHORT XLMUSDT (3/4 already short)
-2026-06-09 16:45:55,038 [INFO] main: Next scan in 30min (always-30min)
-2026-06-09 16:48:04,511 [INFO] main: Symbols: 30
+2026-06-09 17:19:28,557 [INFO] main: SOLUSDT | Judge:SHORT conf=75% size=15.0%
+2026-06-09 17:19:28,557 [INFO] main: SOLUSDT | RL adj=84.2%
+2026-06-09 17:19:28,568 [INFO] main: SOLUSDT | Context score=-0.0 bias=0.0
+2026-06-09 17:19:28,568 [INFO] main: SOLUSDT | gate PASS (Judge 75/70 RL 84.2/65.37 slack=±3)
+2026-06-09 17:19:28,569 [INFO] positions: [PAPER] Opening SHORT SOLUSDT notional=$100.0 conf=75%
+2026-06-09 17:19:28,574 [INFO] paper_trading: [PAPER] ОТКРЫТА SHORT SOLUSDT @ 65.0230 qty=1.5379 notional=100.00 margin=20.00 x5 | Баланс: 909.62
+2026-06-09 17:19:34,947 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 17:19:35,583 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-09 17:19:35,584 [INFO] main: BEATUSDT | Bull:flat(25%) Bear:short(70%)
+2026-06-09 17:19:38,118 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 17:19:38,119 [INFO] main: BEATUSDT | Judge:SHORT conf=75% size=15.0%
+2026-06-09 17:19:38,120 [INFO] main: BEATUSDT | RL adj=84.2%
+2026-06-09 17:19:38,143 [INFO] main: BEATUSDT | Context score=-0.0 bias=0.0
+2026-06-09 17:19:38,144 [INFO] main: BEATUSDT | regime BLOCK (volatile)
+2026-06-09 17:19:45,472 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-09 17:19:45,556 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 17:19:45,556 [INFO] main: ALLOUSDT | Bull:flat(15%) Bear:short(70%)
+2026-06-09 17:19:47,982 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 17:19:47,983 [INFO] main: ALLOUSDT | Judge:SHORT conf=70% size=15.0%
+2026-06-09 17:19:47,983 [INFO] main: ALLOUSDT | RL adj=79.2%
+2026-06-09 17:19:48,004 [INFO] main: ALLOUSDT | Context score=-0.0 bias=0.0
+2026-06-09 17:19:48,004 [INFO] main: ALLOUSDT | regime BLOCK (volatile)
+2026-06-09 17:19:54,890 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-09 17:19:54,972 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 17:19:54,973 [INFO] main: MOVEUSDT | Bull:flat(15%) Bear:short(78%)
+2026-06-09 17:19:57,517 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 17:19:57,519 [INFO] main: MOVEUSDT | Judge:SHORT conf=75% size=15.0%
+2026-06-09 17:19:57,519 [INFO] main: MOVEUSDT | RL adj=85.2%
+2026-06-09 17:19:57,547 [INFO] main: MOVEUSDT | Context score=-0.0 bias=0.0
+2026-06-09 17:19:57,548 [INFO] main: MOVEUSDT | regime BLOCK (volatile)
 ```
 
 ## Disk
@@ -3310,7 +3358,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       880Mi       412Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       881Mi       410Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
