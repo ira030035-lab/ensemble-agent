@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 19:40:01 UTC
+Generated: 2026-06-09 19:50:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1121169  0.0  1.2 206972 48372 ?        Ssl  Jun03   1:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1121169  0.0  1.2 207996 49388 ?        Ssl  Jun03   1:15 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1121216  0.1  3.4 728144 134648 ?       Ssl  Jun03  16:50 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
@@ -3323,7 +3323,6 @@ root     1121216  0.1  3.4 728144 134648 ?       Ssl  Jun03  16:50 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 19:36:06,403 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-09 19:36:06,404 [INFO] main: ONDOUSDT | Judge:SHORT conf=70% size=15.0%
 2026-06-09 19:36:06,404 [INFO] main: ONDOUSDT | RL adj=79.1%
 2026-06-09 19:36:06,415 [INFO] main: ONDOUSDT | Context score=-0.0 bias=0.0
@@ -3353,6 +3352,7 @@ root     1121216  0.1  3.4 728144 134648 ?       Ssl  Jun03  16:50 /opt/ensemble
 2026-06-09 19:36:34,517 [INFO] main: WLDUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-09 19:36:34,517 [INFO] main: WLDUSDT | RL adj=55.0%
 2026-06-09 19:36:36,519 [INFO] main: Next scan in 30min (always-30min)
+2026-06-09 19:48:06,476 [INFO] main: Symbols: 30
 ```
 
 ## Disk
