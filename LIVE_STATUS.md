@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 09:50:01 UTC
+Generated: 2026-06-09 10:00:01 UTC
 
 ## Services
 ```
@@ -3119,36 +3119,36 @@ root     1121216  0.1  3.4 726300 133264 ?       Ssl  Jun03  15:55 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 09:49:00,266 [INFO] main: VELVETUSDT | Bull:long(62%) Bear:flat(60%)
-2026-06-09 09:49:06,142 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 09:49:06,144 [INFO] main: VELVETUSDT | Judge:LONG conf=85% size=15.0%
-2026-06-09 09:49:06,144 [INFO] main: VELVETUSDT | RL adj=94.2%
-2026-06-09 09:49:06,168 [INFO] main: VELVETUSDT | Context score=0.0 bias=0.05
-2026-06-09 09:49:06,168 [INFO] main: VELVETUSDT | regime BLOCK (volatile)
-2026-06-09 09:49:13,350 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 09:49:19,282 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 09:49:19,283 [INFO] main: ADAUSDT | Bull:flat(15%) Bear:short(60%)
-2026-06-09 09:49:24,913 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 09:49:24,915 [INFO] main: ADAUSDT | Judge:SHORT conf=70% size=15.0%
-2026-06-09 09:49:24,915 [INFO] main: ADAUSDT | RL adj=77.6%
-2026-06-09 09:49:24,935 [INFO] main: ADAUSDT | Context score=-0.05 bias=0.05
-2026-06-09 09:49:24,936 [INFO] main: ADAUSDT | regime BLOCK (short × trending_up × rsi1h=36.5; counter-trend guard)
-2026-06-09 09:49:30,929 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 09:49:32,438 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 09:49:32,439 [INFO] main: BEATUSDT | Bull:flat(25%) Bear:short(75%)
-2026-06-09 09:49:36,747 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 09:49:36,747 [INFO] main: BEATUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-09 09:49:36,747 [INFO] main: BEATUSDT | RL adj=55.0%
-2026-06-09 09:49:43,761 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 09:49:46,608 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 09:49:46,609 [INFO] main: SUIUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-09 09:49:50,582 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 09:49:50,583 [INFO] main: SUIUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-09 09:49:50,583 [INFO] main: SUIUSDT | RL adj=84.5%
-2026-06-09 09:49:50,594 [INFO] main: SUIUSDT | Context score=-0.05 bias=0.05
-2026-06-09 09:49:50,595 [INFO] main: SUIUSDT | gate PASS (Judge 75/70 RL 84.5/65.27 slack=±3)
-2026-06-09 09:49:50,595 [INFO] positions: 2/3 rule: skip SHORT SUIUSDT (3/4 already short)
-2026-06-09 09:49:57,507 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-09 09:50:02,794 [INFO] main: ALLOUSDT | Bull:flat(35%) Bear:short(70%)
+2026-06-09 09:50:06,172 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 09:50:06,174 [INFO] main: ALLOUSDT | Judge:HOLD conf=45% size=0.0%
+2026-06-09 09:50:06,174 [INFO] main: ALLOUSDT | RL adj=45.0%
+2026-06-09 09:50:15,551 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-09 09:50:17,769 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 09:50:17,770 [INFO] main: PEPEUSDT | Bull:flat(15%) Bear:short(75%)
+2026-06-09 09:50:24,280 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 09:50:24,281 [INFO] main: PEPEUSDT | Judge:SHORT conf=75% size=15.0%
+2026-06-09 09:50:24,281 [INFO] main: PEPEUSDT | RL adj=84.5%
+2026-06-09 09:50:24,295 [INFO] main: PEPEUSDT | Context score=-0.05 bias=0.05
+2026-06-09 09:50:24,295 [INFO] main: PEPEUSDT | gate PASS (Judge 75/70 RL 84.5/65.27 slack=±3)
+2026-06-09 09:50:24,296 [INFO] positions: 2/3 rule: skip SHORT PEPEUSDT (3/4 already short)
+2026-06-09 09:50:31,566 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-09 09:50:32,713 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 09:50:32,715 [INFO] main: EPICUSDT | Bull:flat(25%) Bear:short(70%)
+2026-06-09 09:50:36,242 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 09:50:36,243 [INFO] main: EPICUSDT | Judge:SHORT conf=70% size=15.0%
+2026-06-09 09:50:36,243 [INFO] main: EPICUSDT | RL adj=78.9%
+2026-06-09 09:50:36,253 [INFO] main: EPICUSDT | Context score=-0.05 bias=0.05
+2026-06-09 09:50:36,254 [INFO] main: EPICUSDT | regime BLOCK (volatile)
+2026-06-09 09:50:43,688 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-09 09:50:44,528 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 09:50:44,529 [INFO] main: BSBUSDT | Bull:long(62%) Bear:flat(55%)
+2026-06-09 09:50:48,431 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 09:50:48,431 [INFO] main: BSBUSDT | Judge:LONG conf=65% size=10.0%
+2026-06-09 09:50:48,431 [INFO] main: BSBUSDT | RL adj=74.2%
+2026-06-09 09:50:48,442 [INFO] main: BSBUSDT | Context score=0.0 bias=0.05
+2026-06-09 09:50:48,442 [INFO] main: BSBUSDT | regime BLOCK (volatile)
+2026-06-09 09:50:50,445 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -3166,7 +3166,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       902Mi       406Mi       4.8Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       897Mi       411Mi       4.8Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
