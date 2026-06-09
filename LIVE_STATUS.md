@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 13:30:01 UTC
+Generated: 2026-06-09 13:40:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.4 726300 133424 ?       Ssl  Jun03  16:15 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 913.0074682908058,
+  "balance": 930.9674860608059,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1780964960",
@@ -66,18 +66,6 @@ root     1121216  0.1  3.4 726300 133424 ?       Ssl  Jun03  16:15 /opt/ensemble
       "opened_at": "2026-06-09T11:30:29.166230",
       "cost": 20.000007738,
       "notional": 100.00003869,
-      "leverage": 5
-    },
-    "NEARUSDT": {
-      "id": "PAPER_NEARUSDT_1781006828",
-      "symbol": "NEARUSDT",
-      "side": "long",
-      "entry_price": 2.1765,
-      "qty": 45.9453,
-      "confidence": 85,
-      "opened_at": "2026-06-09T12:07:08.333642",
-      "cost": 19.99998909,
-      "notional": 99.99994545,
       "leverage": 5
     }
   },
@@ -3141,19 +3129,32 @@ root     1121216  0.1  3.4 726300 133424 ?       Ssl  Jun03  16:15 /opt/ensemble
       "closed_at": "2026-06-09T11:25:53.783246",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_NEARUSDT_1781006828",
+      "symbol": "NEARUSDT",
+      "side": "long",
+      "entry_price": 2.1765,
+      "qty": 45.9453,
+      "confidence": 85,
+      "opened_at": "2026-06-09T12:07:08.333642",
+      "cost": 19.99998909,
+      "notional": 99.99994545,
+      "leverage": 5,
+      "exit_price": 2.1321,
+      "pnl_pct": -10.2,
+      "pnl_usdt": -2.04,
+      "closed_at": "2026-06-09T13:30:38.702467",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 13.093889858806433
+  "total_pnl": 11.053918538806434
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 13:16:59,376 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 13:16:59,378 [INFO] main: WLDUSDT | Judge:HOLD conf=58% size=0.0%
-2026-06-09 13:16:59,378 [INFO] main: WLDUSDT | RL adj=58.0%
-2026-06-09 13:17:05,967 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 13:17:06,705 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-09 13:17:06,706 [INFO] main: ONDOUSDT | Bull:flat(25%) Bear:short(65%)
 2026-06-09 13:17:09,522 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-09 13:17:09,523 [INFO] main: ONDOUSDT | Judge:HOLD conf=55% size=0.0%
@@ -3179,6 +3180,11 @@ root     1121216  0.1  3.4 726300 133424 ?       Ssl  Jun03  16:15 /opt/ensemble
 2026-06-09 13:17:40,092 [INFO] main: SLXUSDT | Context score=-0.05 bias=0.05
 2026-06-09 13:17:40,092 [INFO] main: SLXUSDT | regime BLOCK (volatile)
 2026-06-09 13:17:42,095 [INFO] main: Next scan in 30min (always-30min)
+2026-06-09 13:30:38,700 [INFO] positions: STOP_LOSS NEARUSDT long PnL:-2.04%
+2026-06-09 13:30:38,712 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG NEARUSDT @ 2.1321 PnL: -10.20% (-2.04 USDT) | Баланс: 930.97
+2026-06-09 13:30:39,185 [INFO] positions: LOSS NEARUSDT long PnL:-2.04% reason:stop_loss
+2026-06-09 13:30:39,185 [INFO] positions: Lessons: The trade on NEARUSDT resulted in a 2.04% loss due to a stop loss, despite initial bull sentiment and expectations for a significant upside move. The asymmetric rules were followed with a 2:1 risk-reward ratio, but the trade did not work out as planned. This outcome highlights the importance of adhering to stop losses and managing risk, even when sentiment and expectations are favorable.
+2026-06-09 13:30:39,185 [INFO] rl: RL learned from long NEARUSDT: loss -2.04% | weights bull=0.976 bear=0.856 judge=1.168 threshold=65.29
 ```
 
 ## Disk
@@ -3196,7 +3202,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       897Mi       403Mi       4.8Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       891Mi       409Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
