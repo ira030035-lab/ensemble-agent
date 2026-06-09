@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 16:20:01 UTC
+Generated: 2026-06-09 16:30:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 205424 46900 ?        Ssl  Jun03   1:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 728144 134632 ?       Ssl  Jun03  16:30 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 728144 134632 ?       Ssl  Jun03  16:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 948.2218235428057,
+  "balance": 971.2871814388058,
   "positions": {
-    "XRPUSDT": {
-      "id": "PAPER_XRPUSDT_1780964960",
-      "symbol": "XRPUSDT",
-      "side": "short",
-      "entry_price": 1.1581,
-      "qty": 86.3483,
-      "confidence": 85,
-      "opened_at": "2026-06-09T00:29:20.937427",
-      "cost": 19.999993245999995,
-      "notional": 99.99996622999998,
-      "leverage": 5
-    },
     "SOLUSDT": {
       "id": "PAPER_SOLUSDT_1781017146",
       "symbol": "SOLUSDT",
@@ -3225,19 +3213,32 @@ root     1121216  0.1  3.4 728144 134632 ?       Ssl  Jun03  16:30 /opt/ensemble
       "closed_at": "2026-06-09T16:04:21.067292",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_XRPUSDT_1780964960",
+      "symbol": "XRPUSDT",
+      "side": "short",
+      "entry_price": 1.1581,
+      "qty": 86.3483,
+      "confidence": 85,
+      "opened_at": "2026-06-09T00:29:20.937427",
+      "cost": 19.999993245999995,
+      "notional": 99.99996622999998,
+      "leverage": 5,
+      "exit_price": 1.1226,
+      "pnl_pct": 15.33,
+      "pnl_usdt": 3.07,
+      "closed_at": "2026-06-09T16:20:19.067826",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 8.221502888806452
+  "total_pnl": 11.28686753880644
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 16:10:27,514 [INFO] main: ENAUSDT | Bull:flat(25%) Bear:short(80%)
-2026-06-09 16:10:30,075 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 16:10:30,076 [INFO] main: ENAUSDT | Judge:SHORT conf=70% size=15.0%
-2026-06-09 16:10:30,076 [INFO] main: ENAUSDT | RL adj=80.5%
-2026-06-09 16:10:30,087 [INFO] main: ENAUSDT | Context score=-0.0 bias=0.0
 2026-06-09 16:10:30,087 [INFO] main: ENAUSDT | regime BLOCK (volatile)
 2026-06-09 16:10:36,750 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-09 16:10:37,679 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -3263,6 +3264,11 @@ root     1121216  0.1  3.4 728144 134632 ?       Ssl  Jun03  16:30 /opt/ensemble
 2026-06-09 16:11:04,646 [INFO] main: WLDUSDT | Context score=-0.0 bias=0.0
 2026-06-09 16:11:04,646 [INFO] main: WLDUSDT | regime BLOCK (volatile)
 2026-06-09 16:11:06,693 [INFO] main: Next scan in 30min (always-30min)
+2026-06-09 16:20:19,066 [INFO] positions: TAKE-PROFIT XRPUSDT short PnL:3.07%
+2026-06-09 16:20:19,076 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT XRPUSDT @ 1.1226 PnL: 15.33% (+3.07 USDT) | Баланс: 971.29
+2026-06-09 16:20:19,341 [INFO] positions: OK XRPUSDT short PnL:3.07% reason:take_profit
+2026-06-09 16:20:19,341 [INFO] positions: Lessons: The trade was successful with a 3.07% profit, meeting the expected outcome of a strong downside move. The original reasoning of bearish price movement, negative volume ratio, and high bearish sentiment proved accurate. This trade demonstrates the importance of considering multiple timeframes and sentiment analysis when making trading decisions.
+2026-06-09 16:20:19,341 [INFO] rl: RL learned from short XRPUSDT: profit 3.07% | weights bull=0.947 bear=0.879 judge=1.173 threshold=65.35
 ```
 
 ## Disk
@@ -3280,7 +3286,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       889Mi       405Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       888Mi       406Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
