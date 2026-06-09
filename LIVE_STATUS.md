@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 04:40:01 UTC
+Generated: 2026-06-09 04:50:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 208148 49440 ?        Ssl  Jun03   1:03 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 726300 133208 ?       Ssl  Jun03  15:30 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 726300 133208 ?       Ssl  Jun03  15:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 931.5235151104058,
+  "balance": 949.4809245624058,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1780964960",
@@ -42,18 +42,6 @@ root     1121216  0.1  3.4 726300 133208 ?       Ssl  Jun03  15:30 /opt/ensemble
       "opened_at": "2026-06-09T01:01:53.147891",
       "cost": 19.9999981224,
       "notional": 99.999990612,
-      "leverage": 5
-    },
-    "RENDERUSDT": {
-      "id": "PAPER_RENDERUSDT_1780966980",
-      "symbol": "RENDERUSDT",
-      "side": "short",
-      "entry_price": 1.6009,
-      "qty": 62.4649,
-      "confidence": 75,
-      "opened_at": "2026-06-09T01:03:00.113301",
-      "cost": 20.000011682,
-      "notional": 100.00005841,
       "leverage": 5
     },
     "BTCUSDT": {
@@ -3075,20 +3063,32 @@ root     1121216  0.1  3.4 726300 133208 ?       Ssl  Jun03  15:30 /opt/ensemble
       "closed_at": "2026-06-09T01:57:26.074875",
       "reason": "max_hold",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_RENDERUSDT_1780966980",
+      "symbol": "RENDERUSDT",
+      "side": "short",
+      "entry_price": 1.6009,
+      "qty": 62.4649,
+      "confidence": 75,
+      "opened_at": "2026-06-09T01:03:00.113301",
+      "cost": 20.000011682,
+      "notional": 100.00005841,
+      "leverage": 5,
+      "exit_price": 1.6336,
+      "pnl_pct": -10.21,
+      "pnl_usdt": -2.04,
+      "closed_at": "2026-06-09T04:50:00.412446",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 11.609950160806433
+  "total_pnl": 9.567347930806436
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 04:32:47,089 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 04:32:47,090 [INFO] main: NEARUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-09 04:32:47,090 [INFO] main: NEARUSDT | RL adj=55.0%
-2026-06-09 04:32:53,220 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 04:32:54,065 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 04:32:54,066 [INFO] main: BEATUSDT | Bull:flat(15%) Bear:short(80%)
 2026-06-09 04:32:56,905 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-09 04:32:56,905 [INFO] main: BEATUSDT | Judge:SHORT conf=80% size=15.0%
 2026-06-09 04:32:56,905 [INFO] main: BEATUSDT | RL adj=90.3%
@@ -3113,6 +3113,12 @@ root     1121216  0.1  3.4 726300 133208 ?       Ssl  Jun03  15:30 /opt/ensemble
 2026-06-09 04:33:27,260 [INFO] main: EPICUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-09 04:33:27,260 [INFO] main: EPICUSDT | RL adj=55.0%
 2026-06-09 04:33:29,262 [INFO] main: Next scan in 30min (always-30min)
+2026-06-09 04:47:56,794 [INFO] main: Symbols: 30
+2026-06-09 04:50:00,410 [INFO] positions: STOP_LOSS RENDERUSDT short PnL:-2.04%
+2026-06-09 04:50:00,420 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT RENDERUSDT @ 1.6336 PnL: -10.21% (-2.04 USDT) | Баланс: 949.48
+2026-06-09 04:50:00,709 [INFO] positions: LOSS RENDERUSDT short PnL:-2.04% reason:stop_loss
+2026-06-09 04:50:00,709 [INFO] positions: Lessons: The trade was based on a bearish view with a 2:1 risk-reward ratio but was stopped out for a 2.04% loss. The original reasoning was flawed as the expected downside move did not materialize. This trade highlights the importance of reevaluating risk-reward ratios and market regimes to avoid similar losses in the future.
+2026-06-09 04:50:00,710 [INFO] rl: RL learned from short RENDERUSDT: loss -2.04% | weights bull=0.981 bear=0.854 judge=1.165 threshold=65.29
 ```
 
 ## Disk
@@ -3130,7 +3136,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       896Mi       167Mi       4.8Mi       3.0Gi       2.8Gi
+Mem:           3.7Gi       902Mi       162Mi       4.8Mi       3.0Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
