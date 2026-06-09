@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 17:20:01 UTC
+Generated: 2026-06-09 17:30:01 UTC
 
 ## Services
 ```
@@ -3311,13 +3311,6 @@ root     1121216  0.1  3.4 728144 134632 ?       Ssl  Jun03  16:37 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 17:19:28,557 [INFO] main: SOLUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-09 17:19:28,557 [INFO] main: SOLUSDT | RL adj=84.2%
-2026-06-09 17:19:28,568 [INFO] main: SOLUSDT | Context score=-0.0 bias=0.0
-2026-06-09 17:19:28,568 [INFO] main: SOLUSDT | gate PASS (Judge 75/70 RL 84.2/65.37 slack=±3)
-2026-06-09 17:19:28,569 [INFO] positions: [PAPER] Opening SHORT SOLUSDT notional=$100.0 conf=75%
-2026-06-09 17:19:28,574 [INFO] paper_trading: [PAPER] ОТКРЫТА SHORT SOLUSDT @ 65.0230 qty=1.5379 notional=100.00 margin=20.00 x5 | Баланс: 909.62
-2026-06-09 17:19:34,947 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-09 17:19:35,583 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-09 17:19:35,584 [INFO] main: BEATUSDT | Bull:flat(25%) Bear:short(70%)
 2026-06-09 17:19:38,118 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -3341,6 +3334,13 @@ root     1121216  0.1  3.4 728144 134632 ?       Ssl  Jun03  16:37 /opt/ensemble
 2026-06-09 17:19:57,519 [INFO] main: MOVEUSDT | RL adj=85.2%
 2026-06-09 17:19:57,547 [INFO] main: MOVEUSDT | Context score=-0.0 bias=0.0
 2026-06-09 17:19:57,548 [INFO] main: MOVEUSDT | regime BLOCK (volatile)
+2026-06-09 17:20:04,653 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 17:20:04,848 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-09 17:20:04,848 [INFO] main: HUSDT | Bull:flat(25%) Bear:short(65%)
+2026-06-09 17:20:08,150 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 17:20:08,151 [INFO] main: HUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-09 17:20:08,151 [INFO] main: HUSDT | RL adj=55.0%
+2026-06-09 17:20:10,153 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -3358,7 +3358,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       881Mi       410Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       879Mi       412Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
