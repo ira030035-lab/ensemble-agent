@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 03:40:01 UTC
+Generated: 2026-06-09 03:50:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1121169  0.0  1.2 207584 48816 ?        Ssl  Jun03   1:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1121169  0.0  1.2 207584 48788 ?        Ssl  Jun03   1:03 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1121216  0.1  3.4 726300 133208 ?       Ssl  Jun03  15:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
@@ -3083,7 +3083,6 @@ root     1121216  0.1  3.4 726300 133208 ?       Ssl  Jun03  15:25 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 03:24:08,446 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-09 03:24:08,447 [INFO] main: BEATUSDT | Judge:SHORT conf=78% size=15.0%
 2026-06-09 03:24:08,447 [INFO] main: BEATUSDT | RL adj=88.0%
 2026-06-09 03:24:08,457 [INFO] main: BEATUSDT | Context score=-0.05 bias=0.05
@@ -3113,6 +3112,7 @@ root     1121216  0.1  3.4 726300 133208 ?       Ssl  Jun03  15:25 /opt/ensemble
 2026-06-09 03:24:55,155 [INFO] main: BSBUSDT | Context score=-0.05 bias=0.05
 2026-06-09 03:24:55,155 [INFO] main: BSBUSDT | regime BLOCK (volatile)
 2026-06-09 03:24:57,156 [INFO] main: Next scan in 30min (always-30min)
+2026-06-09 03:47:56,177 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -3130,7 +3130,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       895Mi       171Mi       4.8Mi       3.0Gi       2.9Gi
+Mem:           3.7Gi       897Mi       168Mi       4.8Mi       3.0Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
