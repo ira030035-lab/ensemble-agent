@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 01:40:01 UTC
+Generated: 2026-06-09 01:50:01 UTC
 
 ## Services
 ```
@@ -3065,13 +3065,6 @@ root     1121216  0.1  3.4 726300 133208 ?       Ssl  Jun03  15:17 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 01:39:22,624 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 01:39:22,624 [INFO] main: ESPORTSUSDT | Bull:long(62%) Bear:short(75%)
-2026-06-09 01:39:25,107 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 01:39:25,108 [INFO] main: ESPORTSUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-09 01:39:25,108 [INFO] main: ESPORTSUSDT | RL adj=55.0%
-2026-06-09 01:39:31,156 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 01:39:31,871 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-09 01:39:31,872 [INFO] main: SUIUSDT | Bull:flat(25%) Bear:short(75%)
 2026-06-09 01:39:34,259 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-09 01:39:34,260 [INFO] main: SUIUSDT | Judge:SHORT conf=75% size=15.0%
@@ -3095,6 +3088,13 @@ root     1121216  0.1  3.4 726300 133208 ?       Ssl  Jun03  15:17 /opt/ensemble
 2026-06-09 01:40:00,770 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-09 01:40:01,718 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-09 01:40:01,719 [INFO] main: EPICUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-09 01:40:04,172 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 01:40:04,174 [INFO] main: EPICUSDT | Judge:SHORT conf=80% size=15.0%
+2026-06-09 01:40:04,174 [INFO] main: EPICUSDT | RL adj=90.3%
+2026-06-09 01:40:04,198 [INFO] main: EPICUSDT | Context score=-0.05 bias=0.05
+2026-06-09 01:40:04,198 [INFO] main: EPICUSDT | regime BLOCK (volatile)
+2026-06-09 01:40:06,239 [INFO] main: Next scan in 30min (always-30min)
+2026-06-09 01:47:54,960 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -3112,7 +3112,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       892Mi       180Mi       4.8Mi       3.0Gi       2.9Gi
+Mem:           3.7Gi       893Mi       179Mi       4.8Mi       3.0Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
