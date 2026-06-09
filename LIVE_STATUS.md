@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 23:30:01 UTC
+Generated: 2026-06-09 23:40:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206972 48376 ?        Ssl  Jun03   1:16 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -3377,36 +3377,36 @@ root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:10 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 23:02:55,674 [INFO] main: DOGEUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-09 23:02:57,876 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 23:02:57,877 [INFO] main: DOGEUSDT | Judge:SHORT conf=70% size=15.0%
-2026-06-09 23:02:57,877 [INFO] main: DOGEUSDT | RL adj=80.4%
-2026-06-09 23:02:57,964 [INFO] main: DOGEUSDT | Context score=-0.0 bias=0.0
-2026-06-09 23:02:57,964 [INFO] main: DOGEUSDT | gate PASS (Judge 70/70 RL 80.4/65.3 slack=±3)
-2026-06-09 23:02:57,965 [INFO] positions: 2/3 rule: skip SHORT DOGEUSDT (3/3 already short)
-2026-06-09 23:03:04,484 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 23:03:05,676 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 23:03:05,677 [INFO] main: LABUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-09 23:03:08,024 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 23:03:08,025 [INFO] main: LABUSDT | Judge:SHORT conf=80% size=15.0%
-2026-06-09 23:03:08,025 [INFO] main: LABUSDT | RL adj=89.7%
-2026-06-09 23:03:08,036 [INFO] main: LABUSDT | Context score=-0.0 bias=0.0
-2026-06-09 23:03:08,036 [INFO] main: LABUSDT | regime BLOCK (volatile)
-2026-06-09 23:03:13,892 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 23:03:14,867 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 23:03:14,868 [INFO] main: SLXUSDT | Bull:flat(25%) Bear:short(80%)
-2026-06-09 23:03:16,713 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 23:03:16,714 [INFO] main: SLXUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-09 23:03:16,714 [INFO] main: SLXUSDT | RL adj=55.0%
-2026-06-09 23:03:22,899 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 23:03:24,585 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-09 23:03:24,587 [INFO] main: MOVEUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-09 23:03:26,933 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 23:03:26,934 [INFO] main: MOVEUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-09 23:03:26,935 [INFO] main: MOVEUSDT | RL adj=94.7%
-2026-06-09 23:03:26,955 [INFO] main: MOVEUSDT | Context score=-0.0 bias=0.0
-2026-06-09 23:03:26,955 [INFO] main: MOVEUSDT | regime BLOCK (volatile)
-2026-06-09 23:03:29,007 [INFO] main: Next scan in 30min (always-30min)
+2026-06-09 23:37:07,638 [INFO] main: ENAUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-09 23:37:07,638 [INFO] main: ENAUSDT | RL adj=55.0%
+2026-06-09 23:37:14,704 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 23:37:14,869 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-09 23:37:14,870 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
+2026-06-09 23:37:14,870 [INFO] main: TONUSDT | Bull:flat(15%) Bear:short(75%)
+2026-06-09 23:37:17,305 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 23:37:17,306 [INFO] main: TONUSDT | Judge:SHORT conf=85% size=15.0%
+2026-06-09 23:37:17,306 [INFO] main: TONUSDT | RL adj=94.7%
+2026-06-09 23:37:17,325 [INFO] main: TONUSDT | Context score=-0.0 bias=0.0
+2026-06-09 23:37:17,326 [INFO] main: TONUSDT | gate PASS (Judge 85/70 RL 94.7/65.3 slack=±3)
+2026-06-09 23:37:17,327 [INFO] positions: 2/3 rule: skip SHORT TONUSDT (3/3 already short)
+2026-06-09 23:37:20,684 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-06-09 23:37:22,637 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 23:37:24,327 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-09 23:37:24,328 [INFO] main: NEARUSDT | Bull:flat(15%) Bear:short(75%)
+2026-06-09 23:37:26,977 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 23:37:26,979 [INFO] main: NEARUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-09 23:37:26,979 [INFO] main: NEARUSDT | RL adj=55.0%
+2026-06-09 23:37:30,330 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-06-09 23:37:33,019 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 23:37:33,967 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-09 23:37:33,968 [INFO] main: ONDOUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-09 23:37:36,222 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 23:37:36,223 [INFO] main: ONDOUSDT | Judge:SHORT conf=84% size=14.5%
+2026-06-09 23:37:36,223 [INFO] main: ONDOUSDT | RL adj=94.4%
+2026-06-09 23:37:36,233 [INFO] main: ONDOUSDT | Context score=-0.0 bias=0.0
+2026-06-09 23:37:36,233 [INFO] main: ONDOUSDT | gate PASS (Judge 84/70 RL 94.4/65.3 slack=±3)
+2026-06-09 23:37:36,234 [INFO] positions: 2/3 rule: skip SHORT ONDOUSDT (3/3 already short)
+2026-06-09 23:37:38,237 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -3424,7 +3424,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       889Mi       391Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       882Mi       398Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
