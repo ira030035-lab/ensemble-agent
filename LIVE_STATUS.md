@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-09 14:10:01 UTC
+Generated: 2026-06-09 14:20:01 UTC
 
 ## Services
 ```
@@ -11,14 +11,14 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1121169  0.0  1.2 207768 48888 ?        Ssl  Jun03   1:12 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1121169  0.0  1.2 207996 49368 ?        Ssl  Jun03   1:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1121216  0.1  3.4 726600 133716 ?       Ssl  Jun03  16:18 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 910.9674833428058,
+  "balance": 928.8750707808058,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1780964960",
@@ -66,18 +66,6 @@ root     1121216  0.1  3.4 726600 133716 ?       Ssl  Jun03  16:18 /opt/ensemble
       "opened_at": "2026-06-09T11:30:29.166230",
       "cost": 20.000007738,
       "notional": 100.00003869,
-      "leverage": 5
-    },
-    "NEARUSDT": {
-      "id": "PAPER_NEARUSDT_1781013103",
-      "symbol": "NEARUSDT",
-      "side": "long",
-      "entry_price": 2.1793,
-      "qty": 45.8863,
-      "confidence": 75,
-      "opened_at": "2026-06-09T13:51:43.820650",
-      "cost": 20.000002717999998,
-      "notional": 100.00001359,
       "leverage": 5
     }
   },
@@ -3159,19 +3147,32 @@ root     1121216  0.1  3.4 726600 133716 ?       Ssl  Jun03  16:18 /opt/ensemble
       "closed_at": "2026-06-09T13:30:38.702467",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_NEARUSDT_1781013103",
+      "symbol": "NEARUSDT",
+      "side": "long",
+      "entry_price": 2.1793,
+      "qty": 45.8863,
+      "confidence": 75,
+      "opened_at": "2026-06-09T13:51:43.820650",
+      "cost": 20.000002717999998,
+      "notional": 100.00001359,
+      "leverage": 5,
+      "exit_price": 2.1337,
+      "pnl_pct": -10.46,
+      "pnl_usdt": -2.09,
+      "closed_at": "2026-06-09T14:14:30.444656",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 11.053918538806434
+  "total_pnl": 8.96150325880644
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-09 13:52:17,491 [INFO] main: PIPPINUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-09 13:52:21,305 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-09 13:52:21,306 [INFO] main: PIPPINUSDT | Judge:SHORT conf=80% size=15.0%
-2026-06-09 13:52:21,306 [INFO] main: PIPPINUSDT | RL adj=90.3%
-2026-06-09 13:52:21,317 [INFO] main: PIPPINUSDT | Context score=-0.0 bias=0.0
 2026-06-09 13:52:21,317 [INFO] main: PIPPINUSDT | regime BLOCK (volatile)
 2026-06-09 13:52:28,658 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-09 13:52:30,884 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -3197,6 +3198,11 @@ root     1121216  0.1  3.4 726600 133716 ?       Ssl  Jun03  16:18 /opt/ensemble
 2026-06-09 13:52:56,838 [INFO] main: WLDUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-09 13:52:56,838 [INFO] main: WLDUSDT | RL adj=50.0%
 2026-06-09 13:52:58,839 [INFO] main: Next scan in 30min (always-30min)
+2026-06-09 14:14:30,443 [INFO] positions: STOP_LOSS NEARUSDT long PnL:-2.09%
+2026-06-09 14:14:30,449 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG NEARUSDT @ 2.1337 PnL: -10.46% (-2.09 USDT) | Баланс: 928.88
+2026-06-09 14:14:30,869 [INFO] positions: LOSS NEARUSDT long PnL:-2.09% reason:stop_loss
+2026-06-09 14:14:30,869 [INFO] positions: Lessons: The trade on NEARUSDT resulted in a 2.09% loss due to a stop loss. Despite the initial bullish alignment, the market did not move as expected. This serves as a reminder to respect stop losses and not overrule them, even when the initial analysis suggests a favorable outcome.
+2026-06-09 14:14:30,869 [INFO] rl: RL learned from long NEARUSDT: loss -2.09% | weights bull=0.973 bear=0.859 judge=1.169 threshold=65.34
 ```
 
 ## Disk
@@ -3214,7 +3220,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       891Mi       408Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       891Mi       407Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
