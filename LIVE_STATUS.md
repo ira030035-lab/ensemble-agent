@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-10 13:40:01 UTC
+Generated: 2026-06-10 13:50:01 UTC
 
 ## Services
 ```
@@ -11,52 +11,15 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1121169  0.0  1.2 207996 49388 ?        Ssl  Jun03   1:21 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1121169  0.0  1.2 207996 49400 ?        Ssl  Jun03   1:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1121216  0.1  3.4 728144 134668 ?       Ssl  Jun03  18:36 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 964.5438181068056,
-  "positions": {
-    "XRPUSDT": {
-      "id": "PAPER_XRPUSDT_1781079591",
-      "symbol": "XRPUSDT",
-      "side": "short",
-      "entry_price": 1.1131,
-      "qty": 89.8392,
-      "confidence": 70,
-      "opened_at": "2026-06-10T08:19:51.283834",
-      "cost": 20.000002704000003,
-      "notional": 100.00001352000001,
-      "leverage": 5
-    },
-    "BTCUSDT": {
-      "id": "PAPER_BTCUSDT_1781083686",
-      "symbol": "BTCUSDT",
-      "side": "short",
-      "entry_price": 61120.8,
-      "qty": 0.0016,
-      "confidence": 72,
-      "opened_at": "2026-06-10T09:28:06.811986",
-      "cost": 19.558656000000003,
-      "notional": 97.79328000000001,
-      "leverage": 5
-    },
-    "ADAUSDT": {
-      "id": "PAPER_ADAUSDT_1781096468",
-      "symbol": "ADAUSDT",
-      "side": "short",
-      "entry_price": 0.1621,
-      "qty": 616.9031,
-      "confidence": 85,
-      "opened_at": "2026-06-10T13:01:08.895189",
-      "cost": 19.999998502,
-      "notional": 99.99999251,
-      "leverage": 5
-    }
-  },
+  "balance": 1017.8823885428056,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -3531,30 +3494,68 @@ root     1121216  0.1  3.4 728144 134668 ?       Ssl  Jun03  18:36 /opt/ensemble
       "closed_at": "2026-06-10T12:30:29.623236",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ADAUSDT_1781096468",
+      "symbol": "ADAUSDT",
+      "side": "short",
+      "entry_price": 0.1621,
+      "qty": 616.9031,
+      "confidence": 85,
+      "opened_at": "2026-06-10T13:01:08.895189",
+      "cost": 19.999998502,
+      "notional": 99.99999251,
+      "leverage": 5,
+      "exit_price": 0.1656,
+      "pnl_pct": -10.8,
+      "pnl_usdt": -2.16,
+      "closed_at": "2026-06-10T13:44:27.424170",
+      "reason": "stop_loss",
+      "outcome": "loss"
+    },
+    {
+      "id": "PAPER_XRPUSDT_1781079591",
+      "symbol": "XRPUSDT",
+      "side": "short",
+      "entry_price": 1.1131,
+      "qty": 89.8392,
+      "confidence": 70,
+      "opened_at": "2026-06-10T08:19:51.283834",
+      "cost": 20.000002704000003,
+      "notional": 100.00001352000001,
+      "leverage": 5,
+      "exit_price": 1.1357,
+      "pnl_pct": -10.15,
+      "pnl_usdt": -2.03,
+      "closed_at": "2026-06-10T13:44:58.375006",
+      "reason": "stop_loss",
+      "outcome": "loss"
+    },
+    {
+      "id": "PAPER_BTCUSDT_1781083686",
+      "symbol": "BTCUSDT",
+      "side": "short",
+      "entry_price": 61120.8,
+      "qty": 0.0016,
+      "confidence": 72,
+      "opened_at": "2026-06-10T09:28:06.811986",
+      "cost": 19.558656000000003,
+      "notional": 97.79328000000001,
+      "leverage": 5,
+      "exit_price": 62389.9,
+      "pnl_pct": -10.38,
+      "pnl_usdt": -2.03,
+      "closed_at": "2026-06-10T13:49:31.701246",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 24.10247531280642
+  "total_pnl": 17.88238854280642
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-10 13:38:34,231 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-10 13:38:34,232 [INFO] main: ETHUSDT | Bull:flat(25%) Bear:short(75%)
-2026-06-10 13:38:36,762 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 13:38:36,763 [INFO] main: ETHUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-10 13:38:36,763 [INFO] main: ETHUSDT | RL adj=95.0%
-2026-06-10 13:38:36,783 [INFO] main: ETHUSDT | Context score=-0.0 bias=0.0
-2026-06-10 13:38:36,783 [INFO] main: ETHUSDT | regime BLOCK (short × trending_down × rsi1h=58.0; late-entry guard)
-2026-06-10 13:38:45,106 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-10 13:38:50,593 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-10 13:38:50,594 [INFO] openai._base_client: Retrying request to /chat/completions in 0.397358 seconds
-2026-06-10 13:38:58,404 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 13:38:58,405 [INFO] main: SUIUSDT | Bull:flat(25%) Bear:short(80%)
-2026-06-10 13:39:02,324 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 13:39:02,325 [INFO] main: SUIUSDT | Judge:SHORT conf=80% size=15.0%
-2026-06-10 13:39:02,325 [INFO] main: SUIUSDT | RL adj=90.6%
-2026-06-10 13:39:02,336 [INFO] main: SUIUSDT | Context score=-0.0 bias=0.0
 2026-06-10 13:39:02,337 [INFO] main: SUIUSDT | regime BLOCK (short × trending_down × rsi1h=55.8; late-entry guard)
 2026-06-10 13:39:09,215 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-10 13:39:09,250 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -3569,6 +3570,22 @@ root     1121216  0.1  3.4 728144 134668 ?       Ssl  Jun03  18:36 /opt/ensemble
 2026-06-10 13:39:37,013 [INFO] main: TONUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-10 13:39:37,013 [INFO] main: TONUSDT | RL adj=50.0%
 2026-06-10 13:39:39,015 [INFO] main: Next scan in 30min (always-30min)
+2026-06-10 13:44:27,423 [INFO] positions: STOP_LOSS ADAUSDT short PnL:-2.16%
+2026-06-10 13:44:27,428 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ADAUSDT @ 0.1656 PnL: -10.80% (-2.16 USDT) | Баланс: 982.38
+2026-06-10 13:44:27,726 [INFO] positions: LOSS ADAUSDT short PnL:-2.16% reason:stop_loss
+2026-06-10 13:44:27,727 [INFO] positions: Lessons: The trade was closed at a 2.16% loss due to the stop loss being triggered. Despite strong bear conviction, the trade did not work out as expected, highlighting the importance of risk management. The 2:1 risk/reward ratio was not enough to overcome the incorrect trade direction in this instance.
+2026-06-10 13:44:27,727 [INFO] rl: RL learned from short ADAUSDT: loss -2.16% | weights bull=0.934 bear=0.881 judge=1.184 threshold=65.09
+2026-06-10 13:44:58,373 [INFO] positions: STOP_LOSS XRPUSDT short PnL:-2.03%
+2026-06-10 13:44:58,383 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT XRPUSDT @ 1.1357 PnL: -10.15% (-2.03 USDT) | Баланс: 1000.35
+2026-06-10 13:44:58,716 [INFO] positions: LOSS XRPUSDT short PnL:-2.03% reason:stop_loss
+2026-06-10 13:44:58,716 [INFO] positions: Lessons: The trade was based on a bearish view with multiple negative indicators, expecting a 4% downside move. However, the trade resulted in a stop loss, incurring a 2.03% loss. This outcome suggests that the bearish indicators were not strong enough to drive the expected price movement, and the risk management strategy was triggered instead.
+2026-06-10 13:44:58,716 [INFO] rl: RL learned from short XRPUSDT: loss -2.03% | weights bull=0.937 bear=0.879 judge=1.184 threshold=65.14
+2026-06-10 13:48:20,768 [INFO] main: Symbols: 30
+2026-06-10 13:49:31,699 [INFO] positions: STOP_LOSS BTCUSDT short PnL:-2.08%
+2026-06-10 13:49:31,710 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT BTCUSDT @ 62389.9000 PnL: -10.38% (-2.03 USDT) | Баланс: 1017.88
+2026-06-10 13:49:32,221 [INFO] positions: LOSS BTCUSDT short PnL:-2.08% reason:stop_loss
+2026-06-10 13:49:32,221 [INFO] positions: Lessons: The trade was based on bearish MACD and RSI values, but ultimately hit the stop loss for a 2.08% loss. The extreme fear sentiment did not translate to a further downward move as expected. This trade highlights the importance of managing risk and adjusting to changing market conditions in a trending down regime.
+2026-06-10 13:49:32,221 [INFO] rl: RL learned from short BTCUSDT: loss -2.08% | weights bull=0.941 bear=0.874 judge=1.185 threshold=65.19
 ```
 
 ## Disk
@@ -3586,7 +3603,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       886Mi       340Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       894Mi       333Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
