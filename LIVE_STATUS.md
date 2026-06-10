@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-10 07:40:01 UTC
+Generated: 2026-06-10 07:50:01 UTC
 
 ## Services
 ```
@@ -12,14 +12,27 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 207996 49396 ?        Ssl  Jun03   1:19 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:59 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  18:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 1021.6467686008059,
-  "positions": {},
+  "balance": 1001.6467671976059,
+  "positions": {
+    "XLMUSDT": {
+      "id": "PAPER_XLMUSDT_1781077526",
+      "symbol": "XLMUSDT",
+      "side": "short",
+      "entry_price": 0.18676,
+      "qty": 535.4466,
+      "confidence": 70,
+      "opened_at": "2026-06-10T07:45:26.239600",
+      "cost": 20.0000014032,
+      "notional": 100.000007016,
+      "leverage": 5
+    }
+  },
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -3466,36 +3479,36 @@ root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:59 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-10 07:11:20,557 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 07:11:20,558 [INFO] main: ONDOUSDT | Judge:SHORT conf=80% size=15.0%
-2026-06-10 07:11:20,558 [INFO] main: ONDOUSDT | RL adj=87.9%
-2026-06-10 07:11:20,578 [INFO] main: ONDOUSDT | Context score=-0.0 bias=0.0
-2026-06-10 07:11:20,579 [INFO] main: ONDOUSDT | gate PASS (Judge 80/70 RL 87.9/65.18 slack=±3)
-2026-06-10 07:11:20,580 [INFO] positions: 2/3 rule: skip SHORT ONDOUSDT (3/3 already short)
-2026-06-10 07:11:26,804 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 07:11:26,886 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-10 07:11:26,887 [INFO] main: BTCUSDT | Bull:flat(25%) Bear:short(88%)
-2026-06-10 07:11:29,355 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 07:11:29,355 [INFO] main: BTCUSDT | Judge:SHORT conf=85% size=20.0%
-2026-06-10 07:11:29,355 [INFO] main: BTCUSDT | RL adj=96.6%
-2026-06-10 07:11:29,366 [INFO] main: BTCUSDT | Context score=-0.0 bias=0.0
-2026-06-10 07:11:29,366 [INFO] main: BTCUSDT | regime BLOCK (short × trending_down × rsi1h=47.6; late-entry guard)
-2026-06-10 07:11:31,404 [INFO] main: Next scan in 30min (always-30min)
-2026-06-10 07:17:40,293 [INFO] positions: BREAKEVEN_STOP XLMUSDT short PnL:0.4%
-2026-06-10 07:17:40,303 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT XLMUSDT @ 0.1864 PnL: 1.98% (+0.40 USDT) | Баланс: 980.70
-2026-06-10 07:17:40,711 [INFO] positions: OK XLMUSDT short PnL:0.4% reason:breakeven_stop
-2026-06-10 07:17:40,711 [INFO] positions: Lessons: The trade was based on strong bearish sentiment, a downtrend in a similar asset, and oversold RSI, but ultimately closed at breakeven. The expected downside move did not materialize, highlighting the importance of risk management. The breakeven stop helped limit losses, but the trade's outcome suggests reevaluating the weight given to sentiment and technical indicators in similar future trades.
-2026-06-10 07:17:40,711 [INFO] rl: RL learned from short XLMUSDT: profit 0.40% | weights bull=0.938 bear=0.880 judge=1.183 threshold=65.16
-2026-06-10 07:21:14,760 [INFO] positions: BREAKEVEN_STOP RENDERUSDT short PnL:0.45%
-2026-06-10 07:21:14,765 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT RENDERUSDT @ 1.5901 PnL: 2.25% (+0.45 USDT) | Баланс: 1001.15
-2026-06-10 07:21:15,128 [INFO] positions: OK RENDERUSDT short PnL:0.45% reason:breakeven_stop
-2026-06-10 07:21:15,128 [INFO] positions: Lessons: The trade was based on strong bear market sentiment and technical indicators but ultimately closed at breakeven due to hitting the stop loss. The original risk/reward ratio was 2:1 but the trade did not reach the expected take profit level. This outcome highlights the importance of adjusting stop loss levels and being prepared for trades not always reaching their expected targets.
-2026-06-10 07:21:15,128 [INFO] rl: RL learned from short RENDERUSDT: profit 0.45% | weights bull=0.936 bear=0.880 judge=1.183 threshold=65.13
-2026-06-10 07:38:25,608 [INFO] positions: BREAKEVEN_STOP SOLUSDT short PnL:0.5%
-2026-06-10 07:38:25,619 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT SOLUSDT @ 64.6990 PnL: 2.49% (+0.50 USDT) | Баланс: 1021.65
-2026-06-10 07:38:25,970 [INFO] positions: OK SOLUSDT short PnL:0.5% reason:breakeven_stop
-2026-06-10 07:38:25,970 [INFO] positions: Lessons: The SOLUSDT short trade resulted in a breakeven stop with a 0.5% profit, failing to achieve the expected 4% downside move. The trade was based on a bearish sentiment with a trending down regime and recent price dip. The breakeven outcome suggests the stop loss was effective in limiting losses but the trade did not capture the anticipated downside movement.
-2026-06-10 07:38:25,970 [INFO] rl: RL learned from short SOLUSDT: profit 0.50% | weights bull=0.935 bear=0.881 judge=1.183 threshold=65.1
+2026-06-10 07:46:46,118 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 07:46:47,064 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-10 07:46:47,065 [INFO] main: SOLUSDT | Bull:flat(25%) Bear:short(70%)
+2026-06-10 07:46:51,782 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 07:46:51,784 [INFO] main: SOLUSDT | Judge:SHORT conf=70% size=15.0%
+2026-06-10 07:46:51,784 [INFO] main: SOLUSDT | RL adj=79.3%
+2026-06-10 07:46:51,804 [INFO] main: SOLUSDT | Context score=-0.0 bias=0.0
+2026-06-10 07:46:51,804 [INFO] main: SOLUSDT | regime BLOCK (short × trending_down × rsi1h=47.5; late-entry guard)
+2026-06-10 07:46:59,298 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-10 07:46:59,299 [WARNING] agents: Bull entropy-guard: шаблон flat(25) ×5. Переключаемся на Kimi+Claude fallback.
+2026-06-10 07:47:00,140 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 07:47:00,141 [INFO] main: BEATUSDT | Bull:flat(25%) Bear:short(60%)
+2026-06-10 07:47:04,247 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 07:47:04,248 [INFO] main: BEATUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-10 07:47:04,249 [INFO] main: BEATUSDT | RL adj=55.0%
+2026-06-10 07:47:07,625 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-06-10 07:47:10,914 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-10 07:47:11,565 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 07:47:11,566 [INFO] main: ETHUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-10 07:47:15,006 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 07:47:15,008 [INFO] main: ETHUSDT | Judge:HOLD conf=45% size=0.0%
+2026-06-10 07:47:15,008 [INFO] main: ETHUSDT | RL adj=45.0%
+2026-06-10 07:47:22,153 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-10 07:47:23,870 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 07:47:23,871 [INFO] main: VELVETUSDT | Bull:flat(25%) Bear:short(70%)
+2026-06-10 07:47:26,408 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 07:47:26,409 [INFO] main: VELVETUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-10 07:47:26,409 [INFO] main: VELVETUSDT | RL adj=55.0%
+2026-06-10 07:47:28,411 [INFO] main: Next scan in 30min (always-30min)
+2026-06-10 07:48:13,998 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -3513,7 +3526,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       883Mi       355Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       886Mi       352Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
