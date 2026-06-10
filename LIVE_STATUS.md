@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-10 16:40:01 UTC
+Generated: 2026-06-10 16:50:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.4 728144 134828 ?       Ssl  Jun03  18:55 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 938.5157328614057,
+  "balance": 961.6639286398057,
   "positions": {
     "ADAUSDT": {
       "id": "PAPER_ADAUSDT_1781100687",
@@ -54,18 +54,6 @@ root     1121216  0.1  3.4 728144 134828 ?       Ssl  Jun03  18:55 /opt/ensemble
       "opened_at": "2026-06-10T16:01:46.614564",
       "cost": 19.9952,
       "notional": 99.976,
-      "leverage": 5
-    },
-    "ENAUSDT": {
-      "id": "PAPER_ENAUSDT_1781107317",
-      "symbol": "ENAUSDT",
-      "side": "short",
-      "entry_price": 0.07814,
-      "qty": 1279.7543,
-      "confidence": 85,
-      "opened_at": "2026-06-10T16:01:57.191908",
-      "cost": 20.000000200400002,
-      "notional": 100.000001002,
       "leverage": 5
     }
   },
@@ -3633,20 +3621,32 @@ root     1121216  0.1  3.4 728144 134828 ?       Ssl  Jun03  18:55 /opt/ensemble
       "closed_at": "2026-06-10T15:54:54.087437",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ENAUSDT_1781107317",
+      "symbol": "ENAUSDT",
+      "side": "short",
+      "entry_price": 0.07814,
+      "qty": 1279.7543,
+      "confidence": 85,
+      "opened_at": "2026-06-10T16:01:57.191908",
+      "cost": 20.000000200400002,
+      "notional": 100.000001002,
+      "leverage": 5,
+      "exit_price": 0.07568,
+      "pnl_pct": 15.74,
+      "pnl_usdt": 3.15,
+      "closed_at": "2026-06-10T16:47:47.267975",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 18.510929151806398
+  "total_pnl": 21.659124729806404
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-10 16:39:01,094 [INFO] main: BTWUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-10 16:39:01,094 [INFO] main: BTWUSDT | RL adj=96.2%
-2026-06-10 16:39:01,116 [INFO] main: BTWUSDT | Context score=-0.0 bias=0.0
-2026-06-10 16:39:01,116 [INFO] main: BTWUSDT | regime BLOCK (volatile)
-2026-06-10 16:39:06,529 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 16:39:08,664 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-10 16:39:08,665 [INFO] main: VELVETUSDT | Bull:flat(15%) Bear:short(75%)
 2026-06-10 16:39:11,287 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-10 16:39:11,288 [INFO] main: VELVETUSDT | Judge:SHORT conf=75% size=15.0%
@@ -3671,6 +3671,12 @@ root     1121216  0.1  3.4 728144 134828 ?       Ssl  Jun03  18:55 /opt/ensemble
 2026-06-10 16:39:33,043 [INFO] main: NEARUSDT | gate PASS (Judge 85/70 RL 95.5/65.13 slack=±3)
 2026-06-10 16:39:33,044 [INFO] positions: 2/3 rule: skip SHORT NEARUSDT (3/4 already short)
 2026-06-10 16:39:35,048 [INFO] main: Next scan in 30min (always-30min)
+2026-06-10 16:47:47,266 [INFO] positions: TAKE-PROFIT ENAUSDT short PnL:3.15%
+2026-06-10 16:47:47,277 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ENAUSDT @ 0.0757 PnL: 15.74% (+3.15 USDT) | Баланс: 961.66
+2026-06-10 16:47:47,583 [INFO] positions: OK ENAUSDT short PnL:3.15% reason:take_profit
+2026-06-10 16:47:47,583 [INFO] positions: Lessons: The trade was a short position in ENAUSDT that closed with a 3.15% profit. The original reasoning was based on a bearish signal with at least 60% bearish indication and a 4% downside potential. This trade is an example of a successful short trade with a 2:1 risk to reward ratio that reached its take profit target.
+2026-06-10 16:47:47,583 [INFO] rl: RL learned from short ENAUSDT: profit 3.15% | weights bull=0.932 bear=0.883 judge=1.186 threshold=65.1
+2026-06-10 16:48:22,981 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -3688,7 +3694,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       894Mi       329Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       890Mi       332Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
