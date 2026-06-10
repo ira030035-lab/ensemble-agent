@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-10 12:40:01 UTC
+Generated: 2026-06-10 12:50:01 UTC
 
 ## Services
 ```
@@ -3527,7 +3527,6 @@ root     1121216  0.1  3.4 728144 134668 ?       Ssl  Jun03  18:29 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-10 12:28:33,427 [INFO] main: SIRENUSDT | Context score=-0.0 bias=0.0
 2026-06-10 12:28:33,428 [INFO] main: SIRENUSDT | regime BLOCK (volatile)
 2026-06-10 12:28:39,350 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-10 12:28:41,553 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -3557,6 +3556,7 @@ root     1121216  0.1  3.4 728144 134668 ?       Ssl  Jun03  18:29 /opt/ensemble
 2026-06-10 12:30:29,951 [INFO] positions: OK ONDOUSDT short PnL:0.52% reason:trailing_stop
 2026-06-10 12:30:29,951 [INFO] positions: Lessons: The short position on ONDOUSDT was successful with a 0.52% profit, triggered by a trailing stop. The trade was based on bearish conditions, including a 75% bear sentiment and oversold RSI. The low volume ratio and 4h downtrend also supported the short position, which ultimately resulted in a small but profitable gain.
 2026-06-10 12:30:29,951 [INFO] rl: RL learned from short ONDOUSDT: profit 0.52% | weights bull=0.930 bear=0.886 judge=1.183 threshold=65.04
+2026-06-10 12:48:19,709 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -3574,7 +3574,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       890Mi       339Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       884Mi       343Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
