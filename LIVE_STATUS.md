@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-10 09:40:01 UTC
+Generated: 2026-06-10 09:50:01 UTC
 
 ## Services
 ```
@@ -3521,7 +3521,6 @@ root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  18:12 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-10 09:32:38,548 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-10 09:32:38,549 [INFO] main: HUSDT | Bull:flat(35%) Bear:short(65%)
 2026-06-10 09:32:42,076 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-10 09:32:42,077 [INFO] main: HUSDT | Judge:HOLD conf=35% size=0.0%
@@ -3551,6 +3550,7 @@ root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  18:12 /opt/ensemble
 2026-06-10 09:33:14,483 [INFO] main: LINKUSDT | gate PASS (Judge 80/70 RL 90.6/65.07 slack=±3)
 2026-06-10 09:33:14,485 [INFO] positions: 2/3 rule: skip SHORT LINKUSDT (3/3 already short)
 2026-06-10 09:33:16,488 [INFO] main: Next scan in 30min (always-30min)
+2026-06-10 09:48:15,518 [INFO] main: Symbols: 30
 ```
 
 ## Disk
