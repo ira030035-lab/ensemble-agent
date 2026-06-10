@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-10 21:50:01 UTC
+Generated: 2026-06-10 22:00:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206448 47932 ?        Ssl  Jun03   1:23 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 728144 134828 ?       Ssl  Jun03  19:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 728144 134828 ?       Ssl  Jun03  19:27 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 948.4239570570059,
+  "balance": 966.3541970570059,
   "positions": {
-    "BTCUSDT": {
-      "id": "PAPER_BTCUSDT_1781107306",
-      "symbol": "BTCUSDT",
-      "side": "long",
-      "entry_price": 62485.0,
-      "qty": 0.0016,
-      "confidence": 70,
-      "opened_at": "2026-06-10T16:01:46.614564",
-      "cost": 19.9952,
-      "notional": 99.976,
-      "leverage": 5
-    },
     "XLMUSDT": {
       "id": "PAPER_XLMUSDT_1781113574",
       "symbol": "XLMUSDT",
@@ -3705,19 +3693,32 @@ root     1121216  0.1  3.4 728144 134828 ?       Ssl  Jun03  19:26 /opt/ensemble
       "closed_at": "2026-06-10T20:09:43.306054",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BTCUSDT_1781107306",
+      "symbol": "BTCUSDT",
+      "side": "long",
+      "entry_price": 62485.0,
+      "qty": 0.0016,
+      "confidence": 70,
+      "opened_at": "2026-06-10T16:01:46.614564",
+      "cost": 19.9952,
+      "notional": 99.976,
+      "leverage": 5,
+      "exit_price": 61194.4,
+      "pnl_pct": -10.33,
+      "pnl_usdt": -2.06,
+      "closed_at": "2026-06-10T21:52:14.920473",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 28.41915550980639
+  "total_pnl": 26.35419550980639
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-10 21:47:21,098 [INFO] main: PEPEUSDT | Judge:SHORT conf=85% size=20.0%
-2026-06-10 21:47:21,098 [INFO] main: PEPEUSDT | RL adj=94.4%
-2026-06-10 21:47:21,109 [INFO] main: PEPEUSDT | Context score=-0.0 bias=0.0
-2026-06-10 21:47:21,109 [INFO] main: PEPEUSDT | gate PASS (Judge 85/70 RL 94.4/65.02 slack=±3)
-2026-06-10 21:47:21,109 [INFO] positions: 2/3 rule: skip SHORT PEPEUSDT (3/4 already short)
 2026-06-10 21:47:26,910 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-10 21:47:28,333 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-10 21:47:28,334 [INFO] main: BCHUSDT | Bull:flat(15%) Bear:short(82%)
@@ -3743,6 +3744,11 @@ root     1121216  0.1  3.4 728144 134828 ?       Ssl  Jun03  19:26 /opt/ensemble
 2026-06-10 21:47:49,221 [INFO] main: ENAUSDT | regime BLOCK (volatile)
 2026-06-10 21:47:51,267 [INFO] main: Next scan in 30min (always-30min)
 2026-06-10 21:48:26,427 [INFO] main: Symbols: 30
+2026-06-10 21:52:14,919 [INFO] positions: STOP_LOSS BTCUSDT long PnL:-2.07%
+2026-06-10 21:52:14,926 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG BTCUSDT @ 61194.4000 PnL: -10.33% (-2.06 USDT) | Баланс: 966.35
+2026-06-10 21:52:15,241 [INFO] positions: LOSS BTCUSDT long PnL:-2.07% reason:stop_loss
+2026-06-10 21:52:15,241 [INFO] positions: Lessons: The trade was based on a bull strength of 62% and a ranging regime with expected 4% upside, but it resulted in a stop loss with a 2.07% loss. The risk/reward framework suggested a long entry, but the trade did not work out as expected. This outcome highlights the importance of managing risk and being prepared for trades that do not go as planned.
+2026-06-10 21:52:15,241 [INFO] rl: RL learned from long BTCUSDT: loss -2.07% | weights bull=0.913 bear=0.899 judge=1.188 threshold=65.07
 ```
 
 ## Disk
@@ -3760,7 +3766,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       890Mi       324Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       899Mi       314Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
