@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-10 07:30:01 UTC
+Generated: 2026-06-10 07:40:01 UTC
 
 ## Services
 ```
@@ -18,21 +18,8 @@ root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:59 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 1001.1487146608059,
-  "positions": {
-    "SOLUSDT": {
-      "id": "PAPER_SOLUSDT_1781025568",
-      "symbol": "SOLUSDT",
-      "side": "short",
-      "entry_price": 65.023,
-      "qty": 1.5379,
-      "confidence": 75,
-      "opened_at": "2026-06-09T17:19:28.570261",
-      "cost": 19.99977434,
-      "notional": 99.9988717,
-      "leverage": 5
-    }
-  },
+  "balance": 1021.6467686008059,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -3453,19 +3440,32 @@ root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:59 /opt/ensemble
       "closed_at": "2026-06-10T07:21:14.760970",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_SOLUSDT_1781025568",
+      "symbol": "SOLUSDT",
+      "side": "short",
+      "entry_price": 65.023,
+      "qty": 1.5379,
+      "confidence": 75,
+      "opened_at": "2026-06-09T17:19:28.570261",
+      "cost": 19.99977434,
+      "notional": 99.9988717,
+      "leverage": 5,
+      "exit_price": 64.699,
+      "pnl_pct": 2.49,
+      "pnl_usdt": 0.5,
+      "closed_at": "2026-06-10T07:38:25.610112",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 21.148489000806425
+  "total_pnl": 21.64676860080642
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-10 07:11:10,785 [INFO] main: LINKUSDT | gate PASS (Judge 70/70 RL 79.2/65.18 slack=±3)
-2026-06-10 07:11:10,787 [INFO] positions: 2/3 rule: skip SHORT LINKUSDT (3/3 already short)
-2026-06-10 07:11:16,525 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 07:11:18,122 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-10 07:11:18,124 [INFO] main: ONDOUSDT | Bull:flat(25%) Bear:short(60%)
 2026-06-10 07:11:20,557 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-10 07:11:20,558 [INFO] main: ONDOUSDT | Judge:SHORT conf=80% size=15.0%
 2026-06-10 07:11:20,558 [INFO] main: ONDOUSDT | RL adj=87.9%
@@ -3491,6 +3491,11 @@ root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:59 /opt/ensemble
 2026-06-10 07:21:15,128 [INFO] positions: OK RENDERUSDT short PnL:0.45% reason:breakeven_stop
 2026-06-10 07:21:15,128 [INFO] positions: Lessons: The trade was based on strong bear market sentiment and technical indicators but ultimately closed at breakeven due to hitting the stop loss. The original risk/reward ratio was 2:1 but the trade did not reach the expected take profit level. This outcome highlights the importance of adjusting stop loss levels and being prepared for trades not always reaching their expected targets.
 2026-06-10 07:21:15,128 [INFO] rl: RL learned from short RENDERUSDT: profit 0.45% | weights bull=0.936 bear=0.880 judge=1.183 threshold=65.13
+2026-06-10 07:38:25,608 [INFO] positions: BREAKEVEN_STOP SOLUSDT short PnL:0.5%
+2026-06-10 07:38:25,619 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT SOLUSDT @ 64.6990 PnL: 2.49% (+0.50 USDT) | Баланс: 1021.65
+2026-06-10 07:38:25,970 [INFO] positions: OK SOLUSDT short PnL:0.5% reason:breakeven_stop
+2026-06-10 07:38:25,970 [INFO] positions: Lessons: The SOLUSDT short trade resulted in a breakeven stop with a 0.5% profit, failing to achieve the expected 4% downside move. The trade was based on a bearish sentiment with a trending down regime and recent price dip. The breakeven outcome suggests the stop loss was effective in limiting losses but the trade did not capture the anticipated downside movement.
+2026-06-10 07:38:25,970 [INFO] rl: RL learned from short SOLUSDT: profit 0.50% | weights bull=0.935 bear=0.881 judge=1.183 threshold=65.1
 ```
 
 ## Disk
@@ -3508,7 +3513,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       877Mi       362Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       883Mi       355Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
