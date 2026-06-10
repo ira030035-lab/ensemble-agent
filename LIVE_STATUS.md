@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-10 14:00:01 UTC
+Generated: 2026-06-10 14:10:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 207996 49400 ?        Ssl  Jun03   1:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 728144 134668 ?       Ssl  Jun03  18:36 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 728144 134668 ?       Ssl  Jun03  18:37 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -3556,14 +3556,6 @@ root     1121216  0.1  3.4 728144 134668 ?       Ssl  Jun03  18:36 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-10 13:39:02,337 [INFO] main: SUIUSDT | regime BLOCK (short × trending_down × rsi1h=55.8; late-entry guard)
-2026-06-10 13:39:09,215 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-10 13:39:09,250 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 13:39:09,251 [INFO] main: BTWUSDT | Bull:long(62%) Bear:short(80%)
-2026-06-10 13:39:18,292 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 13:39:18,293 [INFO] main: BTWUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-10 13:39:18,293 [INFO] main: BTWUSDT | RL adj=50.0%
-2026-06-10 13:39:25,732 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-10 13:39:34,160 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-10 13:39:34,161 [INFO] main: TONUSDT | Bull:long(62%) Bear:short(78%)
 2026-06-10 13:39:37,011 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -3586,6 +3578,14 @@ root     1121216  0.1  3.4 728144 134668 ?       Ssl  Jun03  18:36 /opt/ensemble
 2026-06-10 13:49:32,221 [INFO] positions: LOSS BTCUSDT short PnL:-2.08% reason:stop_loss
 2026-06-10 13:49:32,221 [INFO] positions: Lessons: The trade was based on bearish MACD and RSI values, but ultimately hit the stop loss for a 2.08% loss. The extreme fear sentiment did not translate to a further downward move as expected. This trade highlights the importance of managing risk and adjusting to changing market conditions in a trending down regime.
 2026-06-10 13:49:32,221 [INFO] rl: RL learned from short BTCUSDT: loss -2.08% | weights bull=0.941 bear=0.874 judge=1.185 threshold=65.19
+2026-06-10 14:09:39,022 [INFO] main: Scanning 30 symbols...
+2026-06-10 14:09:47,655 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 14:09:47,657 [INFO] main: PEPEUSDT | Bull:long(70%) Bear:short(64%)
+2026-06-10 14:09:51,750 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 14:09:51,751 [INFO] main: PEPEUSDT | Judge:SHORT conf=70% size=15.0%
+2026-06-10 14:09:51,751 [INFO] main: PEPEUSDT | RL adj=68.5%
+2026-06-10 14:09:51,775 [INFO] main: PEPEUSDT | Context score=-0.0 bias=0.0
+2026-06-10 14:09:52,092 [INFO] main: PEPEUSDT | regime BLOCK (short × trending_down × rsi1h=49.0; late-entry guard)
 ```
 
 ## Disk
@@ -3603,7 +3603,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       902Mi       325Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       886Mi       340Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
