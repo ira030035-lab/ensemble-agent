@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-10 22:00:01 UTC
+Generated: 2026-06-10 22:10:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.4 728144 134828 ?       Ssl  Jun03  19:27 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 966.3541970570059,
+  "balance": 989.4930763690058,
   "positions": {
     "XLMUSDT": {
       "id": "PAPER_XLMUSDT_1781113574",
@@ -30,18 +30,6 @@ root     1121216  0.1  3.4 728144 134828 ?       Ssl  Jun03  19:27 /opt/ensemble
       "opened_at": "2026-06-10T17:46:14.339864",
       "cost": 20.0000012608,
       "notional": 100.00000630400001,
-      "leverage": 5
-    },
-    "ONDOUSDT": {
-      "id": "PAPER_ONDOUSDT_1781117657",
-      "symbol": "ONDOUSDT",
-      "side": "short",
-      "entry_price": 0.3377,
-      "qty": 296.1208,
-      "confidence": 82,
-      "opened_at": "2026-06-10T18:54:17.646270",
-      "cost": 19.999998831999996,
-      "notional": 99.99999415999999,
       "leverage": 5
     },
     "RENDERUSDT": {
@@ -3711,19 +3699,32 @@ root     1121216  0.1  3.4 728144 134828 ?       Ssl  Jun03  19:27 /opt/ensemble
       "closed_at": "2026-06-10T21:52:14.920473",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ONDOUSDT_1781117657",
+      "symbol": "ONDOUSDT",
+      "side": "short",
+      "entry_price": 0.3377,
+      "qty": 296.1208,
+      "confidence": 82,
+      "opened_at": "2026-06-10T18:54:17.646270",
+      "cost": 19.999998831999996,
+      "notional": 99.99999415999999,
+      "leverage": 5,
+      "exit_price": 0.3271,
+      "pnl_pct": 15.69,
+      "pnl_usdt": 3.14,
+      "closed_at": "2026-06-10T22:04:35.881363",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 26.35419550980639
+  "total_pnl": 29.493075989806393
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-10 21:47:26,910 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 21:47:28,333 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-10 21:47:28,334 [INFO] main: BCHUSDT | Bull:flat(15%) Bear:short(82%)
-2026-06-10 21:47:30,167 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 21:47:30,168 [INFO] main: BCHUSDT | Judge:SHORT conf=85% size=15.0%
 2026-06-10 21:47:30,168 [INFO] main: BCHUSDT | RL adj=96.0%
 2026-06-10 21:47:30,179 [INFO] main: BCHUSDT | Context score=-0.0 bias=0.0
 2026-06-10 21:47:30,179 [INFO] main: BCHUSDT | gate PASS (Judge 85/70 RL 96.0/65.02 slack=±3)
@@ -3749,6 +3750,11 @@ root     1121216  0.1  3.4 728144 134828 ?       Ssl  Jun03  19:27 /opt/ensemble
 2026-06-10 21:52:15,241 [INFO] positions: LOSS BTCUSDT long PnL:-2.07% reason:stop_loss
 2026-06-10 21:52:15,241 [INFO] positions: Lessons: The trade was based on a bull strength of 62% and a ranging regime with expected 4% upside, but it resulted in a stop loss with a 2.07% loss. The risk/reward framework suggested a long entry, but the trade did not work out as expected. This outcome highlights the importance of managing risk and being prepared for trades that do not go as planned.
 2026-06-10 21:52:15,241 [INFO] rl: RL learned from long BTCUSDT: loss -2.07% | weights bull=0.913 bear=0.899 judge=1.188 threshold=65.07
+2026-06-10 22:04:35,880 [INFO] positions: TAKE-PROFIT ONDOUSDT short PnL:3.14%
+2026-06-10 22:04:35,885 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ONDOUSDT @ 0.3271 PnL: 15.69% (+3.14 USDT) | Баланс: 989.49
+2026-06-10 22:04:36,168 [INFO] positions: OK ONDOUSDT short PnL:3.14% reason:take_profit
+2026-06-10 22:04:36,169 [INFO] positions: Lessons: The trade was successful with a 3.14% profit, hitting the take profit target. The original reasoning of bear sentiment and ultra oversold conditions proved correct, allowing for a favorable risk/reward ratio of 2:1. This trade demonstrates the effectiveness of identifying strong bear sentiment and riding a downtrend.
+2026-06-10 22:04:36,169 [INFO] rl: RL learned from short ONDOUSDT: profit 3.14% | weights bull=0.906 bear=0.906 judge=1.188 threshold=65.04
 ```
 
 ## Disk
@@ -3766,7 +3772,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       899Mi       314Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       886Mi       327Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
