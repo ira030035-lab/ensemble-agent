@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-10 15:00:01 UTC
+Generated: 2026-06-10 15:10:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.4 728144 134708 ?       Ssl  Jun03  18:43 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 957.8823910448057,
+  "balance": 978.0416281328056,
   "positions": {
     "ADAUSDT": {
       "id": "PAPER_ADAUSDT_1781100687",
@@ -30,18 +30,6 @@ root     1121216  0.1  3.4 728144 134708 ?       Ssl  Jun03  18:43 /opt/ensemble
       "opened_at": "2026-06-10T14:11:27.674654",
       "cost": 19.999999289999998,
       "notional": 99.99999645,
-      "leverage": 5
-    },
-    "WLDUSDT": {
-      "id": "PAPER_WLDUSDT_1781100756",
-      "symbol": "WLDUSDT",
-      "side": "short",
-      "entry_price": 0.5024,
-      "qty": 199.0446,
-      "confidence": 70,
-      "opened_at": "2026-06-10T14:12:36.696105",
-      "cost": 20.000001408,
-      "notional": 100.00000704,
       "leverage": 5
     },
     "TONUSDT": {
@@ -3585,19 +3573,32 @@ root     1121216  0.1  3.4 728144 134708 ?       Ssl  Jun03  18:43 /opt/ensemble
       "closed_at": "2026-06-10T13:49:31.701246",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_WLDUSDT_1781100756",
+      "symbol": "WLDUSDT",
+      "side": "short",
+      "entry_price": 0.5024,
+      "qty": 199.0446,
+      "confidence": 70,
+      "opened_at": "2026-06-10T14:12:36.696105",
+      "cost": 20.000001408,
+      "notional": 100.00000704,
+      "leverage": 5,
+      "exit_price": 0.5016,
+      "pnl_pct": 0.8,
+      "pnl_usdt": 0.16,
+      "closed_at": "2026-06-10T15:01:29.239594",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 17.88238854280642
+  "total_pnl": 18.041624222806405
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-10 14:52:37,950 [INFO] main: BTCUSDT | Judge:SHORT conf=70% size=15.0%
-2026-06-10 14:52:37,950 [INFO] main: BTCUSDT | RL adj=79.2%
-2026-06-10 14:52:37,963 [INFO] main: BTCUSDT | Context score=-0.0 bias=0.0
-2026-06-10 14:52:37,963 [INFO] main: BTCUSDT | regime BLOCK (short × trending_down × rsi1h=49.9; late-entry guard)
-2026-06-10 14:52:45,130 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-10 14:52:46,267 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-10 14:52:46,268 [INFO] main: XLMUSDT | Bull:flat(28%) Bear:short(75%)
 2026-06-10 14:52:48,986 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -3623,6 +3624,11 @@ root     1121216  0.1  3.4 728144 134708 ?       Ssl  Jun03  18:43 /opt/ensemble
 2026-06-10 14:53:17,742 [INFO] main: BCHUSDT | gate PASS (Judge 75/70 RL 82.9/65.19 slack=±3)
 2026-06-10 14:53:17,742 [INFO] positions: 2/3 rule: skip SHORT BCHUSDT (3/3 already short)
 2026-06-10 14:53:19,746 [INFO] main: Next scan in 30min (always-30min)
+2026-06-10 15:01:29,238 [INFO] positions: BREAKEVEN_STOP WLDUSDT short PnL:0.16%
+2026-06-10 15:01:29,244 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT WLDUSDT @ 0.5016 PnL: 0.80% (+0.16 USDT) | Баланс: 978.04
+2026-06-10 15:01:29,571 [INFO] positions: OK WLDUSDT short PnL:0.16% reason:breakeven_stop
+2026-06-10 15:01:29,572 [INFO] positions: Lessons: The trade was a short position in a trending down regime with a breakeven stop. The original reasoning was based on a weaker bull case and a dominant bear case with expected downside potential. The trade ultimately closed at a small profit of 0.16% as it hit the breakeven stop.
+2026-06-10 15:01:29,572 [INFO] rl: RL learned from short WLDUSDT: profit 0.16% | weights bull=0.941 bear=0.874 judge=1.185 threshold=65.16
 ```
 
 ## Disk
@@ -3640,7 +3646,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       901Mi       324Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       891Mi       333Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
