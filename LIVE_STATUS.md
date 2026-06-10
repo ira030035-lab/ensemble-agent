@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-10 12:30:01 UTC
+Generated: 2026-06-10 12:40:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.4 728144 134668 ?       Ssl  Jun03  18:29 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 964.0264279268057,
+  "balance": 984.5438166088056,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1781079591",
@@ -30,18 +30,6 @@ root     1121216  0.1  3.4 728144 134668 ?       Ssl  Jun03  18:29 /opt/ensemble
       "opened_at": "2026-06-10T08:19:51.283834",
       "cost": 20.000002704000003,
       "notional": 100.00001352000001,
-      "leverage": 5
-    },
-    "ONDOUSDT": {
-      "id": "PAPER_ONDOUSDT_1781079606",
-      "symbol": "ONDOUSDT",
-      "side": "short",
-      "entry_price": 0.3479,
-      "qty": 287.4389,
-      "confidence": 75,
-      "opened_at": "2026-06-10T08:20:06.057719",
-      "cost": 19.999998662,
-      "notional": 99.99999331,
       "leverage": 5
     },
     "BTCUSDT": {
@@ -3513,19 +3501,32 @@ root     1121216  0.1  3.4 728144 134668 ?       Ssl  Jun03  18:29 /opt/ensemble
       "closed_at": "2026-06-10T09:26:07.322667",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ONDOUSDT_1781079606",
+      "symbol": "ONDOUSDT",
+      "side": "short",
+      "entry_price": 0.3479,
+      "qty": 287.4389,
+      "confidence": 75,
+      "opened_at": "2026-06-10T08:20:06.057719",
+      "cost": 19.999998662,
+      "notional": 99.99999331,
+      "leverage": 5,
+      "exit_price": 0.3461,
+      "pnl_pct": 2.59,
+      "pnl_usdt": 0.52,
+      "closed_at": "2026-06-10T12:30:29.623236",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 23.58508529280643
+  "total_pnl": 24.10247531280642
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-10 12:28:30,504 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-10 12:28:30,506 [INFO] main: SIRENUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-10 12:28:33,406 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 12:28:33,408 [INFO] main: SIRENUSDT | Judge:SHORT conf=80% size=15.0%
-2026-06-10 12:28:33,408 [INFO] main: SIRENUSDT | RL adj=90.6%
 2026-06-10 12:28:33,427 [INFO] main: SIRENUSDT | Context score=-0.0 bias=0.0
 2026-06-10 12:28:33,428 [INFO] main: SIRENUSDT | regime BLOCK (volatile)
 2026-06-10 12:28:39,350 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -3551,6 +3552,11 @@ root     1121216  0.1  3.4 728144 134668 ?       Ssl  Jun03  18:29 /opt/ensemble
 2026-06-10 12:29:06,273 [INFO] main: SOLUSDT | Context score=-0.0 bias=0.0
 2026-06-10 12:29:06,274 [INFO] main: SOLUSDT | macro BLOCK (long при BTC downtrend)
 2026-06-10 12:29:08,277 [INFO] main: Next scan in 30min (always-30min)
+2026-06-10 12:30:29,621 [INFO] positions: TRAILING-STOP ONDOUSDT short peak:2.5% now:0.52%
+2026-06-10 12:30:29,631 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ONDOUSDT @ 0.3461 PnL: 2.59% (+0.52 USDT) | Баланс: 984.54
+2026-06-10 12:30:29,951 [INFO] positions: OK ONDOUSDT short PnL:0.52% reason:trailing_stop
+2026-06-10 12:30:29,951 [INFO] positions: Lessons: The short position on ONDOUSDT was successful with a 0.52% profit, triggered by a trailing stop. The trade was based on bearish conditions, including a 75% bear sentiment and oversold RSI. The low volume ratio and 4h downtrend also supported the short position, which ultimately resulted in a small but profitable gain.
+2026-06-10 12:30:29,951 [INFO] rl: RL learned from short ONDOUSDT: profit 0.52% | weights bull=0.930 bear=0.886 judge=1.183 threshold=65.04
 ```
 
 ## Disk
@@ -3568,7 +3574,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       896Mi       333Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       890Mi       339Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
