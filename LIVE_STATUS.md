@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-10 07:20:01 UTC
+Generated: 2026-06-10 07:30:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:59 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 980.6979693648059,
+  "balance": 1001.1487146608059,
   "positions": {
     "SOLUSDT": {
       "id": "PAPER_SOLUSDT_1781025568",
@@ -30,18 +30,6 @@ root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:59 /opt/ensemble
       "opened_at": "2026-06-09T17:19:28.570261",
       "cost": 19.99977434,
       "notional": 99.9988717,
-      "leverage": 5
-    },
-    "RENDERUSDT": {
-      "id": "PAPER_RENDERUSDT_1781065037",
-      "symbol": "RENDERUSDT",
-      "side": "short",
-      "entry_price": 1.5973,
-      "qty": 62.6056,
-      "confidence": 85,
-      "opened_at": "2026-06-10T04:17:17.280032",
-      "cost": 19.999984976,
-      "notional": 99.99992488,
       "leverage": 5
     }
   },
@@ -3447,19 +3435,32 @@ root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:59 /opt/ensemble
       "closed_at": "2026-06-10T07:17:40.295060",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_RENDERUSDT_1781065037",
+      "symbol": "RENDERUSDT",
+      "side": "short",
+      "entry_price": 1.5973,
+      "qty": 62.6056,
+      "confidence": 85,
+      "opened_at": "2026-06-10T04:17:17.280032",
+      "cost": 19.999984976,
+      "notional": 99.99992488,
+      "leverage": 5,
+      "exit_price": 1.5901,
+      "pnl_pct": 2.25,
+      "pnl_usdt": 0.45,
+      "closed_at": "2026-06-10T07:21:14.760970",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 20.69772868080643
+  "total_pnl": 21.148489000806425
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-10 07:11:07,575 [INFO] main: LINKUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-10 07:11:10,762 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 07:11:10,763 [INFO] main: LINKUSDT | Judge:SHORT conf=70% size=15.0%
-2026-06-10 07:11:10,763 [INFO] main: LINKUSDT | RL adj=79.2%
-2026-06-10 07:11:10,785 [INFO] main: LINKUSDT | Context score=-0.0 bias=0.0
 2026-06-10 07:11:10,785 [INFO] main: LINKUSDT | gate PASS (Judge 70/70 RL 79.2/65.18 slack=±3)
 2026-06-10 07:11:10,787 [INFO] positions: 2/3 rule: skip SHORT LINKUSDT (3/3 already short)
 2026-06-10 07:11:16,525 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -3485,6 +3486,11 @@ root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:59 /opt/ensemble
 2026-06-10 07:17:40,711 [INFO] positions: OK XLMUSDT short PnL:0.4% reason:breakeven_stop
 2026-06-10 07:17:40,711 [INFO] positions: Lessons: The trade was based on strong bearish sentiment, a downtrend in a similar asset, and oversold RSI, but ultimately closed at breakeven. The expected downside move did not materialize, highlighting the importance of risk management. The breakeven stop helped limit losses, but the trade's outcome suggests reevaluating the weight given to sentiment and technical indicators in similar future trades.
 2026-06-10 07:17:40,711 [INFO] rl: RL learned from short XLMUSDT: profit 0.40% | weights bull=0.938 bear=0.880 judge=1.183 threshold=65.16
+2026-06-10 07:21:14,760 [INFO] positions: BREAKEVEN_STOP RENDERUSDT short PnL:0.45%
+2026-06-10 07:21:14,765 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT RENDERUSDT @ 1.5901 PnL: 2.25% (+0.45 USDT) | Баланс: 1001.15
+2026-06-10 07:21:15,128 [INFO] positions: OK RENDERUSDT short PnL:0.45% reason:breakeven_stop
+2026-06-10 07:21:15,128 [INFO] positions: Lessons: The trade was based on strong bear market sentiment and technical indicators but ultimately closed at breakeven due to hitting the stop loss. The original risk/reward ratio was 2:1 but the trade did not reach the expected take profit level. This outcome highlights the importance of adjusting stop loss levels and being prepared for trades not always reaching their expected targets.
+2026-06-10 07:21:15,128 [INFO] rl: RL learned from short RENDERUSDT: profit 0.45% | weights bull=0.936 bear=0.880 judge=1.183 threshold=65.13
 ```
 
 ## Disk
@@ -3502,7 +3508,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       888Mi       350Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       877Mi       362Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
