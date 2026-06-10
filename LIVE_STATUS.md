@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-10 21:00:01 UTC
+Generated: 2026-06-10 21:10:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206448 47932 ?        Ssl  Jun03   1:23 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 728144 134828 ?       Ssl  Jun03  19:20 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 728144 134828 ?       Ssl  Jun03  19:21 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -3713,17 +3713,6 @@ root     1121216  0.1  3.4 728144 134828 ?       Ssl  Jun03  19:20 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-10 20:39:12,820 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-10 20:39:12,822 [INFO] main: ENAUSDT | Bull:flat(15%) Bear:short(85%)
-2026-06-10 20:39:14,754 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 20:39:14,755 [INFO] main: ENAUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-10 20:39:14,756 [INFO] main: ENAUSDT | RL adj=96.4%
-2026-06-10 20:39:14,777 [INFO] main: ENAUSDT | Context score=-0.0 bias=0.0
-2026-06-10 20:39:14,777 [INFO] main: ENAUSDT | regime BLOCK (volatile)
-2026-06-10 20:39:18,229 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-06-10 20:39:20,727 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 20:39:22,586 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-10 20:39:22,587 [INFO] main: HUSDT | Bull:flat(25%) Bear:short(78%)
 2026-06-10 20:39:24,830 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-10 20:39:24,831 [INFO] main: HUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-10 20:39:24,831 [INFO] main: HUSDT | RL adj=50.0%
@@ -3743,6 +3732,17 @@ root     1121216  0.1  3.4 728144 134828 ?       Ssl  Jun03  19:20 /opt/ensemble
 2026-06-10 20:39:48,023 [INFO] main: VELVETUSDT | RL adj=50.0%
 2026-06-10 20:39:50,024 [INFO] main: Next scan in 30min (always-30min)
 2026-06-10 20:48:25,774 [INFO] main: Symbols: 30
+2026-06-10 21:09:50,032 [INFO] main: Scanning 26 symbols...
+2026-06-10 21:09:52,593 [INFO] main: ETHUSDT | Bull:long(72%) Bear:short(80%)
+2026-06-10 21:09:54,411 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 21:09:54,413 [INFO] main: ETHUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-10 21:09:54,413 [INFO] main: ETHUSDT | RL adj=50.0%
+2026-06-10 21:09:58,214 [INFO] main: HYPEUSDT | Bull:long(70%) Bear:short(80%)
+2026-06-10 21:10:00,148 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 21:10:00,149 [INFO] main: HYPEUSDT | Judge:SHORT conf=80% size=15.0%
+2026-06-10 21:10:00,149 [INFO] main: HYPEUSDT | RL adj=81.1%
+2026-06-10 21:10:00,174 [INFO] main: HYPEUSDT | Context score=-0.0 bias=0.0
+2026-06-10 21:10:00,174 [INFO] main: HYPEUSDT | regime BLOCK (volatile)
 ```
 
 ## Disk
@@ -3760,7 +3760,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       897Mi       319Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       887Mi       329Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
