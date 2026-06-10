@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-10 00:40:01 UTC
+Generated: 2026-06-10 00:50:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206972 48376 ?        Ssl  Jun03   1:16 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:17 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:19 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 953.2958606648057,
+  "balance": 956.4254769368057,
   "positions": {
     "SOLUSDT": {
       "id": "PAPER_SOLUSDT_1781025568",
@@ -32,18 +32,6 @@ root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:17 /opt/ensemble
       "notional": 99.9988717,
       "leverage": 5
     },
-    "XLMUSDT": {
-      "id": "PAPER_XLMUSDT_1781035633",
-      "symbol": "XLMUSDT",
-      "side": "short",
-      "entry_price": 0.19619,
-      "qty": 509.71,
-      "confidence": 70,
-      "opened_at": "2026-06-09T20:07:13.708845",
-      "cost": 20.00000098,
-      "notional": 100.0000049,
-      "leverage": 5
-    },
     "ADAUSDT": {
       "id": "PAPER_ADAUSDT_1781043911",
       "symbol": "ADAUSDT",
@@ -54,6 +42,18 @@ root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:17 /opt/ensemble
       "opened_at": "2026-06-09T22:25:11.349602",
       "cost": 19.999998864,
       "notional": 99.99999432,
+      "leverage": 5
+    },
+    "TONUSDT": {
+      "id": "PAPER_TONUSDT_1781052194",
+      "symbol": "TONUSDT",
+      "side": "short",
+      "entry_price": 1.6882,
+      "qty": 59.2347,
+      "confidence": 80,
+      "opened_at": "2026-06-10T00:43:14.684017",
+      "cost": 20.000004108,
+      "notional": 100.00002054,
       "leverage": 5
     }
   },
@@ -3369,44 +3369,62 @@ root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:17 /opt/ensemble
       "closed_at": "2026-06-09T22:11:26.335544",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_XLMUSDT_1781035633",
+      "symbol": "XLMUSDT",
+      "side": "short",
+      "entry_price": 0.19619,
+      "qty": 509.71,
+      "confidence": 70,
+      "opened_at": "2026-06-09T20:07:13.708845",
+      "cost": 20.00000098,
+      "notional": 100.0000049,
+      "leverage": 5,
+      "exit_price": 0.19005,
+      "pnl_pct": 15.65,
+      "pnl_usdt": 3.13,
+      "closed_at": "2026-06-10T00:42:59.000118",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 13.295634848806444
+  "total_pnl": 16.425254248806446
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-10 00:10:58,638 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 00:10:58,639 [INFO] main: PEPEUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-10 00:11:01,070 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 00:11:01,071 [INFO] main: PEPEUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-10 00:11:01,071 [INFO] main: PEPEUSDT | RL adj=84.7%
-2026-06-10 00:11:01,082 [INFO] main: PEPEUSDT | Context score=-0.0 bias=0.0
-2026-06-10 00:11:01,082 [INFO] main: PEPEUSDT | regime BLOCK (short × trending_down × rsi1h=47.8; late-entry guard)
-2026-06-10 00:11:07,530 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 00:11:07,985 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-10 00:11:07,986 [INFO] main: MOVEUSDT | Bull:long(62%) Bear:short(78%)
-2026-06-10 00:11:09,900 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 00:11:09,902 [INFO] main: MOVEUSDT | Judge:HOLD conf=57% size=0.0%
-2026-06-10 00:11:09,902 [INFO] main: MOVEUSDT | RL adj=57.0%
-2026-06-10 00:11:16,449 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-10 00:11:16,571 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 00:11:16,573 [INFO] main: ENAUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-10 00:11:18,725 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 00:11:18,726 [INFO] main: ENAUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-10 00:11:18,726 [INFO] main: ENAUSDT | RL adj=84.7%
-2026-06-10 00:11:18,740 [INFO] main: ENAUSDT | Context score=-0.0 bias=0.0
-2026-06-10 00:11:18,740 [INFO] main: ENAUSDT | regime BLOCK (volatile)
-2026-06-10 00:11:24,781 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 00:11:26,420 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-10 00:11:26,422 [INFO] main: ZECUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-10 00:11:29,410 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 00:11:29,411 [INFO] main: ZECUSDT | Judge:SHORT conf=80% size=15.0%
-2026-06-10 00:11:29,412 [INFO] main: ZECUSDT | RL adj=90.4%
-2026-06-10 00:11:29,434 [INFO] main: ZECUSDT | Context score=-0.0 bias=0.0
-2026-06-10 00:11:29,434 [INFO] main: ZECUSDT | regime BLOCK (volatile)
-2026-06-10 00:11:31,484 [INFO] main: Next scan in 30min (always-30min)
+2026-06-10 00:45:37,267 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 00:45:38,160 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-10 00:45:38,162 [INFO] main: MOVEUSDT | Bull:flat(15%) Bear:short(70%)
+2026-06-10 00:45:40,588 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 00:45:40,590 [INFO] main: MOVEUSDT | Judge:SHORT conf=70% size=15.0%
+2026-06-10 00:45:40,590 [INFO] main: MOVEUSDT | RL adj=79.1%
+2026-06-10 00:45:40,614 [INFO] main: MOVEUSDT | Context score=-0.0 bias=0.0
+2026-06-10 00:45:40,614 [INFO] main: MOVEUSDT | regime BLOCK (volatile)
+2026-06-10 00:45:46,625 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 00:45:47,653 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-10 00:45:47,655 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
+2026-06-10 00:45:47,655 [INFO] main: DOGEUSDT | Bull:flat(15%) Bear:short(70%)
+2026-06-10 00:45:50,203 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 00:45:50,203 [INFO] main: DOGEUSDT | Judge:SHORT conf=85% size=15.0%
+2026-06-10 00:45:50,204 [INFO] main: DOGEUSDT | RL adj=94.1%
+2026-06-10 00:45:50,214 [INFO] main: DOGEUSDT | Context score=-0.0 bias=0.0
+2026-06-10 00:45:50,215 [INFO] main: DOGEUSDT | gate PASS (Judge 85/70 RL 94.1/65.27 slack=±3)
+2026-06-10 00:45:50,215 [INFO] positions: 2/3 rule: skip SHORT DOGEUSDT (3/3 already short)
+2026-06-10 00:45:53,603 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-06-10 00:45:55,404 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 00:45:57,237 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-10 00:45:57,238 [INFO] main: NEARUSDT | Bull:flat(15%) Bear:short(70%)
+2026-06-10 00:45:59,248 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 00:45:59,248 [INFO] main: NEARUSDT | Judge:SHORT conf=80% size=15.0%
+2026-06-10 00:45:59,249 [INFO] main: NEARUSDT | RL adj=89.1%
+2026-06-10 00:45:59,259 [INFO] main: NEARUSDT | Context score=-0.0 bias=0.0
+2026-06-10 00:45:59,260 [INFO] main: NEARUSDT | gate PASS (Judge 80/70 RL 89.1/65.27 slack=±3)
+2026-06-10 00:45:59,260 [INFO] positions: 2/3 rule: skip SHORT NEARUSDT (3/3 already short)
+2026-06-10 00:46:01,263 [INFO] main: Next scan in 30min (always-30min)
+2026-06-10 00:48:09,633 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -3424,7 +3442,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       889Mi       388Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       888Mi       388Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
