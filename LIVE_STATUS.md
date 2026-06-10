@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-10 03:40:01 UTC
+Generated: 2026-06-10 03:50:01 UTC
 
 ## Services
 ```
@@ -3413,36 +3413,36 @@ root     1121216  0.1  3.4 728144 134652 ?       Ssl  Jun03  17:36 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-10 03:38:58,970 [INFO] main: BEATUSDT | Bull:flat(25%) Bear:short(60%)
-2026-06-10 03:39:05,888 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 03:39:05,889 [INFO] main: BEATUSDT | Judge:SHORT conf=60% size=10.0%
-2026-06-10 03:39:05,889 [INFO] main: BEATUSDT | RL adj=67.8%
-2026-06-10 03:39:05,909 [INFO] main: BEATUSDT | Context score=-0.0 bias=0.0
-2026-06-10 03:39:05,910 [INFO] main: BEATUSDT | regime BLOCK (volatile)
-2026-06-10 03:39:13,182 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-10 03:39:15,583 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 03:39:15,584 [INFO] main: BTWUSDT | Bull:long(62%) Bear:short(60%)
-2026-06-10 03:39:22,755 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 03:39:22,756 [INFO] main: BTWUSDT | Judge:LONG conf=78% size=15.0%
-2026-06-10 03:39:22,756 [INFO] main: BTWUSDT | RL adj=79.0%
-2026-06-10 03:39:22,771 [INFO] main: BTWUSDT | Context score=0.0 bias=0.0
-2026-06-10 03:39:22,771 [INFO] main: BTWUSDT | regime BLOCK (volatile)
-2026-06-10 03:39:30,279 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-10 03:39:32,504 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 03:39:32,505 [INFO] main: SAHARAUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-10 03:39:39,176 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 03:39:39,178 [INFO] main: SAHARAUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-10 03:39:39,178 [INFO] main: SAHARAUSDT | RL adj=84.8%
-2026-06-10 03:39:39,199 [INFO] main: SAHARAUSDT | Context score=-0.0 bias=0.0
-2026-06-10 03:39:39,199 [INFO] main: SAHARAUSDT | regime BLOCK (volatile)
-2026-06-10 03:39:47,186 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-10 03:39:48,283 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 03:39:48,284 [INFO] main: ENAUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-10 03:39:57,258 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 03:39:57,259 [INFO] main: ENAUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-10 03:39:57,259 [INFO] main: ENAUSDT | RL adj=95.5%
-2026-06-10 03:39:57,279 [INFO] main: ENAUSDT | Context score=-0.0 bias=0.0
-2026-06-10 03:39:57,279 [INFO] main: ENAUSDT | regime BLOCK (volatile)
+2026-06-10 03:41:27,292 [INFO] main: TONUSDT | Judge:SHORT conf=65% size=10.0%
+2026-06-10 03:41:27,292 [INFO] main: TONUSDT | RL adj=73.5%
+2026-06-10 03:41:27,314 [INFO] main: TONUSDT | Context score=-0.0 bias=0.0
+2026-06-10 03:41:34,914 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-10 03:41:53,890 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 03:41:53,892 [INFO] main: POWERUSDT | Bull:flat(25%) Bear:short(60%)
+2026-06-10 03:42:07,632 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 03:42:07,633 [INFO] main: POWERUSDT | Judge:HOLD conf=60% size=0.0%
+2026-06-10 03:42:07,633 [INFO] main: POWERUSDT | RL adj=60.0%
+2026-06-10 03:42:14,410 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-10 03:42:25,168 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 03:42:25,170 [INFO] main: XRPUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-10 03:42:35,511 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-10 03:42:35,512 [INFO] openai._base_client: Retrying request to /chat/completions in 0.478774 seconds
+2026-06-10 03:42:39,642 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-10 03:42:39,643 [INFO] openai._base_client: Retrying request to /chat/completions in 0.926639 seconds
+2026-06-10 03:42:52,794 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 03:42:52,796 [INFO] main: XRPUSDT | Judge:SHORT conf=75% size=15.0%
+2026-06-10 03:42:52,796 [INFO] main: XRPUSDT | RL adj=85.5%
+2026-06-10 03:42:52,815 [INFO] main: XRPUSDT | Context score=-0.0 bias=0.0
+2026-06-10 03:42:52,815 [INFO] main: XRPUSDT | gate PASS (Judge 75/70 RL 85.5/65.24 slack=±3)
+2026-06-10 03:42:52,816 [INFO] positions: 2/3 rule: skip SHORT XRPUSDT (3/3 already short)
+2026-06-10 03:42:59,995 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-10 03:43:14,472 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 03:43:14,473 [INFO] main: NEARUSDT | Bull:flat(25%) Bear:short(65%)
+2026-06-10 03:43:21,526 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 03:43:21,528 [INFO] main: NEARUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-10 03:43:21,528 [INFO] main: NEARUSDT | RL adj=55.0%
+2026-06-10 03:43:23,530 [INFO] main: Next scan in 30min (always-30min)
+2026-06-10 03:48:11,524 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -3460,7 +3460,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       876Mi       387Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       872Mi       389Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
