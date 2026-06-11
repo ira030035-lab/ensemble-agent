@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-11 17:30:01 UTC
+Generated: 2026-06-11 17:40:01 UTC
 
 ## Services
 ```
@@ -11,14 +11,14 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1121169  0.0  1.2 207728 48816 ?        Ssl  Jun03   1:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1121169  0.0  1.2 208436 49268 ?        Ssl  Jun03   1:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1121216  0.1  3.4 728144 135204 ?       Ssl  Jun03  21:15 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 944.4654690577935,
+  "balance": 962.206862230818,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1781142400",
@@ -30,18 +30,6 @@ root     1121216  0.1  3.4 728144 135204 ?       Ssl  Jun03  21:15 /opt/ensemble
       "opened_at": "2026-06-11T01:46:40.741473",
       "cost": 19.91456,
       "notional": 99.5728,
-      "leverage": 5
-    },
-    "PEPEUSDT": {
-      "id": "PAPER_PEPEUSDT_1781149734",
-      "symbol": "PEPEUSDT",
-      "side": "short",
-      "entry_price": 2.7362e-06,
-      "qty": 36547036.0354,
-      "confidence": 85,
-      "opened_at": "2026-06-11T03:48:54.532048",
-      "cost": 20.0000000000123,
-      "notional": 100.00000000006149,
       "leverage": 5
     },
     "ETHUSDT": {
@@ -3921,19 +3909,32 @@ root     1121216  0.1  3.4 728144 135204 ?       Ssl  Jun03  21:15 /opt/ensemble
       "closed_at": "2026-06-11T17:03:59.267931",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_PEPEUSDT_1781149734",
+      "symbol": "PEPEUSDT",
+      "side": "short",
+      "entry_price": 2.7362e-06,
+      "qty": 36547036.0354,
+      "confidence": 85,
+      "opened_at": "2026-06-11T03:48:54.532048",
+      "cost": 20.0000000000123,
+      "notional": 100.00000000006149,
+      "leverage": 5,
+      "exit_price": 2.798e-06,
+      "pnl_pct": -11.29,
+      "pnl_usdt": -2.26,
+      "closed_at": "2026-06-11T17:31:32.775382",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 24.3933830178064
+  "total_pnl": 22.13477619081868
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-11 17:25:39,731 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-11 17:25:39,733 [INFO] main: BNBUSDT | Bull:flat(25%) Bear:short(75%)
-2026-06-11 17:25:42,126 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-11 17:25:42,127 [INFO] main: BNBUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-11 17:25:42,127 [INFO] main: BNBUSDT | RL adj=55.0%
 2026-06-11 17:25:48,096 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-11 17:25:49,488 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-11 17:25:49,489 [INFO] main: VELVETUSDT | Bull:flat(25%) Bear:short(70%)
@@ -3959,6 +3960,11 @@ root     1121216  0.1  3.4 728144 135204 ?       Ssl  Jun03  21:15 /opt/ensemble
 2026-06-11 17:26:17,397 [INFO] main: HUSDT | Context score=-0.05 bias=0.05
 2026-06-11 17:26:17,397 [INFO] main: HUSDT | regime BLOCK (volatile)
 2026-06-11 17:26:19,400 [INFO] main: Next scan in 30min (always-30min)
+2026-06-11 17:31:32,774 [INFO] positions: STOP_LOSS PEPEUSDT short PnL:-2.26%
+2026-06-11 17:31:32,780 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT PEPEUSDT @ 0.0000 PnL: -11.29% (-2.26 USDT) | Баланс: 962.21
+2026-06-11 17:31:33,318 [INFO] positions: LOSS PEPEUSDT short PnL:-2.26% reason:stop_loss
+2026-06-11 17:31:33,319 [INFO] positions: Lessons: The bearish signal was over‑confident; the 70% threshold didn’t translate into the expected 4% move, and the 2:1 R/R was never realized. A tighter stop‑loss or a more conservative downside target would have limited the 2.26% loss. Future trades should require stronger regime confirmation before committing to a high‑risk short.
+2026-06-11 17:31:33,319 [INFO] rl: RL learned from short PEPEUSDT: loss -2.26% | weights bull=0.922 bear=0.882 judge=1.196 threshold=65.28
 ```
 
 ## Disk
@@ -3976,7 +3982,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       897Mi       306Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       881Mi       322Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
