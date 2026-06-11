@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-11 01:00:01 UTC
+Generated: 2026-06-11 01:10:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1121216  0.1  3.4 728144 134944 ?       Ssl  Jun03  19:44 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 989.9475709598058,
+  "balance": 1007.8272786778058,
   "positions": {
-    "SUIUSDT": {
-      "id": "PAPER_SUIUSDT_1781131994",
-      "symbol": "SUIUSDT",
-      "side": "short",
-      "entry_price": 0.7216,
-      "qty": 138.5809,
-      "confidence": 80,
-      "opened_at": "2026-06-10T22:53:14.840421",
-      "cost": 19.999995488000003,
-      "notional": 99.99997744000001,
-      "leverage": 5
-    },
     "TAOUSDT": {
       "id": "PAPER_TAOUSDT_1781132060",
       "symbol": "TAOUSDT",
@@ -3771,19 +3759,32 @@ root     1121216  0.1  3.4 728144 134944 ?       Ssl  Jun03  19:44 /opt/ensemble
       "closed_at": "2026-06-11T00:43:34.912551",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_SUIUSDT_1781131994",
+      "symbol": "SUIUSDT",
+      "side": "short",
+      "entry_price": 0.7216,
+      "qty": 138.5809,
+      "confidence": 80,
+      "opened_at": "2026-06-10T22:53:14.840421",
+      "cost": 19.999995488000003,
+      "notional": 99.99997744000001,
+      "leverage": 5,
+      "exit_price": 0.7369,
+      "pnl_pct": -10.6,
+      "pnl_usdt": -2.12,
+      "closed_at": "2026-06-11T01:04:59.677580",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 29.947563247806382
+  "total_pnl": 27.827275477806385
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-11 00:39:47,889 [INFO] main: XRPUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-11 00:39:47,889 [INFO] main: XRPUSDT | RL adj=93.9%
-2026-06-11 00:39:47,900 [INFO] main: XRPUSDT | Context score=-0.0 bias=0.0
-2026-06-11 00:39:47,900 [INFO] main: XRPUSDT | gate PASS (Judge 85/70 RL 93.9/64.99 slack=±3)
-2026-06-11 00:39:47,901 [INFO] positions: 2/3 rule: skip SHORT XRPUSDT (3/3 already short)
 2026-06-11 00:39:51,316 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
 2026-06-11 00:39:53,877 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-11 00:39:56,000 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -3809,6 +3810,11 @@ root     1121216  0.1  3.4 728144 134944 ?       Ssl  Jun03  19:44 /opt/ensemble
 2026-06-11 00:43:35,230 [INFO] positions: Lessons: The trade was based on bearish indicators and market sentiment, expecting a 4% downside move with a 2:1 risk/reward ratio. However, the trade was stopped out at a 2% loss, failing to reach the expected target. This outcome suggests that the indicators and sentiment analysis may not have been strong enough to overcome market momentum.
 2026-06-11 00:43:35,230 [INFO] rl: RL learned from short BCHUSDT: loss -2.00% | weights bull=0.904 bear=0.906 judge=1.190 threshold=65.04
 2026-06-11 00:48:28,583 [INFO] main: Symbols: 30
+2026-06-11 01:04:59,675 [INFO] positions: STOP_LOSS SUIUSDT short PnL:-2.12%
+2026-06-11 01:04:59,686 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT SUIUSDT @ 0.7369 PnL: -10.60% (-2.12 USDT) | Баланс: 1007.83
+2026-06-11 01:04:59,948 [INFO] positions: LOSS SUIUSDT short PnL:-2.12% reason:stop_loss
+2026-06-11 01:04:59,948 [INFO] positions: Lessons: The trade was closed at a 2.12% loss due to a stop loss being triggered. The original reasoning was based on a strong bear conviction and a clear downtrend, but the expected downside move did not materialize. This trade highlights the importance of managing risk and adjusting expectations even when conviction is high.
+2026-06-11 01:04:59,948 [INFO] rl: RL learned from short SUIUSDT: loss -2.12% | weights bull=0.908 bear=0.901 judge=1.191 threshold=65.09
 ```
 
 ## Disk
@@ -3826,7 +3832,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       899Mi       308Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       889Mi       318Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
