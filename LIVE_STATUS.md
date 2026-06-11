@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-11 03:30:01 UTC
+Generated: 2026-06-11 03:40:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 206448 47932 ?        Ssl  Jun03   1:23 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 728144 134952 ?       Ssl  Jun03  19:58 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 728144 134952 ?       Ssl  Jun03  19:59 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 965.7268547898057,
+  "balance": 983.2524508998057,
   "positions": {
     "OPUSDT": {
       "id": "PAPER_OPUSDT_1781140322",
@@ -42,18 +42,6 @@ root     1121216  0.1  3.4 728144 134952 ?       Ssl  Jun03  19:58 /opt/ensemble
       "opened_at": "2026-06-11T01:46:40.741473",
       "cost": 19.91456,
       "notional": 99.5728,
-      "leverage": 5
-    },
-    "TONUSDT": {
-      "id": "PAPER_TONUSDT_1781144726",
-      "symbol": "TONUSDT",
-      "side": "short",
-      "entry_price": 1.6206,
-      "qty": 61.7055,
-      "confidence": 75,
-      "opened_at": "2026-06-11T02:25:26.443169",
-      "cost": 19.99998666,
-      "notional": 99.99993330000001,
       "leverage": 5
     }
   },
@@ -3819,19 +3807,32 @@ root     1121216  0.1  3.4 728144 134952 ?       Ssl  Jun03  19:58 /opt/ensemble
       "closed_at": "2026-06-11T01:14:06.579342",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_TONUSDT_1781144726",
+      "symbol": "TONUSDT",
+      "side": "short",
+      "entry_price": 1.6206,
+      "qty": 61.7055,
+      "confidence": 75,
+      "opened_at": "2026-06-11T02:25:26.443169",
+      "cost": 19.99998666,
+      "notional": 99.99993330000001,
+      "leverage": 5,
+      "exit_price": 1.6607,
+      "pnl_pct": -12.37,
+      "pnl_usdt": -2.47,
+      "closed_at": "2026-06-11T03:39:44.563096",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 25.641401477806383
+  "total_pnl": 23.16701092780638
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-11 03:16:55,274 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-11 03:16:55,274 [INFO] openai._base_client: Retrying request to /chat/completions in 0.943376 seconds
-2026-06-11 03:17:06,228 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-11 03:17:09,686 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-11 03:17:09,688 [INFO] main: HYPEUSDT | Bull:flat(15%) Bear:short(72%)
 2026-06-11 03:17:19,923 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-06-11 03:17:19,924 [INFO] openai._base_client: Retrying request to /chat/completions in 0.492357 seconds
 2026-06-11 03:17:30,432 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
@@ -3857,6 +3858,11 @@ root     1121216  0.1  3.4 728144 134952 ?       Ssl  Jun03  19:58 /opt/ensemble
 2026-06-11 03:18:40,772 [INFO] main: LABUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-11 03:18:40,772 [INFO] main: LABUSDT | RL adj=55.0%
 2026-06-11 03:18:42,774 [INFO] main: Next scan in 30min (always-30min)
+2026-06-11 03:39:44,561 [INFO] positions: STOP_LOSS TONUSDT short PnL:-2.47%
+2026-06-11 03:39:44,568 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT TONUSDT @ 1.6607 PnL: -12.37% (-2.47 USDT) | Баланс: 983.25
+2026-06-11 03:39:44,899 [INFO] positions: LOSS TONUSDT short PnL:-2.47% reason:stop_loss
+2026-06-11 03:39:44,899 [INFO] positions: Lessons: The trade was based on bearish sentiment with multiple indicators pointing downwards, expecting a 2:1 risk-reward ratio. However, the trade resulted in a stop loss, incurring a 2.47% loss. This outcome suggests that the bearish sentiment was not strong enough to drive the price down as expected, and the risk management strategy was triggered to limit losses.
+2026-06-11 03:39:44,899 [INFO] rl: RL learned from short TONUSDT: loss -2.47% | weights bull=0.916 bear=0.892 judge=1.192 threshold=65.19
 ```
 
 ## Disk
@@ -3874,7 +3880,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       895Mi       309Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       885Mi       319Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
