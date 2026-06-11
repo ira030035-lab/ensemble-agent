@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-11 00:40:01 UTC
+Generated: 2026-06-11 00:50:02 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1121216  0.1  3.4 728144 134944 ?       Ssl  Jun03  19:44 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 971.9510707598058,
+  "balance": 989.9475709598058,
   "positions": {
-    "BCHUSDT": {
-      "id": "PAPER_BCHUSDT_1781129882",
-      "symbol": "BCHUSDT",
-      "side": "short",
-      "entry_price": 192.26,
-      "qty": 0.5201,
-      "confidence": 80,
-      "opened_at": "2026-06-10T22:18:02.465066",
-      "cost": 19.998885199999997,
-      "notional": 99.99442599999999,
-      "leverage": 5
-    },
     "SUIUSDT": {
       "id": "PAPER_SUIUSDT_1781131994",
       "symbol": "SUIUSDT",
@@ -3765,29 +3753,32 @@ root     1121216  0.1  3.4 728144 134944 ?       Ssl  Jun03  19:44 /opt/ensemble
       "closed_at": "2026-06-10T22:42:54.146272",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BCHUSDT_1781129882",
+      "symbol": "BCHUSDT",
+      "side": "short",
+      "entry_price": 192.26,
+      "qty": 0.5201,
+      "confidence": 80,
+      "opened_at": "2026-06-10T22:18:02.465066",
+      "cost": 19.998885199999997,
+      "notional": 99.99442599999999,
+      "leverage": 5,
+      "exit_price": 196.11,
+      "pnl_pct": -10.01,
+      "pnl_usdt": -2.0,
+      "closed_at": "2026-06-11T00:43:34.912551",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 31.949948247806393
+  "total_pnl": 29.947563247806382
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-11 00:39:30,216 [INFO] main: OPUSDT | RL adj=95.9%
-2026-06-11 00:39:30,226 [INFO] main: OPUSDT | Context score=-0.0 bias=0.0
-2026-06-11 00:39:30,227 [INFO] main: OPUSDT | gate PASS (Judge 85/70 RL 95.9/64.99 slack=±3)
-2026-06-11 00:39:30,227 [INFO] positions: 2/3 rule: skip SHORT OPUSDT (3/3 already short)
-2026-06-11 00:39:36,567 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-11 00:39:37,110 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-11 00:39:37,111 [INFO] main: LINKUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-11 00:39:39,006 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-11 00:39:39,006 [INFO] main: LINKUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-11 00:39:39,007 [INFO] main: LINKUSDT | RL adj=50.0%
-2026-06-11 00:39:45,009 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-11 00:39:45,770 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-11 00:39:45,771 [WARNING] agents: Bull entropy-guard: шаблон flat(25) ×5. Переключаемся на Kimi+Claude fallback.
-2026-06-11 00:39:45,771 [INFO] main: XRPUSDT | Bull:flat(25%) Bear:short(65%)
-2026-06-11 00:39:47,888 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-11 00:39:47,889 [INFO] main: XRPUSDT | Judge:SHORT conf=85% size=15.0%
 2026-06-11 00:39:47,889 [INFO] main: XRPUSDT | RL adj=93.9%
 2026-06-11 00:39:47,900 [INFO] main: XRPUSDT | Context score=-0.0 bias=0.0
@@ -3803,6 +3794,21 @@ root     1121216  0.1  3.4 728144 134944 ?       Ssl  Jun03  19:44 /opt/ensemble
 2026-06-11 00:39:58,222 [INFO] main: STGUSDT | Context score=-0.0 bias=0.0
 2026-06-11 00:39:58,222 [INFO] main: STGUSDT | regime BLOCK (volatile)
 2026-06-11 00:40:01,694 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-06-11 00:40:04,347 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 00:40:07,927 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-11 00:40:07,928 [INFO] main: MAGMAUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-11 00:40:11,053 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 00:40:11,055 [INFO] main: MAGMAUSDT | Judge:SHORT conf=80% size=15.0%
+2026-06-11 00:40:11,055 [INFO] main: MAGMAUSDT | RL adj=90.9%
+2026-06-11 00:40:11,072 [INFO] main: MAGMAUSDT | Context score=-0.0 bias=0.0
+2026-06-11 00:40:11,072 [INFO] main: MAGMAUSDT | regime BLOCK (volatile)
+2026-06-11 00:40:13,126 [INFO] main: Next scan in 30min (always-30min)
+2026-06-11 00:43:34,911 [INFO] positions: STOP_LOSS BCHUSDT short PnL:-2.0%
+2026-06-11 00:43:34,917 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT BCHUSDT @ 196.1100 PnL: -10.01% (-2.00 USDT) | Баланс: 989.95
+2026-06-11 00:43:35,230 [INFO] positions: LOSS BCHUSDT short PnL:-2.0% reason:stop_loss
+2026-06-11 00:43:35,230 [INFO] positions: Lessons: The trade was based on bearish indicators and market sentiment, expecting a 4% downside move with a 2:1 risk/reward ratio. However, the trade was stopped out at a 2% loss, failing to reach the expected target. This outcome suggests that the indicators and sentiment analysis may not have been strong enough to overcome market momentum.
+2026-06-11 00:43:35,230 [INFO] rl: RL learned from short BCHUSDT: loss -2.00% | weights bull=0.904 bear=0.906 judge=1.190 threshold=65.04
+2026-06-11 00:48:28,583 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -3820,7 +3826,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       887Mi       320Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       890Mi       317Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
