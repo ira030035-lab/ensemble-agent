@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-11 17:40:01 UTC
+Generated: 2026-06-11 17:50:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1121216  0.1  3.4 728144 135204 ?       Ssl  Jun03  21:15 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 962.206862230818,
+  "balance": 998.0815923908181,
   "positions": {
-    "BTCUSDT": {
-      "id": "PAPER_BTCUSDT_1781142400",
-      "symbol": "BTCUSDT",
-      "side": "short",
-      "entry_price": 62233.0,
-      "qty": 0.0016,
-      "confidence": 75,
-      "opened_at": "2026-06-11T01:46:40.741473",
-      "cost": 19.91456,
-      "notional": 99.5728,
-      "leverage": 5
-    },
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1781161170",
       "symbol": "ETHUSDT",
@@ -42,18 +30,6 @@ root     1121216  0.1  3.4 728144 135204 ?       Ssl  Jun03  21:15 /opt/ensemble
       "opened_at": "2026-06-11T06:59:30.170106",
       "cost": 20.013763,
       "notional": 100.068815,
-      "leverage": 5
-    },
-    "SOLUSDT": {
-      "id": "PAPER_SOLUSDT_1781196659",
-      "symbol": "SOLUSDT",
-      "side": "short",
-      "entry_price": 65.418,
-      "qty": 1.5286,
-      "confidence": 78,
-      "opened_at": "2026-06-11T16:50:59.637593",
-      "cost": 19.99959096,
-      "notional": 99.9979548,
       "leverage": 5
     }
   },
@@ -3927,25 +3903,50 @@ root     1121216  0.1  3.4 728144 135204 ?       Ssl  Jun03  21:15 /opt/ensemble
       "closed_at": "2026-06-11T17:31:32.775382",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_SOLUSDT_1781196659",
+      "symbol": "SOLUSDT",
+      "side": "short",
+      "entry_price": 65.418,
+      "qty": 1.5286,
+      "confidence": 78,
+      "opened_at": "2026-06-11T16:50:59.637593",
+      "cost": 19.99959096,
+      "notional": 99.9979548,
+      "leverage": 5,
+      "exit_price": 66.746,
+      "pnl_pct": -10.15,
+      "pnl_usdt": -2.03,
+      "closed_at": "2026-06-11T17:45:58.917272",
+      "reason": "stop_loss",
+      "outcome": "loss"
+    },
+    {
+      "id": "PAPER_BTCUSDT_1781142400",
+      "symbol": "BTCUSDT",
+      "side": "short",
+      "entry_price": 62233.0,
+      "qty": 0.0016,
+      "confidence": 75,
+      "opened_at": "2026-06-11T01:46:40.741473",
+      "cost": 19.91456,
+      "notional": 99.5728,
+      "leverage": 5,
+      "exit_price": 63488.9,
+      "pnl_pct": -10.09,
+      "pnl_usdt": -2.01,
+      "closed_at": "2026-06-11T17:48:32.555425",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 22.13477619081868
+  "total_pnl": 18.095355390818696
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-11 17:25:48,096 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-11 17:25:49,488 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-11 17:25:49,489 [INFO] main: VELVETUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-11 17:25:52,028 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-11 17:25:52,029 [INFO] main: VELVETUSDT | Judge:LONG conf=75% size=15.0%
-2026-06-11 17:25:52,029 [INFO] main: VELVETUSDT | RL adj=65.7%
-2026-06-11 17:25:52,039 [INFO] main: VELVETUSDT | Context score=0.0 bias=0.05
-2026-06-11 17:25:52,039 [INFO] main: VELVETUSDT | regime BLOCK (volatile)
-2026-06-11 17:25:57,993 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-11 17:26:03,658 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-11 17:26:03,659 [INFO] main: BTWUSDT | Bull:flat(15%) Bear:short(80%)
 2026-06-11 17:26:06,924 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-11 17:26:06,925 [INFO] main: BTWUSDT | Judge:SHORT conf=75% size=15.0%
 2026-06-11 17:26:06,925 [INFO] main: BTWUSDT | RL adj=85.6%
@@ -3965,6 +3966,17 @@ root     1121216  0.1  3.4 728144 135204 ?       Ssl  Jun03  21:15 /opt/ensemble
 2026-06-11 17:31:33,318 [INFO] positions: LOSS PEPEUSDT short PnL:-2.26% reason:stop_loss
 2026-06-11 17:31:33,319 [INFO] positions: Lessons: The bearish signal was over‑confident; the 70% threshold didn’t translate into the expected 4% move, and the 2:1 R/R was never realized. A tighter stop‑loss or a more conservative downside target would have limited the 2.26% loss. Future trades should require stronger regime confirmation before committing to a high‑risk short.
 2026-06-11 17:31:33,319 [INFO] rl: RL learned from short PEPEUSDT: loss -2.26% | weights bull=0.922 bear=0.882 judge=1.196 threshold=65.28
+2026-06-11 17:45:58,916 [INFO] positions: STOP_LOSS SOLUSDT short PnL:-2.03%
+2026-06-11 17:45:58,921 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT SOLUSDT @ 66.7460 PnL: -10.15% (-2.03 USDT) | Баланс: 980.18
+2026-06-11 17:45:59,528 [INFO] positions: LOSS SOLUSDT short PnL:-2.03% reason:stop_loss
+2026-06-11 17:45:59,528 [INFO] positions: Lessons: The trend was still upward, so bearish bias and a 2:1 R/R were over‑optimistic; the stop‑loss was hit quickly, erasing the trade. In trending markets, confirm the regime before taking a contrarian short and size the reward to cover potential whipsaws. Adjust stop placement and risk parameters when the overall direction conflicts with the signal.
+2026-06-11 17:45:59,528 [INFO] rl: RL learned from short SOLUSDT: loss -2.03% | weights bull=0.925 bear=0.878 judge=1.197 threshold=65.33
+2026-06-11 17:48:32,554 [INFO] positions: STOP_LOSS BTCUSDT short PnL:-2.02%
+2026-06-11 17:48:32,559 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT BTCUSDT @ 63488.9000 PnL: -10.09% (-2.01 USDT) | Баланс: 998.08
+2026-06-11 17:48:33,195 [INFO] positions: LOSS BTCUSDT short PnL:-2.02% reason:stop_loss
+2026-06-11 17:48:33,195 [INFO] positions: Lessons: The 15‑minute RSI and Bollinger‑Band squeeze gave a false overbought signal in a ranging market, leading to an aggressive short entry without confirming trend strength. Relying on a single timeframe and ignoring the broader regime caused the stop‑loss to be hit; future trades should require multi‑timeframe confirmation and tighter risk management in non‑trending conditions.
+2026-06-11 17:48:33,196 [INFO] rl: RL learned from short BTCUSDT: loss -2.02% | weights bull=0.929 bear=0.873 judge=1.198 threshold=65.38
+2026-06-11 17:48:40,124 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -3982,7 +3994,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       881Mi       322Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       888Mi       314Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
