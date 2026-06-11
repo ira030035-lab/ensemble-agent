@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-11 17:00:01 UTC
+Generated: 2026-06-11 17:10:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.4 728144 135080 ?       Ssl  Jun03  21:12 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 926.4881586577935,
+  "balance": 944.4654690577935,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1781142400",
@@ -54,18 +54,6 @@ root     1121216  0.1  3.4 728144 135080 ?       Ssl  Jun03  21:12 /opt/ensemble
       "opened_at": "2026-06-11T06:59:30.170106",
       "cost": 20.013763,
       "notional": 100.068815,
-      "leverage": 5
-    },
-    "TAOUSDT": {
-      "id": "PAPER_TAOUSDT_1781168423",
-      "symbol": "TAOUSDT",
-      "side": "long",
-      "entry_price": 209.76,
-      "qty": 0.4767,
-      "confidence": 75,
-      "opened_at": "2026-06-11T09:00:23.978161",
-      "cost": 19.998518400000002,
-      "notional": 99.992592,
       "leverage": 5
     },
     "SOLUSDT": {
@@ -3915,19 +3903,32 @@ root     1121216  0.1  3.4 728144 135080 ?       Ssl  Jun03  21:12 /opt/ensemble
       "closed_at": "2026-06-11T16:17:31.039088",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_TAOUSDT_1781168423",
+      "symbol": "TAOUSDT",
+      "side": "long",
+      "entry_price": 209.76,
+      "qty": 0.4767,
+      "confidence": 75,
+      "opened_at": "2026-06-11T09:00:23.978161",
+      "cost": 19.998518400000002,
+      "notional": 99.992592,
+      "leverage": 5,
+      "exit_price": 205.52,
+      "pnl_pct": -10.11,
+      "pnl_usdt": -2.02,
+      "closed_at": "2026-06-11T17:03:59.267931",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 26.41459101780639
+  "total_pnl": 24.3933830178064
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-11 16:50:59,623 [INFO] main: SOLUSDT | RL adj=88.3%
-2026-06-11 16:50:59,635 [INFO] main: SOLUSDT | Context score=-0.05 bias=0.05
-2026-06-11 16:50:59,635 [INFO] main: SOLUSDT | gate PASS (Judge 78/70 RL 88.3/65.18 slack=±3)
-2026-06-11 16:50:59,636 [INFO] positions: [PAPER] Opening SHORT SOLUSDT notional=$100.0 conf=78%
-2026-06-11 16:50:59,641 [INFO] paper_trading: [PAPER] ОТКРЫТА SHORT SOLUSDT @ 65.4180 qty=1.5286 notional=100.00 margin=20.00 x5 | Баланс: 926.49
 2026-06-11 16:51:06,588 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-11 16:51:07,086 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-11 16:51:07,087 [INFO] main: AIOUSDT | Bull:long(62%) Bear:short(75%)
@@ -3953,6 +3954,11 @@ root     1121216  0.1  3.4 728144 135080 ?       Ssl  Jun03  21:12 /opt/ensemble
 2026-06-11 16:51:27,904 [INFO] main: WLDUSDT | Context score=-0.05 bias=0.05
 2026-06-11 16:51:27,904 [INFO] main: WLDUSDT | regime BLOCK (volatile)
 2026-06-11 16:51:29,959 [INFO] main: Next scan in 30min (always-30min)
+2026-06-11 17:03:59,267 [INFO] positions: STOP_LOSS TAOUSDT long PnL:-2.02%
+2026-06-11 17:03:59,272 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG TAOUSDT @ 205.5200 PnL: -10.11% (-2.02 USDT) | Баланс: 944.47
+2026-06-11 17:03:59,908 [INFO] positions: LOSS TAOUSDT long PnL:-2.02% reason:stop_loss
+2026-06-11 17:03:59,908 [INFO] positions: Lessons: The trade assumed a bullish breakout despite a ranging regime, and the modest 4 % expected sentiment shift was insufficient to overcome the lack of strong momentum. RSI not being extreme should have signaled caution, and the stop‑loss was hit, resulting in a –2.02 % loss. Future entries must align sentiment signals with the prevailing market regime and respect tighter risk limits in non‑trending conditions.
+2026-06-11 17:03:59,909 [INFO] rl: RL learned from long TAOUSDT: loss -2.02% | weights bull=0.918 bear=0.886 judge=1.196 threshold=65.23
 ```
 
 ## Disk
