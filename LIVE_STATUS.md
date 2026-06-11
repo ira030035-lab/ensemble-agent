@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-11 09:00:01 UTC
+Generated: 2026-06-11 09:10:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.2 208668 49472 ?        Ssl  Jun03   1:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 728144 134952 ?       Ssl  Jun03  20:28 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 728144 134980 ?       Ssl  Jun03  20:29 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 944.3926146277935,
+  "balance": 924.3940962277935,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1781142400",
@@ -66,6 +66,18 @@ root     1121216  0.1  3.4 728144 134952 ?       Ssl  Jun03  20:28 /opt/ensemble
       "opened_at": "2026-06-11T06:59:30.170106",
       "cost": 20.013763,
       "notional": 100.068815,
+      "leverage": 5
+    },
+    "TAOUSDT": {
+      "id": "PAPER_TAOUSDT_1781168423",
+      "symbol": "TAOUSDT",
+      "side": "long",
+      "entry_price": 209.76,
+      "qty": 0.4767,
+      "confidence": 75,
+      "opened_at": "2026-06-11T09:00:23.978161",
+      "cost": 19.998518400000002,
+      "notional": 99.992592,
       "leverage": 5
     }
   },
@@ -3893,36 +3905,36 @@ root     1121216  0.1  3.4 728144 134952 ?       Ssl  Jun03  20:28 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-11 08:58:52,729 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-11 08:58:52,729 [INFO] openai._base_client: Retrying request to /chat/completions in 0.422480 seconds
-2026-06-11 08:59:01,644 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-11 08:59:01,644 [INFO] main: BCHUSDT | Bull:flat(25%) Bear:short(65%)
-2026-06-11 08:59:07,450 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-11 08:59:07,451 [INFO] main: BCHUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-11 08:59:07,452 [INFO] main: BCHUSDT | RL adj=55.0%
-2026-06-11 08:59:14,274 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-11 08:59:15,932 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-11 08:59:15,934 [INFO] main: ADAUSDT | Bull:long(62%) Bear:flat(50%)
-2026-06-11 08:59:26,134 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-11 08:59:26,135 [INFO] openai._base_client: Retrying request to /chat/completions in 0.488024 seconds
-2026-06-11 08:59:33,446 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-11 08:59:33,447 [INFO] main: ADAUSDT | Judge:LONG conf=75% size=15.0%
-2026-06-11 08:59:33,447 [INFO] main: ADAUSDT | RL adj=83.5%
-2026-06-11 08:59:33,458 [INFO] main: ADAUSDT | Context score=0.0 bias=0.05
-2026-06-11 08:59:33,745 [INFO] main: ADAUSDT | gate PASS (Judge 75/70 RL 83.5/65.24 slack=±3)
-2026-06-11 08:59:33,748 [INFO] positions: Max positions reached (5/5 dyn)
-2026-06-11 08:59:40,683 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-11 08:59:42,346 [INFO] positions: TAKE-PROFIT EPICUSDT long PnL:3.21%
-2026-06-11 08:59:42,358 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG EPICUSDT @ 0.5683 PnL: 16.07% (+3.21 USDT) | Баланс: 944.39
-2026-06-11 08:59:42,680 [INFO] positions: OK EPICUSDT long PnL:3.21% reason:take_profit
-2026-06-11 08:59:42,680 [INFO] positions: Lessons: The trade was closed at a 3.21% profit after hitting the take profit target. The strong bull sentiment and trending up regime supported the long position despite overbought conditions. This outcome suggests that the strategy of riding bullish momentum with a tight stop loss and take profit can be effective in trending markets.
-2026-06-11 08:59:42,680 [INFO] rl: RL learned from long EPICUSDT: profit 3.21% | weights bull=0.926 bear=0.879 judge=1.195 threshold=65.21
-2026-06-11 08:59:46,344 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-11 08:59:46,345 [INFO] main: SUIUSDT | Bull:flat(35%) Bear:short(65%)
-2026-06-11 08:59:53,555 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-11 08:59:53,556 [INFO] main: SUIUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-11 08:59:53,556 [INFO] main: SUIUSDT | RL adj=50.0%
-2026-06-11 09:00:00,155 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-11 09:08:13,732 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-11 09:08:13,732 [INFO] openai._base_client: Retrying request to /chat/completions in 0.496523 seconds
+2026-06-11 09:08:24,244 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-11 09:08:24,245 [INFO] openai._base_client: Retrying request to /chat/completions in 0.794890 seconds
+2026-06-11 09:08:35,050 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-11 09:08:37,616 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-11 09:08:37,617 [INFO] main: NEARUSDT | Bull:flat(25%) Bear:short(72%)
+2026-06-11 09:08:47,831 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-11 09:08:47,832 [INFO] openai._base_client: Retrying request to /chat/completions in 0.493734 seconds
+2026-06-11 09:08:58,494 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-11 09:08:58,494 [INFO] openai._base_client: Retrying request to /chat/completions in 0.824342 seconds
+2026-06-11 09:09:09,479 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-11 09:09:09,480 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
+2026-06-11 09:09:09,481 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-06-11 09:09:09,481 [INFO] main: NEARUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-11 09:09:09,481 [INFO] main: NEARUSDT | RL adj=50.0%
+2026-06-11 09:09:12,857 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-06-11 09:09:16,485 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-11 09:09:17,968 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 09:09:17,969 [INFO] main: DOGEUSDT | Bull:long(62%) Bear:short(78%)
+2026-06-11 09:09:28,337 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-11 09:09:28,338 [INFO] openai._base_client: Retrying request to /chat/completions in 0.411946 seconds
+2026-06-11 09:09:35,175 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 09:09:35,176 [INFO] main: DOGEUSDT | Judge:HOLD conf=58% size=0.0%
+2026-06-11 09:09:35,176 [INFO] main: DOGEUSDT | RL adj=58.0%
+2026-06-11 09:09:42,479 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-11 09:09:48,888 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-11 09:09:48,889 [INFO] openai._base_client: Retrying request to /chat/completions in 0.490597 seconds
+2026-06-11 09:09:59,415 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-11 09:09:59,416 [INFO] openai._base_client: Retrying request to /chat/completions in 0.886882 seconds
 ```
 
 ## Disk
@@ -3940,7 +3952,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       897Mi       301Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       894Mi       303Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
