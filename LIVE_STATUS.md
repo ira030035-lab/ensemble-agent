@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-11 06:00:01 UTC
+Generated: 2026-06-11 06:10:01 UTC
 
 ## Services
 ```
@@ -3863,10 +3863,6 @@ root     1121216  0.1  3.4 728144 134952 ?       Ssl  Jun03  20:13 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-11 05:39:03,826 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-11 05:39:03,827 [INFO] main: WLDUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-11 05:39:09,850 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-11 05:39:09,851 [INFO] main: WLDUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-11 05:39:09,851 [INFO] main: WLDUSDT | RL adj=55.0%
 2026-06-11 05:39:13,233 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
 2026-06-11 05:39:16,163 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -3893,6 +3889,10 @@ root     1121216  0.1  3.4 728144 134952 ?       Ssl  Jun03  20:13 /opt/ensemble
 2026-06-11 05:39:41,209 [INFO] main: BEATUSDT | regime BLOCK (volatile)
 2026-06-11 05:39:43,267 [INFO] main: Next scan in 30min (always-30min)
 2026-06-11 05:48:31,660 [INFO] main: Symbols: 30
+2026-06-11 06:09:43,271 [INFO] main: Scanning 27 symbols...
+2026-06-11 06:09:47,356 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-11 06:09:54,839 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-11 06:09:54,839 [INFO] openai._base_client: Retrying request to /chat/completions in 0.457173 seconds
 ```
 
 ## Disk
@@ -3910,7 +3910,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       903Mi       298Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       888Mi       312Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
