@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-11 08:40:01 UTC
+Generated: 2026-06-11 08:50:01 UTC
 
 ## Services
 ```
@@ -3887,7 +3887,6 @@ root     1121216  0.1  3.4 728144 134952 ?       Ssl  Jun03  20:27 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-11 08:24:02,660 [INFO] openai._base_client: Retrying request to /chat/completions in 0.869929 seconds
 2026-06-11 08:24:13,555 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-06-11 08:24:16,693 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-11 08:24:16,695 [INFO] main: LABUSDT | Bull:flat(25%) Bear:short(72%)
@@ -3917,6 +3916,7 @@ root     1121216  0.1  3.4 728144 134952 ?       Ssl  Jun03  20:27 /opt/ensemble
 2026-06-11 08:25:48,438 [INFO] main: ONDOUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-11 08:25:48,438 [INFO] main: ONDOUSDT | RL adj=55.0%
 2026-06-11 08:25:50,441 [INFO] main: Next scan in 30min (always-30min)
+2026-06-11 08:48:34,047 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -3934,7 +3934,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       896Mi       301Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       891Mi       307Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
