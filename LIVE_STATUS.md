@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-11 04:40:01 UTC
+Generated: 2026-06-11 04:50:01 UTC
 
 ## Services
 ```
@@ -3845,7 +3845,6 @@ root     1121216  0.1  3.4 728144 134952 ?       Ssl  Jun03  20:06 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-11 04:28:50,434 [INFO] main: HUSDT | Judge:LONG conf=70% size=15.0%
 2026-06-11 04:28:50,434 [INFO] main: HUSDT | RL adj=69.2%
 2026-06-11 04:28:50,446 [INFO] main: HUSDT | Context score=-0.0 bias=0.0
 2026-06-11 04:28:50,446 [INFO] main: HUSDT | regime BLOCK (volatile)
@@ -3875,6 +3874,7 @@ root     1121216  0.1  3.4 728144 134952 ?       Ssl  Jun03  20:06 /opt/ensemble
 2026-06-11 04:29:18,783 [INFO] main: SOLUSDT | Context score=-0.0 bias=0.0
 2026-06-11 04:29:18,784 [INFO] main: SOLUSDT | regime BLOCK (short × trending_down × rsi1h=50.3; late-entry guard)
 2026-06-11 04:29:20,851 [INFO] main: Next scan in 30min (always-30min)
+2026-06-11 04:48:31,030 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -3892,7 +3892,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       895Mi       308Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       889Mi       314Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
