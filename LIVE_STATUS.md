@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-12 23:20:01 UTC
+Generated: 2026-06-12 23:30:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.0  54312 42108 ?        Ss   06:03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 134480 49332 ?        Ssl  06:03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1408426  0.1  3.3 723564 129352 ?       Ssl  06:03   1:47 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408426  0.1  3.3 723564 129368 ?       Ssl  06:03   1:47 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 962.258345177811,
+  "balance": 980.215091985811,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1781232007",
@@ -42,18 +42,6 @@ root     1408426  0.1  3.3 723564 129352 ?       Ssl  06:03   1:47 /opt/ensemble
       "opened_at": "2026-06-12T15:03:40.474111",
       "cost": 20.00000000000727,
       "notional": 100.00000000003634,
-      "leverage": 5
-    },
-    "RENDERUSDT": {
-      "id": "PAPER_RENDERUSDT_1781278744",
-      "symbol": "RENDERUSDT",
-      "side": "long",
-      "entry_price": 1.6738,
-      "qty": 59.7443,
-      "confidence": 78,
-      "opened_at": "2026-06-12T15:39:04.886547",
-      "cost": 20.000001868000002,
-      "notional": 100.00000934,
       "leverage": 5
     }
   },
@@ -4215,19 +4203,32 @@ root     1408426  0.1  3.3 723564 129352 ?       Ssl  06:03   1:47 /opt/ensemble
       "closed_at": "2026-06-12T15:25:33.556904",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_RENDERUSDT_1781278744",
+      "symbol": "RENDERUSDT",
+      "side": "long",
+      "entry_price": 1.6738,
+      "qty": 59.7443,
+      "confidence": 78,
+      "opened_at": "2026-06-12T15:39:04.886547",
+      "cost": 20.000001868000002,
+      "notional": 100.00000934,
+      "leverage": 5,
+      "exit_price": 1.6396,
+      "pnl_pct": -10.22,
+      "pnl_usdt": -2.04,
+      "closed_at": "2026-06-12T23:20:46.838876",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 22.26262244581873
+  "total_pnl": 20.21936738581873
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-12 23:10:37,395 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-12 23:10:37,507 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-12 23:10:37,509 [INFO] main: XPLUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-12 23:10:39,543 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-12 23:10:39,544 [INFO] main: XPLUSDT | Judge:SHORT conf=70% size=15.0%
 2026-06-12 23:10:39,544 [INFO] main: XPLUSDT | RL adj=78.9%
 2026-06-12 23:10:39,557 [INFO] main: XPLUSDT | Context score=-0.1 bias=0.1
 2026-06-12 23:10:39,557 [INFO] main: XPLUSDT | side-bias BLOCK (market bullish, short forbidden)
@@ -4253,6 +4254,11 @@ root     1408426  0.1  3.3 723564 129352 ?       Ssl  06:03   1:47 /opt/ensemble
 2026-06-12 23:11:07,417 [INFO] main: TRUMPUSDT | Judge:HOLD conf=60% size=0.0%
 2026-06-12 23:11:07,417 [INFO] main: TRUMPUSDT | RL adj=60.0%
 2026-06-12 23:11:09,418 [INFO] main: Next scan in 30min (always-30min)
+2026-06-12 23:20:46,836 [INFO] positions: STOP_LOSS RENDERUSDT long PnL:-2.04%
+2026-06-12 23:20:46,848 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG RENDERUSDT @ 1.6396 PnL: -10.22% (-2.04 USDT) | Баланс: 980.22
+2026-06-12 23:20:47,207 [INFO] positions: LOSS RENDERUSDT long PnL:-2.04% reason:stop_loss
+2026-06-12 23:20:47,207 [INFO] positions: Lessons: The trade was closed at a 2.04% loss due to a stop loss, contrary to the expected 4% upside move. The initial analysis relied on bullish sentiment, RSI, and MACD indicators, which ultimately did not materialize as predicted. This outcome highlights the importance of reevaluating the weight given to sentiment analysis and the potential for false signals in trending markets.
+2026-06-12 23:20:47,207 [INFO] rl: RL learned from long RENDERUSDT: loss -2.04% | weights bull=0.942 bear=0.847 judge=1.211 threshold=65.29
 ```
 
 ## Disk
@@ -4270,7 +4276,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       874Mi       311Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       879Mi       306Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
