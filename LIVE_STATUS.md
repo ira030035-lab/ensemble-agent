@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-12 20:00:01 UTC
+Generated: 2026-06-12 20:10:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.0  54312 42108 ?        Ss   06:03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 134480 49332 ?        Ssl  06:03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1408426  0.1  3.2 721128 127044 ?       Ssl  06:03   1:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408426  0.1  3.2 722152 127856 ?       Ssl  06:03   1:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -4223,7 +4223,6 @@ root     1408426  0.1  3.2 721128 127044 ?       Ssl  06:03   1:24 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-12 19:45:02,482 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-12 19:45:02,482 [INFO] main: ADAUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-12 19:45:02,482 [INFO] main: ADAUSDT | RL adj=55.0%
 2026-06-12 19:45:08,271 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -4253,6 +4252,7 @@ root     1408426  0.1  3.2 721128 127044 ?       Ssl  06:03   1:24 /opt/ensemble
 2026-06-12 19:45:37,902 [INFO] main: ALLOUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-12 19:45:37,902 [INFO] main: ALLOUSDT | RL adj=55.0%
 2026-06-12 19:45:39,904 [INFO] main: Next scan in 30min (always-30min)
+2026-06-12 20:04:07,031 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -4270,7 +4270,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       881Mi       311Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       849Mi       343Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
