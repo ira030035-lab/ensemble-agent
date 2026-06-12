@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-12 07:50:01 UTC
+Generated: 2026-06-12 08:00:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.0  54312 42108 ?        Ss   06:03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.0  55472 42392 ?        Ss   06:03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1408426  0.1  3.2 720104 125660 ?       Ssl  06:03   0:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408426  0.1  3.2 722560 127988 ?       Ssl  06:03   0:12 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -4133,15 +4133,6 @@ root     1408426  0.1  3.2 720104 125660 ?       Ssl  06:03   0:11 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-12 07:28:22,488 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
-2026-06-12 07:28:26,476 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-12 07:28:26,477 [INFO] main: BEATUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-12 07:28:36,695 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-12 07:28:36,696 [INFO] openai._base_client: Retrying request to /chat/completions in 0.394046 seconds
-2026-06-12 07:28:41,906 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-12 07:28:41,907 [INFO] main: BEATUSDT | Judge:HOLD conf=40% size=0.0%
-2026-06-12 07:28:41,907 [INFO] main: BEATUSDT | RL adj=40.0%
-2026-06-12 07:28:45,873 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
 2026-06-12 07:28:49,631 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-12 07:28:56,276 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-06-12 07:28:56,277 [INFO] openai._base_client: Retrying request to /chat/completions in 0.446477 seconds
@@ -4163,6 +4154,15 @@ root     1408426  0.1  3.2 720104 125660 ?       Ssl  06:03   0:11 /opt/ensemble
 2026-06-12 07:29:46,575 [INFO] main: BTCUSDT | Context score=-0.1 bias=0.1
 2026-06-12 07:29:46,575 [INFO] main: BTCUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-12 07:29:48,637 [INFO] main: Next scan in 30min (always-30min)
+2026-06-12 07:59:48,655 [INFO] main: Scanning 27 symbols...
+2026-06-12 07:59:54,517 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-12 07:59:54,583 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-12 07:59:54,584 [INFO] main: XLMUSDT | Bull:flat(25%) Bear:short(80%)
+2026-06-12 07:59:57,164 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-12 07:59:57,165 [INFO] main: XLMUSDT | Judge:SHORT conf=75% size=15.0%
+2026-06-12 07:59:57,165 [INFO] main: XLMUSDT | RL adj=85.2%
+2026-06-12 07:59:57,174 [INFO] main: XLMUSDT | Context score=-0.1 bias=0.1
+2026-06-12 07:59:57,174 [INFO] main: XLMUSDT | side-bias BLOCK (market bullish, short forbidden)
 ```
 
 ## Disk
@@ -4180,7 +4180,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       854Mi       368Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       872Mi       350Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
