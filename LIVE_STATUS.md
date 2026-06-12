@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-12 08:20:01 UTC
+Generated: 2026-06-12 08:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.0  54312 42108 ?        Ss   06:03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.0  55472 42392 ?        Ss   06:03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1408426  0.1  3.2 720104 125824 ?       Ssl  06:03   0:15 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408426  0.1  3.2 722560 128156 ?       Ssl  06:03   0:15 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -4139,36 +4139,36 @@ root     1408426  0.1  3.2 720104 125824 ?       Ssl  06:03   0:15 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-12 08:18:14,029 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
-2026-06-12 08:18:14,029 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
-2026-06-12 08:18:14,029 [INFO] main: HUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-12 08:18:14,029 [INFO] main: HUSDT | RL adj=50.0%
-2026-06-12 08:18:20,246 [INFO] positions: BREAKEVEN_STOP DOGEUSDT short PnL:0.42%
-2026-06-12 08:18:20,259 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT DOGEUSDT @ 0.0864 PnL: 2.08% (+0.42 USDT) | Баланс: 980.88
-2026-06-12 08:18:20,567 [INFO] positions: OK DOGEUSDT short PnL:0.42% reason:breakeven_stop
-2026-06-12 08:18:20,567 [INFO] positions: Lessons: The trade was based on a bear position with high dominance and an overbought RSI, indicating potential for a pullback. The trade ultimately closed at breakeven, with a small profit of 0.42%. This outcome suggests that while the initial analysis was correct in identifying overbought conditions, the expected downside move did not materialize as anticipated.
-2026-06-12 08:18:20,568 [INFO] rl: RL learned from short DOGEUSDT: profit 0.42% | weights bull=0.944 bear=0.851 judge=1.206 threshold=65.27
-2026-06-12 08:18:24,847 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-12 08:18:27,695 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-12 08:18:27,696 [INFO] openai._base_client: Retrying request to /chat/completions in 0.491148 seconds
-2026-06-12 08:18:38,221 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-12 08:18:38,221 [INFO] openai._base_client: Retrying request to /chat/completions in 0.958991 seconds
-2026-06-12 08:18:49,209 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-12 08:18:52,786 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-12 08:18:52,787 [INFO] main: HYPEUSDT | Bull:flat(25%) Bear:short(72%)
-2026-06-12 08:19:02,753 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-12 08:19:02,754 [INFO] main: HYPEUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-12 08:19:02,754 [INFO] main: HYPEUSDT | RL adj=55.0%
-2026-06-12 08:19:09,764 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-12 08:19:16,349 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-12 08:19:16,350 [INFO] openai._base_client: Retrying request to /chat/completions in 0.474405 seconds
-2026-06-12 08:19:26,989 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-12 08:19:26,990 [INFO] openai._base_client: Retrying request to /chat/completions in 0.928804 seconds
-2026-06-12 08:19:37,958 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-12 08:19:42,324 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-12 08:19:42,326 [INFO] main: ZECUSDT | Bull:flat(35%) Bear:flat(45%)
-2026-06-12 08:19:52,716 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-12 08:19:52,717 [INFO] openai._base_client: Retrying request to /chat/completions in 0.460386 seconds
+2026-06-12 08:23:09,138 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-12 08:23:09,139 [INFO] openai._base_client: Retrying request to /chat/completions in 0.472146 seconds
+2026-06-12 08:23:19,616 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-12 08:23:19,617 [INFO] openai._base_client: Retrying request to /chat/completions in 0.971968 seconds
+2026-06-12 08:23:30,601 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-12 08:23:30,602 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
+2026-06-12 08:23:30,602 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-06-12 08:23:30,602 [INFO] main: XPLUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-12 08:23:30,602 [INFO] main: XPLUSDT | RL adj=50.0%
+2026-06-12 08:23:34,511 [INFO] main: ADAUSDT | Bull:long(72%) Bear:short(70%)
+2026-06-12 08:23:44,683 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-12 08:23:44,684 [INFO] openai._base_client: Retrying request to /chat/completions in 0.483313 seconds
+2026-06-12 08:23:55,176 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-12 08:23:55,177 [INFO] openai._base_client: Retrying request to /chat/completions in 0.905031 seconds
+2026-06-12 08:24:05,468 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-12 08:24:05,470 [INFO] main: ADAUSDT | Judge:LONG conf=70% size=10.0%
+2026-06-12 08:24:05,470 [INFO] main: ADAUSDT | RL adj=71.3%
+2026-06-12 08:24:05,489 [INFO] main: ADAUSDT | Context score=0.0 bias=0.1
+2026-06-12 08:24:05,769 [INFO] main: ADAUSDT | regime BLOCK (long × trending_up × rsi1h=53.7; late-entry guard)
+2026-06-12 08:24:09,453 [INFO] main: ETHUSDT | Bull:long(72%) Bear:short(70%)
+2026-06-12 08:24:19,617 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-12 08:24:19,617 [INFO] openai._base_client: Retrying request to /chat/completions in 0.453889 seconds
+2026-06-12 08:24:30,091 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-12 08:24:30,092 [INFO] openai._base_client: Retrying request to /chat/completions in 0.867986 seconds
+2026-06-12 08:24:41,072 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-12 08:24:41,072 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
+2026-06-12 08:24:41,072 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-06-12 08:24:41,073 [INFO] main: ETHUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-12 08:24:41,073 [INFO] main: ETHUSDT | RL adj=50.0%
+2026-06-12 08:24:43,075 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -4186,7 +4186,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       853Mi       368Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       867Mi       355Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
