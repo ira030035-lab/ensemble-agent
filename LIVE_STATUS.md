@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-12 05:50:01 UTC
+Generated: 2026-06-12 06:00:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.3 209972 50968 ?        Ssl  Jun03   1:28 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 729168 135632 ?       Ssl  Jun03  22:23 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 729168 135632 ?       Ssl  Jun03  22:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 939.224541888818,
+  "balance": 959.695962336818,
   "positions": {
-    "ADAUSDT": {
-      "id": "PAPER_ADAUSDT_1781200627",
-      "symbol": "ADAUSDT",
-      "side": "long",
-      "entry_price": 0.1697,
-      "qty": 589.2752,
-      "confidence": 85,
-      "opened_at": "2026-06-11T17:57:07.948275",
-      "cost": 20.000000288000003,
-      "notional": 100.00000144,
-      "leverage": 5
-    },
     "DOGEUSDT": {
       "id": "PAPER_DOGEUSDT_1781200815",
       "symbol": "DOGEUSDT",
@@ -4065,19 +4053,32 @@ root     1121216  0.1  3.4 729168 135632 ?       Ssl  Jun03  22:23 /opt/ensemble
       "closed_at": "2026-06-12T03:42:07.623731",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ADAUSDT_1781200627",
+      "symbol": "ADAUSDT",
+      "side": "long",
+      "entry_price": 0.1697,
+      "qty": 589.2752,
+      "confidence": 85,
+      "opened_at": "2026-06-11T17:57:07.948275",
+      "cost": 20.000000288000003,
+      "notional": 100.00000144,
+      "leverage": 5,
+      "exit_price": 0.1705,
+      "pnl_pct": 2.36,
+      "pnl_usdt": 0.47,
+      "closed_at": "2026-06-12T05:50:40.666689",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 19.2288047108187
+  "total_pnl": 19.700224870818715
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-12 05:44:30,410 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-12 05:44:30,714 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-12 05:44:30,715 [INFO] main: ONDOUSDT | Bull:long(62%) Bear:short(75%)
-2026-06-12 05:44:33,059 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-12 05:44:33,061 [INFO] main: ONDOUSDT | Judge:SHORT conf=85% size=15.0%
 2026-06-12 05:44:33,061 [INFO] main: ONDOUSDT | RL adj=85.9%
 2026-06-12 05:44:33,085 [INFO] main: ONDOUSDT | Context score=-0.1 bias=0.1
 2026-06-12 05:44:33,086 [INFO] main: ONDOUSDT | side-bias BLOCK (market bullish, short forbidden)
@@ -4103,6 +4104,11 @@ root     1121216  0.1  3.4 729168 135632 ?       Ssl  Jun03  22:23 /opt/ensemble
 2026-06-12 05:45:13,187 [INFO] main: ENAUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-12 05:45:15,250 [INFO] main: Next scan in 30min (always-30min)
 2026-06-12 05:48:47,657 [INFO] main: Symbols: 30
+2026-06-12 05:50:40,664 [INFO] positions: BREAKEVEN_STOP ADAUSDT long PnL:0.47%
+2026-06-12 05:50:40,676 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG ADAUSDT @ 0.1705 PnL: 2.36% (+0.47 USDT) | Баланс: 959.70
+2026-06-12 05:50:40,966 [INFO] positions: OK ADAUSDT long PnL:0.47% reason:breakeven_stop
+2026-06-12 05:50:40,966 [INFO] positions: Lessons: The trade was based on bullish dominance with strong sentiment, expecting a 4% move. It closed at breakeven stop with a 0.47% profit, failing to reach the expected target. The key takeaway is that the trade's risk-reward ratio was not fully realized, highlighting the importance of adjusting expectations and stop-loss levels.
+2026-06-12 05:50:40,966 [INFO] rl: RL learned from long ADAUSDT: profit 0.47% | weights bull=0.941 bear=0.856 judge=1.202 threshold=65.29
 ```
 
 ## Disk
@@ -4120,7 +4126,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       880Mi       295Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       894Mi       280Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
