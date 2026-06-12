@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-12 12:50:01 UTC
+Generated: 2026-06-12 13:00:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.0  54312 42108 ?        Ss   06:03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 134480 49040 ?        Ssl  06:03   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1408426  0.1  3.2 722552 128488 ?       Ssl  06:03   0:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408426  0.1  3.2 722552 128564 ?       Ssl  06:03   0:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 958.2659802788181,
+  "balance": 978.7177168788181,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1781232007",
@@ -30,18 +30,6 @@ root     1408426  0.1  3.2 722552 128488 ?       Ssl  06:03   0:40 /opt/ensemble
       "opened_at": "2026-06-12T02:40:07.876832",
       "cost": 20.0042754,
       "notional": 100.021377,
-      "leverage": 5
-    },
-    "XRPUSDT": {
-      "id": "PAPER_XRPUSDT_1781246491",
-      "symbol": "XRPUSDT",
-      "side": "long",
-      "entry_price": 1.129,
-      "qty": 88.574,
-      "confidence": 70,
-      "opened_at": "2026-06-12T06:41:31.497751",
-      "cost": 20.0000092,
-      "notional": 100.000046,
       "leverage": 5
     },
     "TONUSDT": {
@@ -4161,19 +4149,32 @@ root     1408426  0.1  3.2 722552 128488 ?       Ssl  06:03   0:40 /opt/ensemble
       "closed_at": "2026-06-12T10:29:43.090040",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_XRPUSDT_1781246491",
+      "symbol": "XRPUSDT",
+      "side": "long",
+      "entry_price": 1.129,
+      "qty": 88.574,
+      "confidence": 70,
+      "opened_at": "2026-06-12T06:41:31.497751",
+      "cost": 20.0000092,
+      "notional": 100.000046,
+      "leverage": 5,
+      "exit_price": 1.1341,
+      "pnl_pct": 2.26,
+      "pnl_usdt": 0.45,
+      "closed_at": "2026-06-12T12:55:13.156263",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 18.270272190818723
+  "total_pnl": 18.721999590818733
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-12 12:47:17,905 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-12 12:47:17,907 [INFO] main: TRUMPUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-12 12:47:20,257 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-12 12:47:20,259 [INFO] main: TRUMPUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-12 12:47:20,259 [INFO] main: TRUMPUSDT | RL adj=50.0%
 2026-06-12 12:47:26,131 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-12 12:47:29,016 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-12 12:47:29,018 [INFO] main: EPICUSDT | Bull:flat(15%) Bear:short(80%)
@@ -4199,6 +4200,11 @@ root     1408426  0.1  3.2 722552 128488 ?       Ssl  06:03   0:40 /opt/ensemble
 2026-06-12 12:47:52,746 [INFO] main: STGUSDT | Context score=-0.1 bias=0.1
 2026-06-12 12:47:52,746 [INFO] main: STGUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-12 12:47:54,749 [INFO] main: Next scan in 30min (always-30min)
+2026-06-12 12:55:13,155 [INFO] positions: BREAKEVEN_STOP XRPUSDT long PnL:0.45%
+2026-06-12 12:55:13,161 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG XRPUSDT @ 1.1341 PnL: 2.26% (+0.45 USDT) | Баланс: 978.72
+2026-06-12 12:55:13,538 [INFO] positions: OK XRPUSDT long PnL:0.45% reason:breakeven_stop
+2026-06-12 12:55:13,538 [INFO] positions: Lessons: The trade was based on a strong bull signal and a higher risk/reward ratio but ultimately closed at breakeven. The initial reasoning proved incorrect as the potential upside movement was not realized. This trade highlights the importance of managing expectations and being prepared for breakeven outcomes even with favorable indicators.
+2026-06-12 12:55:13,538 [INFO] rl: RL learned from long XRPUSDT: profit 0.45% | weights bull=0.939 bear=0.854 judge=1.207 threshold=65.29
 ```
 
 ## Disk
@@ -4216,7 +4222,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       875Mi       336Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       881Mi       331Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
