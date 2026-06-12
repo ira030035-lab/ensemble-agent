@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-12 06:20:01 UTC
+Generated: 2026-06-12 06:30:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.0  54312 42108 ?        Ss   06:03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.0  55472 42392 ?        Ss   06:03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1408426  0.4  3.1 719080 124484 ?       Ssl  06:03   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408426  0.2  3.1 719080 124560 ?       Ssl  06:03   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 960.049838338818,
+  "balance": 977.195221294818,
   "positions": {
     "DOGEUSDT": {
       "id": "PAPER_DOGEUSDT_1781200815",
@@ -42,18 +42,6 @@ root     1408426  0.4  3.1 719080 124484 ?       Ssl  06:03   0:04 /opt/ensemble
       "opened_at": "2026-06-12T02:40:07.876832",
       "cost": 20.0042754,
       "notional": 100.021377,
-      "leverage": 5
-    },
-    "ALLOUSDT": {
-      "id": "PAPER_ALLOUSDT_1781244462",
-      "symbol": "ALLOUSDT",
-      "side": "long",
-      "entry_price": 0.40741,
-      "qty": 245.453,
-      "confidence": 85,
-      "opened_at": "2026-06-12T06:07:42.963057",
-      "cost": 20.000001345999998,
-      "notional": 100.00000673,
       "leverage": 5
     }
   },
@@ -4089,19 +4077,32 @@ root     1408426  0.4  3.1 719080 124484 ?       Ssl  06:03   0:04 /opt/ensemble
       "closed_at": "2026-06-12T06:03:32.729039",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ALLOUSDT_1781244462",
+      "symbol": "ALLOUSDT",
+      "side": "long",
+      "entry_price": 0.40741,
+      "qty": 245.453,
+      "confidence": 85,
+      "opened_at": "2026-06-12T06:07:42.963057",
+      "cost": 20.000001345999998,
+      "notional": 100.00000673,
+      "leverage": 5,
+      "exit_price": 0.39578,
+      "pnl_pct": -14.27,
+      "pnl_usdt": -2.85,
+      "closed_at": "2026-06-12T06:21:25.390803",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 20.054114540818716
+  "total_pnl": 17.199496150818725
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-12 06:09:05,283 [INFO] main: ZECUSDT | Context score=0.0 bias=0.1
-2026-06-12 06:09:12,342 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-12 06:09:12,392 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-12 06:09:12,393 [INFO] main: SPACEUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-12 06:09:15,186 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-12 06:09:15,187 [INFO] main: SPACEUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-12 06:09:15,187 [INFO] main: SPACEUSDT | RL adj=50.0%
 2026-06-12 06:09:20,698 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -4127,6 +4128,11 @@ root     1408426  0.4  3.1 719080 124484 ?       Ssl  06:03   0:04 /opt/ensemble
 2026-06-12 06:09:42,773 [INFO] main: XMRUSDT | Context score=0.0 bias=0.1
 2026-06-12 06:09:42,773 [INFO] main: XMRUSDT | regime BLOCK (volatile)
 2026-06-12 06:09:44,819 [INFO] main: Next scan in 30min (always-30min)
+2026-06-12 06:21:25,388 [INFO] positions: STOP_LOSS ALLOUSDT long PnL:-2.85%
+2026-06-12 06:21:25,400 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG ALLOUSDT @ 0.3958 PnL: -14.27% (-2.85 USDT) | Баланс: 977.20
+2026-06-12 06:21:25,657 [INFO] positions: LOSS ALLOUSDT long PnL:-2.85% reason:stop_loss
+2026-06-12 06:21:25,657 [INFO] positions: Lessons: The trade was based on bull dominance with a potential 4% move but was stopped out for a 2.85% loss. The RSI signaled overbought conditions which ultimately led to a reversal. This trade highlights the importance of respecting overbought signals even in strong trending markets.
+2026-06-12 06:21:25,657 [INFO] rl: RL learned from long ALLOUSDT: loss -2.85% | weights bull=0.938 bear=0.860 judge=1.203 threshold=65.32
 ```
 
 ## Disk
@@ -4144,7 +4150,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       862Mi       362Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       871Mi       352Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
