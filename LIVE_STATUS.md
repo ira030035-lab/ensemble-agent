@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-12 20:20:01 UTC
+Generated: 2026-06-12 20:30:01 UTC
 
 ## Services
 ```
@@ -4223,10 +4223,6 @@ root     1408426  0.1  3.3 723576 129364 ?       Ssl  06:03   1:28 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-12 20:19:27,152 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-12 20:19:27,153 [INFO] main: ESPORTSUSDT | Bull:flat(25%) Bear:short(80%)
-2026-06-12 20:19:29,200 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-12 20:19:29,201 [INFO] main: ESPORTSUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-12 20:19:29,201 [INFO] main: ESPORTSUSDT | RL adj=55.0%
 2026-06-12 20:19:34,996 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-12 20:19:35,648 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -4253,6 +4249,10 @@ root     1408426  0.1  3.3 723576 129364 ?       Ssl  06:03   1:28 /opt/ensemble
 2026-06-12 20:20:00,936 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-12 20:20:01,785 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-12 20:20:01,787 [INFO] main: XRPUSDT | Bull:flat(25%) Bear:short(75%)
+2026-06-12 20:20:03,737 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-12 20:20:03,739 [INFO] main: XRPUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-12 20:20:03,739 [INFO] main: XRPUSDT | RL adj=55.0%
+2026-06-12 20:20:05,742 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -4270,7 +4270,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       852Mi       339Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       876Mi       315Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
