@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-12 06:30:01 UTC
+Generated: 2026-06-12 06:40:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.0  54312 42108 ?        Ss   06:03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.0  55472 42392 ?        Ss   06:03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1408426  0.2  3.1 719080 124560 ?       Ssl  06:03   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408426  0.2  3.1 719080 124668 ?       Ssl  06:03   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -4103,16 +4103,6 @@ root     1408426  0.2  3.1 719080 124560 ?       Ssl  06:03   0:04 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-12 06:09:15,187 [INFO] main: SPACEUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-12 06:09:15,187 [INFO] main: SPACEUSDT | RL adj=50.0%
-2026-06-12 06:09:20,698 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-12 06:09:21,715 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-12 06:09:21,716 [INFO] main: TAOUSDT | Bull:flat(25%) Bear:short(65%)
-2026-06-12 06:09:23,858 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-12 06:09:23,859 [INFO] main: TAOUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-12 06:09:23,859 [INFO] main: TAOUSDT | RL adj=55.0%
-2026-06-12 06:09:30,181 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-12 06:09:30,747 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-12 06:09:30,749 [INFO] main: ONDOUSDT | Bull:long(62%) Bear:short(65%)
 2026-06-12 06:09:32,714 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-12 06:09:32,716 [INFO] main: ONDOUSDT | Judge:SHORT conf=85% size=15.0%
@@ -4133,6 +4123,16 @@ root     1408426  0.2  3.1 719080 124560 ?       Ssl  06:03   0:04 /opt/ensemble
 2026-06-12 06:21:25,657 [INFO] positions: LOSS ALLOUSDT long PnL:-2.85% reason:stop_loss
 2026-06-12 06:21:25,657 [INFO] positions: Lessons: The trade was based on bull dominance with a potential 4% move but was stopped out for a 2.85% loss. The RSI signaled overbought conditions which ultimately led to a reversal. This trade highlights the importance of respecting overbought signals even in strong trending markets.
 2026-06-12 06:21:25,657 [INFO] rl: RL learned from long ALLOUSDT: loss -2.85% | weights bull=0.938 bear=0.860 judge=1.203 threshold=65.32
+2026-06-12 06:39:44,834 [INFO] main: Scanning 28 symbols...
+2026-06-12 06:39:50,522 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-12 06:39:50,532 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-12 06:39:50,532 [INFO] main: EPICUSDT | Bull:flat(15%) Bear:short(70%)
+2026-06-12 06:39:53,480 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-12 06:39:53,481 [INFO] main: EPICUSDT | Judge:SHORT conf=80% size=15.0%
+2026-06-12 06:39:53,482 [INFO] main: EPICUSDT | RL adj=89.0%
+2026-06-12 06:39:53,502 [INFO] main: EPICUSDT | Context score=-0.1 bias=0.1
+2026-06-12 06:39:53,502 [INFO] main: EPICUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-06-12 06:39:59,581 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 ```
 
 ## Disk
@@ -4150,7 +4150,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       871Mi       352Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       848Mi       375Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
