@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-12 01:40:01 UTC
+Generated: 2026-06-12 01:50:01 UTC
 
 ## Services
 ```
@@ -4031,7 +4031,6 @@ root     1121216  0.1  3.4 728144 135556 ?       Ssl  Jun03  22:00 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-12 01:23:30,315 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-12 01:23:30,507 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-12 01:23:30,508 [INFO] main: LABUSDT | Bull:long(62%) Bear:short(78%)
 2026-06-12 01:23:33,439 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -4061,6 +4060,7 @@ root     1121216  0.1  3.4 728144 135556 ?       Ssl  Jun03  22:00 /opt/ensemble
 2026-06-12 01:27:39,471 [INFO] positions: OK ETHUSDT long PnL:0.48% reason:breakeven_stop
 2026-06-12 01:27:39,471 [INFO] positions: Lessons: The trade was based on bullish conditions with high sentiment and volume surge but ended in a breakeven stop. The 2:1 risk/reward expectation was not met, resulting in a minimal 0.48% profit. This outcome suggests that extreme fear and high sentiment do not always guarantee significant price movement in a ranging regime.
 2026-06-12 01:27:39,471 [INFO] rl: RL learned from long ETHUSDT: profit 0.48% | weights bull=0.939 bear=0.859 judge=1.202 threshold=65.35
+2026-06-12 01:48:45,112 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -4078,7 +4078,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       896Mi       289Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       895Mi       290Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
