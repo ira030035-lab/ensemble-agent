@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-12 01:00:01 UTC
+Generated: 2026-06-12 01:10:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.4 728144 135556 ?       Ssl  Jun03  21:57 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 937.8196768068179,
+  "balance": 958.310134846818,
   "positions": {
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1781161170",
@@ -54,18 +54,6 @@ root     1121216  0.1  3.4 728144 135556 ?       Ssl  Jun03  21:57 /opt/ensemble
       "opened_at": "2026-06-11T18:00:15.127276",
       "cost": 19.999999456000005,
       "notional": 99.99999728000002,
-      "leverage": 5
-    },
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1781208789",
-      "symbol": "HYPEUSDT",
-      "side": "long",
-      "entry_price": 58.674,
-      "qty": 1.7043,
-      "confidence": 85,
-      "opened_at": "2026-06-11T20:13:09.745896",
-      "cost": 19.99961964,
-      "notional": 99.9980982,
       "leverage": 5
     }
   },
@@ -4011,19 +3999,32 @@ root     1121216  0.1  3.4 728144 135556 ?       Ssl  Jun03  21:57 /opt/ensemble
       "closed_at": "2026-06-11T22:30:26.285435",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1781208789",
+      "symbol": "HYPEUSDT",
+      "side": "long",
+      "entry_price": 58.674,
+      "qty": 1.7043,
+      "confidence": 85,
+      "opened_at": "2026-06-11T20:13:09.745896",
+      "cost": 19.99961964,
+      "notional": 99.9980982,
+      "leverage": 5,
+      "exit_price": 58.962,
+      "pnl_pct": 2.45,
+      "pnl_usdt": 0.49,
+      "closed_at": "2026-06-12T01:06:03.131220",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 17.833059190818688
+  "total_pnl": 18.323897590818692
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-12 00:47:38,877 [INFO] main: BNBUSDT | RL adj=70.3%
-2026-06-12 00:47:38,899 [INFO] main: BNBUSDT | Context score=0.0 bias=0.05
-2026-06-12 00:47:38,899 [INFO] main: BNBUSDT | gate PASS (Judge 70/70 RL 70.3/65.4 slack=±3)
-2026-06-12 00:47:38,901 [INFO] positions: 2/3 rule: skip LONG BNBUSDT (3/4 already long)
-2026-06-12 00:47:44,325 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-12 00:47:46,628 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-12 00:47:46,628 [INFO] main: VELVETUSDT | Bull:flat(15%) Bear:short(65%)
 2026-06-12 00:47:48,611 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -4049,6 +4050,11 @@ root     1121216  0.1  3.4 728144 135556 ?       Ssl  Jun03  21:57 /opt/ensemble
 2026-06-12 00:48:18,068 [INFO] main: BEATUSDT | RL adj=45.0%
 2026-06-12 00:48:20,071 [INFO] main: Next scan in 30min (always-30min)
 2026-06-12 00:48:44,495 [INFO] main: Symbols: 30
+2026-06-12 01:06:03,129 [INFO] positions: BREAKEVEN_STOP HYPEUSDT long PnL:0.49%
+2026-06-12 01:06:03,140 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG HYPEUSDT @ 58.9620 PnL: 2.45% (+0.49 USDT) | Баланс: 958.31
+2026-06-12 01:06:03,488 [INFO] positions: OK HYPEUSDT long PnL:0.49% reason:breakeven_stop
+2026-06-12 01:06:03,488 [INFO] positions: Lessons: The trade was based on a bullish signal with a strong uptrend and trend following regime, but high RSI was a concern. The trade ultimately closed at breakeven due to a breakeven stop, resulting in a small 0.49% gain. This outcome suggests that caution is needed when entering long positions with high RSI readings, even in the presence of other bullish indicators.
+2026-06-12 01:06:03,488 [INFO] rl: RL learned from long HYPEUSDT: profit 0.49% | weights bull=0.938 bear=0.861 judge=1.201 threshold=65.38
 ```
 
 ## Disk
@@ -4066,7 +4072,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       903Mi       285Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       894Mi       292Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
