@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-12 10:00:01 UTC
+Generated: 2026-06-12 10:10:01 UTC
 
 ## Services
 ```
@@ -4151,7 +4151,6 @@ root     1408426  0.1  3.2 722560 128392 ?       Ssl  06:03   0:23 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-12 09:51:30,066 [INFO] main: TRUMPUSDT | Judge:SHORT conf=80% size=15.0%
 2026-06-12 09:51:30,066 [INFO] main: TRUMPUSDT | RL adj=89.6%
 2026-06-12 09:51:30,077 [INFO] main: TRUMPUSDT | Context score=-0.1 bias=0.1
 2026-06-12 09:51:30,077 [INFO] main: TRUMPUSDT | side-bias BLOCK (market bullish, short forbidden)
@@ -4181,6 +4180,7 @@ root     1408426  0.1  3.2 722560 128392 ?       Ssl  06:03   0:23 /opt/ensemble
 2026-06-12 09:52:13,891 [INFO] main: ALLOUSDT | Context score=-0.1 bias=0.1
 2026-06-12 09:52:13,891 [INFO] main: ALLOUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-12 09:52:15,894 [INFO] main: Next scan in 30min (always-30min)
+2026-06-12 10:04:00,319 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -4198,7 +4198,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       874Mi       345Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       866Mi       352Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
