@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-12 03:40:01 UTC
+Generated: 2026-06-12 03:50:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1121216  0.1  3.4 728144 135556 ?       Ssl  Jun03  22:10 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 938.798174710818,
+  "balance": 959.224529566818,
   "positions": {
     "ADAUSDT": {
       "id": "PAPER_ADAUSDT_1781200627",
@@ -42,18 +42,6 @@ root     1121216  0.1  3.4 728144 135556 ?       Ssl  Jun03  22:10 /opt/ensemble
       "opened_at": "2026-06-11T18:00:15.127276",
       "cost": 19.999999456000005,
       "notional": 99.99999728000002,
-      "leverage": 5
-    },
-    "TONUSDT": {
-      "id": "PAPER_TONUSDT_1781229491",
-      "symbol": "TONUSDT",
-      "side": "long",
-      "entry_price": 1.7122,
-      "qty": 58.4044,
-      "confidence": 80,
-      "opened_at": "2026-06-12T01:58:11.997486",
-      "cost": 20.000002736,
-      "notional": 100.00001368,
       "leverage": 5
     },
     "BNBUSDT": {
@@ -4047,20 +4035,32 @@ root     1121216  0.1  3.4 728144 135556 ?       Ssl  Jun03  22:10 /opt/ensemble
       "closed_at": "2026-06-12T01:27:39.111740",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_TONUSDT_1781229491",
+      "symbol": "TONUSDT",
+      "side": "long",
+      "entry_price": 1.7122,
+      "qty": 58.4044,
+      "confidence": 80,
+      "opened_at": "2026-06-12T01:58:11.997486",
+      "cost": 20.000002736,
+      "notional": 100.00001368,
+      "leverage": 5,
+      "exit_price": 1.7195,
+      "pnl_pct": 2.13,
+      "pnl_usdt": 0.43,
+      "closed_at": "2026-06-12T03:42:07.623731",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 18.802452590818696
+  "total_pnl": 19.2288047108187
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-12 03:21:32,386 [INFO] main: EPICUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-12 03:21:37,263 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-12 03:21:37,265 [INFO] main: EPICUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-12 03:21:37,265 [INFO] main: EPICUSDT | RL adj=50.0%
-2026-06-12 03:21:40,673 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-06-12 03:21:44,355 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-12 03:21:46,694 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-12 03:21:46,695 [INFO] main: XLMUSDT | Bull:flat(35%) Bear:short(70%)
 2026-06-12 03:21:55,457 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -4085,6 +4085,12 @@ root     1121216  0.1  3.4 728144 135556 ?       Ssl  Jun03  22:10 /opt/ensemble
 2026-06-12 03:22:51,097 [INFO] main: NEARUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-12 03:22:51,097 [INFO] main: NEARUSDT | RL adj=55.0%
 2026-06-12 03:22:53,100 [INFO] main: Next scan in 30min (always-30min)
+2026-06-12 03:42:07,622 [INFO] positions: BREAKEVEN_STOP TONUSDT long PnL:0.43%
+2026-06-12 03:42:07,628 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG TONUSDT @ 1.7195 PnL: 2.13% (+0.43 USDT) | Баланс: 959.22
+2026-06-12 03:42:07,922 [INFO] positions: OK TONUSDT long PnL:0.43% reason:breakeven_stop
+2026-06-12 03:42:07,922 [INFO] positions: Lessons: The trade on TONUSDT resulted in a small gain of 0.43% due to hitting the breakeven stop. The initial bullish sentiment and technical alignment were correct, but the expected 4% upside move did not materialize. This trade highlights the importance of having a breakeven stop to limit losses and lock in small gains when the market does not move as expected.
+2026-06-12 03:42:07,922 [INFO] rl: RL learned from long TONUSDT: profit 0.43% | weights bull=0.940 bear=0.858 judge=1.202 threshold=65.32
+2026-06-12 03:48:46,386 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -4102,7 +4108,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       892Mi       290Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       893Mi       289Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
