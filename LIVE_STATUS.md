@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-12 05:30:01 UTC
+Generated: 2026-06-12 05:40:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1121157  0.0  1.2  63052 50560 ?        Ss   Jun03   0:03 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1121169  0.0  1.3 209972 50968 ?        Ssl  Jun03   1:28 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1121216  0.1  3.4 729168 135620 ?       Ssl  Jun03  22:20 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1121216  0.1  3.4 729168 135620 ?       Ssl  Jun03  22:21 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -4073,28 +4073,6 @@ root     1121216  0.1  3.4 729168 135620 ?       Ssl  Jun03  22:20 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-12 05:08:11,478 [INFO] main: XLMUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-12 05:08:11,478 [INFO] main: XLMUSDT | RL adj=50.0%
-2026-06-12 05:08:14,855 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-06-12 05:08:17,967 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-12 05:08:18,961 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-12 05:08:18,961 [INFO] main: ETHUSDT | Bull:long(72%) Bear:short(70%)
-2026-06-12 05:08:21,106 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-12 05:08:21,108 [INFO] main: ETHUSDT | Judge:LONG conf=85% size=15.0%
-2026-06-12 05:08:21,108 [INFO] main: ETHUSDT | RL adj=86.1%
-2026-06-12 05:08:21,128 [INFO] main: ETHUSDT | Context score=-0.0 bias=0.1
-2026-06-12 05:08:21,128 [INFO] main: ETHUSDT | gate PASS (Judge 85/70 RL 86.1/65.32 slack=±3)
-2026-06-12 05:08:21,130 [INFO] positions: 2/3 rule: skip LONG ETHUSDT (3/4 already long)
-2026-06-12 05:08:27,415 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-12 05:08:27,686 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-12 05:08:27,687 [INFO] main: SUIUSDT | Bull:long(62%) Bear:short(60%)
-2026-06-12 05:08:29,909 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-12 05:08:29,910 [INFO] main: SUIUSDT | Judge:LONG conf=85% size=15.0%
-2026-06-12 05:08:29,910 [INFO] main: SUIUSDT | RL adj=86.0%
-2026-06-12 05:08:29,921 [INFO] main: SUIUSDT | Context score=0.0 bias=0.1
-2026-06-12 05:08:29,921 [INFO] main: SUIUSDT | regime BLOCK (long × trending_up × rsi1h=54.1; late-entry guard)
-2026-06-12 05:08:35,760 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-12 05:08:36,278 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-12 05:08:36,279 [INFO] main: ZECUSDT | Bull:long(62%) Bear:short(70%)
 2026-06-12 05:08:38,673 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-12 05:08:38,674 [INFO] main: ZECUSDT | Judge:LONG conf=70% size=15.0%
@@ -4103,6 +4081,28 @@ root     1121216  0.1  3.4 729168 135620 ?       Ssl  Jun03  22:20 /opt/ensemble
 2026-06-12 05:08:38,685 [INFO] main: ZECUSDT | gate PASS (Judge 70/70 RL 69.7/65.32 slack=±3)
 2026-06-12 05:08:38,685 [INFO] positions: 2/3 rule: skip LONG ZECUSDT (3/4 already long)
 2026-06-12 05:08:40,687 [INFO] main: Next scan in 30min (always-30min)
+2026-06-12 05:38:40,700 [INFO] main: Scanning 26 symbols...
+2026-06-12 05:38:42,663 [INFO] main: HUSDT | Bull:long(80%) Bear:short(80%)
+2026-06-12 05:38:53,034 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-12 05:38:53,034 [INFO] openai._base_client: Retrying request to /chat/completions in 0.434867 seconds
+2026-06-12 05:39:03,628 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-12 05:39:03,629 [INFO] openai._base_client: Retrying request to /chat/completions in 0.910706 seconds
+2026-06-12 05:39:14,576 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-12 05:39:14,577 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
+2026-06-12 05:39:14,577 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-06-12 05:39:14,577 [INFO] main: HUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-12 05:39:14,577 [INFO] main: HUSDT | RL adj=50.0%
+2026-06-12 05:39:18,481 [INFO] main: PEPEUSDT | Bull:long(70%) Bear:short(70%)
+2026-06-12 05:39:28,802 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-12 05:39:28,803 [INFO] openai._base_client: Retrying request to /chat/completions in 0.404540 seconds
+2026-06-12 05:39:39,225 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-12 05:39:39,226 [INFO] openai._base_client: Retrying request to /chat/completions in 0.989080 seconds
+2026-06-12 05:39:50,242 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-12 05:39:50,243 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
+2026-06-12 05:39:50,243 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-06-12 05:39:50,243 [INFO] main: PEPEUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-12 05:39:50,243 [INFO] main: PEPEUSDT | RL adj=50.0%
+2026-06-12 05:39:54,015 [INFO] main: NEARUSDT | Bull:long(72%) Bear:short(70%)
 ```
 
 ## Disk
@@ -4120,7 +4120,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       902Mi       273Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       876Mi       299Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
