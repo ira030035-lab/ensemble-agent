@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-12 16:00:01 UTC
+Generated: 2026-06-12 16:10:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.0  54312 42108 ?        Ss   06:03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 134480 49040 ?        Ssl  06:03   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1408426  0.1  3.3 723584 129296 ?       Ssl  06:03   0:58 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408426  0.1  3.3 723584 129296 ?       Ssl  06:03   0:59 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -4223,7 +4223,6 @@ root     1408426  0.1  3.3 723584 129296 ?       Ssl  06:03   0:58 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-12 15:42:58,601 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-12 15:42:58,602 [INFO] main: TRUMPUSDT | Judge:SHORT conf=70% size=15.0%
 2026-06-12 15:42:58,602 [INFO] main: TRUMPUSDT | RL adj=79.5%
 2026-06-12 15:42:58,613 [INFO] main: TRUMPUSDT | Context score=-0.1 bias=0.1
@@ -4253,6 +4252,7 @@ root     1408426  0.1  3.3 723584 129296 ?       Ssl  06:03   0:58 /opt/ensemble
 2026-06-12 15:43:44,125 [INFO] main: DOGEUSDT | Judge:HOLD conf=60% size=0.0%
 2026-06-12 15:43:44,125 [INFO] main: DOGEUSDT | RL adj=60.0%
 2026-06-12 15:43:46,128 [INFO] main: Next scan in 30min (always-30min)
+2026-06-12 16:04:04,316 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -4270,7 +4270,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       892Mi       312Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       883Mi       320Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
