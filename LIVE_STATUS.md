@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-12 13:00:01 UTC
+Generated: 2026-06-12 13:10:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.0  54312 42108 ?        Ss   06:03   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 134480 49040 ?        Ssl  06:03   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1408426  0.1  3.2 722552 128564 ?       Ssl  06:03   0:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408426  0.1  3.2 722552 128564 ?       Ssl  06:03   0:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -4175,7 +4175,6 @@ root     1408426  0.1  3.2 722552 128564 ?       Ssl  06:03   0:40 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-12 12:47:26,131 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-12 12:47:29,016 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-12 12:47:29,018 [INFO] main: EPICUSDT | Bull:flat(15%) Bear:short(80%)
 2026-06-12 12:47:31,393 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -4205,6 +4204,7 @@ root     1408426  0.1  3.2 722552 128564 ?       Ssl  06:03   0:40 /opt/ensemble
 2026-06-12 12:55:13,538 [INFO] positions: OK XRPUSDT long PnL:0.45% reason:breakeven_stop
 2026-06-12 12:55:13,538 [INFO] positions: Lessons: The trade was based on a strong bull signal and a higher risk/reward ratio but ultimately closed at breakeven. The initial reasoning proved incorrect as the potential upside movement was not realized. This trade highlights the importance of managing expectations and being prepared for breakeven outcomes even with favorable indicators.
 2026-06-12 12:55:13,538 [INFO] rl: RL learned from long XRPUSDT: profit 0.45% | weights bull=0.939 bear=0.854 judge=1.207 threshold=65.29
+2026-06-12 13:04:02,355 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -4222,7 +4222,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       881Mi       331Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       874Mi       337Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
