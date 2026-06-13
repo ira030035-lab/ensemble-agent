@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-13 05:40:01 UTC
+Generated: 2026-06-13 05:50:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1408426  0.1  3.2 721128 127416 ?       Ssl  Jun12   2:28 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 960.106943332211,
+  "balance": 978.0954289040774,
   "positions": {
-    "PEPEUSDT": {
-      "id": "PAPER_PEPEUSDT_1781276620",
-      "symbol": "PEPEUSDT",
-      "side": "long",
-      "entry_price": 2.8486e-06,
-      "qty": 35104963.8419,
-      "confidence": 90,
-      "opened_at": "2026-06-12T15:03:40.474111",
-      "cost": 20.00000000000727,
-      "notional": 100.00000000003634,
-      "leverage": 5
-    },
     "ENAUSDT": {
       "id": "PAPER_ENAUSDT_1781318137",
       "symbol": "ENAUSDT",
@@ -4251,19 +4239,32 @@ root     1408426  0.1  3.2 721128 127416 ?       Ssl  Jun12   2:28 /opt/ensemble
       "closed_at": "2026-06-13T02:40:35.608401",
       "reason": "max_hold",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_PEPEUSDT_1781276620",
+      "symbol": "PEPEUSDT",
+      "side": "long",
+      "entry_price": 2.8486e-06,
+      "qty": 35104963.8419,
+      "confidence": 90,
+      "opened_at": "2026-06-12T15:03:40.474111",
+      "cost": 20.00000000000727,
+      "notional": 100.00000000003634,
+      "leverage": 5,
+      "exit_price": 2.7913e-06,
+      "pnl_pct": -10.06,
+      "pnl_usdt": -2.01,
+      "closed_at": "2026-06-13T05:46:59.558710",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 20.10696338581872
+  "total_pnl": 18.09544895767784
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-13 05:30:50,137 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-13 05:30:50,138 [INFO] main: ZECUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-13 05:30:53,964 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-13 05:30:53,965 [INFO] main: ZECUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-13 05:30:53,965 [INFO] main: ZECUSDT | RL adj=84.5%
 2026-06-13 05:30:53,977 [INFO] main: ZECUSDT | Context score=-0.1 bias=0.1
 2026-06-13 05:30:53,977 [INFO] main: ZECUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-13 05:31:00,546 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -4289,6 +4290,11 @@ root     1408426  0.1  3.2 721128 127416 ?       Ssl  Jun12   2:28 /opt/ensemble
 2026-06-13 05:31:22,836 [INFO] main: SUIUSDT | Context score=-0.1 bias=0.1
 2026-06-13 05:31:22,836 [INFO] main: SUIUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-13 05:31:24,902 [INFO] main: Next scan in 30min (always-30min)
+2026-06-13 05:46:59,557 [INFO] positions: STOP_LOSS PEPEUSDT long PnL:-2.01%
+2026-06-13 05:46:59,566 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG PEPEUSDT @ 0.0000 PnL: -10.06% (-2.01 USDT) | Баланс: 978.10
+2026-06-13 05:46:59,900 [INFO] positions: LOSS PEPEUSDT long PnL:-2.01% reason:stop_loss
+2026-06-13 05:46:59,900 [INFO] positions: Lessons: High bull sentiment and trending up regime with high RSI and bullish MACD did not translate to expected upside, instead hitting stop loss. This trade highlights the importance of not overrelying on sentiment and technical indicators. A 2.01% loss was incurred, serving as a reminder to maintain disciplined risk management.
+2026-06-13 05:46:59,900 [INFO] rl: RL learned from long PEPEUSDT: loss -2.01% | weights bull=0.938 bear=0.851 judge=1.211 threshold=65.39
 ```
 
 ## Disk
@@ -4306,7 +4312,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       874Mi       352Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       875Mi       351Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
