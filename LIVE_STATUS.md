@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-13 19:00:01 UTC
+Generated: 2026-06-13 19:10:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.0  55600 42224 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 134480 48344 ?        Ssl  Jun12   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1408426  0.1  3.2 722152 128636 ?       Ssl  Jun12   3:51 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408426  0.1  3.3 723176 129448 ?       Ssl  Jun12   3:51 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -4349,7 +4349,6 @@ root     1408426  0.1  3.2 722152 128636 ?       Ssl  Jun12   3:51 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-13 18:44:18,348 [INFO] main: VELVETUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-13 18:44:26,074 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-13 18:44:26,443 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-13 18:44:26,445 [INFO] main: ESPORTSUSDT | Bull:flat(15%) Bear:short(75%)
@@ -4379,6 +4378,7 @@ root     1408426  0.1  3.2 722152 128636 ?       Ssl  Jun12   3:51 /opt/ensemble
 2026-06-13 18:44:56,467 [INFO] main: LABUSDT | Context score=-0.1 bias=0.1
 2026-06-13 18:44:56,468 [INFO] main: LABUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-13 18:44:58,531 [INFO] main: Next scan in 30min (always-30min)
+2026-06-13 19:04:22,099 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -4396,7 +4396,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       889Mi       310Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       887Mi       310Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
