@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-13 02:40:01 UTC
+Generated: 2026-06-13 02:50:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1408426  0.1  3.2 721128 127180 ?       Ssl  Jun12   2:09 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 960.215092030211,
+  "balance": 980.1069634302111,
   "positions": {
-    "BNBUSDT": {
-      "id": "PAPER_BNBUSDT_1781232007",
-      "symbol": "BNBUSDT",
-      "side": "long",
-      "entry_price": 605.09,
-      "qty": 0.1653,
-      "confidence": 80,
-      "opened_at": "2026-06-12T02:40:07.876832",
-      "cost": 20.0042754,
-      "notional": 100.021377,
-      "leverage": 5
-    },
     "PEPEUSDT": {
       "id": "PAPER_PEPEUSDT_1781276620",
       "symbol": "PEPEUSDT",
@@ -4233,19 +4221,32 @@ root     1408426  0.1  3.2 721128 127180 ?       Ssl  Jun12   2:09 /opt/ensemble
       "closed_at": "2026-06-12T23:20:46.838876",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_BNBUSDT_1781232007",
+      "symbol": "BNBUSDT",
+      "side": "long",
+      "entry_price": 605.09,
+      "qty": 0.1653,
+      "confidence": 80,
+      "opened_at": "2026-06-12T02:40:07.876832",
+      "cost": 20.0042754,
+      "notional": 100.021377,
+      "leverage": 5,
+      "exit_price": 604.41,
+      "pnl_pct": -0.56,
+      "pnl_usdt": -0.11,
+      "closed_at": "2026-06-13T02:40:35.608401",
+      "reason": "max_hold",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 20.21936738581873
+  "total_pnl": 20.10696338581872
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-13 02:38:16,993 [INFO] main: XPLUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-06-13 02:38:23,238 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-13 02:38:23,947 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-13 02:38:23,949 [INFO] main: XRPUSDT | Bull:flat(25%) Bear:short(75%)
-2026-06-13 02:38:26,598 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-13 02:38:26,599 [INFO] main: XRPUSDT | Judge:HOLD conf=60% size=0.0%
 2026-06-13 02:38:26,600 [INFO] main: XRPUSDT | RL adj=60.0%
 2026-06-13 02:38:33,075 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -4271,6 +4272,11 @@ root     1408426  0.1  3.2 721128 127180 ?       Ssl  Jun12   2:09 /opt/ensemble
 2026-06-13 02:38:57,775 [INFO] main: WLDUSDT | Context score=-0.12 bias=0.12
 2026-06-13 02:38:57,775 [INFO] main: WLDUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-13 02:38:59,834 [INFO] main: Next scan in 30min (always-30min)
+2026-06-13 02:40:35,605 [INFO] positions: MAX_HOLD BNBUSDT long hold:24.0h
+2026-06-13 02:40:35,621 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG BNBUSDT @ 604.4100 PnL: -0.56% (-0.11 USDT) | Баланс: 980.11
+2026-06-13 02:40:35,913 [INFO] positions: LOSS BNBUSDT long PnL:-0.11% reason:max_hold
+2026-06-13 02:40:35,913 [INFO] positions: Lessons: The trade was based on a bull signal with strong price momentum and volume ratio, expecting at least 4% upside. However, the trade closed with a loss of 0.11%, not meeting the expected outcome. This suggests that the asymmetric risk rules may need to be reevaluated to better capture potential upside in trending markets.
+2026-06-13 02:40:35,913 [INFO] rl: RL learned from long BNBUSDT: loss -0.11% | weights bull=0.942 bear=0.847 judge=1.211 threshold=65.34
 ```
 
 ## Disk
@@ -4288,7 +4294,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       869Mi       309Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       871Mi       307Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
