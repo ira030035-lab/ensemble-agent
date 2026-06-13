@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-13 23:00:01 UTC
+Generated: 2026-06-13 23:10:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.0  55600 42224 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 134480 48344 ?        Ssl  Jun12   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1408426  0.1  3.3 724608 130964 ?       Ssl  Jun12   4:16 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408426  0.1  3.3 724608 130964 ?       Ssl  Jun12   4:17 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -4349,7 +4349,6 @@ root     1408426  0.1  3.3 724608 130964 ?       Ssl  Jun12   4:16 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-13 22:43:32,113 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-13 22:43:32,115 [INFO] main: SUIUSDT | Judge:LONG conf=85% size=15.0%
 2026-06-13 22:43:32,115 [INFO] main: SUIUSDT | RL adj=84.7%
 2026-06-13 22:43:32,143 [INFO] main: SUIUSDT | Context score=0.0 bias=0.1
@@ -4379,6 +4378,7 @@ root     1408426  0.1  3.3 724608 130964 ?       Ssl  Jun12   4:16 /opt/ensemble
 2026-06-13 22:44:01,174 [INFO] main: SOLUSDT | gate PASS (Judge 70/70 RL 72.8/65.35 slack=±3)
 2026-06-13 22:44:01,175 [INFO] positions: 2/3 rule: skip LONG SOLUSDT (3/3 already long)
 2026-06-13 22:44:03,178 [INFO] main: Next scan in 30min (always-30min)
+2026-06-13 23:04:24,719 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -4396,7 +4396,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       890Mi       301Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       892Mi       298Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
