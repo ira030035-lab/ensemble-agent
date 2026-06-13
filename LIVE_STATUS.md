@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-13 15:20:01 UTC
+Generated: 2026-06-13 15:30:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.0  55336 42160 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 134480 48344 ?        Ssl  Jun12   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1408426  0.1  3.2 722152 128176 ?       Ssl  Jun12   3:29 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408426  0.1  3.2 722152 128180 ?       Ssl  Jun12   3:30 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 963.8623581496773,
+  "balance": 985.6963858976774,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1781330512",
@@ -30,18 +30,6 @@ root     1408426  0.1  3.2 722152 128176 ?       Ssl  Jun12   3:29 /opt/ensemble
       "opened_at": "2026-06-13T06:01:52.799652",
       "cost": 20.339456000000002,
       "notional": 101.69728,
-      "leverage": 5
-    },
-    "RENDERUSDT": {
-      "id": "PAPER_RENDERUSDT_1781351346",
-      "symbol": "RENDERUSDT",
-      "side": "long",
-      "entry_price": 1.7666,
-      "qty": 56.6059,
-      "confidence": 85,
-      "opened_at": "2026-06-13T11:49:06.117133",
-      "cost": 19.999996588,
-      "notional": 99.99998294,
       "leverage": 5
     },
     "HYPEUSDT": {
@@ -4305,21 +4293,32 @@ root     1408426  0.1  3.2 722152 128176 ?       Ssl  Jun12   3:29 /opt/ensemble
       "closed_at": "2026-06-13T15:12:19.608238",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_RENDERUSDT_1781351346",
+      "symbol": "RENDERUSDT",
+      "side": "long",
+      "entry_price": 1.7666,
+      "qty": 56.6059,
+      "confidence": 85,
+      "opened_at": "2026-06-13T11:49:06.117133",
+      "cost": 19.999996588,
+      "notional": 99.99998294,
+      "leverage": 5,
+      "exit_price": 1.799,
+      "pnl_pct": 9.17,
+      "pnl_usdt": 1.83,
+      "closed_at": "2026-06-13T15:25:10.343607",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 24.202277817677835
+  "total_pnl": 26.036308977677834
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-13 15:18:32,200 [INFO] main: SIRENUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-13 15:18:34,474 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-13 15:18:34,474 [INFO] main: SIRENUSDT | Judge:SHORT conf=65% size=10.0%
-2026-06-13 15:18:34,475 [INFO] main: SIRENUSDT | RL adj=73.7%
-2026-06-13 15:18:34,484 [INFO] main: SIRENUSDT | Context score=-0.1 bias=0.1
-2026-06-13 15:18:34,485 [INFO] main: SIRENUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-06-13 15:18:40,348 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-13 15:18:41,622 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-13 15:18:41,623 [INFO] main: SUIUSDT | Bull:long(62%) Bear:short(75%)
 2026-06-13 15:18:44,016 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -4343,6 +4342,13 @@ root     1408426  0.1  3.2 722152 128176 ?       Ssl  Jun12   3:29 /opt/ensemble
 2026-06-13 15:19:01,477 [INFO] main: XPLUSDT | Judge:HOLD conf=45% size=0.0%
 2026-06-13 15:19:01,478 [INFO] main: XPLUSDT | RL adj=45.0%
 2026-06-13 15:19:03,480 [INFO] main: Next scan in 30min (always-30min)
+2026-06-13 15:25:10,341 [INFO] positions: TRAILING-STOP RENDERUSDT long peak:2.74% now:1.83%
+2026-06-13 15:25:10,355 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG RENDERUSDT @ 1.7990 PnL: 9.17% (+1.83 USDT) | Баланс: 985.70
+2026-06-13 15:25:12,476 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-13 15:25:12,477 [INFO] positions: OK RENDERUSDT long PnL:1.83% reason:trailing_stop
+2026-06-13 15:25:12,477 [INFO] positions: Lessons: 1. Despite high RSI and potential overbought, strong regime and bullish MACD supported a 4% upside move.
+2. Final PnL was 1.83%, achieved through a trailing stop strategy.
+2026-06-13 15:25:12,477 [INFO] rl: RL learned from long RENDERUSDT: profit 1.83% | weights bull=0.955 bear=0.828 judge=1.217 threshold=65.3
 ```
 
 ## Disk
@@ -4360,7 +4366,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       881Mi       325Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       889Mi       315Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
