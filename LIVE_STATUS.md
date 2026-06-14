@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-14 02:30:01 UTC
+Generated: 2026-06-14 02:40:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.0  55600 42224 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 134480 48344 ?        Ssl  Jun12   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1408426  0.1  3.3 722752 129236 ?       Ssl  Jun12   4:38 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408426  0.1  3.3 724900 131256 ?       Ssl  Jun12   4:39 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -4349,36 +4349,36 @@ root     1408426  0.1  3.3 722752 129236 ?       Ssl  Jun12   4:38 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-14 02:08:30,796 [INFO] main: WLDUSDT | regime BLOCK (volatile)
-2026-06-14 02:08:37,417 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-14 02:08:37,895 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-14 02:08:37,897 [INFO] main: COAIUSDT | Bull:long(62%) Bear:short(60%)
-2026-06-14 02:08:40,242 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-14 02:08:40,243 [INFO] main: COAIUSDT | Judge:LONG conf=70% size=10.0%
-2026-06-14 02:08:40,244 [INFO] main: COAIUSDT | RL adj=71.4%
-2026-06-14 02:08:40,264 [INFO] main: COAIUSDT | Context score=0.0 bias=0.1
-2026-06-14 02:08:40,264 [INFO] main: COAIUSDT | regime BLOCK (volatile)
-2026-06-14 02:08:45,807 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-14 02:08:47,180 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-14 02:08:47,182 [INFO] main: ADAUSDT | Bull:flat(35%) Bear:short(65%)
-2026-06-14 02:08:49,873 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-14 02:08:49,874 [INFO] main: ADAUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-14 02:08:49,874 [INFO] main: ADAUSDT | RL adj=55.0%
-2026-06-14 02:08:55,864 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-14 02:08:56,611 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-14 02:08:56,613 [INFO] main: ALLOUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-14 02:08:58,792 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-14 02:08:58,793 [INFO] main: ALLOUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-14 02:08:58,793 [INFO] main: ALLOUSDT | RL adj=50.0%
-2026-06-14 02:09:05,414 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-14 02:09:06,124 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-14 02:09:06,125 [INFO] main: ATUSDT | Bull:long(62%) Bear:short(70%)
-2026-06-14 02:09:08,653 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-14 02:09:08,654 [INFO] main: ATUSDT | Judge:LONG conf=75% size=15.0%
-2026-06-14 02:09:08,654 [INFO] main: ATUSDT | RL adj=75.1%
-2026-06-14 02:09:08,679 [INFO] main: ATUSDT | Context score=0.0 bias=0.1
-2026-06-14 02:09:08,679 [INFO] main: ATUSDT | regime BLOCK (volatile)
-2026-06-14 02:09:10,757 [INFO] main: Next scan in 30min (always-30min)
+2026-06-14 02:39:33,989 [INFO] main: COAIUSDT | Context score=0.0 bias=0.1
+2026-06-14 02:39:33,989 [INFO] main: COAIUSDT | regime BLOCK (volatile)
+2026-06-14 02:39:37,710 [WARNING] agents: Bull entropy-guard: шаблон long(70) ×5. Переключаемся на Kimi+Claude fallback.
+2026-06-14 02:39:37,710 [INFO] main: BEATUSDT | Bull:long(70%) Bear:short(80%)
+2026-06-14 02:39:39,769 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-14 02:39:39,770 [INFO] main: BEATUSDT | Judge:SHORT conf=80% size=15.0%
+2026-06-14 02:39:39,770 [INFO] main: BEATUSDT | RL adj=80.0%
+2026-06-14 02:39:39,789 [INFO] main: BEATUSDT | Context score=-0.1 bias=0.1
+2026-06-14 02:39:39,790 [INFO] main: BEATUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-06-14 02:39:43,255 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-06-14 02:39:43,566 [INFO] main: XLMUSDT | Bull:long(72%) Bear:short(80%)
+2026-06-14 02:39:45,481 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-14 02:39:45,481 [INFO] main: XLMUSDT | Judge:SHORT conf=85% size=15.0%
+2026-06-14 02:39:45,482 [INFO] main: XLMUSDT | RL adj=84.7%
+2026-06-14 02:39:45,493 [INFO] main: XLMUSDT | Context score=-0.1 bias=0.1
+2026-06-14 02:39:45,493 [INFO] main: XLMUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-06-14 02:39:48,970 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-06-14 02:39:49,438 [INFO] main: SIRENUSDT | Bull:long(72%) Bear:short(70%)
+2026-06-14 02:39:52,092 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-14 02:39:52,093 [INFO] main: SIRENUSDT | Judge:LONG conf=75% size=15.0%
+2026-06-14 02:39:52,093 [INFO] main: SIRENUSDT | RL adj=76.6%
+2026-06-14 02:39:52,119 [INFO] main: SIRENUSDT | Context score=0.0 bias=0.1
+2026-06-14 02:39:52,119 [INFO] main: SIRENUSDT | regime BLOCK (volatile)
+2026-06-14 02:39:55,610 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-06-14 02:39:56,101 [INFO] main: VELVETUSDT | Bull:long(72%) Bear:short(70%)
+2026-06-14 02:39:58,696 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-14 02:39:58,697 [INFO] main: VELVETUSDT | Judge:LONG conf=74% size=15.0%
+2026-06-14 02:39:58,697 [INFO] main: VELVETUSDT | RL adj=75.6%
+2026-06-14 02:39:58,719 [INFO] main: VELVETUSDT | Context score=0.0 bias=0.1
+2026-06-14 02:39:58,719 [INFO] main: VELVETUSDT | regime BLOCK (volatile)
 ```
 
 ## Disk
