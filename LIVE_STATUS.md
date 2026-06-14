@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-14 14:00:01 UTC
+Generated: 2026-06-14 14:10:01 UTC
 
 ## Services
 ```
@@ -4391,7 +4391,6 @@ root     1408426  0.1  3.3 725596 131552 ?       Ssl  Jun12   5:58 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-14 13:39:33,227 [INFO] main: ONDOUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-14 13:39:39,113 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-14 13:39:40,066 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-14 13:39:40,067 [INFO] main: ZECUSDT | Bull:long(62%) Bear:short(70%)
@@ -4421,12 +4420,13 @@ root     1408426  0.1  3.3 725596 131552 ?       Ssl  Jun12   5:58 /opt/ensemble
 2026-06-14 13:40:12,651 [INFO] main: XLMUSDT | Context score=-0.1 bias=0.1
 2026-06-14 13:40:12,651 [INFO] main: XLMUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-14 13:40:14,729 [INFO] main: Next scan in 30min (always-30min)
+2026-06-14 14:04:34,346 [INFO] main: Symbols: 30
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  900K  381M   1% /run
+tmpfs           382M  896K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  9.0G   63G  13% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -4438,7 +4438,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       893Mi       309Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       889Mi       313Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
