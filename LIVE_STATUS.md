@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-14 12:50:01 UTC
+Generated: 2026-06-14 13:00:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.0  55600 42224 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 134480 49420 ?        Ssl  Jun12   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1408426  0.1  3.3 723176 129208 ?       Ssl  Jun12   5:49 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408426  0.1  3.3 723176 129212 ?       Ssl  Jun12   5:49 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 965.7450094716959,
+  "balance": 983.6960854716958,
   "positions": {
     "DOGEUSDT": {
       "id": "PAPER_DOGEUSDT_1781367853",
@@ -30,18 +30,6 @@ root     1408426  0.1  3.3 723176 129208 ?       Ssl  Jun12   5:49 /opt/ensemble
       "opened_at": "2026-06-13T16:24:13.209586",
       "cost": 20.000000786,
       "notional": 100.00000393,
-      "leverage": 5
-    },
-    "ZECUSDT": {
-      "id": "PAPER_ZECUSDT_1781417148",
-      "symbol": "ZECUSDT",
-      "side": "long",
-      "entry_price": 427.42,
-      "qty": 0.234,
-      "confidence": 75,
-      "opened_at": "2026-06-14T06:05:48.918959",
-      "cost": 20.003256,
-      "notional": 100.01628000000001,
       "leverage": 5
     },
     "PEPEUSDT": {
@@ -4377,19 +4365,32 @@ root     1408426  0.1  3.3 723176 129208 ?       Ssl  Jun12   5:49 /opt/ensemble
       "closed_at": "2026-06-14T06:02:07.948915",
       "reason": "max_hold",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ZECUSDT_1781417148",
+      "symbol": "ZECUSDT",
+      "side": "long",
+      "entry_price": 427.42,
+      "qty": 0.234,
+      "confidence": 75,
+      "opened_at": "2026-06-14T06:05:48.918959",
+      "cost": 20.003256,
+      "notional": 100.01628000000001,
+      "leverage": 5,
+      "exit_price": 418.65,
+      "pnl_pct": -10.26,
+      "pnl_usdt": -2.05,
+      "closed_at": "2026-06-14T12:51:50.220595",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 25.748266257677816
+  "total_pnl": 23.696086257677806
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-14 12:29:42,208 [INFO] main: JCTUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-14 12:29:44,607 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-14 12:29:44,608 [INFO] main: JCTUSDT | Judge:SHORT conf=80% size=15.0%
-2026-06-14 12:29:44,608 [INFO] main: JCTUSDT | RL adj=89.9%
-2026-06-14 12:29:44,619 [INFO] main: JCTUSDT | Context score=-0.1 bias=0.1
 2026-06-14 12:29:44,619 [INFO] main: JCTUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-14 12:29:49,745 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-14 12:29:51,930 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -4415,6 +4416,11 @@ root     1408426  0.1  3.3 723176 129208 ?       Ssl  Jun12   5:49 /opt/ensemble
 2026-06-14 12:30:14,902 [INFO] main: ESPORTSUSDT | Context score=-0.1 bias=0.1
 2026-06-14 12:30:14,903 [INFO] main: ESPORTSUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-14 12:30:16,987 [INFO] main: Next scan in 30min (always-30min)
+2026-06-14 12:51:50,219 [INFO] positions: STOP_LOSS ZECUSDT long PnL:-2.05%
+2026-06-14 12:51:50,227 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG ZECUSDT @ 418.6500 PnL: -10.26% (-2.05 USDT) | Баланс: 983.70
+2026-06-14 12:51:50,524 [INFO] positions: LOSS ZECUSDT long PnL:-2.05% reason:stop_loss
+2026-06-14 12:51:50,524 [INFO] positions: Lessons: The trade was closed at a 2.05% loss due to a stop loss, contradicting the initial expectation of a 4% upside move. Despite bullish indicators such as MACD and high volume, the trade did not perform as anticipated. This outcome highlights the importance of considering overbought RSI readings and extreme fear sentiment in trading decisions.
+2026-06-14 12:51:50,524 [INFO] rl: RL learned from long ZECUSDT: loss -2.05% | weights bull=0.951 bear=0.829 judge=1.220 threshold=65.34
 ```
 
 ## Disk
@@ -4432,7 +4438,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       881Mi       323Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       890Mi       314Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
