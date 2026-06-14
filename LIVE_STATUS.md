@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-14 22:00:01 UTC
+Generated: 2026-06-14 22:10:01 UTC
 
 ## Services
 ```
@@ -4463,7 +4463,6 @@ root     1408426  0.1  3.3 725624 132040 ?       Ssl  Jun12   6:51 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-14 21:45:34,408 [INFO] main: XPLUSDT | Judge:SHORT conf=75% size=15.0%
 2026-06-14 21:45:34,408 [INFO] main: XPLUSDT | RL adj=84.9%
 2026-06-14 21:45:34,429 [INFO] main: XPLUSDT | Context score=-0.1 bias=0.1
 2026-06-14 21:45:34,429 [INFO] main: XPLUSDT | side-bias BLOCK (market bullish, short forbidden)
@@ -4493,6 +4492,7 @@ root     1408426  0.1  3.3 725624 132040 ?       Ssl  Jun12   6:51 /opt/ensemble
 2026-06-14 21:50:11,690 [INFO] positions: OK XRPUSDT long PnL:3.2% reason:take_profit
 2026-06-14 21:50:11,690 [INFO] positions: Lessons: The trade was based on a weak bear case and strong bearish reversal potential, with indicators such as low 1h RSI and bullish MACD supporting the long position. The trade reached its take profit target, resulting in a 3.2% gain. This outcome suggests that the combination of technical indicators and sentiment analysis can be effective in identifying reversal opportunities in a ranging market.
 2026-06-14 21:50:11,690 [INFO] rl: RL learned from long XRPUSDT: profit 3.20% | weights bull=0.955 bear=0.817 judge=1.228 threshold=65.38
+2026-06-14 22:04:39,569 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -4510,7 +4510,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       907Mi       282Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       921Mi       267Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
