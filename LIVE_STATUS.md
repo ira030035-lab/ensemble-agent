@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-14 06:10:01 UTC
+Generated: 2026-06-14 06:20:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.0  55600 42224 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 134480 48344 ?        Ssl  Jun12   0:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1408426  0.1  3.3 725644 131544 ?       Ssl  Jun12   5:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408426  0.1  3.3 723216 129244 ?       Ssl  Jun12   5:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -4385,15 +4385,6 @@ root     1408426  0.1  3.3 725644 131544 ?       Ssl  Jun12   5:06 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-14 06:09:18,935 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-14 06:09:19,022 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-14 06:09:19,023 [INFO] main: TRUMPUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-14 06:09:21,310 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-14 06:09:21,311 [INFO] main: TRUMPUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-14 06:09:21,311 [INFO] main: TRUMPUSDT | RL adj=94.3%
-2026-06-14 06:09:21,321 [INFO] main: TRUMPUSDT | Context score=-0.1 bias=0.1
-2026-06-14 06:09:21,321 [INFO] main: TRUMPUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-06-14 06:09:27,302 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-14 06:09:29,507 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-14 06:09:29,509 [INFO] main: VELVETUSDT | Bull:long(62%) Bear:short(75%)
 2026-06-14 06:09:32,384 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -4415,6 +4406,15 @@ root     1408426  0.1  3.3 725644 131544 ?       Ssl  Jun12   5:06 /opt/ensemble
 2026-06-14 06:09:56,993 [INFO] main: HUSDT | RL adj=85.4%
 2026-06-14 06:09:57,017 [INFO] main: HUSDT | Context score=0.0 bias=0.1
 2026-06-14 06:09:57,017 [INFO] main: HUSDT | regime BLOCK (volatile)
+2026-06-14 06:10:03,381 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-14 06:10:04,142 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-14 06:10:04,142 [INFO] main: SIRENUSDT | Bull:flat(15%) Bear:short(85%)
+2026-06-14 06:10:07,509 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-14 06:10:07,510 [INFO] main: SIRENUSDT | Judge:SHORT conf=85% size=15.0%
+2026-06-14 06:10:07,510 [INFO] main: SIRENUSDT | RL adj=95.5%
+2026-06-14 06:10:07,522 [INFO] main: SIRENUSDT | Context score=-0.1 bias=0.1
+2026-06-14 06:10:07,522 [INFO] main: SIRENUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-06-14 06:10:09,595 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -4432,7 +4432,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       865Mi       349Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       856Mi       357Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
