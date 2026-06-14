@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-14 16:00:01 UTC
+Generated: 2026-06-14 16:10:01 UTC
 
 ## Services
 ```
@@ -4402,7 +4402,6 @@ root     1408426  0.1  3.3 725632 131684 ?       Ssl  Jun12   6:14 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-14 15:58:02,360 [INFO] main: SOLUSDT | RL adj=94.4%
 2026-06-14 15:58:02,372 [INFO] main: SOLUSDT | Context score=-0.05 bias=0.05
 2026-06-14 15:58:02,373 [INFO] main: SOLUSDT | macro BLOCK (short при BTC uptrend)
 2026-06-14 15:58:08,191 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -4432,6 +4431,7 @@ root     1408426  0.1  3.3 725632 131684 ?       Ssl  Jun12   6:14 /opt/ensemble
 2026-06-14 15:58:41,467 [INFO] main: TAOUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-14 15:58:41,467 [INFO] main: TAOUSDT | RL adj=55.0%
 2026-06-14 15:58:43,469 [INFO] main: Next scan in 30min (always-30min)
+2026-06-14 16:04:35,665 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -4449,7 +4449,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       915Mi       284Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       887Mi       312Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
