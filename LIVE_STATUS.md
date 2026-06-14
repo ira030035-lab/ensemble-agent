@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-14 23:00:01 UTC
+Generated: 2026-06-14 23:10:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 134480 49420 ?        Ssl  Jun12   0:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1408426  0.1  3.3 725624 132040 ?       Ssl  Jun12   6:56 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408426  0.1  3.3 725624 132040 ?       Ssl  Jun12   6:57 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 966.5881715466488,
+  "balance": 987.0436114186488,
   "positions": {
     "ALLOUSDT": {
       "id": "PAPER_ALLOUSDT_1781471493",
@@ -30,18 +30,6 @@ root     1408426  0.1  3.3 725624 132040 ?       Ssl  Jun12   6:56 /opt/ensemble
       "opened_at": "2026-06-14T21:11:33.050623",
       "cost": 20.0000030776,
       "notional": 100.000015388,
-      "leverage": 5
-    },
-    "NEARUSDT": {
-      "id": "PAPER_NEARUSDT_1781473403",
-      "symbol": "NEARUSDT",
-      "side": "long",
-      "entry_price": 2.1956,
-      "qty": 45.5456,
-      "confidence": 75,
-      "opened_at": "2026-06-14T21:43:23.667122",
-      "cost": 19.999983872,
-      "notional": 99.99991936,
       "leverage": 5
     },
     "SKYAIUSDT": {
@@ -4467,20 +4455,32 @@ root     1408426  0.1  3.3 725624 132040 ?       Ssl  Jun12   6:56 /opt/ensemble
       "closed_at": "2026-06-14T21:50:11.334352",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_NEARUSDT_1781473403",
+      "symbol": "NEARUSDT",
+      "side": "long",
+      "entry_price": 2.1956,
+      "qty": 45.5456,
+      "confidence": 75,
+      "opened_at": "2026-06-14T21:43:23.667122",
+      "cost": 19.999983872,
+      "notional": 99.99991936,
+      "leverage": 5,
+      "exit_price": 2.2056,
+      "pnl_pct": 2.28,
+      "pnl_usdt": 0.46,
+      "closed_at": "2026-06-14T23:05:13.057844",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 26.588155791849182
+  "total_pnl": 27.043611791849173
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-14 22:54:28,673 [INFO] main: JCTUSDT | Context score=-0.1 bias=0.1
-2026-06-14 22:54:28,674 [INFO] main: JCTUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-06-14 22:54:35,101 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-14 22:54:35,117 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-14 22:54:35,118 [INFO] main: MEGAUSDT | Bull:flat(15%) Bear:short(60%)
-2026-06-14 22:54:37,266 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-14 22:54:37,267 [INFO] main: MEGAUSDT | Judge:SHORT conf=75% size=15.0%
 2026-06-14 22:54:37,267 [INFO] main: MEGAUSDT | RL adj=82.4%
 2026-06-14 22:54:37,290 [INFO] main: MEGAUSDT | Context score=-0.1 bias=0.1
@@ -4505,6 +4505,12 @@ root     1408426  0.1  3.3 725624 132040 ?       Ssl  Jun12   6:56 /opt/ensemble
 2026-06-14 22:54:56,426 [INFO] main: WLDUSDT | gate PASS (Judge 70/70 RL 70.9/65.38 slack=±3)
 2026-06-14 22:54:56,427 [INFO] positions: 2/3 rule: skip LONG WLDUSDT (3/3 already long)
 2026-06-14 22:54:58,430 [INFO] main: Next scan in 30min (always-30min)
+2026-06-14 23:04:40,254 [INFO] main: Symbols: 30
+2026-06-14 23:05:13,056 [INFO] positions: BREAKEVEN_STOP NEARUSDT long PnL:0.46%
+2026-06-14 23:05:13,063 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG NEARUSDT @ 2.2056 PnL: 2.28% (+0.46 USDT) | Баланс: 987.04
+2026-06-14 23:05:13,346 [INFO] positions: OK NEARUSDT long PnL:0.46% reason:breakeven_stop
+2026-06-14 23:05:13,346 [INFO] positions: Lessons: The trade was based on strong bull sentiment and a favorable risk/reward ratio but ultimately closed at breakeven. The expected 4% upside move did not materialize, resulting in a minimal 0.46% profit. This outcome suggests that bull sentiment alone may not be sufficient to drive price movement in a ranging regime.
+2026-06-14 23:05:13,346 [INFO] rl: RL learned from long NEARUSDT: profit 0.46% | weights bull=0.956 bear=0.816 judge=1.228 threshold=65.35
 ```
 
 ## Disk
@@ -4522,7 +4528,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       910Mi       278Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       889Mi       299Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
