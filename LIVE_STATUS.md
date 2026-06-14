@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-14 15:00:01 UTC
+Generated: 2026-06-14 15:10:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45684 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 134480 49420 ?        Ssl  Jun12   0:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1408426  0.1  3.3 723176 129356 ?       Ssl  Jun12   6:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408426  0.1  3.3 724200 130168 ?       Ssl  Jun12   6:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -4402,7 +4402,6 @@ root     1408426  0.1  3.3 723176 129356 ?       Ssl  Jun12   6:06 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-14 14:48:57,234 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-14 14:48:57,234 [INFO] main: SOLUSDT | Bull:flat(15%) Bear:short(70%)
 2026-06-14 14:48:59,572 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-14 14:48:59,574 [INFO] main: SOLUSDT | Judge:SHORT conf=80% size=15.0%
@@ -4432,6 +4431,7 @@ root     1408426  0.1  3.3 723176 129356 ?       Ssl  Jun12   6:06 /opt/ensemble
 2026-06-14 14:49:29,059 [INFO] main: ENAUSDT | Context score=-0.05 bias=0.05
 2026-06-14 14:49:29,059 [INFO] main: ENAUSDT | regime BLOCK (volatile)
 2026-06-14 14:49:31,131 [INFO] main: Next scan in 30min (always-30min)
+2026-06-14 15:04:35,035 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -4449,7 +4449,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       899Mi       302Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       898Mi       303Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
