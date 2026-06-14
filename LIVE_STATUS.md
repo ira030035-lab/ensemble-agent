@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-14 00:00:01 UTC
+Generated: 2026-06-14 00:10:01 UTC
 
 ## Services
 ```
@@ -4349,7 +4349,6 @@ root     1408426  0.1  3.3 724580 130936 ?       Ssl  Jun12   4:24 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-13 23:51:34,883 [INFO] main: JCTUSDT | RL adj=85.0%
 2026-06-13 23:51:34,898 [INFO] main: JCTUSDT | Context score=-0.1 bias=0.1
 2026-06-13 23:51:34,898 [INFO] main: JCTUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-13 23:51:40,683 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -4379,14 +4378,15 @@ root     1408426  0.1  3.3 724580 130936 ?       Ssl  Jun12   4:24 /opt/ensemble
 2026-06-13 23:52:10,175 [INFO] main: XPLUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-13 23:52:10,175 [INFO] main: XPLUSDT | RL adj=55.0%
 2026-06-13 23:52:12,178 [INFO] main: Next scan in 30min (always-30min)
+2026-06-14 00:04:25,342 [INFO] main: Symbols: 30
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  900K  381M   1% /run
+tmpfs           382M  896K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
-/dev/sda1        75G  9.1G   63G  13% /
+/dev/sda1        75G  9.0G   63G  13% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
 tmpfs           5.0M     0  5.0M   0% /run/lock
 /dev/sda15      253M  146K  252M   1% /boot/efi
@@ -4396,7 +4396,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       894Mi       293Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       886Mi       298Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
