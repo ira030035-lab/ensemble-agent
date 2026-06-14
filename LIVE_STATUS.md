@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-14 21:50:01 UTC
+Generated: 2026-06-14 22:00:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 134480 49420 ?        Ssl  Jun12   0:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1408426  0.1  3.3 725624 132040 ?       Ssl  Jun12   6:50 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408426  0.1  3.3 725624 132040 ?       Ssl  Jun12   6:51 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 963.3898667282488,
+  "balance": 986.5881688422488,
   "positions": {
-    "XRPUSDT": {
-      "id": "PAPER_XRPUSDT_1781456752",
-      "symbol": "XRPUSDT",
-      "side": "long",
-      "entry_price": 1.1381,
-      "qty": 87.8657,
-      "confidence": 75,
-      "opened_at": "2026-06-14T17:05:52.317162",
-      "cost": 19.999990634,
-      "notional": 99.99995317,
-      "leverage": 5
-    },
     "ALLOUSDT": {
       "id": "PAPER_ALLOUSDT_1781471493",
       "symbol": "ALLOUSDT",
@@ -4449,19 +4437,32 @@ root     1408426  0.1  3.3 725624 132040 ?       Ssl  Jun12   6:50 /opt/ensemble
       "closed_at": "2026-06-14T21:40:56.603880",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_XRPUSDT_1781456752",
+      "symbol": "XRPUSDT",
+      "side": "long",
+      "entry_price": 1.1381,
+      "qty": 87.8657,
+      "confidence": 75,
+      "opened_at": "2026-06-14T17:05:52.317162",
+      "cost": 19.999990634,
+      "notional": 99.99995317,
+      "leverage": 5,
+      "exit_price": 1.1745,
+      "pnl_pct": 15.99,
+      "pnl_usdt": 3.2,
+      "closed_at": "2026-06-14T21:50:11.334352",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 23.389844311849163
+  "total_pnl": 26.588155791849182
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-14 21:45:23,882 [INFO] main: ADAUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-06-14 21:45:30,279 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-14 21:45:30,540 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-14 21:45:30,541 [INFO] main: XPLUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-14 21:45:34,407 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-14 21:45:34,408 [INFO] main: XPLUSDT | Judge:SHORT conf=75% size=15.0%
 2026-06-14 21:45:34,408 [INFO] main: XPLUSDT | RL adj=84.9%
 2026-06-14 21:45:34,429 [INFO] main: XPLUSDT | Context score=-0.1 bias=0.1
@@ -4487,6 +4488,11 @@ root     1408426  0.1  3.3 725624 132040 ?       Ssl  Jun12   6:50 /opt/ensemble
 2026-06-14 21:45:59,985 [INFO] main: ZECUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-14 21:45:59,985 [INFO] main: ZECUSDT | RL adj=50.0%
 2026-06-14 21:46:01,988 [INFO] main: Next scan in 30min (always-30min)
+2026-06-14 21:50:11,332 [INFO] positions: TAKE-PROFIT XRPUSDT long PnL:3.2%
+2026-06-14 21:50:11,339 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG XRPUSDT @ 1.1745 PnL: 15.99% (+3.20 USDT) | Баланс: 986.59
+2026-06-14 21:50:11,690 [INFO] positions: OK XRPUSDT long PnL:3.2% reason:take_profit
+2026-06-14 21:50:11,690 [INFO] positions: Lessons: The trade was based on a weak bear case and strong bearish reversal potential, with indicators such as low 1h RSI and bullish MACD supporting the long position. The trade reached its take profit target, resulting in a 3.2% gain. This outcome suggests that the combination of technical indicators and sentiment analysis can be effective in identifying reversal opportunities in a ranging market.
+2026-06-14 21:50:11,690 [INFO] rl: RL learned from long XRPUSDT: profit 3.20% | weights bull=0.955 bear=0.817 judge=1.228 threshold=65.38
 ```
 
 ## Disk
@@ -4504,7 +4510,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       893Mi       296Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       907Mi       282Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
