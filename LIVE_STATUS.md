@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-15 06:20:01 UTC
+Generated: 2026-06-15 06:30:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1408426  0.1  3.3 725624 132064 ?       Ssl  Jun12   7:34 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 967.3070532828488,
+  "balance": 990.6342164828487,
   "positions": {
-    "TAOUSDT": {
-      "id": "PAPER_TAOUSDT_1781492315",
-      "symbol": "TAOUSDT",
-      "side": "long",
-      "entry_price": 277.17,
-      "qty": 0.3608,
-      "confidence": 85,
-      "opened_at": "2026-06-15T02:58:35.164183",
-      "cost": 20.000587200000002,
-      "notional": 100.002936,
-      "leverage": 5
-    },
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1781495217",
       "symbol": "XRPUSDT",
@@ -4557,19 +4545,32 @@ root     1408426  0.1  3.3 725624 132064 ?       Ssl  Jun12   7:34 /opt/ensemble
       "closed_at": "2026-06-15T04:24:34.327708",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_TAOUSDT_1781492315",
+      "symbol": "TAOUSDT",
+      "side": "long",
+      "entry_price": 277.17,
+      "qty": 0.3608,
+      "confidence": 85,
+      "opened_at": "2026-06-15T02:58:35.164183",
+      "cost": 20.000587200000002,
+      "notional": 100.002936,
+      "leverage": 5,
+      "exit_price": 286.39,
+      "pnl_pct": 16.63,
+      "pnl_usdt": 3.33,
+      "closed_at": "2026-06-15T06:28:31.708333",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 27.307643946849197
+  "total_pnl": 30.634219946849186
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-15 06:17:01,751 [INFO] main: HUSDT | Judge:SHORT conf=70% size=15.0%
-2026-06-15 06:17:01,751 [INFO] main: HUSDT | RL adj=79.7%
-2026-06-15 06:17:01,773 [INFO] main: HUSDT | Context score=-0.1 bias=0.1
-2026-06-15 06:17:01,773 [INFO] main: HUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-06-15 06:17:08,627 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-15 06:17:09,970 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-15 06:17:09,971 [INFO] main: ENAUSDT | Bull:long(62%) Bear:short(70%)
 2026-06-15 06:17:18,441 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -4595,6 +4596,11 @@ root     1408426  0.1  3.3 725624 132064 ?       Ssl  Jun12   7:34 /opt/ensemble
 2026-06-15 06:17:59,991 [INFO] main: ESPORTSUSDT | Context score=-0.1 bias=0.1
 2026-06-15 06:17:59,991 [INFO] main: ESPORTSUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-15 06:18:02,001 [INFO] main: Next scan in 30min (always-30min)
+2026-06-15 06:28:31,707 [INFO] positions: TAKE-PROFIT TAOUSDT long PnL:3.33%
+2026-06-15 06:28:31,713 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG TAOUSDT @ 286.3900 PnL: 16.63% (+3.33 USDT) | Баланс: 990.63
+2026-06-15 06:28:32,078 [INFO] positions: OK TAOUSDT long PnL:3.33% reason:take_profit
+2026-06-15 06:28:32,078 [INFO] positions: Lessons: The trade was closed in profit with a 3.33% gain, meeting the initial target of a 4% or more move upwards. The bull signal and bullish indicators such as the RSI and MACD were correct in predicting the price movement. The trade's success can be attributed to correctly identifying the trending_up regime and acting on the bullish signals.
+2026-06-15 06:28:32,078 [INFO] rl: RL learned from long TAOUSDT: profit 3.33% | weights bull=0.968 bear=0.795 judge=1.237 threshold=65.36
 ```
 
 ## Disk
@@ -4612,7 +4618,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       905Mi       359Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       900Mi       364Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
