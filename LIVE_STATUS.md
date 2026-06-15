@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-15 15:40:01 UTC
+Generated: 2026-06-15 15:50:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 134480 49240 ?        Ssl  Jun12   0:08 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1408426  0.1  3.4 730240 136704 ?       Ssl  Jun12   8:21 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408426  0.1  3.4 730240 136704 ?       Ssl  Jun12   8:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 982.7600569420487,
+  "balance": 1000.7483827118486,
   "positions": {
     "ONDOUSDT": {
       "id": "PAPER_ONDOUSDT_1781497618",
@@ -42,18 +42,6 @@ root     1408426  0.1  3.4 730240 136704 ?       Ssl  Jun12   8:21 /opt/ensemble
       "opened_at": "2026-06-15T11:57:16.862099",
       "cost": 19.85949,
       "notional": 99.29745000000001,
-      "leverage": 5
-    },
-    "XPLUSDT": {
-      "id": "PAPER_XPLUSDT_1781537646",
-      "symbol": "XPLUSDT",
-      "side": "long",
-      "entry_price": 0.09594,
-      "qty": 1042.3181,
-      "confidence": 85,
-      "opened_at": "2026-06-15T15:34:06.312406",
-      "cost": 19.9999997028,
-      "notional": 99.999998514,
       "leverage": 5
     }
   },
@@ -4647,19 +4635,32 @@ root     1408426  0.1  3.4 730240 136704 ?       Ssl  Jun12   8:21 /opt/ensemble
       "closed_at": "2026-06-15T15:32:46.350844",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_XPLUSDT_1781537646",
+      "symbol": "XPLUSDT",
+      "side": "long",
+      "entry_price": 0.09594,
+      "qty": 1042.3181,
+      "confidence": 85,
+      "opened_at": "2026-06-15T15:34:06.312406",
+      "cost": 19.9999997028,
+      "notional": 99.999998514,
+      "leverage": 5,
+      "exit_price": 0.09401,
+      "pnl_pct": -10.06,
+      "pnl_usdt": -2.01,
+      "closed_at": "2026-06-15T15:42:32.729209",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 42.619548436849165
+  "total_pnl": 40.60787450384916
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-15 15:34:02,887 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-15 15:34:02,888 [INFO] main: XPLUSDT | Bull:long(62%) Bear:short(70%)
-2026-06-15 15:34:05,742 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-15 15:34:05,743 [INFO] main: XPLUSDT | Judge:LONG conf=85% size=20.0%
-2026-06-15 15:34:05,743 [INFO] main: XPLUSDT | RL adj=86.2%
 2026-06-15 15:34:05,754 [INFO] main: XPLUSDT | Context score=0.0 bias=0.05
 2026-06-15 15:34:05,754 [INFO] main: XPLUSDT | gate PASS (Judge 85/70 RL 86.2/65.24 slack=±3)
 2026-06-15 15:34:06,311 [INFO] positions: [PAPER] Opening LONG XPLUSDT notional=$100.0 conf=85%
@@ -4685,12 +4686,17 @@ root     1408426  0.1  3.4 730240 136704 ?       Ssl  Jun12   8:21 /opt/ensemble
 2026-06-15 15:34:44,764 [INFO] main: VELVETUSDT | Context score=-0.05 bias=0.05
 2026-06-15 15:34:44,764 [INFO] main: VELVETUSDT | regime BLOCK (volatile)
 2026-06-15 15:34:46,780 [INFO] main: Next scan in 30min (always-30min)
+2026-06-15 15:42:32,727 [INFO] positions: STOP_LOSS XPLUSDT long PnL:-2.01%
+2026-06-15 15:42:32,736 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG XPLUSDT @ 0.0940 PnL: -10.06% (-2.01 USDT) | Баланс: 1000.75
+2026-06-15 15:42:33,497 [INFO] positions: LOSS XPLUSDT long PnL:-2.01% reason:stop_loss
+2026-06-15 15:42:33,497 [INFO] positions: Lessons: The trade on XPLUSDT was closed due to a stop loss, resulting in a 2.01% loss. The initial reasoning was based on a bull case with high volatility and recent growth, but the market did not move as expected. This trade highlights the importance of managing risk and adjusting expectations during trending markets with high volatility.
+2026-06-15 15:42:33,497 [INFO] rl: RL learned from long XPLUSDT: loss -2.01% | weights bull=0.984 bear=0.765 judge=1.252 threshold=65.29
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  900K  381M   1% /run
+tmpfs           382M  896K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  9.0G   63G  13% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -4702,7 +4708,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       903Mi       347Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       905Mi       345Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
