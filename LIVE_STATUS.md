@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-15 11:00:01 UTC
+Generated: 2026-06-15 11:10:01 UTC
 
 ## Services
 ```
@@ -4589,7 +4589,6 @@ root     1408426  0.1  3.4 730240 136676 ?       Ssl  Jun12   7:56 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-15 10:50:37,732 [INFO] main: CHIPUSDT | RL adj=55.0%
 2026-06-15 10:50:44,097 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-15 10:50:44,760 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-15 10:50:44,761 [INFO] main: ETHUSDT | Bull:long(62%) Bear:short(80%)
@@ -4619,6 +4618,7 @@ root     1408426  0.1  3.4 730240 136676 ?       Ssl  Jun12   7:56 /opt/ensemble
 2026-06-15 10:55:19,807 [INFO] positions: OK ENAUSDT long PnL:3.51% reason:take_profit
 2026-06-15 10:55:19,808 [INFO] positions: Lessons: The trade was successful with a 3.51% profit, meeting the expected upside move. The combination of high bull sentiment, strong 4-hour price uptrend, and bullish indicators such as RSI, MACD, and OB imbalance proved effective in predicting the price movement. This trade reinforces the importance of considering multiple indicators and sentiment analysis when making trading decisions.
 2026-06-15 10:55:19,808 [INFO] rl: RL learned from long ENAUSDT: profit 3.51% | weights bull=0.976 bear=0.784 judge=1.240 threshold=65.33
+2026-06-15 11:04:47,883 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -4636,7 +4636,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       907Mi       348Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       901Mi       354Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
