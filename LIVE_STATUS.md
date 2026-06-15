@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-15 21:00:01 UTC
+Generated: 2026-06-15 21:10:01 UTC
 
 ## Services
 ```
@@ -4690,7 +4690,6 @@ root     1408426  0.1  3.5 730240 136740 ?       Ssl  Jun12   8:49 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-15 20:49:20,655 [INFO] main: BNBUSDT | regime BLOCK (long × trending_up × rsi1h=54.1; late-entry guard)
 2026-06-15 20:49:27,306 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-15 20:49:30,592 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-15 20:49:30,593 [INFO] main: DOGEUSDT | Bull:flat(25%) Bear:short(70%)
@@ -4720,6 +4719,7 @@ root     1408426  0.1  3.5 730240 136740 ?       Ssl  Jun12   8:49 /opt/ensemble
 2026-06-15 20:50:06,283 [INFO] main: PEPEUSDT | Context score=-0.05 bias=0.05
 2026-06-15 20:50:06,283 [INFO] main: PEPEUSDT | regime BLOCK (volatile)
 2026-06-15 20:50:08,302 [INFO] main: Next scan in 30min (always-30min)
+2026-06-15 21:04:54,762 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -4737,7 +4737,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       907Mi       329Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       899Mi       336Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
