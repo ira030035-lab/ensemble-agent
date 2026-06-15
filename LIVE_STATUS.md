@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-15 23:10:01 UTC
+Generated: 2026-06-15 23:20:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 134480 49260 ?        Ssl  Jun12   0:12 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1408426  0.1  3.5 730240 136748 ?       Ssl  Jun12   9:00 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408426  0.1  3.5 730240 136748 ?       Ssl  Jun12   9:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -4703,19 +4703,6 @@ root     1408426  0.1  3.5 730240 136748 ?       Ssl  Jun12   9:00 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-15 23:09:22,684 [INFO] main: XRPUSDT | Context score=-0.05 bias=0.05
-2026-06-15 23:09:22,685 [INFO] main: XRPUSDT | regime BLOCK (volatile)
-2026-06-15 23:09:28,917 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-15 23:09:30,195 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-15 23:09:30,196 [INFO] main: ETHUSDT | Bull:flat(15%) Bear:short(95%)
-2026-06-15 23:09:32,430 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-15 23:09:32,431 [INFO] main: ETHUSDT | Judge:SHORT conf=85% size=20.0%
-2026-06-15 23:09:32,431 [INFO] main: ETHUSDT | RL adj=95.9%
-2026-06-15 23:09:32,442 [INFO] main: ETHUSDT | Context score=-0.05 bias=0.05
-2026-06-15 23:09:32,442 [INFO] main: ETHUSDT | regime BLOCK (volatile)
-2026-06-15 23:09:38,045 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-15 23:09:39,424 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-15 23:09:39,425 [INFO] main: PEPEUSDT | Bull:flat(15%) Bear:short(80%)
 2026-06-15 23:09:41,854 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-15 23:09:41,856 [INFO] main: PEPEUSDT | Judge:HOLD conf=45% size=0.0%
 2026-06-15 23:09:41,856 [INFO] main: PEPEUSDT | RL adj=45.0%
@@ -4733,6 +4720,19 @@ root     1408426  0.1  3.5 730240 136748 ?       Ssl  Jun12   9:00 /opt/ensemble
 2026-06-15 23:10:00,405 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-15 23:10:00,406 [INFO] main: BCHUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-15 23:10:00,406 [INFO] main: BCHUSDT | RL adj=50.0%
+2026-06-15 23:10:06,483 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-15 23:10:06,761 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-15 23:10:06,762 [INFO] main: BSBUSDT | Bull:long(62%) Bear:short(65%)
+2026-06-15 23:10:10,222 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-15 23:10:10,223 [INFO] main: BSBUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-15 23:10:10,223 [INFO] main: BSBUSDT | RL adj=55.0%
+2026-06-15 23:10:17,460 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-15 23:10:17,848 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-15 23:10:17,849 [INFO] main: HUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-15 23:10:21,263 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-15 23:10:21,264 [INFO] main: HUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-15 23:10:21,265 [INFO] main: HUSDT | RL adj=55.0%
+2026-06-15 23:10:23,267 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -4750,7 +4750,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       897Mi       336Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       897Mi       335Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
