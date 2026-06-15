@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-15 07:00:01 UTC
+Generated: 2026-06-15 07:10:01 UTC
 
 ## Services
 ```
@@ -4583,7 +4583,6 @@ root     1408426  0.1  3.3 725624 132064 ?       Ssl  Jun12   7:37 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-15 06:55:13,749 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-15 06:55:13,751 [INFO] main: BTCUSDT | Bull:long(62%) Bear:short(80%)
 2026-06-15 06:55:18,044 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-15 06:55:18,045 [INFO] main: BTCUSDT | Judge:HOLD conf=55% size=0.0%
@@ -4613,6 +4612,7 @@ root     1408426  0.1  3.3 725624 132064 ?       Ssl  Jun12   7:37 /opt/ensemble
 2026-06-15 06:55:54,953 [INFO] main: SIRENUSDT | Context score=-0.1 bias=0.1
 2026-06-15 06:55:54,954 [INFO] main: SIRENUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-15 06:55:56,956 [INFO] main: Next scan in 30min (always-30min)
+2026-06-15 07:04:45,369 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -4630,7 +4630,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       913Mi       350Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       892Mi       371Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
