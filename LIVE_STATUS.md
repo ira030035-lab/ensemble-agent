@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-15 19:10:01 UTC
+Generated: 2026-06-15 19:20:01 UTC
 
 ## Services
 ```
@@ -18,21 +18,8 @@ root     1408426  0.1  3.5 730240 136740 ?       Ssl  Jun12   8:40 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 1019.0578930538487,
-  "positions": {
-    "BTCUSDT": {
-      "id": "PAPER_BTCUSDT_1781524636",
-      "symbol": "BTCUSDT",
-      "side": "long",
-      "entry_price": 66198.3,
-      "qty": 0.0015,
-      "confidence": 85,
-      "opened_at": "2026-06-15T11:57:16.862099",
-      "cost": 19.85949,
-      "notional": 99.29745000000001,
-      "leverage": 5
-    }
-  },
+  "balance": 1039.2886330538488,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -4677,19 +4664,32 @@ root     1408426  0.1  3.5 730240 136740 ?       Ssl  Jun12   8:40 /opt/ensemble
       "closed_at": "2026-06-15T17:03:31.831803",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_BTCUSDT_1781524636",
+      "symbol": "BTCUSDT",
+      "side": "long",
+      "entry_price": 66198.3,
+      "qty": 0.0015,
+      "confidence": 85,
+      "opened_at": "2026-06-15T11:57:16.862099",
+      "cost": 19.85949,
+      "notional": 99.29745000000001,
+      "leverage": 5,
+      "exit_price": 66445.8,
+      "pnl_pct": 1.87,
+      "pnl_usdt": 0.37,
+      "closed_at": "2026-06-15T19:19:15.273005",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 38.917383053849164
+  "total_pnl": 39.28863305384917
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-15 19:03:57,669 [INFO] main: PEPEUSDT | Context score=-0.05 bias=0.05
-2026-06-15 19:03:57,669 [INFO] main: PEPEUSDT | regime BLOCK (volatile)
-2026-06-15 19:04:04,476 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-15 19:04:05,402 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-15 19:04:05,403 [INFO] main: ONDOUSDT | Bull:flat(25%) Bear:short(60%)
 2026-06-15 19:04:09,249 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-15 19:04:09,250 [INFO] main: ONDOUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-15 19:04:09,250 [INFO] main: ONDOUSDT | RL adj=55.0%
@@ -4715,6 +4715,11 @@ root     1408426  0.1  3.5 730240 136740 ?       Ssl  Jun12   8:40 /opt/ensemble
 2026-06-15 19:04:44,606 [INFO] main: SUIUSDT | RL adj=55.0%
 2026-06-15 19:04:46,608 [INFO] main: Next scan in 30min (always-30min)
 2026-06-15 19:04:53,435 [INFO] main: Symbols: 30
+2026-06-15 19:19:15,271 [INFO] positions: BREAKEVEN_STOP BTCUSDT long PnL:0.37%
+2026-06-15 19:19:15,278 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG BTCUSDT @ 66445.8000 PnL: 1.87% (+0.37 USDT) | Баланс: 1039.29
+2026-06-15 19:19:15,665 [INFO] positions: OK BTCUSDT long PnL:0.37% reason:breakeven_stop
+2026-06-15 19:19:15,665 [INFO] positions: Lessons: The trade was closed at breakeven due to hitting the stop loss, resulting in a 0.37% profit. The initial bullish sentiment and indicators such as MACD and RSI were correct, but the expected 4% upward move did not materialize. The outcome suggests being more conservative with profit expectations and stop loss placement in trending markets.
+2026-06-15 19:19:15,665 [INFO] rl: RL learned from long BTCUSDT: profit 0.37% | weights bull=0.982 bear=0.765 judge=1.253 threshold=65.29
 ```
 
 ## Disk
@@ -4732,7 +4737,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       906Mi       333Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       907Mi       331Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
