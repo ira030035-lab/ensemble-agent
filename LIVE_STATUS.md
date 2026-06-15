@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-15 17:00:01 UTC
+Generated: 2026-06-15 17:10:02 UTC
 
 ## Services
 ```
@@ -11,14 +11,14 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1408416  0.0  1.2 135504 50276 ?        Ssl  Jun12   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1408416  0.0  1.2 134480 49252 ?        Ssl  Jun12   0:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1408426  0.1  3.5 730240 136708 ?       Ssl  Jun12   8:28 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 1001.1404258498487,
+  "balance": 1019.0578930538487,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1781524636",
@@ -30,18 +30,6 @@ root     1408426  0.1  3.5 730240 136708 ?       Ssl  Jun12   8:28 /opt/ensemble
       "opened_at": "2026-06-15T11:57:16.862099",
       "cost": 19.85949,
       "notional": 99.29745000000001,
-      "leverage": 5
-    },
-    "RENDERUSDT": {
-      "id": "PAPER_RENDERUSDT_1781539685",
-      "symbol": "RENDERUSDT",
-      "side": "long",
-      "entry_price": 1.8487,
-      "qty": 54.0921,
-      "confidence": 75,
-      "opened_at": "2026-06-15T16:08:05.348612",
-      "cost": 20.000013054,
-      "notional": 100.00006527000001,
       "leverage": 5
     }
   },
@@ -4671,20 +4659,32 @@ root     1408426  0.1  3.5 730240 136708 ?       Ssl  Jun12   8:28 /opt/ensemble
       "closed_at": "2026-06-15T16:47:42.585469",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_RENDERUSDT_1781539685",
+      "symbol": "RENDERUSDT",
+      "side": "long",
+      "entry_price": 1.8487,
+      "qty": 54.0921,
+      "confidence": 75,
+      "opened_at": "2026-06-15T16:08:05.348612",
+      "cost": 20.000013054,
+      "notional": 100.00006527000001,
+      "leverage": 5,
+      "exit_price": 1.8102,
+      "pnl_pct": -10.41,
+      "pnl_usdt": -2.08,
+      "closed_at": "2026-06-15T17:03:31.831803",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 40.99992890384916
+  "total_pnl": 38.917383053849164
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-15 16:43:51,166 [INFO] main: SUIUSDT | regime BLOCK (volatile)
-2026-06-15 16:43:56,805 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-15 16:43:58,437 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-15 16:43:58,438 [INFO] main: ADAUSDT | Bull:flat(35%) Bear:short(85%)
-2026-06-15 16:44:01,406 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-15 16:44:01,407 [INFO] main: ADAUSDT | Judge:SHORT conf=85% size=15.0%
 2026-06-15 16:44:01,407 [INFO] main: ADAUSDT | RL adj=94.7%
 2026-06-15 16:44:01,424 [INFO] main: ADAUSDT | Context score=-0.05 bias=0.05
 2026-06-15 16:44:01,424 [INFO] main: ADAUSDT | regime BLOCK (volatile)
@@ -4709,6 +4709,12 @@ root     1408426  0.1  3.5 730240 136708 ?       Ssl  Jun12   8:28 /opt/ensemble
 2026-06-15 16:47:42,925 [INFO] positions: OK ONDOUSDT long PnL:0.39% reason:breakeven_stop
 2026-06-15 16:47:42,925 [INFO] positions: Lessons: The ONDOUSDT long trade resulted in a breakeven stop with a 0.39% profit. Despite initially bullish signals, the trade did not yield the expected 2:1 risk-reward ratio. This outcome suggests reevaluating the criteria for bullish signals and breakeven stop placement to improve future trade performance.
 2026-06-15 16:47:42,925 [INFO] rl: RL learned from long ONDOUSDT: profit 0.39% | weights bull=0.985 bear=0.763 judge=1.252 threshold=65.27
+2026-06-15 17:03:31,829 [INFO] positions: STOP_LOSS RENDERUSDT long PnL:-2.08%
+2026-06-15 17:03:31,842 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG RENDERUSDT @ 1.8102 PnL: -10.41% (-2.08 USDT) | Баланс: 1019.06
+2026-06-15 17:03:32,113 [INFO] positions: LOSS RENDERUSDT long PnL:-2.08% reason:stop_loss
+2026-06-15 17:03:32,113 [INFO] positions: Lessons: The trade on RENDERUSDT resulted in a 2.08% loss due to a stop loss being triggered. Despite initial bullish conviction, the trade did not meet its 4% upside potential. This outcome highlights the importance of risk management and the potential for trades to not work out even with high conviction.
+2026-06-15 17:03:32,113 [INFO] rl: RL learned from long RENDERUSDT: loss -2.08% | weights bull=0.981 bear=0.766 judge=1.253 threshold=65.32
+2026-06-15 17:04:52,084 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -4726,7 +4732,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       912Mi       337Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       905Mi       343Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
