@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-15 04:00:01 UTC
+Generated: 2026-06-15 04:10:01 UTC
 
 ## Services
 ```
@@ -4547,7 +4547,6 @@ root     1408426  0.1  3.3 725624 132060 ?       Ssl  Jun12   7:22 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-15 03:55:13,676 [INFO] main: PEPEUSDT | RL adj=55.0%
 2026-06-15 03:55:20,998 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-15 03:55:27,871 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-15 03:55:27,872 [INFO] main: ESPORTSUSDT | Bull:flat(25%) Bear:short(65%)
@@ -4577,6 +4576,7 @@ root     1408426  0.1  3.3 725624 132060 ?       Ssl  Jun12   7:22 /opt/ensemble
 2026-06-15 03:56:45,649 [INFO] main: ALLOUSDT | Context score=-0.1 bias=0.1
 2026-06-15 03:56:45,649 [INFO] main: ALLOUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-15 03:56:47,653 [INFO] main: Next scan in 30min (always-30min)
+2026-06-15 04:04:43,371 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -4594,7 +4594,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       912Mi       356Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       893Mi       375Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
