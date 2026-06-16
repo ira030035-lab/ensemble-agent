@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-16 01:00:01 UTC
+Generated: 2026-06-16 01:10:01 UTC
 
 ## Services
 ```
@@ -4715,7 +4715,6 @@ root     1408426  0.1  3.5 730240 136756 ?       Ssl  Jun12   9:10 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-16 00:54:37,972 [INFO] main: SOLUSDT | RL adj=55.0%
 2026-06-16 00:54:45,070 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-16 00:54:47,145 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-16 00:54:47,145 [INFO] main: TAOUSDT | Bull:flat(15%) Bear:short(75%)
@@ -4745,6 +4744,7 @@ root     1408426  0.1  3.5 730240 136756 ?       Ssl  Jun12   9:10 /opt/ensemble
 2026-06-16 00:55:20,622 [INFO] main: OPGUSDT | Context score=-0.1 bias=0.1
 2026-06-16 00:55:20,622 [INFO] main: OPGUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-16 00:55:22,634 [INFO] main: Next scan in 30min (always-30min)
+2026-06-16 01:04:57,426 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -4762,7 +4762,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       903Mi       327Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       909Mi       321Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
