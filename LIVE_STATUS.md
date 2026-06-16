@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-16 08:00:01 UTC
+Generated: 2026-06-16 08:10:01 UTC
 
 ## Services
 ```
@@ -4751,7 +4751,6 @@ root     1408426  0.1  3.5 730240 136832 ?       Ssl  Jun12   9:45 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-16 07:51:05,268 [INFO] main: ZECUSDT | regime BLOCK (volatile)
 2026-06-16 07:51:11,949 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-16 07:51:19,185 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-06-16 07:51:19,186 [INFO] openai._base_client: Retrying request to /chat/completions in 0.392144 seconds
@@ -4781,6 +4780,7 @@ root     1408426  0.1  3.5 730240 136832 ?       Ssl  Jun12   9:45 /opt/ensemble
 2026-06-16 07:52:23,304 [INFO] main: SUIUSDT | Context score=-0.05 bias=0.05
 2026-06-16 07:52:23,304 [INFO] main: SUIUSDT | macro BLOCK (short при BTC uptrend)
 2026-06-16 07:52:25,319 [INFO] main: Next scan in 30min (always-30min)
+2026-06-16 08:05:01,905 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -4798,7 +4798,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       913Mi       306Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       899Mi       318Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
