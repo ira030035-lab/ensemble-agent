@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-16 06:30:01 UTC
+Generated: 2026-06-16 06:40:01 UTC
 
 ## Services
 ```
@@ -4751,23 +4751,6 @@ root     1408426  0.1  3.5 730240 136756 ?       Ssl  Jun12   9:38 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-16 06:29:07,412 [INFO] main: AVAXUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-16 06:29:07,412 [INFO] main: AVAXUSDT | RL adj=55.0%
-2026-06-16 06:29:15,433 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-16 06:29:17,787 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-16 06:29:17,787 [INFO] main: SUIUSDT | Bull:long(62%) Bear:short(70%)
-2026-06-16 06:29:22,813 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-16 06:29:22,814 [INFO] main: SUIUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-16 06:29:22,814 [INFO] main: SUIUSDT | RL adj=50.0%
-2026-06-16 06:29:29,855 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-16 06:29:37,547 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-16 06:29:37,549 [INFO] main: OPGUSDT | Bull:flat(25%) Bear:short(85%)
-2026-06-16 06:29:40,410 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-16 06:29:40,411 [INFO] main: OPGUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-16 06:29:40,411 [INFO] main: OPGUSDT | RL adj=84.8%
-2026-06-16 06:29:40,435 [INFO] main: OPGUSDT | Context score=-0.05 bias=0.05
-2026-06-16 06:29:40,435 [INFO] main: OPGUSDT | regime BLOCK (volatile)
-2026-06-16 06:29:46,345 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-16 06:29:47,462 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-16 06:29:47,463 [INFO] main: XLMUSDT | Bull:flat(25%) Bear:short(60%)
 2026-06-16 06:29:49,930 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -4781,6 +4764,23 @@ root     1408426  0.1  3.5 730240 136756 ?       Ssl  Jun12   9:38 /opt/ensemble
 2026-06-16 06:29:59,626 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-16 06:29:59,627 [INFO] main: ENAUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-16 06:29:59,627 [INFO] main: ENAUSDT | RL adj=50.0%
+2026-06-16 06:30:07,084 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-16 06:30:07,789 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-16 06:30:07,790 [INFO] main: JTOUSDT | Bull:flat(35%) Bear:short(70%)
+2026-06-16 06:30:12,997 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-16 06:30:12,999 [INFO] main: JTOUSDT | Judge:SHORT conf=85% size=15.0%
+2026-06-16 06:30:12,999 [INFO] main: JTOUSDT | RL adj=93.1%
+2026-06-16 06:30:13,021 [INFO] main: JTOUSDT | Context score=-0.05 bias=0.05
+2026-06-16 06:30:13,021 [INFO] main: JTOUSDT | regime BLOCK (volatile)
+2026-06-16 06:30:20,175 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-16 06:30:20,586 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-16 06:30:20,587 [INFO] main: TRUMPUSDT | Bull:flat(15%) Bear:short(85%)
+2026-06-16 06:30:23,501 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-16 06:30:23,502 [INFO] main: TRUMPUSDT | Judge:SHORT conf=85% size=15.0%
+2026-06-16 06:30:23,502 [INFO] main: TRUMPUSDT | RL adj=94.8%
+2026-06-16 06:30:23,516 [INFO] main: TRUMPUSDT | Context score=-0.05 bias=0.05
+2026-06-16 06:30:23,516 [INFO] main: TRUMPUSDT | macro BLOCK (short при BTC uptrend)
+2026-06-16 06:30:25,531 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -4798,7 +4798,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       909Mi       313Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       899Mi       323Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
