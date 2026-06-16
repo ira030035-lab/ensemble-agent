@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-16 20:20:01 UTC
+Generated: 2026-06-16 20:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 134644 49300 ?        Ssl  Jun12   0:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.2 719268 125824 ?       Ssl  08:25   1:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.2 720468 126892 ?       Ssl  08:25   1:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -4811,7 +4811,6 @@ root     1488950  0.1  3.2 719268 125824 ?       Ssl  08:25   1:06 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-16 20:08:46,038 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-16 20:08:46,039 [INFO] main: HYPEUSDT | Judge:SHORT conf=75% size=15.0%
 2026-06-16 20:08:46,040 [INFO] main: HYPEUSDT | RL adj=83.6%
 2026-06-16 20:08:46,067 [INFO] main: HYPEUSDT | Context score=-0.05 bias=0.05
@@ -4841,12 +4840,13 @@ root     1488950  0.1  3.2 719268 125824 ?       Ssl  08:25   1:06 /opt/ensemble
 2026-06-16 20:09:21,536 [INFO] main: UNIUSDT | Context score=-0.05 bias=0.05
 2026-06-16 20:09:21,536 [INFO] main: UNIUSDT | regime BLOCK (volatile)
 2026-06-16 20:09:23,538 [INFO] main: Next scan in 30min (always-30min)
+2026-06-16 20:25:25,010 [INFO] main: Symbols: 30
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  900K  381M   1% /run
+tmpfs           382M  896K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  9.1G   63G  13% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -4858,7 +4858,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       866Mi       343Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       882Mi       327Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
