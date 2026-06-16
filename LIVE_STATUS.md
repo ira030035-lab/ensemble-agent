@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-16 16:50:01 UTC
+Generated: 2026-06-16 17:00:01 UTC
 
 ## Services
 ```
@@ -4798,36 +4798,36 @@ root     1488950  0.1  3.2 719012 125228 ?       Ssl  08:25   0:46 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-16 16:27:32,764 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-16 16:27:32,765 [INFO] main: VELVETUSDT | Bull:long(62%) Bear:short(75%)
-2026-06-16 16:27:35,140 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-16 16:27:35,141 [INFO] main: VELVETUSDT | Judge:LONG conf=80% size=15.0%
-2026-06-16 16:27:35,141 [INFO] main: VELVETUSDT | RL adj=80.4%
-2026-06-16 16:27:35,152 [INFO] main: VELVETUSDT | Context score=-0.0 bias=0.05
-2026-06-16 16:27:35,152 [INFO] main: VELVETUSDT | regime BLOCK (volatile)
-2026-06-16 16:27:41,907 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-16 16:27:42,424 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-16 16:27:42,425 [INFO] main: LINKUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-16 16:27:44,539 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-16 16:27:44,539 [INFO] main: LINKUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-16 16:27:44,539 [INFO] main: LINKUSDT | RL adj=50.0%
-2026-06-16 16:27:50,730 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-16 16:27:55,469 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-16 16:27:55,470 [INFO] main: SIRENUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-16 16:27:57,930 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-16 16:27:57,931 [INFO] main: SIRENUSDT | Judge:SHORT conf=72% size=15.0%
-2026-06-16 16:27:57,931 [INFO] main: SIRENUSDT | RL adj=80.1%
-2026-06-16 16:27:57,942 [INFO] main: SIRENUSDT | Context score=-0.05 bias=0.05
-2026-06-16 16:27:57,942 [INFO] main: SIRENUSDT | regime BLOCK (volatile)
-2026-06-16 16:28:04,741 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-16 16:28:04,956 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-16 16:28:04,957 [INFO] main: XLMUSDT | Bull:long(42%) Bear:short(70%)
-2026-06-16 16:28:07,288 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-16 16:28:07,290 [INFO] main: XLMUSDT | Judge:LONG conf=65% size=10.0%
-2026-06-16 16:28:07,290 [INFO] main: XLMUSDT | RL adj=63.1%
-2026-06-16 16:28:07,315 [INFO] main: XLMUSDT | Context score=-0.0 bias=0.05
-2026-06-16 16:28:07,315 [INFO] main: XLMUSDT | regime BLOCK (volatile)
-2026-06-16 16:28:09,319 [INFO] main: Next scan in 30min (always-30min)
+2026-06-16 16:58:22,022 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-16 16:58:22,022 [INFO] openai._base_client: Retrying request to /chat/completions in 0.451465 seconds
+2026-06-16 16:58:32,645 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-16 16:58:32,646 [INFO] openai._base_client: Retrying request to /chat/completions in 0.831675 seconds
+2026-06-16 16:58:43,520 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-16 16:58:43,521 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
+2026-06-16 16:58:43,521 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-06-16 16:58:43,521 [INFO] main: XRPUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-16 16:58:43,521 [INFO] main: XRPUSDT | RL adj=50.0%
+2026-06-16 16:58:47,361 [INFO] main: SUIUSDT | Bull:long(72%) Bear:short(80%)
+2026-06-16 16:58:57,565 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-16 16:58:57,566 [INFO] openai._base_client: Retrying request to /chat/completions in 0.421649 seconds
+2026-06-16 16:59:08,039 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-16 16:59:08,040 [INFO] openai._base_client: Retrying request to /chat/completions in 0.897738 seconds
+2026-06-16 16:59:19,014 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-16 16:59:19,015 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
+2026-06-16 16:59:19,015 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-06-16 16:59:19,015 [INFO] main: SUIUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-16 16:59:19,015 [INFO] main: SUIUSDT | RL adj=50.0%
+2026-06-16 16:59:23,153 [INFO] main: TRUMPUSDT | Bull:long(72%) Bear:short(82%)
+2026-06-16 16:59:33,516 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-16 16:59:33,516 [INFO] openai._base_client: Retrying request to /chat/completions in 0.494304 seconds
+2026-06-16 16:59:44,031 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-16 16:59:44,031 [INFO] openai._base_client: Retrying request to /chat/completions in 0.828952 seconds
+2026-06-16 16:59:54,900 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-16 16:59:54,901 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
+2026-06-16 16:59:54,901 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-06-16 16:59:54,901 [INFO] main: TRUMPUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-16 16:59:54,901 [INFO] main: TRUMPUSDT | RL adj=50.0%
+2026-06-16 16:59:58,948 [INFO] main: ENAUSDT | Bull:long(70%) Bear:short(80%)
 ```
 
 ## Disk
@@ -4845,7 +4845,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       867Mi       349Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       878Mi       338Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
