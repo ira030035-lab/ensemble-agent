@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-16 12:30:01 UTC
+Generated: 2026-06-16 12:40:01 UTC
 
 ## Services
 ```
@@ -11,14 +11,14 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1408416  0.0  1.2 134480 49300 ?        Ssl  Jun12   0:15 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.1 719112 124280 ?       Ssl  08:25   0:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408416  0.0  1.2 133164 48168 ?        Ssl  Jun12   0:16 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1488950  0.1  3.1 719112 124336 ?       Ssl  08:25   0:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 974.8856991930243,
+  "balance": 997.9048656330242,
   "positions": {
     "DOGEUSDT": {
       "id": "PAPER_DOGEUSDT_1781584855",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.1 719112 124280 ?       Ssl  08:25   0:24 /opt/ensemble
       "opened_at": "2026-06-16T04:40:55.130013",
       "cost": 20.0000005608,
       "notional": 100.000002804,
-      "leverage": 5
-    },
-    "LINKUSDT": {
-      "id": "PAPER_LINKUSDT_1781591279",
-      "symbol": "LINKUSDT",
-      "side": "long",
-      "entry_price": 8.214,
-      "qty": 12.1743,
-      "confidence": 70,
-      "opened_at": "2026-06-16T06:27:59.486223",
-      "cost": 19.999940040000002,
-      "notional": 99.9997002,
       "leverage": 5
     },
     "PEPEUSDT": {
@@ -4755,19 +4743,32 @@ root     1488950  0.1  3.1 719112 124280 ?       Ssl  08:25   0:24 /opt/ensemble
       "closed_at": "2026-06-16T02:28:00.138394",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_LINKUSDT_1781591279",
+      "symbol": "LINKUSDT",
+      "side": "long",
+      "entry_price": 8.214,
+      "qty": 12.1743,
+      "confidence": 70,
+      "opened_at": "2026-06-16T06:27:59.486223",
+      "cost": 19.999940040000002,
+      "notional": 99.9997002,
+      "leverage": 5,
+      "exit_price": 8.462,
+      "pnl_pct": 15.1,
+      "pnl_usdt": 3.02,
+      "closed_at": "2026-06-16T12:33:53.003836",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 34.88563979384917
+  "total_pnl": 37.904866193849166
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-16 12:18:44,635 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-16 12:18:45,251 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-16 12:18:45,252 [INFO] main: SOLUSDT | Bull:long(58%) Bear:short(70%)
-2026-06-16 12:18:47,436 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-16 12:18:47,437 [INFO] main: SOLUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-16 12:18:47,437 [INFO] main: SOLUSDT | RL adj=55.0%
 2026-06-16 12:18:53,449 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-16 12:18:54,630 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -4793,6 +4794,11 @@ root     1488950  0.1  3.1 719112 124280 ?       Ssl  08:25   0:24 /opt/ensemble
 2026-06-16 12:19:19,994 [INFO] main: WLDUSDT | RL adj=45.0%
 2026-06-16 12:19:21,997 [INFO] main: Next scan in 30min (always-30min)
 2026-06-16 12:25:19,758 [INFO] main: Symbols: 30
+2026-06-16 12:33:53,001 [INFO] positions: TAKE-PROFIT LINKUSDT long PnL:3.02%
+2026-06-16 12:33:53,016 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG LINKUSDT @ 8.4620 PnL: 15.10% (+3.02 USDT) | Баланс: 997.90
+2026-06-16 12:33:53,701 [INFO] positions: OK LINKUSDT long PnL:3.02% reason:take_profit
+2026-06-16 12:33:53,701 [INFO] positions: Lessons: The trade was successful with a 3.02% profit, meeting the take profit target. The asymmetric long setup and bullish MACD signal correctly indicated a potential upside move. This trade demonstrates the effectiveness of combining these technical indicators to identify profitable long opportunities in a ranging market regime.
+2026-06-16 12:33:53,702 [INFO] rl: RL learned from long LINKUSDT: profit 3.02% | weights bull=0.980 bear=0.763 judge=1.257 threshold=65.36
 ```
 
 ## Disk
@@ -4810,7 +4816,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       873Mi       349Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       863Mi       360Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
