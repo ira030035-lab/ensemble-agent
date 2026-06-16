@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-16 21:30:01 UTC
+Generated: 2026-06-16 21:40:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.2 720468 126924 ?       Ssl  08:25   1:12 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 994.2081205475791,
+  "balance": 1011.9593975765791,
   "positions": {
     "SOLUSDT": {
       "id": "PAPER_SOLUSDT_1781633596",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.2 720468 126924 ?       Ssl  08:25   1:12 /opt/ensemble
       "opened_at": "2026-06-16T18:13:16.030734",
       "cost": 20.0001184,
       "notional": 100.00059200000001,
-      "leverage": 5
-    },
-    "ENAUSDT": {
-      "id": "PAPER_ENAUSDT_1781642370",
-      "symbol": "ENAUSDT",
-      "side": "long",
-      "entry_price": 0.08805,
-      "qty": 1135.7183,
-      "confidence": 80,
-      "opened_at": "2026-06-16T20:39:30.734590",
-      "cost": 19.999999263,
-      "notional": 99.999996315,
       "leverage": 5
     }
   },
@@ -4815,19 +4803,32 @@ root     1488950  0.1  3.2 720468 126924 ?       Ssl  08:25   1:12 /opt/ensemble
       "closed_at": "2026-06-16T14:27:47.081298",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ENAUSDT_1781642370",
+      "symbol": "ENAUSDT",
+      "side": "long",
+      "entry_price": 0.08805,
+      "qty": 1135.7183,
+      "confidence": 80,
+      "opened_at": "2026-06-16T20:39:30.734590",
+      "cost": 19.999999263,
+      "notional": 99.999996315,
+      "leverage": 5,
+      "exit_price": 0.08607,
+      "pnl_pct": -11.24,
+      "pnl_usdt": -2.25,
+      "closed_at": "2026-06-16T21:39:09.188982",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 34.208238210579374
+  "total_pnl": 31.959515976579365
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-16 21:19:33,819 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-16 21:19:33,820 [WARNING] agents: Bull entropy-guard: шаблон flat(25) ×5. Переключаемся на Kimi+Claude fallback.
-2026-06-16 21:19:33,820 [INFO] main: VELVETUSDT | Bull:flat(25%) Bear:short(60%)
-2026-06-16 21:19:36,975 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-16 21:19:36,976 [INFO] main: VELVETUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-16 21:19:36,976 [INFO] main: VELVETUSDT | RL adj=55.0%
 2026-06-16 21:19:40,366 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
 2026-06-16 21:19:42,153 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -4853,6 +4854,11 @@ root     1488950  0.1  3.2 720468 126924 ?       Ssl  08:25   1:12 /opt/ensemble
 2026-06-16 21:20:04,835 [INFO] main: XLMUSDT | RL adj=48.0%
 2026-06-16 21:20:06,838 [INFO] main: Next scan in 30min (always-30min)
 2026-06-16 21:25:25,639 [INFO] main: Symbols: 30
+2026-06-16 21:39:09,187 [INFO] positions: STOP_LOSS ENAUSDT long PnL:-2.25%
+2026-06-16 21:39:09,196 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG ENAUSDT @ 0.0861 PnL: -11.24% (-2.25 USDT) | Баланс: 1011.96
+2026-06-16 21:39:09,488 [INFO] positions: LOSS ENAUSDT long PnL:-2.25% reason:stop_loss
+2026-06-16 21:39:09,489 [INFO] positions: Lessons: The trade was based on bullish indicators and a favorable risk to reward ratio but ultimately stopped out for a 2.25% loss. The ranging regime proved to be a challenging environment for the long position. This outcome highlights the importance of adapting to changing market conditions and being prepared for potential stop losses even with favorable setups.
+2026-06-16 21:39:09,489 [INFO] rl: RL learned from long ENAUSDT: loss -2.25% | weights bull=0.970 bear=0.770 judge=1.259 threshold=65.48
 ```
 
 ## Disk
@@ -4870,7 +4876,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       877Mi       330Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       876Mi       331Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
