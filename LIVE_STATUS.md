@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-16 02:20:01 UTC
+Generated: 2026-06-16 02:30:01 UTC
 
 ## Services
 ```
@@ -18,21 +18,8 @@ root     1408426  0.1  3.5 730240 136756 ?       Ssl  Jun12   9:16 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 1017.2010797138488,
-  "positions": {
-    "RENDERUSDT": {
-      "id": "PAPER_RENDERUSDT_1781568903",
-      "symbol": "RENDERUSDT",
-      "side": "long",
-      "entry_price": 1.788,
-      "qty": 55.9284,
-      "confidence": 70,
-      "opened_at": "2026-06-16T00:15:03.588135",
-      "cost": 19.999995840000004,
-      "notional": 99.99997920000001,
-      "leverage": 5
-    }
-  },
+  "balance": 1034.885639793849,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -4713,19 +4700,32 @@ root     1408426  0.1  3.5 730240 136756 ?       Ssl  Jun12   9:16 /opt/ensemble
       "closed_at": "2026-06-16T02:14:21.505594",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_RENDERUSDT_1781568903",
+      "symbol": "RENDERUSDT",
+      "side": "long",
+      "entry_price": 1.788,
+      "qty": 55.9284,
+      "confidence": 70,
+      "opened_at": "2026-06-16T00:15:03.588135",
+      "cost": 19.999995840000004,
+      "notional": 99.99997920000001,
+      "leverage": 5,
+      "exit_price": 1.7466,
+      "pnl_pct": -11.58,
+      "pnl_usdt": -2.32,
+      "closed_at": "2026-06-16T02:28:00.138394",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 37.20107555384918
+  "total_pnl": 34.88563979384917
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-16 02:12:50,415 [INFO] main: SOLUSDT | RL adj=75.1%
-2026-06-16 02:12:50,434 [INFO] main: SOLUSDT | Context score=-0.05 bias=0.05
-2026-06-16 02:12:50,435 [INFO] main: SOLUSDT | regime BLOCK (volatile)
-2026-06-16 02:12:57,050 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-16 02:13:01,011 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-16 02:13:01,011 [INFO] main: ETHUSDT | Bull:long(62%) Bear:short(70%)
 2026-06-16 02:13:04,452 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-16 02:13:04,453 [INFO] main: ETHUSDT | Judge:HOLD conf=55% size=0.0%
@@ -4751,6 +4751,11 @@ root     1408426  0.1  3.5 730240 136756 ?       Ssl  Jun12   9:16 /opt/ensemble
 2026-06-16 02:14:21,837 [INFO] positions: LOSS LINKUSDT long PnL:-2.09% reason:stop_loss
 2026-06-16 02:14:21,837 [INFO] positions: Lessons: The trade was based on a potential reversal due to oversold conditions but ultimately stopped out for a 2.09% loss. The extreme fear sentiment and low RSI did not translate to a reversal in this case. This outcome highlights the importance of managing risk and not relying solely on sentiment and technical indicators for trade decisions.
 2026-06-16 02:14:21,837 [INFO] rl: RL learned from long LINKUSDT: loss -2.09% | weights bull=0.978 bear=0.768 judge=1.254 threshold=65.34
+2026-06-16 02:28:00,136 [INFO] positions: STOP_LOSS RENDERUSDT long PnL:-2.32%
+2026-06-16 02:28:00,149 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG RENDERUSDT @ 1.7466 PnL: -11.58% (-2.32 USDT) | Баланс: 1034.89
+2026-06-16 02:28:00,418 [INFO] positions: LOSS RENDERUSDT long PnL:-2.32% reason:stop_loss
+2026-06-16 02:28:00,418 [INFO] positions: Lessons: Ranging markets can be challenging for directional trades. The anticipated 2:1 risk/reward ratio did not materialize, highlighting the importance of adjusting expectations in ranging regimes. Stop losses were effective in limiting losses to 2.32 percent.
+2026-06-16 02:28:00,418 [INFO] rl: RL learned from long RENDERUSDT: loss -2.32% | weights bull=0.974 bear=0.771 judge=1.255 threshold=65.39
 ```
 
 ## Disk
@@ -4768,7 +4773,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       906Mi       322Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       908Mi       320Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
