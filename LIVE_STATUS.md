@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-16 14:20:01 UTC
+Generated: 2026-06-16 14:30:01 UTC
 
 ## Services
 ```
@@ -12,39 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 133164 48168 ?        Ssl  Jun12   0:16 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.2 719508 125308 ?       Ssl  08:25   0:34 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.2 720468 126420 ?       Ssl  08:25   0:34 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 998.3592032028242,
-  "positions": {
-    "PEPEUSDT": {
-      "id": "PAPER_PEPEUSDT_1781598333",
-      "symbol": "PEPEUSDT",
-      "side": "long",
-      "entry_price": 2.9692e-06,
-      "qty": 33679105.483,
-      "confidence": 70,
-      "opened_at": "2026-06-16T08:25:33.892903",
-      "cost": 20.00000000002472,
-      "notional": 100.0000000001236,
-      "leverage": 5
-    },
-    "ETHUSDT": {
-      "id": "PAPER_ETHUSDT_1781614302",
-      "symbol": "ETHUSDT",
-      "side": "long",
-      "entry_price": 1811.12,
-      "qty": 0.0552,
-      "confidence": 70,
-      "opened_at": "2026-06-16T12:51:42.401970",
-      "cost": 19.9947648,
-      "notional": 99.973824,
-      "leverage": 5
-    }
-  },
+  "balance": 1034.208238210579,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -4779,25 +4754,50 @@ root     1488950  0.1  3.2 719508 125308 ?       Ssl  08:25   0:34 /opt/ensemble
       "closed_at": "2026-06-16T13:11:49.499451",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ETHUSDT_1781614302",
+      "symbol": "ETHUSDT",
+      "side": "long",
+      "entry_price": 1811.12,
+      "qty": 0.0552,
+      "confidence": 70,
+      "opened_at": "2026-06-16T12:51:42.401970",
+      "cost": 19.9947648,
+      "notional": 99.973824,
+      "leverage": 5,
+      "exit_price": 1772.99,
+      "pnl_pct": -10.53,
+      "pnl_usdt": -2.1,
+      "closed_at": "2026-06-16T14:23:44.044483",
+      "reason": "stop_loss",
+      "outcome": "loss"
+    },
+    {
+      "id": "PAPER_PEPEUSDT_1781598333",
+      "symbol": "PEPEUSDT",
+      "side": "long",
+      "entry_price": 2.9692e-06,
+      "qty": 33679105.483,
+      "confidence": 70,
+      "opened_at": "2026-06-16T08:25:33.892903",
+      "cost": 20.00000000002472,
+      "notional": 100.0000000001236,
+      "leverage": 5,
+      "exit_price": 2.9086e-06,
+      "pnl_pct": -10.2,
+      "pnl_usdt": -2.04,
+      "closed_at": "2026-06-16T14:27:47.081298",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 38.353968002849165
+  "total_pnl": 34.208238210579374
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-16 14:06:00,974 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-16 14:06:00,975 [INFO] main: DOGEUSDT | Bull:flat(15%) Bear:short(78%)
-2026-06-16 14:06:07,377 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-16 14:06:07,378 [INFO] main: DOGEUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-16 14:06:07,378 [INFO] main: DOGEUSDT | RL adj=93.9%
-2026-06-16 14:06:07,390 [INFO] main: DOGEUSDT | Context score=-0.05 bias=0.05
-2026-06-16 14:06:07,390 [INFO] main: DOGEUSDT | macro BLOCK (short при BTC uptrend)
-2026-06-16 14:06:14,833 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-16 14:06:15,732 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-16 14:06:15,732 [INFO] main: ENAUSDT | Bull:flat(25%) Bear:flat(50%)
-2026-06-16 14:06:18,627 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-16 14:06:18,628 [INFO] main: ENAUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-16 14:06:18,628 [INFO] main: ENAUSDT | RL adj=55.0%
 2026-06-16 14:06:25,467 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -4817,6 +4817,17 @@ root     1488950  0.1  3.2 719508 125308 ?       Ssl  08:25   0:34 /opt/ensemble
 2026-06-16 14:06:41,771 [INFO] main: RENDERUSDT | Context score=-0.05 bias=0.05
 2026-06-16 14:06:41,772 [INFO] main: RENDERUSDT | macro BLOCK (short при BTC uptrend)
 2026-06-16 14:06:43,788 [INFO] main: Next scan in 30min (always-30min)
+2026-06-16 14:23:44,041 [INFO] positions: STOP_LOSS ETHUSDT long PnL:-2.11%
+2026-06-16 14:23:44,059 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG ETHUSDT @ 1772.9900 PnL: -10.53% (-2.10 USDT) | Баланс: 1016.25
+2026-06-16 14:23:44,474 [INFO] positions: LOSS ETHUSDT long PnL:-2.11% reason:stop_loss
+2026-06-16 14:23:44,475 [INFO] positions: Lessons: The trade was closed at a loss due to stop loss being triggered, resulting in a 2.11% loss. Despite a strong bullish case and favorable indicators such as MACD and RSI, the trade did not work out. Weak volume may have been a contributing factor to the trade's failure, highlighting the importance of considering volume in future trading decisions.
+2026-06-16 14:23:44,475 [INFO] rl: RL learned from long ETHUSDT: loss -2.11% | weights bull=0.978 bear=0.765 judge=1.258 threshold=65.38
+2026-06-16 14:25:21,004 [INFO] main: Symbols: 30
+2026-06-16 14:27:47,080 [INFO] positions: STOP_LOSS PEPEUSDT long PnL:-2.04%
+2026-06-16 14:27:47,086 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG PEPEUSDT @ 0.0000 PnL: -10.20% (-2.04 USDT) | Баланс: 1034.21
+2026-06-16 14:27:47,436 [INFO] positions: LOSS PEPEUSDT long PnL:-2.04% reason:stop_loss
+2026-06-16 14:27:47,436 [INFO] positions: Lessons: High bull sentiment and supporting indicators such as RSI and MACD were not enough to prevent a loss. The trade was stopped out for a 2.04% loss, indicating that the potential reversal upward did not materialize. This outcome suggests that extreme market fear and high bull sentiment can sometimes be a contrarian indicator.
+2026-06-16 14:27:47,436 [INFO] rl: RL learned from long PEPEUSDT: loss -2.04% | weights bull=0.974 bear=0.767 judge=1.259 threshold=65.43
 ```
 
 ## Disk
@@ -4834,7 +4845,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       866Mi       354Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       881Mi       339Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
