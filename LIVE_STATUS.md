@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-16 22:30:01 UTC
+Generated: 2026-06-16 22:40:01 UTC
 
 ## Services
 ```
@@ -4829,12 +4829,6 @@ root     1488950  0.1  3.2 719012 125600 ?       Ssl  08:25   1:19 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-16 22:29:24,398 [INFO] main: BTCUSDT | RL adj=50.0%
-2026-06-16 22:29:29,966 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-16 22:29:30,534 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-16 22:29:30,536 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
-2026-06-16 22:29:30,536 [INFO] main: VELVETUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-16 22:29:32,692 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-16 22:29:32,692 [INFO] main: VELVETUSDT | Judge:SHORT conf=85% size=20.0%
 2026-06-16 22:29:32,692 [INFO] main: VELVETUSDT | RL adj=93.1%
 2026-06-16 22:29:32,703 [INFO] main: VELVETUSDT | Context score=-0.05 bias=0.05
@@ -4859,6 +4853,12 @@ root     1488950  0.1  3.2 719012 125600 ?       Ssl  08:25   1:19 /opt/ensemble
 2026-06-16 22:29:59,045 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-16 22:29:59,071 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-16 22:29:59,072 [INFO] main: TRUMPUSDT | Bull:flat(25%) Bear:short(60%)
+2026-06-16 22:30:01,908 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-16 22:30:01,909 [INFO] main: TRUMPUSDT | Judge:SHORT conf=70% size=10.0%
+2026-06-16 22:30:01,909 [INFO] main: TRUMPUSDT | RL adj=76.9%
+2026-06-16 22:30:01,921 [INFO] main: TRUMPUSDT | Context score=-0.05 bias=0.05
+2026-06-16 22:30:01,921 [INFO] main: TRUMPUSDT | macro BLOCK (short при BTC uptrend)
+2026-06-16 22:30:03,925 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -4876,7 +4876,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       871Mi       333Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       864Mi       340Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
