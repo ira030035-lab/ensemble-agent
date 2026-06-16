@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-16 00:00:01 UTC
+Generated: 2026-06-16 00:10:01 UTC
 
 ## Services
 ```
@@ -4703,7 +4703,6 @@ root     1408426  0.1  3.5 730240 136748 ?       Ssl  Jun12   9:04 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-15 23:44:02,465 [INFO] main: CHIPUSDT | RL adj=89.2%
 2026-06-15 23:44:02,481 [INFO] main: CHIPUSDT | Context score=-0.05 bias=0.05
 2026-06-15 23:44:02,481 [INFO] main: CHIPUSDT | regime BLOCK (volatile)
 2026-06-15 23:44:08,166 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -4733,12 +4732,13 @@ root     1408426  0.1  3.5 730240 136748 ?       Ssl  Jun12   9:04 /opt/ensemble
 2026-06-15 23:44:41,807 [INFO] main: RENDERUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-15 23:44:41,808 [INFO] main: RENDERUSDT | RL adj=55.0%
 2026-06-15 23:44:43,810 [INFO] main: Next scan in 30min (always-30min)
+2026-06-16 00:04:56,765 [INFO] main: Symbols: 30
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  900K  381M   1% /run
+tmpfs           382M  896K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  9.1G   63G  13% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -4750,7 +4750,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       920Mi       312Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       900Mi       331Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
