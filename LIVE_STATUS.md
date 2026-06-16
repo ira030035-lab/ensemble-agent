@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-16 03:00:01 UTC
+Generated: 2026-06-16 03:10:01 UTC
 
 ## Services
 ```
@@ -4726,7 +4726,6 @@ root     1408426  0.1  3.5 730240 136756 ?       Ssl  Jun12   9:19 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-16 02:52:13,834 [INFO] main: CHIPUSDT | RL adj=93.7%
 2026-06-16 02:52:13,844 [INFO] main: CHIPUSDT | Context score=-0.05 bias=0.05
 2026-06-16 02:52:13,844 [INFO] main: CHIPUSDT | regime BLOCK (volatile)
 2026-06-16 02:52:20,735 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -4756,6 +4755,7 @@ root     1408426  0.1  3.5 730240 136756 ?       Ssl  Jun12   9:19 /opt/ensemble
 2026-06-16 02:53:46,848 [INFO] main: TRUMPUSDT | Context score=-0.05 bias=0.05
 2026-06-16 02:53:46,848 [INFO] main: TRUMPUSDT | macro BLOCK (short при BTC uptrend)
 2026-06-16 02:53:48,862 [INFO] main: Next scan in 30min (always-30min)
+2026-06-16 03:04:58,741 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -4773,7 +4773,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       911Mi       317Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       918Mi       309Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
