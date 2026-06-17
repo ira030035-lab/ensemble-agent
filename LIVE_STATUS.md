@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-17 17:50:01 UTC
+Generated: 2026-06-17 18:00:01 UTC
 
 ## Services
 ```
@@ -4997,8 +4997,6 @@ root     1488950  0.1  3.2 722084 128840 ?       Ssl  Jun16   3:05 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-17 17:38:04,831 [WARNING] agents: Bull entropy-guard: шаблон flat(25) ×5. Переключаемся на Kimi+Claude fallback.
-2026-06-17 17:38:04,898 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-17 17:38:04,899 [INFO] main: TRUMPUSDT | Bull:flat(25%) Bear:short(75%)
 2026-06-17 17:38:07,279 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-17 17:38:07,281 [INFO] main: TRUMPUSDT | Judge:HOLD conf=55% size=0.0%
@@ -5027,6 +5025,8 @@ root     1488950  0.1  3.2 722084 128840 ?       Ssl  Jun16   3:05 /opt/ensemble
 2026-06-17 17:38:39,507 [INFO] main: DOGEUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-17 17:38:39,507 [INFO] main: DOGEUSDT | RL adj=55.0%
 2026-06-17 17:38:41,510 [INFO] main: Next scan in 30min (always-30min)
+2026-06-17 17:55:22,489 [WARNING] agents: Judge-Groq all failed: openai/gpt-oss-120b empty
+2026-06-17 17:55:25,078 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 ```
 
 ## Disk
@@ -5044,7 +5044,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       865Mi       403Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       891Mi       376Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
