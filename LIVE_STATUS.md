@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-17 06:20:01 UTC
+Generated: 2026-06-17 06:30:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 134644 49348 ?        Ssl  Jun12   0:27 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.2 720036 125872 ?       Ssl  Jun16   1:59 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.2 721544 127248 ?       Ssl  Jun16   2:00 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 971.9593983165792,
+  "balance": 992.1800214035792,
   "positions": {
     "SOLUSDT": {
       "id": "PAPER_SOLUSDT_1781633596",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.2 720036 125872 ?       Ssl  Jun16   1:59 /opt/ensemble
       "opened_at": "2026-06-17T04:17:49.065699",
       "cost": 19.999998568000002,
       "notional": 99.99999284,
-      "leverage": 5
-    },
-    "ENAUSDT": {
-      "id": "PAPER_ENAUSDT_1781674281",
-      "symbol": "ENAUSDT",
-      "side": "long",
-      "entry_price": 0.08612,
-      "qty": 1161.1705,
-      "confidence": 70,
-      "opened_at": "2026-06-17T05:31:21.788529",
-      "cost": 20.000000692,
-      "notional": 100.00000346,
       "leverage": 5
     }
   },
@@ -4845,20 +4833,32 @@ root     1488950  0.1  3.2 720036 125872 ?       Ssl  Jun16   1:59 /opt/ensemble
       "closed_at": "2026-06-16T21:39:09.188982",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ENAUSDT_1781674281",
+      "symbol": "ENAUSDT",
+      "side": "long",
+      "entry_price": 0.08612,
+      "qty": 1161.1705,
+      "confidence": 70,
+      "opened_at": "2026-06-17T05:31:21.788529",
+      "cost": 20.000000692,
+      "notional": 100.00000346,
+      "leverage": 5,
+      "exit_price": 0.08631,
+      "pnl_pct": 1.1,
+      "pnl_usdt": 0.22,
+      "closed_at": "2026-06-17T06:28:07.894624",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 31.959515976579365
+  "total_pnl": 32.18013837157936
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-17 06:11:22,733 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-17 06:11:22,734 [INFO] main: WLDUSDT | Bull:long(62%) Bear:short(80%)
-2026-06-17 06:11:27,514 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-17 06:11:27,515 [INFO] main: WLDUSDT | Judge:LONG conf=70% size=15.0%
-2026-06-17 06:11:27,516 [INFO] main: WLDUSDT | RL adj=69.8%
-2026-06-17 06:11:27,541 [INFO] main: WLDUSDT | Context score=-0.0 bias=0.05
 2026-06-17 06:11:27,541 [INFO] main: WLDUSDT | regime BLOCK (volatile)
 2026-06-17 06:11:34,367 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-17 06:11:34,666 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -4883,6 +4883,12 @@ root     1488950  0.1  3.2 720036 125872 ?       Ssl  Jun16   1:59 /opt/ensemble
 2026-06-17 06:12:08,584 [INFO] main: LABUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-17 06:12:08,584 [INFO] main: LABUSDT | RL adj=50.0%
 2026-06-17 06:12:10,585 [INFO] main: Next scan in 30min (always-30min)
+2026-06-17 06:25:31,327 [INFO] main: Symbols: 30
+2026-06-17 06:28:07,893 [INFO] positions: BREAKEVEN_STOP ENAUSDT long PnL:0.22%
+2026-06-17 06:28:07,901 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG ENAUSDT @ 0.0863 PnL: 1.10% (+0.22 USDT) | Баланс: 992.18
+2026-06-17 06:28:08,293 [INFO] positions: OK ENAUSDT long PnL:0.22% reason:breakeven_stop
+2026-06-17 06:28:08,293 [INFO] positions: Lessons: The trade was based on a strong bull signal and potential 4% upside move with a favorable risk/reward ratio. It ultimately closed at breakeven due to hitting the breakeven stop, resulting in a 0.22% profit. The key takeaway is that the trade's original reasoning was sound but the market's ranging regime limited the potential for significant gains.
+2026-06-17 06:28:08,293 [INFO] rl: RL learned from long ENAUSDT: profit 0.22% | weights bull=0.971 bear=0.770 judge=1.260 threshold=65.45
 ```
 
 ## Disk
@@ -4900,7 +4906,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       871Mi       320Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       877Mi       314Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
