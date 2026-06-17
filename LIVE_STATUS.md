@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-17 14:20:01 UTC
+Generated: 2026-06-17 14:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 136084 49628 ?        Ssl  Jun12   0:29 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.2 721704 128308 ?       Ssl  Jun16   2:44 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.2 720044 126776 ?       Ssl  Jun16   2:44 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -4943,7 +4943,6 @@ root     1488950  0.1  3.2 721704 128308 ?       Ssl  Jun16   2:44 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-17 14:09:47,499 [INFO] main: BTCUSDT | macro BLOCK (short при BTC uptrend)
 2026-06-17 14:09:54,739 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-17 14:09:55,841 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-17 14:09:55,842 [INFO] main: BEATUSDT | Bull:flat(15%) Bear:short(70%)
@@ -4973,6 +4972,7 @@ root     1488950  0.1  3.2 721704 128308 ?       Ssl  Jun16   2:44 /opt/ensemble
 2026-06-17 14:10:32,129 [INFO] main: UNIUSDT | Judge:HOLD conf=40% size=0.0%
 2026-06-17 14:10:32,129 [INFO] main: UNIUSDT | RL adj=40.0%
 2026-06-17 14:10:34,130 [INFO] main: Next scan in 30min (always-30min)
+2026-06-17 14:25:36,759 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -4990,7 +4990,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       878Mi       404Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       882Mi       399Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
