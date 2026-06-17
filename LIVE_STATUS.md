@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-17 22:00:01 UTC
+Generated: 2026-06-17 22:10:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1488950  0.1  3.2 721060 127084 ?       Ssl  Jun16   3:30 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 983.3299302835636,
+  "balance": 1001.2367070835636,
   "positions": {
-    "BNBUSDT": {
-      "id": "PAPER_BNBUSDT_1781722003",
-      "symbol": "BNBUSDT",
-      "side": "long",
-      "entry_price": 608.11,
-      "qty": 0.1644,
-      "confidence": 75,
-      "opened_at": "2026-06-17T18:46:43.876661",
-      "cost": 19.994656799999998,
-      "notional": 99.97328399999999,
-      "leverage": 5
-    },
     "PEPEUSDT": {
       "id": "PAPER_PEPEUSDT_1781725980",
       "symbol": "PEPEUSDT",
@@ -5067,19 +5055,32 @@ root     1488950  0.1  3.2 721060 127084 ?       Ssl  Jun16   3:30 /opt/ensemble
       "closed_at": "2026-06-17T19:51:32.692782",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_BNBUSDT_1781722003",
+      "symbol": "BNBUSDT",
+      "side": "long",
+      "entry_price": 608.11,
+      "qty": 0.1644,
+      "confidence": 75,
+      "opened_at": "2026-06-17T18:46:43.876661",
+      "cost": 19.994656799999998,
+      "notional": 99.97328399999999,
+      "leverage": 5,
+      "exit_price": 595.41,
+      "pnl_pct": -10.44,
+      "pnl_usdt": -2.09,
+      "closed_at": "2026-06-17T22:03:35.692034",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 23.32458708357938
+  "total_pnl": 21.236707083579375
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-17 21:40:10,008 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-17 21:40:10,009 [INFO] main: SOLUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-17 21:40:12,194 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-17 21:40:12,195 [INFO] main: SOLUSDT | Judge:SHORT conf=70% size=15.0%
-2026-06-17 21:40:12,195 [INFO] main: SOLUSDT | RL adj=78.1%
 2026-06-17 21:40:12,218 [INFO] main: SOLUSDT | Context score=-0.05 bias=0.05
 2026-06-17 21:40:12,218 [INFO] main: SOLUSDT | macro BLOCK (short при BTC uptrend)
 2026-06-17 21:40:18,034 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -5105,6 +5106,11 @@ root     1488950  0.1  3.2 721060 127084 ?       Ssl  Jun16   3:30 /opt/ensemble
 2026-06-17 21:40:40,908 [INFO] main: SKYAIUSDT | Context score=-0.05 bias=0.05
 2026-06-17 21:40:40,908 [INFO] main: SKYAIUSDT | regime BLOCK (volatile)
 2026-06-17 21:40:42,911 [INFO] main: Next scan in 30min (always-30min)
+2026-06-17 22:03:35,689 [INFO] positions: STOP_LOSS BNBUSDT long PnL:-2.09%
+2026-06-17 22:03:35,703 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG BNBUSDT @ 595.4100 PnL: -10.44% (-2.09 USDT) | Баланс: 1001.24
+2026-06-17 22:03:36,046 [INFO] positions: LOSS BNBUSDT long PnL:-2.09% reason:stop_loss
+2026-06-17 22:03:36,046 [INFO] positions: Lessons: The trade was based on a buyer's market indicated by BP imbalance and bullish micro-structure, but it closed at a 2.09% loss due to hitting the stop loss. The original reasoning did not account for the dominant bear sentiment prevailing over the bullish indicators. This trade highlights the importance of considering overall market sentiment in conjunction with other technical indicators.
+2026-06-17 22:03:36,046 [INFO] rl: RL learned from long BNBUSDT: loss -2.09% | weights bull=0.954 bear=0.779 judge=1.267 threshold=65.62
 ```
 
 ## Disk
@@ -5122,7 +5128,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       897Mi       356Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       886Mi       367Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
