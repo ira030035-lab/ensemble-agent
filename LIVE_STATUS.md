@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-17 15:30:01 UTC
+Generated: 2026-06-17 15:40:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.2 722252 128856 ?       Ssl  Jun16   2:51 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 968.6830860239793,
+  "balance": 989.0786028383793,
   "positions": {
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1781694555",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.2 722252 128856 ?       Ssl  Jun16   2:51 /opt/ensemble
       "opened_at": "2026-06-17T12:19:20.096308",
       "cost": 20.0000011032,
       "notional": 100.00000551599999,
-      "leverage": 5
-    },
-    "ENAUSDT": {
-      "id": "PAPER_ENAUSDT_1781703252",
-      "symbol": "ENAUSDT",
-      "side": "long",
-      "entry_price": 0.09102,
-      "qty": 1098.6596,
-      "confidence": 72,
-      "opened_at": "2026-06-17T13:34:12.249332",
-      "cost": 19.9999993584,
-      "notional": 99.999996792,
       "leverage": 5
     }
   },
@@ -4935,19 +4923,32 @@ root     1488950  0.1  3.2 722252 128856 ?       Ssl  Jun16   2:51 /opt/ensemble
       "closed_at": "2026-06-17T13:24:19.387379",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ENAUSDT_1781703252",
+      "symbol": "ENAUSDT",
+      "side": "long",
+      "entry_price": 0.09102,
+      "qty": 1098.6596,
+      "confidence": 72,
+      "opened_at": "2026-06-17T13:34:12.249332",
+      "cost": 19.9999993584,
+      "notional": 99.999996792,
+      "leverage": 5,
+      "exit_price": 0.09138,
+      "pnl_pct": 1.98,
+      "pnl_usdt": 0.4,
+      "closed_at": "2026-06-17T15:31:52.598063",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 28.669452085579362
+  "total_pnl": 29.064969541579362
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-17 15:18:54,194 [INFO] main: ESPORTSUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-17 15:18:54,194 [INFO] main: ESPORTSUSDT | RL adj=55.0%
-2026-06-17 15:19:01,038 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-17 15:19:01,659 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-17 15:19:01,660 [INFO] main: ONDOUSDT | Bull:flat(25%) Bear:short(70%)
 2026-06-17 15:19:04,801 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-17 15:19:04,802 [INFO] main: ONDOUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-17 15:19:04,802 [INFO] main: ONDOUSDT | RL adj=55.0%
@@ -4973,6 +4974,11 @@ root     1488950  0.1  3.2 722252 128856 ?       Ssl  Jun16   2:51 /opt/ensemble
 2026-06-17 15:19:36,089 [INFO] main: NEARUSDT | RL adj=55.0%
 2026-06-17 15:19:38,091 [INFO] main: Next scan in 30min (always-30min)
 2026-06-17 15:25:37,424 [INFO] main: Symbols: 30
+2026-06-17 15:31:52,595 [INFO] positions: BREAKEVEN_STOP ENAUSDT long PnL:0.4%
+2026-06-17 15:31:52,611 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG ENAUSDT @ 0.0914 PnL: 1.98% (+0.40 USDT) | Баланс: 989.08
+2026-06-17 15:31:52,933 [INFO] positions: OK ENAUSDT long PnL:0.4% reason:breakeven_stop
+2026-06-17 15:31:52,933 [INFO] positions: Lessons: The trade on ENAUSDT resulted in a breakeven stop with a 0.4% profit, failing to reach the expected 4% upside. The initial analysis correctly identified a bullish trend but overestimated the potential gain. This trade highlights the importance of accurately assessing potential upside and managing expectations to avoid overleveraging positions.
+2026-06-17 15:31:52,933 [INFO] rl: RL learned from long ENAUSDT: profit 0.40% | weights bull=0.965 bear=0.773 judge=1.262 threshold=65.46
 ```
 
 ## Disk
@@ -4990,7 +4996,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       895Mi       381Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       873Mi       403Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
