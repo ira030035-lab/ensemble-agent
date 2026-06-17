@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-17 16:40:01 UTC
+Generated: 2026-06-17 16:50:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 135788 49624 ?        Ssl  Jun12   0:36 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.3 722320 129056 ?       Ssl  Jun16   2:58 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.3 722320 129060 ?       Ssl  Jun16   2:58 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 971.0853585459793,
+  "balance": 989.0293159715793,
   "positions": {
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1781694555",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.3 722320 129056 ?       Ssl  Jun16   2:58 /opt/ensemble
       "opened_at": "2026-06-17T11:09:15.945729",
       "cost": 19.9863656,
       "notional": 99.931828,
-      "leverage": 5
-    },
-    "XLMUSDT": {
-      "id": "PAPER_XLMUSDT_1781711469",
-      "symbol": "XLMUSDT",
-      "side": "long",
-      "entry_price": 0.23054,
-      "qty": 433.7642,
-      "confidence": 75,
-      "opened_at": "2026-06-17T15:51:09.080798",
-      "cost": 19.9999997336,
-      "notional": 99.999998668,
       "leverage": 5
     },
     "SUIUSDT": {
@@ -4971,19 +4959,32 @@ root     1488950  0.1  3.3 722320 129056 ?       Ssl  Jun16   2:58 /opt/ensemble
       "closed_at": "2026-06-17T15:43:06.149029",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_XLMUSDT_1781711469",
+      "symbol": "XLMUSDT",
+      "side": "long",
+      "entry_price": 0.23054,
+      "qty": 433.7642,
+      "confidence": 75,
+      "opened_at": "2026-06-17T15:51:09.080798",
+      "cost": 19.9999997336,
+      "notional": 99.999998668,
+      "leverage": 5,
+      "exit_price": 0.2258,
+      "pnl_pct": -10.28,
+      "pnl_usdt": -2.06,
+      "closed_at": "2026-06-17T16:49:04.898861",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 31.07171800957936
+  "total_pnl": 29.01567570157936
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-17 16:28:36,109 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-17 16:28:36,110 [INFO] main: UNIUSDT | Bull:long(62%) Bear:short(75%)
-2026-06-17 16:28:39,111 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-17 16:28:39,112 [INFO] main: UNIUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-17 16:28:39,112 [INFO] main: UNIUSDT | RL adj=74.6%
 2026-06-17 16:28:39,130 [INFO] main: UNIUSDT | Context score=-0.05 bias=0.05
 2026-06-17 16:28:39,130 [INFO] main: UNIUSDT | regime BLOCK (volatile)
 2026-06-17 16:28:45,036 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -5009,6 +5010,11 @@ root     1488950  0.1  3.3 722320 129056 ?       Ssl  Jun16   2:58 /opt/ensemble
 2026-06-17 16:29:08,057 [INFO] main: HUSDT | Context score=-0.05 bias=0.05
 2026-06-17 16:29:08,058 [INFO] main: HUSDT | regime BLOCK (volatile)
 2026-06-17 16:29:10,098 [INFO] main: Next scan in 30min (always-30min)
+2026-06-17 16:49:04,897 [INFO] positions: STOP_LOSS XLMUSDT long PnL:-2.06%
+2026-06-17 16:49:04,905 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG XLMUSDT @ 0.2258 PnL: -10.28% (-2.06 USDT) | Баланс: 989.03
+2026-06-17 16:49:05,281 [INFO] positions: LOSS XLMUSDT long PnL:-2.06% reason:stop_loss
+2026-06-17 16:49:05,281 [INFO] positions: Lessons: The trade was based on a multi-timeframe bullish setup and strong MACD signal but still resulted in a loss. This highlights the importance of risk management and not relying solely on technical indicators. The 2:1 expected R/R was not achieved, and the stop loss was triggered, resulting in a 2.06% loss.
+2026-06-17 16:49:05,281 [INFO] rl: RL learned from long XLMUSDT: loss -2.06% | weights bull=0.966 bear=0.771 judge=1.264 threshold=65.48
 ```
 
 ## Disk
@@ -5026,7 +5032,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       899Mi       372Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       881Mi       389Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
