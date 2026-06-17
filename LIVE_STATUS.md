@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-17 19:40:01 UTC
+Generated: 2026-06-17 19:50:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.2 722872 128696 ?       Ssl  Jun16   3:16 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 967.6086597739793,
+  "balance": 985.3953146835793,
   "positions": {
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1781694555",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.2 722872 128696 ?       Ssl  Jun16   3:16 /opt/ensemble
       "opened_at": "2026-06-17T18:46:43.876661",
       "cost": 19.994656799999998,
       "notional": 99.97328399999999,
-      "leverage": 5
-    },
-    "ENAUSDT": {
-      "id": "PAPER_ENAUSDT_1781723979",
-      "symbol": "ENAUSDT",
-      "side": "long",
-      "entry_price": 0.09262,
-      "qty": 1079.6804,
-      "confidence": 80,
-      "opened_at": "2026-06-17T19:19:39.406792",
-      "cost": 19.9999997296,
-      "notional": 99.99999864799999,
       "leverage": 5
     }
   },
@@ -5043,19 +5031,32 @@ root     1488950  0.1  3.2 722872 128696 ?       Ssl  Jun16   3:16 /opt/ensemble
       "closed_at": "2026-06-17T18:57:16.116106",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ENAUSDT_1781723979",
+      "symbol": "ENAUSDT",
+      "side": "long",
+      "entry_price": 0.09262,
+      "qty": 1079.6804,
+      "confidence": 80,
+      "opened_at": "2026-06-17T19:19:39.406792",
+      "cost": 19.9999997296,
+      "notional": 99.99999864799999,
+      "leverage": 5,
+      "exit_price": 0.09057,
+      "pnl_pct": -11.07,
+      "pnl_usdt": -2.21,
+      "closed_at": "2026-06-17T19:40:18.666771",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 27.589681903579375
+  "total_pnl": 25.37633708357938
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-17 19:21:54,243 [INFO] main: PEPEUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-17 19:21:54,243 [INFO] main: PEPEUSDT | RL adj=83.7%
-2026-06-17 19:21:54,281 [INFO] main: PEPEUSDT | Context score=-0.05 bias=0.05
-2026-06-17 19:21:54,281 [INFO] main: PEPEUSDT | macro BLOCK (short при BTC uptrend)
-2026-06-17 19:22:00,095 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-17 19:22:00,536 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-17 19:22:00,537 [INFO] main: HUSDT | Bull:flat(5%) Bear:short(75%)
 2026-06-17 19:22:03,595 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -5081,6 +5082,11 @@ root     1488950  0.1  3.2 722872 128696 ?       Ssl  Jun16   3:16 /opt/ensemble
 2026-06-17 19:22:22,685 [INFO] main: SUIUSDT | macro BLOCK (short при BTC uptrend)
 2026-06-17 19:22:24,714 [INFO] main: Next scan in 30min (always-30min)
 2026-06-17 19:25:40,032 [INFO] main: Symbols: 30
+2026-06-17 19:40:18,664 [INFO] positions: STOP_LOSS ENAUSDT long PnL:-2.21%
+2026-06-17 19:40:18,676 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG ENAUSDT @ 0.0906 PnL: -11.07% (-2.21 USDT) | Баланс: 985.40
+2026-06-17 19:40:18,974 [INFO] positions: LOSS ENAUSDT long PnL:-2.21% reason:stop_loss
+2026-06-17 19:40:18,974 [INFO] positions: Lessons: The trade was closed at a 2.21% loss due to a stop loss, contradicting the expected 4% upward move. The bullish 4-hour trend did not materialize as anticipated, leading to the loss. This outcome highlights the importance of adapting to changing market conditions and reevaluating risk/reward setups.
+2026-06-17 19:40:18,974 [INFO] rl: RL learned from long ENAUSDT: loss -2.21% | weights bull=0.961 bear=0.773 judge=1.266 threshold=65.52
 ```
 
 ## Disk
@@ -5098,7 +5104,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       869Mi       388Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       883Mi       373Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
