@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-17 07:50:01 UTC
+Generated: 2026-06-17 08:00:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 135668 50376 ?        Ssl  Jun12   0:28 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.2 721480 127240 ?       Ssl  Jun16   2:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.2 722000 127760 ?       Ssl  Jun16   2:08 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -4859,36 +4859,36 @@ root     1488950  0.1  3.2 721480 127240 ?       Ssl  Jun16   2:07 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-17 07:26:46,392 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-17 07:26:46,394 [INFO] main: UNIUSDT | Bull:long(72%) Bear:short(75%)
-2026-06-17 07:26:49,666 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-17 07:26:49,667 [INFO] main: UNIUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-17 07:26:49,668 [INFO] main: UNIUSDT | RL adj=50.0%
-2026-06-17 07:26:56,528 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-17 07:26:56,665 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-17 07:26:56,666 [INFO] main: SIRENUSDT | Bull:flat(15%) Bear:short(85%)
-2026-06-17 07:27:00,109 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-17 07:27:00,110 [INFO] main: SIRENUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-17 07:27:00,110 [INFO] main: SIRENUSDT | RL adj=94.8%
-2026-06-17 07:27:00,127 [INFO] main: SIRENUSDT | Context score=-0.05 bias=0.05
-2026-06-17 07:27:00,127 [INFO] main: SIRENUSDT | regime BLOCK (volatile)
-2026-06-17 07:27:06,346 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-17 07:27:07,359 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-17 07:27:07,361 [INFO] main: BNBUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-17 07:27:09,635 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-17 07:27:09,637 [INFO] main: BNBUSDT | Judge:SHORT conf=80% size=15.0%
-2026-06-17 07:27:09,637 [INFO] main: BNBUSDT | RL adj=88.7%
-2026-06-17 07:27:09,661 [INFO] main: BNBUSDT | Context score=-0.05 bias=0.05
-2026-06-17 07:27:09,662 [INFO] main: BNBUSDT | macro BLOCK (short при BTC uptrend)
-2026-06-17 07:27:17,001 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-17 07:27:19,033 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-17 07:27:19,034 [INFO] main: HYPEUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-17 07:27:27,688 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-17 07:27:27,689 [INFO] main: HYPEUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-17 07:27:27,689 [INFO] main: HYPEUSDT | RL adj=83.1%
-2026-06-17 07:27:27,700 [INFO] main: HYPEUSDT | Context score=-0.05 bias=0.05
-2026-06-17 07:27:27,700 [INFO] main: HYPEUSDT | regime BLOCK (volatile)
-2026-06-17 07:27:29,729 [INFO] main: Next scan in 30min (always-30min)
+2026-06-17 07:58:25,916 [INFO] main: BNBUSDT | Context score=-0.05 bias=0.05
+2026-06-17 07:58:25,917 [INFO] main: BNBUSDT | macro BLOCK (short при BTC uptrend)
+2026-06-17 07:58:29,881 [INFO] main: PEPEUSDT | Bull:long(70%) Bear:short(80%)
+2026-06-17 07:58:42,408 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-17 07:58:42,409 [INFO] main: PEPEUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-17 07:58:42,409 [INFO] main: PEPEUSDT | RL adj=50.0%
+2026-06-17 07:58:46,165 [INFO] main: HUSDT | Bull:long(72%) Bear:short(70%)
+2026-06-17 07:58:55,773 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-17 07:58:55,774 [INFO] main: HUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-17 07:58:55,774 [INFO] main: HUSDT | RL adj=55.0%
+2026-06-17 07:58:59,414 [INFO] main: SIRENUSDT | Bull:long(70%) Bear:short(80%)
+2026-06-17 07:59:10,163 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-17 07:59:10,164 [INFO] main: SIRENUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-17 07:59:10,164 [INFO] main: SIRENUSDT | RL adj=55.0%
+2026-06-17 07:59:13,945 [INFO] main: TAOUSDT | Bull:long(68%) Bear:short(80%)
+2026-06-17 07:59:24,335 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-17 07:59:24,335 [INFO] openai._base_client: Retrying request to /chat/completions in 0.381580 seconds
+2026-06-17 07:59:32,787 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-17 07:59:32,787 [INFO] main: TAOUSDT | Judge:SHORT conf=80% size=15.0%
+2026-06-17 07:59:32,787 [INFO] main: TAOUSDT | RL adj=79.3%
+2026-06-17 07:59:32,800 [INFO] main: TAOUSDT | Context score=-0.05 bias=0.05
+2026-06-17 07:59:32,800 [INFO] main: TAOUSDT | macro BLOCK (short при BTC uptrend)
+2026-06-17 07:59:36,926 [INFO] main: ONDOUSDT | Bull:long(70%) Bear:short(80%)
+2026-06-17 07:59:43,429 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-17 07:59:43,431 [INFO] main: ONDOUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-17 07:59:43,431 [INFO] main: ONDOUSDT | RL adj=50.0%
+2026-06-17 07:59:47,594 [INFO] main: TRUMPUSDT | Bull:long(70%) Bear:short(72%)
+2026-06-17 07:59:50,992 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-17 07:59:50,993 [INFO] main: TRUMPUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-17 07:59:50,993 [INFO] main: TRUMPUSDT | RL adj=55.0%
 ```
 
 ## Disk
@@ -4906,7 +4906,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       875Mi       418Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       889Mi       404Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
