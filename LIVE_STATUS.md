@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-17 18:50:01 UTC
+Generated: 2026-06-17 19:00:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.2 722852 128664 ?       Ssl  Jun16   3:12 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 967.2561713223793,
+  "balance": 987.6086595035792,
   "positions": {
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1781694555",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.2 722852 128664 ?       Ssl  Jun16   3:12 /opt/ensemble
       "opened_at": "2026-06-17T11:09:15.945729",
       "cost": 19.9863656,
       "notional": 99.931828,
-      "leverage": 5
-    },
-    "ENAUSDT": {
-      "id": "PAPER_ENAUSDT_1781719739",
-      "symbol": "ENAUSDT",
-      "side": "long",
-      "entry_price": 0.09362,
-      "qty": 1068.1478,
-      "confidence": 85,
-      "opened_at": "2026-06-17T18:08:59.460204",
-      "cost": 19.9999994072,
-      "notional": 99.999997036,
       "leverage": 5
     },
     "BNBUSDT": {
@@ -5025,19 +5013,32 @@ root     1488950  0.1  3.2 722852 128664 ?       Ssl  Jun16   3:12 /opt/ensemble
       "closed_at": "2026-06-17T18:05:40.770344",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ENAUSDT_1781719739",
+      "symbol": "ENAUSDT",
+      "side": "long",
+      "entry_price": 0.09362,
+      "qty": 1068.1478,
+      "confidence": 85,
+      "opened_at": "2026-06-17T18:08:59.460204",
+      "cost": 19.9999994072,
+      "notional": 99.999997036,
+      "leverage": 5,
+      "exit_price": 0.09395,
+      "pnl_pct": 1.76,
+      "pnl_usdt": 0.35,
+      "closed_at": "2026-06-17T18:57:16.116106",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 27.237193129579364
+  "total_pnl": 27.589681903579375
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-17 18:47:19,173 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-17 18:47:19,174 [INFO] main: DOGEUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-17 18:47:21,389 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-17 18:47:21,390 [INFO] main: DOGEUSDT | Judge:SHORT conf=72% size=15.0%
-2026-06-17 18:47:21,390 [INFO] main: DOGEUSDT | RL adj=80.1%
 2026-06-17 18:47:21,401 [INFO] main: DOGEUSDT | Context score=-0.05 bias=0.05
 2026-06-17 18:47:21,401 [INFO] main: DOGEUSDT | macro BLOCK (short при BTC uptrend)
 2026-06-17 18:47:27,203 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -5063,6 +5064,11 @@ root     1488950  0.1  3.2 722852 128664 ?       Ssl  Jun16   3:12 /opt/ensemble
 2026-06-17 18:47:51,289 [INFO] main: HUSDT | Context score=-0.05 bias=0.05
 2026-06-17 18:47:51,289 [INFO] main: HUSDT | regime BLOCK (volatile)
 2026-06-17 18:47:53,328 [INFO] main: Next scan in 30min (always-30min)
+2026-06-17 18:57:16,114 [INFO] positions: BREAKEVEN_STOP ENAUSDT long PnL:0.35%
+2026-06-17 18:57:16,123 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG ENAUSDT @ 0.0940 PnL: 1.76% (+0.35 USDT) | Баланс: 987.61
+2026-06-17 18:57:16,668 [INFO] positions: OK ENAUSDT long PnL:0.35% reason:breakeven_stop
+2026-06-17 18:57:16,668 [INFO] positions: Lessons: The trade was based on strong bull sentiment but overbought conditions, expecting a significant upside move. It ultimately closed at breakeven stop with a small 0.35% profit. The key takeaway is that strong sentiment can sometimes be countered by overbought conditions, limiting potential gains.
+2026-06-17 18:57:16,668 [INFO] rl: RL learned from long ENAUSDT: profit 0.35% | weights bull=0.964 bear=0.771 judge=1.266 threshold=65.47
 ```
 
 ## Disk
@@ -5080,7 +5086,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       876Mi       388Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       889Mi       375Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
