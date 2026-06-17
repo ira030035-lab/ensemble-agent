@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-17 14:10:01 UTC
+Generated: 2026-06-17 14:20:01 UTC
 
 ## Services
 ```
@@ -11,8 +11,8 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1408416  0.0  1.2 134644 49368 ?        Ssl  Jun12   0:29 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.2 720044 126776 ?       Ssl  Jun16   2:44 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408416  0.0  1.2 136084 49628 ?        Ssl  Jun12   0:29 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1488950  0.1  3.2 721704 128308 ?       Ssl  Jun16   2:44 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -4943,29 +4943,6 @@ root     1488950  0.1  3.2 720044 126776 ?       Ssl  Jun16   2:44 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-17 14:09:14,400 [INFO] main: BSBUSDT | Context score=-0.0 bias=0.05
-2026-06-17 14:09:14,400 [INFO] main: BSBUSDT | regime BLOCK (volatile)
-2026-06-17 14:09:21,352 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-17 14:09:21,643 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-17 14:09:21,645 [INFO] main: ADAUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-17 14:09:24,782 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-17 14:09:24,783 [INFO] main: ADAUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-17 14:09:24,783 [INFO] main: ADAUSDT | RL adj=55.0%
-2026-06-17 14:09:31,498 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-17 14:09:33,383 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-17 14:09:33,384 [INFO] main: TRUMPUSDT | Bull:flat(25%) Bear:short(75%)
-2026-06-17 14:09:37,755 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-17 14:09:37,756 [INFO] main: TRUMPUSDT | Judge:SHORT conf=70% size=15.0%
-2026-06-17 14:09:37,756 [INFO] main: TRUMPUSDT | RL adj=78.7%
-2026-06-17 14:09:37,766 [INFO] main: TRUMPUSDT | Context score=-0.05 bias=0.05
-2026-06-17 14:09:37,766 [INFO] main: TRUMPUSDT | macro BLOCK (short при BTC uptrend)
-2026-06-17 14:09:43,408 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-17 14:09:44,532 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-17 14:09:44,533 [INFO] main: BTCUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-17 14:09:47,479 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-17 14:09:47,480 [INFO] main: BTCUSDT | Judge:SHORT conf=72% size=15.0%
-2026-06-17 14:09:47,480 [INFO] main: BTCUSDT | RL adj=80.1%
-2026-06-17 14:09:47,498 [INFO] main: BTCUSDT | Context score=-0.05 bias=0.05
 2026-06-17 14:09:47,499 [INFO] main: BTCUSDT | macro BLOCK (short при BTC uptrend)
 2026-06-17 14:09:54,739 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-17 14:09:55,841 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -4973,6 +4950,29 @@ root     1488950  0.1  3.2 720044 126776 ?       Ssl  Jun16   2:44 /opt/ensemble
 2026-06-17 14:09:58,250 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-17 14:09:58,250 [INFO] main: BEATUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-17 14:09:58,250 [INFO] main: BEATUSDT | RL adj=50.0%
+2026-06-17 14:10:05,447 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-17 14:10:08,249 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-17 14:10:08,249 [INFO] main: ESPORTSUSDT | Bull:long(62%) Bear:short(70%)
+2026-06-17 14:10:11,724 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-17 14:10:11,725 [INFO] main: ESPORTSUSDT | Judge:SHORT conf=75% size=15.0%
+2026-06-17 14:10:11,725 [INFO] main: ESPORTSUSDT | RL adj=74.2%
+2026-06-17 14:10:11,736 [INFO] main: ESPORTSUSDT | Context score=-0.05 bias=0.05
+2026-06-17 14:10:11,737 [INFO] main: ESPORTSUSDT | regime BLOCK (volatile)
+2026-06-17 14:10:18,643 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-17 14:10:19,240 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-17 14:10:19,242 [INFO] main: ZECUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-17 14:10:22,101 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-17 14:10:22,102 [INFO] main: ZECUSDT | Judge:SHORT conf=85% size=20.0%
+2026-06-17 14:10:22,102 [INFO] main: ZECUSDT | RL adj=94.3%
+2026-06-17 14:10:22,124 [INFO] main: ZECUSDT | Context score=-0.05 bias=0.05
+2026-06-17 14:10:22,124 [INFO] main: ZECUSDT | macro BLOCK (short при BTC uptrend)
+2026-06-17 14:10:29,553 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-17 14:10:29,969 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-17 14:10:29,970 [INFO] main: UNIUSDT | Bull:flat(15%) Bear:short(70%)
+2026-06-17 14:10:32,128 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-17 14:10:32,129 [INFO] main: UNIUSDT | Judge:HOLD conf=40% size=0.0%
+2026-06-17 14:10:32,129 [INFO] main: UNIUSDT | RL adj=40.0%
+2026-06-17 14:10:34,130 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -4990,7 +4990,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       877Mi       406Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       878Mi       404Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
