@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-18 08:20:01 UTC
+Generated: 2026-06-18 08:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 210560 50984 ?        Ssl  Jun12   0:38 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.2 721576 127808 ?       Ssl  Jun16   4:30 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.3 723032 129136 ?       Ssl  Jun16   4:30 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -5297,7 +5297,6 @@ root     1488950  0.1  3.2 721576 127808 ?       Ssl  Jun16   4:30 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-18 08:04:27,473 [INFO] main: XPLUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-18 08:04:27,473 [INFO] main: XPLUSDT | RL adj=50.0%
 2026-06-18 08:04:34,634 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-18 08:04:41,341 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
@@ -5327,6 +5326,7 @@ root     1488950  0.1  3.2 721576 127808 ?       Ssl  Jun16   4:30 /opt/ensemble
 2026-06-18 08:09:39,624 [INFO] positions: LOSS NEARUSDT short PnL:-2.08% reason:stop_loss
 2026-06-18 08:09:39,624 [INFO] positions: Lessons: The trade was based on bearish conditions with a strong downside expectation but ultimately resulted in a stop loss being hit, leading to a 2.08% loss. The original analysis correctly identified bearish conditions but failed to accurately predict the extent of the move. This trade highlights the importance of accurate risk management and stop loss placement in trending markets.
 2026-06-18 08:09:39,624 [INFO] rl: RL learned from short NEARUSDT: loss -2.08% | weights bull=0.953 bear=0.770 judge=1.276 threshold=65.73
+2026-06-18 08:25:48,485 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -5344,7 +5344,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       886Mi       347Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       901Mi       331Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
