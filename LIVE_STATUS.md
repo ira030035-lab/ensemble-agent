@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-18 19:50:01 UTC
+Generated: 2026-06-18 20:00:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.2 721840 128620 ?       Ssl  Jun16   5:37 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 967.4096032807829,
+  "balance": 985.3256753767829,
   "positions": {
     "DOGEUSDT": {
       "id": "PAPER_DOGEUSDT_1781794824",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.2 721840 128620 ?       Ssl  Jun16   5:37 /opt/ensemble
       "opened_at": "2026-06-18T16:11:59.670652",
       "cost": 19.999720200000002,
       "notional": 99.99860100000001,
-      "leverage": 5
-    },
-    "ONDOUSDT": {
-      "id": "PAPER_ONDOUSDT_1781809414",
-      "symbol": "ONDOUSDT",
-      "side": "short",
-      "entry_price": 0.3503,
-      "qty": 285.4696,
-      "confidence": 70,
-      "opened_at": "2026-06-18T19:03:34.537293",
-      "cost": 20.000000176,
-      "notional": 100.00000088,
       "leverage": 5
     }
   },
@@ -5403,19 +5391,32 @@ root     1488950  0.1  3.2 721840 128620 ?       Ssl  Jun16   5:37 /opt/ensemble
       "closed_at": "2026-06-18T18:59:32.622251",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ONDOUSDT_1781809414",
+      "symbol": "ONDOUSDT",
+      "side": "short",
+      "entry_price": 0.3503,
+      "qty": 285.4696,
+      "confidence": 70,
+      "opened_at": "2026-06-18T19:03:34.537293",
+      "cost": 20.000000176,
+      "notional": 100.00000088,
+      "leverage": 5,
+      "exit_price": 0.3576,
+      "pnl_pct": -10.42,
+      "pnl_usdt": -2.08,
+      "closed_at": "2026-06-18T19:51:30.270976",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 27.409324035983172
+  "total_pnl": 25.32539595598318
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-18 19:38:02,300 [INFO] main: XRPUSDT | RL adj=55.0%
-2026-06-18 19:38:07,869 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 19:38:09,211 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-18 19:38:09,212 [INFO] main: SYNUSDT | Bull:flat(25%) Bear:short(77%)
-2026-06-18 19:38:11,046 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-18 19:38:11,047 [INFO] main: SYNUSDT | Judge:SHORT conf=77% size=15.0%
 2026-06-18 19:38:11,047 [INFO] main: SYNUSDT | RL adj=86.1%
 2026-06-18 19:38:11,059 [INFO] main: SYNUSDT | Context score=-0.0 bias=0.0
@@ -5441,6 +5442,11 @@ root     1488950  0.1  3.2 721840 128620 ?       Ssl  Jun16   5:37 /opt/ensemble
 2026-06-18 19:38:39,462 [INFO] main: REUSDT | Judge:HOLD conf=25% size=0.0%
 2026-06-18 19:38:39,462 [INFO] main: REUSDT | RL adj=25.0%
 2026-06-18 19:38:41,464 [INFO] main: Next scan in 30min (always-30min)
+2026-06-18 19:51:30,269 [INFO] positions: STOP_LOSS ONDOUSDT short PnL:-2.08%
+2026-06-18 19:51:30,278 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ONDOUSDT @ 0.3576 PnL: -10.42% (-2.08 USDT) | Баланс: 985.33
+2026-06-18 19:51:30,623 [INFO] positions: LOSS ONDOUSDT short PnL:-2.08% reason:stop_loss
+2026-06-18 19:51:30,623 [INFO] positions: Lessons: The trade was based on bear sentiment and a potential downside move, but it resulted in a stop loss being hit. The bear sentiment was correct but the timing or extent of the move was not as expected. This trade highlights the importance of accurate timing and risk management in a trending down regime.
+2026-06-18 19:51:30,623 [INFO] rl: RL learned from short ONDOUSDT: loss -2.08% | weights bull=0.936 bear=0.782 judge=1.282 threshold=65.73
 ```
 
 ## Disk
@@ -5458,7 +5464,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       900Mi       281Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       907Mi       273Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
