@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-18 20:50:01 UTC
+Generated: 2026-06-18 21:00:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.3 722112 128984 ?       Ssl  Jun16   5:44 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 961.371085459183,
+  "balance": 982.8988965419829,
   "positions": {
     "HYPEUSDT": {
       "id": "PAPER_HYPEUSDT_1781813512",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.3 722112 128984 ?       Ssl  Jun16   5:44 /opt/ensemble
       "opened_at": "2026-06-18T20:44:17.714019",
       "cost": 19.999998082,
       "notional": 99.99999041000001,
-      "leverage": 5
-    },
-    "REUSDT": {
-      "id": "PAPER_REUSDT_1781815588",
-      "symbol": "REUSDT",
-      "side": "short",
-      "entry_price": 0.46079,
-      "qty": 217.0186,
-      "confidence": 75,
-      "opened_at": "2026-06-18T20:46:28.675984",
-      "cost": 20.000000138799997,
-      "notional": 100.000000694,
       "leverage": 5
     }
   },
@@ -5475,19 +5463,32 @@ root     1488950  0.1  3.3 722112 128984 ?       Ssl  Jun16   5:44 /opt/ensemble
       "closed_at": "2026-06-18T20:28:10.493814",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_REUSDT_1781815588",
+      "symbol": "REUSDT",
+      "side": "short",
+      "entry_price": 0.46079,
+      "qty": 217.0186,
+      "confidence": 75,
+      "opened_at": "2026-06-18T20:46:28.675984",
+      "cost": 20.000000138799997,
+      "notional": 100.000000694,
+      "leverage": 5,
+      "exit_price": 0.45375,
+      "pnl_pct": 7.64,
+      "pnl_usdt": 1.53,
+      "closed_at": "2026-06-18T20:58:50.066014",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 21.371699279983176
+  "total_pnl": 22.899510223983174
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-18 20:47:17,179 [INFO] main: ETHUSDT | RL adj=93.1%
-2026-06-18 20:47:17,191 [INFO] main: ETHUSDT | Context score=0.0 bias=0.0
-2026-06-18 20:47:17,192 [INFO] main: ETHUSDT | gate PASS (Judge 85/70 RL 93.1/65.8 slack=±3)
-2026-06-18 20:47:17,192 [INFO] positions: 2/3 rule: skip SHORT ETHUSDT (3/3 already short)
-2026-06-18 20:47:23,020 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-18 20:47:23,971 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-18 20:47:23,973 [INFO] main: SUIUSDT | Bull:flat(28%) Bear:short(75%)
 2026-06-18 20:47:26,150 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -5513,6 +5514,11 @@ root     1488950  0.1  3.3 722112 128984 ?       Ssl  Jun16   5:44 /opt/ensemble
 2026-06-18 20:47:46,140 [INFO] main: ADAUSDT | gate PASS (Judge 85/70 RL 93.1/65.8 slack=±3)
 2026-06-18 20:47:46,142 [INFO] positions: 2/3 rule: skip SHORT ADAUSDT (3/3 already short)
 2026-06-18 20:47:48,145 [INFO] main: Next scan in 30min (always-30min)
+2026-06-18 20:58:50,064 [INFO] positions: TRAILING-STOP REUSDT short peak:2.78% now:1.53%
+2026-06-18 20:58:50,071 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT REUSDT @ 0.4537 PnL: 7.64% (+1.53 USDT) | Баланс: 982.90
+2026-06-18 20:58:50,588 [INFO] positions: OK REUSDT short PnL:1.53% reason:trailing_stop
+2026-06-18 20:58:50,588 [INFO] positions: Lessons: The trade was closed with a 1.53% profit due to a trailing stop. The initial bearish thesis was correct but the expected 4% downside move did not materialize. The trade still yielded a small profit, highlighting the importance of risk management and adapting to changing market conditions.
+2026-06-18 20:58:50,588 [INFO] rl: RL learned from short REUSDT: profit 1.53% | weights bull=0.940 bear=0.775 judge=1.285 threshold=65.77
 ```
 
 ## Disk
@@ -5530,7 +5536,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       892Mi       287Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       897Mi       282Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
