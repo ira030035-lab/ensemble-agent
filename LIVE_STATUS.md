@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-18 03:40:02 UTC
+Generated: 2026-06-18 03:50:01 UTC
 
 ## Services
 ```
@@ -11,8 +11,8 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1408416  0.0  1.2 135788 49644 ?        Ssl  Jun12   0:36 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.3 723392 129324 ?       Ssl  Jun16   4:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408416  0.0  1.2 135788 49640 ?        Ssl  Jun12   0:37 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1488950  0.1  3.3 723392 129432 ?       Ssl  Jun16   4:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -5171,36 +5171,36 @@ root     1488950  0.1  3.3 723392 129324 ?       Ssl  Jun16   4:05 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-18 03:38:57,887 [INFO] main: TAOUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-18 03:39:04,123 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 03:39:04,124 [INFO] main: TAOUSDT | Judge:SHORT conf=82% size=15.0%
-2026-06-18 03:39:04,124 [INFO] main: TAOUSDT | RL adj=90.7%
-2026-06-18 03:39:04,137 [INFO] main: TAOUSDT | Context score=0.0 bias=0.0
-2026-06-18 03:39:04,137 [INFO] main: TAOUSDT | macro BLOCK (short при BTC uptrend)
-2026-06-18 03:39:07,586 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-06-18 03:39:10,616 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-18 03:39:12,192 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 03:39:12,193 [INFO] main: ONDOUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-18 03:39:20,717 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 03:39:20,717 [INFO] main: ONDOUSDT | Judge:SHORT conf=65% size=10.0%
-2026-06-18 03:39:20,718 [INFO] main: ONDOUSDT | RL adj=73.1%
-2026-06-18 03:39:20,730 [INFO] main: ONDOUSDT | Context score=0.0 bias=0.0
-2026-06-18 03:39:20,730 [INFO] main: ONDOUSDT | macro BLOCK (short при BTC uptrend)
-2026-06-18 03:39:27,857 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-18 03:39:30,776 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 03:39:30,777 [INFO] main: XPLUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-18 03:39:39,981 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 03:39:39,981 [INFO] main: XPLUSDT | Judge:HOLD conf=40% size=0.0%
-2026-06-18 03:39:39,982 [INFO] main: XPLUSDT | RL adj=40.0%
-2026-06-18 03:39:46,509 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-18 03:39:48,455 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 03:39:48,456 [INFO] main: XRPUSDT | Bull:flat(15%) Bear:short(85%)
-2026-06-18 03:39:52,314 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-18 03:39:52,314 [INFO] main: XRPUSDT | Judge:SHORT conf=85% size=20.0%
 2026-06-18 03:39:52,315 [INFO] main: XRPUSDT | RL adj=94.8%
 2026-06-18 03:39:52,328 [INFO] main: XRPUSDT | Context score=0.0 bias=0.0
 2026-06-18 03:39:52,329 [INFO] main: XRPUSDT | macro BLOCK (short при BTC uptrend)
 2026-06-18 03:39:59,498 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-18 03:40:02,069 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 03:40:02,070 [INFO] main: DOGEUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-18 03:40:11,149 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 03:40:11,151 [INFO] main: DOGEUSDT | Judge:SHORT conf=85% size=15.0%
+2026-06-18 03:40:11,152 [INFO] main: DOGEUSDT | RL adj=94.2%
+2026-06-18 03:40:11,177 [INFO] main: DOGEUSDT | Context score=0.0 bias=0.0
+2026-06-18 03:40:11,178 [INFO] main: DOGEUSDT | macro BLOCK (short при BTC uptrend)
+2026-06-18 03:40:18,369 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-18 03:40:25,158 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 03:40:25,159 [INFO] main: HUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-18 03:40:34,920 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 03:40:34,921 [INFO] main: HUSDT | Judge:LONG conf=80% size=15.0%
+2026-06-18 03:40:34,921 [INFO] main: HUSDT | RL adj=70.8%
+2026-06-18 03:40:34,932 [INFO] main: HUSDT | Context score=-0.0 bias=0.0
+2026-06-18 03:40:34,932 [INFO] main: HUSDT | regime BLOCK (volatile)
+2026-06-18 03:40:42,317 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-18 03:40:42,319 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
+2026-06-18 03:40:50,668 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 03:40:50,669 [INFO] main: PEPEUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-18 03:40:56,397 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 03:40:56,398 [INFO] main: PEPEUSDT | Judge:SHORT conf=70% size=15.0%
+2026-06-18 03:40:56,398 [INFO] main: PEPEUSDT | RL adj=79.2%
+2026-06-18 03:40:56,420 [INFO] main: PEPEUSDT | Context score=0.0 bias=0.0
+2026-06-18 03:40:56,420 [INFO] main: PEPEUSDT | macro BLOCK (short при BTC uptrend)
+2026-06-18 03:40:58,421 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -5218,7 +5218,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       883Mi       359Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       886Mi       356Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
