@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-18 03:20:01 UTC
+Generated: 2026-06-18 03:30:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 135788 49644 ?        Ssl  Jun12   0:36 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.3 723388 129316 ?       Ssl  Jun16   4:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.3 723388 129320 ?       Ssl  Jun16   4:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 964.1635171695636,
+  "balance": 984.6463257359832,
   "positions": {
-    "PEPEUSDT": {
-      "id": "PAPER_PEPEUSDT_1781725980",
-      "symbol": "PEPEUSDT",
-      "side": "long",
-      "entry_price": 2.8997e-06,
-      "qty": 34486326.1717,
-      "confidence": 70,
-      "opened_at": "2026-06-17T19:53:00.898592",
-      "cost": 20.000000000015696,
-      "notional": 100.00000000007849,
-      "leverage": 5
-    },
     "TRUMPUSDT": {
       "id": "PAPER_TRUMPUSDT_1781746861",
       "symbol": "TRUMPUSDT",
@@ -5151,20 +5139,32 @@ root     1488950  0.1  3.3 723388 129316 ?       Ssl  Jun16   4:01 /opt/ensemble
       "closed_at": "2026-06-18T02:16:52.270782",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_PEPEUSDT_1781725980",
+      "symbol": "PEPEUSDT",
+      "side": "long",
+      "entry_price": 2.8997e-06,
+      "qty": 34486326.1717,
+      "confidence": 70,
+      "opened_at": "2026-06-17T19:53:00.898592",
+      "cost": 20.000000000015696,
+      "notional": 100.00000000007849,
+      "leverage": 5,
+      "exit_price": 2.9137e-06,
+      "pnl_pct": 2.41,
+      "pnl_usdt": 0.48,
+      "closed_at": "2026-06-18T03:27:27.726449",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 24.16351004957938
+  "total_pnl": 24.646318615983187
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-18 03:02:11,929 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 03:02:11,929 [INFO] main: SPXUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-18 03:02:20,114 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 03:02:20,115 [INFO] main: SPXUSDT | Judge:SHORT conf=70% size=15.0%
-2026-06-18 03:02:20,116 [INFO] main: SPXUSDT | RL adj=78.1%
-2026-06-18 03:02:20,138 [INFO] main: SPXUSDT | Context score=-0.05 bias=0.05
 2026-06-18 03:02:20,138 [INFO] main: SPXUSDT | regime BLOCK (volatile)
 2026-06-18 03:02:28,075 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-18 03:02:33,962 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
@@ -5189,6 +5189,12 @@ root     1488950  0.1  3.3 723388 129316 ?       Ssl  Jun16   4:01 /opt/ensemble
 2026-06-18 03:03:31,230 [INFO] main: BTCUSDT | Context score=-0.05 bias=0.05
 2026-06-18 03:03:31,230 [INFO] main: BTCUSDT | macro BLOCK (short при BTC uptrend)
 2026-06-18 03:03:33,276 [INFO] main: Next scan in 30min (always-30min)
+2026-06-18 03:25:45,362 [INFO] main: Symbols: 30
+2026-06-18 03:27:27,724 [INFO] positions: BREAKEVEN_STOP PEPEUSDT long PnL:0.48%
+2026-06-18 03:27:27,739 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG PEPEUSDT @ 0.0000 PnL: 2.41% (+0.48 USDT) | Баланс: 984.65
+2026-06-18 03:27:28,080 [INFO] positions: OK PEPEUSDT long PnL:0.48% reason:breakeven_stop
+2026-06-18 03:27:28,080 [INFO] positions: Lessons: The trade closed at breakeven due to hitting the stop loss, resulting in a 0.48% profit. The initial analysis correctly identified a potential reversal due to extreme fear sentiment, oversold RSI, and low funding rate. The trade highlights the importance of risk management, as the breakeven stop limited potential losses despite the bullish signals not fully materializing.
+2026-06-18 03:27:28,080 [INFO] rl: RL learned from long PEPEUSDT: profit 0.48% | weights bull=0.961 bear=0.767 judge=1.273 threshold=65.58
 ```
 
 ## Disk
@@ -5206,7 +5212,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       884Mi       359Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       893Mi       349Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
