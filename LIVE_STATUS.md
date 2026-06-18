@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-18 23:20:01 UTC
+Generated: 2026-06-18 23:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 210560 51276 ?        Ssl  Jun12   0:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.3 722116 129004 ?       Ssl  Jun16   5:58 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.3 723584 130344 ?       Ssl  Jun16   5:58 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -5501,7 +5501,6 @@ root     1488950  0.1  3.3 722116 129004 ?       Ssl  Jun16   5:58 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-18 23:04:28,500 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-18 23:04:29,504 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-18 23:04:29,504 [INFO] main: ASTERUSDT | Bull:flat(15%) Bear:short(70%)
 2026-06-18 23:04:31,768 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -5531,6 +5530,7 @@ root     1488950  0.1  3.3 722116 129004 ?       Ssl  Jun16   5:58 /opt/ensemble
 2026-06-18 23:05:01,512 [INFO] main: ADAUSDT | gate PASS (Judge 75/70 RL 83.7/65.77 slack=±3)
 2026-06-18 23:05:01,514 [INFO] positions: 2/3 rule: skip SHORT ADAUSDT (3/3 already short)
 2026-06-18 23:05:03,517 [INFO] main: Next scan in 30min (always-30min)
+2026-06-18 23:25:58,015 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -5548,7 +5548,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       893Mi       279Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       901Mi       269Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
