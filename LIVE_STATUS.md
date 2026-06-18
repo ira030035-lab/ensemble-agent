@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-18 08:30:01 UTC
+Generated: 2026-06-18 08:40:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 210560 50984 ?        Ssl  Jun12   0:38 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.3 723032 129136 ?       Ssl  Jun16   4:30 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.2 721576 127944 ?       Ssl  Jun16   4:32 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 940.017459685183,
+  "balance": 920.017476465183,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1781755864",
@@ -66,6 +66,18 @@ root     1488950  0.1  3.3 723032 129136 ?       Ssl  Jun16   4:30 /opt/ensemble
       "opened_at": "2026-06-18T07:27:39.260583",
       "cost": 19.999999654,
       "notional": 99.99999827,
+      "leverage": 5
+    },
+    "TRUMPUSDT": {
+      "id": "PAPER_TRUMPUSDT_1781771777",
+      "symbol": "TRUMPUSDT",
+      "side": "short",
+      "entry_price": 1.883,
+      "qty": 53.1067,
+      "confidence": 90,
+      "opened_at": "2026-06-18T08:36:17.281127",
+      "cost": 19.999983219999997,
+      "notional": 99.9999161,
       "leverage": 5
     }
   },
@@ -5297,36 +5309,36 @@ root     1488950  0.1  3.3 723032 129136 ?       Ssl  Jun16   4:30 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-18 08:04:27,473 [INFO] main: XPLUSDT | RL adj=50.0%
-2026-06-18 08:04:34,634 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-18 08:04:41,341 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-18 08:04:41,341 [INFO] openai._base_client: Retrying request to /chat/completions in 0.406856 seconds
-2026-06-18 08:04:51,788 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 08:04:51,790 [INFO] main: UNIUSDT | Bull:flat(25%) Bear:flat(60%)
-2026-06-18 08:04:54,362 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 08:04:54,363 [INFO] main: UNIUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-18 08:04:54,363 [INFO] main: UNIUSDT | RL adj=55.0%
-2026-06-18 08:05:02,594 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-18 08:05:08,066 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-18 08:05:08,066 [INFO] openai._base_client: Retrying request to /chat/completions in 0.404320 seconds
-2026-06-18 08:05:18,494 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-18 08:05:18,494 [INFO] openai._base_client: Retrying request to /chat/completions in 0.765727 seconds
-2026-06-18 08:05:29,285 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-18 08:05:32,856 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-18 08:05:32,857 [INFO] main: TRUMPUSDT | Bull:flat(15%) Bear:short(72%)
-2026-06-18 08:05:41,842 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 08:05:41,843 [INFO] main: TRUMPUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-18 08:05:41,843 [INFO] main: TRUMPUSDT | RL adj=83.4%
-2026-06-18 08:05:41,861 [INFO] main: TRUMPUSDT | Context score=0.0 bias=0.0
-2026-06-18 08:05:41,862 [INFO] main: TRUMPUSDT | gate PASS (Judge 75/70 RL 83.4/65.68 slack=±3)
-2026-06-18 08:05:41,863 [INFO] positions: Max positions reached (5/5 dyn)
-2026-06-18 08:05:43,865 [INFO] main: Next scan in 30min (always-30min)
-2026-06-18 08:09:39,307 [INFO] positions: STOP_LOSS NEARUSDT short PnL:-2.08%
-2026-06-18 08:09:39,322 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT NEARUSDT @ 2.2228 PnL: -10.38% (-2.08 USDT) | Баланс: 940.02
-2026-06-18 08:09:39,624 [INFO] positions: LOSS NEARUSDT short PnL:-2.08% reason:stop_loss
-2026-06-18 08:09:39,624 [INFO] positions: Lessons: The trade was based on bearish conditions with a strong downside expectation but ultimately resulted in a stop loss being hit, leading to a 2.08% loss. The original analysis correctly identified bearish conditions but failed to accurately predict the extent of the move. This trade highlights the importance of accurate risk management and stop loss placement in trending markets.
-2026-06-18 08:09:39,624 [INFO] rl: RL learned from short NEARUSDT: loss -2.08% | weights bull=0.953 bear=0.770 judge=1.276 threshold=65.73
-2026-06-18 08:25:48,485 [INFO] main: Symbols: 30
+2026-06-18 08:38:46,761 [INFO] main: UNIUSDT | RL adj=50.0%
+2026-06-18 08:38:54,391 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-18 08:38:55,231 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 08:38:55,233 [INFO] main: ETHUSDT | Bull:flat(15%) Bear:short(70%)
+2026-06-18 08:39:04,458 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 08:39:04,459 [INFO] main: ETHUSDT | Judge:SHORT conf=70% size=10.0%
+2026-06-18 08:39:04,459 [INFO] main: ETHUSDT | RL adj=78.1%
+2026-06-18 08:39:04,484 [INFO] main: ETHUSDT | Context score=0.0 bias=0.0
+2026-06-18 08:39:04,485 [INFO] main: ETHUSDT | gate PASS (Judge 70/70 RL 78.1/65.73 slack=±3)
+2026-06-18 08:39:04,487 [INFO] positions: Max positions reached (5/5 dyn)
+2026-06-18 08:39:11,888 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-18 08:39:15,237 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 08:39:15,239 [INFO] main: ONDOUSDT | Bull:flat(15%) Bear:short(70%)
+2026-06-18 08:39:19,348 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 08:39:19,349 [INFO] main: ONDOUSDT | Judge:SHORT conf=75% size=15.0%
+2026-06-18 08:39:19,349 [INFO] main: ONDOUSDT | RL adj=83.1%
+2026-06-18 08:39:19,361 [INFO] main: ONDOUSDT | Context score=0.0 bias=0.0
+2026-06-18 08:39:19,361 [INFO] main: ONDOUSDT | gate PASS (Judge 75/70 RL 83.1/65.73 slack=±3)
+2026-06-18 08:39:19,362 [INFO] positions: Max positions reached (5/5 dyn)
+2026-06-18 08:39:25,625 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-18 08:39:26,501 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 08:39:26,502 [INFO] main: NEARUSDT | Bull:flat(25%) Bear:short(75%)
+2026-06-18 08:39:30,785 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 08:39:30,785 [INFO] main: NEARUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-18 08:39:30,785 [INFO] main: NEARUSDT | RL adj=50.0%
+2026-06-18 08:39:38,250 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-18 08:39:45,315 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 08:39:45,316 [INFO] main: HUSDT | Bull:flat(15%) Bear:short(75%)
+2026-06-18 08:39:55,534 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-18 08:39:55,535 [INFO] openai._base_client: Retrying request to /chat/completions in 0.383334 seconds
 ```
 
 ## Disk
@@ -5344,7 +5356,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       901Mi       331Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       884Mi       349Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
