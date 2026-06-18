@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-18 05:00:01 UTC
+Generated: 2026-06-18 05:10:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.2 721060 127180 ?       Ssl  Jun16   4:12 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 940.5221292959832,
+  "balance": 963.9037420959831,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1781755864",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.2 721060 127180 ?       Ssl  Jun16   4:12 /opt/ensemble
       "opened_at": "2026-06-18T04:11:17.817484",
       "cost": 19.999985728000002,
       "notional": 99.99992864000001,
-      "leverage": 5
-    },
-    "ZECUSDT": {
-      "id": "PAPER_ZECUSDT_1781755902",
-      "symbol": "ZECUSDT",
-      "side": "short",
-      "entry_price": 473.18,
-      "qty": 0.2113,
-      "confidence": 70,
-      "opened_at": "2026-06-18T04:11:42.128246",
-      "cost": 19.9965868,
-      "notional": 99.982934,
       "leverage": 5
     },
     "NEARUSDT": {
@@ -5217,19 +5205,32 @@ root     1488950  0.1  3.2 721060 127180 ?       Ssl  Jun16   4:12 /opt/ensemble
       "closed_at": "2026-06-18T04:20:56.024777",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ZECUSDT_1781755902",
+      "symbol": "ZECUSDT",
+      "side": "short",
+      "entry_price": 473.18,
+      "qty": 0.2113,
+      "confidence": 70,
+      "opened_at": "2026-06-18T04:11:42.128246",
+      "cost": 19.9965868,
+      "notional": 99.982934,
+      "leverage": 5,
+      "exit_price": 457.16,
+      "pnl_pct": 16.93,
+      "pnl_usdt": 3.39,
+      "closed_at": "2026-06-18T05:08:09.623431",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 20.519375615983186
+  "total_pnl": 23.904401615983183
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-18 04:54:38,835 [INFO] main: PEPEUSDT | RL adj=87.0%
-2026-06-18 04:54:38,854 [INFO] main: PEPEUSDT | Context score=0.0 bias=0.0
-2026-06-18 04:54:38,854 [INFO] main: PEPEUSDT | gate PASS (Judge 78/70 RL 87.0/65.68 slack=±3)
-2026-06-18 04:54:38,856 [INFO] positions: 2/3 rule: skip SHORT PEPEUSDT (3/4 already short)
-2026-06-18 04:54:45,667 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-18 04:54:51,387 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-18 04:54:51,389 [INFO] main: ENAUSDT | Bull:flat(15%) Bear:short(90%)
 2026-06-18 04:54:56,001 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -5255,6 +5256,11 @@ root     1488950  0.1  3.2 721060 127180 ?       Ssl  Jun16   4:12 /opt/ensemble
 2026-06-18 04:55:19,615 [INFO] main: BEATUSDT | Context score=-0.0 bias=0.0
 2026-06-18 04:55:19,615 [INFO] main: BEATUSDT | regime BLOCK (volatile)
 2026-06-18 04:55:21,618 [INFO] main: Next scan in 30min (always-30min)
+2026-06-18 05:08:09,621 [INFO] positions: TAKE-PROFIT ZECUSDT short PnL:3.39%
+2026-06-18 05:08:09,634 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ZECUSDT @ 457.1600 PnL: 16.93% (+3.39 USDT) | Баланс: 963.90
+2026-06-18 05:08:09,872 [INFO] positions: OK ZECUSDT short PnL:3.39% reason:take_profit
+2026-06-18 05:08:09,872 [INFO] positions: Lessons: This trade was successful due to correctly identifying bearish conditions in a trending_down regime. The 2:1 risk/reward ratio was achieved with a take_profit of 3.39%. The ability to recognize and act on bearish conditions with a clear risk/reward framework was key to this trade's success.
+2026-06-18 05:08:09,872 [INFO] rl: RL learned from short ZECUSDT: profit 3.39% | weights bull=0.946 bear=0.780 judge=1.274 threshold=65.66
 ```
 
 ## Disk
@@ -5272,7 +5278,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       901Mi       339Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       883Mi       356Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
