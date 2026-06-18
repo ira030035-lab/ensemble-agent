@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-18 14:40:01 UTC
+Generated: 2026-06-18 14:50:01 UTC
 
 ## Services
 ```
@@ -11,14 +11,14 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1408416  0.0  1.2 209536 50256 ?        Ssl  Jun12   0:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.3 723312 129684 ?       Ssl  Jun16   5:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408416  0.0  1.2 209536 50264 ?        Ssl  Jun12   0:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1488950  0.1  3.3 723312 129684 ?       Ssl  Jun16   5:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 923.062213755983,
+  "balance": 943.5401572759829,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1781755864",
@@ -54,18 +54,6 @@ root     1488950  0.1  3.3 723312 129684 ?       Ssl  Jun16   5:06 /opt/ensemble
       "opened_at": "2026-06-18T07:27:39.260583",
       "cost": 19.999999654,
       "notional": 99.99999827,
-      "leverage": 5
-    },
-    "TRUMPUSDT": {
-      "id": "PAPER_TRUMPUSDT_1781771777",
-      "symbol": "TRUMPUSDT",
-      "side": "short",
-      "entry_price": 1.883,
-      "qty": 53.1067,
-      "confidence": 90,
-      "opened_at": "2026-06-18T08:36:17.281127",
-      "cost": 19.999983219999997,
-      "notional": 99.9999161,
       "leverage": 5
     },
     "XRPUSDT": {
@@ -5319,19 +5307,32 @@ root     1488950  0.1  3.3 723312 129684 ?       Ssl  Jun16   5:06 /opt/ensemble
       "closed_at": "2026-06-18T08:40:20.288611",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_TRUMPUSDT_1781771777",
+      "symbol": "TRUMPUSDT",
+      "side": "short",
+      "entry_price": 1.883,
+      "qty": 53.1067,
+      "confidence": 90,
+      "opened_at": "2026-06-18T08:36:17.281127",
+      "cost": 19.999983219999997,
+      "notional": 99.9999161,
+      "leverage": 5,
+      "exit_price": 1.874,
+      "pnl_pct": 2.39,
+      "pnl_usdt": 0.48,
+      "closed_at": "2026-06-18T14:48:54.815688",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 23.064787679983176
+  "total_pnl": 23.542747979983172
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-18 14:28:04,165 [INFO] main: BEATUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-18 14:28:04,165 [INFO] main: BEATUSDT | RL adj=83.0%
-2026-06-18 14:28:04,178 [INFO] main: BEATUSDT | Context score=0.0 bias=0.0
-2026-06-18 14:28:04,178 [INFO] main: BEATUSDT | regime BLOCK (volatile)
-2026-06-18 14:28:09,668 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-18 14:28:10,670 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-18 14:28:10,672 [INFO] main: HYPEUSDT | Bull:flat(15%) Bear:short(90%)
 2026-06-18 14:28:12,956 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -5357,6 +5358,11 @@ root     1488950  0.1  3.3 723312 129684 ?       Ssl  Jun16   5:06 /opt/ensemble
 2026-06-18 14:28:33,335 [INFO] main: ETHFIUSDT | Context score=0.0 bias=0.0
 2026-06-18 14:28:33,335 [INFO] main: ETHFIUSDT | regime BLOCK (volatile)
 2026-06-18 14:28:35,372 [INFO] main: Next scan in 30min (always-30min)
+2026-06-18 14:48:54,814 [INFO] positions: BREAKEVEN_STOP TRUMPUSDT short PnL:0.48%
+2026-06-18 14:48:54,821 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT TRUMPUSDT @ 1.8740 PnL: 2.39% (+0.48 USDT) | Баланс: 943.54
+2026-06-18 14:48:55,173 [INFO] positions: OK TRUMPUSDT short PnL:0.48% reason:breakeven_stop
+2026-06-18 14:48:55,173 [INFO] positions: Lessons: The trade was based on a strong downtrend and extreme fear, with a bearish bias and a 2:1 risk-reward ratio. The trade ultimately closed at breakeven due to the breakeven stop, resulting in a small profit of 0.48%. This outcome suggests that the initial analysis was correct in identifying a potential downside move, but the trade management strategy limited the potential gains.
+2026-06-18 14:48:55,174 [INFO] rl: RL learned from short TRUMPUSDT: profit 0.48% | weights bull=0.957 bear=0.765 judge=1.278 threshold=65.67
 ```
 
 ## Disk
@@ -5374,7 +5380,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       892Mi       295Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       904Mi       282Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
