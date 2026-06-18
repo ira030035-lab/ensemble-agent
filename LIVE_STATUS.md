@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-18 08:40:01 UTC
+Generated: 2026-06-18 08:50:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 210560 50984 ?        Ssl  Jun12   0:38 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.2 721576 127944 ?       Ssl  Jun16   4:32 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.2 721576 127984 ?       Ssl  Jun16   4:33 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 920.017476465183,
+  "balance": 943.062212605983,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1781755864",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.2 721576 127944 ?       Ssl  Jun16   4:32 /opt/ensemble
       "opened_at": "2026-06-18T04:11:04.271187",
       "cost": 20.0006808,
       "notional": 100.003404,
-      "leverage": 5
-    },
-    "XLMUSDT": {
-      "id": "PAPER_XLMUSDT_1781767077",
-      "symbol": "XLMUSDT",
-      "side": "long",
-      "entry_price": 0.23516,
-      "qty": 425.2424,
-      "confidence": 70,
-      "opened_at": "2026-06-18T07:17:57.334526",
-      "cost": 20.0000005568,
-      "notional": 100.000002784,
       "leverage": 5
     },
     "TAOUSDT": {
@@ -5301,44 +5289,62 @@ root     1488950  0.1  3.2 721576 127944 ?       Ssl  Jun16   4:32 /opt/ensemble
       "closed_at": "2026-06-18T08:09:39.309542",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_XLMUSDT_1781767077",
+      "symbol": "XLMUSDT",
+      "side": "long",
+      "entry_price": 0.23516,
+      "qty": 425.2424,
+      "confidence": 70,
+      "opened_at": "2026-06-18T07:17:57.334526",
+      "cost": 20.0000005568,
+      "notional": 100.000002784,
+      "leverage": 5,
+      "exit_price": 0.24232,
+      "pnl_pct": 15.22,
+      "pnl_usdt": 3.04,
+      "closed_at": "2026-06-18T08:40:20.288611",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 20.02005209598318
+  "total_pnl": 23.064787679983176
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-18 08:38:46,761 [INFO] main: UNIUSDT | RL adj=50.0%
-2026-06-18 08:38:54,391 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-18 08:38:55,231 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 08:38:55,233 [INFO] main: ETHUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-18 08:39:04,458 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 08:39:04,459 [INFO] main: ETHUSDT | Judge:SHORT conf=70% size=10.0%
-2026-06-18 08:39:04,459 [INFO] main: ETHUSDT | RL adj=78.1%
-2026-06-18 08:39:04,484 [INFO] main: ETHUSDT | Context score=0.0 bias=0.0
-2026-06-18 08:39:04,485 [INFO] main: ETHUSDT | gate PASS (Judge 70/70 RL 78.1/65.73 slack=±3)
-2026-06-18 08:39:04,487 [INFO] positions: Max positions reached (5/5 dyn)
-2026-06-18 08:39:11,888 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-18 08:39:15,237 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 08:39:15,239 [INFO] main: ONDOUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-18 08:39:19,348 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 08:39:19,349 [INFO] main: ONDOUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-18 08:39:19,349 [INFO] main: ONDOUSDT | RL adj=83.1%
-2026-06-18 08:39:19,361 [INFO] main: ONDOUSDT | Context score=0.0 bias=0.0
-2026-06-18 08:39:19,361 [INFO] main: ONDOUSDT | gate PASS (Judge 75/70 RL 83.1/65.73 slack=±3)
-2026-06-18 08:39:19,362 [INFO] positions: Max positions reached (5/5 dyn)
-2026-06-18 08:39:25,625 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-18 08:39:26,501 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 08:39:26,502 [INFO] main: NEARUSDT | Bull:flat(25%) Bear:short(75%)
-2026-06-18 08:39:30,785 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 08:39:30,785 [INFO] main: NEARUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-18 08:39:30,785 [INFO] main: NEARUSDT | RL adj=50.0%
-2026-06-18 08:39:38,250 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-18 08:39:45,315 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 08:39:45,316 [INFO] main: HUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-18 08:39:55,534 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-18 08:39:55,535 [INFO] openai._base_client: Retrying request to /chat/completions in 0.383334 seconds
+2026-06-18 08:41:18,184 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 08:41:18,185 [INFO] main: PEPEUSDT | Judge:SHORT conf=75% size=15.0%
+2026-06-18 08:41:18,185 [INFO] main: PEPEUSDT | RL adj=82.4%
+2026-06-18 08:41:18,200 [INFO] main: PEPEUSDT | Context score=0.0 bias=0.0
+2026-06-18 08:41:18,200 [INFO] main: PEPEUSDT | gate PASS (Judge 75/70 RL 82.4/65.7 slack=±3)
+2026-06-18 08:41:18,201 [INFO] positions: 2/3 rule: skip SHORT PEPEUSDT (3/4 already short)
+2026-06-18 08:41:25,725 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-18 08:41:28,578 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 08:41:28,579 [INFO] main: BEATUSDT | Bull:flat(15%) Bear:short(75%)
+2026-06-18 08:41:31,500 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 08:41:31,501 [INFO] main: BEATUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-18 08:41:31,501 [INFO] main: BEATUSDT | RL adj=50.0%
+2026-06-18 08:41:37,856 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 08:41:38,900 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-18 08:41:38,901 [INFO] main: SUIUSDT | Bull:flat(25%) Bear:short(70%)
+2026-06-18 08:41:41,622 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 08:41:41,623 [INFO] main: SUIUSDT | Judge:SHORT conf=75% size=15.0%
+2026-06-18 08:41:41,623 [INFO] main: SUIUSDT | RL adj=83.0%
+2026-06-18 08:41:41,636 [INFO] main: SUIUSDT | Context score=0.0 bias=0.0
+2026-06-18 08:41:41,636 [INFO] main: SUIUSDT | gate PASS (Judge 75/70 RL 83.0/65.7 slack=±3)
+2026-06-18 08:41:41,637 [INFO] positions: 2/3 rule: skip SHORT SUIUSDT (3/4 already short)
+2026-06-18 08:41:47,884 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-18 08:41:48,662 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 08:41:48,664 [INFO] main: SYNUSDT | Bull:flat(25%) Bear:short(70%)
+2026-06-18 08:41:51,677 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 08:41:51,678 [INFO] main: SYNUSDT | Judge:SHORT conf=70% size=15.0%
+2026-06-18 08:41:51,678 [INFO] main: SYNUSDT | RL adj=78.0%
+2026-06-18 08:41:51,694 [INFO] main: SYNUSDT | Context score=0.0 bias=0.0
+2026-06-18 08:41:51,694 [INFO] main: SYNUSDT | regime BLOCK (volatile)
+2026-06-18 08:41:53,697 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -5356,7 +5362,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       884Mi       349Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       882Mi       349Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
