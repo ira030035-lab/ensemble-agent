@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-18 01:20:01 UTC
+Generated: 2026-06-18 01:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 135788 49644 ?        Ssl  Jun12   0:36 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.2 721060 127104 ?       Ssl  Jun16   3:51 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.2 722512 128428 ?       Ssl  Jun16   3:51 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -5117,7 +5117,6 @@ root     1488950  0.1  3.2 721060 127104 ?       Ssl  Jun16   3:51 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-18 01:07:38,765 [INFO] main: ESPORTSUSDT | Bull:long(62%) Bear:short(80%)
 2026-06-18 01:08:04,692 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-18 01:08:04,693 [INFO] main: ESPORTSUSDT | Judge:LONG conf=70% size=15.0%
 2026-06-18 01:08:04,693 [INFO] main: ESPORTSUSDT | RL adj=69.6%
@@ -5147,6 +5146,7 @@ root     1488950  0.1  3.2 721060 127104 ?       Ssl  Jun16   3:51 /opt/ensemble
 2026-06-18 01:12:05,308 [INFO] positions: OK XLMUSDT long PnL:3.25% reason:take_profit
 2026-06-18 01:12:05,309 [INFO] positions: Lessons: The trade was based on a strong 4h uptrend and bullish MACD, with a bull signal at 60% or higher. It reached the expected 2:1 risk/reward ratio, resulting in a 3.25% profit. This setup can be repeated in the future when similar conditions are met, expecting a similar upside move.
 2026-06-18 01:12:05,309 [INFO] rl: RL learned from long XLMUSDT: profit 3.25% | weights bull=0.963 bear=0.765 judge=1.271 threshold=65.56
+2026-06-18 01:25:44,116 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -5164,7 +5164,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       881Mi       364Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       890Mi       355Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
