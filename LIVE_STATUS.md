@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-18 15:20:01 UTC
+Generated: 2026-06-18 15:30:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 209536 50260 ?        Ssl  Jun12   0:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.3 723588 129964 ?       Ssl  Jun16   5:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.2 721328 127832 ?       Ssl  Jun16   5:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 923.540156896783,
+  "balance": 941.5328116967829,
   "positions": {
-    "BNBUSDT": {
-      "id": "PAPER_BNBUSDT_1781755864",
-      "symbol": "BNBUSDT",
-      "side": "long",
-      "entry_price": 593.14,
-      "qty": 0.1686,
-      "confidence": 70,
-      "opened_at": "2026-06-18T04:11:04.271187",
-      "cost": 20.0006808,
-      "notional": 100.003404,
-      "leverage": 5
-    },
     "TAOUSDT": {
       "id": "PAPER_TAOUSDT_1781767622",
       "symbol": "TAOUSDT",
@@ -5337,20 +5325,32 @@ root     1488950  0.1  3.3 723588 129964 ?       Ssl  Jun16   5:10 /opt/ensemble
       "closed_at": "2026-06-18T14:48:54.815688",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BNBUSDT_1781755864",
+      "symbol": "BNBUSDT",
+      "side": "long",
+      "entry_price": 593.14,
+      "qty": 0.1686,
+      "confidence": 70,
+      "opened_at": "2026-06-18T04:11:04.271187",
+      "cost": 20.0006808,
+      "notional": 100.003404,
+      "leverage": 5,
+      "exit_price": 581.23,
+      "pnl_pct": -10.04,
+      "pnl_usdt": -2.01,
+      "closed_at": "2026-06-18T15:29:43.350245",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 23.542747979983172
+  "total_pnl": 21.53472197998318
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-18 15:02:52,270 [INFO] main: ALLOUSDT | RL adj=78.6%
-2026-06-18 15:02:52,291 [INFO] main: ALLOUSDT | Context score=0.0 bias=0.0
-2026-06-18 15:02:52,291 [INFO] main: ALLOUSDT | regime BLOCK (volatile)
-2026-06-18 15:02:58,500 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 15:02:59,466 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-18 15:02:59,468 [INFO] main: LINKUSDT | Bull:flat(15%) Bear:short(75%)
 2026-06-18 15:03:02,141 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-18 15:03:02,142 [INFO] main: LINKUSDT | Judge:SHORT conf=75% size=15.0%
 2026-06-18 15:03:02,142 [INFO] main: LINKUSDT | RL adj=83.6%
@@ -5375,6 +5375,12 @@ root     1488950  0.1  3.3 723588 129964 ?       Ssl  Jun16   5:10 /opt/ensemble
 2026-06-18 15:03:22,389 [INFO] main: ZECUSDT | Context score=0.0 bias=0.0
 2026-06-18 15:03:22,390 [INFO] main: ZECUSDT | regime BLOCK (volatile)
 2026-06-18 15:03:24,438 [INFO] main: Next scan in 30min (always-30min)
+2026-06-18 15:25:52,992 [INFO] main: Symbols: 30
+2026-06-18 15:29:43,348 [INFO] positions: STOP_LOSS BNBUSDT long PnL:-2.01%
+2026-06-18 15:29:43,358 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG BNBUSDT @ 581.2300 PnL: -10.04% (-2.01 USDT) | Баланс: 941.53
+2026-06-18 15:29:43,712 [INFO] positions: LOSS BNBUSDT long PnL:-2.01% reason:stop_loss
+2026-06-18 15:29:43,712 [INFO] positions: Lessons: The trade was closed at a 2.01% loss due to a stop loss, despite initial confidence in a bull case and indicators such as oversold RSI and high volume ratio suggesting potential upside. The trending_down regime ultimately prevailed, highlighting the importance of adapting to changing market conditions. This trade serves as a reminder to respect stop losses and maintain a disciplined approach to risk management.
+2026-06-18 15:29:43,712 [INFO] rl: RL learned from long BNBUSDT: loss -2.01% | weights bull=0.954 bear=0.767 judge=1.279 threshold=65.72
 ```
 
 ## Disk
@@ -5392,7 +5398,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       901Mi       285Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       894Mi       292Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
