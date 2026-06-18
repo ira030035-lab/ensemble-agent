@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-18 15:40:01 UTC
+Generated: 2026-06-18 15:50:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 209536 50260 ?        Ssl  Jun12   0:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.3 723340 129736 ?       Ssl  Jun16   5:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.3 723340 129736 ?       Ssl  Jun16   5:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 982.5351421607829,
+  "balance": 1005.5680195607829,
   "positions": {
-    "TAOUSDT": {
-      "id": "PAPER_TAOUSDT_1781767622",
-      "symbol": "TAOUSDT",
-      "side": "short",
-      "entry_price": 243.51,
-      "qty": 0.4107,
-      "confidence": 70,
-      "opened_at": "2026-06-18T07:27:02.882764",
-      "cost": 20.0019114,
-      "notional": 100.009557,
-      "leverage": 5
-    },
     "DOGEUSDT": {
       "id": "PAPER_DOGEUSDT_1781794824",
       "symbol": "DOGEUSDT",
@@ -5355,19 +5343,32 @@ root     1488950  0.1  3.3 723340 129736 ?       Ssl  Jun16   5:13 /opt/ensemble
       "closed_at": "2026-06-18T15:39:04.564734",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_TAOUSDT_1781767622",
+      "symbol": "TAOUSDT",
+      "side": "short",
+      "entry_price": 243.51,
+      "qty": 0.4107,
+      "confidence": 70,
+      "opened_at": "2026-06-18T07:27:02.882764",
+      "cost": 20.0019114,
+      "notional": 100.009557,
+      "leverage": 5,
+      "exit_price": 236.13,
+      "pnl_pct": 15.15,
+      "pnl_usdt": 3.03,
+      "closed_at": "2026-06-18T15:40:36.755403",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 22.53705393998317
+  "total_pnl": 25.56801993998317
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-18 15:37:31,861 [INFO] positions: Lessons: High volume ratio and oversold RSI suggested a potential upside move but was contradicted by bearish MACD and trending_down regime. The trade was stopped out for a 2% loss, indicating the bearish indicators took precedence. This outcome highlights the importance of considering the overall market regime and not solely relying on oversold conditions for trade decisions.
-2026-06-18 15:37:31,861 [INFO] rl: RL learned from long XRPUSDT: loss -2.00% | weights bull=0.950 bear=0.770 judge=1.280 threshold=65.77
-2026-06-18 15:37:32,592 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 15:37:32,593 [INFO] main: TRUMPUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-18 15:37:36,219 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-18 15:37:36,220 [INFO] main: TRUMPUSDT | Judge:SHORT conf=85% size=15.0%
 2026-06-18 15:37:36,220 [INFO] main: TRUMPUSDT | RL adj=94.2%
 2026-06-18 15:37:36,241 [INFO] main: TRUMPUSDT | Context score=0.0 bias=0.0
@@ -5393,6 +5394,11 @@ root     1488950  0.1  3.3 723340 129736 ?       Ssl  Jun16   5:13 /opt/ensemble
 2026-06-18 15:39:04,886 [INFO] positions: OK ADAUSDT short PnL:3.01% reason:take_profit
 2026-06-18 15:39:04,886 [INFO] positions: Lessons: The trade was closed in profit with a 3.01% gain, meeting the expected downside move. The bear conditions and lack of strong bullish signals contributed to the successful short trade. This outcome reinforces the importance of identifying and acting on clear bearish trends with favorable risk-reward ratios.
 2026-06-18 15:39:04,886 [INFO] rl: RL learned from short ADAUSDT: profit 3.01% | weights bull=0.943 bear=0.776 judge=1.281 threshold=65.74
+2026-06-18 15:40:36,753 [INFO] positions: TAKE-PROFIT TAOUSDT short PnL:3.03%
+2026-06-18 15:40:36,763 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT TAOUSDT @ 236.1300 PnL: 15.15% (+3.03 USDT) | Баланс: 1005.57
+2026-06-18 15:40:37,362 [INFO] positions: OK TAOUSDT short PnL:3.03% reason:take_profit
+2026-06-18 15:40:37,362 [INFO] positions: Lessons: The bearish dominance and trending‑down regime were correctly identified, and the 2:1 risk‑reward justified the short entry. The trade hit the 3 % profit target, confirming the ≥4 % downside expectation, though a slightly larger target might have captured additional upside. Future shorts should maintain the same regime filter but consider scaling out to let larger moves run.
+2026-06-18 15:40:37,362 [INFO] rl: RL learned from short TAOUSDT: profit 3.03% | weights bull=0.937 bear=0.783 judge=1.281 threshold=65.71
 ```
 
 ## Disk
@@ -5410,7 +5416,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       893Mi       292Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       903Mi       282Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
