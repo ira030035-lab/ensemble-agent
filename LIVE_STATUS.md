@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-18 20:20:01 UTC
+Generated: 2026-06-18 20:30:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 210560 51288 ?        Ssl  Jun12   0:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.2 721328 128148 ?       Ssl  Jun16   5:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.3 722844 129496 ?       Ssl  Jun16   5:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 980.905522828783,
+  "balance": 1001.371083679983,
   "positions": {
-    "DOGEUSDT": {
-      "id": "PAPER_DOGEUSDT_1781794824",
-      "symbol": "DOGEUSDT",
-      "side": "short",
-      "entry_price": 0.08377,
-      "qty": 1193.7448,
-      "confidence": 85,
-      "opened_at": "2026-06-18T15:00:24.483012",
-      "cost": 20.000000379199996,
-      "notional": 100.00000189599999,
-      "leverage": 5
-    },
     "HYPEUSDT": {
       "id": "PAPER_HYPEUSDT_1781813512",
       "symbol": "HYPEUSDT",
@@ -5445,20 +5433,32 @@ root     1488950  0.1  3.2 721328 128148 ?       Ssl  Jun16   5:41 /opt/ensemble
       "closed_at": "2026-06-18T20:12:52.506564",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_DOGEUSDT_1781794824",
+      "symbol": "DOGEUSDT",
+      "side": "short",
+      "entry_price": 0.08377,
+      "qty": 1193.7448,
+      "confidence": 85,
+      "opened_at": "2026-06-18T15:00:24.483012",
+      "cost": 20.000000379199996,
+      "notional": 100.00000189599999,
+      "leverage": 5,
+      "exit_price": 0.08338,
+      "pnl_pct": 2.33,
+      "pnl_usdt": 0.47,
+      "closed_at": "2026-06-18T20:28:10.493814",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 20.906138807983172
+  "total_pnl": 21.371699279983176
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-18 20:12:50,357 [INFO] main: SUIUSDT | RL adj=58.2%
-2026-06-18 20:12:50,381 [INFO] main: SUIUSDT | Context score=0.0 bias=0.0
-2026-06-18 20:12:50,381 [INFO] main: SUIUSDT | regime BLOCK (volatile)
-2026-06-18 20:12:52,505 [INFO] positions: STOP_LOSS REUSDT short PnL:-2.35%
-2026-06-18 20:12:52,512 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT REUSDT @ 0.4677 PnL: -11.77% (-2.35 USDT) | Баланс: 980.91
-2026-06-18 20:12:52,846 [INFO] positions: LOSS REUSDT short PnL:-2.35% reason:stop_loss
 2026-06-18 20:12:52,847 [INFO] positions: Lessons: The trade was based on a bear market with strong bearish signals and a ranging regime, but it still resulted in a loss. The stop loss was triggered, resulting in a 2.35% loss. This outcome suggests that the ranging regime can be unpredictable and may not always lead to a downside move as expected.
 2026-06-18 20:12:52,847 [INFO] rl: RL learned from short REUSDT: loss -2.35% | weights bull=0.944 bear=0.771 judge=1.285 threshold=65.83
 2026-06-18 20:12:56,677 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -5483,6 +5483,12 @@ root     1488950  0.1  3.2 721328 128148 ?       Ssl  Jun16   5:41 /opt/ensemble
 2026-06-18 20:13:19,475 [INFO] main: ETHUSDT | gate PASS (Judge 85/70 RL 93.1/65.83 slack=±3)
 2026-06-18 20:13:19,476 [INFO] positions: Correlation block: skip SHORT ETHUSDT (corr 0.9 >= 0.85 with DOGEUSDT short)
 2026-06-18 20:13:21,479 [INFO] main: Next scan in 30min (always-30min)
+2026-06-18 20:25:56,201 [INFO] main: Symbols: 30
+2026-06-18 20:28:10,491 [INFO] positions: BREAKEVEN_STOP DOGEUSDT short PnL:0.47%
+2026-06-18 20:28:10,501 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT DOGEUSDT @ 0.0834 PnL: 2.33% (+0.47 USDT) | Баланс: 1001.37
+2026-06-18 20:28:10,841 [INFO] positions: OK DOGEUSDT short PnL:0.47% reason:breakeven_stop
+2026-06-18 20:28:10,841 [INFO] positions: Lessons: The trade was a breakeven due to hitting the stop, resulting in a 0.47% profit. The initial analysis correctly identified a downtrend with high bear conviction, but the expected 4% downside move did not materialize. This outcome highlights the importance of risk management and stop placement in limiting losses and securing small gains.
+2026-06-18 20:28:10,841 [INFO] rl: RL learned from short DOGEUSDT: profit 0.47% | weights bull=0.943 bear=0.772 judge=1.285 threshold=65.8
 ```
 
 ## Disk
@@ -5500,7 +5506,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       913Mi       267Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       897Mi       282Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
