@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-18 04:20:01 UTC
+Generated: 2026-06-18 04:30:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 209536 49676 ?        Ssl  Jun12   0:38 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.3 723392 129444 ?       Ssl  Jun16   4:08 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.2 721060 127124 ?       Ssl  Jun16   4:09 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 922.6152823759832,
+  "balance": 940.5221292959832,
   "positions": {
-    "TRUMPUSDT": {
-      "id": "PAPER_TRUMPUSDT_1781746861",
-      "symbol": "TRUMPUSDT",
-      "side": "long",
-      "entry_price": 1.911,
-      "qty": 52.3286,
-      "confidence": 75,
-      "opened_at": "2026-06-18T01:41:01.297007",
-      "cost": 19.999990920000002,
-      "notional": 99.99995460000001,
-      "leverage": 5
-    },
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1781755864",
       "symbol": "BNBUSDT",
@@ -5211,20 +5199,32 @@ root     1488950  0.1  3.3 723392 129444 ?       Ssl  Jun16   4:08 /opt/ensemble
       "closed_at": "2026-06-18T03:37:08.959371",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_TRUMPUSDT_1781746861",
+      "symbol": "TRUMPUSDT",
+      "side": "long",
+      "entry_price": 1.911,
+      "qty": 52.3286,
+      "confidence": 75,
+      "opened_at": "2026-06-18T01:41:01.297007",
+      "cost": 19.999990920000002,
+      "notional": 99.99995460000001,
+      "leverage": 5,
+      "exit_price": 1.871,
+      "pnl_pct": -10.47,
+      "pnl_usdt": -2.09,
+      "closed_at": "2026-06-18T04:20:56.024777",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 22.61251961598319
+  "total_pnl": 20.519375615983186
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-18 04:17:06,501 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-18 04:17:08,436 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 04:17:08,437 [INFO] main: XLMUSDT | Bull:flat(35%) Bear:short(55%)
-2026-06-18 04:17:11,150 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 04:17:11,151 [INFO] main: XLMUSDT | Judge:LONG conf=70% size=10.0%
-2026-06-18 04:17:11,152 [INFO] main: XLMUSDT | RL adj=63.7%
 2026-06-18 04:17:11,175 [INFO] main: XLMUSDT | Context score=-0.0 bias=0.0
 2026-06-18 04:17:17,680 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-18 04:17:18,221 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -5249,6 +5249,12 @@ root     1488950  0.1  3.3 723392 129444 ?       Ssl  Jun16   4:08 /opt/ensemble
 2026-06-18 04:18:35,677 [INFO] main: HUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-18 04:18:35,678 [INFO] main: HUSDT | RL adj=50.0%
 2026-06-18 04:18:37,680 [INFO] main: Next scan in 30min (always-30min)
+2026-06-18 04:20:56,022 [INFO] positions: STOP_LOSS TRUMPUSDT long PnL:-2.09%
+2026-06-18 04:20:56,036 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG TRUMPUSDT @ 1.8710 PnL: -10.47% (-2.09 USDT) | Баланс: 940.52
+2026-06-18 04:20:56,260 [INFO] positions: LOSS TRUMPUSDT long PnL:-2.09% reason:stop_loss
+2026-06-18 04:20:56,261 [INFO] positions: Lessons: The trade was closed due to a stop loss, resulting in a 2.09% loss. Despite strong bull sentiment and a bullish MACD, the market failed to move upwards as expected. This trade highlights the importance of risk management and not relying solely on sentiment and technical indicators.
+2026-06-18 04:20:56,261 [INFO] rl: RL learned from long TRUMPUSDT: loss -2.09% | weights bull=0.954 bear=0.772 judge=1.274 threshold=65.68
+2026-06-18 04:25:45,992 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -5266,7 +5272,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       883Mi       359Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       897Mi       345Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
