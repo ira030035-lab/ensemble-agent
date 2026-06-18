@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-18 19:20:01 UTC
+Generated: 2026-06-18 19:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 209536 50268 ?        Ssl  Jun12   0:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.3 723664 130436 ?       Ssl  Jun16   5:34 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.2 721328 128108 ?       Ssl  Jun16   5:35 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -5411,7 +5411,6 @@ root     1488950  0.1  3.3 723664 130436 ?       Ssl  Jun16   5:34 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-18 19:04:11,838 [INFO] main: SUIUSDT | Judge:SHORT conf=70% size=15.0%
 2026-06-18 19:04:11,839 [INFO] main: SUIUSDT | RL adj=77.1%
 2026-06-18 19:04:11,849 [INFO] main: SUIUSDT | Context score=0.0 bias=0.0
 2026-06-18 19:04:11,849 [INFO] main: SUIUSDT | regime BLOCK (volatile)
@@ -5441,6 +5440,7 @@ root     1488950  0.1  3.3 723664 130436 ?       Ssl  Jun16   5:34 /opt/ensemble
 2026-06-18 19:04:42,634 [INFO] main: BEATUSDT | Context score=0.0 bias=0.0
 2026-06-18 19:04:42,634 [INFO] main: BEATUSDT | regime BLOCK (volatile)
 2026-06-18 19:04:44,680 [INFO] main: Next scan in 30min (always-30min)
+2026-06-18 19:25:55,550 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -5458,7 +5458,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       906Mi       275Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       896Mi       285Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
