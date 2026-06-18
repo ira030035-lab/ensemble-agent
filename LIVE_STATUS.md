@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-18 18:50:01 UTC
+Generated: 2026-06-18 19:00:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 209536 50268 ?        Ssl  Jun12   0:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.3 723664 130424 ?       Ssl  Jun16   5:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.3 723664 130424 ?       Ssl  Jun16   5:32 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 965.5683039383829,
+  "balance": 987.4096034567829,
   "positions": {
     "DOGEUSDT": {
       "id": "PAPER_DOGEUSDT_1781794824",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.3 723664 130424 ?       Ssl  Jun16   5:31 /opt/ensemble
       "opened_at": "2026-06-18T16:11:59.670652",
       "cost": 19.999720200000002,
       "notional": 99.99860100000001,
-      "leverage": 5
-    },
-    "REUSDT": {
-      "id": "PAPER_REUSDT_1781807385",
-      "symbol": "REUSDT",
-      "side": "short",
-      "entry_price": 0.51268,
-      "qty": 195.0534,
-      "confidence": 70,
-      "opened_at": "2026-06-18T18:29:45.875896",
-      "cost": 19.9999954224,
-      "notional": 99.99997711200001,
       "leverage": 5
     }
   },
@@ -5385,19 +5373,32 @@ root     1488950  0.1  3.3 723664 130424 ?       Ssl  Jun16   5:31 /opt/ensemble
       "closed_at": "2026-06-18T15:40:36.755403",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_REUSDT_1781807385",
+      "symbol": "REUSDT",
+      "side": "short",
+      "entry_price": 0.51268,
+      "qty": 195.0534,
+      "confidence": 70,
+      "opened_at": "2026-06-18T18:29:45.875896",
+      "cost": 19.9999954224,
+      "notional": 99.99997711200001,
+      "leverage": 5,
+      "exit_price": 0.50324,
+      "pnl_pct": 9.21,
+      "pnl_usdt": 1.84,
+      "closed_at": "2026-06-18T18:59:32.622251",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 25.56801993998317
+  "total_pnl": 27.409324035983172
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-18 18:29:36,058 [INFO] main: ZECUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-18 18:29:36,058 [INFO] main: ZECUSDT | RL adj=50.0%
-2026-06-18 18:29:41,811 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-18 18:29:42,911 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-18 18:29:42,912 [INFO] main: REUSDT | Bull:flat(25%) Bear:short(70%)
 2026-06-18 18:29:45,499 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-18 18:29:45,499 [INFO] main: REUSDT | Judge:SHORT conf=70% size=15.0%
 2026-06-18 18:29:45,500 [INFO] main: REUSDT | RL adj=78.2%
@@ -5423,6 +5424,11 @@ root     1488950  0.1  3.3 723664 130424 ?       Ssl  Jun16   5:31 /opt/ensemble
 2026-06-18 18:30:03,267 [INFO] main: ASTERUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-18 18:30:03,267 [INFO] main: ASTERUSDT | RL adj=50.0%
 2026-06-18 18:30:05,269 [INFO] main: Next scan in 30min (always-30min)
+2026-06-18 18:59:32,619 [INFO] positions: TRAILING-STOP REUSDT short peak:2.77% now:1.84%
+2026-06-18 18:59:32,631 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT REUSDT @ 0.5032 PnL: 9.21% (+1.84 USDT) | Баланс: 987.41
+2026-06-18 18:59:32,985 [INFO] positions: OK REUSDT short PnL:1.84% reason:trailing_stop
+2026-06-18 18:59:32,985 [INFO] positions: Lessons: The trade was a short position on REUSDT that closed with a 1.84% profit due to a trailing stop. The original reasoning was based on a weak bull case and a strong bear case with market sentiment in extreme fear. This trade outcome suggests that identifying and acting on strong bearish signals and market sentiment can be effective in ranging markets.
+2026-06-18 18:59:32,985 [INFO] rl: RL learned from short REUSDT: profit 1.84% | weights bull=0.932 bear=0.787 judge=1.281 threshold=65.68
 ```
 
 ## Disk
@@ -5440,7 +5446,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       889Mi       293Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       896Mi       286Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
