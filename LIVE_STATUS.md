@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-19 21:10:01 UTC
+Generated: 2026-06-19 21:20:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1488950  0.1  3.3 724004 130956 ?       Ssl  Jun16   8:06 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 969.082537858983,
+  "balance": 1009.105365058983,
   "positions": {
-    "BNBUSDT": {
-      "id": "PAPER_BNBUSDT_1781817550",
-      "symbol": "BNBUSDT",
-      "side": "short",
-      "entry_price": 578.69,
-      "qty": 0.1728,
-      "confidence": 85,
-      "opened_at": "2026-06-18T21:19:10.981237",
-      "cost": 19.9995264,
-      "notional": 99.99763200000001,
-      "leverage": 5
-    },
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1781858852",
       "symbol": "XRPUSDT",
@@ -42,18 +30,6 @@ root     1488950  0.1  3.3 724004 130956 ?       Ssl  Jun16   8:06 /opt/ensemble
       "opened_at": "2026-06-19T08:47:32.705121",
       "cost": 19.999999191999997,
       "notional": 99.99999595999999,
-      "leverage": 5
-    },
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1781898168",
-      "symbol": "HYPEUSDT",
-      "side": "short",
-      "entry_price": 70.84,
-      "qty": 1.4116,
-      "confidence": 90,
-      "opened_at": "2026-06-19T19:42:48.530206",
-      "cost": 19.9995488,
-      "notional": 99.997744,
       "leverage": 5
     }
   },
@@ -5673,24 +5649,50 @@ root     1488950  0.1  3.3 724004 130956 ?       Ssl  Jun16   8:06 /opt/ensemble
       "closed_at": "2026-06-19T18:05:03.009096",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1781898168",
+      "symbol": "HYPEUSDT",
+      "side": "short",
+      "entry_price": 70.84,
+      "qty": 1.4116,
+      "confidence": 90,
+      "opened_at": "2026-06-19T19:42:48.530206",
+      "cost": 19.9995488,
+      "notional": 99.997744,
+      "leverage": 5,
+      "exit_price": 70.5,
+      "pnl_pct": 2.4,
+      "pnl_usdt": 0.48,
+      "closed_at": "2026-06-19T21:14:30.694628",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BNBUSDT_1781817550",
+      "symbol": "BNBUSDT",
+      "side": "short",
+      "entry_price": 578.69,
+      "qty": 0.1728,
+      "confidence": 85,
+      "opened_at": "2026-06-18T21:19:10.981237",
+      "cost": 19.9995264,
+      "notional": 99.99763200000001,
+      "leverage": 5,
+      "exit_price": 581.33,
+      "pnl_pct": -2.28,
+      "pnl_usdt": -0.46,
+      "closed_at": "2026-06-19T21:19:36.827803",
+      "reason": "max_hold",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 29.08161225098319
+  "total_pnl": 29.105364250983197
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-19 20:53:05,579 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-19 20:53:05,579 [INFO] main: BSBUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-19 20:53:07,652 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-19 20:53:07,653 [INFO] main: BSBUSDT | Judge:SHORT conf=70% size=15.0%
-2026-06-19 20:53:07,653 [INFO] main: BSBUSDT | RL adj=78.3%
-2026-06-19 20:53:07,664 [INFO] main: BSBUSDT | Context score=0.0 bias=0.0
-2026-06-19 20:53:07,664 [INFO] main: BSBUSDT | regime BLOCK (volatile)
-2026-06-19 20:53:13,284 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-19 20:53:14,619 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-19 20:53:14,621 [INFO] main: VELVETUSDT | Bull:flat(15%) Bear:short(90%)
 2026-06-19 20:53:17,347 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-19 20:53:17,348 [INFO] main: VELVETUSDT | Judge:SHORT conf=75% size=15.0%
 2026-06-19 20:53:17,349 [INFO] main: VELVETUSDT | RL adj=85.6%
@@ -5711,6 +5713,16 @@ root     1488950  0.1  3.3 724004 130956 ?       Ssl  Jun16   8:06 /opt/ensemble
 2026-06-19 20:53:34,587 [INFO] main: NEARUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-19 20:53:34,587 [INFO] main: NEARUSDT | RL adj=50.0%
 2026-06-19 20:53:36,590 [INFO] main: Next scan in 30min (always-30min)
+2026-06-19 21:14:30,693 [INFO] positions: BREAKEVEN_STOP HYPEUSDT short PnL:0.48%
+2026-06-19 21:14:30,701 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT HYPEUSDT @ 70.5000 PnL: 2.40% (+0.48 USDT) | Баланс: 989.56
+2026-06-19 21:14:31,015 [INFO] positions: OK HYPEUSDT short PnL:0.48% reason:breakeven_stop
+2026-06-19 21:14:31,015 [INFO] positions: Lessons: The trade was based on bear dominance with an expected 4% downside move and a 2:1 risk/reward ratio. The outcome was a breakeven stop with a 0.48% profit, indicating the trade did not reach its full potential. This suggests that the bear dominance signal may not have been strong enough to drive the expected price move.
+2026-06-19 21:14:31,015 [INFO] rl: RL learned from short HYPEUSDT: profit 0.48% | weights bull=0.922 bear=0.790 judge=1.289 threshold=65.69
+2026-06-19 21:19:36,826 [INFO] positions: MAX_HOLD BNBUSDT short hold:24.0h
+2026-06-19 21:19:36,834 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT BNBUSDT @ 581.3300 PnL: -2.28% (-0.46 USDT) | Баланс: 1009.11
+2026-06-19 21:19:37,119 [INFO] positions: LOSS BNBUSDT short PnL:-0.46% reason:max_hold
+2026-06-19 21:19:37,119 [INFO] positions: Lessons: The trade was based on bear dominance and extreme fear sentiment but resulted in a small loss. The expected 2:1 risk/reward ratio was not achieved, with the maximum potential loss being realized. This outcome suggests that trend indication signals and sentiment analysis may not always be reliable indicators of a downside move.
+2026-06-19 21:19:37,119 [INFO] rl: RL learned from short BNBUSDT: loss -0.46% | weights bull=0.922 bear=0.789 judge=1.289 threshold=65.74
 ```
 
 ## Disk
@@ -5728,7 +5740,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       890Mi       379Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       892Mi       377Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
