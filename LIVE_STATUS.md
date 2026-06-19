@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-19 08:20:01 UTC
+Generated: 2026-06-19 08:30:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 209536 50252 ?        Ssl  Jun12   0:43 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.2 721104 128008 ?       Ssl  Jun16   6:52 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.3 722616 129352 ?       Ssl  Jun16   6:52 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 968.9374770829829,
+  "balance": 989.357912614983,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1781815457",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.2 721104 128008 ?       Ssl  Jun16   6:52 /opt/ensemble
       "opened_at": "2026-06-18T21:19:10.981237",
       "cost": 19.9995264,
       "notional": 99.99763200000001,
-      "leverage": 5
-    },
-    "XLMUSDT": {
-      "id": "PAPER_XLMUSDT_1781846463",
-      "symbol": "XLMUSDT",
-      "side": "short",
-      "entry_price": 0.2212,
-      "qty": 452.0796,
-      "confidence": 80,
-      "opened_at": "2026-06-19T05:21:03.949126",
-      "cost": 20.000001504000004,
-      "notional": 100.00000752000001,
       "leverage": 5
     }
   },
@@ -5547,20 +5535,32 @@ root     1488950  0.1  3.2 721104 128008 ?       Ssl  Jun16   6:52 /opt/ensemble
       "closed_at": "2026-06-19T05:09:38.648371",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_XLMUSDT_1781846463",
+      "symbol": "XLMUSDT",
+      "side": "short",
+      "entry_price": 0.2212,
+      "qty": 452.0796,
+      "confidence": 80,
+      "opened_at": "2026-06-19T05:21:03.949126",
+      "cost": 20.000001504000004,
+      "notional": 100.00000752000001,
+      "leverage": 5,
+      "exit_price": 0.22027,
+      "pnl_pct": 2.1,
+      "pnl_usdt": 0.42,
+      "closed_at": "2026-06-19T08:22:27.244275",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 28.93700306898318
+  "total_pnl": 29.357437096983187
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-19 08:15:34,448 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-19 08:15:34,449 [INFO] main: VELVETUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-19 08:15:34,449 [INFO] main: VELVETUSDT | RL adj=50.0%
-2026-06-19 08:15:40,917 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-19 08:15:41,629 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-19 08:15:41,630 [INFO] main: NEARUSDT | Bull:flat(25%) Bear:short(70%)
 2026-06-19 08:15:44,409 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-19 08:15:44,410 [INFO] main: NEARUSDT | Judge:SHORT conf=80% size=15.0%
 2026-06-19 08:15:44,410 [INFO] main: NEARUSDT | RL adj=88.3%
@@ -5585,6 +5585,12 @@ root     1488950  0.1  3.2 721104 128008 ?       Ssl  Jun16   6:52 /opt/ensemble
 2026-06-19 08:16:04,656 [INFO] main: ASTERUSDT | Context score=0.0 bias=0.0
 2026-06-19 08:16:04,656 [INFO] main: ASTERUSDT | regime BLOCK (volatile)
 2026-06-19 08:16:06,701 [INFO] main: Next scan in 30min (always-30min)
+2026-06-19 08:22:27,243 [INFO] positions: BREAKEVEN_STOP XLMUSDT short PnL:0.42%
+2026-06-19 08:22:27,251 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT XLMUSDT @ 0.2203 PnL: 2.10% (+0.42 USDT) | Баланс: 989.36
+2026-06-19 08:22:27,599 [INFO] positions: OK XLMUSDT short PnL:0.42% reason:breakeven_stop
+2026-06-19 08:22:27,599 [INFO] positions: Lessons: The trade was based on a strong downtrend with low bull and high bear percentages, expecting a 4% downside move. The trade closed at breakeven stop with a 0.42% profit, suggesting the expected downside move did not fully materialize. This outcome indicates the importance of adjusting risk management and potentially reevaluating trend strength in similar future trades.
+2026-06-19 08:22:27,599 [INFO] rl: RL learned from short XLMUSDT: profit 0.42% | weights bull=0.925 bear=0.790 judge=1.285 threshold=65.66
+2026-06-19 08:26:03,994 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -5602,7 +5608,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       888Mi       414Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       898Mi       403Mi       4.8Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
