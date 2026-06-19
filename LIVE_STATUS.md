@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-19 05:10:01 UTC
+Generated: 2026-06-19 05:20:01 UTC
 
 ## Services
 ```
@@ -5543,18 +5543,6 @@ root     1488950  0.1  3.2 721332 128232 ?       Ssl  Jun16   6:32 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-19 04:49:23,217 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-19 04:49:23,218 [INFO] main: WLDUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-19 04:49:25,206 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-19 04:49:25,207 [INFO] main: WLDUSDT | Judge:SHORT conf=65% size=15.0%
-2026-06-19 04:49:25,207 [INFO] main: WLDUSDT | RL adj=73.9%
-2026-06-19 04:49:25,219 [INFO] main: WLDUSDT | Context score=0.0 bias=0.0
-2026-06-19 04:49:32,002 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-19 04:49:32,692 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-19 04:49:32,693 [INFO] main: ETHUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-19 04:49:34,648 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-19 04:49:34,649 [INFO] main: ETHUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-19 04:49:34,650 [INFO] main: ETHUSDT | RL adj=93.9%
 2026-06-19 04:49:34,678 [INFO] main: ETHUSDT | Context score=0.0 bias=0.0
 2026-06-19 04:49:34,679 [INFO] main: ETHUSDT | gate PASS (Judge 85/70 RL 93.9/65.71 slack=±3)
 2026-06-19 04:49:34,681 [INFO] positions: 2/3 rule: skip SHORT ETHUSDT (3/3 already short)
@@ -5573,6 +5561,18 @@ root     1488950  0.1  3.2 721332 128232 ?       Ssl  Jun16   6:32 /opt/ensemble
 2026-06-19 05:09:38,983 [INFO] positions: OK XLMUSDT short PnL:0.31% reason:breakeven_stop
 2026-06-19 05:09:38,983 [INFO] positions: Lessons: The trade was based on strong bearish sentiment but ultimately closed at breakeven due to hitting the stop loss. The expected risk to reward ratio of 4 was not achieved. This outcome suggests that the confidence in the downtrend may have been misplaced or the stop loss was too tight in a ranging market.
 2026-06-19 05:09:38,983 [INFO] rl: RL learned from short XLMUSDT: profit 0.31% | weights bull=0.926 bear=0.789 judge=1.285 threshold=65.68
+2026-06-19 05:19:46,829 [INFO] main: Scanning 28 symbols...
+2026-06-19 05:19:50,533 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 05:19:52,206 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-19 05:19:52,208 [INFO] main: ESPORTSUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-19 05:19:54,128 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 05:19:54,129 [INFO] main: ESPORTSUSDT | Judge:SHORT conf=85% size=20.0%
+2026-06-19 05:19:54,130 [INFO] main: ESPORTSUSDT | RL adj=94.5%
+2026-06-19 05:19:54,153 [INFO] main: ESPORTSUSDT | Context score=-0.0 bias=0.0
+2026-06-19 05:19:54,153 [INFO] main: ESPORTSUSDT | regime BLOCK (volatile)
+2026-06-19 05:20:01,137 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-19 05:20:01,366 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 05:20:01,368 [INFO] main: ZECUSDT | Bull:flat(25%) Bear:short(70%)
 ```
 
 ## Disk
@@ -5590,7 +5590,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       897Mi       263Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       890Mi       270Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
