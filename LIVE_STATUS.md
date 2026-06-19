@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-19 05:00:01 UTC
+Generated: 2026-06-19 05:10:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.2 721332 128232 ?       Ssl  Jun16   6:32 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 968.6274907349829,
+  "balance": 988.9374785869829,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1781815457",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.2 721332 128232 ?       Ssl  Jun16   6:32 /opt/ensemble
       "opened_at": "2026-06-18T21:19:10.981237",
       "cost": 19.9995264,
       "notional": 99.99763200000001,
-      "leverage": 5
-    },
-    "XLMUSDT": {
-      "id": "PAPER_XLMUSDT_1781842425",
-      "symbol": "XLMUSDT",
-      "side": "short",
-      "entry_price": 0.22259,
-      "qty": 449.2565,
-      "confidence": 80,
-      "opened_at": "2026-06-19T04:13:45.099039",
-      "cost": 20.000000867000004,
-      "notional": 100.00000433500001,
       "leverage": 5
     }
   },
@@ -5529,19 +5517,32 @@ root     1488950  0.1  3.2 721332 128232 ?       Ssl  Jun16   6:32 /opt/ensemble
       "closed_at": "2026-06-19T04:01:21.042677",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_XLMUSDT_1781842425",
+      "symbol": "XLMUSDT",
+      "side": "short",
+      "entry_price": 0.22259,
+      "qty": 449.2565,
+      "confidence": 80,
+      "opened_at": "2026-06-19T04:13:45.099039",
+      "cost": 20.000000867000004,
+      "notional": 100.00000433500001,
+      "leverage": 5,
+      "exit_price": 0.2219,
+      "pnl_pct": 1.55,
+      "pnl_usdt": 0.31,
+      "closed_at": "2026-06-19T05:09:38.648371",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 28.62701608398317
+  "total_pnl": 28.93700306898318
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-19 04:49:15,628 [INFO] main: PEPEUSDT | RL adj=100.0%
-2026-06-19 04:49:15,652 [INFO] main: PEPEUSDT | Context score=0.0 bias=0.0
-2026-06-19 04:49:15,652 [INFO] main: PEPEUSDT | gate PASS (Judge 90/70 RL 100.0/65.71 slack=±3)
-2026-06-19 04:49:15,654 [INFO] positions: 2/3 rule: skip SHORT PEPEUSDT (3/3 already short)
-2026-06-19 04:49:21,374 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-19 04:49:23,217 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-19 04:49:23,218 [INFO] main: WLDUSDT | Bull:flat(15%) Bear:short(75%)
 2026-06-19 04:49:25,206 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -5567,6 +5568,11 @@ root     1488950  0.1  3.2 721332 128232 ?       Ssl  Jun16   6:32 /opt/ensemble
 2026-06-19 04:49:44,812 [INFO] main: ADAUSDT | gate PASS (Judge 85/70 RL 95.6/65.71 slack=±3)
 2026-06-19 04:49:44,813 [INFO] positions: 2/3 rule: skip SHORT ADAUSDT (3/3 already short)
 2026-06-19 04:49:46,816 [INFO] main: Next scan in 30min (always-30min)
+2026-06-19 05:09:38,646 [INFO] positions: BREAKEVEN_STOP XLMUSDT short PnL:0.31%
+2026-06-19 05:09:38,660 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT XLMUSDT @ 0.2219 PnL: 1.55% (+0.31 USDT) | Баланс: 988.94
+2026-06-19 05:09:38,983 [INFO] positions: OK XLMUSDT short PnL:0.31% reason:breakeven_stop
+2026-06-19 05:09:38,983 [INFO] positions: Lessons: The trade was based on strong bearish sentiment but ultimately closed at breakeven due to hitting the stop loss. The expected risk to reward ratio of 4 was not achieved. This outcome suggests that the confidence in the downtrend may have been misplaced or the stop loss was too tight in a ranging market.
+2026-06-19 05:09:38,983 [INFO] rl: RL learned from short XLMUSDT: profit 0.31% | weights bull=0.926 bear=0.789 judge=1.285 threshold=65.68
 ```
 
 ## Disk
@@ -5584,7 +5590,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       897Mi       264Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       897Mi       263Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
