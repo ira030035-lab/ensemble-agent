@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-19 13:40:01 UTC
+Generated: 2026-06-19 13:50:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.3 723476 130268 ?       Ssl  Jun16   7:23 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 969.3028924579829,
+  "balance": 987.2380823879829,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1781817550",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.3 723476 130268 ?       Ssl  Jun16   7:23 /opt/ensemble
       "opened_at": "2026-06-19T08:47:32.705121",
       "cost": 19.999999191999997,
       "notional": 99.99999595999999,
-      "leverage": 5
-    },
-    "ONDOUSDT": {
-      "id": "PAPER_ONDOUSDT_1781860878",
-      "symbol": "ONDOUSDT",
-      "side": "short",
-      "entry_price": 0.3487,
-      "qty": 286.7795,
-      "confidence": 82,
-      "opened_at": "2026-06-19T09:21:18.017933",
-      "cost": 20.000002329999997,
-      "notional": 100.00001164999999,
       "leverage": 5
     }
   },
@@ -5601,19 +5589,32 @@ root     1488950  0.1  3.3 723476 130268 ?       Ssl  Jun16   7:23 /opt/ensemble
       "closed_at": "2026-06-19T08:57:09.144129",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ONDOUSDT_1781860878",
+      "symbol": "ONDOUSDT",
+      "side": "short",
+      "entry_price": 0.3487,
+      "qty": 286.7795,
+      "confidence": 82,
+      "opened_at": "2026-06-19T09:21:18.017933",
+      "cost": 20.000002329999997,
+      "notional": 100.00001164999999,
+      "leverage": 5,
+      "exit_price": 0.3559,
+      "pnl_pct": -10.32,
+      "pnl_usdt": -2.06,
+      "closed_at": "2026-06-19T13:40:29.158815",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 29.302420379983186
+  "total_pnl": 27.237607979983192
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-19 13:25:51,962 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-19 13:25:52,997 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-19 13:25:52,998 [INFO] main: TAOUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-19 13:25:55,187 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-19 13:25:55,188 [INFO] main: TAOUSDT | Judge:SHORT conf=65% size=15.0%
 2026-06-19 13:25:55,188 [INFO] main: TAOUSDT | RL adj=73.3%
 2026-06-19 13:25:55,200 [INFO] main: TAOUSDT | Context score=0.0 bias=0.0
 2026-06-19 13:26:01,163 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -5639,6 +5640,11 @@ root     1488950  0.1  3.3 723476 130268 ?       Ssl  Jun16   7:23 /opt/ensemble
 2026-06-19 13:26:24,225 [INFO] main: LABUSDT | Judge:HOLD conf=45% size=0.0%
 2026-06-19 13:26:24,225 [INFO] main: LABUSDT | RL adj=45.0%
 2026-06-19 13:26:26,228 [INFO] main: Next scan in 30min (always-30min)
+2026-06-19 13:40:29,156 [INFO] positions: STOP_LOSS ONDOUSDT short PnL:-2.06%
+2026-06-19 13:40:29,170 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ONDOUSDT @ 0.3559 PnL: -10.32% (-2.06 USDT) | Баланс: 987.24
+2026-06-19 13:40:29,564 [INFO] positions: LOSS ONDOUSDT short PnL:-2.06% reason:stop_loss
+2026-06-19 13:40:29,564 [INFO] positions: Lessons: The trade was based on bearish indicators with high confidence and negative price momentum, expecting a 4% downside move. However, the trade was stopped out at a loss of 2.06%, failing to reach the expected target. This outcome suggests that while the indicators were bearish, the market did not follow through with the expected move, highlighting the importance of risk management and stop loss placement.
+2026-06-19 13:40:29,564 [INFO] rl: RL learned from short ONDOUSDT: loss -2.06% | weights bull=0.928 bear=0.784 judge=1.288 threshold=65.73
 ```
 
 ## Disk
@@ -5656,7 +5662,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       894Mi       392Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       889Mi       397Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
