@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-19 04:00:01 UTC
+Generated: 2026-06-19 04:10:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.2 721572 128468 ?       Ssl  Jun16   6:25 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 964.8835276659829,
+  "balance": 988.6274916019829,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1781815457",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.2 721572 128468 ?       Ssl  Jun16   6:25 /opt/ensemble
       "opened_at": "2026-06-18T21:19:10.981237",
       "cost": 19.9995264,
       "notional": 99.99763200000001,
-      "leverage": 5
-    },
-    "XLMUSDT": {
-      "id": "PAPER_XLMUSDT_1781836169",
-      "symbol": "XLMUSDT",
-      "side": "short",
-      "entry_price": 0.23184,
-      "qty": 431.332,
-      "confidence": 75,
-      "opened_at": "2026-06-19T02:29:29.259729",
-      "cost": 20.000002176,
-      "notional": 100.00001087999999,
       "leverage": 5
     }
   },
@@ -5511,19 +5499,32 @@ root     1488950  0.1  3.2 721572 128468 ?       Ssl  Jun16   6:25 /opt/ensemble
       "closed_at": "2026-06-19T01:21:28.033504",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_XLMUSDT_1781836169",
+      "symbol": "XLMUSDT",
+      "side": "short",
+      "entry_price": 0.23184,
+      "qty": 431.332,
+      "confidence": 75,
+      "opened_at": "2026-06-19T02:29:29.259729",
+      "cost": 20.000002176,
+      "notional": 100.00001087999999,
+      "leverage": 5,
+      "exit_price": 0.22316,
+      "pnl_pct": 18.72,
+      "pnl_usdt": 3.74,
+      "closed_at": "2026-06-19T04:01:21.042677",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 24.883054323983174
+  "total_pnl": 28.62701608398317
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-19 03:40:15,464 [INFO] main: SOLUSDT | RL adj=88.8%
-2026-06-19 03:40:15,476 [INFO] main: SOLUSDT | Context score=0.0 bias=0.0
-2026-06-19 03:40:15,477 [INFO] main: SOLUSDT | gate PASS (Judge 80/70 RL 88.8/65.74 slack=±3)
-2026-06-19 03:40:15,477 [INFO] positions: 2/3 rule: skip SHORT SOLUSDT (3/3 already short)
-2026-06-19 03:40:21,881 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-19 03:40:21,882 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
 2026-06-19 03:40:24,196 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-19 03:40:24,197 [INFO] main: XPLUSDT | Bull:flat(15%) Bear:short(85%)
@@ -5549,6 +5550,11 @@ root     1488950  0.1  3.2 721572 128468 ?       Ssl  Jun16   6:25 /opt/ensemble
 2026-06-19 03:40:53,246 [INFO] main: NEARUSDT | gate PASS (Judge 85/70 RL 93.8/65.74 slack=±3)
 2026-06-19 03:40:53,248 [INFO] positions: 2/3 rule: skip SHORT NEARUSDT (3/3 already short)
 2026-06-19 03:40:55,251 [INFO] main: Next scan in 30min (always-30min)
+2026-06-19 04:01:21,040 [INFO] positions: TAKE-PROFIT XLMUSDT short PnL:3.74%
+2026-06-19 04:01:21,056 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT XLMUSDT @ 0.2232 PnL: 18.72% (+3.74 USDT) | Баланс: 988.63
+2026-06-19 04:01:21,452 [INFO] positions: OK XLMUSDT short PnL:3.74% reason:take_profit
+2026-06-19 04:01:21,452 [INFO] positions: Lessons: The trade was closed in profit with a 3.74% gain, meeting the expected return. The initial analysis correctly identified a short-term downtrend and bearish sentiment, leading to a successful short position. This trade demonstrates the effectiveness of identifying and acting on clear trends and sentiment shifts in a ranging market.
+2026-06-19 04:01:21,453 [INFO] rl: RL learned from short XLMUSDT: profit 3.74% | weights bull=0.927 bear=0.788 judge=1.285 threshold=65.71
 ```
 
 ## Disk
@@ -5566,7 +5572,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       919Mi       243Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       892Mi       269Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
