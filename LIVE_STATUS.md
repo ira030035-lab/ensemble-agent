@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-19 10:20:01 UTC
+Generated: 2026-06-19 10:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 210560 51236 ?        Ssl  Jun12   0:52 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.2 721084 127996 ?       Ssl  Jun16   7:03 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.3 723580 130292 ?       Ssl  Jun16   7:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -5609,8 +5609,6 @@ root     1488950  0.1  3.2 721084 127996 ?       Ssl  Jun16   7:03 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-19 09:59:18,853 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-19 09:59:20,108 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-19 09:59:20,109 [INFO] main: ZECUSDT | Bull:flat(25%) Bear:short(70%)
 2026-06-19 09:59:25,855 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-19 09:59:25,857 [INFO] main: ZECUSDT | Judge:SHORT conf=70% size=15.0%
@@ -5639,6 +5637,8 @@ root     1488950  0.1  3.2 721084 127996 ?       Ssl  Jun16   7:03 /opt/ensemble
 2026-06-19 09:59:56,973 [INFO] main: BEATUSDT | Context score=-0.0 bias=0.0
 2026-06-19 09:59:56,973 [INFO] main: BEATUSDT | regime BLOCK (volatile)
 2026-06-19 09:59:59,017 [INFO] main: Next scan in 30min (always-30min)
+2026-06-19 10:26:05,309 [INFO] main: Symbols: 30
+2026-06-19 10:29:59,029 [INFO] main: Scanning 27 symbols...
 ```
 
 ## Disk
@@ -5656,7 +5656,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       891Mi       406Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       893Mi       404Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
