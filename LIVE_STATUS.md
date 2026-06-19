@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-19 18:20:02 UTC
+Generated: 2026-06-19 18:30:01 UTC
 
 ## Services
 ```
@@ -11,7 +11,7 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1408416  0.0  1.2 283284 50292 ?        Ssl  Jun12   0:56 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1408416  0.0  1.2 283284 50264 ?        Ssl  Jun12   0:57 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1488950  0.1  3.3 723980 130932 ?       Ssl  Jun16   7:50 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
@@ -5669,7 +5669,6 @@ root     1488950  0.1  3.3 723980 130932 ?       Ssl  Jun16   7:50 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-19 18:01:18,564 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-19 18:01:19,120 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-19 18:01:19,121 [INFO] main: ZECUSDT | Bull:flat(25%) Bear:short(60%)
 2026-06-19 18:01:22,528 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -5699,6 +5698,7 @@ root     1488950  0.1  3.3 723980 130932 ?       Ssl  Jun16   7:50 /opt/ensemble
 2026-06-19 18:05:03,440 [INFO] positions: OK TAOUSDT short PnL:0.49% reason:breakeven_stop
 2026-06-19 18:05:03,440 [INFO] positions: Lessons: The trade was based on a strong bearish bias in a downtrend regime with extreme fear sentiment, expecting a 4% downside move. The trade ultimately closed at breakeven stop, resulting in a 0.49% profit. This outcome suggests that the initial analysis was partially correct, but the expected downside move was not fully realized, highlighting the importance of adjusting expectations and stop losses in trending markets.
 2026-06-19 18:05:03,440 [INFO] rl: RL learned from short TAOUSDT: profit 0.49% | weights bull=0.923 bear=0.789 judge=1.289 threshold=65.72
+2026-06-19 18:26:11,140 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -5716,7 +5716,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       893Mi       382Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       904Mi       371Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
