@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-19 04:20:01 UTC
+Generated: 2026-06-19 04:30:01 UTC
 
 ## Services
 ```
@@ -11,8 +11,8 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1408416  0.0  1.3 210560 51280 ?        Ssl  Jun12   0:42 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.2 721060 127956 ?       Ssl  Jun16   6:28 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1408416  0.0  1.2 209536 50252 ?        Ssl  Jun12   0:43 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1488950  0.1  3.3 722572 129300 ?       Ssl  Jun16   6:28 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -5537,7 +5537,6 @@ root     1488950  0.1  3.2 721060 127956 ?       Ssl  Jun16   6:28 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-19 04:14:53,506 [INFO] positions: 2/3 rule: skip SHORT ONDOUSDT (3/3 already short)
 2026-06-19 04:15:00,413 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-19 04:15:01,227 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-19 04:15:01,228 [INFO] main: ALLOUSDT | Bull:long(62%) Bear:short(85%)
@@ -5567,6 +5566,7 @@ root     1488950  0.1  3.2 721060 127956 ?       Ssl  Jun16   6:28 /opt/ensemble
 2026-06-19 04:15:34,999 [INFO] main: VELVETUSDT | Context score=-0.0 bias=0.0
 2026-06-19 04:15:34,999 [INFO] main: VELVETUSDT | regime BLOCK (volatile)
 2026-06-19 04:15:37,002 [INFO] main: Next scan in 30min (always-30min)
+2026-06-19 04:26:01,213 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -5584,7 +5584,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       890Mi       271Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       904Mi       257Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
