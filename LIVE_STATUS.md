@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-19 08:30:01 UTC
+Generated: 2026-06-19 08:40:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 209536 50252 ?        Ssl  Jun12   0:43 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.3 722616 129352 ?       Ssl  Jun16   6:52 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.3 722616 129352 ?       Ssl  Jun16   6:53 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 989.357912614983,
+  "balance": 1011.343517026983,
   "positions": {
-    "XRPUSDT": {
-      "id": "PAPER_XRPUSDT_1781815457",
-      "symbol": "XRPUSDT",
-      "side": "short",
-      "entry_price": 1.1533,
-      "qty": 86.7077,
-      "confidence": 85,
-      "opened_at": "2026-06-18T20:44:17.714019",
-      "cost": 19.999998082,
-      "notional": 99.99999041000001,
-      "leverage": 5
-    },
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1781817550",
       "symbol": "BNBUSDT",
@@ -5553,19 +5541,32 @@ root     1488950  0.1  3.3 722616 129352 ?       Ssl  Jun16   6:52 /opt/ensemble
       "closed_at": "2026-06-19T08:22:27.244275",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_XRPUSDT_1781815457",
+      "symbol": "XRPUSDT",
+      "side": "short",
+      "entry_price": 1.1533,
+      "qty": 86.7077,
+      "confidence": 85,
+      "opened_at": "2026-06-18T20:44:17.714019",
+      "cost": 19.999998082,
+      "notional": 99.99999041000001,
+      "leverage": 5,
+      "exit_price": 1.1304,
+      "pnl_pct": 9.93,
+      "pnl_usdt": 1.99,
+      "closed_at": "2026-06-19T08:39:17.196713",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 29.357437096983187
+  "total_pnl": 31.34304342698318
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-19 08:15:44,409 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-19 08:15:44,410 [INFO] main: NEARUSDT | Judge:SHORT conf=80% size=15.0%
-2026-06-19 08:15:44,410 [INFO] main: NEARUSDT | RL adj=88.3%
-2026-06-19 08:15:44,429 [INFO] main: NEARUSDT | Context score=0.0 bias=0.0
-2026-06-19 08:15:44,430 [INFO] main: NEARUSDT | gate PASS (Judge 80/70 RL 88.3/65.68 slack=±3)
 2026-06-19 08:15:44,432 [INFO] positions: 2/3 rule: skip SHORT NEARUSDT (3/3 already short)
 2026-06-19 08:15:49,897 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-19 08:15:51,055 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -5591,6 +5592,11 @@ root     1488950  0.1  3.3 722616 129352 ?       Ssl  Jun16   6:52 /opt/ensemble
 2026-06-19 08:22:27,599 [INFO] positions: Lessons: The trade was based on a strong downtrend with low bull and high bear percentages, expecting a 4% downside move. The trade closed at breakeven stop with a 0.42% profit, suggesting the expected downside move did not fully materialize. This outcome indicates the importance of adjusting risk management and potentially reevaluating trend strength in similar future trades.
 2026-06-19 08:22:27,599 [INFO] rl: RL learned from short XLMUSDT: profit 0.42% | weights bull=0.925 bear=0.790 judge=1.285 threshold=65.66
 2026-06-19 08:26:03,994 [INFO] main: Symbols: 30
+2026-06-19 08:39:17,195 [INFO] positions: TRAILING-STOP XRPUSDT short peak:2.8% now:1.99%
+2026-06-19 08:39:17,203 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT XRPUSDT @ 1.1304 PnL: 9.93% (+1.99 USDT) | Баланс: 1011.34
+2026-06-19 08:39:17,615 [INFO] positions: OK XRPUSDT short PnL:1.99% reason:trailing_stop
+2026-06-19 08:39:17,615 [INFO] positions: Lessons: A short position in XRPUSDT was closed with a 1.99% profit, meeting the expected short-term downside move due to bearish trends and indicators. The trade was closed by a trailing stop, locking in the gain. This outcome reinforces the importance of recognizing and acting on bearish signals, such as low volume and overbought RSI, in a trending down regime.
+2026-06-19 08:39:17,615 [INFO] rl: RL learned from short XRPUSDT: profit 1.99% | weights bull=0.920 bear=0.794 judge=1.286 threshold=65.63
 ```
 
 ## Disk
@@ -5608,7 +5614,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       898Mi       403Mi       4.8Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       884Mi       416Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
