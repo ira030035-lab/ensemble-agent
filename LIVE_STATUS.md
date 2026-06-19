@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-19 12:20:01 UTC
+Generated: 2026-06-19 12:30:01 UTC
 
 ## Services
 ```
@@ -5609,7 +5609,6 @@ root     1488950  0.1  3.3 723472 130260 ?       Ssl  Jun16   7:16 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-19 12:17:06,265 [INFO] main: ESPORTSUSDT | Bull:flat(15%) Bear:short(80%)
 2026-06-19 12:17:09,118 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-19 12:17:09,120 [INFO] main: ESPORTSUSDT | Judge:SHORT conf=90% size=20.0%
 2026-06-19 12:17:09,120 [INFO] main: ESPORTSUSDT | RL adj=99.5%
@@ -5639,6 +5638,7 @@ root     1488950  0.1  3.3 723472 130260 ?       Ssl  Jun16   7:16 /opt/ensemble
 2026-06-19 12:17:38,810 [INFO] main: BEATUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-19 12:17:38,810 [INFO] main: BEATUSDT | RL adj=50.0%
 2026-06-19 12:17:40,813 [INFO] main: Next scan in 30min (always-30min)
+2026-06-19 12:26:06,800 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -5656,7 +5656,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       893Mi       396Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       896Mi       393Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
