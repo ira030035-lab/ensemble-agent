@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-19 14:20:01 UTC
+Generated: 2026-06-19 14:30:01 UTC
 
 ## Services
 ```
@@ -5633,7 +5633,6 @@ root     1488950  0.1  3.3 723472 130264 ?       Ssl  Jun16   7:26 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-19 14:00:32,231 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-19 14:00:32,233 [INFO] main: SUIUSDT | Bull:flat(25%) Bear:short(80%)
 2026-06-19 14:00:35,212 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-19 14:00:35,213 [INFO] main: SUIUSDT | Judge:SHORT conf=80% size=15.0%
@@ -5663,6 +5662,7 @@ root     1488950  0.1  3.3 723472 130264 ?       Ssl  Jun16   7:26 /opt/ensemble
 2026-06-19 14:01:25,640 [INFO] positions: OK REUSDT short PnL:3.68% reason:take_profit
 2026-06-19 14:01:25,640 [INFO] positions: Lessons: The trade was closed in profit with a 3.68% gain due to a take profit order. The original reasoning was based on strong bearish sentiment and bearish indicators, which led to a correct expectation of a downside move. This trade demonstrates the effectiveness of using sentiment analysis and technical indicators to inform short-selling decisions in a ranging market regime.
 2026-06-19 14:01:25,640 [INFO] rl: RL learned from short REUSDT: profit 3.68% | weights bull=0.920 bear=0.793 judge=1.288 threshold=65.7
+2026-06-19 14:26:08,330 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -5680,7 +5680,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       891Mi       394Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       902Mi       382Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
