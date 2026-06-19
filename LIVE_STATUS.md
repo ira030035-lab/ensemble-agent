@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-19 00:20:01 UTC
+Generated: 2026-06-19 00:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.1  58672 45688 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 210560 51276 ?        Ssl  Jun12   0:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.2 721860 128748 ?       Ssl  Jun16   6:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.3 723328 130088 ?       Ssl  Jun16   6:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -5501,7 +5501,6 @@ root     1488950  0.1  3.2 721860 128748 ?       Ssl  Jun16   6:04 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-19 00:12:36,238 [INFO] main: HUSDT | Judge:SHORT conf=75% size=15.0%
 2026-06-19 00:12:36,238 [INFO] main: HUSDT | RL adj=83.7%
 2026-06-19 00:12:36,250 [INFO] main: HUSDT | Context score=0.0 bias=0.0
 2026-06-19 00:12:36,250 [INFO] main: HUSDT | regime BLOCK (volatile)
@@ -5531,6 +5530,7 @@ root     1488950  0.1  3.2 721860 128748 ?       Ssl  Jun16   6:04 /opt/ensemble
 2026-06-19 00:13:05,797 [INFO] main: DOGEUSDT | gate PASS (Judge 80/70 RL 89.3/65.77 slack=±3)
 2026-06-19 00:13:05,798 [INFO] positions: 2/3 rule: skip SHORT DOGEUSDT (3/3 already short)
 2026-06-19 00:13:07,801 [INFO] main: Next scan in 30min (always-30min)
+2026-06-19 00:25:58,644 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -5548,7 +5548,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       892Mi       275Mi       4.8Mi       2.9Gi       2.9Gi
+Mem:           3.7Gi       898Mi       268Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
