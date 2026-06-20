@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-19 23:50:02 UTC
+Generated: 2026-06-20 00:00:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.2 722640 128892 ?       Ssl  Jun16   8:21 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 966.990715850983,
+  "balance": 984.818304650983,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1781858852",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.2 722640 128892 ?       Ssl  Jun16   8:21 /opt/ensemble
       "opened_at": "2026-06-19T08:47:32.705121",
       "cost": 19.999999191999997,
       "notional": 99.99999595999999,
-      "leverage": 5
-    },
-    "TAOUSDT": {
-      "id": "PAPER_TAOUSDT_1781904381",
-      "symbol": "TAOUSDT",
-      "side": "short",
-      "entry_price": 224.62,
-      "qty": 0.4452,
-      "confidence": 75,
-      "opened_at": "2026-06-19T21:26:21.209815",
-      "cost": 20.0001648,
-      "notional": 100.000824,
       "leverage": 5
     },
     "WLDUSDT": {
@@ -5727,19 +5715,32 @@ root     1488950  0.1  3.2 722640 128892 ?       Ssl  Jun16   8:21 /opt/ensemble
       "closed_at": "2026-06-19T21:27:12.640373",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_TAOUSDT_1781904381",
+      "symbol": "TAOUSDT",
+      "side": "short",
+      "entry_price": 224.62,
+      "qty": 0.4452,
+      "confidence": 75,
+      "opened_at": "2026-06-19T21:26:21.209815",
+      "cost": 20.0001648,
+      "notional": 100.000824,
+      "leverage": 5,
+      "exit_price": 229.5,
+      "pnl_pct": -10.86,
+      "pnl_usdt": -2.17,
+      "closed_at": "2026-06-19T23:57:04.500462",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 26.9908747709832
+  "total_pnl": 24.8182987709832
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-19 23:44:22,653 [INFO] main: SOLUSDT | macro BLOCK (long при BTC downtrend)
-2026-06-19 23:44:28,098 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-19 23:44:28,986 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-19 23:44:28,987 [INFO] main: VELVETUSDT | Bull:flat(25%) Bear:short(60%)
-2026-06-19 23:44:30,973 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-19 23:44:30,974 [INFO] main: VELVETUSDT | Judge:HOLD conf=45% size=0.0%
 2026-06-19 23:44:30,974 [INFO] main: VELVETUSDT | RL adj=45.0%
 2026-06-19 23:44:36,500 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -5765,12 +5766,17 @@ root     1488950  0.1  3.2 722640 128892 ?       Ssl  Jun16   8:21 /opt/ensemble
 2026-06-19 23:44:57,525 [INFO] main: BTCUSDT | Context score=-0.0 bias=0.0
 2026-06-19 23:44:57,525 [INFO] main: BTCUSDT | macro BLOCK (long при BTC downtrend)
 2026-06-19 23:44:59,567 [INFO] main: Next scan in 30min (always-30min)
+2026-06-19 23:57:04,499 [INFO] positions: STOP_LOSS TAOUSDT short PnL:-2.17%
+2026-06-19 23:57:04,508 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT TAOUSDT @ 229.5000 PnL: -10.86% (-2.17 USDT) | Баланс: 984.82
+2026-06-19 23:57:04,904 [INFO] positions: LOSS TAOUSDT short PnL:-2.17% reason:stop_loss
+2026-06-19 23:57:04,904 [INFO] positions: Lessons: The trade was based on high bearish sentiment and a trending down market regime, expecting a significant downside move. However, the trade was stopped out for a loss of 2.17%, indicating the expected move did not materialize. This outcome suggests being cautious of bearish sentiment alone and considering other factors to avoid premature entries in a trending down regime.
+2026-06-19 23:57:04,904 [INFO] rl: RL learned from short TAOUSDT: loss -2.17% | weights bull=0.930 bear=0.778 judge=1.291 threshold=65.84
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  896K  381M   1% /run
+tmpfs           382M  904K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  9.2G   63G  13% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -5782,7 +5788,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       889Mi       376Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       909Mi       354Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
