@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-20 05:10:01 UTC
+Generated: 2026-06-20 05:20:01 UTC
 
 ## Services
 ```
@@ -18,33 +18,8 @@ root     1488950  0.1  3.3 726496 132648 ?       Ssl  Jun16   8:49 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 986.526101885383,
-  "positions": {
-    "XRPUSDT": {
-      "id": "PAPER_XRPUSDT_1781858852",
-      "symbol": "XRPUSDT",
-      "side": "short",
-      "entry_price": 1.1278,
-      "qty": 88.6682,
-      "confidence": 75,
-      "opened_at": "2026-06-19T08:47:32.705121",
-      "cost": 19.999999191999997,
-      "notional": 99.99999595999999,
-      "leverage": 5
-    },
-    "ENAUSDT": {
-      "id": "PAPER_ENAUSDT_1781924901",
-      "symbol": "ENAUSDT",
-      "side": "short",
-      "entry_price": 0.08724,
-      "qty": 1146.2632,
-      "confidence": 70,
-      "opened_at": "2026-06-20T03:08:21.959559",
-      "cost": 20.0000003136,
-      "notional": 100.000001568,
-      "leverage": 5
-    }
-  },
+  "balance": 1022.037404738983,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -5805,24 +5780,50 @@ root     1488950  0.1  3.3 726496 132648 ?       Ssl  Jun16   8:49 /opt/ensemble
       "closed_at": "2026-06-20T04:58:38.138168",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ENAUSDT_1781924901",
+      "symbol": "ENAUSDT",
+      "side": "short",
+      "entry_price": 0.08724,
+      "qty": 1146.2632,
+      "confidence": 70,
+      "opened_at": "2026-06-20T03:08:21.959559",
+      "cost": 20.0000003136,
+      "notional": 100.000001568,
+      "leverage": 5,
+      "exit_price": 0.0894,
+      "pnl_pct": -12.38,
+      "pnl_usdt": -2.48,
+      "closed_at": "2026-06-20T05:10:21.800598",
+      "reason": "stop_loss",
+      "outcome": "loss"
+    },
+    {
+      "id": "PAPER_XRPUSDT_1781858852",
+      "symbol": "XRPUSDT",
+      "side": "short",
+      "entry_price": 1.1278,
+      "qty": 88.6682,
+      "confidence": 75,
+      "opened_at": "2026-06-19T08:47:32.705121",
+      "cost": 19.999999191999997,
+      "notional": 99.99999595999999,
+      "leverage": 5,
+      "exit_price": 1.1505,
+      "pnl_pct": -10.06,
+      "pnl_usdt": -2.01,
+      "closed_at": "2026-06-20T05:10:52.476457",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 26.526101390983186
+  "total_pnl": 22.037404738983177
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-20 04:55:12,860 [INFO] main: BICOUSDT | Bull:flat(25%) Bear:short(80%)
-2026-06-20 04:55:14,872 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-20 04:55:14,873 [INFO] main: BICOUSDT | Judge:HOLD conf=60% size=0.0%
-2026-06-20 04:55:14,873 [INFO] main: BICOUSDT | RL adj=60.0%
-2026-06-20 04:55:21,829 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-20 04:55:22,407 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-20 04:55:22,408 [INFO] main: ADAUSDT | Bull:long(62%) Bear:short(60%)
-2026-06-20 04:55:25,469 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-20 04:55:25,469 [INFO] main: ADAUSDT | Judge:LONG conf=70% size=10.0%
-2026-06-20 04:55:25,469 [INFO] main: ADAUSDT | RL adj=71.5%
 2026-06-20 04:55:25,479 [INFO] main: ADAUSDT | Context score=-0.0 bias=0.0
 2026-06-20 04:55:25,480 [INFO] main: ADAUSDT | macro BLOCK (long при BTC downtrend)
 2026-06-20 04:55:31,757 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -5843,6 +5844,16 @@ root     1488950  0.1  3.3 726496 132648 ?       Ssl  Jun16   8:49 /opt/ensemble
 2026-06-20 04:58:38,494 [INFO] positions: LOSS WLDUSDT short PnL:-2.17% reason:stop_loss
 2026-06-20 04:58:38,494 [INFO] positions: Lessons: The trade was based on a bearish confluence of high bear sentiment, trending_down regime, and extreme fear sentiment. Despite this, the trade resulted in a stop loss, indicating that the bearish momentum was not strong enough to reach the expected target. The loss of 2.17% should serve as a reminder to reevaluate the weight given to sentiment indicators in a trending_down regime.
 2026-06-20 04:58:38,494 [INFO] rl: RL learned from short WLDUSDT: loss -2.17% | weights bull=0.924 bear=0.783 judge=1.293 threshold=65.8
+2026-06-20 05:10:21,798 [INFO] positions: STOP_LOSS ENAUSDT short PnL:-2.48%
+2026-06-20 05:10:21,814 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ENAUSDT @ 0.0894 PnL: -12.38% (-2.48 USDT) | Баланс: 1004.05
+2026-06-20 05:10:22,167 [INFO] positions: LOSS ENAUSDT short PnL:-2.48% reason:stop_loss
+2026-06-20 05:10:22,168 [INFO] positions: Lessons: The trade was based on bearish sentiment and strong selling pressure but ultimately hit the stop loss, resulting in a 2.48% loss. The expected risk to reward ratio of 2:1 was not realized, highlighting the importance of adjusting position size and stop loss levels. This trade serves as a reminder to reevaluate the strength of bearish sentiment and selling pressure in trending_down regimes.
+2026-06-20 05:10:22,168 [INFO] rl: RL learned from short ENAUSDT: loss -2.48% | weights bull=0.928 bear=0.778 judge=1.294 threshold=65.85
+2026-06-20 05:10:52,475 [INFO] positions: STOP_LOSS XRPUSDT short PnL:-2.01%
+2026-06-20 05:10:52,482 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT XRPUSDT @ 1.1505 PnL: -10.06% (-2.01 USDT) | Баланс: 1022.04
+2026-06-20 05:10:52,880 [INFO] positions: LOSS XRPUSDT short PnL:-2.01% reason:stop_loss
+2026-06-20 05:10:52,880 [INFO] positions: Lessons: The trade was based on bear conviction being higher than bull conviction and multiple bearish headwinds, but it still resulted in a stop loss. The expected 2:1 risk to reward ratio was not achieved, with the trade closing at a 2.01% loss. This outcome suggests that the bearish conviction and headwinds were not strong enough to drive the expected 4% downside move.
+2026-06-20 05:10:52,880 [INFO] rl: RL learned from short XRPUSDT: loss -2.01% | weights bull=0.931 bear=0.774 judge=1.294 threshold=65.9
 ```
 
 ## Disk
@@ -5860,7 +5871,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       891Mi       460Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       880Mi       471Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
