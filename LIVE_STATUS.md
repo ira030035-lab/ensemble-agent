@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-20 21:10:01 UTC
+Generated: 2026-06-20 21:20:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.3 724756 131620 ?       Ssl  Jun16  10:12 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 965.950974701783,
+  "balance": 986.3002188137831,
   "positions": {
     "DOGEUSDT": {
       "id": "PAPER_DOGEUSDT_1781933311",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.3 724756 131620 ?       Ssl  Jun16  10:12 /opt/ensemble
       "opened_at": "2026-06-20T11:11:05.898133",
       "cost": 19.998627000000003,
       "notional": 99.99313500000001,
-      "leverage": 5
-    },
-    "ONDOUSDT": {
-      "id": "PAPER_ONDOUSDT_1781970371",
-      "symbol": "ONDOUSDT",
-      "side": "short",
-      "entry_price": 0.3436,
-      "qty": 291.0361,
-      "confidence": 80,
-      "opened_at": "2026-06-20T15:46:11.365630",
-      "cost": 20.000000792,
-      "notional": 100.00000396,
       "leverage": 5
     }
   },
@@ -5925,19 +5913,32 @@ root     1488950  0.1  3.3 724756 131620 ?       Ssl  Jun16  10:12 /opt/ensemble
       "closed_at": "2026-06-20T14:46:25.594297",
       "reason": "breakeven_stop",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ONDOUSDT_1781970371",
+      "symbol": "ONDOUSDT",
+      "side": "short",
+      "entry_price": 0.3436,
+      "qty": 291.0361,
+      "confidence": 80,
+      "opened_at": "2026-06-20T15:46:11.365630",
+      "cost": 20.000000792,
+      "notional": 100.00000396,
+      "leverage": 5,
+      "exit_price": 0.3424,
+      "pnl_pct": 1.75,
+      "pnl_usdt": 0.35,
+      "closed_at": "2026-06-20T21:13:39.331539",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 25.949602687983166
+  "total_pnl": 26.298846007983176
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-20 20:58:52,637 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-20 20:58:52,638 [INFO] main: ALICEUSDT | Judge:HOLD conf=65% size=0.0%
-2026-06-20 20:58:52,638 [INFO] main: ALICEUSDT | RL adj=65.0%
-2026-06-20 20:58:57,988 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-20 20:59:00,894 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-20 20:59:00,895 [INFO] main: ADAUSDT | Bull:flat(25%) Bear:short(70%)
 2026-06-20 20:59:03,581 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-20 20:59:03,581 [INFO] main: ADAUSDT | Judge:HOLD conf=55% size=0.0%
@@ -5963,6 +5964,11 @@ root     1488950  0.1  3.3 724756 131620 ?       Ssl  Jun16  10:12 /opt/ensemble
 2026-06-20 20:59:29,770 [INFO] main: NEARUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-20 20:59:29,770 [INFO] main: NEARUSDT | RL adj=55.0%
 2026-06-20 20:59:31,773 [INFO] main: Next scan in 30min (always-30min)
+2026-06-20 21:13:39,330 [INFO] positions: BREAKEVEN_STOP ONDOUSDT short PnL:0.35%
+2026-06-20 21:13:39,337 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ONDOUSDT @ 0.3424 PnL: 1.75% (+0.35 USDT) | Баланс: 986.30
+2026-06-20 21:13:39,741 [INFO] positions: OK ONDOUSDT short PnL:0.35% reason:breakeven_stop
+2026-06-20 21:13:39,741 [INFO] positions: Lessons: The trade was based on a bearish setup with a deeply oversold RSI and significant downtrend on multiple timeframes, expecting a 4% downside move. However, the trade only resulted in a 0.35% profit, hitting the breakeven stop. This suggests that the trade's risk-reward ratio may not have been adequately met, indicating a need to reassess the strategy's effectiveness in trending_down regimes.
+2026-06-20 21:13:39,741 [INFO] rl: RL learned from short ONDOUSDT: profit 0.35% | weights bull=0.920 bear=0.784 judge=1.296 threshold=65.92
 ```
 
 ## Disk
@@ -5980,7 +5986,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       883Mi       427Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       892Mi       419Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
