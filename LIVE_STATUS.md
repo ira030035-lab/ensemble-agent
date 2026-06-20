@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-20 06:50:01 UTC
+Generated: 2026-06-20 07:00:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.3 725888 132088 ?       Ssl  Jun16   8:58 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 962.0373627199831,
+  "balance": 985.0818269599831,
   "positions": {
     "ALLOUSDT": {
       "id": "PAPER_ALLOUSDT_1781933292",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.3 725888 132088 ?       Ssl  Jun16   8:58 /opt/ensemble
       "opened_at": "2026-06-20T05:28:31.462571",
       "cost": 20.000000194200002,
       "notional": 100.000000971,
-      "leverage": 5
-    },
-    "AVAXUSDT": {
-      "id": "PAPER_AVAXUSDT_1781933423",
-      "symbol": "AVAXUSDT",
-      "side": "short",
-      "entry_price": 6.011,
-      "qty": 16.6362,
-      "confidence": 75,
-      "opened_at": "2026-06-20T05:30:23.027628",
-      "cost": 20.00003964,
-      "notional": 100.0001982,
       "leverage": 5
     }
   },
@@ -5853,19 +5841,32 @@ root     1488950  0.1  3.3 725888 132088 ?       Ssl  Jun16   8:58 /opt/ensemble
       "closed_at": "2026-06-20T05:10:52.476457",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_AVAXUSDT_1781933423",
+      "symbol": "AVAXUSDT",
+      "side": "short",
+      "entry_price": 6.011,
+      "qty": 16.6362,
+      "confidence": 75,
+      "opened_at": "2026-06-20T05:30:23.027628",
+      "cost": 20.00003964,
+      "notional": 100.0001982,
+      "leverage": 5,
+      "exit_price": 5.828,
+      "pnl_pct": 15.22,
+      "pnl_usdt": 3.04,
+      "closed_at": "2026-06-20T06:57:53.110484",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 22.037404738983177
+  "total_pnl": 25.081829338983173
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-20 06:38:39,315 [INFO] main: LINKUSDT | RL adj=45.0%
-2026-06-20 06:38:44,773 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-20 06:38:46,001 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-20 06:38:46,002 [INFO] main: LABUSDT | Bull:flat(25%) Bear:short(75%)
-2026-06-20 06:38:48,142 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-20 06:38:48,143 [INFO] main: LABUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-20 06:38:48,143 [INFO] main: LABUSDT | RL adj=55.0%
 2026-06-20 06:38:54,098 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -5891,6 +5892,11 @@ root     1488950  0.1  3.3 725888 132088 ?       Ssl  Jun16   8:58 /opt/ensemble
 2026-06-20 06:39:14,187 [INFO] main: BNBUSDT | gate PASS (Judge 70/70 RL 78.1/65.9 slack=±3)
 2026-06-20 06:39:14,188 [INFO] positions: 2/3 rule: skip SHORT BNBUSDT (3/3 already short)
 2026-06-20 06:39:16,191 [INFO] main: Next scan in 30min (always-30min)
+2026-06-20 06:57:53,109 [INFO] positions: TAKE-PROFIT AVAXUSDT short PnL:3.04%
+2026-06-20 06:57:53,116 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT AVAXUSDT @ 5.8280 PnL: 15.22% (+3.04 USDT) | Баланс: 985.08
+2026-06-20 06:57:53,425 [INFO] positions: OK AVAXUSDT short PnL:3.04% reason:take_profit
+2026-06-20 06:57:53,425 [INFO] positions: Lessons: The AVAXUSDT short trade was successful with a 3.04% profit, meeting the expected downside move. The original reasoning of moderate bear confidence and weak bullish signals proved correct. This trade demonstrates the effectiveness of identifying and acting on trends with a clear risk/reward ratio, in this case a 2:1 R/R.
+2026-06-20 06:57:53,425 [INFO] rl: RL learned from short AVAXUSDT: profit 3.04% | weights bull=0.924 bear=0.782 judge=1.294 threshold=65.88
 ```
 
 ## Disk
@@ -5908,7 +5914,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       870Mi       476Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       902Mi       445Mi       4.8Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
