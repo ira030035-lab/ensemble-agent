@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-20 12:00:01 UTC
+Generated: 2026-06-20 12:10:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50272 ?        Ssl  Jun12   0:58 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.3 723416 130020 ?       Ssl  Jun16   9:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.3 723416 130020 ?       Ssl  Jun16   9:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -5915,10 +5915,6 @@ root     1488950  0.1  3.3 723416 130020 ?       Ssl  Jun16   9:24 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-20 11:48:20,209 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-20 11:48:20,210 [INFO] main: VELVETUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-20 11:48:23,118 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-20 11:48:23,119 [INFO] main: VELVETUSDT | Judge:SHORT conf=85% size=15.0%
 2026-06-20 11:48:23,119 [INFO] main: VELVETUSDT | RL adj=93.2%
 2026-06-20 11:48:23,131 [INFO] main: VELVETUSDT | Context score=0.0 bias=0.0
 2026-06-20 11:48:23,131 [INFO] main: VELVETUSDT | regime BLOCK (volatile)
@@ -5945,6 +5941,10 @@ root     1488950  0.1  3.3 723416 130020 ?       Ssl  Jun16   9:24 /opt/ensemble
 2026-06-20 11:48:49,741 [INFO] main: ESPORTSUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-20 11:48:49,741 [INFO] main: ESPORTSUSDT | RL adj=50.0%
 2026-06-20 11:48:51,743 [INFO] main: Next scan in 30min (always-30min)
+2026-06-20 12:05:56,232 [WARNING] bitget: Bitget GET /api/v2/mix/market/ticker retry 1/3 after  — sleep 0.5s
+2026-06-20 12:05:57,032 [INFO] bitget: Bitget recovered after 1 failures
+2026-06-20 12:07:14,236 [WARNING] bitget: Bitget GET /api/v2/mix/market/ticker retry 1/3 after  — sleep 0.5s
+2026-06-20 12:07:15,034 [INFO] bitget: Bitget recovered after 1 failures
 ```
 
 ## Disk
@@ -5962,7 +5962,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       914Mi       410Mi       4.8Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       882Mi       443Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
