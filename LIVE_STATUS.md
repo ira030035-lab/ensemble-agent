@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-20 09:10:01 UTC
+Generated: 2026-06-20 09:20:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1488950  0.1  3.3 723504 129832 ?       Ssl  Jun16   9:10 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 965.0818467399831,
+  "balance": 988.1377388387831,
   "positions": {
-    "ALLOUSDT": {
-      "id": "PAPER_ALLOUSDT_1781933292",
-      "symbol": "ALLOUSDT",
-      "side": "short",
-      "entry_price": 0.38254,
-      "qty": 261.4106,
-      "confidence": 90,
-      "opened_at": "2026-06-20T05:28:12.087790",
-      "cost": 20.0000021848,
-      "notional": 100.000010924,
-      "leverage": 5
-    },
     "DOGEUSDT": {
       "id": "PAPER_DOGEUSDT_1781933311",
       "symbol": "DOGEUSDT",
@@ -5871,19 +5859,32 @@ root     1488950  0.1  3.3 723504 129832 ?       Ssl  Jun16   9:10 /opt/ensemble
       "closed_at": "2026-06-20T06:57:53.110484",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ALLOUSDT_1781933292",
+      "symbol": "ALLOUSDT",
+      "side": "short",
+      "entry_price": 0.38254,
+      "qty": 261.4106,
+      "confidence": 90,
+      "opened_at": "2026-06-20T05:28:12.087790",
+      "cost": 20.0000021848,
+      "notional": 100.000010924,
+      "leverage": 5,
+      "exit_price": 0.37085,
+      "pnl_pct": 15.28,
+      "pnl_usdt": 3.06,
+      "closed_at": "2026-06-20T09:19:16.510220",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 25.081829338983173
+  "total_pnl": 28.137719252983167
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-20 08:56:20,254 [INFO] positions: 2/3 rule: skip SHORT ETHUSDT (3/3 already short)
-2026-06-20 08:56:26,750 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-20 08:56:27,077 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-20 08:56:27,078 [INFO] main: REUSDT | Bull:long(62%) Bear:short(65%)
-2026-06-20 08:56:29,677 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-20 08:56:29,678 [INFO] main: REUSDT | Judge:HOLD conf=52% size=0.0%
 2026-06-20 08:56:29,678 [INFO] main: REUSDT | RL adj=52.0%
 2026-06-20 08:56:36,556 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -5909,6 +5910,11 @@ root     1488950  0.1  3.3 723504 129832 ?       Ssl  Jun16   9:10 /opt/ensemble
 2026-06-20 08:56:58,968 [INFO] main: ESPORTSUSDT | Context score=0.0 bias=0.0
 2026-06-20 08:56:58,968 [INFO] main: ESPORTSUSDT | regime BLOCK (volatile)
 2026-06-20 08:57:01,019 [INFO] main: Next scan in 30min (always-30min)
+2026-06-20 09:19:16,508 [INFO] positions: TAKE-PROFIT ALLOUSDT short PnL:3.06%
+2026-06-20 09:19:16,516 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ALLOUSDT @ 0.3709 PnL: 15.28% (+3.06 USDT) | Баланс: 988.14
+2026-06-20 09:19:16,794 [INFO] positions: OK ALLOUSDT short PnL:3.06% reason:take_profit
+2026-06-20 09:19:16,795 [INFO] positions: Lessons: The trade was successful with a 3.06% profit, meeting the expected 2:1 risk/reward ratio. High bearish sentiment and a strong bear signal with low volumes were correct indicators of a downside move. The ranging regime and low volumes likely contributed to the trade's limited but profitable move.
+2026-06-20 09:19:16,795 [INFO] rl: RL learned from short ALLOUSDT: profit 3.06% | weights bull=0.917 bear=0.788 judge=1.294 threshold=65.85
 ```
 
 ## Disk
@@ -5926,7 +5932,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       880Mi       448Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       887Mi       441Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
