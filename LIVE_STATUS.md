@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-20 02:20:01 UTC
+Generated: 2026-06-20 02:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50268 ?        Ssl  Jun12   0:57 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.3 723584 129836 ?       Ssl  Jun16   8:33 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.3 725100 131184 ?       Ssl  Jun16   8:33 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -5759,7 +5759,6 @@ root     1488950  0.1  3.3 723584 129836 ?       Ssl  Jun16   8:33 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-20 02:01:53,230 [INFO] main: BEATUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-20 02:01:53,230 [INFO] main: BEATUSDT | RL adj=50.0%
 2026-06-20 02:02:02,425 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-20 02:02:04,192 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -5789,6 +5788,7 @@ root     1488950  0.1  3.3 723584 129836 ?       Ssl  Jun16   8:33 /opt/ensemble
 2026-06-20 02:06:58,436 [INFO] positions: OK WLDUSDT short PnL:3.01% reason:take_profit
 2026-06-20 02:06:58,436 [INFO] positions: Lessons: The trade was closed with a 3.01% profit as the bearish sentiment and weak indicators led to a downside move. The original expectation of at least a 4% downside move was not fully met but the trade still resulted in a take profit. This trade reinforces the importance of acting on strong bearish sentiment and weak technical indicators in a trending down regime.
 2026-06-20 02:06:58,436 [INFO] rl: RL learned from short WLDUSDT: profit 3.01% | weights bull=0.923 bear=0.786 judge=1.292 threshold=65.81
+2026-06-20 02:26:16,064 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -5806,7 +5806,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       889Mi       367Mi       4.8Mi       2.8Gi       2.9Gi
+Mem:           3.7Gi       899Mi       356Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
