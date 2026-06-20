@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-20 07:20:01 UTC
+Generated: 2026-06-20 07:30:01 UTC
 
 ## Services
 ```
@@ -5879,7 +5879,6 @@ root     1488950  0.1  3.3 725880 132080 ?       Ssl  Jun16   9:01 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-20 07:13:08,552 [INFO] main: TAOUSDT | Judge:SHORT conf=70% size=15.0%
 2026-06-20 07:13:08,552 [INFO] main: TAOUSDT | RL adj=69.6%
 2026-06-20 07:13:08,574 [INFO] main: TAOUSDT | Context score=0.0 bias=0.0
 2026-06-20 07:13:08,574 [INFO] main: TAOUSDT | gate PASS (Judge 70/70 RL 69.6/65.88 slack=±3)
@@ -5909,6 +5908,7 @@ root     1488950  0.1  3.3 725880 132080 ?       Ssl  Jun16   9:01 /opt/ensemble
 2026-06-20 07:13:38,640 [INFO] main: XRPUSDT | Context score=-0.0 bias=0.0
 2026-06-20 07:13:38,640 [INFO] main: XRPUSDT | macro BLOCK (long при BTC downtrend)
 2026-06-20 07:13:40,643 [INFO] main: Next scan in 30min (always-30min)
+2026-06-20 07:26:19,132 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -5926,7 +5926,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       882Mi       451Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       894Mi       439Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
