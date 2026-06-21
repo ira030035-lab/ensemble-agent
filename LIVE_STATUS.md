@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-21 21:40:01 UTC
+Generated: 2026-06-21 21:50:01 UTC
 
 ## Services
 ```
@@ -6041,10 +6041,6 @@ root     1488950  0.1  3.3 724780 131852 ?       Ssl  Jun16  12:31 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-21 21:39:12,982 [INFO] main: UBUSDT | RL adj=88.2%
-2026-06-21 21:39:12,993 [INFO] main: UBUSDT | Context score=0.0 bias=0.0
-2026-06-21 21:39:12,994 [INFO] main: UBUSDT | regime BLOCK (volatile)
-2026-06-21 21:39:19,005 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-21 21:39:20,009 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-21 21:39:20,009 [INFO] main: SYNUSDT | Bull:flat(25%) Bear:short(95%)
 2026-06-21 21:39:22,075 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -6071,6 +6067,10 @@ root     1488950  0.1  3.3 724780 131852 ?       Ssl  Jun16  12:31 /opt/ensemble
 2026-06-21 21:39:59,166 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-21 21:40:00,447 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-21 21:40:00,448 [INFO] main: TRUMPUSDT | Bull:flat(25%) Bear:short(65%)
+2026-06-21 21:40:03,093 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-21 21:40:03,094 [INFO] main: TRUMPUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-21 21:40:03,094 [INFO] main: TRUMPUSDT | RL adj=50.0%
+2026-06-21 21:40:05,095 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -6088,7 +6088,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       915Mi       410Mi       4.8Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       897Mi       428Mi       4.8Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
