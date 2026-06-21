@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-21 05:20:01 UTC
+Generated: 2026-06-21 05:30:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 284308 51276 ?        Ssl  Jun12   1:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.3 725068 131412 ?       Ssl  Jun16  10:56 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.4 727560 133700 ?       Ssl  Jun16  10:57 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 966.300215797783,
+  "balance": 986.7064771979831,
   "positions": {
-    "DOGEUSDT": {
-      "id": "PAPER_DOGEUSDT_1781933311",
-      "symbol": "DOGEUSDT",
-      "side": "short",
-      "entry_price": 0.08369,
-      "qty": 1194.8859,
-      "confidence": 85,
-      "opened_at": "2026-06-20T05:28:31.462571",
-      "cost": 20.000000194200002,
-      "notional": 100.000000971,
-      "leverage": 5
-    },
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1781953865",
       "symbol": "BNBUSDT",
@@ -5943,20 +5931,32 @@ root     1488950  0.1  3.3 725068 131412 ?       Ssl  Jun16  10:56 /opt/ensemble
       "closed_at": "2026-06-20T21:13:39.331539",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_DOGEUSDT_1781933311",
+      "symbol": "DOGEUSDT",
+      "side": "short",
+      "entry_price": 0.08369,
+      "qty": 1194.8859,
+      "confidence": 85,
+      "opened_at": "2026-06-20T05:28:31.462571",
+      "cost": 20.000000194200002,
+      "notional": 100.000000971,
+      "leverage": 5,
+      "exit_price": 0.08335,
+      "pnl_pct": 2.03,
+      "pnl_usdt": 0.41,
+      "closed_at": "2026-06-21T05:28:49.004451",
+      "reason": "max_hold",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 26.298846007983176
+  "total_pnl": 26.705107213983183
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-21 05:00:31,851 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-21 05:00:33,010 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-21 05:00:33,011 [INFO] main: ALICEUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-21 05:00:35,575 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-21 05:00:35,576 [INFO] main: ALICEUSDT | Judge:SHORT conf=80% size=15.0%
-2026-06-21 05:00:35,576 [INFO] main: ALICEUSDT | RL adj=89.4%
 2026-06-21 05:00:35,587 [INFO] main: ALICEUSDT | Context score=0.0 bias=0.0
 2026-06-21 05:00:35,587 [INFO] main: ALICEUSDT | regime BLOCK (volatile)
 2026-06-21 05:00:42,356 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -5981,6 +5981,12 @@ root     1488950  0.1  3.3 725068 131412 ?       Ssl  Jun16  10:56 /opt/ensemble
 2026-06-21 05:01:03,941 [INFO] main: SYNUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-21 05:01:03,941 [INFO] main: SYNUSDT | RL adj=50.0%
 2026-06-21 05:01:05,943 [INFO] main: Next scan in 30min (always-30min)
+2026-06-21 05:26:33,817 [INFO] main: Symbols: 30
+2026-06-21 05:28:49,001 [INFO] positions: MAX_HOLD DOGEUSDT short hold:24.0h
+2026-06-21 05:28:49,017 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT DOGEUSDT @ 0.0833 PnL: 2.03% (+0.41 USDT) | Баланс: 986.71
+2026-06-21 05:28:49,319 [INFO] positions: OK DOGEUSDT short PnL:0.41% reason:max_hold
+2026-06-21 05:28:49,319 [INFO] positions: Lessons: The trade was a short position in DOGEUSDT that resulted in a 0.41% profit. The original reasoning was based on bear dominance with high bear sentiment and relatively weaker bull sentiment. The trade did not achieve the expected 4% return but still closed with a small profit, highlighting the importance of managing expectations in a ranging market regime.
+2026-06-21 05:28:49,319 [INFO] rl: RL learned from short DOGEUSDT: profit 0.41% | weights bull=0.919 bear=0.785 judge=1.296 threshold=65.89
 ```
 
 ## Disk
@@ -5998,7 +6004,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       902Mi       431Mi       4.8Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       914Mi       418Mi       4.8Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
