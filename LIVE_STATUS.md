@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-21 09:40:01 UTC
+Generated: 2026-06-21 09:50:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.4 726800 133596 ?       Ssl  Jun16  11:24 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 968.3856222899831,
+  "balance": 988.854971225983,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1781953865",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.4 726800 133596 ?       Ssl  Jun16  11:24 /opt/ensemble
       "opened_at": "2026-06-20T11:11:05.898133",
       "cost": 19.998627000000003,
       "notional": 99.99313500000001,
-      "leverage": 5
-    },
-    "ONDOUSDT": {
-      "id": "PAPER_ONDOUSDT_1781991214",
-      "symbol": "ONDOUSDT",
-      "side": "short",
-      "entry_price": 0.3409,
-      "qty": 293.3412,
-      "confidence": 70,
-      "opened_at": "2026-06-20T21:33:34.466904",
-      "cost": 20.000003016,
-      "notional": 100.00001508,
       "leverage": 5
     },
     "XRPUSDT": {
@@ -5979,19 +5967,32 @@ root     1488950  0.1  3.4 726800 133596 ?       Ssl  Jun16  11:24 /opt/ensemble
       "closed_at": "2026-06-21T09:11:35.175545",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ONDOUSDT_1781991214",
+      "symbol": "ONDOUSDT",
+      "side": "short",
+      "entry_price": 0.3409,
+      "qty": 293.3412,
+      "confidence": 70,
+      "opened_at": "2026-06-20T21:33:34.466904",
+      "cost": 20.000003016,
+      "notional": 100.00001508,
+      "leverage": 5,
+      "exit_price": 0.3393,
+      "pnl_pct": 2.35,
+      "pnl_usdt": 0.47,
+      "closed_at": "2026-06-21T09:47:54.244305",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 28.384261513983184
+  "total_pnl": 28.853607433983182
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-21 09:38:53,544 [INFO] main: BTCUSDT | macro BLOCK (long при BTC downtrend)
-2026-06-21 09:38:59,633 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-21 09:39:01,083 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-21 09:39:01,084 [INFO] main: AAVEUSDT | Bull:flat(25%) Bear:long(20%)
-2026-06-21 09:39:03,802 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-21 09:39:03,804 [INFO] main: AAVEUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-21 09:39:03,804 [INFO] main: AAVEUSDT | RL adj=50.0%
 2026-06-21 09:39:10,327 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -6017,6 +6018,11 @@ root     1488950  0.1  3.4 726800 133596 ?       Ssl  Jun16  11:24 /opt/ensemble
 2026-06-21 09:39:35,618 [INFO] main: REUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-21 09:39:35,618 [INFO] main: REUSDT | RL adj=55.0%
 2026-06-21 09:39:37,620 [INFO] main: Next scan in 30min (always-30min)
+2026-06-21 09:47:54,241 [INFO] positions: BREAKEVEN_STOP ONDOUSDT short PnL:0.47%
+2026-06-21 09:47:54,257 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ONDOUSDT @ 0.3393 PnL: 2.35% (+0.47 USDT) | Баланс: 988.85
+2026-06-21 09:47:54,581 [INFO] positions: OK ONDOUSDT short PnL:0.47% reason:breakeven_stop
+2026-06-21 09:47:54,581 [INFO] positions: Lessons: The trade was closed at breakeven stop with a small profit of 0.47%. The original expectation of a 4% downside move was not met, indicating that the bearish signals were not strong enough to drive the price down as anticipated. The outcome suggests being more cautious when conflicting bullish signals are present, even in a trending_down regime.
+2026-06-21 09:47:54,582 [INFO] rl: RL learned from short ONDOUSDT: profit 0.47% | weights bull=0.914 bear=0.790 judge=1.296 threshold=65.83
 ```
 
 ## Disk
@@ -6034,7 +6040,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       891Mi       449Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       888Mi       452Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
