@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-21 07:20:01 UTC
+Generated: 2026-06-21 07:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 284308 51276 ?        Ssl  Jun12   1:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.3 724804 131332 ?       Ssl  Jun16  11:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.3 726276 132676 ?       Ssl  Jun16  11:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -5969,11 +5969,6 @@ root     1488950  0.1  3.3 724804 131332 ?       Ssl  Jun16  11:10 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-21 07:19:21,889 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-21 07:19:21,890 [INFO] main: WLDUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-21 07:19:21,890 [INFO] main: WLDUSDT | RL adj=83.8%
-2026-06-21 07:19:21,901 [INFO] main: WLDUSDT | Context score=0.0 bias=0.0
-2026-06-21 07:19:21,901 [INFO] main: WLDUSDT | regime BLOCK (short × trending_down × rsi1h=46.8; late-entry guard)
 2026-06-21 07:19:28,195 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-21 07:19:30,305 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-21 07:19:30,306 [INFO] main: SYNUSDT | Bull:flat(15%) Bear:short(70%)
@@ -5999,6 +5994,11 @@ root     1488950  0.1  3.3 724804 131332 ?       Ssl  Jun16  11:10 /opt/ensemble
 2026-06-21 07:19:59,349 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-21 07:20:01,375 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-21 07:20:01,377 [INFO] main: ZECUSDT | Bull:flat(25%) Bear:short(70%)
+2026-06-21 07:20:03,467 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-21 07:20:03,468 [INFO] main: ZECUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-21 07:20:03,468 [INFO] main: ZECUSDT | RL adj=50.0%
+2026-06-21 07:20:05,471 [INFO] main: Next scan in 30min (always-30min)
+2026-06-21 07:26:35,126 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6016,7 +6016,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       883Mi       464Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       901Mi       446Mi       4.8Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
