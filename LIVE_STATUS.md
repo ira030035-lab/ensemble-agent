@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-21 14:20:01 UTC
+Generated: 2026-06-21 14:30:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 284308 51276 ?        Ssl  Jun12   1:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.4 726800 133668 ?       Ssl  Jun16  11:49 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.4 726800 133668 ?       Ssl  Jun16  11:50 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 968.297698463983,
+  "balance": 985.773034835983,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1782034523",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.4 726800 133668 ?       Ssl  Jun16  11:49 /opt/ensemble
       "opened_at": "2026-06-21T10:12:21.845479",
       "cost": 20.00007228,
       "notional": 100.0003614,
-      "leverage": 5
-    },
-    "WLDUSDT": {
-      "id": "PAPER_WLDUSDT_1782040746",
-      "symbol": "WLDUSDT",
-      "side": "short",
-      "entry_price": 0.5981,
-      "qty": 167.1961,
-      "confidence": 78,
-      "opened_at": "2026-06-21T11:19:06.219622",
-      "cost": 19.999997481999998,
-      "notional": 99.99998740999999,
       "leverage": 5
     }
   },
@@ -6015,20 +6003,32 @@ root     1488950  0.1  3.4 726800 133668 ?       Ssl  Jun16  11:49 /opt/ensemble
       "closed_at": "2026-06-21T11:11:33.434376",
       "reason": "max_hold",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_WLDUSDT_1782040746",
+      "symbol": "WLDUSDT",
+      "side": "short",
+      "entry_price": 0.5981,
+      "qty": 167.1961,
+      "confidence": 78,
+      "opened_at": "2026-06-21T11:19:06.219622",
+      "cost": 19.999997481999998,
+      "notional": 99.99998740999999,
+      "leverage": 5,
+      "exit_price": 0.6132,
+      "pnl_pct": -12.62,
+      "pnl_usdt": -2.52,
+      "closed_at": "2026-06-21T14:22:25.249476",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 28.297777433983185
+  "total_pnl": 25.773116323983185
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-21 14:14:54,088 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-21 14:14:54,088 [INFO] main: TAOUSDT | Judge:LONG conf=70% size=10.0%
-2026-06-21 14:14:54,088 [INFO] main: TAOUSDT | RL adj=71.4%
-2026-06-21 14:14:54,099 [INFO] main: TAOUSDT | Context score=-0.0 bias=0.0
-2026-06-21 14:14:54,099 [INFO] main: TAOUSDT | macro BLOCK (long при BTC downtrend)
-2026-06-21 14:15:00,864 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-21 14:15:01,001 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-21 14:15:01,002 [INFO] main: ADAUSDT | Bull:flat(15%) Bear:short(70%)
 2026-06-21 14:15:03,366 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -6053,6 +6053,12 @@ root     1488950  0.1  3.4 726800 133668 ?       Ssl  Jun16  11:49 /opt/ensemble
 2026-06-21 14:15:23,029 [INFO] main: AAVEUSDT | gate PASS (Judge 70/70 RL 78.3/65.88 slack=±3)
 2026-06-21 14:15:23,030 [INFO] positions: 2/3 rule: skip SHORT AAVEUSDT (3/3 already short)
 2026-06-21 14:15:25,033 [INFO] main: Next scan in 30min (always-30min)
+2026-06-21 14:22:25,248 [INFO] positions: STOP_LOSS WLDUSDT short PnL:-2.52%
+2026-06-21 14:22:25,255 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT WLDUSDT @ 0.6132 PnL: -12.62% (-2.52 USDT) | Баланс: 985.77
+2026-06-21 14:22:25,523 [INFO] positions: LOSS WLDUSDT short PnL:-2.52% reason:stop_loss
+2026-06-21 14:22:25,523 [INFO] positions: Lessons: The trade was based on a strong downtrend with a high bear bias, expecting a 4% downside move. However, the trade resulted in a stop loss, incurring a 2.52% loss. This outcome suggests that the bear bias was not strong enough to achieve the expected downside move, and the stop loss was triggered instead.
+2026-06-21 14:22:25,523 [INFO] rl: RL learned from short WLDUSDT: loss -2.52% | weights bull=0.920 bear=0.783 judge=1.298 threshold=65.93
+2026-06-21 14:26:39,833 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6070,7 +6076,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       884Mi       451Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       898Mi       436Mi       4.8Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
