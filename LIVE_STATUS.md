@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-21 10:20:01 UTC
+Generated: 2026-06-21 10:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 284308 51276 ?        Ssl  Jun12   1:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.3 724456 131380 ?       Ssl  Jun16  11:28 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.4 726948 133672 ?       Ssl  Jun16  11:28 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -6005,7 +6005,6 @@ root     1488950  0.1  3.3 724456 131380 ?       Ssl  Jun16  11:28 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-21 10:13:56,181 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-21 10:13:56,182 [INFO] main: BEATUSDT | Bull:flat(15%) Bear:short(80%)
 2026-06-21 10:13:58,701 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-21 10:13:58,703 [INFO] main: BEATUSDT | Judge:SHORT conf=85% size=15.0%
@@ -6035,6 +6034,7 @@ root     1488950  0.1  3.3 724456 131380 ?       Ssl  Jun16  11:28 /opt/ensemble
 2026-06-21 10:14:29,461 [INFO] main: AXSUSDT | Context score=0.0 bias=0.0
 2026-06-21 10:14:29,461 [INFO] main: AXSUSDT | regime BLOCK (volatile)
 2026-06-21 10:14:31,529 [INFO] main: Next scan in 30min (always-30min)
+2026-06-21 10:26:37,113 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6052,7 +6052,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       885Mi       454Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       892Mi       447Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
