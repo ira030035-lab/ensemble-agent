@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-21 09:20:01 UTC
+Generated: 2026-06-21 09:30:01 UTC
 
 ## Services
 ```
@@ -5975,7 +5975,6 @@ root     1488950  0.1  3.4 727160 133956 ?       Ssl  Jun16  11:20 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-21 09:04:20,817 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-21 09:04:22,446 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-21 09:04:22,447 [INFO] main: TAOUSDT | Bull:flat(25%) Bear:short(70%)
 2026-06-21 09:04:25,172 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -6005,6 +6004,7 @@ root     1488950  0.1  3.4 727160 133956 ?       Ssl  Jun16  11:20 /opt/ensemble
 2026-06-21 09:11:35,474 [INFO] positions: OK HYPEUSDT short PnL:1.68% reason:trailing_stop
 2026-06-21 09:11:35,474 [INFO] positions: Lessons: The trade was based on strong bear sentiment and weak bull sentiment, indicating a potential downside move. The trade was closed by a trailing stop, resulting in a 1.68% profit. This outcome suggests that the initial analysis of bearish pressure was correct, and the trade management strategy was effective in capturing the profit.
 2026-06-21 09:11:35,474 [INFO] rl: RL learned from short HYPEUSDT: profit 1.68% | weights bull=0.915 bear=0.789 judge=1.296 threshold=65.86
+2026-06-21 09:26:36,435 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6022,7 +6022,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       881Mi       459Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       903Mi       437Mi       4.8Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
