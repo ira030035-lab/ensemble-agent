@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-21 21:20:01 UTC
+Generated: 2026-06-21 21:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50256 ?        Ssl  Jun12   1:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.3 724800 131872 ?       Ssl  Jun16  12:28 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.4 727296 133856 ?       Ssl  Jun16  12:28 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -6041,7 +6041,6 @@ root     1488950  0.1  3.3 724800 131872 ?       Ssl  Jun16  12:28 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-21 21:05:21,410 [INFO] main: ADAUSDT | Judge:SHORT conf=85% size=15.0%
 2026-06-21 21:05:21,410 [INFO] main: ADAUSDT | RL adj=94.4%
 2026-06-21 21:05:21,419 [INFO] main: ADAUSDT | Context score=0.0 bias=0.0
 2026-06-21 21:05:21,420 [INFO] main: ADAUSDT | gate PASS (Judge 85/70 RL 94.4/65.93 slack=±3)
@@ -6071,6 +6070,7 @@ root     1488950  0.1  3.3 724800 131872 ?       Ssl  Jun16  12:28 /opt/ensemble
 2026-06-21 21:05:49,042 [INFO] main: ENAUSDT | Context score=0.0 bias=0.0
 2026-06-21 21:05:49,042 [INFO] main: ENAUSDT | regime BLOCK (short × trending_up × rsi1h=38.6; counter-trend guard)
 2026-06-21 21:05:51,109 [INFO] main: Next scan in 30min (always-30min)
+2026-06-21 21:26:44,475 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6088,7 +6088,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       896Mi       429Mi       4.8Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       909Mi       416Mi       4.8Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
