@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-21 06:20:01 UTC
+Generated: 2026-06-21 06:30:01 UTC
 
 ## Services
 ```
@@ -5969,7 +5969,6 @@ root     1488950  0.1  3.4 727136 133404 ?       Ssl  Jun16  11:03 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-21 06:09:50,984 [INFO] main: WLDUSDT | Context score=0.0 bias=0.0
 2026-06-21 06:09:50,984 [INFO] main: WLDUSDT | gate PASS (Judge 75/70 RL 83.8/65.89 slack=±3)
 2026-06-21 06:09:50,987 [INFO] positions: 2/3 rule: skip SHORT WLDUSDT (3/3 already short)
 2026-06-21 06:09:58,446 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -5999,6 +5998,7 @@ root     1488950  0.1  3.4 727136 133404 ?       Ssl  Jun16  11:03 /opt/ensemble
 2026-06-21 06:10:20,834 [INFO] main: TAOUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-21 06:10:20,834 [INFO] main: TAOUSDT | RL adj=55.0%
 2026-06-21 06:10:22,836 [INFO] main: Next scan in 30min (always-30min)
+2026-06-21 06:26:34,450 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6016,7 +6016,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       902Mi       430Mi       4.8Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       911Mi       420Mi       4.8Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
