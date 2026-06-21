@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-21 09:10:01 UTC
+Generated: 2026-06-21 09:20:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.4 727160 133956 ?       Ssl  Jun16  11:20 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 966.7067515379831,
+  "balance": 988.3856314979831,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1781953865",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.4 727160 133956 ?       Ssl  Jun16  11:20 /opt/ensemble
       "opened_at": "2026-06-20T21:33:34.466904",
       "cost": 20.000003016,
       "notional": 100.00001508,
-      "leverage": 5
-    },
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1782019884",
-      "symbol": "HYPEUSDT",
-      "side": "short",
-      "entry_price": 69.141,
-      "qty": 1.4463,
-      "confidence": 90,
-      "opened_at": "2026-06-21T05:31:24.162294",
-      "cost": 19.999725660000003,
-      "notional": 99.99862830000001,
       "leverage": 5
     }
   },
@@ -5961,19 +5949,32 @@ root     1488950  0.1  3.4 727160 133956 ?       Ssl  Jun16  11:20 /opt/ensemble
       "closed_at": "2026-06-21T05:28:49.004451",
       "reason": "max_hold",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1782019884",
+      "symbol": "HYPEUSDT",
+      "side": "short",
+      "entry_price": 69.141,
+      "qty": 1.4463,
+      "confidence": 90,
+      "opened_at": "2026-06-21T05:31:24.162294",
+      "cost": 19.999725660000003,
+      "notional": 99.99862830000001,
+      "leverage": 5,
+      "exit_price": 67.98,
+      "pnl_pct": 8.4,
+      "pnl_usdt": 1.68,
+      "closed_at": "2026-06-21T09:11:35.175545",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 26.705107213983183
+  "total_pnl": 28.384261513983184
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-21 09:04:14,458 [INFO] main: ALLOUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-21 09:04:14,458 [INFO] main: ALLOUSDT | RL adj=93.8%
-2026-06-21 09:04:14,470 [INFO] main: ALLOUSDT | Context score=0.0 bias=0.0
-2026-06-21 09:04:14,470 [INFO] main: ALLOUSDT | gate PASS (Judge 85/70 RL 93.8/65.89 slack=±3)
-2026-06-21 09:04:14,471 [INFO] positions: 2/3 rule: skip SHORT ALLOUSDT (3/3 already short)
 2026-06-21 09:04:20,817 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-21 09:04:22,446 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-21 09:04:22,447 [INFO] main: TAOUSDT | Bull:flat(25%) Bear:short(70%)
@@ -5999,6 +6000,11 @@ root     1488950  0.1  3.4 727160 133956 ?       Ssl  Jun16  11:20 /opt/ensemble
 2026-06-21 09:04:56,148 [INFO] main: WLDUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-21 09:04:56,148 [INFO] main: WLDUSDT | RL adj=50.0%
 2026-06-21 09:04:58,150 [INFO] main: Next scan in 30min (always-30min)
+2026-06-21 09:11:35,173 [INFO] positions: TRAILING-STOP HYPEUSDT short peak:2.56% now:1.68%
+2026-06-21 09:11:35,185 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT HYPEUSDT @ 67.9800 PnL: 8.40% (+1.68 USDT) | Баланс: 988.39
+2026-06-21 09:11:35,474 [INFO] positions: OK HYPEUSDT short PnL:1.68% reason:trailing_stop
+2026-06-21 09:11:35,474 [INFO] positions: Lessons: The trade was based on strong bear sentiment and weak bull sentiment, indicating a potential downside move. The trade was closed by a trailing stop, resulting in a 1.68% profit. This outcome suggests that the initial analysis of bearish pressure was correct, and the trade management strategy was effective in capturing the profit.
+2026-06-21 09:11:35,474 [INFO] rl: RL learned from short HYPEUSDT: profit 1.68% | weights bull=0.915 bear=0.789 judge=1.296 threshold=65.86
 ```
 
 ## Disk
@@ -6016,7 +6022,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       885Mi       456Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       881Mi       459Mi       4.8Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
