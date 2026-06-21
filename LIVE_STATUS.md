@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-21 17:20:01 UTC
+Generated: 2026-06-21 17:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50256 ?        Ssl  Jun12   1:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.3 724992 131760 ?       Ssl  Jun16  12:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.4 727548 134320 ?       Ssl  Jun16  12:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -6041,7 +6041,6 @@ root     1488950  0.1  3.3 724992 131760 ?       Ssl  Jun16  12:05 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-21 17:06:56,298 [INFO] main: ALICEUSDT | Bull:flat(15%) Bear:short(60%)
 2026-06-21 17:06:58,160 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-21 17:06:58,161 [INFO] main: ALICEUSDT | Judge:SHORT conf=60% size=10.0%
 2026-06-21 17:06:58,161 [INFO] main: ALICEUSDT | RL adj=67.0%
@@ -6071,6 +6070,7 @@ root     1488950  0.1  3.3 724992 131760 ?       Ssl  Jun16  12:05 /opt/ensemble
 2026-06-21 17:07:25,421 [INFO] main: BTCUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-21 17:07:25,421 [INFO] main: BTCUSDT | RL adj=50.0%
 2026-06-21 17:07:27,423 [INFO] main: Next scan in 30min (always-30min)
+2026-06-21 17:26:41,839 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6088,7 +6088,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       887Mi       443Mi       4.8Mi       2.7Gi       2.9Gi
+Mem:           3.7Gi       898Mi       432Mi       4.8Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
