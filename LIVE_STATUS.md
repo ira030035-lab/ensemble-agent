@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-21 19:10:01 UTC
+Generated: 2026-06-21 19:20:01 UTC
 
 ## Services
 ```
@@ -6041,13 +6041,6 @@ root     1488950  0.1  3.3 725240 132312 ?       Ssl  Jun16  12:15 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-21 18:49:06,713 [INFO] main: BTCUSDT | RL adj=50.0%
-2026-06-21 18:49:12,515 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-21 18:49:14,001 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-21 18:49:14,002 [INFO] main: LABUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-21 18:49:16,628 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-21 18:49:16,629 [INFO] main: LABUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-21 18:49:16,629 [INFO] main: LABUSDT | RL adj=55.0%
 2026-06-21 18:49:22,461 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-21 18:49:23,020 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-21 18:49:23,021 [INFO] main: TAOUSDT | Bull:flat(25%) Bear:short(75%)
@@ -6071,6 +6064,13 @@ root     1488950  0.1  3.3 725240 132312 ?       Ssl  Jun16  12:15 /opt/ensemble
 2026-06-21 18:49:46,123 [INFO] main: TRUMPUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-21 18:49:46,123 [INFO] main: TRUMPUSDT | RL adj=55.0%
 2026-06-21 18:49:48,124 [INFO] main: Next scan in 30min (always-30min)
+2026-06-21 19:19:48,134 [INFO] main: Scanning 27 symbols...
+2026-06-21 19:19:52,961 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-21 19:19:53,179 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-21 19:19:53,180 [INFO] main: SOLUSDT | Bull:long(62%) Bear:short(75%)
+2026-06-21 19:19:55,238 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-21 19:19:55,239 [INFO] main: SOLUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-21 19:19:55,239 [INFO] main: SOLUSDT | RL adj=55.0%
 ```
 
 ## Disk
@@ -6088,7 +6088,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       902Mi       426Mi       4.8Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       900Mi       428Mi       4.8Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
