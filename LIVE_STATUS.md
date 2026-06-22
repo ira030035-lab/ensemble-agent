@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-22 02:00:01 UTC
+Generated: 2026-06-22 02:10:01 UTC
 
 ## Services
 ```
@@ -18,44 +18,8 @@ root     1488950  0.1  3.4 727792 133960 ?       Ssl  Jun16  12:55 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 925.1007840877832,
+  "balance": 981.3486679539831,
   "positions": {
-    "ALLOUSDT": {
-      "id": "PAPER_ALLOUSDT_1782090362",
-      "symbol": "ALLOUSDT",
-      "side": "short",
-      "entry_price": 0.37982,
-      "qty": 263.2826,
-      "confidence": 75,
-      "opened_at": "2026-06-22T01:06:02.419956",
-      "cost": 19.999999426400002,
-      "notional": 99.999997132,
-      "leverage": 5
-    },
-    "WLDUSDT": {
-      "id": "PAPER_WLDUSDT_1782092234",
-      "symbol": "WLDUSDT",
-      "side": "long",
-      "entry_price": 0.6376,
-      "qty": 156.8381,
-      "confidence": 85,
-      "opened_at": "2026-06-22T01:37:14.205056",
-      "cost": 19.999994511999997,
-      "notional": 99.99997255999999,
-      "leverage": 5
-    },
-    "BEATUSDT": {
-      "id": "PAPER_BEATUSDT_1782092247",
-      "symbol": "BEATUSDT",
-      "side": "long",
-      "entry_price": 1.79449,
-      "qty": 55.7261,
-      "confidence": 80,
-      "opened_at": "2026-06-22T01:37:27.918172",
-      "cost": 19.9999858378,
-      "notional": 99.999929189,
-      "leverage": 5
-    },
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1782092279",
       "symbol": "ETHUSDT",
@@ -6129,29 +6093,68 @@ root     1488950  0.1  3.4 727792 133960 ?       Ssl  Jun16  12:55 /opt/ensemble
       "closed_at": "2026-06-22T01:27:06.212508",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ALLOUSDT_1782090362",
+      "symbol": "ALLOUSDT",
+      "side": "short",
+      "entry_price": 0.37982,
+      "qty": 263.2826,
+      "confidence": 75,
+      "opened_at": "2026-06-22T01:06:02.419956",
+      "cost": 19.999999426400002,
+      "notional": 99.999997132,
+      "leverage": 5,
+      "exit_price": 0.38746,
+      "pnl_pct": -10.06,
+      "pnl_usdt": -2.01,
+      "closed_at": "2026-06-22T02:07:38.250167",
+      "reason": "stop_loss",
+      "outcome": "loss"
+    },
+    {
+      "id": "PAPER_BEATUSDT_1782092247",
+      "symbol": "BEATUSDT",
+      "side": "long",
+      "entry_price": 1.79449,
+      "qty": 55.7261,
+      "confidence": 80,
+      "opened_at": "2026-06-22T01:37:27.918172",
+      "cost": 19.9999858378,
+      "notional": 99.999929189,
+      "leverage": 5,
+      "exit_price": 1.75453,
+      "pnl_pct": -11.13,
+      "pnl_usdt": -2.23,
+      "closed_at": "2026-06-22T02:07:38.572276",
+      "reason": "stop_loss",
+      "outcome": "loss"
+    },
+    {
+      "id": "PAPER_WLDUSDT_1782092234",
+      "symbol": "WLDUSDT",
+      "side": "long",
+      "entry_price": 0.6376,
+      "qty": 156.8381,
+      "confidence": 85,
+      "opened_at": "2026-06-22T01:37:14.205056",
+      "cost": 19.999994511999997,
+      "notional": 99.99997255999999,
+      "leverage": 5,
+      "exit_price": 0.6407,
+      "pnl_pct": 2.43,
+      "pnl_usdt": 0.49,
+      "closed_at": "2026-06-22T02:08:40.636483",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 25.104199063983177
+  "total_pnl": 21.352103153983187
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-22 01:43:16,256 [INFO] main: BTCUSDT | Judge:LONG conf=85% size=15.0%
-2026-06-22 01:43:16,256 [INFO] main: BTCUSDT | RL adj=86.5%
-2026-06-22 01:43:16,277 [INFO] main: BTCUSDT | Context score=-0.0 bias=0.0
-2026-06-22 01:43:16,278 [INFO] main: BTCUSDT | gate PASS (Judge 85/70 RL 86.5/65.9 slack=±3)
-2026-06-22 01:43:16,280 [INFO] positions: Max positions reached (5/5 dyn)
-2026-06-22 01:43:22,915 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-22 01:43:29,972 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-22 01:43:29,972 [INFO] openai._base_client: Retrying request to /chat/completions in 0.407241 seconds
-2026-06-22 01:43:38,082 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-22 01:43:38,083 [INFO] main: BNBUSDT | Bull:long(72%) Bear:short(70%)
-2026-06-22 01:43:46,487 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-22 01:43:46,488 [INFO] main: BNBUSDT | Judge:LONG conf=65% size=10.0%
-2026-06-22 01:43:46,489 [INFO] main: BNBUSDT | RL adj=66.7%
-2026-06-22 01:43:46,501 [INFO] main: BNBUSDT | Context score=-0.0 bias=0.0
-2026-06-22 01:43:53,728 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-22 01:43:55,514 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-22 01:43:55,515 [INFO] main: TRUMPUSDT | Bull:long(72%) Bear:short(70%)
 2026-06-22 01:43:57,923 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -6167,6 +6170,21 @@ root     1488950  0.1  3.4 727792 133960 ?       Ssl  Jun16  12:55 /opt/ensemble
 2026-06-22 01:44:07,910 [INFO] main: ADAUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-22 01:44:07,910 [INFO] main: ADAUSDT | RL adj=55.0%
 2026-06-22 01:44:09,912 [INFO] main: Next scan in 30min (always-30min)
+2026-06-22 02:07:38,248 [INFO] positions: STOP_LOSS ALLOUSDT short PnL:-2.01%
+2026-06-22 02:07:38,258 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ALLOUSDT @ 0.3875 PnL: -10.06% (-2.01 USDT) | Баланс: 943.09
+2026-06-22 02:07:38,570 [INFO] positions: LOSS ALLOUSDT short PnL:-2.01% reason:stop_loss
+2026-06-22 02:07:38,570 [INFO] positions: Lessons: The trade was based on extreme fear sentiment and a downtrending market but ultimately resulted in a stop loss. The 2:1 risk/reward ratio was not achieved, leading to a 2.01% loss. This outcome suggests that the bearish move was not as strong as expected, and the trade was closed at the stop loss level.
+2026-06-22 02:07:38,570 [INFO] rl: RL learned from short ALLOUSDT: loss -2.01% | weights bull=0.923 bear=0.777 judge=1.300 threshold=65.95
+2026-06-22 02:07:38,571 [INFO] positions: STOP_LOSS BEATUSDT long PnL:-2.23%
+2026-06-22 02:07:38,578 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG BEATUSDT @ 1.7545 PnL: -11.13% (-2.23 USDT) | Баланс: 960.86
+2026-06-22 02:07:38,956 [INFO] positions: LOSS BEATUSDT long PnL:-2.23% reason:stop_loss
+2026-06-22 02:07:38,956 [INFO] positions: Lessons: The trade was closed at a 2.23% loss due to a stop loss, indicating the expected 4% upside move did not occur. The initial analysis was based on a strong bull case with a 4.92% 4-hour trend and bullish indicators, but the market did not follow the expected trend. This outcome highlights the importance of adapting to changing market conditions and reevaluating trade decisions.
+2026-06-22 02:07:38,956 [INFO] rl: RL learned from long BEATUSDT: loss -2.23% | weights bull=0.918 bear=0.781 judge=1.301 threshold=66.0
+2026-06-22 02:08:40,633 [INFO] positions: BREAKEVEN_STOP WLDUSDT long PnL:0.49%
+2026-06-22 02:08:40,650 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG WLDUSDT @ 0.6407 PnL: 2.43% (+0.49 USDT) | Баланс: 981.35
+2026-06-22 02:08:40,918 [INFO] positions: OK WLDUSDT long PnL:0.49% reason:breakeven_stop
+2026-06-22 02:08:40,918 [INFO] positions: Lessons: The trade was based on a strong uptrend with bullish indicators and a favorable risk-reward ratio. Despite high volume and extreme fear sentiment, the trade ultimately ended at breakeven due to a breakeven stop. This outcome highlights the importance of risk management and setting appropriate stop levels in trending markets.
+2026-06-22 02:08:40,918 [INFO] rl: RL learned from long WLDUSDT: profit 0.49% | weights bull=0.919 bear=0.779 judge=1.302 threshold=65.97
 ```
 
 ## Disk
@@ -6184,7 +6202,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       910Mi       404Mi       4.8Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       901Mi       412Mi       4.8Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
