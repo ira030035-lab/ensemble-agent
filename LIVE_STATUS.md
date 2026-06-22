@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-22 12:50:01 UTC
+Generated: 2026-06-22 13:00:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.4 728636 135256 ?       Ssl  Jun16  13:54 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 920.2055763379831,
+  "balance": 937.9709484379831,
   "positions": {
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1782092279",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.4 728636 135256 ?       Ssl  Jun16  13:54 /opt/ensemble
       "opened_at": "2026-06-22T02:19:00.149772",
       "cost": 20.00024184,
       "notional": 100.0012092,
-      "leverage": 5
-    },
-    "AVAXUSDT": {
-      "id": "PAPER_AVAXUSDT_1782112120",
-      "symbol": "AVAXUSDT",
-      "side": "short",
-      "entry_price": 6.265,
-      "qty": 15.9617,
-      "confidence": 75,
-      "opened_at": "2026-06-22T07:08:40.921552",
-      "cost": 20.0000101,
-      "notional": 100.0000505,
       "leverage": 5
     },
     "NEARUSDT": {
@@ -6237,19 +6225,32 @@ root     1488950  0.1  3.4 728636 135256 ?       Ssl  Jun16  13:54 /opt/ensemble
       "closed_at": "2026-06-22T11:05:54.308396",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_AVAXUSDT_1782112120",
+      "symbol": "AVAXUSDT",
+      "side": "short",
+      "entry_price": 6.265,
+      "qty": 15.9617,
+      "confidence": 75,
+      "opened_at": "2026-06-22T07:08:40.921552",
+      "cost": 20.0000101,
+      "notional": 100.0000505,
+      "leverage": 5,
+      "exit_price": 6.405,
+      "pnl_pct": -11.17,
+      "pnl_usdt": -2.23,
+      "closed_at": "2026-06-22T12:58:36.048648",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 20.209627353983183
+  "total_pnl": 17.974989353983176
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-22 12:42:21,221 [INFO] main: ENAUSDT | gate PASS (Judge 75/70 RL 74.3/65.96 slack=±3)
-2026-06-22 12:42:21,222 [INFO] positions: Max positions reached (5/5 dyn)
-2026-06-22 12:42:26,530 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-22 12:42:28,894 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-22 12:42:28,895 [INFO] main: IDUSDT | Bull:flat(25%) Bear:short(70%)
 2026-06-22 12:42:31,487 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-22 12:42:31,488 [INFO] main: IDUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-22 12:42:31,488 [INFO] main: IDUSDT | RL adj=55.0%
@@ -6275,6 +6276,11 @@ root     1488950  0.1  3.4 728636 135256 ?       Ssl  Jun16  13:54 /opt/ensemble
 2026-06-22 12:43:05,168 [INFO] main: LINKUSDT | Judge:HOLD conf=45% size=0.0%
 2026-06-22 12:43:05,168 [INFO] main: LINKUSDT | RL adj=45.0%
 2026-06-22 12:43:07,170 [INFO] main: Next scan in 30min (always-30min)
+2026-06-22 12:58:36,047 [INFO] positions: STOP_LOSS AVAXUSDT short PnL:-2.23%
+2026-06-22 12:58:36,055 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT AVAXUSDT @ 6.4050 PnL: -11.17% (-2.23 USDT) | Баланс: 937.97
+2026-06-22 12:58:36,447 [INFO] positions: LOSS AVAXUSDT short PnL:-2.23% reason:stop_loss
+2026-06-22 12:58:36,448 [INFO] positions: Lessons: The AVAXUSDT short trade resulted in a 2.23% loss due to a stop loss trigger. The initial analysis correctly identified bear dominance and downside risks but failed to account for the ranging regime that ultimately led to the stop loss. This trade highlights the importance of considering market regime and potential for range-bound movement when assessing risk.
+2026-06-22 12:58:36,448 [INFO] rl: RL learned from short AVAXUSDT: loss -2.23% | weights bull=0.927 bear=0.768 judge=1.305 threshold=66.01
 ```
 
 ## Disk
@@ -6292,7 +6298,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       911Mi       377Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       909Mi       379Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
