@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-22 17:20:01 UTC
+Generated: 2026-06-22 17:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50552 ?        Ssl  Jun12   1:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.4 726132 133176 ?       Ssl  Jun16  14:20 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.4 727620 134536 ?       Ssl  Jun16  14:20 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -6335,8 +6335,6 @@ root     1488950  0.1  3.4 726132 133176 ?       Ssl  Jun16  14:20 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-22 17:19:29,079 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-22 17:19:29,080 [INFO] main: LABUSDT | Bull:flat(15%) Bear:short(95%)
 2026-06-22 17:19:31,109 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-22 17:19:31,110 [INFO] main: LABUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-22 17:19:31,110 [INFO] main: LABUSDT | RL adj=55.0%
@@ -6365,6 +6363,8 @@ root     1488950  0.1  3.4 726132 133176 ?       Ssl  Jun16  14:20 /opt/ensemble
 2026-06-22 17:20:01,181 [INFO] main: SYNUSDT | RL adj=85.0%
 2026-06-22 17:20:01,204 [INFO] main: SYNUSDT | Context score=-0.0 bias=0.05
 2026-06-22 17:20:01,205 [INFO] main: SYNUSDT | regime BLOCK (volatile)
+2026-06-22 17:20:03,284 [INFO] main: Next scan in 30min (always-30min)
+2026-06-22 17:26:57,855 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6382,7 +6382,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       918Mi       351Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       916Mi       353Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
