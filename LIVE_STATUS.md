@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-22 19:20:01 UTC
+Generated: 2026-06-22 19:30:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50552 ?        Ssl  Jun12   1:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.4 729208 135152 ?       Ssl  Jun16  14:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.4 729404 135348 ?       Ssl  Jun16  14:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 952.6444641399829,
+  "balance": 974.4411066679829,
   "positions": {
-    "NEARUSDT": {
-      "id": "PAPER_NEARUSDT_1782116377",
-      "symbol": "NEARUSDT",
-      "side": "short",
-      "entry_price": 2.1596,
-      "qty": 46.3049,
-      "confidence": 70,
-      "opened_at": "2026-06-22T08:19:37.063579",
-      "cost": 20.000012408000003,
-      "notional": 100.00006204000002,
-      "leverage": 5
-    },
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1782152662",
       "symbol": "XRPUSDT",
@@ -6393,20 +6381,32 @@ root     1488950  0.1  3.4 729208 135152 ?       Ssl  Jun16  14:31 /opt/ensemble
       "closed_at": "2026-06-22T19:06:15.431525",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_NEARUSDT_1782116377",
+      "symbol": "NEARUSDT",
+      "side": "short",
+      "entry_price": 2.1596,
+      "qty": 46.3049,
+      "confidence": 70,
+      "opened_at": "2026-06-22T08:19:37.063579",
+      "cost": 20.000012408000003,
+      "notional": 100.00006204000002,
+      "leverage": 5,
+      "exit_price": 2.1208,
+      "pnl_pct": 8.98,
+      "pnl_usdt": 1.8,
+      "closed_at": "2026-06-22T19:20:10.853970",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 12.644477551983204
+  "total_pnl": 14.441107671983213
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-22 19:02:33,938 [INFO] main: REUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-22 19:02:33,938 [INFO] main: REUSDT | RL adj=55.0%
-2026-06-22 19:02:40,568 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-22 19:02:40,824 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-22 19:02:40,825 [INFO] main: SOLUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-22 19:02:42,888 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-22 19:02:42,889 [INFO] main: SOLUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-22 19:02:42,889 [INFO] main: SOLUSDT | RL adj=50.0%
 2026-06-22 19:02:48,572 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -6431,6 +6431,12 @@ root     1488950  0.1  3.4 729208 135152 ?       Ssl  Jun16  14:31 /opt/ensemble
 2026-06-22 19:06:16,961 [INFO] positions: OK BEATUSDT short PnL:3.1% reason:take_profit
 2026-06-22 19:06:16,962 [INFO] positions: Lessons: This trade was successful due to correctly identifying a bearish structure and extreme fear sentiment. The 2:1 risk/reward ratio was achieved, resulting in a 3.1% profit. The key takeaway is to trust the analysis when all timeframes are aligned in a trending_down regime.
 2026-06-22 19:06:16,962 [INFO] rl: RL learned from short BEATUSDT: profit 3.10% | weights bull=0.907 bear=0.782 judge=1.311 threshold=66.22
+2026-06-22 19:20:10,850 [INFO] positions: TRAILING-STOP NEARUSDT short peak:2.63% now:1.8%
+2026-06-22 19:20:10,868 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT NEARUSDT @ 2.1208 PnL: 8.98% (+1.80 USDT) | Баланс: 974.44
+2026-06-22 19:20:11,112 [INFO] positions: OK NEARUSDT short PnL:1.8% reason:trailing_stop
+2026-06-22 19:20:11,112 [INFO] positions: Lessons: The trade on NEARUSDT resulted in a 1.8% profit, meeting the expected 2:1 risk/reward ratio. The bearish consensus and expected 4% downside move were key factors in the original reasoning. The trailing stop was triggered, closing the short position with a 1.8% gain.
+2026-06-22 19:20:11,112 [INFO] rl: RL learned from short NEARUSDT: profit 1.80% | weights bull=0.903 bear=0.785 judge=1.311 threshold=66.19
+2026-06-22 19:26:59,329 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6448,7 +6454,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       902Mi       364Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       912Mi       354Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
