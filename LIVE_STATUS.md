@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-22 07:50:01 UTC
+Generated: 2026-06-22 08:00:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.4 727796 134196 ?       Ssl  Jun16  13:27 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 921.7831142619831,
+  "balance": 942.2537822139831,
   "positions": {
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1782092279",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.4 727796 134196 ?       Ssl  Jun16  13:27 /opt/ensemble
       "opened_at": "2026-06-22T01:37:59.577300",
       "cost": 20.0037852,
       "notional": 100.018926,
-      "leverage": 5
-    },
-    "WLDUSDT": {
-      "id": "PAPER_WLDUSDT_1782094458",
-      "symbol": "WLDUSDT",
-      "side": "long",
-      "entry_price": 0.6374,
-      "qty": 156.8874,
-      "confidence": 70,
-      "opened_at": "2026-06-22T02:14:18.914297",
-      "cost": 20.000005752,
-      "notional": 100.00002876,
       "leverage": 5
     },
     "ZECUSDT": {
@@ -6201,19 +6189,32 @@ root     1488950  0.1  3.4 727796 134196 ?       Ssl  Jun16  13:27 /opt/ensemble
       "closed_at": "2026-06-22T07:06:15.892093",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_WLDUSDT_1782094458",
+      "symbol": "WLDUSDT",
+      "side": "long",
+      "entry_price": 0.6374,
+      "qty": 156.8874,
+      "confidence": 70,
+      "opened_at": "2026-06-22T02:14:18.914297",
+      "cost": 20.000005752,
+      "notional": 100.00002876,
+      "leverage": 5,
+      "exit_price": 0.6404,
+      "pnl_pct": 2.35,
+      "pnl_usdt": 0.47,
+      "closed_at": "2026-06-22T07:58:36.932764",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 21.79080515398319
+  "total_pnl": 22.26146735398319
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-22 07:48:14,646 [INFO] main: LABUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-22 07:48:14,647 [INFO] main: LABUSDT | RL adj=93.2%
-2026-06-22 07:48:14,667 [INFO] main: LABUSDT | Context score=0.0 bias=0.0
-2026-06-22 07:48:14,667 [INFO] main: LABUSDT | regime BLOCK (volatile)
-2026-06-22 07:48:21,124 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-22 07:48:23,298 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-22 07:48:23,300 [INFO] main: HYPEUSDT | Bull:flat(15%) Bear:short(80%)
 2026-06-22 07:48:27,166 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -6239,6 +6240,11 @@ root     1488950  0.1  3.4 727796 134196 ?       Ssl  Jun16  13:27 /opt/ensemble
 2026-06-22 07:49:19,760 [INFO] main: IDUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-22 07:49:19,760 [INFO] main: IDUSDT | RL adj=50.0%
 2026-06-22 07:49:21,763 [INFO] main: Next scan in 30min (always-30min)
+2026-06-22 07:58:36,931 [INFO] positions: BREAKEVEN_STOP WLDUSDT long PnL:0.47%
+2026-06-22 07:58:36,938 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG WLDUSDT @ 0.6404 PnL: 2.35% (+0.47 USDT) | Баланс: 942.25
+2026-06-22 07:58:37,313 [INFO] positions: OK WLDUSDT long PnL:0.47% reason:breakeven_stop
+2026-06-22 07:58:37,313 [INFO] positions: Lessons: The trade was based on a strong 4h uptrend and bullish MACD, with a bull regime and high confidence. The trade ultimately closed at breakeven stop with a small gain of 0.47%, failing to achieve the expected 2:1 risk/reward ratio. This outcome suggests that the trade's upside potential was overestimated, and a more conservative risk/reward ratio may have been warranted.
+2026-06-22 07:58:37,313 [INFO] rl: RL learned from long WLDUSDT: profit 0.47% | weights bull=0.920 bear=0.778 judge=1.302 threshold=65.91
 ```
 
 ## Disk
@@ -6256,7 +6262,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       900Mi       404Mi       4.8Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       926Mi       378Mi       4.8Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
