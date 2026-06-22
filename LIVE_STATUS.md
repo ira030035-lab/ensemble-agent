@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-22 01:20:01 UTC
+Generated: 2026-06-22 01:30:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50256 ?        Ssl  Jun12   1:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.4 727788 133868 ?       Ssl  Jun16  12:51 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.4 727788 133868 ?       Ssl  Jun16  12:52 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 987.1950556375831,
+  "balance": 1005.1041996375831,
   "positions": {
-    "ZECUSDT": {
-      "id": "PAPER_ZECUSDT_1782090340",
-      "symbol": "ZECUSDT",
-      "side": "short",
-      "entry_price": 442.52,
-      "qty": 0.226,
-      "confidence": 85,
-      "opened_at": "2026-06-22T01:05:40.800284",
-      "cost": 20.001904,
-      "notional": 100.00952,
-      "leverage": 5
-    },
     "ALLOUSDT": {
       "id": "PAPER_ALLOUSDT_1782090362",
       "symbol": "ALLOUSDT",
@@ -6075,20 +6063,32 @@ root     1488950  0.1  3.4 727788 133868 ?       Ssl  Jun16  12:51 /opt/ensemble
       "closed_at": "2026-06-22T01:03:11.250382",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ZECUSDT_1782090340",
+      "symbol": "ZECUSDT",
+      "side": "short",
+      "entry_price": 442.52,
+      "qty": 0.226,
+      "confidence": 85,
+      "opened_at": "2026-06-22T01:05:40.800284",
+      "cost": 20.001904,
+      "notional": 100.00952,
+      "leverage": 5,
+      "exit_price": 451.78,
+      "pnl_pct": -10.46,
+      "pnl_usdt": -2.09,
+      "closed_at": "2026-06-22T01:27:06.212508",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 27.196959063983176
+  "total_pnl": 25.104199063983177
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-22 01:06:11,352 [INFO] main: AVAXUSDT | RL adj=50.0%
-2026-06-22 01:06:17,357 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-22 01:06:18,654 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-22 01:06:18,656 [INFO] main: BEATUSDT | Bull:long(62%) Bear:short(70%)
-2026-06-22 01:06:21,550 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-22 01:06:21,551 [INFO] main: BEATUSDT | Judge:LONG conf=70% size=15.0%
 2026-06-22 01:06:21,552 [INFO] main: BEATUSDT | RL adj=70.3%
 2026-06-22 01:06:21,571 [INFO] main: BEATUSDT | Context score=-0.0 bias=0.0
 2026-06-22 01:06:21,571 [INFO] main: BEATUSDT | macro BLOCK (long при BTC downtrend)
@@ -6113,6 +6113,12 @@ root     1488950  0.1  3.4 727788 133868 ?       Ssl  Jun16  12:51 /opt/ensemble
 2026-06-22 01:06:48,778 [INFO] main: WLDUSDT | Context score=-0.0 bias=0.0
 2026-06-22 01:06:48,778 [INFO] main: WLDUSDT | macro BLOCK (long при BTC downtrend)
 2026-06-22 01:06:50,781 [INFO] main: Next scan in 30min (always-30min)
+2026-06-22 01:26:47,308 [INFO] main: Symbols: 30
+2026-06-22 01:27:06,211 [INFO] positions: STOP_LOSS ZECUSDT short PnL:-2.09%
+2026-06-22 01:27:06,218 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ZECUSDT @ 451.7800 PnL: -10.46% (-2.09 USDT) | Баланс: 1005.10
+2026-06-22 01:27:06,524 [INFO] positions: LOSS ZECUSDT short PnL:-2.09% reason:stop_loss
+2026-06-22 01:27:06,524 [INFO] positions: Lessons: The trade was closed due to a stop loss, resulting in a 2.09% loss. The original reasoning was based on bearish conditions and a trending down regime, but the expected 4% downside move did not materialize. This trade highlights the importance of managing risk and adjusting expectations when market conditions do not unfold as anticipated.
+2026-06-22 01:27:06,524 [INFO] rl: RL learned from short ZECUSDT: loss -2.09% | weights bull=0.920 bear=0.782 judge=1.299 threshold=65.9
 ```
 
 ## Disk
@@ -6130,7 +6136,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       903Mi       412Mi       4.8Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       908Mi       406Mi       4.8Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
