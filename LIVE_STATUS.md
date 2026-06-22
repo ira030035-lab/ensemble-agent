@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-22 23:10:01 UTC
+Generated: 2026-06-22 23:20:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.4 730244 136204 ?       Ssl  Jun16  14:54 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 917.9952734079828,
+  "balance": 935.9065280079828,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1782152662",
@@ -54,18 +54,6 @@ root     1488950  0.1  3.4 730244 136204 ?       Ssl  Jun16  14:54 /opt/ensemble
       "opened_at": "2026-06-22T19:33:10.533551",
       "cost": 19.999995839999997,
       "notional": 99.99997919999998,
-      "leverage": 5
-    },
-    "TAOUSDT": {
-      "id": "PAPER_TAOUSDT_1782158935",
-      "symbol": "TAOUSDT",
-      "side": "long",
-      "entry_price": 232.96,
-      "qty": 0.4293,
-      "confidence": 70,
-      "opened_at": "2026-06-22T20:08:55.685966",
-      "cost": 20.001945600000003,
-      "notional": 100.00972800000001,
       "leverage": 5
     },
     "ZECUSDT": {
@@ -6453,19 +6441,32 @@ root     1488950  0.1  3.4 730244 136204 ?       Ssl  Jun16  14:54 /opt/ensemble
       "closed_at": "2026-06-22T20:47:02.028515",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_TAOUSDT_1782158935",
+      "symbol": "TAOUSDT",
+      "side": "long",
+      "entry_price": 232.96,
+      "qty": 0.4293,
+      "confidence": 70,
+      "opened_at": "2026-06-22T20:08:55.685966",
+      "cost": 20.001945600000003,
+      "notional": 100.00972800000001,
+      "leverage": 5,
+      "exit_price": 228.09,
+      "pnl_pct": -10.45,
+      "pnl_usdt": -2.09,
+      "closed_at": "2026-06-22T23:15:44.251180",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 17.99394865198321
+  "total_pnl": 15.903257651983209
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-22 23:01:58,375 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-22 23:01:58,377 [INFO] main: ETHUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-22 23:02:00,356 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-22 23:02:00,358 [INFO] main: ETHUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-22 23:02:00,358 [INFO] main: ETHUSDT | RL adj=55.0%
 2026-06-22 23:02:06,648 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-22 23:02:06,804 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-22 23:02:06,806 [INFO] main: BTWUSDT | Bull:flat(35%) Bear:short(70%)
@@ -6491,6 +6492,11 @@ root     1488950  0.1  3.4 730244 136204 ?       Ssl  Jun16  14:54 /opt/ensemble
 2026-06-22 23:02:39,212 [INFO] main: BEATUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-22 23:02:39,212 [INFO] main: BEATUSDT | RL adj=55.0%
 2026-06-22 23:02:41,214 [INFO] main: Next scan in 30min (always-30min)
+2026-06-22 23:15:44,249 [INFO] positions: STOP_LOSS TAOUSDT long PnL:-2.09%
+2026-06-22 23:15:44,257 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG TAOUSDT @ 228.0900 PnL: -10.45% (-2.09 USDT) | Баланс: 935.91
+2026-06-22 23:15:44,578 [INFO] positions: LOSS TAOUSDT long PnL:-2.09% reason:stop_loss
+2026-06-22 23:15:44,579 [INFO] positions: Lessons: The trade on TAOUSDT resulted in a 2.09% loss due to a stop loss being triggered. The original reasoning was based on a bullish signal with mixed bear signals, expecting a 4% upside, but the market did not move in the expected direction. This trade highlights the importance of risk management and adhering to the risk/reward framework, even if the expected outcome does not materialize.
+2026-06-22 23:15:44,579 [INFO] rl: RL learned from long TAOUSDT: loss -2.09% | weights bull=0.892 bear=0.796 judge=1.312 threshold=66.21
 ```
 
 ## Disk
@@ -6508,7 +6514,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       903Mi       355Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       902Mi       356Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
