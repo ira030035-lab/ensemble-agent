@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-22 18:00:01 UTC
+Generated: 2026-06-22 18:10:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.4 726128 133172 ?       Ssl  Jun16  14:24 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 912.298359212783,
+  "balance": 930.292954812783,
   "positions": {
     "NEARUSDT": {
       "id": "PAPER_NEARUSDT_1782116377",
@@ -66,18 +66,6 @@ root     1488950  0.1  3.4 726128 133172 ?       Ssl  Jun16  14:24 /opt/ensemble
       "opened_at": "2026-06-22T15:00:49.639777",
       "cost": 20.000006525999996,
       "notional": 100.00003262999998,
-      "leverage": 5
-    },
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1782144494",
-      "symbol": "HYPEUSDT",
-      "side": "short",
-      "entry_price": 66.712,
-      "qty": 1.499,
-      "confidence": 80,
-      "opened_at": "2026-06-22T16:08:14.605732",
-      "cost": 20.000257600000005,
-      "notional": 100.00128800000002,
       "leverage": 5
     }
   },
@@ -6327,19 +6315,32 @@ root     1488950  0.1  3.4 726128 133172 ?       Ssl  Jun16  14:24 /opt/ensemble
       "closed_at": "2026-06-22T16:07:52.309213",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1782144494",
+      "symbol": "HYPEUSDT",
+      "side": "short",
+      "entry_price": 66.712,
+      "qty": 1.499,
+      "confidence": 80,
+      "opened_at": "2026-06-22T16:08:14.605732",
+      "cost": 20.000257600000005,
+      "notional": 100.00128800000002,
+      "leverage": 5,
+      "exit_price": 68.05,
+      "pnl_pct": -10.03,
+      "pnl_usdt": -2.01,
+      "closed_at": "2026-06-22T18:00:32.934452",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 12.298639953983182
+  "total_pnl": 10.292977953983192
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-22 17:53:44,535 [INFO] main: XRPUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-22 17:53:46,911 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-22 17:53:46,912 [INFO] main: XRPUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-22 17:53:46,912 [INFO] main: XRPUSDT | RL adj=83.1%
-2026-06-22 17:53:46,930 [INFO] main: XRPUSDT | Context score=-0.05 bias=0.05
 2026-06-22 17:53:46,930 [INFO] main: XRPUSDT | gate PASS (Judge 75/70 RL 83.1/66.13 slack=±3)
 2026-06-22 17:53:46,933 [INFO] positions: Max positions reached (5/5 dyn)
 2026-06-22 17:53:50,333 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
@@ -6365,6 +6366,11 @@ root     1488950  0.1  3.4 726128 133172 ?       Ssl  Jun16  14:24 /opt/ensemble
 2026-06-22 17:54:14,803 [INFO] main: LINKUSDT | Judge:HOLD conf=58% size=0.0%
 2026-06-22 17:54:14,803 [INFO] main: LINKUSDT | RL adj=58.0%
 2026-06-22 17:54:16,807 [INFO] main: Next scan in 30min (always-30min)
+2026-06-22 18:00:32,933 [INFO] positions: STOP_LOSS HYPEUSDT short PnL:-2.01%
+2026-06-22 18:00:32,940 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT HYPEUSDT @ 68.0500 PnL: -10.03% (-2.01 USDT) | Баланс: 930.29
+2026-06-22 18:00:33,822 [INFO] positions: LOSS HYPEUSDT short PnL:-2.01% reason:stop_loss
+2026-06-22 18:00:33,823 [INFO] positions: Lessons: The trade was based on a bearish view with a strong expected downside move but was stopped out for a 2.01% loss. The risk framework was not validated as the expected 2:1 risk-reward ratio was not achieved. This trade highlights the importance of reevaluating the risk framework and market regime in ranging conditions.
+2026-06-22 18:00:33,823 [INFO] rl: RL learned from short HYPEUSDT: loss -2.01% | weights bull=0.929 bear=0.762 judge=1.310 threshold=66.18
 ```
 
 ## Disk
@@ -6382,7 +6388,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       902Mi       367Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       898Mi       370Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
