@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-22 14:40:01 UTC
+Generated: 2026-06-22 14:50:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1488950  0.1  3.4 727900 134644 ?       Ssl  Jun16  14:04 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 953.801080505983,
+  "balance": 974.304819705983,
   "positions": {
-    "ETHUSDT": {
-      "id": "PAPER_ETHUSDT_1782092279",
-      "symbol": "ETHUSDT",
-      "side": "long",
-      "entry_price": 1742.49,
-      "qty": 0.0574,
-      "confidence": 70,
-      "opened_at": "2026-06-22T01:37:59.577300",
-      "cost": 20.0037852,
-      "notional": 100.018926,
-      "leverage": 5
-    },
     "SOLUSDT": {
       "id": "PAPER_SOLUSDT_1782094740",
       "symbol": "SOLUSDT",
@@ -6267,19 +6255,32 @@ root     1488950  0.1  3.4 727900 134644 ?       Ssl  Jun16  14:04 /opt/ensemble
       "closed_at": "2026-06-22T14:30:57.355994",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ETHUSDT_1782092279",
+      "symbol": "ETHUSDT",
+      "side": "long",
+      "entry_price": 1742.49,
+      "qty": 0.0574,
+      "confidence": 70,
+      "opened_at": "2026-06-22T01:37:59.577300",
+      "cost": 20.0037852,
+      "notional": 100.018926,
+      "leverage": 5,
+      "exit_price": 1751.2,
+      "pnl_pct": 2.5,
+      "pnl_usdt": 0.5,
+      "closed_at": "2026-06-22T14:47:57.581521",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 13.805119953983173
+  "total_pnl": 14.305073953983175
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-22 14:25:59,868 [INFO] main: HYPEUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-22 14:25:59,868 [INFO] main: HYPEUSDT | RL adj=55.0%
-2026-06-22 14:26:06,422 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-22 14:26:07,114 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-22 14:26:07,115 [INFO] main: AVAXUSDT | Bull:long(62%) Bear:short(70%)
 2026-06-22 14:26:09,528 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-22 14:26:09,529 [INFO] main: AVAXUSDT | Judge:HOLD conf=60% size=0.0%
 2026-06-22 14:26:09,529 [INFO] main: AVAXUSDT | RL adj=60.0%
@@ -6305,6 +6306,11 @@ root     1488950  0.1  3.4 727900 134644 ?       Ssl  Jun16  14:04 /opt/ensemble
 2026-06-22 14:30:57,678 [INFO] positions: LOSS SUIUSDT long PnL:-2.15% reason:stop_loss
 2026-06-22 14:30:57,678 [INFO] positions: Lessons: The trade was based on strong bull sentiment and a favorable risk-reward ratio but ultimately hit the stop loss. The 2:1 risk-reward expectation was not met, resulting in a 2.15% loss. This outcome suggests that sentiment and technical conditions do not always align with actual price movement.
 2026-06-22 14:30:57,678 [INFO] rl: RL learned from long SUIUSDT: loss -2.15% | weights bull=0.927 bear=0.766 judge=1.307 threshold=66.11
+2026-06-22 14:47:57,578 [INFO] positions: BREAKEVEN_STOP ETHUSDT long PnL:0.5%
+2026-06-22 14:47:57,596 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG ETHUSDT @ 1751.2000 PnL: 2.50% (+0.50 USDT) | Баланс: 974.30
+2026-06-22 14:47:57,894 [INFO] positions: OK ETHUSDT long PnL:0.5% reason:breakeven_stop
+2026-06-22 14:47:57,894 [INFO] positions: Lessons: The trade was based on high bull conviction and potential upside, but ultimately closed at breakeven. The strong bullish confirmation in the 4h timeframe did not materialize into significant gains. This serves as a reminder that high conviction does not always translate to large profits, especially in ranging markets.
+2026-06-22 14:47:57,894 [INFO] rl: RL learned from long ETHUSDT: profit 0.50% | weights bull=0.928 bear=0.764 judge=1.308 threshold=66.08
 ```
 
 ## Disk
@@ -6322,7 +6328,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       907Mi       365Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       926Mi       346Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
