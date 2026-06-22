@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-22 23:20:01 UTC
+Generated: 2026-06-22 23:30:01 UTC
 
 ## Services
 ```
@@ -6467,7 +6467,6 @@ root     1488950  0.1  3.4 730244 136204 ?       Ssl  Jun16  14:54 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-22 23:02:06,648 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-22 23:02:06,804 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-22 23:02:06,806 [INFO] main: BTWUSDT | Bull:flat(35%) Bear:short(70%)
 2026-06-22 23:02:09,014 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -6497,6 +6496,7 @@ root     1488950  0.1  3.4 730244 136204 ?       Ssl  Jun16  14:54 /opt/ensemble
 2026-06-22 23:15:44,578 [INFO] positions: LOSS TAOUSDT long PnL:-2.09% reason:stop_loss
 2026-06-22 23:15:44,579 [INFO] positions: Lessons: The trade on TAOUSDT resulted in a 2.09% loss due to a stop loss being triggered. The original reasoning was based on a bullish signal with mixed bear signals, expecting a 4% upside, but the market did not move in the expected direction. This trade highlights the importance of risk management and adhering to the risk/reward framework, even if the expected outcome does not materialize.
 2026-06-22 23:15:44,579 [INFO] rl: RL learned from long TAOUSDT: loss -2.09% | weights bull=0.892 bear=0.796 judge=1.312 threshold=66.21
+2026-06-22 23:27:01,942 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6514,7 +6514,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       902Mi       356Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       915Mi       342Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
