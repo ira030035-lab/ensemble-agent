@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-22 04:20:01 UTC
+Generated: 2026-06-22 04:30:01 UTC
 
 ## Services
 ```
@@ -6191,7 +6191,6 @@ root     1488950  0.1  3.4 727784 134184 ?       Ssl  Jun16  13:08 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-22 04:07:14,054 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-22 04:07:14,055 [INFO] main: AVAXUSDT | Bull:flat(25%) Bear:short(70%)
 2026-06-22 04:07:16,910 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-22 04:07:16,911 [INFO] main: AVAXUSDT | Judge:HOLD conf=55% size=0.0%
@@ -6221,6 +6220,7 @@ root     1488950  0.1  3.4 727784 134184 ?       Ssl  Jun16  13:08 /opt/ensemble
 2026-06-22 04:07:45,336 [INFO] main: XLMUSDT | gate PASS (Judge 75/70 RL 84.3/65.97 slack=±3)
 2026-06-22 04:07:45,337 [INFO] positions: Max positions reached (5/5 dyn)
 2026-06-22 04:07:47,338 [INFO] main: Next scan in 30min (always-30min)
+2026-06-22 04:26:49,185 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6238,7 +6238,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       900Mi       410Mi       4.8Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       922Mi       388Mi       4.8Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
