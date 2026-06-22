@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-22 14:30:01 UTC
+Generated: 2026-06-22 14:40:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.4 727900 134644 ?       Ssl  Jun16  14:04 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 935.954221437983,
+  "balance": 953.801080505983,
   "positions": {
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1782092279",
@@ -54,18 +54,6 @@ root     1488950  0.1  3.4 727900 134644 ?       Ssl  Jun16  14:04 /opt/ensemble
       "opened_at": "2026-06-22T08:19:37.063579",
       "cost": 20.000012408000003,
       "notional": 100.00006204000002,
-      "leverage": 5
-    },
-    "SUIUSDT": {
-      "id": "PAPER_SUIUSDT_1782129964",
-      "symbol": "SUIUSDT",
-      "side": "long",
-      "entry_price": 0.7431,
-      "qty": 134.5714,
-      "confidence": 80,
-      "opened_at": "2026-06-22T12:06:04.932797",
-      "cost": 20.000001468,
-      "notional": 100.00000734000001,
       "leverage": 5
     }
   },
@@ -6261,19 +6249,32 @@ root     1488950  0.1  3.4 727900 134644 ?       Ssl  Jun16  14:04 /opt/ensemble
       "closed_at": "2026-06-22T13:53:32.188914",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_SUIUSDT_1782129964",
+      "symbol": "SUIUSDT",
+      "side": "long",
+      "entry_price": 0.7431,
+      "qty": 134.5714,
+      "confidence": 80,
+      "opened_at": "2026-06-22T12:06:04.932797",
+      "cost": 20.000001468,
+      "notional": 100.00000734000001,
+      "leverage": 5,
+      "exit_price": 0.7271,
+      "pnl_pct": -10.77,
+      "pnl_usdt": -2.15,
+      "closed_at": "2026-06-22T14:30:57.355994",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 15.958262353983175
+  "total_pnl": 13.805119953983173
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-22 14:25:50,026 [INFO] main: ADAUSDT | RL adj=55.0%
-2026-06-22 14:25:57,237 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-22 14:25:57,263 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-22 14:25:57,264 [INFO] main: HYPEUSDT | Bull:flat(25%) Bear:short(80%)
-2026-06-22 14:25:59,867 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-22 14:25:59,868 [INFO] main: HYPEUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-22 14:25:59,868 [INFO] main: HYPEUSDT | RL adj=55.0%
 2026-06-22 14:26:06,422 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -6299,6 +6300,11 @@ root     1488950  0.1  3.4 727900 134644 ?       Ssl  Jun16  14:04 /opt/ensemble
 2026-06-22 14:26:28,527 [INFO] main: XLMUSDT | RL adj=50.0%
 2026-06-22 14:26:30,529 [INFO] main: Next scan in 30min (always-30min)
 2026-06-22 14:26:55,826 [INFO] main: Symbols: 30
+2026-06-22 14:30:57,353 [INFO] positions: STOP_LOSS SUIUSDT long PnL:-2.15%
+2026-06-22 14:30:57,369 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG SUIUSDT @ 0.7271 PnL: -10.77% (-2.15 USDT) | Баланс: 953.80
+2026-06-22 14:30:57,678 [INFO] positions: LOSS SUIUSDT long PnL:-2.15% reason:stop_loss
+2026-06-22 14:30:57,678 [INFO] positions: Lessons: The trade was based on strong bull sentiment and a favorable risk-reward ratio but ultimately hit the stop loss. The 2:1 risk-reward expectation was not met, resulting in a 2.15% loss. This outcome suggests that sentiment and technical conditions do not always align with actual price movement.
+2026-06-22 14:30:57,678 [INFO] rl: RL learned from long SUIUSDT: loss -2.15% | weights bull=0.927 bear=0.766 judge=1.307 threshold=66.11
 ```
 
 ## Disk
@@ -6316,7 +6322,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       919Mi       354Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       907Mi       365Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
