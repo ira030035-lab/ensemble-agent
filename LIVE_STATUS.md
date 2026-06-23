@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-23 06:20:01 UTC
+Generated: 2026-06-23 06:30:01 UTC
 
 ## Services
 ```
@@ -18,32 +18,8 @@ root     1488950  0.1  3.5 730876 137144 ?       Ssl  Jun16  15:30 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 936.7358574449827,
+  "balance": 1001.2801172449828,
   "positions": {
-    "ADAUSDT": {
-      "id": "PAPER_ADAUSDT_1782154770",
-      "symbol": "ADAUSDT",
-      "side": "short",
-      "entry_price": 0.1585,
-      "qty": 630.9148,
-      "confidence": 70,
-      "opened_at": "2026-06-22T18:59:30.404681",
-      "cost": 19.99999916,
-      "notional": 99.99999580000001,
-      "leverage": 5
-    },
-    "ETHUSDT": {
-      "id": "PAPER_ETHUSDT_1782173236",
-      "symbol": "ETHUSDT",
-      "side": "long",
-      "entry_price": 1726.17,
-      "qty": 0.0579,
-      "confidence": 75,
-      "opened_at": "2026-06-23T00:07:16.021464",
-      "cost": 19.9890486,
-      "notional": 99.945243,
-      "leverage": 5
-    },
     "NEARUSDT": {
       "id": "PAPER_NEARUSDT_1782181549",
       "symbol": "NEARUSDT",
@@ -54,18 +30,6 @@ root     1488950  0.1  3.5 730876 137144 ?       Ssl  Jun16  15:30 /opt/ensemble
       "opened_at": "2026-06-23T02:25:49.413735",
       "cost": 20.000002119999998,
       "notional": 100.0000106,
-      "leverage": 5
-    },
-    "ZECUSDT": {
-      "id": "PAPER_ZECUSDT_1782190519",
-      "symbol": "ZECUSDT",
-      "side": "short",
-      "entry_price": 443.35,
-      "qty": 0.2256,
-      "confidence": 85,
-      "opened_at": "2026-06-23T04:55:19.556213",
-      "cost": 20.003952,
-      "notional": 100.01976,
       "leverage": 5
     }
   },
@@ -6549,30 +6513,68 @@ root     1488950  0.1  3.5 730876 137144 ?       Ssl  Jun16  15:30 /opt/ensemble
       "closed_at": "2026-06-23T06:18:23.137934",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ETHUSDT_1782173236",
+      "symbol": "ETHUSDT",
+      "side": "long",
+      "entry_price": 1726.17,
+      "qty": 0.0579,
+      "confidence": 75,
+      "opened_at": "2026-06-23T00:07:16.021464",
+      "cost": 19.9890486,
+      "notional": 99.945243,
+      "leverage": 5,
+      "exit_price": 1684.48,
+      "pnl_pct": -12.08,
+      "pnl_usdt": -2.41,
+      "closed_at": "2026-06-23T06:21:30.653371",
+      "reason": "stop_loss",
+      "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ZECUSDT_1782190519",
+      "symbol": "ZECUSDT",
+      "side": "short",
+      "entry_price": 443.35,
+      "qty": 0.2256,
+      "confidence": 85,
+      "opened_at": "2026-06-23T04:55:19.556213",
+      "cost": 20.003952,
+      "notional": 100.01976,
+      "leverage": 5,
+      "exit_price": 425.9,
+      "pnl_pct": 19.68,
+      "pnl_usdt": 3.94,
+      "closed_at": "2026-06-23T06:21:30.986572",
+      "reason": "take_profit",
+      "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ADAUSDT_1782154770",
+      "symbol": "ADAUSDT",
+      "side": "short",
+      "entry_price": 0.1585,
+      "qty": 630.9148,
+      "confidence": 70,
+      "opened_at": "2026-06-22T18:59:30.404681",
+      "cost": 19.99999916,
+      "notional": 99.99999580000001,
+      "leverage": 5,
+      "exit_price": 0.1537,
+      "pnl_pct": 15.14,
+      "pnl_usdt": 3.03,
+      "closed_at": "2026-06-23T06:24:35.290393",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 16.728859324983183
+  "total_pnl": 21.28011936498319
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-23 06:10:42,745 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-23 06:10:42,746 [INFO] main: REUSDT | Bull:flat(28%) Bear:short(76%)
-2026-06-23 06:10:45,946 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-23 06:10:45,947 [INFO] main: REUSDT | Judge:SHORT conf=70% size=15.0%
-2026-06-23 06:10:45,947 [INFO] main: REUSDT | RL adj=79.1%
-2026-06-23 06:10:45,958 [INFO] main: REUSDT | Context score=-0.05 bias=0.05
-2026-06-23 06:10:45,958 [INFO] main: REUSDT | regime BLOCK (volatile)
-2026-06-23 06:10:51,880 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-23 06:10:53,588 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-23 06:10:53,588 [INFO] main: TNSRUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-23 06:10:56,567 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-23 06:10:56,568 [INFO] main: TNSRUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-23 06:10:56,568 [INFO] main: TNSRUSDT | RL adj=94.6%
-2026-06-23 06:10:56,579 [INFO] main: TNSRUSDT | Context score=-0.05 bias=0.05
-2026-06-23 06:10:56,580 [INFO] main: TNSRUSDT | regime BLOCK (volatile)
-2026-06-23 06:11:03,627 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-23 06:11:10,657 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-23 06:11:10,659 [INFO] main: PEPEUSDT | Bull:flat(15%) Bear:short(90%)
 2026-06-23 06:11:13,079 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -6587,6 +6589,22 @@ root     1488950  0.1  3.5 730876 137144 ?       Ssl  Jun16  15:30 /opt/ensemble
 2026-06-23 06:18:23,425 [INFO] positions: OK SUIUSDT short PnL:3.05% reason:take_profit
 2026-06-23 06:18:23,425 [INFO] positions: Lessons: The trade was closed with a 3.05% profit, meeting the target of a 4%+ downside move. The combination of bearish MACD, extreme fear sentiment, and low volume ratio proved effective in identifying a shorting opportunity. This trade demonstrates the importance of considering multiple indicators and sentiment analysis in making trading decisions.
 2026-06-23 06:18:23,425 [INFO] rl: RL learned from short SUIUSDT: profit 3.05% | weights bull=0.877 bear=0.806 judge=1.317 threshold=66.22
+2026-06-23 06:21:30,650 [INFO] positions: STOP_LOSS ETHUSDT long PnL:-2.42%
+2026-06-23 06:21:30,667 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG ETHUSDT @ 1684.4800 PnL: -12.08% (-2.41 USDT) | Баланс: 954.31
+2026-06-23 06:21:30,983 [INFO] positions: LOSS ETHUSDT long PnL:-2.42% reason:stop_loss
+2026-06-23 06:21:30,983 [INFO] positions: Lessons: Bull sentiment and low RSI were not enough to spark a rebound in ETHUSDT. The trade was closed at a loss of 2.42% after hitting the stop loss, failing to achieve the expected 4% upside. This outcome highlights the importance of considering other factors beyond sentiment and RSI in ranging markets.
+2026-06-23 06:21:30,983 [INFO] rl: RL learned from long ETHUSDT: loss -2.42% | weights bull=0.872 bear=0.809 judge=1.319 threshold=66.27
+2026-06-23 06:21:30,984 [INFO] positions: TAKE-PROFIT ZECUSDT short PnL:3.94%
+2026-06-23 06:21:31,001 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ZECUSDT @ 425.9000 PnL: 19.68% (+3.94 USDT) | Баланс: 978.25
+2026-06-23 06:21:31,527 [INFO] positions: OK ZECUSDT short PnL:3.94% reason:take_profit
+2026-06-23 06:21:31,527 [INFO] positions: Lessons: The strong bearish sentiment (80%), low volume, extreme fear, and 1‑hour RSI correctly signaled a short‑term down move, and the 2:1 R/R target was hit, delivering a 3.94% gain. This trade shows the value of aligning multiple sentiment and volatility indicators before entering a short position. Keep the same multi‑factor confirmation process, but monitor volume trends to ensure the move remains supported.
+2026-06-23 06:21:31,527 [INFO] rl: RL learned from short ZECUSDT: profit 3.94% | weights bull=0.859 bear=0.820 judge=1.321 threshold=66.24
+2026-06-23 06:24:35,287 [INFO] positions: TAKE-PROFIT ADAUSDT short PnL:3.03%
+2026-06-23 06:24:35,305 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ADAUSDT @ 0.1537 PnL: 15.14% (+3.03 USDT) | Баланс: 1001.28
+2026-06-23 06:24:35,724 [INFO] positions: OK ADAUSDT short PnL:3.03% reason:take_profit
+2026-06-23 06:24:35,725 [INFO] positions: Lessons: Remember that in a ranging regime, extreme‑fear sentiment and high bear dominance can still produce short‑side opportunities, as shown by the 3 % gain on ADAUSDT. However, the expected 4 % drop was over‑estimated, so keep position sizes modest and watch for quick reversals when the market exits the fear zone.
+2026-06-23 06:24:35,725 [INFO] rl: RL learned from short ADAUSDT: profit 3.03% | weights bull=0.852 bear=0.827 judge=1.321 threshold=66.21
+2026-06-23 06:27:06,758 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6604,7 +6622,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       901Mi       344Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       913Mi       333Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
