@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-23 15:50:01 UTC
+Generated: 2026-06-23 16:00:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50540 ?        Ssl  Jun12   1:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.4 729268 135576 ?       Ssl  Jun16  16:23 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.4 727772 134340 ?       Ssl  Jun16  16:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 957.8577409541965,
+  "balance": 979.7346439541965,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1782204137",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.4 729268 135576 ?       Ssl  Jun16  16:23 /opt/ensemble
       "opened_at": "2026-06-23T08:42:17.448325",
       "cost": 19.999992144,
       "notional": 99.99996072,
-      "leverage": 5
-    },
-    "TAOUSDT": {
-      "id": "PAPER_TAOUSDT_1782204194",
-      "symbol": "TAOUSDT",
-      "side": "short",
-      "entry_price": 220.02,
-      "qty": 0.4545,
-      "confidence": 70,
-      "opened_at": "2026-06-23T08:43:14.291391",
-      "cost": 19.999818,
-      "notional": 99.99909000000001,
       "leverage": 5
     },
     "BNBUSDT": {
@@ -6699,44 +6687,62 @@ root     1488950  0.1  3.4 729268 135576 ?       Ssl  Jun16  16:23 /opt/ensemble
       "closed_at": "2026-06-23T15:29:24.484260",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_TAOUSDT_1782204194",
+      "symbol": "TAOUSDT",
+      "side": "short",
+      "entry_price": 220.02,
+      "qty": 0.4545,
+      "confidence": 70,
+      "opened_at": "2026-06-23T08:43:14.291391",
+      "cost": 19.999818,
+      "notional": 99.99909000000001,
+      "leverage": 5,
+      "exit_price": 215.89,
+      "pnl_pct": 9.39,
+      "pnl_usdt": 1.88,
+      "closed_at": "2026-06-23T15:59:16.164133",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 17.85603589819685
+  "total_pnl": 19.733120898196862
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-23 15:20:49,767 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-23 15:20:49,768 [INFO] main: LINKUSDT | Bull:flat(15%) Bear:short(60%)
-2026-06-23 15:20:52,486 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-23 15:20:52,488 [INFO] main: LINKUSDT | Judge:SHORT conf=70% size=10.0%
-2026-06-23 15:20:52,488 [INFO] main: LINKUSDT | RL adj=77.5%
-2026-06-23 15:20:52,509 [INFO] main: LINKUSDT | Context score=-0.1 bias=0.1
-2026-06-23 15:20:52,509 [INFO] main: LINKUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-06-23 15:20:55,943 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-06-23 15:20:59,987 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-23 15:21:00,268 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-23 15:21:00,268 [INFO] main: ALLOUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-23 15:21:02,961 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-23 15:21:02,961 [INFO] main: ALLOUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-23 15:21:02,962 [INFO] main: ALLOUSDT | RL adj=55.0%
-2026-06-23 15:21:06,391 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-06-23 15:21:10,721 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-23 15:21:10,757 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-23 15:21:10,757 [INFO] main: BICOUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-23 15:21:13,306 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-23 15:21:13,307 [INFO] main: BICOUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-23 15:21:13,307 [INFO] main: BICOUSDT | RL adj=85.0%
-2026-06-23 15:21:13,319 [INFO] main: BICOUSDT | Context score=-0.1 bias=0.1
-2026-06-23 15:21:13,319 [INFO] main: BICOUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-06-23 15:21:15,385 [INFO] main: Next scan in 30min (always-30min)
-2026-06-23 15:27:12,584 [INFO] main: Symbols: 30
-2026-06-23 15:29:24,481 [INFO] positions: STOP_LOSS ARXUSDT long PnL:-2.52%
-2026-06-23 15:29:24,498 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG ARXUSDT @ 0.3538 PnL: -12.62% (-2.52 USDT) | Баланс: 957.86
-2026-06-23 15:29:25,301 [INFO] positions: LOSS ARXUSDT long PnL:-2.52% reason:stop_loss
-2026-06-23 15:29:25,301 [INFO] positions: Lessons: Bullish indicators failed to materialize into a 4% upside move, instead the trade was stopped out for a 2.52% loss. The tight stop loss limited potential losses but the trade did not work out as planned. This trade highlights the importance of adjusting expectations when trading in a ranging regime.
-2026-06-23 15:29:25,301 [INFO] rl: RL learned from long ARXUSDT: loss -2.52% | weights bull=0.837 bear=0.839 judge=1.325 threshold=66.27
+2026-06-23 15:55:27,280 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-23 15:55:27,628 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-23 15:55:27,629 [INFO] main: SUIUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-23 15:55:30,454 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-23 15:55:30,456 [INFO] main: SUIUSDT | Judge:SHORT conf=85% size=15.0%
+2026-06-23 15:55:30,456 [INFO] main: SUIUSDT | RL adj=95.1%
+2026-06-23 15:55:30,476 [INFO] main: SUIUSDT | Context score=-0.1 bias=0.1
+2026-06-23 15:55:30,476 [INFO] main: SUIUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-06-23 15:55:36,669 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-23 15:55:37,323 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-23 15:55:37,324 [INFO] main: WLDUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-23 15:55:40,402 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-23 15:55:40,403 [INFO] main: WLDUSDT | Judge:SHORT conf=80% size=15.0%
+2026-06-23 15:55:40,403 [INFO] main: WLDUSDT | RL adj=90.1%
+2026-06-23 15:55:40,415 [INFO] main: WLDUSDT | Context score=-0.1 bias=0.1
+2026-06-23 15:55:40,415 [INFO] main: WLDUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-06-23 15:55:47,798 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-23 15:55:47,799 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-23 15:55:47,800 [INFO] main: BTWUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-23 15:55:51,395 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-23 15:55:51,395 [INFO] main: BTWUSDT | Judge:SHORT conf=85% size=15.0%
+2026-06-23 15:55:51,396 [INFO] main: BTWUSDT | RL adj=95.1%
+2026-06-23 15:55:51,407 [INFO] main: BTWUSDT | Context score=-0.1 bias=0.1
+2026-06-23 15:55:51,407 [INFO] main: BTWUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-06-23 15:55:53,476 [INFO] main: Next scan in 30min (always-30min)
+2026-06-23 15:59:16,162 [INFO] positions: TRAILING-STOP TAOUSDT short peak:2.69% now:1.88%
+2026-06-23 15:59:16,172 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT TAOUSDT @ 215.8900 PnL: 9.39% (+1.88 USDT) | Баланс: 979.73
+2026-06-23 15:59:16,868 [INFO] positions: OK TAOUSDT short PnL:1.88% reason:trailing_stop
+2026-06-23 15:59:16,868 [INFO] positions: Lessons: The trade was closed due to a trailing stop with a 1.88% profit, validating the initial bearish sentiment and technical analysis. The combination of low RSI, bearish MACD, and extreme fear sentiment correctly predicted a downside move. This trade demonstrates the effectiveness of using sentiment and technical indicators to identify trending markets.
+2026-06-23 15:59:16,868 [INFO] rl: RL learned from short TAOUSDT: profit 1.88% | weights bull=0.831 bear=0.844 judge=1.325 threshold=66.24
 ```
 
 ## Disk
@@ -6754,7 +6760,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       903Mi       312Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       919Mi       296Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
