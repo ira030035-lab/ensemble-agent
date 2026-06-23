@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-23 22:20:02 UTC
+Generated: 2026-06-23 22:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 284308 51548 ?        Ssl  Jun12   1:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.4 727772 134448 ?       Ssl  Jun16  17:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.4 728768 135316 ?       Ssl  Jun16  17:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -6725,7 +6725,6 @@ root     1488950  0.1  3.4 727772 134448 ?       Ssl  Jun16  17:06 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-23 22:16:55,881 [INFO] main: HYPEUSDT | RL adj=45.0%
 2026-06-23 22:17:01,839 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-23 22:17:02,870 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-23 22:17:02,872 [INFO] main: AAVEUSDT | Bull:flat(28%) Bear:short(70%)
@@ -6755,6 +6754,7 @@ root     1488950  0.1  3.4 727772 134448 ?       Ssl  Jun16  17:06 /opt/ensemble
 2026-06-23 22:17:34,084 [INFO] main: GRAMUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-23 22:17:34,084 [INFO] main: GRAMUSDT | RL adj=50.0%
 2026-06-23 22:17:36,087 [INFO] main: Next scan in 30min (always-30min)
+2026-06-23 22:27:17,467 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6772,7 +6772,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       904Mi       292Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       913Mi       283Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
