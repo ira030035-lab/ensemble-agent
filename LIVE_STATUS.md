@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-23 07:10:01 UTC
+Generated: 2026-06-23 07:20:01 UTC
 
 ## Services
 ```
@@ -6629,22 +6629,6 @@ root     1488950  0.1  3.5 731808 138080 ?       Ssl  Jun16  15:34 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-23 06:48:27,789 [INFO] positions: STOP_LOSS ARXUSDT short PnL:-2.29%
-2026-06-23 06:48:27,808 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ARXUSDT @ 0.3562 PnL: -11.44% (-2.29 USDT) | Баланс: 958.99
-2026-06-23 06:48:28,352 [INFO] positions: LOSS ARXUSDT short PnL:-2.29% reason:stop_loss
-2026-06-23 06:48:28,352 [INFO] positions: Lessons: The bearish signal was over‑interpreted in a ranging market; the price drop and low RSI were not enough to break the range, so the expected 4% move never materialized. The stop‑loss was hit, resulting in a 2.29% loss and a sub‑optimal 2:1 R/R. Future trades should require stronger trend confirmation and tighter stop placement when the regime is neutral.
-2026-06-23 06:48:28,352 [INFO] rl: RL learned from short ARXUSDT: loss -2.29% | weights bull=0.856 bear=0.822 judge=1.322 threshold=66.26
-2026-06-23 06:48:30,026 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-23 06:48:30,150 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-23 06:48:30,152 [INFO] main: BTWUSDT | Bull:flat(15%) Bear:short(85%)
-2026-06-23 06:48:34,711 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-23 06:48:34,712 [INFO] main: BTWUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-23 06:48:34,712 [INFO] main: BTWUSDT | RL adj=50.0%
-2026-06-23 06:48:40,824 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-23 06:48:41,888 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-23 06:48:41,889 [INFO] main: LAYERUSDT | Bull:flat(25%) Bear:short(55%)
-2026-06-23 06:48:45,494 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-23 06:48:45,495 [INFO] main: LAYERUSDT | Judge:SHORT conf=65% size=10.0%
 2026-06-23 06:48:45,495 [INFO] main: LAYERUSDT | RL adj=71.8%
 2026-06-23 06:48:45,520 [INFO] main: LAYERUSDT | Context score=-0.05 bias=0.05
 2026-06-23 06:48:45,520 [INFO] main: LAYERUSDT | regime BLOCK (volatile)
@@ -6659,6 +6643,22 @@ root     1488950  0.1  3.5 731808 138080 ?       Ssl  Jun16  15:34 /opt/ensemble
 2026-06-23 06:48:55,998 [INFO] positions: [PAPER] Opening SHORT WLDUSDT notional=$100.0 conf=85%
 2026-06-23 06:48:56,005 [INFO] paper_trading: [PAPER] ОТКРЫТА SHORT WLDUSDT @ 0.5862 qty=170.5902 notional=100.00 margin=20.00 x5 | Баланс: 938.99
 2026-06-23 06:48:58,009 [INFO] main: Next scan in 30min (always-30min)
+2026-06-23 07:18:58,018 [INFO] main: Scanning 26 symbols...
+2026-06-23 07:19:00,917 [INFO] main: IDUSDT | Bull:long(72%) Bear:short(80%)
+2026-06-23 07:19:11,118 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-23 07:19:11,118 [INFO] openai._base_client: Retrying request to /chat/completions in 0.442510 seconds
+2026-06-23 07:19:21,706 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-23 07:19:21,706 [INFO] openai._base_client: Retrying request to /chat/completions in 0.931145 seconds
+2026-06-23 07:19:32,789 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-23 07:19:32,790 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
+2026-06-23 07:19:32,790 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-06-23 07:19:32,790 [INFO] main: IDUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-23 07:19:32,790 [INFO] main: IDUSDT | RL adj=50.0%
+2026-06-23 07:19:36,624 [INFO] main: LABUSDT | Bull:long(70%) Bear:short(80%)
+2026-06-23 07:19:46,858 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-23 07:19:46,858 [INFO] openai._base_client: Retrying request to /chat/completions in 0.389216 seconds
+2026-06-23 07:19:57,270 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-23 07:19:57,271 [INFO] openai._base_client: Retrying request to /chat/completions in 0.865519 seconds
 ```
 
 ## Disk
@@ -6676,7 +6676,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       904Mi       339Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       905Mi       337Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
