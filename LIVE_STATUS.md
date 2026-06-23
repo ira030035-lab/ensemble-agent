@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-23 08:20:01 UTC
+Generated: 2026-06-23 08:30:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 284308 51560 ?        Ssl  Jun12   1:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.4 727768 134204 ?       Ssl  Jun16  15:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.4 730288 136548 ?       Ssl  Jun16  15:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 956.2685214859792,
+  "balance": 979.4022614659792,
   "positions": {
     "PEPEUSDT": {
       "id": "PAPER_PEPEUSDT_1782196923",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.4 727768 134204 ?       Ssl  Jun16  15:40 /opt/ensemble
       "opened_at": "2026-06-23T06:42:03.622151",
       "cost": 20.000000000003606,
       "notional": 100.00000000001803,
-      "leverage": 5
-    },
-    "TRUMPUSDT": {
-      "id": "PAPER_TRUMPUSDT_1782197124",
-      "symbol": "TRUMPUSDT",
-      "side": "short",
-      "entry_price": 1.787,
-      "qty": 55.9597,
-      "confidence": 90,
-      "opened_at": "2026-06-23T06:45:24.699526",
-      "cost": 19.999996779999996,
-      "notional": 99.99998389999999,
       "leverage": 5
     },
     "WLDUSDT": {
@@ -6627,20 +6615,32 @@ root     1488950  0.1  3.4 727768 134204 ?       Ssl  Jun16  15:40 /opt/ensemble
       "closed_at": "2026-06-23T08:17:46.287183",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_TRUMPUSDT_1782197124",
+      "symbol": "TRUMPUSDT",
+      "side": "short",
+      "entry_price": 1.787,
+      "qty": 55.9597,
+      "confidence": 90,
+      "opened_at": "2026-06-23T06:45:24.699526",
+      "cost": 19.999996779999996,
+      "notional": 99.99998389999999,
+      "leverage": 5,
+      "exit_price": 1.731,
+      "pnl_pct": 15.67,
+      "pnl_usdt": 3.13,
+      "closed_at": "2026-06-23T08:24:28.048013",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 16.268513313983178
+  "total_pnl": 19.40225651398317
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-23 08:11:33,953 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-23 08:11:33,953 [INFO] main: TNSRUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-23 08:11:37,750 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-23 08:11:37,751 [INFO] main: TNSRUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-23 08:11:37,751 [INFO] main: TNSRUSDT | RL adj=84.9%
-2026-06-23 08:11:37,762 [INFO] main: TNSRUSDT | Context score=-0.05 bias=0.05
 2026-06-23 08:11:37,762 [INFO] main: TNSRUSDT | regime BLOCK (volatile)
 2026-06-23 08:11:45,276 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-23 08:11:45,480 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -6665,6 +6665,12 @@ root     1488950  0.1  3.4 727768 134204 ?       Ssl  Jun16  15:40 /opt/ensemble
 2026-06-23 08:17:46,614 [INFO] positions: LOSS NEARUSDT long PnL:-2.72% reason:stop_loss
 2026-06-23 08:17:46,614 [INFO] positions: Lessons: The trade was based on a potential reversal due to extreme fear sentiment, oversold RSI, and low BB position, but it did not materialize. The stop loss was triggered, resulting in a 2.72% loss. This outcome suggests that sentiment and technical indicators are not always reliable predictors of price movement, especially in a trending down regime.
 2026-06-23 08:17:46,614 [INFO] rl: RL learned from long NEARUSDT: loss -2.72% | weights bull=0.851 bear=0.826 judge=1.324 threshold=66.31
+2026-06-23 08:24:28,046 [INFO] positions: TAKE-PROFIT TRUMPUSDT short PnL:3.13%
+2026-06-23 08:24:28,056 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT TRUMPUSDT @ 1.7310 PnL: 15.67% (+3.13 USDT) | Баланс: 979.40
+2026-06-23 08:24:28,360 [INFO] positions: OK TRUMPUSDT short PnL:3.13% reason:take_profit
+2026-06-23 08:24:28,360 [INFO] positions: Lessons: The trade was based on strong bearish conviction with numerous negative signals. It achieved a 3.13% profit, falling short of the expected 4% downside move. The 2:1 risk-reward ratio was not fully realized, but the trade still closed in profit at the take profit level.
+2026-06-23 08:24:28,360 [INFO] rl: RL learned from short TRUMPUSDT: profit 3.13% | weights bull=0.844 bear=0.833 judge=1.324 threshold=66.28
+2026-06-23 08:27:08,037 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6682,7 +6688,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       903Mi       337Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       911Mi       329Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
