@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-23 14:20:01 UTC
+Generated: 2026-06-23 14:30:01 UTC
 
 ## Services
 ```
@@ -6689,7 +6689,6 @@ root     1488950  0.1  3.4 730080 136388 ?       Ssl  Jun16  16:15 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-23 14:12:01,365 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 529 <none>"
 2026-06-23 14:12:01,366 [INFO] anthropic._base_client: Retrying request to /v1/messages in 0.400397 seconds
 2026-06-23 14:12:01,828 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-23 14:12:03,165 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 529 <none>"
@@ -6719,6 +6718,7 @@ root     1488950  0.1  3.4 730080 136388 ?       Ssl  Jun16  16:15 /opt/ensemble
 2026-06-23 14:12:28,776 [INFO] main: BTCUSDT | gate PASS (Judge 85/70 RL 95.0/66.22 slack=±3)
 2026-06-23 14:12:28,779 [INFO] positions: 2/3 rule: skip SHORT BTCUSDT (3/3 already short)
 2026-06-23 14:12:30,782 [INFO] main: Next scan in 30min (always-30min)
+2026-06-23 14:27:11,892 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6736,7 +6736,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       904Mi       317Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       916Mi       303Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
