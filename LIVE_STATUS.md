@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-23 01:20:01 UTC
+Generated: 2026-06-23 01:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50552 ?        Ssl  Jun12   1:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.4 729764 136048 ?       Ssl  Jun16  15:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.5 730760 136916 ?       Ssl  Jun16  15:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -6515,7 +6515,6 @@ root     1488950  0.1  3.4 729764 136048 ?       Ssl  Jun16  15:05 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-23 01:19:13,025 [INFO] main: TAOUSDT | Context score=-0.05 bias=0.05
 2026-06-23 01:19:13,026 [INFO] main: TAOUSDT | gate PASS (Judge 85/70 RL 95.1/66.23 slack=±3)
 2026-06-23 01:19:13,028 [INFO] positions: Max positions reached (5/5 dyn)
 2026-06-23 01:19:19,095 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -6545,6 +6544,7 @@ root     1488950  0.1  3.4 729764 136048 ?       Ssl  Jun16  15:05 /opt/ensemble
 2026-06-23 01:19:57,007 [INFO] main: BICOUSDT | Context score=-0.05 bias=0.05
 2026-06-23 01:19:57,007 [INFO] main: BICOUSDT | regime BLOCK (volatile)
 2026-06-23 01:19:59,070 [INFO] main: Next scan in 30min (always-30min)
+2026-06-23 01:27:03,463 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6562,7 +6562,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       907Mi       347Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       910Mi       343Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
