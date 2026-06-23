@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-23 08:10:01 UTC
+Generated: 2026-06-23 08:20:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 284308 51560 ?        Ssl  Jun12   1:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.5 730872 137180 ?       Ssl  Jun16  15:39 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.4 727768 134204 ?       Ssl  Jun16  15:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 938.9914737659792,
+  "balance": 956.2685214859792,
   "positions": {
-    "NEARUSDT": {
-      "id": "PAPER_NEARUSDT_1782181549",
-      "symbol": "NEARUSDT",
-      "side": "long",
-      "entry_price": 2.0419,
-      "qty": 48.974,
-      "confidence": 70,
-      "opened_at": "2026-06-23T02:25:49.413735",
-      "cost": 20.000002119999998,
-      "notional": 100.0000106,
-      "leverage": 5
-    },
     "PEPEUSDT": {
       "id": "PAPER_PEPEUSDT_1782196923",
       "symbol": "PEPEUSDT",
@@ -6621,44 +6609,62 @@ root     1488950  0.1  3.5 730872 137180 ?       Ssl  Jun16  15:39 /opt/ensemble
       "closed_at": "2026-06-23T06:48:27.792633",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_NEARUSDT_1782181549",
+      "symbol": "NEARUSDT",
+      "side": "long",
+      "entry_price": 2.0419,
+      "qty": 48.974,
+      "confidence": 70,
+      "opened_at": "2026-06-23T02:25:49.413735",
+      "cost": 20.000002119999998,
+      "notional": 100.0000106,
+      "leverage": 5,
+      "exit_price": 1.9863,
+      "pnl_pct": -13.61,
+      "pnl_usdt": -2.72,
+      "closed_at": "2026-06-23T08:17:46.287183",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 18.99146771398318
+  "total_pnl": 16.268513313983178
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-23 08:07:51,444 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-23 08:07:51,444 [INFO] openai._base_client: Retrying request to /chat/completions in 0.411462 seconds
-2026-06-23 08:08:01,871 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-23 08:08:01,871 [INFO] openai._base_client: Retrying request to /chat/completions in 0.986475 seconds
-2026-06-23 08:08:12,872 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-23 08:08:15,892 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-23 08:08:15,893 [INFO] main: XLMUSDT | Bull:flat(25%) Bear:short(72%)
-2026-06-23 08:08:29,696 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-23 08:08:29,696 [INFO] main: XLMUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-23 08:08:29,696 [INFO] main: XLMUSDT | RL adj=50.0%
-2026-06-23 08:08:36,995 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-23 08:08:43,453 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-23 08:08:43,454 [INFO] openai._base_client: Retrying request to /chat/completions in 0.485657 seconds
-2026-06-23 08:08:53,956 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-23 08:08:53,957 [INFO] openai._base_client: Retrying request to /chat/completions in 0.963974 seconds
-2026-06-23 08:09:04,945 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-23 08:09:09,454 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-23 08:09:09,455 [INFO] main: ETHUSDT | Bull:flat(0%) Bear:short(78%)
-2026-06-23 08:09:20,355 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-23 08:09:20,355 [INFO] openai._base_client: Retrying request to /chat/completions in 0.384826 seconds
-2026-06-23 08:09:30,755 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-23 08:09:30,756 [INFO] openai._base_client: Retrying request to /chat/completions in 0.828177 seconds
-2026-06-23 08:09:41,591 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-23 08:09:41,592 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
-2026-06-23 08:09:41,592 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
-2026-06-23 08:09:41,593 [INFO] main: ETHUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-23 08:09:41,593 [INFO] main: ETHUSDT | RL adj=50.0%
-2026-06-23 08:09:48,038 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-23 08:09:55,352 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-23 08:09:55,352 [INFO] openai._base_client: Retrying request to /chat/completions in 0.384810 seconds
+2026-06-23 08:11:33,953 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-23 08:11:33,953 [INFO] main: TNSRUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-23 08:11:37,750 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-23 08:11:37,751 [INFO] main: TNSRUSDT | Judge:SHORT conf=75% size=15.0%
+2026-06-23 08:11:37,751 [INFO] main: TNSRUSDT | RL adj=84.9%
+2026-06-23 08:11:37,762 [INFO] main: TNSRUSDT | Context score=-0.05 bias=0.05
+2026-06-23 08:11:37,762 [INFO] main: TNSRUSDT | regime BLOCK (volatile)
+2026-06-23 08:11:45,276 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-23 08:11:45,480 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-23 08:11:45,481 [INFO] main: SUIUSDT | Bull:flat(15%) Bear:short(75%)
+2026-06-23 08:11:51,340 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-23 08:11:51,341 [INFO] main: SUIUSDT | Judge:SHORT conf=75% size=15.0%
+2026-06-23 08:11:51,341 [INFO] main: SUIUSDT | RL adj=84.2%
+2026-06-23 08:11:51,353 [INFO] main: SUIUSDT | Context score=-0.05 bias=0.05
+2026-06-23 08:11:51,353 [INFO] main: SUIUSDT | gate PASS (Judge 75/70 RL 84.2/66.26 slack=±3)
+2026-06-23 08:11:51,354 [INFO] positions: 2/3 rule: skip SHORT SUIUSDT (3/4 already short)
+2026-06-23 08:11:59,010 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-23 08:11:59,068 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-23 08:11:59,069 [INFO] main: ENAUSDT | Bull:flat(15%) Bear:short(75%)
+2026-06-23 08:12:01,925 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-23 08:12:01,926 [INFO] main: ENAUSDT | Judge:SHORT conf=85% size=15.0%
+2026-06-23 08:12:01,926 [INFO] main: ENAUSDT | RL adj=94.2%
+2026-06-23 08:12:01,937 [INFO] main: ENAUSDT | Context score=-0.05 bias=0.05
+2026-06-23 08:12:01,937 [INFO] main: ENAUSDT | regime BLOCK (volatile)
+2026-06-23 08:12:04,003 [INFO] main: Next scan in 30min (always-30min)
+2026-06-23 08:17:46,285 [INFO] positions: STOP_LOSS NEARUSDT long PnL:-2.72%
+2026-06-23 08:17:46,294 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG NEARUSDT @ 1.9863 PnL: -13.61% (-2.72 USDT) | Баланс: 956.27
+2026-06-23 08:17:46,614 [INFO] positions: LOSS NEARUSDT long PnL:-2.72% reason:stop_loss
+2026-06-23 08:17:46,614 [INFO] positions: Lessons: The trade was based on a potential reversal due to extreme fear sentiment, oversold RSI, and low BB position, but it did not materialize. The stop loss was triggered, resulting in a 2.72% loss. This outcome suggests that sentiment and technical indicators are not always reliable predictors of price movement, especially in a trending down regime.
+2026-06-23 08:17:46,614 [INFO] rl: RL learned from long NEARUSDT: loss -2.72% | weights bull=0.851 bear=0.826 judge=1.324 threshold=66.31
 ```
 
 ## Disk
@@ -6676,7 +6682,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       908Mi       332Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       903Mi       337Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
