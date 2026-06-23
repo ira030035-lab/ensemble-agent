@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-23 19:10:01 UTC
+Generated: 2026-06-23 19:20:01 UTC
 
 ## Services
 ```
@@ -6713,9 +6713,6 @@ root     1488950  0.1  3.4 727772 134444 ?       Ssl  Jun16  16:45 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-23 18:49:26,340 [INFO] main: WLDUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-23 18:49:26,340 [INFO] main: WLDUSDT | RL adj=50.0%
-2026-06-23 18:49:33,240 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-23 18:49:33,242 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
 2026-06-23 18:49:33,944 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-23 18:49:33,946 [INFO] main: BCHUSDT | Bull:flat(15%) Bear:short(70%)
@@ -6743,6 +6740,9 @@ root     1488950  0.1  3.4 727772 134444 ?       Ssl  Jun16  16:45 /opt/ensemble
 2026-06-23 18:49:55,177 [INFO] main: TRUMPUSDT | Context score=-0.1 bias=0.1
 2026-06-23 18:49:55,177 [INFO] main: TRUMPUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-23 18:49:57,245 [INFO] main: Next scan in 30min (always-30min)
+2026-06-23 19:19:57,258 [INFO] main: Scanning 28 symbols...
+2026-06-23 19:19:59,342 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-06-23 19:19:59,764 [INFO] main: ALLOUSDT | Bull:long(70%) Bear:short(80%)
 ```
 
 ## Disk
@@ -6760,7 +6760,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       904Mi       302Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       906Mi       301Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
