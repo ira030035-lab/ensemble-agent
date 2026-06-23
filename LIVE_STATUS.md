@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-23 11:30:01 UTC
+Generated: 2026-06-23 11:40:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1488950  0.1  3.4 730352 136660 ?       Ssl  Jun16  15:58 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 959.8971579499793,
+  "balance": 980.3802674181966,
   "positions": {
-    "PEPEUSDT": {
-      "id": "PAPER_PEPEUSDT_1782196923",
-      "symbol": "PEPEUSDT",
-      "side": "short",
-      "entry_price": 2.7323e-06,
-      "qty": 36599202.1374,
-      "confidence": 85,
-      "opened_at": "2026-06-23T06:42:03.622151",
-      "cost": 20.000000000003606,
-      "notional": 100.00000000001803,
-      "leverage": 5
-    },
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1782204137",
       "symbol": "XRPUSDT",
@@ -6663,19 +6651,32 @@ root     1488950  0.1  3.4 730352 136660 ?       Ssl  Jun16  15:58 /opt/ensemble
       "closed_at": "2026-06-23T08:41:48.558143",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_PEPEUSDT_1782196923",
+      "symbol": "PEPEUSDT",
+      "side": "short",
+      "entry_price": 2.7323e-06,
+      "qty": 36599202.1374,
+      "confidence": 85,
+      "opened_at": "2026-06-23T06:42:03.622151",
+      "cost": 20.000000000003606,
+      "notional": 100.00000000001803,
+      "leverage": 5,
+      "exit_price": 2.7191e-06,
+      "pnl_pct": 2.42,
+      "pnl_usdt": 0.48,
+      "closed_at": "2026-06-23T11:30:36.270631",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 19.89696809398317
+  "total_pnl": 20.380077562196853
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-23 11:14:04,616 [INFO] main: BTWUSDT | Context score=-0.0 bias=0.05
-2026-06-23 11:14:04,616 [INFO] main: BTWUSDT | regime BLOCK (volatile)
-2026-06-23 11:14:11,566 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-23 11:14:11,583 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-23 11:14:11,584 [INFO] main: XLMUSDT | Bull:flat(15%) Bear:short(75%)
 2026-06-23 11:14:14,605 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-23 11:14:14,606 [INFO] main: XLMUSDT | Judge:SHORT conf=70% size=15.0%
 2026-06-23 11:14:14,606 [INFO] main: XLMUSDT | RL adj=79.4%
@@ -6701,6 +6702,11 @@ root     1488950  0.1  3.4 730352 136660 ?       Ssl  Jun16  15:58 /opt/ensemble
 2026-06-23 11:14:40,073 [INFO] positions: 2/3 rule: skip SHORT NEARUSDT (3/3 already short)
 2026-06-23 11:14:42,076 [INFO] main: Next scan in 30min (always-30min)
 2026-06-23 11:27:10,005 [INFO] main: Symbols: 30
+2026-06-23 11:30:36,269 [INFO] positions: BREAKEVEN_STOP PEPEUSDT short PnL:0.48%
+2026-06-23 11:30:36,277 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT PEPEUSDT @ 0.0000 PnL: 2.42% (+0.48 USDT) | Баланс: 980.38
+2026-06-23 11:30:36,664 [INFO] positions: OK PEPEUSDT short PnL:0.48% reason:breakeven_stop
+2026-06-23 11:30:36,664 [INFO] positions: Lessons: The trade was a short position in a trending_down regime that closed at breakeven_stop with a 0.48% profit. The initial reasoning was based on a strong bear case with extreme fear in market sentiment and indicators pointing to a downtrend. The outcome suggests that the expected strong bearish move did not materialize, resulting in a minimal profit.
+2026-06-23 11:30:36,664 [INFO] rl: RL learned from short PEPEUSDT: profit 0.48% | weights bull=0.841 bear=0.835 judge=1.324 threshold=66.22
 ```
 
 ## Disk
@@ -6718,7 +6724,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       911Mi       320Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       906Mi       324Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
