@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-24 11:40:01 UTC
+Generated: 2026-06-24 11:50:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50532 ?        Ssl  Jun12   1:08 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.4 730332 136380 ?       Ssl  Jun16  18:30 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.4 730332 136380 ?       Ssl  Jun16  18:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 979.7527819189966,
+  "balance": 999.0924127189966,
   "positions": {
-    "BNBUSDT": {
-      "id": "PAPER_BNBUSDT_1782215101",
-      "symbol": "BNBUSDT",
-      "side": "short",
-      "entry_price": 573.68,
-      "qty": 0.1743,
-      "confidence": 85,
-      "opened_at": "2026-06-23T11:45:01.373247",
-      "cost": 19.9984848,
-      "notional": 99.992424,
-      "leverage": 5
-    },
     "DOGEUSDT": {
       "id": "PAPER_DOGEUSDT_1782246614",
       "symbol": "DOGEUSDT",
@@ -6723,19 +6711,32 @@ root     1488950  0.1  3.4 730332 136380 ?       Ssl  Jun16  18:30 /opt/ensemble
       "closed_at": "2026-06-24T08:42:41.225260",
       "reason": "max_hold",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BNBUSDT_1782215101",
+      "symbol": "BNBUSDT",
+      "side": "short",
+      "entry_price": 573.68,
+      "qty": 0.1743,
+      "confidence": 85,
+      "opened_at": "2026-06-23T11:45:01.373247",
+      "cost": 19.9984848,
+      "notional": 99.992424,
+      "leverage": 5,
+      "exit_price": 577.46,
+      "pnl_pct": -3.29,
+      "pnl_usdt": -0.66,
+      "closed_at": "2026-06-24T11:45:17.379779",
+      "reason": "max_hold",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 19.75126641819686
+  "total_pnl": 19.092412418196844
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-24 11:28:48,837 [INFO] main: HYPEUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-06-24 11:28:56,039 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-24 11:28:56,329 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-24 11:28:56,330 [INFO] main: SLXUSDT | Bull:long(62%) Bear:short(80%)
-2026-06-24 11:28:58,880 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-24 11:28:58,881 [INFO] main: SLXUSDT | Judge:LONG conf=65% size=15.0%
 2026-06-24 11:28:58,881 [INFO] main: SLXUSDT | RL adj=62.6%
 2026-06-24 11:28:58,891 [INFO] main: SLXUSDT | Context score=-0.0 bias=0.1
@@ -6761,6 +6762,11 @@ root     1488950  0.1  3.4 730332 136380 ?       Ssl  Jun16  18:30 /opt/ensemble
 2026-06-24 11:29:27,028 [INFO] main: TAOUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-24 11:29:27,028 [INFO] main: TAOUSDT | RL adj=50.0%
 2026-06-24 11:29:29,029 [INFO] main: Next scan in 30min (always-30min)
+2026-06-24 11:45:17,378 [INFO] positions: MAX_HOLD BNBUSDT short hold:24.0h
+2026-06-24 11:45:17,386 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT BNBUSDT @ 577.4600 PnL: -3.29% (-0.66 USDT) | Баланс: 999.09
+2026-06-24 11:45:17,714 [INFO] positions: LOSS BNBUSDT short PnL:-0.66% reason:max_hold
+2026-06-24 11:45:17,714 [INFO] positions: Lessons: The trade was based on bear sentiment and bearish market structure in a trending down regime, expecting a 4% downside move. However, the trade only resulted in a 0.66% loss, failing to meet the expected outcome. This suggests that the bear sentiment and market structure were not strong enough to drive the expected price movement.
+2026-06-24 11:45:17,714 [INFO] rl: RL learned from short BNBUSDT: loss -0.66% | weights bull=0.832 bear=0.842 judge=1.325 threshold=66.26
 ```
 
 ## Disk
@@ -6778,7 +6784,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       896Mi       362Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       893Mi       364Mi       4.8Mi       2.8Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
