@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-24 20:20:01 UTC
+Generated: 2026-06-24 20:30:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1488950  0.1  3.5 730900 137464 ?       Ssl  Jun16  19:31 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 956.7696959161965,
+  "balance": 974.7300965561965,
   "positions": {
-    "SUIUSDT": {
-      "id": "PAPER_SUIUSDT_1782327786",
-      "symbol": "SUIUSDT",
-      "side": "short",
-      "entry_price": 0.6717,
-      "qty": 148.876,
-      "confidence": 70,
-      "opened_at": "2026-06-24T19:03:06.749150",
-      "cost": 20.00000184,
-      "notional": 100.0000092,
-      "leverage": 5
-    },
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1782327814",
       "symbol": "BTCUSDT",
@@ -6771,20 +6759,32 @@ root     1488950  0.1  3.5 730900 137464 ?       Ssl  Jun16  19:31 /opt/ensemble
       "closed_at": "2026-06-24T13:46:03.270340",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_SUIUSDT_1782327786",
+      "symbol": "SUIUSDT",
+      "side": "short",
+      "entry_price": 0.6717,
+      "qty": 148.876,
+      "confidence": 70,
+      "opened_at": "2026-06-24T19:03:06.749150",
+      "cost": 20.00000184,
+      "notional": 100.0000092,
+      "leverage": 5,
+      "exit_price": 0.6854,
+      "pnl_pct": -10.2,
+      "pnl_usdt": -2.04,
+      "closed_at": "2026-06-24T20:26:40.308257",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 17.05756569819684
+  "total_pnl": 15.017964498196832
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-24 20:14:47,433 [INFO] main: HYPEUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-06-24 20:14:53,766 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-24 20:14:54,753 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-24 20:14:54,755 [INFO] main: LINKUSDT | Bull:long(62%) Bear:short(70%)
-2026-06-24 20:14:57,079 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-24 20:14:57,080 [INFO] main: LINKUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-24 20:14:57,080 [INFO] main: LINKUSDT | RL adj=55.0%
 2026-06-24 20:15:04,095 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-24 20:15:04,172 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -6809,6 +6809,12 @@ root     1488950  0.1  3.5 730900 137464 ?       Ssl  Jun16  19:31 /opt/ensemble
 2026-06-24 20:15:24,964 [INFO] main: IDUSDT | Context score=-0.0 bias=0.1
 2026-06-24 20:15:24,964 [INFO] main: IDUSDT | regime BLOCK (volatile)
 2026-06-24 20:15:26,966 [INFO] main: Next scan in 30min (always-30min)
+2026-06-24 20:26:40,306 [INFO] positions: STOP_LOSS SUIUSDT short PnL:-2.04%
+2026-06-24 20:26:40,315 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT SUIUSDT @ 0.6854 PnL: -10.20% (-2.04 USDT) | Баланс: 974.73
+2026-06-24 20:26:40,607 [INFO] positions: LOSS SUIUSDT short PnL:-2.04% reason:stop_loss
+2026-06-24 20:26:40,607 [INFO] positions: Lessons: The short trade on SUIUSDT resulted in a 2.04% loss due to a stop loss. The original reasoning was based on bearish market conditions and a weaker bull trend, but the expected 4% downside move did not occur. This trade highlights the importance of adapting to changing market conditions and reevaluating trade signals.
+2026-06-24 20:26:40,607 [INFO] rl: RL learned from short SUIUSDT: loss -2.04% | weights bull=0.831 bear=0.841 judge=1.328 threshold=66.36
+2026-06-24 20:27:32,413 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6826,7 +6832,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       910Mi       265Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       924Mi       251Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
