@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-24 20:40:01 UTC
+Generated: 2026-06-24 20:50:01 UTC
 
 ## Services
 ```
@@ -12,27 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50540 ?        Ssl  Jun12   1:09 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.5 730900 137464 ?       Ssl  Jun16  19:32 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.5 730380 136944 ?       Ssl  Jun16  19:35 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 992.9645345561964,
-  "positions": {
-    "ADAUSDT": {
-      "id": "PAPER_ADAUSDT_1782327853",
-      "symbol": "ADAUSDT",
-      "side": "short",
-      "entry_price": 0.1417,
-      "qty": 705.7163,
-      "confidence": 80,
-      "opened_at": "2026-06-24T19:04:13.945513",
-      "cost": 19.999999942,
-      "notional": 99.99999971,
-      "leverage": 5
-    }
-  },
+  "balance": 1010.8473855981964,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -6783,44 +6770,62 @@ root     1488950  0.1  3.5 730900 137464 ?       Ssl  Jun16  19:32 /opt/ensemble
       "closed_at": "2026-06-24T20:32:17.213059",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ADAUSDT_1782327853",
+      "symbol": "ADAUSDT",
+      "side": "short",
+      "entry_price": 0.1417,
+      "qty": 705.7163,
+      "confidence": 80,
+      "opened_at": "2026-06-24T19:04:13.945513",
+      "cost": 19.999999942,
+      "notional": 99.99999971,
+      "leverage": 5,
+      "exit_price": 0.1447,
+      "pnl_pct": -10.59,
+      "pnl_usdt": -2.12,
+      "closed_at": "2026-06-24T20:46:56.659283",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 12.96453449819683
+  "total_pnl": 10.847385598196828
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-24 20:15:07,161 [INFO] main: ALLOUSDT | Judge:LONG conf=70% size=12.0%
-2026-06-24 20:15:07,161 [INFO] main: ALLOUSDT | RL adj=69.5%
-2026-06-24 20:15:07,172 [INFO] main: ALLOUSDT | Context score=-0.0 bias=0.1
-2026-06-24 20:15:07,172 [INFO] main: ALLOUSDT | regime BLOCK (volatile)
-2026-06-24 20:15:13,350 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-24 20:15:13,486 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-24 20:15:13,488 [INFO] main: WLDUSDT | Bull:flat(35%) Bear:short(80%)
-2026-06-24 20:15:15,578 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-24 20:15:15,579 [INFO] main: WLDUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-24 20:15:15,580 [INFO] main: WLDUSDT | RL adj=55.0%
-2026-06-24 20:15:21,985 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-24 20:15:22,364 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-24 20:15:22,365 [INFO] main: IDUSDT | Bull:flat(25%) Bear:short(60%)
-2026-06-24 20:15:24,953 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-24 20:15:24,954 [INFO] main: IDUSDT | Judge:LONG conf=60% size=10.0%
-2026-06-24 20:15:24,954 [INFO] main: IDUSDT | RL adj=52.4%
-2026-06-24 20:15:24,964 [INFO] main: IDUSDT | Context score=-0.0 bias=0.1
-2026-06-24 20:15:24,964 [INFO] main: IDUSDT | regime BLOCK (volatile)
-2026-06-24 20:15:26,966 [INFO] main: Next scan in 30min (always-30min)
-2026-06-24 20:26:40,306 [INFO] positions: STOP_LOSS SUIUSDT short PnL:-2.04%
-2026-06-24 20:26:40,315 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT SUIUSDT @ 0.6854 PnL: -10.20% (-2.04 USDT) | Баланс: 974.73
-2026-06-24 20:26:40,607 [INFO] positions: LOSS SUIUSDT short PnL:-2.04% reason:stop_loss
-2026-06-24 20:26:40,607 [INFO] positions: Lessons: The short trade on SUIUSDT resulted in a 2.04% loss due to a stop loss. The original reasoning was based on bearish market conditions and a weaker bull trend, but the expected 4% downside move did not occur. This trade highlights the importance of adapting to changing market conditions and reevaluating trade signals.
-2026-06-24 20:26:40,607 [INFO] rl: RL learned from short SUIUSDT: loss -2.04% | weights bull=0.831 bear=0.841 judge=1.328 threshold=66.36
-2026-06-24 20:27:32,413 [INFO] main: Symbols: 30
-2026-06-24 20:32:17,211 [INFO] positions: STOP_LOSS BTCUSDT short PnL:-2.02%
-2026-06-24 20:32:17,220 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT BTCUSDT @ 60878.1000 PnL: -10.12% (-2.05 USDT) | Баланс: 992.96
-2026-06-24 20:32:17,661 [INFO] positions: LOSS BTCUSDT short PnL:-2.02% reason:stop_loss
-2026-06-24 20:32:17,661 [INFO] positions: Lessons: The trade was based on a bear sentiment assessment of 75%, expecting a downtrend with at least 4% downside. However, the trade was stopped out for a loss of 2.02%, failing to reach the expected downside target. This outcome suggests that the bear sentiment assessment may have been overly pessimistic or that market conditions changed rapidly.
-2026-06-24 20:32:17,662 [INFO] rl: RL learned from short BTCUSDT: loss -2.02% | weights bull=0.835 bear=0.837 judge=1.329 threshold=66.41
+2026-06-24 20:49:22,520 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-24 20:49:23,251 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-24 20:49:23,252 [INFO] main: WLDUSDT | Bull:flat(25%) Bear:short(75%)
+2026-06-24 20:49:26,485 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-24 20:49:26,486 [INFO] main: WLDUSDT | Judge:SHORT conf=78% size=15.0%
+2026-06-24 20:49:26,486 [INFO] main: WLDUSDT | RL adj=87.4%
+2026-06-24 20:49:26,497 [INFO] main: WLDUSDT | Context score=-0.1 bias=0.1
+2026-06-24 20:49:26,497 [INFO] main: WLDUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-06-24 20:49:33,555 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-24 20:49:34,427 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-24 20:49:34,428 [INFO] main: XLMUSDT | Bull:flat(25%) Bear:short(70%)
+2026-06-24 20:49:39,412 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-24 20:49:39,414 [INFO] main: XLMUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-24 20:49:39,414 [INFO] main: XLMUSDT | RL adj=55.0%
+2026-06-24 20:49:45,113 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-24 20:49:46,700 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-24 20:49:46,701 [INFO] main: SYNUSDT | Bull:long(62%) Bear:short(70%)
+2026-06-24 20:49:49,349 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-24 20:49:49,350 [INFO] main: SYNUSDT | Judge:LONG conf=75% size=15.0%
+2026-06-24 20:49:49,350 [INFO] main: SYNUSDT | RL adj=74.1%
+2026-06-24 20:49:49,363 [INFO] main: SYNUSDT | Context score=-0.0 bias=0.1
+2026-06-24 20:49:49,363 [INFO] main: SYNUSDT | regime BLOCK (volatile)
+2026-06-24 20:49:55,555 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-24 20:49:55,886 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-24 20:49:55,887 [INFO] main: ZECUSDT | Bull:flat(15%) Bear:short(70%)
+2026-06-24 20:49:58,295 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-24 20:49:58,296 [INFO] main: ZECUSDT | Judge:SHORT conf=70% size=15.0%
+2026-06-24 20:49:58,296 [INFO] main: ZECUSDT | RL adj=78.7%
+2026-06-24 20:49:58,309 [INFO] main: ZECUSDT | Context score=-0.1 bias=0.1
+2026-06-24 20:49:58,309 [INFO] main: ZECUSDT | side-bias BLOCK (market bullish, short forbidden)
 ```
 
 ## Disk
@@ -6838,7 +6843,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       908Mi       267Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       912Mi       263Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
