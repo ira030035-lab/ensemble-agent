@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-24 19:20:01 UTC
+Generated: 2026-06-24 19:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50540 ?        Ssl  Jun12   1:09 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.5 730368 136756 ?       Ssl  Jun16  19:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.5 730368 136756 ?       Ssl  Jun16  19:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -6779,7 +6779,6 @@ root     1488950  0.1  3.5 730368 136756 ?       Ssl  Jun16  19:24 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-24 19:04:47,719 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-24 19:04:49,009 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-24 19:04:49,010 [INFO] main: AAVEUSDT | Bull:long(62%) Bear:short(60%)
 2026-06-24 19:04:50,953 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -6809,6 +6808,7 @@ root     1488950  0.1  3.5 730368 136756 ?       Ssl  Jun16  19:24 /opt/ensemble
 2026-06-24 19:05:20,531 [INFO] main: ETHUSDT | gate PASS (Judge 85/70 RL 95.8/66.31 slack=±3)
 2026-06-24 19:05:20,535 [INFO] positions: 2/3 rule: skip SHORT ETHUSDT (3/3 already short)
 2026-06-24 19:05:22,536 [INFO] main: Next scan in 30min (always-30min)
+2026-06-24 19:27:31,747 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6826,7 +6826,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       909Mi       269Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       917Mi       260Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
