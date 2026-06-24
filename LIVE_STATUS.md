@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-24 20:30:01 UTC
+Generated: 2026-06-24 20:40:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50540 ?        Ssl  Jun12   1:09 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.5 730900 137464 ?       Ssl  Jun16  19:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.5 730900 137464 ?       Ssl  Jun16  19:32 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 974.7300965561965,
+  "balance": 992.9645345561964,
   "positions": {
-    "BTCUSDT": {
-      "id": "PAPER_BTCUSDT_1782327814",
-      "symbol": "BTCUSDT",
-      "side": "short",
-      "entry_price": 59670.2,
-      "qty": 0.0017,
-      "confidence": 85,
-      "opened_at": "2026-06-24T19:03:34.238571",
-      "cost": 20.287867999999996,
-      "notional": 101.43933999999999,
-      "leverage": 5
-    },
     "ADAUSDT": {
       "id": "PAPER_ADAUSDT_1782327853",
       "symbol": "ADAUSDT",
@@ -6777,19 +6765,32 @@ root     1488950  0.1  3.5 730900 137464 ?       Ssl  Jun16  19:31 /opt/ensemble
       "closed_at": "2026-06-24T20:26:40.308257",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_BTCUSDT_1782327814",
+      "symbol": "BTCUSDT",
+      "side": "short",
+      "entry_price": 59670.2,
+      "qty": 0.0017,
+      "confidence": 85,
+      "opened_at": "2026-06-24T19:03:34.238571",
+      "cost": 20.287867999999996,
+      "notional": 101.43933999999999,
+      "leverage": 5,
+      "exit_price": 60878.1,
+      "pnl_pct": -10.12,
+      "pnl_usdt": -2.05,
+      "closed_at": "2026-06-24T20:32:17.213059",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 15.017964498196832
+  "total_pnl": 12.96453449819683
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-24 20:14:57,080 [INFO] main: LINKUSDT | RL adj=55.0%
-2026-06-24 20:15:04,095 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-24 20:15:04,172 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-24 20:15:04,174 [INFO] main: ALLOUSDT | Bull:long(62%) Bear:short(65%)
-2026-06-24 20:15:07,160 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-24 20:15:07,161 [INFO] main: ALLOUSDT | Judge:LONG conf=70% size=12.0%
 2026-06-24 20:15:07,161 [INFO] main: ALLOUSDT | RL adj=69.5%
 2026-06-24 20:15:07,172 [INFO] main: ALLOUSDT | Context score=-0.0 bias=0.1
@@ -6815,6 +6816,11 @@ root     1488950  0.1  3.5 730900 137464 ?       Ssl  Jun16  19:31 /opt/ensemble
 2026-06-24 20:26:40,607 [INFO] positions: Lessons: The short trade on SUIUSDT resulted in a 2.04% loss due to a stop loss. The original reasoning was based on bearish market conditions and a weaker bull trend, but the expected 4% downside move did not occur. This trade highlights the importance of adapting to changing market conditions and reevaluating trade signals.
 2026-06-24 20:26:40,607 [INFO] rl: RL learned from short SUIUSDT: loss -2.04% | weights bull=0.831 bear=0.841 judge=1.328 threshold=66.36
 2026-06-24 20:27:32,413 [INFO] main: Symbols: 30
+2026-06-24 20:32:17,211 [INFO] positions: STOP_LOSS BTCUSDT short PnL:-2.02%
+2026-06-24 20:32:17,220 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT BTCUSDT @ 60878.1000 PnL: -10.12% (-2.05 USDT) | Баланс: 992.96
+2026-06-24 20:32:17,661 [INFO] positions: LOSS BTCUSDT short PnL:-2.02% reason:stop_loss
+2026-06-24 20:32:17,661 [INFO] positions: Lessons: The trade was based on a bear sentiment assessment of 75%, expecting a downtrend with at least 4% downside. However, the trade was stopped out for a loss of 2.02%, failing to reach the expected downside target. This outcome suggests that the bear sentiment assessment may have been overly pessimistic or that market conditions changed rapidly.
+2026-06-24 20:32:17,662 [INFO] rl: RL learned from short BTCUSDT: loss -2.02% | weights bull=0.835 bear=0.837 judge=1.329 threshold=66.41
 ```
 
 ## Disk
@@ -6832,7 +6838,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       924Mi       251Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       908Mi       267Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
