@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-24 17:20:01 UTC
+Generated: 2026-06-24 17:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 284308 51548 ?        Ssl  Jun12   1:08 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.4 728068 134188 ?       Ssl  Jun16  19:12 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.4 730600 136224 ?       Ssl  Jun16  19:12 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -6742,14 +6742,6 @@ root     1488950  0.1  3.4 728068 134188 ?       Ssl  Jun16  19:12 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-24 17:19:27,418 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-24 17:19:29,167 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-24 17:19:29,169 [INFO] main: DOGEUSDT | Bull:flat(15%) Bear:short(85%)
-2026-06-24 17:19:30,955 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-24 17:19:30,956 [INFO] main: DOGEUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-24 17:19:30,956 [INFO] main: DOGEUSDT | RL adj=50.0%
-2026-06-24 17:19:36,583 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-24 17:19:37,436 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-24 17:19:37,437 [INFO] main: ZECUSDT | Bull:flat(15%) Bear:short(75%)
 2026-06-24 17:19:39,449 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-24 17:19:39,450 [INFO] main: ZECUSDT | Judge:SHORT conf=75% size=15.0%
@@ -6772,6 +6764,14 @@ root     1488950  0.1  3.4 728068 134188 ?       Ssl  Jun16  19:12 /opt/ensemble
 2026-06-24 17:19:57,822 [INFO] main: ENAUSDT | RL adj=94.5%
 2026-06-24 17:19:57,834 [INFO] main: ENAUSDT | Context score=-0.1 bias=0.1
 2026-06-24 17:19:57,834 [INFO] main: ENAUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-06-24 17:20:04,913 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-24 17:20:05,124 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-24 17:20:05,125 [INFO] main: SLXUSDT | Bull:long(62%) Bear:short(70%)
+2026-06-24 17:20:07,790 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-24 17:20:07,791 [INFO] main: SLXUSDT | Judge:HOLD conf=45% size=0.0%
+2026-06-24 17:20:07,791 [INFO] main: SLXUSDT | RL adj=45.0%
+2026-06-24 17:20:09,793 [INFO] main: Next scan in 30min (always-30min)
+2026-06-24 17:27:30,184 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6789,7 +6789,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       927Mi       258Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       923Mi       262Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
