@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-24 22:10:01 UTC
+Generated: 2026-06-24 22:20:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50540 ?        Ssl  Jun12   1:09 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.4 728068 134780 ?       Ssl  Jun16  19:43 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.4 728324 134788 ?       Ssl  Jun16  19:43 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 950.8480534689965,
+  "balance": 968.7901066689965,
   "positions": {
     "DOGEUSDT": {
       "id": "PAPER_DOGEUSDT_1782336034",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.4 728068 134780 ?       Ssl  Jun16  19:43 /opt/ensemble
       "opened_at": "2026-06-24T21:24:05.422947",
       "cost": 19.999998427599998,
       "notional": 99.999992138,
-      "leverage": 5
-    },
-    "AAVEUSDT": {
-      "id": "PAPER_AAVEUSDT_1782336275",
-      "symbol": "AAVEUSDT",
-      "side": "short",
-      "entry_price": 77.77,
-      "qty": 1.2858,
-      "confidence": 80,
-      "opened_at": "2026-06-24T21:24:35.376922",
-      "cost": 19.999333200000002,
-      "notional": 99.996666,
       "leverage": 5
     }
   },
@@ -6825,19 +6813,32 @@ root     1488950  0.1  3.4 728068 134780 ?       Ssl  Jun16  19:43 /opt/ensemble
       "closed_at": "2026-06-24T20:46:56.659283",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_AAVEUSDT_1782336275",
+      "symbol": "AAVEUSDT",
+      "side": "short",
+      "entry_price": 77.77,
+      "qty": 1.2858,
+      "confidence": 80,
+      "opened_at": "2026-06-24T21:24:35.376922",
+      "cost": 19.999333200000002,
+      "notional": 99.996666,
+      "leverage": 5,
+      "exit_price": 79.37,
+      "pnl_pct": -10.29,
+      "pnl_usdt": -2.06,
+      "closed_at": "2026-06-24T22:11:18.769133",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 10.847385598196828
+  "total_pnl": 8.790105598196817
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-24 21:59:27,019 [INFO] main: BEATUSDT | RL adj=85.0%
-2026-06-24 21:59:27,040 [INFO] main: BEATUSDT | Context score=-0.05 bias=0.05
-2026-06-24 21:59:27,040 [INFO] main: BEATUSDT | regime BLOCK (volatile)
-2026-06-24 21:59:33,487 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-24 21:59:34,597 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-24 21:59:34,598 [INFO] main: BNBUSDT | Bull:flat(25%) Bear:short(75%)
 2026-06-24 21:59:37,059 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-24 21:59:37,061 [INFO] main: BNBUSDT | Judge:SHORT conf=85% size=15.0%
@@ -6863,6 +6864,11 @@ root     1488950  0.1  3.4 728068 134780 ?       Ssl  Jun16  19:43 /opt/ensemble
 2026-06-24 21:59:56,114 [INFO] main: WLDUSDT | Context score=-0.0 bias=0.05
 2026-06-24 21:59:56,115 [INFO] main: WLDUSDT | regime BLOCK (volatile)
 2026-06-24 21:59:58,210 [INFO] main: Next scan in 30min (always-30min)
+2026-06-24 22:11:18,766 [INFO] positions: STOP_LOSS AAVEUSDT short PnL:-2.06%
+2026-06-24 22:11:18,784 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT AAVEUSDT @ 79.3700 PnL: -10.29% (-2.06 USDT) | Баланс: 968.79
+2026-06-24 22:11:19,094 [INFO] positions: LOSS AAVEUSDT short PnL:-2.06% reason:stop_loss
+2026-06-24 22:11:19,095 [INFO] positions: Lessons: The trade was closed at a 2.06% loss due to hitting the stop loss. The original reasoning was based on bearish sentiment and high RSI, but the expected 4% downside move did not materialize. This trade highlights the importance of adjusting stop losses and take profits according to changing market conditions to maintain a favorable risk-reward ratio.
+2026-06-24 22:11:19,095 [INFO] rl: RL learned from short AAVEUSDT: loss -2.06% | weights bull=0.842 bear=0.828 judge=1.331 threshold=66.51
 ```
 
 ## Disk
@@ -6880,7 +6886,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       918Mi       254Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       907Mi       265Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
