@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-24 02:40:01 UTC
+Generated: 2026-06-24 02:50:01 UTC
 
 ## Services
 ```
@@ -6725,11 +6725,6 @@ root     1488950  0.1  3.4 729268 135936 ?       Ssl  Jun16  17:31 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-24 02:19:17,056 [INFO] main: XLMUSDT | RL adj=84.5%
-2026-06-24 02:19:17,067 [INFO] main: XLMUSDT | Context score=-0.1 bias=0.1
-2026-06-24 02:19:17,067 [INFO] main: XLMUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-06-24 02:19:22,702 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-24 02:19:24,530 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-24 02:19:24,532 [INFO] main: AAVEUSDT | Bull:flat(15%) Bear:short(85%)
 2026-06-24 02:19:28,316 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-24 02:19:28,317 [INFO] main: AAVEUSDT | Judge:SHORT conf=85% size=15.0%
@@ -6755,6 +6750,11 @@ root     1488950  0.1  3.4 729268 135936 ?       Ssl  Jun16  17:31 /opt/ensemble
 2026-06-24 02:19:52,957 [INFO] main: FOLKSUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-24 02:19:55,044 [INFO] main: Next scan in 30min (always-30min)
 2026-06-24 02:27:20,214 [INFO] main: Symbols: 30
+2026-06-24 02:49:55,055 [INFO] main: Scanning 27 symbols...
+2026-06-24 02:49:56,436 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-06-24 02:50:00,009 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-24 02:50:00,174 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-24 02:50:00,175 [INFO] main: XLMUSDT | Bull:flat(15%) Bear:short(100%)
 ```
 
 ## Disk
@@ -6772,7 +6772,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       909Mi       276Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       912Mi       273Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
