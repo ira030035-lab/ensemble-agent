@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-24 02:20:01 UTC
+Generated: 2026-06-24 02:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 284308 51548 ?        Ssl  Jun12   1:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.4 727772 134568 ?       Ssl  Jun16  17:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.4 729268 135936 ?       Ssl  Jun16  17:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -6725,7 +6725,6 @@ root     1488950  0.1  3.4 727772 134568 ?       Ssl  Jun16  17:31 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-24 02:19:17,055 [INFO] main: XLMUSDT | Judge:SHORT conf=75% size=15.0%
 2026-06-24 02:19:17,056 [INFO] main: XLMUSDT | RL adj=84.5%
 2026-06-24 02:19:17,067 [INFO] main: XLMUSDT | Context score=-0.1 bias=0.1
 2026-06-24 02:19:17,067 [INFO] main: XLMUSDT | side-bias BLOCK (market bullish, short forbidden)
@@ -6755,6 +6754,7 @@ root     1488950  0.1  3.4 727772 134568 ?       Ssl  Jun16  17:31 /opt/ensemble
 2026-06-24 02:19:52,957 [INFO] main: FOLKSUSDT | Context score=-0.1 bias=0.1
 2026-06-24 02:19:52,957 [INFO] main: FOLKSUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-24 02:19:55,044 [INFO] main: Next scan in 30min (always-30min)
+2026-06-24 02:27:20,214 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6772,7 +6772,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       908Mi       277Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       917Mi       268Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
