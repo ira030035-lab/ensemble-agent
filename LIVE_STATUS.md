@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-25 09:20:01 UTC
+Generated: 2026-06-25 09:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50556 ?        Ssl  Jun12   1:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.4 728068 134780 ?       Ssl  Jun16  20:53 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.5 730600 136816 ?       Ssl  Jun16  20:53 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -6863,7 +6863,6 @@ root     1488950  0.1  3.4 728068 134780 ?       Ssl  Jun16  20:53 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-25 09:04:24,827 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-06-25 09:04:24,827 [INFO] openai._base_client: Retrying request to /chat/completions in 0.456129 seconds
 2026-06-25 09:04:35,325 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-06-25 09:04:35,326 [INFO] openai._base_client: Retrying request to /chat/completions in 0.835146 seconds
@@ -6893,6 +6892,7 @@ root     1488950  0.1  3.4 728068 134780 ?       Ssl  Jun16  20:53 /opt/ensemble
 2026-06-25 09:05:42,908 [INFO] main: DOGEUSDT | Context score=-0.1 bias=0.1
 2026-06-25 09:05:42,908 [INFO] main: DOGEUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-25 09:05:45,008 [INFO] main: Next scan in 30min (always-30min)
+2026-06-25 09:27:41,371 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6910,7 +6910,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       903Mi       268Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       921Mi       249Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
