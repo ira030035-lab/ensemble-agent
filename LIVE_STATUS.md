@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-25 18:20:01 UTC
+Generated: 2026-06-25 18:30:01 UTC
 
 ## Services
 ```
@@ -6868,7 +6868,6 @@ root     1488950  0.1  3.5 731380 137452 ?       Ssl  Jun16  21:54 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-25 18:07:55,971 [INFO] main: NEARUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-25 18:08:02,582 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-25 18:08:02,703 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-25 18:08:02,704 [INFO] main: SYNUSDT | Bull:long(62%) Bear:short(80%)
@@ -6898,6 +6897,7 @@ root     1488950  0.1  3.5 731380 137452 ?       Ssl  Jun16  21:54 /opt/ensemble
 2026-06-25 18:08:33,855 [INFO] main: IDUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-25 18:08:33,855 [INFO] main: IDUSDT | RL adj=50.0%
 2026-06-25 18:08:35,858 [INFO] main: Next scan in 30min (always-30min)
+2026-06-25 18:27:47,632 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6915,7 +6915,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       906Mi       253Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       915Mi       243Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
