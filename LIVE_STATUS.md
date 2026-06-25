@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-25 05:20:01 UTC
+Generated: 2026-06-25 05:30:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47872 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50540 ?        Ssl  Jun12   1:09 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.5 730372 136956 ?       Ssl  Jun16  20:28 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.5 730600 137184 ?       Ssl  Jun16  20:29 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 966.6796744625965,
+  "balance": 984.6457761125965,
   "positions": {
     "XLMUSDT": {
       "id": "PAPER_XLMUSDT_1782336245",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.5 730372 136956 ?       Ssl  Jun16  20:28 /opt/ensemble
       "opened_at": "2026-06-24T21:24:05.422947",
       "cost": 19.999998427599998,
       "notional": 99.999992138,
-      "leverage": 5
-    },
-    "ADAUSDT": {
-      "id": "PAPER_ADAUSDT_1782344493",
-      "symbol": "ADAUSDT",
-      "side": "short",
-      "entry_price": 0.1475,
-      "qty": 677.9661,
-      "confidence": 75,
-      "opened_at": "2026-06-24T23:41:33.753627",
-      "cost": 19.999999949999996,
-      "notional": 99.99999974999999,
       "leverage": 5
     }
   },
@@ -6849,20 +6837,32 @@ root     1488950  0.1  3.5 730372 136956 ?       Ssl  Jun16  20:28 /opt/ensemble
       "closed_at": "2026-06-25T05:02:15.102533",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ADAUSDT_1782344493",
+      "symbol": "ADAUSDT",
+      "side": "short",
+      "entry_price": 0.1475,
+      "qty": 677.9661,
+      "confidence": 75,
+      "opened_at": "2026-06-24T23:41:33.753627",
+      "cost": 19.999999949999996,
+      "notional": 99.99999974999999,
+      "leverage": 5,
+      "exit_price": 0.1505,
+      "pnl_pct": -10.17,
+      "pnl_usdt": -2.03,
+      "closed_at": "2026-06-25T05:24:10.163464",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 6.679672840196824
+  "total_pnl": 4.645774540196822
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-25 05:05:47,861 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-25 05:05:47,862 [INFO] main: ENAUSDT | Bull:flat(25%) Bear:short(60%)
-2026-06-25 05:05:51,788 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-25 05:05:51,789 [INFO] main: ENAUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-25 05:05:51,789 [INFO] main: ENAUSDT | RL adj=50.0%
-2026-06-25 05:05:57,940 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-25 05:05:58,998 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-25 05:05:58,999 [INFO] main: ONDOUSDT | Bull:flat(35%) Bear:short(75%)
 2026-06-25 05:06:01,972 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -6887,6 +6887,12 @@ root     1488950  0.1  3.5 730372 136956 ?       Ssl  Jun16  20:28 /opt/ensemble
 2026-06-25 05:06:23,164 [INFO] main: SUIUSDT | Context score=-0.1 bias=0.1
 2026-06-25 05:06:23,164 [INFO] main: SUIUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-25 05:06:25,166 [INFO] main: Next scan in 30min (always-30min)
+2026-06-25 05:24:10,161 [INFO] positions: STOP_LOSS ADAUSDT short PnL:-2.03%
+2026-06-25 05:24:10,170 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ADAUSDT @ 0.1505 PnL: -10.17% (-2.03 USDT) | Баланс: 984.65
+2026-06-25 05:24:10,604 [INFO] positions: LOSS ADAUSDT short PnL:-2.03% reason:stop_loss
+2026-06-25 05:24:10,605 [INFO] positions: Lessons: The trade was based on a bearish structure and downtrend regime, but ultimately resulted in a stop loss with a 2.03% loss. The original expectation of a 4% downside move was not met, indicating that the bearish sentiment may not have been as extreme as anticipated. This trade highlights the importance of managing risk and adjusting expectations in a trending down regime.
+2026-06-25 05:24:10,605 [INFO] rl: RL learned from short ADAUSDT: loss -2.03% | weights bull=0.848 bear=0.818 judge=1.333 threshold=66.61
+2026-06-25 05:27:38,480 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6904,7 +6910,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       913Mi       247Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       929Mi       231Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
