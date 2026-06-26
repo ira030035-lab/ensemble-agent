@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-26 02:20:01 UTC
+Generated: 2026-06-26 02:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 47884 ?        Ss   Jun12   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50544 ?        Ssl  Jun12   1:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.4 729092 135708 ?       Ssl  Jun16  22:55 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.5 731104 137464 ?       Ssl  Jun16  22:55 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -6868,7 +6868,6 @@ root     1488950  0.1  3.4 729092 135708 ?       Ssl  Jun16  22:55 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-26 02:17:31,956 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-26 02:17:31,957 [INFO] main: MUSDT | Bull:flat(25%) Bear:short(65%)
 2026-06-26 02:17:37,102 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-26 02:17:37,103 [INFO] main: MUSDT | Judge:HOLD conf=55% size=0.0%
@@ -6898,6 +6897,7 @@ root     1488950  0.1  3.4 729092 135708 ?       Ssl  Jun16  22:55 /opt/ensemble
 2026-06-26 02:18:22,507 [INFO] main: ADAUSDT | Context score=-0.1 bias=0.1
 2026-06-26 02:18:22,507 [INFO] main: ADAUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-26 02:18:24,607 [INFO] main: Next scan in 30min (always-30min)
+2026-06-26 02:27:52,856 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6915,7 +6915,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       896Mi       276Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       915Mi       256Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
