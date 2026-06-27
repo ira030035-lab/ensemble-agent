@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-27 21:20:01 UTC
+Generated: 2026-06-27 21:30:01 UTC
 
 ## Services
 ```
@@ -6923,7 +6923,6 @@ root     1488950  0.1  3.6 734796 140828 ?       Ssl  Jun16  27:39 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-27 21:00:58,271 [INFO] main: TAOUSDT | Bull:flat(15%) Bear:short(75%)
 2026-06-27 21:01:00,493 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-27 21:01:00,495 [INFO] main: TAOUSDT | Judge:SHORT conf=85% size=20.0%
 2026-06-27 21:01:00,495 [INFO] main: TAOUSDT | RL adj=94.3%
@@ -6953,6 +6952,7 @@ root     1488950  0.1  3.6 734796 140828 ?       Ssl  Jun16  27:39 /opt/ensemble
 2026-06-27 21:01:27,805 [INFO] main: PEPEUSDT | Context score=-0.05 bias=0.05
 2026-06-27 21:01:27,806 [INFO] main: PEPEUSDT | regime BLOCK (short × trending_up × rsi1h=35.3; counter-trend guard)
 2026-06-27 21:01:29,809 [INFO] main: Next scan in 30min (always-30min)
+2026-06-27 21:28:22,743 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6970,7 +6970,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       902Mi       278Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       909Mi       270Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
