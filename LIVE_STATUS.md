@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-27 23:20:02 UTC
+Generated: 2026-06-27 23:30:01 UTC
 
 ## Services
 ```
@@ -6923,7 +6923,6 @@ root     1488950  0.1  3.5 734556 140588 ?       Ssl  Jun16  27:52 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-27 23:17:48,870 [INFO] main: SYNUSDT | Context score=-0.05 bias=0.05
 2026-06-27 23:17:48,870 [INFO] main: SYNUSDT | regime BLOCK (volatile)
 2026-06-27 23:17:52,353 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
 2026-06-27 23:17:54,850 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -6953,6 +6952,7 @@ root     1488950  0.1  3.5 734556 140588 ?       Ssl  Jun16  27:52 /opt/ensemble
 2026-06-27 23:18:26,339 [INFO] main: BEATUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-27 23:18:26,339 [INFO] main: BEATUSDT | RL adj=50.0%
 2026-06-27 23:18:28,341 [INFO] main: Next scan in 30min (always-30min)
+2026-06-27 23:28:24,049 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6970,7 +6970,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       903Mi       273Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       908Mi       267Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
