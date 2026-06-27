@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-27 22:10:01 UTC
+Generated: 2026-06-27 22:20:01 UTC
 
 ## Services
 ```
@@ -6923,21 +6923,6 @@ root     1488950  0.1  3.5 734560 140592 ?       Ssl  Jun16  27:45 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-27 22:09:13,970 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-27 22:09:15,021 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-27 22:09:15,022 [INFO] main: BTCUSDT | Bull:long(62%) Bear:short(75%)
-2026-06-27 22:09:17,456 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-27 22:09:17,457 [INFO] main: BTCUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-27 22:09:17,457 [INFO] main: BTCUSDT | RL adj=55.0%
-2026-06-27 22:09:23,454 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-27 22:09:24,596 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-27 22:09:24,598 [INFO] main: PEPEUSDT | Bull:flat(15%) Bear:short(60%)
-2026-06-27 22:09:26,959 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-27 22:09:26,960 [INFO] main: PEPEUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-27 22:09:26,960 [INFO] main: PEPEUSDT | RL adj=55.0%
-2026-06-27 22:09:33,332 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-27 22:09:34,929 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-27 22:09:34,931 [INFO] main: SKYAIUSDT | Bull:flat(25%) Bear:short(70%)
 2026-06-27 22:09:37,827 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-27 22:09:37,828 [INFO] main: SKYAIUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-27 22:09:37,828 [INFO] main: SKYAIUSDT | RL adj=55.0%
@@ -6953,6 +6938,21 @@ root     1488950  0.1  3.5 734560 140592 ?       Ssl  Jun16  27:45 /opt/ensemble
 2026-06-27 22:09:58,534 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-27 22:09:58,535 [INFO] main: MYXUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-27 22:09:58,535 [INFO] main: MYXUSDT | RL adj=55.0%
+2026-06-27 22:10:04,715 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-27 22:10:05,967 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-27 22:10:05,968 [INFO] main: AAVEUSDT | Bull:long(62%) Bear:short(75%)
+2026-06-27 22:10:08,627 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-27 22:10:08,628 [INFO] main: AAVEUSDT | Judge:LONG conf=70% size=15.0%
+2026-06-27 22:10:08,628 [INFO] main: AAVEUSDT | RL adj=68.5%
+2026-06-27 22:10:08,638 [INFO] main: AAVEUSDT | Context score=-0.0 bias=0.05
+2026-06-27 22:10:08,639 [INFO] main: AAVEUSDT | regime BLOCK (volatile)
+2026-06-27 22:10:15,491 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-27 22:10:15,509 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-27 22:10:15,510 [INFO] main: LABUSDT | Bull:flat(25%) Bear:short(70%)
+2026-06-27 22:10:18,926 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-27 22:10:18,926 [INFO] main: LABUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-27 22:10:18,926 [INFO] main: LABUSDT | RL adj=55.0%
+2026-06-27 22:10:20,929 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -6970,7 +6970,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       906Mi       272Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       903Mi       274Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
