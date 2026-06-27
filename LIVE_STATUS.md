@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-27 19:30:01 UTC
+Generated: 2026-06-27 19:40:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.6 734980 140968 ?       Ssl  Jun16  27:28 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 946.0904192981965,
+  "balance": 969.1194158021965,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1782581545",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.6 734980 140968 ?       Ssl  Jun16  27:28 /opt/ensemble
       "opened_at": "2026-06-27T17:32:25.822433",
       "cost": 19.99999,
       "notional": 99.99995,
-      "leverage": 5
-    },
-    "WLDUSDT": {
-      "id": "PAPER_WLDUSDT_1782581582",
-      "symbol": "WLDUSDT",
-      "side": "short",
-      "entry_price": 0.4622,
-      "qty": 216.3566,
-      "confidence": 80,
-      "opened_at": "2026-06-27T17:33:02.008308",
-      "cost": 20.000004104,
-      "notional": 100.00002051999999,
       "leverage": 5
     },
     "ZECUSDT": {
@@ -6897,19 +6885,32 @@ root     1488950  0.1  3.6 734980 140968 ?       Ssl  Jun16  27:28 /opt/ensemble
       "closed_at": "2026-06-25T12:30:29.107381",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_WLDUSDT_1782581582",
+      "symbol": "WLDUSDT",
+      "side": "short",
+      "entry_price": 0.4622,
+      "qty": 216.3566,
+      "confidence": 80,
+      "opened_at": "2026-06-27T17:33:02.008308",
+      "cost": 20.000004104,
+      "notional": 100.00002051999999,
+      "leverage": 5,
+      "exit_price": 0.4482,
+      "pnl_pct": 15.14,
+      "pnl_usdt": 3.03,
+      "closed_at": "2026-06-27T19:31:44.901051",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 6.089604602196821
+  "total_pnl": 9.118597002196823
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-27 19:18:37,599 [INFO] main: XLMUSDT | RL adj=94.2%
-2026-06-27 19:18:37,610 [INFO] main: XLMUSDT | Context score=-0.05 bias=0.05
-2026-06-27 19:18:37,610 [INFO] main: XLMUSDT | gate PASS (Judge 85/70 RL 94.2/66.58 slack=±3)
-2026-06-27 19:18:37,612 [INFO] positions: 2/3 rule: skip SHORT XLMUSDT (3/3 already short)
-2026-06-27 19:18:42,913 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-27 19:18:44,930 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-27 19:18:44,931 [INFO] main: SLXUSDT | Bull:flat(15%) Bear:short(80%)
 2026-06-27 19:18:47,470 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -6935,6 +6936,11 @@ root     1488950  0.1  3.6 734980 140968 ?       Ssl  Jun16  27:28 /opt/ensemble
 2026-06-27 19:19:05,225 [INFO] main: REUSDT | RL adj=55.0%
 2026-06-27 19:19:07,227 [INFO] main: Next scan in 30min (always-30min)
 2026-06-27 19:28:21,251 [INFO] main: Symbols: 30
+2026-06-27 19:31:44,898 [INFO] positions: TAKE-PROFIT WLDUSDT short PnL:3.03%
+2026-06-27 19:31:44,915 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT WLDUSDT @ 0.4482 PnL: 15.14% (+3.03 USDT) | Баланс: 969.12
+2026-06-27 19:31:45,159 [INFO] positions: OK WLDUSDT short PnL:3.03% reason:take_profit
+2026-06-27 19:31:45,159 [INFO] positions: Lessons: The trade was successful with a 3.03% profit, hitting the take profit target. The original reasoning was based on a bearish trend confirmed by multiple indicators, which played out as expected. This trade demonstrates the effectiveness of combining regime analysis with technical indicators to identify and capitalize on downside moves.
+2026-06-27 19:31:45,159 [INFO] rl: RL learned from short WLDUSDT: profit 3.03% | weights bull=0.839 bear=0.827 judge=1.334 threshold=66.55
 ```
 
 ## Disk
@@ -6952,7 +6958,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       915Mi       271Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       900Mi       285Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
