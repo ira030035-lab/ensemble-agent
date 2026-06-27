@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-27 15:20:01 UTC
+Generated: 2026-06-27 15:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 48572 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50560 ?        Ssl  Jun12   1:18 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.5 731140 137628 ?       Ssl  Jun16  27:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.5 733148 139384 ?       Ssl  Jun16  27:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -6868,7 +6868,6 @@ root     1488950  0.1  3.5 731140 137628 ?       Ssl  Jun16  27:02 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-27 15:16:08,675 [INFO] main: REUSDT | RL adj=89.9%
 2026-06-27 15:16:08,699 [INFO] main: REUSDT | Context score=-0.1 bias=0.1
 2026-06-27 15:16:08,699 [INFO] main: REUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-27 15:16:14,958 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -6898,6 +6897,7 @@ root     1488950  0.1  3.5 731140 137628 ?       Ssl  Jun16  27:02 /opt/ensemble
 2026-06-27 15:16:46,964 [INFO] main: SUIUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-27 15:16:46,964 [INFO] main: SUIUSDT | RL adj=55.0%
 2026-06-27 15:16:48,967 [INFO] main: Next scan in 30min (always-30min)
+2026-06-27 15:28:18,620 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6915,7 +6915,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       896Mi       296Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       906Mi       286Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
