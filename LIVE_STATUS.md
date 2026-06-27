@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-27 06:00:01 UTC
+Generated: 2026-06-27 06:10:01 UTC
 
 ## Services
 ```
@@ -6868,36 +6868,36 @@ root     1488950  0.1  3.5 731208 137312 ?       Ssl  Jun16  26:00 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-27 05:59:27,451 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-27 05:59:28,252 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-27 05:59:28,253 [INFO] main: ENAUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-27 05:59:31,516 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-27 05:59:31,517 [INFO] main: ENAUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-27 05:59:31,517 [INFO] main: ENAUSDT | RL adj=84.2%
-2026-06-27 05:59:31,541 [INFO] main: ENAUSDT | Context score=-0.1 bias=0.1
-2026-06-27 05:59:31,541 [INFO] main: ENAUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-06-27 05:59:38,018 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-27 05:59:38,110 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-27 05:59:38,112 [INFO] main: NEARUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-27 05:59:40,875 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-27 05:59:40,876 [INFO] main: NEARUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-27 05:59:40,876 [INFO] main: NEARUSDT | RL adj=84.2%
-2026-06-27 05:59:40,890 [INFO] main: NEARUSDT | Context score=-0.1 bias=0.1
-2026-06-27 05:59:40,890 [INFO] main: NEARUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-06-27 05:59:47,864 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-27 05:59:49,673 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-27 05:59:49,674 [INFO] main: HYPEUSDT | Bull:flat(15%) Bear:short(80%)
-2026-06-27 05:59:52,030 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-27 05:59:52,031 [INFO] main: HYPEUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-27 05:59:52,031 [INFO] main: HYPEUSDT | RL adj=84.9%
-2026-06-27 05:59:52,053 [INFO] main: HYPEUSDT | Context score=-0.1 bias=0.1
-2026-06-27 05:59:52,053 [INFO] main: HYPEUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-06-27 05:59:58,316 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-27 05:59:58,764 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-27 05:59:58,764 [INFO] main: AAVEUSDT | Bull:flat(25%) Bear:flat(60%)
-2026-06-27 06:00:01,030 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-27 06:00:01,030 [INFO] main: AAVEUSDT | Judge:HOLD conf=60% size=0.0%
-2026-06-27 06:00:01,031 [INFO] main: AAVEUSDT | RL adj=60.0%
+2026-06-27 06:00:40,910 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-27 06:00:40,912 [INFO] main: LINKUSDT | Bull:flat(25%) Bear:short(60%)
+2026-06-27 06:00:43,596 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-27 06:00:43,597 [INFO] main: LINKUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-27 06:00:43,597 [INFO] main: LINKUSDT | RL adj=55.0%
+2026-06-27 06:00:49,583 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-27 06:00:51,373 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-27 06:00:51,375 [INFO] main: SLXUSDT | Bull:flat(25%) Bear:short(70%)
+2026-06-27 06:00:53,781 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-27 06:00:53,781 [INFO] main: SLXUSDT | Judge:SHORT conf=70% size=15.0%
+2026-06-27 06:00:53,782 [INFO] main: SLXUSDT | RL adj=78.6%
+2026-06-27 06:00:53,797 [INFO] main: SLXUSDT | Context score=-0.1 bias=0.1
+2026-06-27 06:00:53,797 [INFO] main: SLXUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-06-27 06:01:00,221 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-27 06:01:00,790 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-27 06:01:00,791 [INFO] main: ALLOUSDT | Bull:flat(5%) Bear:short(75%)
+2026-06-27 06:01:03,534 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-27 06:01:03,534 [INFO] main: ALLOUSDT | Judge:SHORT conf=85% size=15.0%
+2026-06-27 06:01:03,534 [INFO] main: ALLOUSDT | RL adj=94.2%
+2026-06-27 06:01:03,544 [INFO] main: ALLOUSDT | Context score=-0.1 bias=0.1
+2026-06-27 06:01:03,544 [INFO] main: ALLOUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-06-27 06:01:09,851 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-27 06:01:09,918 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-27 06:01:09,919 [INFO] main: VELVETUSDT | Bull:flat(15%) Bear:short(75%)
+2026-06-27 06:01:12,239 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-27 06:01:12,240 [INFO] main: VELVETUSDT | Judge:SHORT conf=85% size=15.0%
+2026-06-27 06:01:12,240 [INFO] main: VELVETUSDT | RL adj=94.2%
+2026-06-27 06:01:12,252 [INFO] main: VELVETUSDT | Context score=-0.1 bias=0.1
+2026-06-27 06:01:12,252 [INFO] main: VELVETUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-06-27 06:01:14,363 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -6905,7 +6905,7 @@ root     1488950  0.1  3.5 731208 137312 ?       Ssl  Jun16  26:00 /opt/ensemble
 Filesystem      Size  Used Avail Use% Mounted on
 tmpfs           382M  896K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
-/dev/sda1        75G  9.4G   63G  13% /
+/dev/sda1        75G  9.4G   63G  14% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
 tmpfs           5.0M     0  5.0M   0% /run/lock
 /dev/sda15      253M  146K  252M   1% /boot/efi
@@ -6915,7 +6915,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       910Mi       236Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       905Mi       240Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
