@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-28 20:40:01 UTC
+Generated: 2026-06-28 20:50:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 48572 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50548 ?        Ssl  Jun12   1:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.6 734432 140660 ?       Ssl  Jun16  30:09 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.6 734432 140660 ?       Ssl  Jun16  30:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 950.6925022741965,
+  "balance": 971.1729100869965,
   "positions": {
-    "XLMUSDT": {
-      "id": "PAPER_XLMUSDT_1782637286",
-      "symbol": "XLMUSDT",
-      "side": "short",
-      "entry_price": 0.17277,
-      "qty": 578.8042,
-      "confidence": 70,
-      "opened_at": "2026-06-28T09:01:26.311616",
-      "cost": 20.000000326800002,
-      "notional": 100.00000163400001,
-      "leverage": 5
-    },
     "AVAXUSDT": {
       "id": "PAPER_AVAXUSDT_1782637435",
       "symbol": "AVAXUSDT",
@@ -6987,19 +6975,32 @@ root     1488950  0.1  3.6 734432 140660 ?       Ssl  Jun16  30:09 /opt/ensemble
       "closed_at": "2026-06-28T08:40:11.846327",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_XLMUSDT_1782637286",
+      "symbol": "XLMUSDT",
+      "side": "short",
+      "entry_price": 0.17277,
+      "qty": 578.8042,
+      "confidence": 70,
+      "opened_at": "2026-06-28T09:01:26.311616",
+      "cost": 20.000000326800002,
+      "notional": 100.00000163400001,
+      "leverage": 5,
+      "exit_price": 0.17194,
+      "pnl_pct": 2.4,
+      "pnl_usdt": 0.48,
+      "closed_at": "2026-06-28T20:47:22.103447",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 10.692563266196835
+  "total_pnl": 11.172970752196834
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-28 20:29:49,098 [INFO] main: POWRUSDT | regime BLOCK (volatile)
-2026-06-28 20:29:55,200 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-28 20:29:56,659 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-28 20:29:56,660 [INFO] main: AGLDUSDT | Bull:flat(25%) Bear:short(70%)
-2026-06-28 20:29:59,817 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-28 20:29:59,817 [INFO] main: AGLDUSDT | Judge:SHORT conf=70% size=15.0%
 2026-06-28 20:29:59,817 [INFO] main: AGLDUSDT | RL adj=78.7%
 2026-06-28 20:29:59,829 [INFO] main: AGLDUSDT | Context score=-0.05 bias=0.05
@@ -7025,6 +7026,11 @@ root     1488950  0.1  3.6 734432 140660 ?       Ssl  Jun16  30:09 /opt/ensemble
 2026-06-28 20:30:26,452 [INFO] main: LABUSDT | Context score=-0.05 bias=0.05
 2026-06-28 20:30:26,452 [INFO] main: LABUSDT | regime BLOCK (volatile)
 2026-06-28 20:30:28,582 [INFO] main: Next scan in 30min (always-30min)
+2026-06-28 20:47:22,102 [INFO] positions: BREAKEVEN_STOP XLMUSDT short PnL:0.48%
+2026-06-28 20:47:22,110 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT XLMUSDT @ 0.1719 PnL: 2.40% (+0.48 USDT) | Баланс: 971.17
+2026-06-28 20:47:22,414 [INFO] positions: OK XLMUSDT short PnL:0.48% reason:breakeven_stop
+2026-06-28 20:47:22,414 [INFO] positions: Lessons: Extreme fear market sentiment and a trending_down regime can provide a good shorting opportunity. The RSI 1h suggesting weakness was a correct indicator of a potential downside move. However the breakeven stop was triggered limiting the potential profit to 0.48 percent.
+2026-06-28 20:47:22,414 [INFO] rl: RL learned from short XLMUSDT: profit 0.48% | weights bull=0.834 bear=0.830 judge=1.336 threshold=66.49
 ```
 
 ## Disk
@@ -7042,7 +7048,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       909Mi       233Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       910Mi       232Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
