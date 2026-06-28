@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-28 08:30:01 UTC
+Generated: 2026-06-28 08:40:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.5 732164 138344 ?       Ssl  Jun16  28:46 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 952.1225744039965,
+  "balance": 990.2219852661965,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1782581545",
@@ -30,30 +30,6 @@ root     1488950  0.1  3.5 732164 138344 ?       Ssl  Jun16  28:46 /opt/ensemble
       "opened_at": "2026-06-27T17:32:25.822433",
       "cost": 19.99999,
       "notional": 99.99995,
-      "leverage": 5
-    },
-    "ENAUSDT": {
-      "id": "PAPER_ENAUSDT_1782589829",
-      "symbol": "ENAUSDT",
-      "side": "short",
-      "entry_price": 0.07727,
-      "qty": 1294.1633,
-      "confidence": 80,
-      "opened_at": "2026-06-27T19:50:29.837896",
-      "cost": 19.999999638200002,
-      "notional": 99.999998191,
-      "leverage": 5
-    },
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1782626855",
-      "symbol": "HYPEUSDT",
-      "side": "short",
-      "entry_price": 61.834,
-      "qty": 1.6172,
-      "confidence": 75,
-      "opened_at": "2026-06-28T06:07:35.992766",
-      "cost": 19.99958896,
-      "notional": 99.9979448,
       "leverage": 5
     }
   },
@@ -6933,24 +6909,50 @@ root     1488950  0.1  3.5 732164 138344 ?       Ssl  Jun16  28:46 /opt/ensemble
       "closed_at": "2026-06-28T06:06:30.115410",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ENAUSDT_1782589829",
+      "symbol": "ENAUSDT",
+      "side": "short",
+      "entry_price": 0.07727,
+      "qty": 1294.1633,
+      "confidence": 80,
+      "opened_at": "2026-06-27T19:50:29.837896",
+      "cost": 19.999999638200002,
+      "notional": 99.999998191,
+      "leverage": 5,
+      "exit_price": 0.07719,
+      "pnl_pct": 0.52,
+      "pnl_usdt": 0.1,
+      "closed_at": "2026-06-28T08:38:40.204732",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1782626855",
+      "symbol": "HYPEUSDT",
+      "side": "short",
+      "entry_price": 61.834,
+      "qty": 1.6172,
+      "confidence": 75,
+      "opened_at": "2026-06-28T06:07:35.992766",
+      "cost": 19.99958896,
+      "notional": 99.9979448,
+      "leverage": 5,
+      "exit_price": 63.073,
+      "pnl_pct": -10.02,
+      "pnl_usdt": -2.0,
+      "closed_at": "2026-06-28T08:38:40.578964",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 12.122153002196827
+  "total_pnl": 10.221975266196845
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-28 08:29:25,950 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-28 08:29:26,609 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-28 08:29:26,610 [INFO] main: MYXUSDT | Bull:long(62%) Bear:short(80%)
-2026-06-28 08:29:28,709 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-28 08:29:28,710 [INFO] main: MYXUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-28 08:29:28,710 [INFO] main: MYXUSDT | RL adj=55.0%
-2026-06-28 08:29:34,885 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-28 08:29:35,444 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-28 08:29:35,445 [INFO] main: ZECUSDT | Bull:flat(15%) Bear:short(90%)
-2026-06-28 08:29:38,156 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-28 08:29:38,157 [INFO] main: ZECUSDT | Judge:SHORT conf=75% size=15.0%
 2026-06-28 08:29:38,157 [INFO] main: ZECUSDT | RL adj=86.2%
 2026-06-28 08:29:38,168 [INFO] main: ZECUSDT | Context score=-0.05 bias=0.05
@@ -6971,6 +6973,16 @@ root     1488950  0.1  3.5 732164 138344 ?       Ssl  Jun16  28:46 /opt/ensemble
 2026-06-28 08:29:58,545 [INFO] main: SYNUSDT | Context score=-0.05 bias=0.05
 2026-06-28 08:29:58,545 [INFO] main: SYNUSDT | regime BLOCK (volatile)
 2026-06-28 08:30:00,656 [INFO] main: Next scan in 30min (always-30min)
+2026-06-28 08:38:40,203 [INFO] positions: BREAKEVEN_STOP ENAUSDT short PnL:0.1%
+2026-06-28 08:38:40,211 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ENAUSDT @ 0.0772 PnL: 0.52% (+0.10 USDT) | Баланс: 972.23
+2026-06-28 08:38:40,577 [INFO] positions: OK ENAUSDT short PnL:0.1% reason:breakeven_stop
+2026-06-28 08:38:40,577 [INFO] positions: Lessons: The trade was based on a strong bearish setup with trending_down regime, bearish MACD, and oversold RSI. The expected downside move of 4% did not materialize, resulting in a breakeven stop and minimal profit of 0.1%. This outcome suggests that the oversold conditions may have been a false signal or that the market was due for a consolidation phase.
+2026-06-28 08:38:40,577 [INFO] rl: RL learned from short ENAUSDT: profit 0.10% | weights bull=0.833 bear=0.833 judge=1.335 threshold=66.49
+2026-06-28 08:38:40,577 [INFO] positions: STOP_LOSS HYPEUSDT short PnL:-2.0%
+2026-06-28 08:38:40,586 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT HYPEUSDT @ 63.0730 PnL: -10.02% (-2.00 USDT) | Баланс: 990.22
+2026-06-28 08:38:40,934 [INFO] positions: LOSS HYPEUSDT short PnL:-2.0% reason:stop_loss
+2026-06-28 08:38:40,934 [INFO] positions: Lessons: The trade was based on a bearish position supported by multiple indicators, but it still resulted in a 2% loss. The stop loss was triggered, indicating that the trade did not work out as expected. This outcome suggests that the indicators used may not have been sufficient to predict the price movement, and further analysis is needed to improve the trading strategy.
+2026-06-28 08:38:40,934 [INFO] rl: RL learned from short HYPEUSDT: loss -2.00% | weights bull=0.836 bear=0.828 judge=1.336 threshold=66.54
 ```
 
 ## Disk
@@ -6988,7 +7000,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       932Mi       228Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       898Mi       262Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
