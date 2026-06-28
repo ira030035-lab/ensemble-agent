@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-28 08:40:01 UTC
+Generated: 2026-06-28 08:50:01 UTC
 
 ## Services
 ```
@@ -12,27 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 48572 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50552 ?        Ssl  Jun12   1:20 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.5 732164 138344 ?       Ssl  Jun16  28:46 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.5 732164 138344 ?       Ssl  Jun16  28:47 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 990.2219852661965,
-  "positions": {
-    "XRPUSDT": {
-      "id": "PAPER_XRPUSDT_1782581545",
-      "symbol": "XRPUSDT",
-      "side": "short",
-      "entry_price": 1.0625,
-      "qty": 94.1176,
-      "confidence": 70,
-      "opened_at": "2026-06-27T17:32:25.822433",
-      "cost": 19.99999,
-      "notional": 99.99995,
-      "leverage": 5
-    }
-  },
+  "balance": 1010.6925632661964,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -6945,19 +6932,32 @@ root     1488950  0.1  3.5 732164 138344 ?       Ssl  Jun16  28:46 /opt/ensemble
       "closed_at": "2026-06-28T08:38:40.578964",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_XRPUSDT_1782581545",
+      "symbol": "XRPUSDT",
+      "side": "short",
+      "entry_price": 1.0625,
+      "qty": 94.1176,
+      "confidence": 70,
+      "opened_at": "2026-06-27T17:32:25.822433",
+      "cost": 19.99999,
+      "notional": 99.99995,
+      "leverage": 5,
+      "exit_price": 1.0575,
+      "pnl_pct": 2.35,
+      "pnl_usdt": 0.47,
+      "closed_at": "2026-06-28T08:40:11.846327",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 10.221975266196845
+  "total_pnl": 10.692563266196835
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-28 08:29:38,157 [INFO] main: ZECUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-28 08:29:38,157 [INFO] main: ZECUSDT | RL adj=86.2%
-2026-06-28 08:29:38,168 [INFO] main: ZECUSDT | Context score=-0.05 bias=0.05
-2026-06-28 08:29:38,168 [INFO] main: ZECUSDT | gate PASS (Judge 75/70 RL 86.2/66.52 slack=±3)
-2026-06-28 08:29:38,169 [INFO] positions: 2/3 rule: skip SHORT ZECUSDT (3/3 already short)
 2026-06-28 08:29:44,248 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-28 08:29:44,845 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-28 08:29:44,845 [INFO] main: ETHUSDT | Bull:flat(25%) Bear:short(70%)
@@ -6983,6 +6983,11 @@ root     1488950  0.1  3.5 732164 138344 ?       Ssl  Jun16  28:46 /opt/ensemble
 2026-06-28 08:38:40,934 [INFO] positions: LOSS HYPEUSDT short PnL:-2.0% reason:stop_loss
 2026-06-28 08:38:40,934 [INFO] positions: Lessons: The trade was based on a bearish position supported by multiple indicators, but it still resulted in a 2% loss. The stop loss was triggered, indicating that the trade did not work out as expected. This outcome suggests that the indicators used may not have been sufficient to predict the price movement, and further analysis is needed to improve the trading strategy.
 2026-06-28 08:38:40,934 [INFO] rl: RL learned from short HYPEUSDT: loss -2.00% | weights bull=0.836 bear=0.828 judge=1.336 threshold=66.54
+2026-06-28 08:40:11,844 [INFO] positions: BREAKEVEN_STOP XRPUSDT short PnL:0.47%
+2026-06-28 08:40:11,856 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT XRPUSDT @ 1.0575 PnL: 2.35% (+0.47 USDT) | Баланс: 1010.69
+2026-06-28 08:40:12,190 [INFO] positions: OK XRPUSDT short PnL:0.47% reason:breakeven_stop
+2026-06-28 08:40:12,191 [INFO] positions: Lessons: The trade was based on bearish indicators and imbalance but ultimately closed at breakeven. The expected 2:1 risk/reward ratio was not achieved, highlighting the importance of adjusting expectations when market conditions change. This outcome suggests that stop placement and risk management strategies may need to be reevaluated for similar trades in the future.
+2026-06-28 08:40:12,191 [INFO] rl: RL learned from short XRPUSDT: profit 0.47% | weights bull=0.835 bear=0.829 judge=1.336 threshold=66.52
 ```
 
 ## Disk
@@ -7000,7 +7005,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       898Mi       262Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       901Mi       259Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
