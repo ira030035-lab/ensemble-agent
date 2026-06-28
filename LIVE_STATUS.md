@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-28 08:50:01 UTC
+Generated: 2026-06-28 09:00:01 UTC
 
 ## Services
 ```
@@ -6958,7 +6958,6 @@ root     1488950  0.1  3.5 732164 138344 ?       Ssl  Jun16  28:47 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-28 08:29:44,248 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-28 08:29:44,845 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-28 08:29:44,845 [INFO] main: ETHUSDT | Bull:flat(25%) Bear:short(70%)
 2026-06-28 08:29:47,969 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -6988,6 +6987,7 @@ root     1488950  0.1  3.5 732164 138344 ?       Ssl  Jun16  28:47 /opt/ensemble
 2026-06-28 08:40:12,190 [INFO] positions: OK XRPUSDT short PnL:0.47% reason:breakeven_stop
 2026-06-28 08:40:12,191 [INFO] positions: Lessons: The trade was based on bearish indicators and imbalance but ultimately closed at breakeven. The expected 2:1 risk/reward ratio was not achieved, highlighting the importance of adjusting expectations when market conditions change. This outcome suggests that stop placement and risk management strategies may need to be reevaluated for similar trades in the future.
 2026-06-28 08:40:12,191 [INFO] rl: RL learned from short XRPUSDT: profit 0.47% | weights bull=0.835 bear=0.829 judge=1.336 threshold=66.52
+2026-06-28 09:00:00,675 [INFO] main: Scanning 30 symbols...
 ```
 
 ## Disk
@@ -7005,7 +7005,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       901Mi       259Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       913Mi       246Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
