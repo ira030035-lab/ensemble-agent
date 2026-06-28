@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-28 03:20:01 UTC
+Generated: 2026-06-28 03:30:01 UTC
 
 ## Services
 ```
@@ -6923,7 +6923,6 @@ root     1488950  0.1  3.6 735780 141812 ?       Ssl  Jun16  28:15 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-28 03:18:54,374 [INFO] main: HYPEUSDT | Judge:SHORT conf=85% size=15.0%
 2026-06-28 03:18:54,374 [INFO] main: HYPEUSDT | RL adj=94.3%
 2026-06-28 03:18:54,385 [INFO] main: HYPEUSDT | Context score=-0.05 bias=0.05
 2026-06-28 03:18:54,385 [INFO] main: HYPEUSDT | gate PASS (Judge 85/70 RL 94.3/66.55 slack=±3)
@@ -6953,6 +6952,7 @@ root     1488950  0.1  3.6 735780 141812 ?       Ssl  Jun16  28:15 /opt/ensemble
 2026-06-28 03:19:22,531 [INFO] main: SYNUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-28 03:19:22,531 [INFO] main: SYNUSDT | RL adj=55.0%
 2026-06-28 03:19:24,533 [INFO] main: Next scan in 30min (always-30min)
+2026-06-28 03:28:26,791 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6970,7 +6970,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       927Mi       292Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       909Mi       310Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
