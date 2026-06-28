@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-28 18:20:01 UTC
+Generated: 2026-06-28 18:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 48572 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 49572 ?        Ssl  Jun12   1:21 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.5 734436 140520 ?       Ssl  Jun16  29:54 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.6 735936 141892 ?       Ssl  Jun16  29:54 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -6995,7 +6995,6 @@ root     1488950  0.1  3.5 734436 140520 ?       Ssl  Jun16  29:54 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-28 18:12:42,848 [INFO] main: XRPUSDT | Bull:flat(15%) Bear:short(80%)
 2026-06-28 18:12:45,419 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-28 18:12:45,420 [INFO] main: XRPUSDT | Judge:SHORT conf=75% size=15.0%
 2026-06-28 18:12:45,420 [INFO] main: XRPUSDT | RL adj=84.9%
@@ -7025,6 +7024,7 @@ root     1488950  0.1  3.5 734436 140520 ?       Ssl  Jun16  29:54 /opt/ensemble
 2026-06-28 18:13:17,797 [INFO] main: REUSDT | Context score=-0.05 bias=0.05
 2026-06-28 18:13:17,797 [INFO] main: REUSDT | regime BLOCK (volatile)
 2026-06-28 18:13:19,920 [INFO] main: Next scan in 30min (always-30min)
+2026-06-28 18:28:36,502 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -7042,7 +7042,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       906Mi       240Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       917Mi       228Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
