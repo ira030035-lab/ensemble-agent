@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-28 06:20:01 UTC
+Generated: 2026-06-28 06:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 48572 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50552 ?        Ssl  Jun12   1:20 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.6 735640 141680 ?       Ssl  Jun16  28:33 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.6 735812 141852 ?       Ssl  Jun16  28:33 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -6941,7 +6941,6 @@ root     1488950  0.1  3.6 735640 141680 ?       Ssl  Jun16  28:33 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-28 06:11:50,785 [INFO] main: SKYAIUSDT | Judge:SHORT conf=90% size=15.0%
 2026-06-28 06:11:50,785 [INFO] main: SKYAIUSDT | RL adj=100.0%
 2026-06-28 06:11:50,797 [INFO] main: SKYAIUSDT | Context score=-0.05 bias=0.05
 2026-06-28 06:11:50,797 [INFO] main: SKYAIUSDT | regime BLOCK (volatile)
@@ -6971,6 +6970,7 @@ root     1488950  0.1  3.6 735640 141680 ?       Ssl  Jun16  28:33 /opt/ensemble
 2026-06-28 06:12:19,736 [INFO] main: ADAUSDT | gate PASS (Judge 85/70 RL 93.1/66.52 slack=±3)
 2026-06-28 06:12:19,737 [INFO] positions: 2/3 rule: skip SHORT ADAUSDT (3/3 already short)
 2026-06-28 06:12:21,740 [INFO] main: Next scan in 30min (always-30min)
+2026-06-28 06:28:28,643 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -6988,7 +6988,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       917Mi       246Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       924Mi       238Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
