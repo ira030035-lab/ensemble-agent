@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-28 23:30:01 UTC
+Generated: 2026-06-28 23:40:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.6 736804 143348 ?       Ssl  Jun16  30:27 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 951.6597866762086,
+  "balance": 972.1458596294063,
   "positions": {
     "AVAXUSDT": {
       "id": "PAPER_AVAXUSDT_1782637435",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.6 736804 143348 ?       Ssl  Jun16  30:27 /opt/ensemble
       "opened_at": "2026-06-28T09:03:55.154658",
       "cost": 20.000061119999998,
       "notional": 100.00030559999999,
-      "leverage": 5
-    },
-    "PEPEUSDT": {
-      "id": "PAPER_PEPEUSDT_1782680535",
-      "symbol": "PEPEUSDT",
-      "side": "short",
-      "entry_price": 2.3659e-06,
-      "qty": 42267213.3226,
-      "confidence": 80,
-      "opened_at": "2026-06-28T21:02:15.655645",
-      "cost": 19.99999999998787,
-      "notional": 99.99999999993935,
       "leverage": 5
     },
     "HYPEUSDT": {
@@ -7023,19 +7011,32 @@ root     1488950  0.1  3.6 736804 143348 ?       Ssl  Jun16  30:27 /opt/ensemble
       "closed_at": "2026-06-28T22:04:21.266645",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_PEPEUSDT_1782680535",
+      "symbol": "PEPEUSDT",
+      "side": "short",
+      "entry_price": 2.3659e-06,
+      "qty": 42267213.3226,
+      "confidence": 80,
+      "opened_at": "2026-06-28T21:02:15.655645",
+      "cost": 19.99999999998787,
+      "notional": 99.99999999993935,
+      "leverage": 5,
+      "exit_price": 2.3544e-06,
+      "pnl_pct": 2.43,
+      "pnl_usdt": 0.49,
+      "closed_at": "2026-06-28T23:37:52.576143",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 11.659851996196833
+  "total_pnl": 12.145924949406742
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-28 23:21:22,643 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-28 23:21:22,644 [INFO] main: LABUSDT | Bull:flat(5%) Bear:short(90%)
-2026-06-28 23:21:24,835 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-28 23:21:24,837 [INFO] main: LABUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-28 23:21:24,837 [INFO] main: LABUSDT | RL adj=50.0%
 2026-06-28 23:21:30,600 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-28 23:21:30,956 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-28 23:21:30,957 [INFO] main: POWRUSDT | Bull:flat(15%) Bear:short(80%)
@@ -7061,6 +7062,11 @@ root     1488950  0.1  3.6 736804 143348 ?       Ssl  Jun16  30:27 /opt/ensemble
 2026-06-28 23:21:50,927 [INFO] positions: 2/3 rule: skip SHORT ZECUSDT (3/3 already short)
 2026-06-28 23:21:52,930 [INFO] main: Next scan in 30min (always-30min)
 2026-06-28 23:28:39,783 [INFO] main: Symbols: 30
+2026-06-28 23:37:52,573 [INFO] positions: BREAKEVEN_STOP PEPEUSDT short PnL:0.49%
+2026-06-28 23:37:52,591 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT PEPEUSDT @ 0.0000 PnL: 2.43% (+0.49 USDT) | Баланс: 972.15
+2026-06-28 23:37:52,920 [INFO] positions: OK PEPEUSDT short PnL:0.49% reason:breakeven_stop
+2026-06-28 23:37:52,920 [INFO] positions: Lessons: The trade was closed at breakeven stop with a 0.49% profit, indicating the expected 4% downside move did not materialize. The original reasoning was based on a bearish regime, contradicted MACD, and extreme fear market sentiment, but the trade did not play out as expected. The breakeven outcome suggests the risk management strategy was effective in limiting losses.
+2026-06-28 23:37:52,920 [INFO] rl: RL learned from short PEPEUSDT: profit 0.49% | weights bull=0.832 bear=0.832 judge=1.336 threshold=66.43
 ```
 
 ## Disk
@@ -7078,7 +7084,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       920Mi       213Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       921Mi       213Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
