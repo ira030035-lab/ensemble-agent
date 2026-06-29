@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-29 16:10:01 UTC
+Generated: 2026-06-29 16:20:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1488950  0.1  3.6 736644 142664 ?       Ssl  Jun16  32:18 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 966.9602987984064,
+  "balance": 987.4200765984064,
   "positions": {
-    "TAOUSDT": {
-      "id": "PAPER_TAOUSDT_1782690729",
-      "symbol": "TAOUSDT",
-      "side": "short",
-      "entry_price": 205.23,
-      "qty": 0.4873,
-      "confidence": 85,
-      "opened_at": "2026-06-28T23:52:09.819452",
-      "cost": 20.0017158,
-      "notional": 100.008579,
-      "leverage": 5
-    },
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1782694872",
       "symbol": "XRPUSDT",
@@ -7173,19 +7161,32 @@ root     1488950  0.1  3.6 736644 142664 ?       Ssl  Jun16  32:18 /opt/ensemble
       "closed_at": "2026-06-29T16:09:52.552255",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_TAOUSDT_1782690729",
+      "symbol": "TAOUSDT",
+      "side": "short",
+      "entry_price": 205.23,
+      "qty": 0.4873,
+      "confidence": 85,
+      "opened_at": "2026-06-28T23:52:09.819452",
+      "cost": 20.0017158,
+      "notional": 100.008579,
+      "leverage": 5,
+      "exit_price": 204.29,
+      "pnl_pct": 2.29,
+      "pnl_usdt": 0.46,
+      "closed_at": "2026-06-29T16:12:56.469160",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 6.962017298406736
+  "total_pnl": 7.420079298406735
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-29 15:54:02,250 [INFO] main: BEATUSDT | Bull:flat(25%) Bear:short(60%)
-2026-06-29 15:54:08,051 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-29 15:54:08,052 [INFO] main: BEATUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-29 15:54:08,052 [INFO] main: BEATUSDT | RL adj=55.0%
-2026-06-29 15:54:15,549 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-29 15:54:16,635 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-29 15:54:16,636 [INFO] main: XLMUSDT | Bull:flat(28%) Bear:short(60%)
 2026-06-29 15:54:22,222 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -7211,6 +7212,11 @@ root     1488950  0.1  3.6 736644 142664 ?       Ssl  Jun16  32:18 /opt/ensemble
 2026-06-29 16:09:52,921 [INFO] positions: LOSS AAVEUSDT short PnL:-2.34% reason:stop_loss
 2026-06-29 16:09:52,921 [INFO] positions: Lessons: The trade was based on bear dominance with strong bearish signals but ultimately resulted in a stop loss being hit. The expected 4% downside move did not materialize, leading to a 2.34% loss. This trade highlights the importance of asymmetrical risk rules and the need to reevaluate bearish signals in a ranging regime.
 2026-06-29 16:09:52,921 [INFO] rl: RL learned from short AAVEUSDT: loss -2.34% | weights bull=0.839 bear=0.822 judge=1.340 threshold=66.51
+2026-06-29 16:12:56,467 [INFO] positions: BREAKEVEN_STOP TAOUSDT short PnL:0.46%
+2026-06-29 16:12:56,476 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT TAOUSDT @ 204.2900 PnL: 2.29% (+0.46 USDT) | Баланс: 987.42
+2026-06-29 16:12:57,743 [INFO] positions: OK TAOUSDT short PnL:0.46% reason:breakeven_stop
+2026-06-29 16:12:57,743 [INFO] positions: Lessons: The trade was based on a bearish regime with multiple indicators suggesting a potential downside move. The breakeven stop was triggered, resulting in a small 0.46% profit, which was less than the expected 4% move. This trade highlights the importance of adjusting risk-reward ratios and stop-loss levels to better capture potential moves in a trending_down regime.
+2026-06-29 16:12:57,743 [INFO] rl: RL learned from short TAOUSDT: profit 0.46% | weights bull=0.837 bear=0.823 judge=1.340 threshold=66.48
 ```
 
 ## Disk
