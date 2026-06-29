@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-29 17:10:01 UTC
+Generated: 2026-06-29 17:20:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 48572 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50564 ?        Ssl  Jun12   1:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.6 735456 141748 ?       Ssl  Jun16  32:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.6 735456 141748 ?       Ssl  Jun16  32:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 947.4200778276064,
+  "balance": 982.6935346974064,
   "positions": {
     "XRPUSDT": {
       "id": "PAPER_XRPUSDT_1782694872",
@@ -30,30 +30,6 @@ root     1488950  0.1  3.6 735456 141748 ?       Ssl  Jun16  32:24 /opt/ensemble
       "opened_at": "2026-06-29T01:01:12.187057",
       "cost": 20.0000027,
       "notional": 100.0000135,
-      "leverage": 5
-    },
-    "WLDUSDT": {
-      "id": "PAPER_WLDUSDT_1782750327",
-      "symbol": "WLDUSDT",
-      "side": "short",
-      "entry_price": 0.4176,
-      "qty": 239.4636,
-      "confidence": 80,
-      "opened_at": "2026-06-29T16:25:27.019872",
-      "cost": 19.999999872000004,
-      "notional": 99.99999936000002,
-      "leverage": 5
-    },
-    "XLMUSDT": {
-      "id": "PAPER_XLMUSDT_1782750376",
-      "symbol": "XLMUSDT",
-      "side": "short",
-      "entry_price": 0.17282,
-      "qty": 578.6367,
-      "confidence": 70,
-      "opened_at": "2026-06-29T16:26:16.634986",
-      "cost": 19.9999988988,
-      "notional": 99.999994494,
       "leverage": 5
     }
   },
@@ -7203,24 +7179,50 @@ root     1488950  0.1  3.6 735456 141748 ?       Ssl  Jun16  32:24 /opt/ensemble
       "closed_at": "2026-06-29T16:12:56.469160",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_WLDUSDT_1782750327",
+      "symbol": "WLDUSDT",
+      "side": "short",
+      "entry_price": 0.4176,
+      "qty": 239.4636,
+      "confidence": 80,
+      "opened_at": "2026-06-29T16:25:27.019872",
+      "cost": 19.999999872000004,
+      "notional": 99.99999936000002,
+      "leverage": 5,
+      "exit_price": 0.4276,
+      "pnl_pct": -11.97,
+      "pnl_usdt": -2.39,
+      "closed_at": "2026-06-29T17:13:26.546995",
+      "reason": "stop_loss",
+      "outcome": "loss"
+    },
+    {
+      "id": "PAPER_XLMUSDT_1782750376",
+      "symbol": "XLMUSDT",
+      "side": "short",
+      "entry_price": 0.17282,
+      "qty": 578.6367,
+      "confidence": 70,
+      "opened_at": "2026-06-29T16:26:16.634986",
+      "cost": 19.9999988988,
+      "notional": 99.999994494,
+      "leverage": 5,
+      "exit_price": 0.17685,
+      "pnl_pct": -11.66,
+      "pnl_usdt": -2.33,
+      "closed_at": "2026-06-29T17:13:26.999254",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 7.420079298406735
+  "total_pnl": 2.6935373974067423
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-29 17:03:21,867 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-29 17:03:22,347 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-29 17:03:22,349 [INFO] main: ENAUSDT | Bull:flat(25%) Bear:short(75%)
-2026-06-29 17:03:24,403 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-29 17:03:24,403 [INFO] main: ENAUSDT | Judge:HOLD conf=45% size=0.0%
-2026-06-29 17:03:24,403 [INFO] main: ENAUSDT | RL adj=45.0%
-2026-06-29 17:03:30,221 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-29 17:03:31,160 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-29 17:03:31,161 [INFO] main: ALLOUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-29 17:03:33,624 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-29 17:03:33,625 [INFO] main: ALLOUSDT | Judge:SHORT conf=80% size=15.0%
 2026-06-29 17:03:33,625 [INFO] main: ALLOUSDT | RL adj=88.6%
 2026-06-29 17:03:33,643 [INFO] main: ALLOUSDT | Context score=-0.05 bias=0.05
@@ -7241,6 +7243,16 @@ root     1488950  0.1  3.6 735456 141748 ?       Ssl  Jun16  32:24 /opt/ensemble
 2026-06-29 17:03:56,451 [INFO] main: TACUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-29 17:03:56,451 [INFO] main: TACUSDT | RL adj=55.0%
 2026-06-29 17:03:58,453 [INFO] main: Next scan in 30min (always-30min)
+2026-06-29 17:13:26,544 [INFO] positions: STOP_LOSS WLDUSDT short PnL:-2.39%
+2026-06-29 17:13:26,562 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT WLDUSDT @ 0.4276 PnL: -11.97% (-2.39 USDT) | Баланс: 965.03
+2026-06-29 17:13:26,996 [INFO] positions: LOSS WLDUSDT short PnL:-2.39% reason:stop_loss
+2026-06-29 17:13:26,996 [INFO] positions: Lessons: The trade was based on strong bear conviction with multiple downtrends and negative indicators, expecting a 2:1 risk-reward ratio. However, the trade resulted in a stop loss, incurring a 2.39% loss. This outcome suggests that the conviction and analysis were not sufficient to overcome the market's actual movement, highlighting the importance of reevaluating risk management and market reading skills.
+2026-06-29 17:13:26,996 [INFO] rl: RL learned from short WLDUSDT: loss -2.39% | weights bull=0.841 bear=0.817 judge=1.342 threshold=66.53
+2026-06-29 17:13:26,996 [INFO] positions: STOP_LOSS XLMUSDT short PnL:-2.33%
+2026-06-29 17:13:27,015 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT XLMUSDT @ 0.1769 PnL: -11.66% (-2.33 USDT) | Баланс: 982.69
+2026-06-29 17:13:27,470 [INFO] positions: LOSS XLMUSDT short PnL:-2.33% reason:stop_loss
+2026-06-29 17:13:27,470 [INFO] positions: Lessons: The trade was based on a bearish trend with expected downside move but resulted in a stop loss with a 2.33% loss. The ranging regime indicates a lack of clear direction which may have contributed to the trade's failure. This outcome highlights the importance of adjusting strategies to account for ranging markets and potential false breakouts.
+2026-06-29 17:13:27,471 [INFO] rl: RL learned from short XLMUSDT: loss -2.33% | weights bull=0.845 bear=0.812 judge=1.343 threshold=66.58
 ```
 
 ## Disk
@@ -7258,7 +7270,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       918Mi       198Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       933Mi       182Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
