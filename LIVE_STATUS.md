@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-29 11:20:01 UTC
+Generated: 2026-06-29 11:30:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 48572 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50556 ?        Ssl  Jun12   1:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.6 736812 143512 ?       Ssl  Jun16  31:45 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.6 736812 143512 ?       Ssl  Jun16  31:46 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 949.0041024406064,
+  "balance": 969.4738621344064,
   "positions": {
     "TAOUSDT": {
       "id": "PAPER_TAOUSDT_1782690729",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.6 736812 143512 ?       Ssl  Jun16  31:45 /opt/ensemble
       "opened_at": "2026-06-29T01:01:12.187057",
       "cost": 20.0000027,
       "notional": 100.0000135,
-      "leverage": 5
-    },
-    "ALLOUSDT": {
-      "id": "PAPER_ALLOUSDT_1782727449",
-      "symbol": "ALLOUSDT",
-      "side": "short",
-      "entry_price": 0.28738,
-      "qty": 347.9713,
-      "confidence": 70,
-      "opened_at": "2026-06-29T10:04:09.718054",
-      "cost": 19.9999984388,
-      "notional": 99.999992194,
       "leverage": 5
     }
   },
@@ -7113,20 +7101,32 @@ root     1488950  0.1  3.6 736812 143512 ?       Ssl  Jun16  31:45 /opt/ensemble
       "closed_at": "2026-06-29T10:00:22.046520",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ALLOUSDT_1782727449",
+      "symbol": "ALLOUSDT",
+      "side": "short",
+      "entry_price": 0.28738,
+      "qty": 347.9713,
+      "confidence": 70,
+      "opened_at": "2026-06-29T10:04:09.718054",
+      "cost": 19.9999984388,
+      "notional": 99.999992194,
+      "leverage": 5,
+      "exit_price": 0.28603,
+      "pnl_pct": 2.35,
+      "pnl_usdt": 0.47,
+      "closed_at": "2026-06-29T11:22:07.681316",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 9.005819379406738
+  "total_pnl": 9.475580634406745
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-29 11:15:08,485 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-29 11:15:08,485 [INFO] main: AAVEUSDT | Bull:long(68%) Bear:short(80%)
-2026-06-29 11:15:11,354 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-29 11:15:11,355 [INFO] main: AAVEUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-29 11:15:11,355 [INFO] main: AAVEUSDT | RL adj=86.4%
-2026-06-29 11:15:11,378 [INFO] main: AAVEUSDT | Context score=-0.05 bias=0.05
 2026-06-29 11:15:11,379 [INFO] main: AAVEUSDT | gate PASS (Judge 85/70 RL 86.4/66.47 slack=±3)
 2026-06-29 11:15:11,381 [INFO] positions: 2/3 rule: skip SHORT AAVEUSDT (3/3 already short)
 2026-06-29 11:15:18,409 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -7151,6 +7151,12 @@ root     1488950  0.1  3.6 736812 143512 ?       Ssl  Jun16  31:45 /opt/ensemble
 2026-06-29 11:15:43,017 [INFO] main: SUIUSDT | gate PASS (Judge 85/70 RL 93.9/66.47 slack=±3)
 2026-06-29 11:15:43,019 [INFO] positions: 2/3 rule: skip SHORT SUIUSDT (3/3 already short)
 2026-06-29 11:15:45,022 [INFO] main: Next scan in 30min (always-30min)
+2026-06-29 11:22:07,679 [INFO] positions: BREAKEVEN_STOP ALLOUSDT short PnL:0.47%
+2026-06-29 11:22:07,688 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ALLOUSDT @ 0.2860 PnL: 2.35% (+0.47 USDT) | Баланс: 969.47
+2026-06-29 11:22:08,047 [INFO] positions: OK ALLOUSDT short PnL:0.47% reason:breakeven_stop
+2026-06-29 11:22:08,048 [INFO] positions: Lessons: The trade was closed at breakeven stop with a small profit of 0.47%. The initial analysis correctly identified bearish conditions and a downtrend, but the expected 2:1 risk-reward ratio was not achieved. This trade highlights the importance of adjusting expectations and being prepared for breakeven outcomes even when initial analysis is correct.
+2026-06-29 11:22:08,048 [INFO] rl: RL learned from short ALLOUSDT: profit 0.47% | weights bull=0.836 bear=0.827 judge=1.337 threshold=66.44
+2026-06-29 11:28:47,583 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -7168,7 +7174,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       904Mi       223Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       899Mi       227Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
