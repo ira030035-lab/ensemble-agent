@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-29 17:20:01 UTC
+Generated: 2026-06-29 17:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 48572 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50564 ?        Ssl  Jun12   1:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.6 735456 141748 ?       Ssl  Jun16  32:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.6 736480 142644 ?       Ssl  Jun16  32:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -7223,7 +7223,6 @@ root     1488950  0.1  3.6 735456 141748 ?       Ssl  Jun16  32:25 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-29 17:03:33,625 [INFO] main: ALLOUSDT | Judge:SHORT conf=80% size=15.0%
 2026-06-29 17:03:33,625 [INFO] main: ALLOUSDT | RL adj=88.6%
 2026-06-29 17:03:33,643 [INFO] main: ALLOUSDT | Context score=-0.05 bias=0.05
 2026-06-29 17:03:33,644 [INFO] main: ALLOUSDT | gate PASS (Judge 80/70 RL 88.6/66.48 slack=±3)
@@ -7253,6 +7252,7 @@ root     1488950  0.1  3.6 735456 141748 ?       Ssl  Jun16  32:25 /opt/ensemble
 2026-06-29 17:13:27,470 [INFO] positions: LOSS XLMUSDT short PnL:-2.33% reason:stop_loss
 2026-06-29 17:13:27,470 [INFO] positions: Lessons: The trade was based on a bearish trend with expected downside move but resulted in a stop loss with a 2.33% loss. The ranging regime indicates a lack of clear direction which may have contributed to the trade's failure. This outcome highlights the importance of adjusting strategies to account for ranging markets and potential false breakouts.
 2026-06-29 17:13:27,471 [INFO] rl: RL learned from short XLMUSDT: loss -2.33% | weights bull=0.845 bear=0.812 judge=1.343 threshold=66.58
+2026-06-29 17:28:51,788 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -7270,7 +7270,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       933Mi       182Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       923Mi       193Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
