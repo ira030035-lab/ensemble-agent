@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-29 12:10:01 UTC
+Generated: 2026-06-29 12:20:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.6 737832 143852 ?       Ssl  Jun16  31:50 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 949.4742571344065,
+  "balance": 967.4612336344064,
   "positions": {
     "TAOUSDT": {
       "id": "PAPER_TAOUSDT_1782690729",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.6 737832 143852 ?       Ssl  Jun16  31:50 /opt/ensemble
       "opened_at": "2026-06-29T01:01:12.187057",
       "cost": 20.0000027,
       "notional": 100.0000135,
-      "leverage": 5
-    },
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1782733644",
-      "symbol": "HYPEUSDT",
-      "side": "short",
-      "entry_price": 63.15,
-      "qty": 1.5835,
-      "confidence": 75,
-      "opened_at": "2026-06-29T11:47:24.245040",
-      "cost": 19.999605,
-      "notional": 99.998025,
       "leverage": 5
     }
   },
@@ -7131,19 +7119,32 @@ root     1488950  0.1  3.6 737832 143852 ?       Ssl  Jun16  31:50 /opt/ensemble
       "closed_at": "2026-06-29T11:22:07.681316",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1782733644",
+      "symbol": "HYPEUSDT",
+      "side": "short",
+      "entry_price": 63.15,
+      "qty": 1.5835,
+      "confidence": 75,
+      "opened_at": "2026-06-29T11:47:24.245040",
+      "cost": 19.999605,
+      "notional": 99.998025,
+      "leverage": 5,
+      "exit_price": 64.421,
+      "pnl_pct": -10.06,
+      "pnl_usdt": -2.01,
+      "closed_at": "2026-06-29T12:18:30.469264",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 9.475580634406745
+  "total_pnl": 7.462952134406732
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-29 11:49:50,912 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-29 11:49:52,578 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-29 11:49:52,578 [INFO] main: TACUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-29 11:49:55,460 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-29 11:49:55,461 [INFO] main: TACUSDT | Judge:SHORT conf=85% size=15.0%
 2026-06-29 11:49:55,461 [INFO] main: TACUSDT | RL adj=94.3%
 2026-06-29 11:49:55,472 [INFO] main: TACUSDT | Context score=-0.05 bias=0.05
 2026-06-29 11:49:55,472 [INFO] main: TACUSDT | regime BLOCK (volatile)
@@ -7169,6 +7170,11 @@ root     1488950  0.1  3.6 737832 143852 ?       Ssl  Jun16  31:50 /opt/ensemble
 2026-06-29 11:50:26,392 [INFO] main: POWRUSDT | Judge:HOLD conf=55% size=0.0%
 2026-06-29 11:50:26,392 [INFO] main: POWRUSDT | RL adj=55.0%
 2026-06-29 11:50:28,394 [INFO] main: Next scan in 30min (always-30min)
+2026-06-29 12:18:30,467 [INFO] positions: STOP_LOSS HYPEUSDT short PnL:-2.01%
+2026-06-29 12:18:30,476 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT HYPEUSDT @ 64.4210 PnL: -10.06% (-2.01 USDT) | Баланс: 967.46
+2026-06-29 12:18:31,727 [INFO] positions: LOSS HYPEUSDT short PnL:-2.01% reason:stop_loss
+2026-06-29 12:18:31,727 [INFO] positions: Lessons: The trade was closed at a 2.01% loss due to hitting the stop loss. Despite bear sentiment and RSI overbought concerns, the trend continued upward, indicating that sentiment and technical indicators can sometimes be overridden by the overall trend. This trade highlights the importance of respecting the trend and adjusting expectations accordingly.
+2026-06-29 12:18:31,727 [INFO] rl: RL learned from short HYPEUSDT: loss -2.01% | weights bull=0.839 bear=0.823 judge=1.338 threshold=66.49
 ```
 
 ## Disk
@@ -7186,7 +7192,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       906Mi       217Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       892Mi       231Mi       4.8Mi       2.9Gi       2.9Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
