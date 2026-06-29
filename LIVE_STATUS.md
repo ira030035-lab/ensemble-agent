@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-29 06:10:01 UTC
+Generated: 2026-06-29 06:20:01 UTC
 
 ## Services
 ```
@@ -7103,13 +7103,6 @@ root     1488950  0.1  3.6 736788 143336 ?       Ssl  Jun16  31:09 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-29 05:49:19,461 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-29 05:49:19,558 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-29 05:49:19,559 [INFO] main: LABUSDT | Bull:flat(15%) Bear:short(60%)
-2026-06-29 05:49:22,465 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-29 05:49:22,466 [INFO] main: LABUSDT | Judge:SHORT conf=80% size=15.0%
-2026-06-29 05:49:22,466 [INFO] main: LABUSDT | RL adj=87.4%
-2026-06-29 05:49:22,485 [INFO] main: LABUSDT | Context score=-0.05 bias=0.05
 2026-06-29 05:49:22,486 [INFO] main: LABUSDT | regime BLOCK (volatile)
 2026-06-29 05:49:29,208 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-29 05:49:29,311 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -7133,6 +7126,13 @@ root     1488950  0.1  3.6 736788 143336 ?       Ssl  Jun16  31:09 /opt/ensemble
 2026-06-29 05:49:51,246 [INFO] main: POWRUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-29 05:49:51,246 [INFO] main: POWRUSDT | RL adj=50.0%
 2026-06-29 05:49:53,247 [INFO] main: Next scan in 30min (always-30min)
+2026-06-29 06:19:53,259 [INFO] main: Scanning 27 symbols...
+2026-06-29 06:19:57,168 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-29 06:19:58,528 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-29 06:19:58,528 [INFO] main: PUMPUSDT | Bull:flat(25%) Bear:short(65%)
+2026-06-29 06:20:00,554 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-29 06:20:00,555 [INFO] main: PUMPUSDT | Judge:HOLD conf=55% size=0.0%
+2026-06-29 06:20:00,555 [INFO] main: PUMPUSDT | RL adj=55.0%
 ```
 
 ## Disk
@@ -7150,7 +7150,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       918Mi       224Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       917Mi       225Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
