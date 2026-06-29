@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-29 00:50:01 UTC
+Generated: 2026-06-29 01:00:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1488950  0.1  3.6 735620 142168 ?       Ssl  Jun16  30:35 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 952.1441438294064,
+  "balance": 970.1130225494064,
   "positions": {
-    "AVAXUSDT": {
-      "id": "PAPER_AVAXUSDT_1782637435",
-      "symbol": "AVAXUSDT",
-      "side": "short",
-      "entry_price": 6.351,
-      "qty": 15.7456,
-      "confidence": 90,
-      "opened_at": "2026-06-28T09:03:55.154658",
-      "cost": 20.000061119999998,
-      "notional": 100.00030559999999,
-      "leverage": 5
-    },
     "HYPEUSDT": {
       "id": "PAPER_HYPEUSDT_1782684629",
       "symbol": "HYPEUSDT",
@@ -7041,19 +7029,32 @@ root     1488950  0.1  3.6 735620 142168 ?       Ssl  Jun16  30:35 /opt/ensemble
       "closed_at": "2026-06-28T23:37:52.576143",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_AVAXUSDT_1782637435",
+      "symbol": "AVAXUSDT",
+      "side": "short",
+      "entry_price": 6.351,
+      "qty": 15.7456,
+      "confidence": 90,
+      "opened_at": "2026-06-28T09:03:55.154658",
+      "cost": 20.000061119999998,
+      "notional": 100.00030559999999,
+      "leverage": 5,
+      "exit_price": 6.48,
+      "pnl_pct": -10.16,
+      "pnl_usdt": -2.03,
+      "closed_at": "2026-06-29T00:56:26.189713",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 12.145924949406742
+  "total_pnl": 10.114742549406735
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-29 00:30:31,787 [INFO] main: SYNUSDT | Context score=-0.05 bias=0.05
-2026-06-29 00:30:31,787 [INFO] main: SYNUSDT | regime BLOCK (volatile)
-2026-06-29 00:30:38,785 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-29 00:30:39,258 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-29 00:30:39,259 [INFO] main: ZECUSDT | Bull:flat(15%) Bear:short(80%)
 2026-06-29 00:30:41,776 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-29 00:30:41,778 [INFO] main: ZECUSDT | Judge:SHORT conf=80% size=15.0%
 2026-06-29 00:30:41,778 [INFO] main: ZECUSDT | RL adj=90.0%
@@ -7079,6 +7080,11 @@ root     1488950  0.1  3.6 735620 142168 ?       Ssl  Jun16  30:35 /opt/ensemble
 2026-06-29 00:31:01,429 [INFO] main: SUIUSDT | gate PASS (Judge 75/70 RL 83.7/66.43 slack=±3)
 2026-06-29 00:31:01,430 [INFO] positions: 2/3 rule: skip SHORT SUIUSDT (3/3 already short)
 2026-06-29 00:31:03,432 [INFO] main: Next scan in 30min (always-30min)
+2026-06-29 00:56:26,188 [INFO] positions: STOP_LOSS AVAXUSDT short PnL:-2.03%
+2026-06-29 00:56:26,197 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT AVAXUSDT @ 6.4800 PnL: -10.16% (-2.03 USDT) | Баланс: 970.11
+2026-06-29 00:56:26,466 [INFO] positions: LOSS AVAXUSDT short PnL:-2.03% reason:stop_loss
+2026-06-29 00:56:26,466 [INFO] positions: Lessons: The trade was based on a high bear conviction and expected a 4%+ downside move with a 2:1 risk/reward ratio. The stop loss was triggered, resulting in a 2.03% loss. This outcome suggests that the bear conviction was not strong enough to drive the expected downside move, and the risk/reward ratio was not achieved.
+2026-06-29 00:56:26,466 [INFO] rl: RL learned from short AVAXUSDT: loss -2.03% | weights bull=0.835 bear=0.828 judge=1.337 threshold=66.48
 ```
 
 ## Disk
@@ -7096,7 +7102,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       901Mi       228Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       914Mi       216Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
