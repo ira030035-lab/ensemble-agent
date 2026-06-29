@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-29 10:20:01 UTC
+Generated: 2026-06-29 10:30:01 UTC
 
 ## Services
 ```
@@ -7121,7 +7121,6 @@ root     1488950  0.1  3.6 736808 143356 ?       Ssl  Jun16  31:37 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-29 10:03:55,385 [INFO] main: DOGEUSDT | RL adj=88.7%
 2026-06-29 10:03:55,396 [INFO] main: DOGEUSDT | Context score=-0.05 bias=0.05
 2026-06-29 10:03:55,397 [INFO] main: DOGEUSDT | regime BLOCK (short × trending_down × rsi1h=47.4; late-entry guard)
 2026-06-29 10:04:03,061 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -7151,6 +7150,7 @@ root     1488950  0.1  3.6 736808 143356 ?       Ssl  Jun16  31:37 /opt/ensemble
 2026-06-29 10:04:33,351 [INFO] main: AVAXUSDT | Context score=-0.0 bias=0.05
 2026-06-29 10:04:33,351 [INFO] main: AVAXUSDT | macro BLOCK (long при BTC downtrend)
 2026-06-29 10:04:35,353 [INFO] main: Next scan in 30min (always-30min)
+2026-06-29 10:28:46,929 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -7168,7 +7168,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       901Mi       231Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       927Mi       204Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
