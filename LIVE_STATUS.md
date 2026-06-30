@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-30 12:20:01 UTC
+Generated: 2026-06-30 12:30:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.6 738044 144216 ?       Ssl  Jun16  34:09 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 940.8028843974063,
+  "balance": 963.8603643974063,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1782779459",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.6 738044 144216 ?       Ssl  Jun16  34:09 /opt/ensemble
       "opened_at": "2026-06-30T00:33:17.291239",
       "cost": 20.001451199999998,
       "notional": 100.007256,
-      "leverage": 5
-    },
-    "AAVEUSDT": {
-      "id": "PAPER_AAVEUSDT_1782789418",
-      "symbol": "AAVEUSDT",
-      "side": "short",
-      "entry_price": 90.25,
-      "qty": 1.108,
-      "confidence": 70,
-      "opened_at": "2026-06-30T03:16:58.315076",
-      "cost": 19.9994,
-      "notional": 99.99700000000001,
       "leverage": 5
     }
   },
@@ -7275,20 +7263,32 @@ root     1488950  0.1  3.6 738044 144216 ?       Ssl  Jun16  34:09 /opt/ensemble
       "closed_at": "2026-06-30T03:03:15.827318",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_AAVEUSDT_1782789418",
+      "symbol": "AAVEUSDT",
+      "side": "short",
+      "entry_price": 90.25,
+      "qty": 1.108,
+      "confidence": 70,
+      "opened_at": "2026-06-30T03:16:58.315076",
+      "cost": 19.9994,
+      "notional": 99.99700000000001,
+      "leverage": 5,
+      "exit_price": 87.49,
+      "pnl_pct": 15.29,
+      "pnl_usdt": 3.06,
+      "closed_at": "2026-06-30T12:23:58.556475",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 1.137979597406734
+  "total_pnl": 4.19605959740674
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-30 12:14:09,219 [INFO] main: WLDUSDT | RL adj=94.7%
-2026-06-30 12:14:09,242 [INFO] main: WLDUSDT | Context score=-0.05 bias=0.05
-2026-06-30 12:14:09,243 [INFO] main: WLDUSDT | gate PASS (Judge 85/70 RL 94.7/66.6 slack=±3)
-2026-06-30 12:14:09,245 [INFO] positions: 2/3 rule: skip SHORT WLDUSDT (3/3 already short)
-2026-06-30 12:14:15,457 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-30 12:14:15,493 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-30 12:14:15,494 [INFO] main: ZECUSDT | Bull:flat(15%) Bear:short(80%)
 2026-06-30 12:14:19,683 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-30 12:14:19,684 [INFO] main: ZECUSDT | Judge:SHORT conf=85% size=15.0%
@@ -7313,6 +7313,12 @@ root     1488950  0.1  3.6 738044 144216 ?       Ssl  Jun16  34:09 /opt/ensemble
 2026-06-30 12:14:38,283 [INFO] main: AVAXUSDT | gate PASS (Judge 75/70 RL 76.8/66.6 slack=±3)
 2026-06-30 12:14:38,284 [INFO] positions: 2/3 rule: skip SHORT AVAXUSDT (3/3 already short)
 2026-06-30 12:14:40,287 [INFO] main: Next scan in 30min (always-30min)
+2026-06-30 12:23:58,554 [INFO] positions: TAKE-PROFIT AAVEUSDT short PnL:3.06%
+2026-06-30 12:23:58,563 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT AAVEUSDT @ 87.4900 PnL: 15.29% (+3.06 USDT) | Баланс: 963.86
+2026-06-30 12:23:58,840 [INFO] positions: OK AAVEUSDT short PnL:3.06% reason:take_profit
+2026-06-30 12:23:58,840 [INFO] positions: Lessons: The trade was closed for a 3.06% profit, meeting the expected risk-reward ratio. The bear signals, including the Bearish MACD and volume ratio, correctly indicated a downward move. The ranging regime and strong bear signals can be a reliable combination for short trades, as seen in this instance.
+2026-06-30 12:23:58,840 [INFO] rl: RL learned from short AAVEUSDT: profit 3.06% | weights bull=0.841 bear=0.815 judge=1.344 threshold=66.57
+2026-06-30 12:29:04,310 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -7330,7 +7336,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       925Mi       312Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       935Mi       301Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
