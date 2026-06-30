@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-30 23:10:01 UTC
+Generated: 2026-06-30 23:20:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 48572 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50556 ?        Ssl  Jun12   1:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  34:59 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -7355,36 +7355,36 @@ root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  34:59 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-30 22:39:35,671 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 22:39:35,672 [INFO] main: XRPUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-30 22:39:35,672 [INFO] main: XRPUSDT | RL adj=84.2%
-2026-06-30 22:39:35,683 [INFO] main: XRPUSDT | Context score=-0.05 bias=0.05
-2026-06-30 22:39:35,683 [INFO] main: XRPUSDT | regime BLOCK (short × trending_down × rsi1h=45.0; late-entry guard)
-2026-06-30 22:39:37,689 [INFO] main: Next scan in 30min (always-30min)
-2026-06-30 23:09:37,701 [INFO] main: Scanning 27 symbols...
-2026-06-30 23:09:40,087 [INFO] main: GWEIUSDT | Bull:long(70%) Bear:short(80%)
-2026-06-30 23:09:42,252 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 23:09:42,252 [INFO] main: GWEIUSDT | Judge:SHORT conf=74% size=15.0%
-2026-06-30 23:09:42,253 [INFO] main: GWEIUSDT | RL adj=75.1%
-2026-06-30 23:09:42,264 [INFO] main: GWEIUSDT | Context score=-0.05 bias=0.05
-2026-06-30 23:09:42,264 [INFO] main: GWEIUSDT | regime BLOCK (volatile)
-2026-06-30 23:09:45,965 [INFO] main: SLXUSDT | Bull:long(70%) Bear:short(80%)
-2026-06-30 23:09:48,070 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 23:09:48,072 [INFO] main: SLXUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-30 23:09:48,072 [INFO] main: SLXUSDT | RL adj=76.1%
-2026-06-30 23:09:48,092 [INFO] main: SLXUSDT | Context score=-0.05 bias=0.05
-2026-06-30 23:09:48,093 [INFO] main: SLXUSDT | regime BLOCK (volatile)
-2026-06-30 23:09:52,093 [INFO] main: SUIUSDT | Bull:long(70%) Bear:short(80%)
-2026-06-30 23:09:54,205 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 23:09:54,206 [INFO] main: SUIUSDT | Judge:SHORT conf=80% size=15.0%
-2026-06-30 23:09:54,206 [INFO] main: SUIUSDT | RL adj=81.1%
-2026-06-30 23:09:54,217 [INFO] main: SUIUSDT | Context score=-0.05 bias=0.05
-2026-06-30 23:09:54,487 [INFO] main: SUIUSDT | gate PASS (Judge 80/70 RL 81.1/66.57 slack=±3)
-2026-06-30 23:09:54,489 [INFO] positions: 2/3 rule: skip SHORT SUIUSDT (3/3 already short)
-2026-06-30 23:09:58,312 [INFO] main: ZECUSDT | Bull:long(70%) Bear:short(80%)
-2026-06-30 23:10:00,128 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 23:10:00,129 [INFO] main: ZECUSDT | Judge:HOLD conf=45% size=0.0%
-2026-06-30 23:10:00,129 [INFO] main: ZECUSDT | RL adj=45.0%
+2026-06-30 23:13:18,403 [INFO] main: SYNUSDT | Bull:flat(35%) Bear:short(80%)
+2026-06-30 23:13:20,379 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-30 23:13:20,380 [INFO] main: SYNUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-30 23:13:20,380 [INFO] main: SYNUSDT | RL adj=50.0%
+2026-06-30 23:13:26,332 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-30 23:13:27,451 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-30 23:13:27,452 [INFO] main: TAOUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-30 23:13:29,876 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-30 23:13:29,877 [INFO] main: TAOUSDT | Judge:SHORT conf=85% size=15.0%
+2026-06-30 23:13:29,877 [INFO] main: TAOUSDT | RL adj=94.8%
+2026-06-30 23:13:29,887 [INFO] main: TAOUSDT | Context score=-0.05 bias=0.05
+2026-06-30 23:13:29,887 [INFO] main: TAOUSDT | gate PASS (Judge 85/70 RL 94.8/66.57 slack=±3)
+2026-06-30 23:13:29,889 [INFO] positions: 2/3 rule: skip SHORT TAOUSDT (3/3 already short)
+2026-06-30 23:13:35,501 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-30 23:13:36,385 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-30 23:13:36,387 [INFO] main: TACUSDT | Bull:long(62%) Bear:short(70%)
+2026-06-30 23:13:39,001 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-30 23:13:39,001 [INFO] main: TACUSDT | Judge:LONG conf=70% size=15.0%
+2026-06-30 23:13:39,002 [INFO] main: TACUSDT | RL adj=69.1%
+2026-06-30 23:13:39,012 [INFO] main: TACUSDT | Context score=-0.0 bias=0.05
+2026-06-30 23:13:39,013 [INFO] main: TACUSDT | regime BLOCK (volatile)
+2026-06-30 23:13:45,023 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-30 23:13:46,565 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-30 23:13:46,566 [INFO] main: DOGEUSDT | Bull:flat(15%) Bear:short(80%)
+2026-06-30 23:13:48,696 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-30 23:13:48,697 [INFO] main: DOGEUSDT | Judge:SHORT conf=75% size=15.0%
+2026-06-30 23:13:48,697 [INFO] main: DOGEUSDT | RL adj=84.8%
+2026-06-30 23:13:48,715 [INFO] main: DOGEUSDT | Context score=-0.05 bias=0.05
+2026-06-30 23:13:48,715 [INFO] main: DOGEUSDT | regime BLOCK (short × trending_down × rsi1h=45.0; late-entry guard)
+2026-06-30 23:13:50,733 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -7402,7 +7402,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       911Mi       303Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       909Mi       305Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
