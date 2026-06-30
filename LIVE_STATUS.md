@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-30 03:10:01 UTC
+Generated: 2026-06-30 03:20:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 48572 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50564 ?        Ssl  Jun12   1:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.6 737824 143996 ?       Ssl  Jun16  33:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.6 737824 143996 ?       Ssl  Jun16  33:27 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 960.8022843974063,
+  "balance": 940.8028843974063,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1782779459",
@@ -42,6 +42,18 @@ root     1488950  0.1  3.6 737824 143996 ?       Ssl  Jun16  33:25 /opt/ensemble
       "opened_at": "2026-06-30T00:33:17.291239",
       "cost": 20.001451199999998,
       "notional": 100.007256,
+      "leverage": 5
+    },
+    "AAVEUSDT": {
+      "id": "PAPER_AAVEUSDT_1782789418",
+      "symbol": "AAVEUSDT",
+      "side": "short",
+      "entry_price": 90.25,
+      "qty": 1.108,
+      "confidence": 70,
+      "opened_at": "2026-06-30T03:16:58.315076",
+      "cost": 19.9994,
+      "notional": 99.99700000000001,
       "leverage": 5
     }
   },
@@ -7271,36 +7283,36 @@ root     1488950  0.1  3.6 737824 143996 ?       Ssl  Jun16  33:25 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-30 03:08:25,115 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
-2026-06-30 03:08:25,115 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
-2026-06-30 03:08:25,116 [INFO] main: UBUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-30 03:08:25,116 [INFO] main: UBUSDT | RL adj=50.0%
-2026-06-30 03:08:28,916 [INFO] main: NEARUSDT | Bull:long(72%) Bear:short(70%)
-2026-06-30 03:08:39,168 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-30 03:08:39,169 [INFO] openai._base_client: Retrying request to /chat/completions in 0.465546 seconds
-2026-06-30 03:08:49,676 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-30 03:08:49,677 [INFO] openai._base_client: Retrying request to /chat/completions in 0.804362 seconds
-2026-06-30 03:09:00,664 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-30 03:09:00,665 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
-2026-06-30 03:09:00,665 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
-2026-06-30 03:09:00,666 [INFO] main: NEARUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-30 03:09:00,666 [INFO] main: NEARUSDT | RL adj=50.0%
-2026-06-30 03:09:04,583 [INFO] main: AVAXUSDT | Bull:long(72%) Bear:short(70%)
-2026-06-30 03:09:14,813 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-30 03:09:14,813 [INFO] openai._base_client: Retrying request to /chat/completions in 0.463571 seconds
-2026-06-30 03:09:25,299 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-30 03:09:25,299 [INFO] openai._base_client: Retrying request to /chat/completions in 0.952540 seconds
-2026-06-30 03:09:36,279 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-30 03:09:36,280 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
-2026-06-30 03:09:36,280 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
-2026-06-30 03:09:36,280 [INFO] main: AVAXUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-30 03:09:36,281 [INFO] main: AVAXUSDT | RL adj=50.0%
-2026-06-30 03:09:40,300 [WARNING] agents: Bull entropy-guard: шаблон long(72) ×5. Переключаемся на Kimi+Claude fallback.
-2026-06-30 03:09:40,599 [INFO] main: TACUSDT | Bull:long(70%) Bear:short(70%)
-2026-06-30 03:09:53,425 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 03:09:53,425 [INFO] main: TACUSDT | Judge:HOLD conf=58% size=0.0%
-2026-06-30 03:09:53,425 [INFO] main: TACUSDT | RL adj=58.0%
-2026-06-30 03:09:56,913 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-06-30 03:18:00,666 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-30 03:18:00,667 [INFO] main: XLMUSDT | Judge:HOLD conf=60% size=0.0%
+2026-06-30 03:18:00,667 [INFO] main: XLMUSDT | RL adj=60.0%
+2026-06-30 03:18:07,714 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-30 03:18:14,486 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-30 03:18:14,487 [INFO] openai._base_client: Retrying request to /chat/completions in 0.434566 seconds
+2026-06-30 03:18:25,088 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-30 03:18:25,089 [INFO] openai._base_client: Retrying request to /chat/completions in 0.943812 seconds
+2026-06-30 03:18:36,041 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-30 03:18:39,297 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-30 03:18:39,297 [INFO] main: BNBUSDT | Bull:flat(35%) Bear:flat(45%)
+2026-06-30 03:18:49,593 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-30 03:18:49,593 [INFO] openai._base_client: Retrying request to /chat/completions in 0.383536 seconds
+2026-06-30 03:19:00,000 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-30 03:19:00,000 [INFO] openai._base_client: Retrying request to /chat/completions in 0.816008 seconds
+2026-06-30 03:19:10,829 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-30 03:19:10,829 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
+2026-06-30 03:19:10,829 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-06-30 03:19:10,830 [INFO] main: BNBUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-30 03:19:10,830 [INFO] main: BNBUSDT | RL adj=50.0%
+2026-06-30 03:19:18,259 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-30 03:19:24,464 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-30 03:19:24,465 [INFO] openai._base_client: Retrying request to /chat/completions in 0.480503 seconds
+2026-06-30 03:19:34,960 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-30 03:19:34,961 [INFO] openai._base_client: Retrying request to /chat/completions in 0.993796 seconds
+2026-06-30 03:19:45,977 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-30 03:19:49,090 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-30 03:19:49,091 [INFO] main: RAVEUSDT | Bull:flat(25%) Bear:short(72%)
+2026-06-30 03:19:59,315 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-30 03:19:59,315 [INFO] openai._base_client: Retrying request to /chat/completions in 0.452965 seconds
 ```
 
 ## Disk
@@ -7318,7 +7330,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       912Mi       189Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       936Mi       165Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
