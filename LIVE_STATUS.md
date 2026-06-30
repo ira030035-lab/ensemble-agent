@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-30 15:20:01 UTC
+Generated: 2026-06-30 15:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 48572 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50560 ?        Ssl  Jun12   1:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.6 738044 144216 ?       Ssl  Jun16  34:23 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.6 738044 144216 ?       Ssl  Jun16  34:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -7337,7 +7337,6 @@ root     1488950  0.1  3.6 738044 144216 ?       Ssl  Jun16  34:23 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-30 15:09:11,353 [INFO] main: ENAUSDT | Bull:flat(15%) Bear:short(65%)
 2026-06-30 15:09:14,018 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-30 15:09:14,019 [INFO] main: ENAUSDT | Judge:SHORT conf=70% size=15.0%
 2026-06-30 15:09:14,019 [INFO] main: ENAUSDT | RL adj=78.0%
@@ -7367,6 +7366,7 @@ root     1488950  0.1  3.6 738044 144216 ?       Ssl  Jun16  34:23 /opt/ensemble
 2026-06-30 15:09:42,432 [INFO] main: BTCUSDT | gate PASS (Judge 85/70 RL 87.2/66.52 slack=±3)
 2026-06-30 15:09:42,433 [INFO] positions: 2/3 rule: skip SHORT BTCUSDT (3/3 already short)
 2026-06-30 15:09:44,434 [INFO] main: Next scan in 30min (always-30min)
+2026-06-30 15:29:06,300 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -7384,7 +7384,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       903Mi       328Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       914Mi       317Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
