@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-30 10:30:01 UTC
+Generated: 2026-06-30 10:40:01 UTC
 
 ## Services
 ```
@@ -7283,16 +7283,6 @@ root     1488950  0.1  3.6 738044 144216 ?       Ssl  Jun16  34:01 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-30 10:29:26,674 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-30 10:29:26,675 [INFO] main: REUSDT | Bull:long(62%) Bear:short(78%)
-2026-06-30 10:29:29,601 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 10:29:29,603 [INFO] main: REUSDT | Judge:SHORT conf=85% size=15.0%
-2026-06-30 10:29:29,603 [INFO] main: REUSDT | RL adj=86.6%
-2026-06-30 10:29:29,624 [INFO] main: REUSDT | Context score=-0.05 bias=0.05
-2026-06-30 10:29:29,625 [INFO] main: REUSDT | regime BLOCK (volatile)
-2026-06-30 10:29:36,257 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-30 10:29:36,910 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 10:29:36,910 [INFO] main: TAOUSDT | Bull:flat(15%) Bear:short(75%)
 2026-06-30 10:29:39,546 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-30 10:29:39,547 [INFO] main: TAOUSDT | Judge:HOLD conf=45% size=0.0%
 2026-06-30 10:29:39,547 [INFO] main: TAOUSDT | RL adj=45.0%
@@ -7313,6 +7303,16 @@ root     1488950  0.1  3.6 738044 144216 ?       Ssl  Jun16  34:01 /opt/ensemble
 2026-06-30 10:30:00,115 [INFO] main: SUIUSDT | Context score=-0.05 bias=0.05
 2026-06-30 10:30:00,116 [INFO] main: SUIUSDT | gate PASS (Judge 85/70 RL 92.3/66.6 slack=±3)
 2026-06-30 10:30:00,120 [INFO] positions: 2/3 rule: skip SHORT SUIUSDT (3/3 already short)
+2026-06-30 10:30:06,148 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-30 10:30:06,521 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-30 10:30:06,523 [INFO] main: PEPEUSDT | Bull:flat(15%) Bear:short(75%)
+2026-06-30 10:30:09,542 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-30 10:30:09,544 [INFO] main: PEPEUSDT | Judge:SHORT conf=70% size=15.0%
+2026-06-30 10:30:09,544 [INFO] main: PEPEUSDT | RL adj=79.1%
+2026-06-30 10:30:09,568 [INFO] main: PEPEUSDT | Context score=-0.05 bias=0.05
+2026-06-30 10:30:09,568 [INFO] main: PEPEUSDT | gate PASS (Judge 70/70 RL 79.1/66.6 slack=±3)
+2026-06-30 10:30:09,572 [INFO] positions: 2/3 rule: skip SHORT PEPEUSDT (3/3 already short)
+2026-06-30 10:30:11,573 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -7330,7 +7330,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       925Mi       324Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       915Mi       334Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
