@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-30 08:20:01 UTC
+Generated: 2026-06-30 08:30:01 UTC
 
 ## Services
 ```
@@ -7283,7 +7283,6 @@ root     1488950  0.1  3.6 737824 143996 ?       Ssl  Jun16  33:50 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-30 08:07:03,133 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-30 08:07:03,134 [INFO] main: AGLDUSDT | Judge:SHORT conf=85% size=15.0%
 2026-06-30 08:07:03,134 [INFO] main: AGLDUSDT | RL adj=94.7%
 2026-06-30 08:07:03,144 [INFO] main: AGLDUSDT | Context score=-0.05 bias=0.05
@@ -7313,6 +7312,7 @@ root     1488950  0.1  3.6 737824 143996 ?       Ssl  Jun16  33:50 /opt/ensemble
 2026-06-30 08:07:57,838 [INFO] main: RAVEUSDT | Context score=-0.05 bias=0.05
 2026-06-30 08:07:57,838 [INFO] main: RAVEUSDT | regime BLOCK (volatile)
 2026-06-30 08:07:59,842 [INFO] main: Next scan in 30min (always-30min)
+2026-06-30 08:29:01,619 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -7330,7 +7330,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       910Mi       342Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       928Mi       324Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
