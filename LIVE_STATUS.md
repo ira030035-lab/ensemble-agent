@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-30 06:40:01 UTC
+Generated: 2026-06-30 06:50:01 UTC
 
 ## Services
 ```
@@ -7283,13 +7283,6 @@ root     1488950  0.1  3.6 737824 143996 ?       Ssl  Jun16  33:42 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-30 06:19:08,723 [INFO] main: BEATUSDT | Context score=-0.1 bias=0.1
-2026-06-30 06:19:08,723 [INFO] main: BEATUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-06-30 06:19:15,250 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-30 06:19:15,744 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 06:19:15,745 [INFO] main: ZECUSDT | Bull:flat(35%) Bear:flat(55%)
-2026-06-30 06:19:19,752 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 06:19:19,752 [INFO] main: ZECUSDT | Judge:HOLD conf=50% size=0.0%
 2026-06-30 06:19:19,752 [INFO] main: ZECUSDT | RL adj=50.0%
 2026-06-30 06:19:26,353 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-30 06:19:27,339 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -7313,6 +7306,13 @@ root     1488950  0.1  3.6 737824 143996 ?       Ssl  Jun16  33:42 /opt/ensemble
 2026-06-30 06:19:48,925 [INFO] main: AGLDUSDT | RL adj=45.0%
 2026-06-30 06:19:50,927 [INFO] main: Next scan in 30min (always-30min)
 2026-06-30 06:29:00,382 [INFO] main: Symbols: 30
+2026-06-30 06:49:50,932 [INFO] main: Scanning 27 symbols...
+2026-06-30 06:49:53,206 [INFO] main: SYNUSDT | Bull:long(80%) Bear:short(70%)
+2026-06-30 06:49:56,666 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-30 06:49:56,668 [INFO] main: SYNUSDT | Judge:LONG conf=75% size=15.0%
+2026-06-30 06:49:56,668 [INFO] main: SYNUSDT | RL adj=76.7%
+2026-06-30 06:49:56,688 [INFO] main: SYNUSDT | Context score=-0.0 bias=0.1
+2026-06-30 06:49:56,688 [INFO] main: SYNUSDT | regime BLOCK (volatile)
 ```
 
 ## Disk
@@ -7330,7 +7330,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       908Mi       347Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       910Mi       345Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
