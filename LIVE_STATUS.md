@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-30 13:50:01 UTC
+Generated: 2026-06-30 14:00:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 48572 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50560 ?        Ssl  Jun12   1:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.6 738044 144216 ?       Ssl  Jun16  34:15 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.6 738044 144216 ?       Ssl  Jun16  34:18 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 965.9632980170063,
+  "balance": 948.1054056850063,
   "positions": {
-    "BTCUSDT": {
-      "id": "PAPER_BTCUSDT_1782779459",
-      "symbol": "BTCUSDT",
-      "side": "short",
-      "entry_price": 59806.6,
-      "qty": 0.0017,
-      "confidence": 75,
-      "opened_at": "2026-06-30T00:30:59.634463",
-      "cost": 20.334243999999998,
-      "notional": 101.67121999999999,
-      "leverage": 5
-    },
     "DOGEUSDT": {
       "id": "PAPER_DOGEUSDT_1782823536",
       "symbol": "DOGEUSDT",
@@ -42,6 +30,30 @@ root     1488950  0.1  3.6 738044 144216 ?       Ssl  Jun16  34:15 /opt/ensemble
       "opened_at": "2026-06-30T12:45:36.554276",
       "cost": 19.999999580400004,
       "notional": 99.99999790200002,
+      "leverage": 5
+    },
+    "AAVEUSDT": {
+      "id": "PAPER_AAVEUSDT_1782827808",
+      "symbol": "AAVEUSDT",
+      "side": "short",
+      "entry_price": 86.09,
+      "qty": 1.1616,
+      "confidence": 85,
+      "opened_at": "2026-06-30T13:56:48.858584",
+      "cost": 20.0004288,
+      "notional": 100.002144,
+      "leverage": 5
+    },
+    "WLDUSDT": {
+      "id": "PAPER_WLDUSDT_1782827880",
+      "symbol": "WLDUSDT",
+      "side": "short",
+      "entry_price": 0.4086,
+      "qty": 244.7381,
+      "confidence": 85,
+      "opened_at": "2026-06-30T13:58:00.212061",
+      "cost": 19.999997532000002,
+      "notional": 99.99998766,
       "leverage": 5
     }
   },
@@ -7299,44 +7311,62 @@ root     1488950  0.1  3.6 738044 144216 ?       Ssl  Jun16  34:15 /opt/ensemble
       "closed_at": "2026-06-30T13:30:10.066839",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BTCUSDT_1782779459",
+      "symbol": "BTCUSDT",
+      "side": "short",
+      "entry_price": 59806.6,
+      "qty": 0.0017,
+      "confidence": 75,
+      "opened_at": "2026-06-30T00:30:59.634463",
+      "cost": 20.334243999999998,
+      "notional": 101.67121999999999,
+      "leverage": 5,
+      "exit_price": 58742.9,
+      "pnl_pct": 8.89,
+      "pnl_usdt": 1.81,
+      "closed_at": "2026-06-30T13:53:07.585932",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 6.297541597406736
+  "total_pnl": 8.10583159740673
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-30 13:23:44,470 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 13:23:45,533 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-30 13:23:45,534 [INFO] main: TACUSDT | Bull:flat(25%) Bear:short(80%)
-2026-06-30 13:23:49,154 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 13:23:49,155 [INFO] main: TACUSDT | Judge:HOLD conf=45% size=0.0%
-2026-06-30 13:23:49,155 [INFO] main: TACUSDT | RL adj=45.0%
-2026-06-30 13:23:55,342 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 13:23:56,624 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-30 13:23:56,625 [INFO] main: WLDUSDT | Bull:flat(15%) Bear:short(75%)
-2026-06-30 13:23:59,630 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 13:23:59,632 [INFO] main: WLDUSDT | Judge:SHORT conf=75% size=15.0%
-2026-06-30 13:23:59,632 [INFO] main: WLDUSDT | RL adj=84.2%
-2026-06-30 13:23:59,652 [INFO] main: WLDUSDT | Context score=-0.05 bias=0.05
-2026-06-30 13:23:59,653 [INFO] main: WLDUSDT | gate PASS (Judge 75/70 RL 84.2/66.57 slack=±3)
-2026-06-30 13:23:59,656 [INFO] positions: 2/3 rule: skip SHORT WLDUSDT (3/3 already short)
-2026-06-30 13:24:06,271 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-30 13:24:08,197 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 13:24:08,198 [INFO] main: SYNUSDT | Bull:long(72%) Bear:short(90%)
-2026-06-30 13:24:11,726 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 13:24:11,728 [INFO] main: SYNUSDT | Judge:LONG conf=70% size=15.0%
-2026-06-30 13:24:11,728 [INFO] main: SYNUSDT | RL adj=68.1%
-2026-06-30 13:24:11,750 [INFO] main: SYNUSDT | Context score=-0.0 bias=0.05
-2026-06-30 13:24:11,750 [INFO] main: SYNUSDT | regime BLOCK (volatile)
-2026-06-30 13:24:13,752 [INFO] main: Next scan in 30min (always-30min)
-2026-06-30 13:29:05,016 [INFO] main: Symbols: 30
-2026-06-30 13:30:10,065 [INFO] positions: TRAILING-STOP ETHUSDT short peak:2.93% now:2.1%
-2026-06-30 13:30:10,074 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ETHUSDT @ 1563.9900 PnL: 10.51% (+2.10 USDT) | Баланс: 965.96
-2026-06-30 13:30:10,501 [INFO] positions: OK ETHUSDT short PnL:2.1% reason:trailing_stop
-2026-06-30 13:30:10,501 [INFO] positions: Lessons: The trade was closed with a 2.1% profit due to a trailing stop. The original expectation of a 4% downside move was not met, but the overall bullish climate and oversold RSI helped to limit losses and secure a small gain. The key takeaway is that even when the primary expectation is not fulfilled, a well-placed trailing stop can help to lock in profits in a trending market.
-2026-06-30 13:30:10,502 [INFO] rl: RL learned from short ETHUSDT: profit 2.10% | weights bull=0.836 bear=0.819 judge=1.345 threshold=66.54
+2026-06-30 13:59:04,069 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-30 13:59:04,070 [INFO] main: XLMUSDT | Judge:LONG conf=75% size=15.0%
+2026-06-30 13:59:04,070 [INFO] main: XLMUSDT | RL adj=74.1%
+2026-06-30 13:59:04,081 [INFO] main: XLMUSDT | Context score=-0.0 bias=0.05
+2026-06-30 13:59:04,082 [INFO] main: XLMUSDT | macro BLOCK (long при BTC downtrend)
+2026-06-30 13:59:10,624 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-30 13:59:12,111 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-30 13:59:12,112 [INFO] main: BEATUSDT | Bull:long(62%) Bear:short(75%)
+2026-06-30 13:59:16,021 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-30 13:59:16,021 [INFO] main: BEATUSDT | Judge:SHORT conf=75% size=15.0%
+2026-06-30 13:59:16,021 [INFO] main: BEATUSDT | RL adj=76.6%
+2026-06-30 13:59:16,032 [INFO] main: BEATUSDT | Context score=-0.05 bias=0.05
+2026-06-30 13:59:16,032 [INFO] main: BEATUSDT | regime BLOCK (short × trending_up × rsi1h=49.4; counter-trend guard)
+2026-06-30 13:59:22,830 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-30 13:59:23,733 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-30 13:59:23,735 [INFO] main: SYNUSDT | Bull:long(62%) Bear:short(75%)
+2026-06-30 13:59:26,625 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-30 13:59:26,626 [INFO] main: SYNUSDT | Judge:LONG conf=75% size=15.0%
+2026-06-30 13:59:26,626 [INFO] main: SYNUSDT | RL adj=73.4%
+2026-06-30 13:59:26,637 [INFO] main: SYNUSDT | Context score=-0.0 bias=0.05
+2026-06-30 13:59:26,637 [INFO] main: SYNUSDT | regime BLOCK (volatile)
+2026-06-30 13:59:32,360 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-30 13:59:34,254 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-30 13:59:34,254 [INFO] main: REUSDT | Bull:flat(5%) Bear:short(95%)
+2026-06-30 13:59:38,132 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-30 13:59:38,133 [INFO] main: REUSDT | Judge:SHORT conf=95% size=20.0%
+2026-06-30 13:59:38,133 [INFO] main: REUSDT | RL adj=100.0%
+2026-06-30 13:59:38,144 [INFO] main: REUSDT | Context score=-0.05 bias=0.05
+2026-06-30 13:59:38,144 [INFO] main: REUSDT | regime BLOCK (volatile)
+2026-06-30 13:59:40,150 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -7354,7 +7384,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       897Mi       337Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       917Mi       317Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
