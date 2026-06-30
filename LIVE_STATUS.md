@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-30 13:30:01 UTC
+Generated: 2026-06-30 13:40:01 UTC
 
 ## Services
 ```
@@ -11,14 +11,14 @@ ensemble-dashboard.service: active
 ## Processes
 ```
 root     1408411  0.0  1.2  60944 48572 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     1408416  0.0  1.2 283284 50564 ?        Ssl  Jun12   1:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
+root     1408416  0.0  1.2 283284 50560 ?        Ssl  Jun12   1:25 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     1488950  0.1  3.6 738044 144216 ?       Ssl  Jun16  34:15 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 943.8603648170064,
+  "balance": 965.9632980170063,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1782779459",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.6 738044 144216 ?       Ssl  Jun16  34:15 /opt/ensemble
       "opened_at": "2026-06-30T00:30:59.634463",
       "cost": 20.334243999999998,
       "notional": 101.67121999999999,
-      "leverage": 5
-    },
-    "ETHUSDT": {
-      "id": "PAPER_ETHUSDT_1782779597",
-      "symbol": "ETHUSDT",
-      "side": "short",
-      "entry_price": 1597.56,
-      "qty": 0.0626,
-      "confidence": 70,
-      "opened_at": "2026-06-30T00:33:17.291239",
-      "cost": 20.001451199999998,
-      "notional": 100.007256,
       "leverage": 5
     },
     "DOGEUSDT": {
@@ -7293,19 +7281,32 @@ root     1488950  0.1  3.6 738044 144216 ?       Ssl  Jun16  34:15 /opt/ensemble
       "closed_at": "2026-06-30T12:23:58.556475",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ETHUSDT_1782779597",
+      "symbol": "ETHUSDT",
+      "side": "short",
+      "entry_price": 1597.56,
+      "qty": 0.0626,
+      "confidence": 70,
+      "opened_at": "2026-06-30T00:33:17.291239",
+      "cost": 20.001451199999998,
+      "notional": 100.007256,
+      "leverage": 5,
+      "exit_price": 1563.99,
+      "pnl_pct": 10.51,
+      "pnl_usdt": 2.1,
+      "closed_at": "2026-06-30T13:30:10.066839",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 4.19605959740674
+  "total_pnl": 6.297541597406736
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-30 13:23:36,138 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 13:23:36,138 [INFO] main: ENAUSDT | Bull:flat(15%) Bear:short(70%)
-2026-06-30 13:23:38,568 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 13:23:38,569 [INFO] main: ENAUSDT | Judge:HOLD conf=55% size=0.0%
-2026-06-30 13:23:38,569 [INFO] main: ENAUSDT | RL adj=55.0%
 2026-06-30 13:23:44,470 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-30 13:23:45,533 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-06-30 13:23:45,534 [INFO] main: TACUSDT | Bull:flat(25%) Bear:short(80%)
@@ -7331,6 +7332,11 @@ root     1488950  0.1  3.6 738044 144216 ?       Ssl  Jun16  34:15 /opt/ensemble
 2026-06-30 13:24:11,750 [INFO] main: SYNUSDT | regime BLOCK (volatile)
 2026-06-30 13:24:13,752 [INFO] main: Next scan in 30min (always-30min)
 2026-06-30 13:29:05,016 [INFO] main: Symbols: 30
+2026-06-30 13:30:10,065 [INFO] positions: TRAILING-STOP ETHUSDT short peak:2.93% now:2.1%
+2026-06-30 13:30:10,074 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ETHUSDT @ 1563.9900 PnL: 10.51% (+2.10 USDT) | Баланс: 965.96
+2026-06-30 13:30:10,501 [INFO] positions: OK ETHUSDT short PnL:2.1% reason:trailing_stop
+2026-06-30 13:30:10,501 [INFO] positions: Lessons: The trade was closed with a 2.1% profit due to a trailing stop. The original expectation of a 4% downside move was not met, but the overall bullish climate and oversold RSI helped to limit losses and secure a small gain. The key takeaway is that even when the primary expectation is not fulfilled, a well-placed trailing stop can help to lock in profits in a trending market.
+2026-06-30 13:30:10,502 [INFO] rl: RL learned from short ETHUSDT: profit 2.10% | weights bull=0.836 bear=0.819 judge=1.345 threshold=66.54
 ```
 
 ## Disk
@@ -7348,7 +7354,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       906Mi       329Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       896Mi       338Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
