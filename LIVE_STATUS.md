@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-30 06:20:01 UTC
+Generated: 2026-06-30 06:30:01 UTC
 
 ## Services
 ```
@@ -7283,7 +7283,6 @@ root     1488950  0.1  3.6 737824 143996 ?       Ssl  Jun16  33:41 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-30 06:19:08,701 [INFO] main: BEATUSDT | RL adj=79.1%
 2026-06-30 06:19:08,723 [INFO] main: BEATUSDT | Context score=-0.1 bias=0.1
 2026-06-30 06:19:08,723 [INFO] main: BEATUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-06-30 06:19:15,250 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -7313,12 +7312,13 @@ root     1488950  0.1  3.6 737824 143996 ?       Ssl  Jun16  33:41 /opt/ensemble
 2026-06-30 06:19:48,925 [INFO] main: AGLDUSDT | Judge:HOLD conf=45% size=0.0%
 2026-06-30 06:19:48,925 [INFO] main: AGLDUSDT | RL adj=45.0%
 2026-06-30 06:19:50,927 [INFO] main: Next scan in 30min (always-30min)
+2026-06-30 06:29:00,382 [INFO] main: Symbols: 30
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  896K  381M   1% /run
+tmpfs           382M  900K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  9.4G   63G  14% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -7330,7 +7330,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       910Mi       208Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       908Mi       348Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
