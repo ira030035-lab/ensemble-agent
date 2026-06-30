@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-06-30 03:00:01 UTC
+Generated: 2026-06-30 03:10:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.6 737824 143996 ?       Ssl  Jun16  33:25 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 940.3417888874063,
+  "balance": 960.8022843974063,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1782779459",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.6 737824 143996 ?       Ssl  Jun16  33:25 /opt/ensemble
       "opened_at": "2026-06-30T00:33:17.291239",
       "cost": 20.001451199999998,
       "notional": 100.007256,
-      "leverage": 5
-    },
-    "WLDUSDT": {
-      "id": "PAPER_WLDUSDT_1782779719",
-      "symbol": "WLDUSDT",
-      "side": "short",
-      "entry_price": 0.4126,
-      "qty": 242.3655,
-      "confidence": 85,
-      "opened_at": "2026-06-30T00:35:19.879384",
-      "cost": 20.00000106,
-      "notional": 100.0000053,
       "leverage": 5
     }
   },
@@ -7257,44 +7245,62 @@ root     1488950  0.1  3.6 737824 143996 ?       Ssl  Jun16  33:25 /opt/ensemble
       "closed_at": "2026-06-29T17:31:08.429053",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_WLDUSDT_1782779719",
+      "symbol": "WLDUSDT",
+      "side": "short",
+      "entry_price": 0.4126,
+      "qty": 242.3655,
+      "confidence": 85,
+      "opened_at": "2026-06-30T00:35:19.879384",
+      "cost": 20.00000106,
+      "notional": 100.0000053,
+      "leverage": 5,
+      "exit_price": 0.4107,
+      "pnl_pct": 2.3,
+      "pnl_usdt": 0.46,
+      "closed_at": "2026-06-30T03:03:15.827318",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 0.6774851474067307
+  "total_pnl": 1.137979597406734
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-06-30 02:35:28,470 [INFO] main: SUIUSDT | Bull:flat(25%) Bear:flat(45%)
-2026-06-30 02:35:38,658 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-30 02:35:38,659 [INFO] openai._base_client: Retrying request to /chat/completions in 0.481597 seconds
-2026-06-30 02:35:49,181 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-30 02:35:49,182 [INFO] openai._base_client: Retrying request to /chat/completions in 0.828604 seconds
-2026-06-30 02:36:00,034 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-30 02:36:00,035 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
-2026-06-30 02:36:00,035 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
-2026-06-30 02:36:00,035 [INFO] main: SUIUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-30 02:36:00,035 [INFO] main: SUIUSDT | RL adj=50.0%
-2026-06-30 02:36:07,891 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-30 02:36:13,855 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-30 02:36:13,856 [INFO] openai._base_client: Retrying request to /chat/completions in 0.471499 seconds
-2026-06-30 02:36:24,351 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-30 02:36:24,351 [INFO] openai._base_client: Retrying request to /chat/completions in 0.933442 seconds
-2026-06-30 02:36:35,310 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-06-30 02:36:38,863 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-30 02:36:38,864 [INFO] main: SYNUSDT | Bull:flat(25%) Bear:short(72%)
-2026-06-30 02:36:52,571 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 02:36:52,572 [INFO] main: SYNUSDT | Judge:SHORT conf=80% size=15.0%
-2026-06-30 02:36:52,572 [INFO] main: SYNUSDT | RL adj=88.7%
-2026-06-30 02:36:52,585 [INFO] main: SYNUSDT | Context score=-0.05 bias=0.05
-2026-06-30 02:36:52,585 [INFO] main: SYNUSDT | regime BLOCK (volatile)
-2026-06-30 02:36:59,922 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-06-30 02:37:03,732 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 02:37:03,734 [INFO] main: SOLUSDT | Bull:flat(25%) Bear:short(65%)
-2026-06-30 02:37:13,114 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-30 02:37:13,115 [INFO] main: SOLUSDT | Judge:HOLD conf=50% size=0.0%
-2026-06-30 02:37:13,115 [INFO] main: SOLUSDT | RL adj=50.0%
-2026-06-30 02:37:15,117 [INFO] main: Next scan in 30min (always-30min)
+2026-06-30 03:08:25,115 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
+2026-06-30 03:08:25,115 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-06-30 03:08:25,116 [INFO] main: UBUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-30 03:08:25,116 [INFO] main: UBUSDT | RL adj=50.0%
+2026-06-30 03:08:28,916 [INFO] main: NEARUSDT | Bull:long(72%) Bear:short(70%)
+2026-06-30 03:08:39,168 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-30 03:08:39,169 [INFO] openai._base_client: Retrying request to /chat/completions in 0.465546 seconds
+2026-06-30 03:08:49,676 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-30 03:08:49,677 [INFO] openai._base_client: Retrying request to /chat/completions in 0.804362 seconds
+2026-06-30 03:09:00,664 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-30 03:09:00,665 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
+2026-06-30 03:09:00,665 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-06-30 03:09:00,666 [INFO] main: NEARUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-30 03:09:00,666 [INFO] main: NEARUSDT | RL adj=50.0%
+2026-06-30 03:09:04,583 [INFO] main: AVAXUSDT | Bull:long(72%) Bear:short(70%)
+2026-06-30 03:09:14,813 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-30 03:09:14,813 [INFO] openai._base_client: Retrying request to /chat/completions in 0.463571 seconds
+2026-06-30 03:09:25,299 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-30 03:09:25,299 [INFO] openai._base_client: Retrying request to /chat/completions in 0.952540 seconds
+2026-06-30 03:09:36,279 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-30 03:09:36,280 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
+2026-06-30 03:09:36,280 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-06-30 03:09:36,280 [INFO] main: AVAXUSDT | Judge:HOLD conf=50% size=0.0%
+2026-06-30 03:09:36,281 [INFO] main: AVAXUSDT | RL adj=50.0%
+2026-06-30 03:09:40,300 [WARNING] agents: Bull entropy-guard: шаблон long(72) ×5. Переключаемся на Kimi+Claude fallback.
+2026-06-30 03:09:40,599 [INFO] main: TACUSDT | Bull:long(70%) Bear:short(70%)
+2026-06-30 03:09:53,425 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-30 03:09:53,425 [INFO] main: TACUSDT | Judge:HOLD conf=58% size=0.0%
+2026-06-30 03:09:53,425 [INFO] main: TACUSDT | RL adj=58.0%
+2026-06-30 03:09:56,913 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
 ```
 
 ## Disk
@@ -7312,7 +7318,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       920Mi       181Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       912Mi       189Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
