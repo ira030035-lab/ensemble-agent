@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-01 01:40:01 UTC
+Generated: 2026-07-01 01:50:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:13 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 955.2124300854064,
+  "balance": 973.1363947514063,
   "positions": {
-    "WLDUSDT": {
-      "id": "PAPER_WLDUSDT_1782869227",
-      "symbol": "WLDUSDT",
-      "side": "short",
-      "entry_price": 0.3998,
-      "qty": 250.1251,
-      "confidence": 85,
-      "opened_at": "2026-07-01T01:27:07.872377",
-      "cost": 20.000002996,
-      "notional": 100.00001498,
-      "leverage": 5
-    },
     "LINKUSDT": {
       "id": "PAPER_LINKUSDT_1782869258",
       "symbol": "LINKUSDT",
@@ -7419,19 +7407,32 @@ root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:13 /opt/ensemble
       "closed_at": "2026-07-01T01:15:18.497702",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_WLDUSDT_1782869227",
+      "symbol": "WLDUSDT",
+      "side": "short",
+      "entry_price": 0.3998,
+      "qty": 250.1251,
+      "confidence": 85,
+      "opened_at": "2026-07-01T01:27:07.872377",
+      "cost": 20.000002996,
+      "notional": 100.00001498,
+      "leverage": 5,
+      "exit_price": 0.4081,
+      "pnl_pct": -10.38,
+      "pnl_usdt": -2.08,
+      "closed_at": "2026-07-01T01:41:42.307938",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 15.21236824140673
+  "total_pnl": 13.136329911406722
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-01 01:32:01,545 [INFO] main: XLMUSDT | RL adj=100.0%
-2026-07-01 01:32:01,555 [INFO] main: XLMUSDT | Context score=-0.05 bias=0.05
-2026-07-01 01:32:01,556 [INFO] main: XLMUSDT | regime BLOCK (volatile)
-2026-07-01 01:32:08,349 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-01 01:32:11,406 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-01 01:32:11,407 [INFO] main: SLXUSDT | Bull:flat(15%) Bear:short(60%)
 2026-07-01 01:32:17,131 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-01 01:32:17,132 [INFO] main: SLXUSDT | Judge:SHORT conf=85% size=15.0%
@@ -7457,6 +7458,11 @@ root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:13 /opt/ensemble
 2026-07-01 01:32:56,700 [INFO] main: LABUSDT | Judge:HOLD conf=50% size=0.0%
 2026-07-01 01:32:56,700 [INFO] main: LABUSDT | RL adj=50.0%
 2026-07-01 01:32:58,701 [INFO] main: Next scan in 30min (always-30min)
+2026-07-01 01:41:42,306 [INFO] positions: STOP_LOSS WLDUSDT short PnL:-2.08%
+2026-07-01 01:41:42,315 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT WLDUSDT @ 0.4081 PnL: -10.38% (-2.08 USDT) | Баланс: 973.14
+2026-07-01 01:41:42,612 [INFO] positions: LOSS WLDUSDT short PnL:-2.08% reason:stop_loss
+2026-07-01 01:41:42,612 [INFO] positions: Lessons: The trade was closed at a 2.08% loss due to a stop loss being triggered. Despite the original analysis indicating a strong downward momentum, the price did not move in the expected direction. This serves as a reminder that even with multiple bearish indicators, trends can reverse and stop losses should be used to limit potential losses.
+2026-07-01 01:41:42,612 [INFO] rl: RL learned from short WLDUSDT: loss -2.08% | weights bull=0.819 bear=0.835 judge=1.347 threshold=66.51
 ```
 
 ## Disk
@@ -7474,7 +7480,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       908Mi       302Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       906Mi       303Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
