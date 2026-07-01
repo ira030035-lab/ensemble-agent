@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-01 02:30:01 UTC
+Generated: 2026-07-01 02:40:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:16 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 973.1363947514063,
+  "balance": 991.0161065114063,
   "positions": {
     "LINKUSDT": {
       "id": "PAPER_LINKUSDT_1782869258",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:16 /opt/ensemble
       "opened_at": "2026-07-01T01:27:38.733978",
       "cost": 19.9999422,
       "notional": 99.999711,
-      "leverage": 5
-    },
-    "NEARUSDT": {
-      "id": "PAPER_NEARUSDT_1782869314",
-      "symbol": "NEARUSDT",
-      "side": "short",
-      "entry_price": 1.7592,
-      "qty": 56.844,
-      "confidence": 85,
-      "opened_at": "2026-07-01T01:28:34.147388",
-      "cost": 19.99999296,
-      "notional": 99.9999648,
       "leverage": 5
     }
   },
@@ -7425,19 +7413,32 @@ root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:16 /opt/ensemble
       "closed_at": "2026-07-01T01:41:42.307938",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_NEARUSDT_1782869314",
+      "symbol": "NEARUSDT",
+      "side": "short",
+      "entry_price": 1.7592,
+      "qty": 56.844,
+      "confidence": 85,
+      "opened_at": "2026-07-01T01:28:34.147388",
+      "cost": 19.99999296,
+      "notional": 99.9999648,
+      "leverage": 5,
+      "exit_price": 1.7965,
+      "pnl_pct": -10.6,
+      "pnl_usdt": -2.12,
+      "closed_at": "2026-07-01T02:31:37.893252",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 13.136329911406722
+  "total_pnl": 11.016048711406729
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-01 02:11:19,485 [INFO] main: TACUSDT | Judge:SHORT conf=85% size=15.0%
-2026-07-01 02:11:19,485 [INFO] main: TACUSDT | RL adj=94.4%
-2026-07-01 02:11:19,496 [INFO] main: TACUSDT | Context score=-0.05 bias=0.05
-2026-07-01 02:11:19,496 [INFO] main: TACUSDT | regime BLOCK (volatile)
-2026-07-01 02:11:26,875 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-01 02:11:30,009 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-01 02:11:30,010 [INFO] main: LABUSDT | Bull:long(62%) Bear:short(70%)
 2026-07-01 02:11:34,719 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -7463,6 +7464,11 @@ root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:16 /opt/ensemble
 2026-07-01 02:12:25,709 [INFO] main: DOGEUSDT | regime BLOCK (short × trending_down × rsi1h=72.9; late-entry guard)
 2026-07-01 02:12:27,719 [INFO] main: Next scan in 30min (always-30min)
 2026-07-01 02:29:13,228 [INFO] main: Symbols: 30
+2026-07-01 02:31:37,890 [INFO] positions: STOP_LOSS NEARUSDT short PnL:-2.12%
+2026-07-01 02:31:37,907 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT NEARUSDT @ 1.7965 PnL: -10.60% (-2.12 USDT) | Баланс: 991.02
+2026-07-01 02:31:38,218 [INFO] positions: LOSS NEARUSDT short PnL:-2.12% reason:stop_loss
+2026-07-01 02:31:38,218 [INFO] positions: Lessons: The trade was closed at a 2.12% loss due to hitting the stop loss. The original reasoning was based on bearish signals, but the expected 4% downside move did not occur. This trade highlights the importance of setting appropriate stop losses to limit losses when the market does not move as expected.
+2026-07-01 02:31:38,218 [INFO] rl: RL learned from short NEARUSDT: loss -2.12% | weights bull=0.822 bear=0.831 judge=1.348 threshold=66.56
 ```
 
 ## Disk
@@ -7480,7 +7486,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       914Mi       294Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       906Mi       302Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
