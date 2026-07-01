@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-01 01:20:01 UTC
+Generated: 2026-07-01 01:30:01 UTC
 
 ## Services
 ```
@@ -12,14 +12,51 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 48572 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50556 ?        Ssl  Jun12   1:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:12 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 1015.2123682414064,
-  "positions": {},
+  "balance": 955.2124300854064,
+  "positions": {
+    "WLDUSDT": {
+      "id": "PAPER_WLDUSDT_1782869227",
+      "symbol": "WLDUSDT",
+      "side": "short",
+      "entry_price": 0.3998,
+      "qty": 250.1251,
+      "confidence": 85,
+      "opened_at": "2026-07-01T01:27:07.872377",
+      "cost": 20.000002996,
+      "notional": 100.00001498,
+      "leverage": 5
+    },
+    "LINKUSDT": {
+      "id": "PAPER_LINKUSDT_1782869258",
+      "symbol": "LINKUSDT",
+      "side": "short",
+      "entry_price": 7.155,
+      "qty": 13.9762,
+      "confidence": 72,
+      "opened_at": "2026-07-01T01:27:38.733978",
+      "cost": 19.9999422,
+      "notional": 99.999711,
+      "leverage": 5
+    },
+    "NEARUSDT": {
+      "id": "PAPER_NEARUSDT_1782869314",
+      "symbol": "NEARUSDT",
+      "side": "short",
+      "entry_price": 1.7592,
+      "qty": 56.844,
+      "confidence": 85,
+      "opened_at": "2026-07-01T01:28:34.147388",
+      "cost": 19.99999296,
+      "notional": 99.9999648,
+      "leverage": 5
+    }
+  },
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -7390,36 +7427,36 @@ root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:10 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-01 00:56:37,630 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 00:56:39,930 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-01 00:56:39,932 [INFO] main: PEPEUSDT | Bull:flat(15%) Bear:short(80%)
-2026-07-01 00:56:42,101 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 00:56:42,102 [INFO] main: PEPEUSDT | Judge:SHORT conf=80% size=15.0%
-2026-07-01 00:56:42,102 [INFO] main: PEPEUSDT | RL adj=89.8%
-2026-07-01 00:56:42,121 [INFO] main: PEPEUSDT | Context score=-0.05 bias=0.05
-2026-07-01 00:56:42,122 [INFO] main: PEPEUSDT | regime BLOCK (short × trending_down × rsi1h=45.0; late-entry guard)
-2026-07-01 00:56:48,655 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 00:56:49,838 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-01 00:56:49,840 [INFO] main: BTWUSDT | Bull:flat(15%) Bear:short(75%)
-2026-07-01 00:56:52,444 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 00:56:52,445 [INFO] main: BTWUSDT | Judge:HOLD conf=30% size=0.0%
-2026-07-01 00:56:52,445 [INFO] main: BTWUSDT | RL adj=30.0%
-2026-07-01 00:56:54,447 [INFO] main: Next scan in 30min (always-30min)
-2026-07-01 01:13:16,614 [INFO] positions: TAKE-PROFIT WLDUSDT short PnL:3.45%
-2026-07-01 01:13:16,631 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT WLDUSDT @ 0.3945 PnL: 17.25% (+3.45 USDT) | Баланс: 970.00
-2026-07-01 01:13:16,910 [INFO] positions: OK WLDUSDT short PnL:3.45% reason:take_profit
-2026-07-01 01:13:16,910 [INFO] positions: Lessons: The short trade on WLDUSDT was successful with a 3.45% profit. The bearish sentiment and oversold conditions correctly indicated a downside move. This trade demonstrates the effectiveness of identifying strong trends and sentiment to inform trading decisions.
-2026-07-01 01:13:16,910 [INFO] rl: RL learned from short WLDUSDT: profit 3.45% | weights bull=0.825 bear=0.829 judge=1.346 threshold=66.52
-2026-07-01 01:13:16,910 [INFO] positions: TAKE-PROFIT NEARUSDT short PnL:3.53%
-2026-07-01 01:13:16,930 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT NEARUSDT @ 1.7315 PnL: 17.63% (+3.53 USDT) | Баланс: 993.52
-2026-07-01 01:13:17,190 [INFO] positions: OK NEARUSDT short PnL:3.53% reason:take_profit
-2026-07-01 01:13:17,190 [INFO] positions: Lessons: The trade was successful with a 3.53% profit due to a strong bear sentiment and a 4-hour downtrend. The low trading volume also contributed to the trade's outcome. This trade demonstrates the importance of considering sentiment and trend when making trading decisions, particularly in a trending_down regime.
-2026-07-01 01:13:17,190 [INFO] rl: RL learned from short NEARUSDT: profit 3.53% | weights bull=0.819 bear=0.836 judge=1.346 threshold=66.49
-2026-07-01 01:15:18,496 [INFO] positions: TRAILING-STOP HYPEUSDT short peak:2.76% now:1.69%
-2026-07-01 01:15:18,504 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT HYPEUSDT @ 63.6940 PnL: 8.44% (+1.69 USDT) | Баланс: 1015.21
-2026-07-01 01:15:18,827 [INFO] positions: OK HYPEUSDT short PnL:1.69% reason:trailing_stop
-2026-07-01 01:15:18,827 [INFO] positions: Lessons: The trade was closed with a 1.69% profit due to a trailing stop. The original bearish sentiment and momentum were correct, resulting in a profitable short position. The trade's outcome suggests that the strategy of riding the trend with a trailing stop can be effective in a trending_down regime.
-2026-07-01 01:15:18,828 [INFO] rl: RL learned from short HYPEUSDT: profit 1.69% | weights bull=0.815 bear=0.840 judge=1.345 threshold=66.46
+2026-07-01 01:29:23,222 [INFO] main: XRPUSDT | Judge:SHORT conf=85% size=15.0%
+2026-07-01 01:29:23,222 [INFO] main: XRPUSDT | RL adj=94.8%
+2026-07-01 01:29:23,241 [INFO] main: XRPUSDT | Context score=-0.05 bias=0.05
+2026-07-01 01:29:23,242 [INFO] main: XRPUSDT | gate PASS (Judge 85/70 RL 94.8/66.46 slack=±3)
+2026-07-01 01:29:23,245 [INFO] positions: 2/3 rule: skip SHORT XRPUSDT (3/3 already short)
+2026-07-01 01:29:30,993 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-01 01:29:30,995 [INFO] main: PEPEUSDT | Bull:flat(15%) Bear:short(82%)
+2026-07-01 01:29:33,834 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 01:29:33,835 [INFO] main: PEPEUSDT | Judge:SHORT conf=85% size=15.0%
+2026-07-01 01:29:33,835 [INFO] main: PEPEUSDT | RL adj=95.3%
+2026-07-01 01:29:33,856 [INFO] main: PEPEUSDT | Context score=-0.05 bias=0.05
+2026-07-01 01:29:33,857 [INFO] main: PEPEUSDT | gate PASS (Judge 85/70 RL 95.3/66.46 slack=±3)
+2026-07-01 01:29:33,860 [INFO] positions: 2/3 rule: skip SHORT PEPEUSDT (3/3 already short)
+2026-07-01 01:29:43,168 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-01 01:29:43,170 [INFO] main: GWEIUSDT | Bull:flat(15%) Bear:short(85%)
+2026-07-01 01:29:45,784 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 01:29:45,785 [INFO] main: GWEIUSDT | Judge:SHORT conf=90% size=20.0%
+2026-07-01 01:29:45,785 [INFO] main: GWEIUSDT | RL adj=100.0%
+2026-07-01 01:29:45,805 [INFO] main: GWEIUSDT | Context score=-0.05 bias=0.05
+2026-07-01 01:29:45,806 [INFO] main: GWEIUSDT | regime BLOCK (volatile)
+2026-07-01 01:29:55,172 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-01 01:29:55,174 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
+2026-07-01 01:29:55,174 [INFO] main: HYPEUSDT | Bull:flat(15%) Bear:short(82%)
+2026-07-01 01:29:57,806 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 01:29:57,807 [INFO] main: HYPEUSDT | Judge:SHORT conf=82% size=15.0%
+2026-07-01 01:29:57,807 [INFO] main: HYPEUSDT | RL adj=92.3%
+2026-07-01 01:29:57,817 [INFO] main: HYPEUSDT | Context score=-0.05 bias=0.05
+2026-07-01 01:29:57,818 [INFO] main: HYPEUSDT | gate PASS (Judge 82/70 RL 92.3/66.46 slack=±3)
+2026-07-01 01:29:57,819 [INFO] positions: 2/3 rule: skip SHORT HYPEUSDT (3/3 already short)
+2026-07-01 01:30:01,230 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
 ```
 
 ## Disk
@@ -7437,7 +7474,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       907Mi       303Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       928Mi       281Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
