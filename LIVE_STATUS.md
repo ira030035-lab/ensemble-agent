@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-01 04:20:01 UTC
+Generated: 2026-07-01 04:30:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:25 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 951.0161004634159,
+  "balance": 969.003469863416,
   "positions": {
-    "LINKUSDT": {
-      "id": "PAPER_LINKUSDT_1782869258",
-      "symbol": "LINKUSDT",
-      "side": "short",
-      "entry_price": 7.155,
-      "qty": 13.9762,
-      "confidence": 72,
-      "opened_at": "2026-07-01T01:27:38.733978",
-      "cost": 19.9999422,
-      "notional": 99.999711,
-      "leverage": 5
-    },
     "SUIUSDT": {
       "id": "PAPER_SUIUSDT_1782874568",
       "symbol": "SUIUSDT",
@@ -7455,20 +7443,32 @@ root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:25 /opt/ensemble
       "closed_at": "2026-07-01T02:31:37.893252",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_LINKUSDT_1782869258",
+      "symbol": "LINKUSDT",
+      "side": "short",
+      "entry_price": 7.155,
+      "qty": 13.9762,
+      "confidence": 72,
+      "opened_at": "2026-07-01T01:27:38.733978",
+      "cost": 19.9999422,
+      "notional": 99.999711,
+      "leverage": 5,
+      "exit_price": 7.299,
+      "pnl_pct": -10.06,
+      "pnl_usdt": -2.01,
+      "closed_at": "2026-07-01T04:22:53.610729",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 11.016048711406729
+  "total_pnl": 9.003475911406728
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-01 04:14:22,060 [INFO] main: SYNUSDT | regime BLOCK (volatile)
-2026-07-01 04:14:29,071 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-01 04:14:29,319 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 04:14:29,320 [INFO] main: INUSDT | Bull:flat(15%) Bear:short(60%)
-2026-07-01 04:14:32,979 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 04:14:32,979 [INFO] main: INUSDT | Judge:SHORT conf=85% size=15.0%
 2026-07-01 04:14:32,979 [INFO] main: INUSDT | RL adj=92.5%
 2026-07-01 04:14:32,990 [INFO] main: INUSDT | Context score=-0.05 bias=0.05
 2026-07-01 04:14:32,990 [INFO] main: INUSDT | regime BLOCK (volatile)
@@ -7493,12 +7493,18 @@ root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:25 /opt/ensemble
 2026-07-01 04:15:16,159 [INFO] main: AVAXUSDT | Judge:HOLD conf=60% size=0.0%
 2026-07-01 04:15:16,159 [INFO] main: AVAXUSDT | RL adj=60.0%
 2026-07-01 04:15:18,162 [INFO] main: Next scan in 30min (always-30min)
+2026-07-01 04:22:53,607 [INFO] positions: STOP_LOSS LINKUSDT short PnL:-2.01%
+2026-07-01 04:22:53,626 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT LINKUSDT @ 7.2990 PnL: -10.06% (-2.01 USDT) | Баланс: 969.00
+2026-07-01 04:22:53,925 [INFO] positions: LOSS LINKUSDT short PnL:-2.01% reason:stop_loss
+2026-07-01 04:22:53,926 [INFO] positions: Lessons: The trade was based on bearish conditions with 80% bear strength and low RSI values, but it still resulted in a 2.01% loss. The stop loss was triggered, limiting the potential downside. This outcome suggests that even strong bearish signals can be incorrect, and risk management is crucial in trending down regimes.
+2026-07-01 04:22:53,926 [INFO] rl: RL learned from short LINKUSDT: loss -2.01% | weights bull=0.825 bear=0.826 judge=1.349 threshold=66.61
+2026-07-01 04:29:14,919 [INFO] main: Symbols: 30
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  896K  381M   1% /run
+tmpfs           382M  900K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  9.4G   63G  14% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -7510,7 +7516,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       906Mi       297Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       934Mi       269Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
