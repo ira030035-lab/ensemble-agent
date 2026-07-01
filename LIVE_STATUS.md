@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-01 18:30:01 UTC
+Generated: 2026-07-01 18:40:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 48572 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50556 ?        Ssl  Jun12   1:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145604 ?       Ssl  Jun16  36:33 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145604 ?       Ssl  Jun16  36:35 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -7553,36 +7553,36 @@ root     1488950  0.1  3.7 739384 145604 ?       Ssl  Jun16  36:33 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-01 17:59:28,050 [INFO] main: LABUSDT | RL adj=89.2%
-2026-07-01 17:59:28,062 [INFO] main: LABUSDT | Context score=-0.05 bias=0.05
-2026-07-01 17:59:28,062 [INFO] main: LABUSDT | regime BLOCK (volatile)
-2026-07-01 17:59:30,076 [INFO] main: Next scan in 30min (always-30min)
-2026-07-01 18:29:24,414 [INFO] main: Symbols: 30
-2026-07-01 18:29:30,084 [INFO] main: Scanning 28 symbols...
-2026-07-01 18:29:33,063 [INFO] main: BCHUSDT | Bull:long(72%) Bear:short(70%)
-2026-07-01 18:29:35,750 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 18:29:35,751 [INFO] main: BCHUSDT | Judge:LONG conf=70% size=15.0%
-2026-07-01 18:29:35,751 [INFO] main: BCHUSDT | RL adj=70.4%
-2026-07-01 18:29:35,761 [INFO] main: BCHUSDT | Context score=-0.0 bias=0.05
-2026-07-01 18:29:36,032 [INFO] main: BCHUSDT | macro BLOCK (long при BTC downtrend)
-2026-07-01 18:29:39,866 [INFO] main: ETHUSDT | Bull:long(72%) Bear:short(72%)
-2026-07-01 18:29:42,466 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 18:29:42,467 [INFO] main: ETHUSDT | Judge:LONG conf=70% size=10.0%
-2026-07-01 18:29:42,467 [INFO] main: ETHUSDT | RL adj=70.2%
-2026-07-01 18:29:42,478 [INFO] main: ETHUSDT | Context score=-0.0 bias=0.05
-2026-07-01 18:29:42,478 [INFO] main: ETHUSDT | macro BLOCK (long при BTC downtrend)
-2026-07-01 18:29:46,668 [INFO] main: WLDUSDT | Bull:long(70%) Bear:short(85%)
-2026-07-01 18:29:48,921 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 18:29:48,922 [INFO] main: WLDUSDT | Judge:HOLD conf=50% size=0.0%
-2026-07-01 18:29:48,922 [INFO] main: WLDUSDT | RL adj=50.0%
-2026-07-01 18:29:53,168 [INFO] main: TAOUSDT | Bull:long(72%) Bear:short(80%)
-2026-07-01 18:29:55,343 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 18:29:55,344 [INFO] main: TAOUSDT | Judge:SHORT conf=80% size=15.0%
-2026-07-01 18:29:55,344 [INFO] main: TAOUSDT | RL adj=80.8%
-2026-07-01 18:29:55,354 [INFO] main: TAOUSDT | Context score=-0.05 bias=0.05
-2026-07-01 18:29:55,354 [INFO] main: TAOUSDT | regime BLOCK (short × trending_down × rsi1h=51.4; late-entry guard)
-2026-07-01 18:29:59,178 [WARNING] agents: Bull entropy-guard: шаблон long(72) ×5. Переключаемся на Kimi+Claude fallback.
-2026-07-01 18:29:59,178 [INFO] main: BEATUSDT | Bull:long(72%) Bear:short(80%)
+2026-07-01 18:34:24,274 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 18:34:24,275 [INFO] main: XLMUSDT | Bull:flat(15%) Bear:short(80%)
+2026-07-01 18:34:26,569 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 18:34:26,569 [INFO] main: XLMUSDT | Judge:SHORT conf=85% size=15.0%
+2026-07-01 18:34:26,569 [INFO] main: XLMUSDT | RL adj=94.8%
+2026-07-01 18:34:26,579 [INFO] main: XLMUSDT | Context score=-0.05 bias=0.05
+2026-07-01 18:34:26,579 [INFO] main: XLMUSDT | regime BLOCK (volatile)
+2026-07-01 18:34:33,266 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 18:34:33,876 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-01 18:34:33,876 [INFO] main: SOLUSDT | Bull:long(62%) Bear:short(70%)
+2026-07-01 18:34:36,649 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 18:34:36,650 [INFO] main: SOLUSDT | Judge:HOLD conf=50% size=0.0%
+2026-07-01 18:34:36,650 [INFO] main: SOLUSDT | RL adj=50.0%
+2026-07-01 18:34:42,814 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 18:34:43,030 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-01 18:34:43,031 [INFO] main: PEPEUSDT | Bull:flat(15%) Bear:short(90%)
+2026-07-01 18:34:45,348 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 18:34:45,349 [INFO] main: PEPEUSDT | Judge:SHORT conf=90% size=15.0%
+2026-07-01 18:34:45,349 [INFO] main: PEPEUSDT | RL adj=100.0%
+2026-07-01 18:34:45,359 [INFO] main: PEPEUSDT | Context score=-0.05 bias=0.05
+2026-07-01 18:34:45,359 [INFO] main: PEPEUSDT | regime BLOCK (short × trending_down × rsi1h=48.7; late-entry guard)
+2026-07-01 18:34:51,081 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 18:34:52,776 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-01 18:34:52,777 [INFO] main: LABUSDT | Bull:flat(15%) Bear:short(70%)
+2026-07-01 18:34:54,917 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 18:34:54,918 [INFO] main: LABUSDT | Judge:SHORT conf=70% size=15.0%
+2026-07-01 18:34:54,918 [INFO] main: LABUSDT | RL adj=78.6%
+2026-07-01 18:34:54,941 [INFO] main: LABUSDT | Context score=-0.05 bias=0.05
+2026-07-01 18:34:54,942 [INFO] main: LABUSDT | regime BLOCK (volatile)
+2026-07-01 18:34:56,944 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -7600,7 +7600,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       920Mi       214Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       909Mi       224Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
