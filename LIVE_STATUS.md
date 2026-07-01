@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-01 14:10:01 UTC
+Generated: 2026-07-01 14:20:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.7 738788 144964 ?       Ssl  Jun16  36:12 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 950.0080184457692,
+  "balance": 967.9817120113612,
   "positions": {
     "SUIUSDT": {
       "id": "PAPER_SUIUSDT_1782874568",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.7 738788 144964 ?       Ssl  Jun16  36:12 /opt/ensemble
       "opened_at": "2026-07-01T06:31:45.432359",
       "cost": 20.000008,
       "notional": 100.00004,
-      "leverage": 5
-    },
-    "PEPEUSDT": {
-      "id": "PAPER_PEPEUSDT_1782889741",
-      "symbol": "PEPEUSDT",
-      "side": "short",
-      "entry_price": 2.2504e-06,
-      "qty": 44436544.6143,
-      "confidence": 85,
-      "opened_at": "2026-07-01T07:09:01.480524",
-      "cost": 20.000000000004142,
-      "notional": 100.00000000002072,
       "leverage": 5
     }
   },
@@ -7509,19 +7497,32 @@ root     1488950  0.1  3.7 738788 144964 ?       Ssl  Jun16  36:12 /opt/ensemble
       "closed_at": "2026-07-01T07:08:08.528193",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_PEPEUSDT_1782889741",
+      "symbol": "PEPEUSDT",
+      "side": "short",
+      "entry_price": 2.2504e-06,
+      "qty": 44436544.6143,
+      "confidence": 85,
+      "opened_at": "2026-07-01T07:09:01.480524",
+      "cost": 20.000000000004142,
+      "notional": 100.00000000002072,
+      "leverage": 5,
+      "exit_price": 2.296e-06,
+      "pnl_pct": -10.13,
+      "pnl_usdt": -2.03,
+      "closed_at": "2026-07-01T14:13:18.429328",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 10.008032493773747
+  "total_pnl": 7.981726059361666
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-01 13:51:41,984 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-01 13:51:41,985 [INFO] main: BEATUSDT | Bull:flat(25%) Bear:short(70%)
-2026-07-01 13:51:44,615 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 13:51:44,616 [INFO] main: BEATUSDT | Judge:HOLD conf=55% size=0.0%
-2026-07-01 13:51:44,616 [INFO] main: BEATUSDT | RL adj=55.0%
 2026-07-01 13:51:50,466 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-01 13:51:54,632 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-01 13:51:54,633 [INFO] main: BTCUSDT | Bull:long(72%) Bear:short(70%)
@@ -7547,6 +7548,11 @@ root     1488950  0.1  3.7 738788 144964 ?       Ssl  Jun16  36:12 /opt/ensemble
 2026-07-01 13:52:16,444 [INFO] main: TACUSDT | Context score=-0.05 bias=0.05
 2026-07-01 13:52:16,444 [INFO] main: TACUSDT | regime BLOCK (volatile)
 2026-07-01 13:52:18,470 [INFO] main: Next scan in 30min (always-30min)
+2026-07-01 14:13:18,427 [INFO] positions: STOP_LOSS PEPEUSDT short PnL:-2.03%
+2026-07-01 14:13:18,437 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT PEPEUSDT @ 0.0000 PnL: -10.13% (-2.03 USDT) | Баланс: 967.98
+2026-07-01 14:13:18,749 [INFO] positions: LOSS PEPEUSDT short PnL:-2.03% reason:stop_loss
+2026-07-01 14:13:18,749 [INFO] positions: Lessons: The trade was based on high bear confidence and strong bearish indicators but still resulted in a stop loss. The expected downside move did not materialize, leading to a loss of 2.03%. This outcome highlights the importance of managing risk and not overrelying on indicators, as even strong signals can be wrong.
+2026-07-01 14:13:18,749 [INFO] rl: RL learned from short PEPEUSDT: loss -2.03% | weights bull=0.826 bear=0.821 judge=1.353 threshold=66.68
 ```
 
 ## Disk
