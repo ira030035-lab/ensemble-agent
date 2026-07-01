@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-01 15:20:01 UTC
+Generated: 2026-07-01 15:30:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1488950  0.1  3.7 739384 145556 ?       Ssl  Jun16  36:18 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 947.9833160113612,
+  "balance": 965.2609723193613,
   "positions": {
-    "SUIUSDT": {
-      "id": "PAPER_SUIUSDT_1782874568",
-      "symbol": "SUIUSDT",
-      "side": "short",
-      "entry_price": 0.7016,
-      "qty": 142.5314,
-      "confidence": 72,
-      "opened_at": "2026-07-01T02:56:08.982138",
-      "cost": 20.000006047999996,
-      "notional": 100.00003023999999,
-      "leverage": 5
-    },
     "AVAXUSDT": {
       "id": "PAPER_AVAXUSDT_1782887505",
       "symbol": "AVAXUSDT",
@@ -7527,20 +7515,32 @@ root     1488950  0.1  3.7 739384 145556 ?       Ssl  Jun16  36:18 /opt/ensemble
       "closed_at": "2026-07-01T14:13:18.429328",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_SUIUSDT_1782874568",
+      "symbol": "SUIUSDT",
+      "side": "short",
+      "entry_price": 0.7016,
+      "qty": 142.5314,
+      "confidence": 72,
+      "opened_at": "2026-07-01T02:56:08.982138",
+      "cost": 20.000006047999996,
+      "notional": 100.00003023999999,
+      "leverage": 5,
+      "exit_price": 0.7207,
+      "pnl_pct": -13.61,
+      "pnl_usdt": -2.72,
+      "closed_at": "2026-07-01T15:23:13.480912",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 7.981726059361666
+  "total_pnl": 5.259376319361666
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-01 15:03:19,006 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 15:03:19,007 [INFO] main: SLXUSDT | Bull:flat(25%) Bear:short(70%)
-2026-07-01 15:03:22,008 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 15:03:22,008 [INFO] main: SLXUSDT | Judge:HOLD conf=40% size=0.0%
-2026-07-01 15:03:22,008 [INFO] main: SLXUSDT | RL adj=40.0%
-2026-07-01 15:03:28,265 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-01 15:03:28,692 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-01 15:03:28,694 [WARNING] agents: Bull entropy-guard: шаблон flat(25) ×5. Переключаемся на Kimi+Claude fallback.
 2026-07-01 15:03:28,694 [INFO] main: LINKUSDT | Bull:flat(25%) Bear:short(70%)
@@ -7565,6 +7565,12 @@ root     1488950  0.1  3.7 739384 145556 ?       Ssl  Jun16  36:18 /opt/ensemble
 2026-07-01 15:04:01,097 [INFO] main: REUSDT | Context score=-0.05 bias=0.05
 2026-07-01 15:04:01,097 [INFO] main: REUSDT | regime BLOCK (volatile)
 2026-07-01 15:04:03,101 [INFO] main: Next scan in 30min (always-30min)
+2026-07-01 15:23:13,479 [INFO] positions: STOP_LOSS SUIUSDT short PnL:-2.72%
+2026-07-01 15:23:13,488 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT SUIUSDT @ 0.7207 PnL: -13.61% (-2.72 USDT) | Баланс: 965.26
+2026-07-01 15:23:13,820 [INFO] positions: LOSS SUIUSDT short PnL:-2.72% reason:stop_loss
+2026-07-01 15:23:13,821 [INFO] positions: Lessons: The BEAR signal and overbought conditions did not lead to the expected downside move. The trade was stopped out for a loss of 2.72%. This outcome suggests that strong bearish signals can sometimes be false or delayed in a ranging market.
+2026-07-01 15:23:13,821 [INFO] rl: RL learned from short SUIUSDT: loss -2.72% | weights bull=0.831 bear=0.815 judge=1.354 threshold=66.73
+2026-07-01 15:29:22,395 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -7582,7 +7588,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       929Mi       209Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       939Mi       198Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
