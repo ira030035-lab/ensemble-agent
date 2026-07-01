@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-01 06:20:01 UTC
+Generated: 2026-07-01 06:30:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:34 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 949.003474808216,
+  "balance": 966.9761529034159,
   "positions": {
     "SUIUSDT": {
       "id": "PAPER_SUIUSDT_1782874568",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:34 /opt/ensemble
       "opened_at": "2026-07-01T03:35:05.210228",
       "cost": 19.999999999990305,
       "notional": 99.99999999995153,
-      "leverage": 5
-    },
-    "VELVETUSDT": {
-      "id": "PAPER_VELVETUSDT_1782881435",
-      "symbol": "VELVETUSDT",
-      "side": "short",
-      "entry_price": 1.55871,
-      "qty": 64.1556,
-      "confidence": 85,
-      "opened_at": "2026-07-01T04:50:35.133184",
-      "cost": 19.999995055200003,
-      "notional": 99.99997527600001,
       "leverage": 5
     }
   },
@@ -7473,20 +7461,32 @@ root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:34 /opt/ensemble
       "closed_at": "2026-07-01T04:22:53.610729",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_VELVETUSDT_1782881435",
+      "symbol": "VELVETUSDT",
+      "side": "short",
+      "entry_price": 1.55871,
+      "qty": 64.1556,
+      "confidence": 85,
+      "opened_at": "2026-07-01T04:50:35.133184",
+      "cost": 19.999995055200003,
+      "notional": 99.99997527600001,
+      "leverage": 5,
+      "exit_price": 1.59031,
+      "pnl_pct": -10.14,
+      "pnl_usdt": -2.03,
+      "closed_at": "2026-07-01T06:24:59.871881",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 9.003475911406728
+  "total_pnl": 6.976158951406737
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-01 05:59:57,208 [INFO] main: TAOUSDT | Bull:flat(15%) Bear:short(75%)
-2026-07-01 06:00:01,843 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 06:00:01,844 [INFO] main: TAOUSDT | Judge:SHORT conf=90% size=20.0%
-2026-07-01 06:00:01,844 [INFO] main: TAOUSDT | RL adj=99.3%
-2026-07-01 06:00:01,862 [INFO] main: TAOUSDT | Context score=-0.05 bias=0.05
-2026-07-01 06:00:01,862 [INFO] main: TAOUSDT | regime BLOCK (short × trending_down × rsi1h=49.0; late-entry guard)
 2026-07-01 06:00:10,924 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-01 06:00:13,623 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-01 06:00:13,624 [INFO] main: BTCUSDT | Bull:flat(15%) Bear:short(75%)
@@ -7511,6 +7511,12 @@ root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:34 /opt/ensemble
 2026-07-01 06:00:46,655 [INFO] main: INUSDT | Judge:HOLD conf=60% size=0.0%
 2026-07-01 06:00:46,655 [INFO] main: INUSDT | RL adj=60.0%
 2026-07-01 06:00:48,658 [INFO] main: Next scan in 30min (always-30min)
+2026-07-01 06:24:59,870 [INFO] positions: STOP_LOSS VELVETUSDT short PnL:-2.03%
+2026-07-01 06:24:59,878 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT VELVETUSDT @ 1.5903 PnL: -10.14% (-2.03 USDT) | Баланс: 966.98
+2026-07-01 06:25:00,224 [INFO] positions: LOSS VELVETUSDT short PnL:-2.03% reason:stop_loss
+2026-07-01 06:25:00,224 [INFO] positions: Lessons: The trade was based on strong bearish signals with a target of at least 4% downside, but it was stopped out for a 2.03% loss. The bearish trend was correctly identified, but the trade was unable to capture the expected move. This highlights the importance of adjusting stop loss levels and managing risk in trending markets.
+2026-07-01 06:25:00,224 [INFO] rl: RL learned from short VELVETUSDT: loss -2.03% | weights bull=0.829 bear=0.821 judge=1.351 threshold=66.66
+2026-07-01 06:29:16,209 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -7528,7 +7534,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       904Mi       249Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       915Mi       237Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
