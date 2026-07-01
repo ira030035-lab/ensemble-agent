@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-01 08:50:01 UTC
+Generated: 2026-07-01 09:00:01 UTC
 
 ## Services
 ```
@@ -7517,36 +7517,36 @@ root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:46 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-01 08:28:20,083 [INFO] main: HUSDT | regime BLOCK (volatile)
-2026-07-01 08:28:27,054 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-01 08:28:27,110 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 08:28:27,111 [INFO] main: XRPUSDT | Bull:flat(15%) Bear:short(70%)
-2026-07-01 08:28:33,162 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 08:28:33,163 [INFO] main: XRPUSDT | Judge:SHORT conf=85% size=15.0%
-2026-07-01 08:28:33,163 [INFO] main: XRPUSDT | RL adj=93.7%
-2026-07-01 08:28:33,175 [INFO] main: XRPUSDT | Context score=-0.05 bias=0.05
-2026-07-01 08:28:33,175 [INFO] main: XRPUSDT | gate PASS (Judge 85/70 RL 93.7/66.63 slack=±3)
-2026-07-01 08:28:33,177 [INFO] positions: 2/3 rule: skip SHORT XRPUSDT (3/3 already short)
-2026-07-01 08:28:39,721 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 08:28:42,179 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-01 08:28:42,180 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
-2026-07-01 08:28:42,180 [INFO] main: INUSDT | Bull:flat(15%) Bear:short(75%)
-2026-07-01 08:28:46,254 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 08:28:46,255 [INFO] main: INUSDT | Judge:SHORT conf=65% size=10.0%
-2026-07-01 08:28:46,255 [INFO] main: INUSDT | RL adj=74.3%
-2026-07-01 08:28:46,269 [INFO] main: INUSDT | Context score=-0.05 bias=0.05
-2026-07-01 08:28:46,269 [INFO] main: INUSDT | regime BLOCK (volatile)
-2026-07-01 08:28:49,432 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-07-01 08:28:52,338 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 08:28:53,576 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-01 08:28:53,577 [INFO] main: BTCUSDT | Bull:flat(15%) Bear:short(90%)
-2026-07-01 08:28:57,077 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 08:28:57,078 [INFO] main: BTCUSDT | Judge:SHORT conf=85% size=15.0%
-2026-07-01 08:28:57,078 [INFO] main: BTCUSDT | RL adj=96.2%
-2026-07-01 08:28:57,088 [INFO] main: BTCUSDT | Context score=-0.05 bias=0.05
-2026-07-01 08:28:57,088 [INFO] main: BTCUSDT | regime BLOCK (short × trending_down × rsi1h=48.0; late-entry guard)
-2026-07-01 08:28:59,099 [INFO] main: Next scan in 30min (always-30min)
 2026-07-01 08:29:17,535 [INFO] main: Symbols: 30
+2026-07-01 08:58:59,112 [INFO] main: Scanning 28 symbols...
+2026-07-01 08:59:01,184 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-07-01 08:59:01,579 [INFO] main: SOLUSDT | Bull:long(80%) Bear:short(70%)
+2026-07-01 08:59:04,899 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 08:59:04,900 [INFO] main: SOLUSDT | Judge:LONG conf=85% size=15.0%
+2026-07-01 08:59:04,900 [INFO] main: SOLUSDT | RL adj=86.2%
+2026-07-01 08:59:04,909 [INFO] main: SOLUSDT | Context score=-0.0 bias=0.05
+2026-07-01 08:59:05,200 [INFO] main: SOLUSDT | macro BLOCK (long при BTC downtrend)
+2026-07-01 08:59:08,689 [INFO] main: BTCUSDT | Bull:long(72%) Bear:short(80%)
+2026-07-01 08:59:19,070 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-01 08:59:19,071 [INFO] openai._base_client: Retrying request to /chat/completions in 0.466064 seconds
+2026-07-01 08:59:29,561 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-01 08:59:29,562 [INFO] openai._base_client: Retrying request to /chat/completions in 0.788520 seconds
+2026-07-01 08:59:40,349 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-01 08:59:40,350 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
+2026-07-01 08:59:40,350 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-07-01 08:59:40,350 [INFO] main: BTCUSDT | Judge:HOLD conf=50% size=0.0%
+2026-07-01 08:59:40,350 [INFO] main: BTCUSDT | RL adj=50.0%
+2026-07-01 08:59:44,134 [INFO] main: XRPUSDT | Bull:long(72%) Bear:short(72%)
+2026-07-01 08:59:48,060 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 08:59:48,060 [INFO] main: XRPUSDT | Judge:HOLD conf=55% size=0.0%
+2026-07-01 08:59:48,061 [INFO] main: XRPUSDT | RL adj=55.0%
+2026-07-01 08:59:51,898 [INFO] main: BCHUSDT | Bull:long(72%) Bear:short(70%)
+2026-07-01 08:59:56,358 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 08:59:56,359 [INFO] main: BCHUSDT | Judge:LONG conf=72% size=15.0%
+2026-07-01 08:59:56,359 [INFO] main: BCHUSDT | RL adj=72.2%
+2026-07-01 08:59:56,369 [INFO] main: BCHUSDT | Context score=-0.0 bias=0.05
+2026-07-01 08:59:56,369 [INFO] main: BCHUSDT | macro BLOCK (long при BTC downtrend)
+2026-07-01 09:00:00,196 [INFO] main: INUSDT | Bull:long(72%) Bear:short(80%)
 ```
 
 ## Disk
@@ -7564,7 +7564,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       908Mi       239Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       919Mi       229Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
