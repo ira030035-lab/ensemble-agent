@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-01 21:30:01 UTC
+Generated: 2026-07-01 21:40:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1488950  0.1  3.7 739384 145604 ?       Ssl  Jun16  36:49 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 945.2609782293613,
+  "balance": 963.2609854293613,
   "positions": {
-    "AVAXUSDT": {
-      "id": "PAPER_AVAXUSDT_1782887505",
-      "symbol": "AVAXUSDT",
-      "side": "short",
-      "entry_price": 6.65,
-      "qty": 15.0376,
-      "confidence": 70,
-      "opened_at": "2026-07-01T06:31:45.432359",
-      "cost": 20.000008,
-      "notional": 100.00004,
-      "leverage": 5
-    },
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1782915792",
       "symbol": "BNBUSDT",
@@ -7545,19 +7533,32 @@ root     1488950  0.1  3.7 739384 145604 ?       Ssl  Jun16  36:49 /opt/ensemble
       "closed_at": "2026-07-01T15:23:13.480912",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_AVAXUSDT_1782887505",
+      "symbol": "AVAXUSDT",
+      "side": "short",
+      "entry_price": 6.65,
+      "qty": 15.0376,
+      "confidence": 70,
+      "opened_at": "2026-07-01T06:31:45.432359",
+      "cost": 20.000008,
+      "notional": 100.00004,
+      "leverage": 5,
+      "exit_price": 6.783,
+      "pnl_pct": -10.0,
+      "pnl_usdt": -2.0,
+      "closed_at": "2026-07-01T21:39:43.943468",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 5.259376319361666
+  "total_pnl": 3.2593755193616656
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-01 21:27:08,852 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 21:27:08,853 [INFO] main: ENAUSDT | Judge:SHORT conf=75% size=15.0%
-2026-07-01 21:27:08,853 [INFO] main: ENAUSDT | RL adj=77.1%
-2026-07-01 21:27:08,863 [INFO] main: ENAUSDT | Context score=-0.05 bias=0.05
-2026-07-01 21:27:08,863 [INFO] main: ENAUSDT | gate PASS (Judge 75/70 RL 77.1/66.73 slack=±3)
 2026-07-01 21:27:08,864 [INFO] positions: 2/3 rule: skip SHORT ENAUSDT (3/3 already short)
 2026-07-01 21:27:15,311 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-01 21:27:15,601 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -7583,6 +7584,11 @@ root     1488950  0.1  3.7 739384 145604 ?       Ssl  Jun16  36:49 /opt/ensemble
 2026-07-01 21:27:36,219 [INFO] main: DYDXUSDT | regime BLOCK (volatile)
 2026-07-01 21:27:38,233 [INFO] main: Next scan in 30min (always-30min)
 2026-07-01 21:29:26,410 [INFO] main: Symbols: 30
+2026-07-01 21:39:43,940 [INFO] positions: STOP_LOSS AVAXUSDT short PnL:-2.0%
+2026-07-01 21:39:43,958 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT AVAXUSDT @ 6.7830 PnL: -10.00% (-2.00 USDT) | Баланс: 963.26
+2026-07-01 21:39:44,285 [INFO] positions: LOSS AVAXUSDT short PnL:-2.0% reason:stop_loss
+2026-07-01 21:39:44,285 [INFO] positions: Lessons: The trade was closed at a 2% loss due to hitting the stop loss. The original bear case reasoning was not validated as the expected 4% downside move did not occur. This outcome suggests reevaluating the indicators and market sentiment used to inform the trade decision.
+2026-07-01 21:39:44,286 [INFO] rl: RL learned from short AVAXUSDT: loss -2.00% | weights bull=0.833 bear=0.812 judge=1.355 threshold=66.78
 ```
 
 ## Disk
@@ -7600,7 +7606,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       922Mi       207Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       912Mi       216Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
