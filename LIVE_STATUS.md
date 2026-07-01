@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-01 16:00:01 UTC
+Generated: 2026-07-01 16:10:01 UTC
 
 ## Services
 ```
@@ -7553,14 +7553,6 @@ root     1488950  0.1  3.7 739384 145556 ?       Ssl  Jun16  36:21 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-01 15:38:50,852 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-01 15:38:50,853 [INFO] main: LABUSDT | Bull:flat(25%) Bear:short(70%)
-2026-07-01 15:38:55,139 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 15:38:55,139 [INFO] main: LABUSDT | Judge:SHORT conf=70% size=15.0%
-2026-07-01 15:38:55,140 [INFO] main: LABUSDT | RL adj=78.6%
-2026-07-01 15:38:55,150 [INFO] main: LABUSDT | Context score=-0.05 bias=0.05
-2026-07-01 15:38:55,150 [INFO] main: LABUSDT | regime BLOCK (volatile)
-2026-07-01 15:39:02,597 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-01 15:39:03,520 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-01 15:39:03,520 [INFO] main: DYDXUSDT | Bull:flat(25%) Bear:short(65%)
 2026-07-01 15:39:05,761 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -7583,6 +7575,14 @@ root     1488950  0.1  3.7 739384 145556 ?       Ssl  Jun16  36:21 /opt/ensemble
 2026-07-01 15:39:49,301 [INFO] main: BASEDUSDT | Judge:HOLD conf=55% size=0.0%
 2026-07-01 15:39:49,301 [INFO] main: BASEDUSDT | RL adj=55.0%
 2026-07-01 15:39:51,303 [INFO] main: Next scan in 30min (always-30min)
+2026-07-01 16:09:51,316 [INFO] main: Scanning 28 symbols...
+2026-07-01 16:09:54,172 [INFO] main: AAVEUSDT | Bull:long(70%) Bear:short(80%)
+2026-07-01 16:09:56,545 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 16:09:56,546 [INFO] main: AAVEUSDT | Judge:SHORT conf=70% size=15.0%
+2026-07-01 16:09:56,546 [INFO] main: AAVEUSDT | RL adj=71.1%
+2026-07-01 16:09:56,559 [INFO] main: AAVEUSDT | Context score=-0.05 bias=0.05
+2026-07-01 16:09:56,848 [INFO] main: AAVEUSDT | regime BLOCK (short × trending_down × rsi1h=46.0; late-entry guard)
+2026-07-01 16:10:00,861 [INFO] main: TAOUSDT | Bull:long(70%) Bear:short(80%)
 ```
 
 ## Disk
@@ -7600,7 +7600,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       927Mi       211Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       910Mi       227Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
