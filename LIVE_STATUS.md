@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-01 01:10:01 UTC
+Generated: 2026-07-01 01:20:01 UTC
 
 ## Services
 ```
@@ -18,45 +18,8 @@ root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:10 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 946.5460696094063,
-  "positions": {
-    "WLDUSDT": {
-      "id": "PAPER_WLDUSDT_1782827880",
-      "symbol": "WLDUSDT",
-      "side": "short",
-      "entry_price": 0.4086,
-      "qty": 244.7381,
-      "confidence": 85,
-      "opened_at": "2026-06-30T13:58:00.212061",
-      "cost": 19.999997532000002,
-      "notional": 99.99998766,
-      "leverage": 5
-    },
-    "NEARUSDT": {
-      "id": "PAPER_NEARUSDT_1782840369",
-      "symbol": "NEARUSDT",
-      "side": "short",
-      "entry_price": 1.7948,
-      "qty": 55.7165,
-      "confidence": 70,
-      "opened_at": "2026-06-30T17:26:09.848679",
-      "cost": 19.99999484,
-      "notional": 99.9999742,
-      "leverage": 5
-    },
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1782865254",
-      "symbol": "HYPEUSDT",
-      "side": "short",
-      "entry_price": 64.788,
-      "qty": 1.5435,
-      "confidence": 75,
-      "opened_at": "2026-07-01T00:20:54.833301",
-      "cost": 20.0000556,
-      "notional": 100.000278,
-      "leverage": 5
-    }
-  },
+  "balance": 1015.2123682414064,
+  "positions": {},
   "trade_history": [
     {
       "id": "PAPER_PEPEUSDT_1779855184",
@@ -7365,29 +7328,68 @@ root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:10 /opt/ensemble
       "closed_at": "2026-07-01T00:12:40.821481",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_WLDUSDT_1782827880",
+      "symbol": "WLDUSDT",
+      "side": "short",
+      "entry_price": 0.4086,
+      "qty": 244.7381,
+      "confidence": 85,
+      "opened_at": "2026-06-30T13:58:00.212061",
+      "cost": 19.999997532000002,
+      "notional": 99.99998766,
+      "leverage": 5,
+      "exit_price": 0.3945,
+      "pnl_pct": 17.25,
+      "pnl_usdt": 3.45,
+      "closed_at": "2026-07-01T01:13:16.617913",
+      "reason": "take_profit",
+      "outcome": "profit"
+    },
+    {
+      "id": "PAPER_NEARUSDT_1782840369",
+      "symbol": "NEARUSDT",
+      "side": "short",
+      "entry_price": 1.7948,
+      "qty": 55.7165,
+      "confidence": 70,
+      "opened_at": "2026-06-30T17:26:09.848679",
+      "cost": 19.99999484,
+      "notional": 99.9999742,
+      "leverage": 5,
+      "exit_price": 1.7315,
+      "pnl_pct": 17.63,
+      "pnl_usdt": 3.53,
+      "closed_at": "2026-07-01T01:13:16.912351",
+      "reason": "take_profit",
+      "outcome": "profit"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1782865254",
+      "symbol": "HYPEUSDT",
+      "side": "short",
+      "entry_price": 64.788,
+      "qty": 1.5435,
+      "confidence": 75,
+      "opened_at": "2026-07-01T00:20:54.833301",
+      "cost": 20.0000556,
+      "notional": 100.000278,
+      "leverage": 5,
+      "exit_price": 63.694,
+      "pnl_pct": 8.44,
+      "pnl_usdt": 1.69,
+      "closed_at": "2026-07-01T01:15:18.497702",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 6.546117581406744
+  "total_pnl": 15.21236824140673
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-01 00:56:11,367 [INFO] main: LINKUSDT | Judge:SHORT conf=65% size=10.0%
-2026-07-01 00:56:11,368 [INFO] main: LINKUSDT | RL adj=72.4%
-2026-07-01 00:56:11,377 [INFO] main: LINKUSDT | Context score=-0.05 bias=0.05
-2026-07-01 00:56:19,034 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-01 00:56:20,533 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 00:56:20,535 [INFO] main: AAVEUSDT | Bull:long(62%) Bear:short(75%)
-2026-07-01 00:56:23,234 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 00:56:23,236 [INFO] main: AAVEUSDT | Judge:HOLD conf=55% size=0.0%
-2026-07-01 00:56:23,236 [INFO] main: AAVEUSDT | RL adj=55.0%
-2026-07-01 00:56:29,400 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 00:56:29,878 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-01 00:56:29,880 [INFO] main: ETHUSDT | Bull:long(62%) Bear:short(70%)
-2026-07-01 00:56:32,450 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-01 00:56:32,451 [INFO] main: ETHUSDT | Judge:HOLD conf=55% size=0.0%
-2026-07-01 00:56:32,451 [INFO] main: ETHUSDT | RL adj=55.0%
 2026-07-01 00:56:37,630 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-01 00:56:39,930 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-01 00:56:39,932 [INFO] main: PEPEUSDT | Bull:flat(15%) Bear:short(80%)
@@ -7403,6 +7405,21 @@ root     1488950  0.1  3.6 738304 144504 ?       Ssl  Jun16  35:10 /opt/ensemble
 2026-07-01 00:56:52,445 [INFO] main: BTWUSDT | Judge:HOLD conf=30% size=0.0%
 2026-07-01 00:56:52,445 [INFO] main: BTWUSDT | RL adj=30.0%
 2026-07-01 00:56:54,447 [INFO] main: Next scan in 30min (always-30min)
+2026-07-01 01:13:16,614 [INFO] positions: TAKE-PROFIT WLDUSDT short PnL:3.45%
+2026-07-01 01:13:16,631 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT WLDUSDT @ 0.3945 PnL: 17.25% (+3.45 USDT) | Баланс: 970.00
+2026-07-01 01:13:16,910 [INFO] positions: OK WLDUSDT short PnL:3.45% reason:take_profit
+2026-07-01 01:13:16,910 [INFO] positions: Lessons: The short trade on WLDUSDT was successful with a 3.45% profit. The bearish sentiment and oversold conditions correctly indicated a downside move. This trade demonstrates the effectiveness of identifying strong trends and sentiment to inform trading decisions.
+2026-07-01 01:13:16,910 [INFO] rl: RL learned from short WLDUSDT: profit 3.45% | weights bull=0.825 bear=0.829 judge=1.346 threshold=66.52
+2026-07-01 01:13:16,910 [INFO] positions: TAKE-PROFIT NEARUSDT short PnL:3.53%
+2026-07-01 01:13:16,930 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT NEARUSDT @ 1.7315 PnL: 17.63% (+3.53 USDT) | Баланс: 993.52
+2026-07-01 01:13:17,190 [INFO] positions: OK NEARUSDT short PnL:3.53% reason:take_profit
+2026-07-01 01:13:17,190 [INFO] positions: Lessons: The trade was successful with a 3.53% profit due to a strong bear sentiment and a 4-hour downtrend. The low trading volume also contributed to the trade's outcome. This trade demonstrates the importance of considering sentiment and trend when making trading decisions, particularly in a trending_down regime.
+2026-07-01 01:13:17,190 [INFO] rl: RL learned from short NEARUSDT: profit 3.53% | weights bull=0.819 bear=0.836 judge=1.346 threshold=66.49
+2026-07-01 01:15:18,496 [INFO] positions: TRAILING-STOP HYPEUSDT short peak:2.76% now:1.69%
+2026-07-01 01:15:18,504 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT HYPEUSDT @ 63.6940 PnL: 8.44% (+1.69 USDT) | Баланс: 1015.21
+2026-07-01 01:15:18,827 [INFO] positions: OK HYPEUSDT short PnL:1.69% reason:trailing_stop
+2026-07-01 01:15:18,827 [INFO] positions: Lessons: The trade was closed with a 1.69% profit due to a trailing stop. The original bearish sentiment and momentum were correct, resulting in a profitable short position. The trade's outcome suggests that the strategy of riding the trend with a trailing stop can be effective in a trending_down regime.
+2026-07-01 01:15:18,828 [INFO] rl: RL learned from short HYPEUSDT: profit 1.69% | weights bull=0.815 bear=0.840 judge=1.345 threshold=66.46
 ```
 
 ## Disk
@@ -7420,7 +7437,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       907Mi       302Mi       4.8Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       907Mi       303Mi       4.8Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
