@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-02 18:10:01 UTC
+Generated: 2026-07-02 18:20:01 UTC
 
 ## Services
 ```
@@ -7847,8 +7847,6 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  38:31 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-02 17:56:17,604 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-02 17:56:17,605 [INFO] main: SLXUSDT | Bull:flat(35%) Bear:short(75%)
 2026-07-02 17:56:20,260 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-02 17:56:20,262 [INFO] main: SLXUSDT | Judge:SHORT conf=65% size=15.0%
 2026-07-02 17:56:20,262 [INFO] main: SLXUSDT | RL adj=73.5%
@@ -7877,6 +7875,8 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  38:31 /opt/ensemble
 2026-07-02 17:56:50,000 [INFO] main: BEATUSDT | Judge:HOLD conf=40% size=0.0%
 2026-07-02 17:56:50,000 [INFO] main: BEATUSDT | RL adj=40.0%
 2026-07-02 17:56:52,002 [INFO] main: Next scan in 30min (always-30min)
+2026-07-02 18:13:21,241 [WARNING] bitget: Bitget GET /api/v2/mix/market/ticker retry 1/3 after  — sleep 0.5s
+2026-07-02 18:13:22,054 [INFO] bitget: Bitget recovered after 1 failures
 ```
 
 ## Disk
@@ -7894,7 +7894,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       917Mi       219Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       915Mi       220Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
