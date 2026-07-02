@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-02 03:50:01 UTC
+Generated: 2026-07-02 04:00:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 48572 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50556 ?        Ssl  Jun12   1:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145604 ?       Ssl  Jun16  37:20 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145604 ?       Ssl  Jun16  37:22 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 961.6696934293612,
+  "balance": 959.5351666293612,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1782915792",
@@ -32,16 +32,16 @@ root     1488950  0.1  3.7 739384 145604 ?       Ssl  Jun16  37:20 /opt/ensemble
       "notional": 99.99197999999998,
       "leverage": 5
     },
-    "SUIUSDT": {
-      "id": "PAPER_SUIUSDT_1782920323",
-      "symbol": "SUIUSDT",
+    "ZECUSDT": {
+      "id": "PAPER_ZECUSDT_1782964401",
+      "symbol": "ZECUSDT",
       "side": "short",
-      "entry_price": 0.7165,
-      "qty": 139.5673,
-      "confidence": 80,
-      "opened_at": "2026-07-01T15:38:43.579063",
-      "cost": 19.999994089999998,
-      "notional": 99.99997044999999,
+      "entry_price": 424.07,
+      "qty": 0.2358,
+      "confidence": 75,
+      "opened_at": "2026-07-02T03:53:21.054413",
+      "cost": 19.9991412,
+      "notional": 99.995706,
       "leverage": 5
     }
   },
@@ -7587,44 +7587,62 @@ root     1488950  0.1  3.7 739384 145604 ?       Ssl  Jun16  37:20 /opt/ensemble
       "closed_at": "2026-07-02T03:47:52.470457",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_SUIUSDT_1782920323",
+      "symbol": "SUIUSDT",
+      "side": "short",
+      "entry_price": 0.7165,
+      "qty": 139.5673,
+      "confidence": 80,
+      "opened_at": "2026-07-01T15:38:43.579063",
+      "cost": 19.999994089999998,
+      "notional": 99.99997044999999,
+      "leverage": 5,
+      "exit_price": 0.7318,
+      "pnl_pct": -10.68,
+      "pnl_usdt": -2.14,
+      "closed_at": "2026-07-02T03:57:36.219130",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 1.6680835193616659
+  "total_pnl": -0.4672961706383312
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-02 03:18:36,725 [INFO] main: SOLUSDT | macro BLOCK (long при BTC downtrend)
-2026-07-02 03:18:38,743 [INFO] main: Next scan in 30min (always-30min)
-2026-07-02 03:29:30,190 [INFO] main: Symbols: 30
-2026-07-02 03:47:52,466 [INFO] positions: STOP_LOSS ZECUSDT short PnL:-2.01%
-2026-07-02 03:47:52,486 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ZECUSDT @ 422.1000 PnL: -10.04% (-2.01 USDT) | Баланс: 961.67
-2026-07-02 03:47:52,817 [INFO] positions: LOSS ZECUSDT short PnL:-2.01% reason:stop_loss
-2026-07-02 03:47:52,817 [INFO] positions: Lessons: The trade was based on a bearish MACD and strong bearish sentiment but ultimately resulted in a stop loss being triggered. The expected 2:1 risk to reward ratio was not achieved, leading to a loss of 2.01%. This outcome highlights the importance of reevaluating the effectiveness of using MACD and sentiment analysis for short positions in a trending market.
-2026-07-02 03:47:52,818 [INFO] rl: RL learned from short ZECUSDT: loss -2.01% | weights bull=0.836 bear=0.807 judge=1.357 threshold=66.8
-2026-07-02 03:48:38,745 [INFO] main: Scanning 28 symbols...
-2026-07-02 03:48:40,780 [INFO] main: REUSDT | Bull:long(70%) Bear:short(70%)
-2026-07-02 03:48:51,002 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-02 03:48:51,003 [INFO] openai._base_client: Retrying request to /chat/completions in 0.429364 seconds
-2026-07-02 03:49:01,611 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-02 03:49:01,612 [INFO] openai._base_client: Retrying request to /chat/completions in 0.991061 seconds
-2026-07-02 03:49:12,622 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-02 03:49:12,622 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
-2026-07-02 03:49:12,622 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
-2026-07-02 03:49:12,622 [INFO] main: REUSDT | Judge:HOLD conf=50% size=0.0%
-2026-07-02 03:49:12,622 [INFO] main: REUSDT | RL adj=50.0%
-2026-07-02 03:49:16,305 [INFO] main: MUSDT | Bull:long(80%) Bear:short(70%)
-2026-07-02 03:49:26,610 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-02 03:49:26,610 [INFO] openai._base_client: Retrying request to /chat/completions in 0.407100 seconds
-2026-07-02 03:49:37,040 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-02 03:49:37,041 [INFO] openai._base_client: Retrying request to /chat/completions in 0.948611 seconds
-2026-07-02 03:49:48,000 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-02 03:49:48,001 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
-2026-07-02 03:49:48,001 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
-2026-07-02 03:49:48,001 [INFO] main: MUSDT | Judge:HOLD conf=50% size=0.0%
-2026-07-02 03:49:48,001 [INFO] main: MUSDT | RL adj=50.0%
-2026-07-02 03:49:51,777 [INFO] main: BEATUSDT | Bull:long(70%) Bear:short(80%)
+2026-07-02 03:54:20,963 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 03:54:22,310 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-02 03:54:22,311 [INFO] main: SLXUSDT | Bull:flat(25%) Bear:short(80%)
+2026-07-02 03:54:24,520 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 03:54:24,521 [INFO] main: SLXUSDT | Judge:SHORT conf=75% size=15.0%
+2026-07-02 03:54:24,521 [INFO] main: SLXUSDT | RL adj=84.7%
+2026-07-02 03:54:24,531 [INFO] main: SLXUSDT | Context score=-0.05 bias=0.05
+2026-07-02 03:54:24,532 [INFO] main: SLXUSDT | regime BLOCK (volatile)
+2026-07-02 03:54:30,511 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 03:54:32,510 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-02 03:54:32,511 [INFO] main: WLDUSDT | Bull:flat(25%) Bear:short(70%)
+2026-07-02 03:54:35,119 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 03:54:35,120 [INFO] main: WLDUSDT | Judge:SHORT conf=80% size=15.0%
+2026-07-02 03:54:35,120 [INFO] main: WLDUSDT | RL adj=88.5%
+2026-07-02 03:54:35,130 [INFO] main: WLDUSDT | Context score=-0.05 bias=0.05
+2026-07-02 03:54:35,130 [INFO] main: WLDUSDT | regime BLOCK (volatile)
+2026-07-02 03:54:41,187 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 03:54:42,270 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-02 03:54:42,271 [INFO] main: LABUSDT | Bull:long(72%) Bear:short(80%)
+2026-07-02 03:54:44,974 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 03:54:44,976 [INFO] main: LABUSDT | Judge:LONG conf=75% size=15.0%
+2026-07-02 03:54:44,976 [INFO] main: LABUSDT | RL adj=74.3%
+2026-07-02 03:54:44,996 [INFO] main: LABUSDT | Context score=-0.0 bias=0.05
+2026-07-02 03:54:44,996 [INFO] main: LABUSDT | regime BLOCK (volatile)
+2026-07-02 03:54:47,029 [INFO] main: Next scan in 30min (always-30min)
+2026-07-02 03:57:36,217 [INFO] positions: STOP_LOSS SUIUSDT short PnL:-2.14%
+2026-07-02 03:57:36,227 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT SUIUSDT @ 0.7318 PnL: -10.68% (-2.14 USDT) | Баланс: 959.54
+2026-07-02 03:57:36,661 [INFO] positions: LOSS SUIUSDT short PnL:-2.14% reason:stop_loss
+2026-07-02 03:57:36,662 [INFO] positions: Lessons: The trade was based on the market being overbought with high RSI in 15m and 1h timeframes, expecting a 4% downside move. However, the trade resulted in a stop loss, incurring a 2.14% loss. This outcome suggests that the overbought conditions did not immediately lead to a significant pullback, and the trade's risk management parameters were not sufficient to withstand the market's movement.
+2026-07-02 03:57:36,662 [INFO] rl: RL learned from short SUIUSDT: loss -2.14% | weights bull=0.839 bear=0.803 judge=1.358 threshold=66.85
 ```
 
 ## Disk
@@ -7642,7 +7660,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       917Mi       191Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       931Mi       177Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
