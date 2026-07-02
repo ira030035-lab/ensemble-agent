@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-02 11:00:01 UTC
+Generated: 2026-07-02 11:10:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:55 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 902.9561586793612,
+  "balance": 920.8755438793612,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1782915792",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:55 /opt/ensemble
       "opened_at": "2026-07-01T14:23:12.517117",
       "cost": 19.998395999999996,
       "notional": 99.99197999999998,
-      "leverage": 5
-    },
-    "ZECUSDT": {
-      "id": "PAPER_ZECUSDT_1782964401",
-      "symbol": "ZECUSDT",
-      "side": "short",
-      "entry_price": 424.07,
-      "qty": 0.2358,
-      "confidence": 75,
-      "opened_at": "2026-07-02T03:53:21.054413",
-      "cost": 19.9991412,
-      "notional": 99.995706,
       "leverage": 5
     },
     "LINKUSDT": {
@@ -7677,19 +7665,32 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:55 /opt/ensemble
       "closed_at": "2026-07-02T10:36:12.291269",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ZECUSDT_1782964401",
+      "symbol": "ZECUSDT",
+      "side": "short",
+      "entry_price": 424.07,
+      "qty": 0.2358,
+      "confidence": 75,
+      "opened_at": "2026-07-02T03:53:21.054413",
+      "cost": 19.9991412,
+      "notional": 99.995706,
+      "leverage": 5,
+      "exit_price": 432.89,
+      "pnl_pct": -10.4,
+      "pnl_usdt": -2.08,
+      "closed_at": "2026-07-02T11:06:59.649683",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 2.9542913193616744
+  "total_pnl": 0.8745353193616761
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-02 10:51:15,061 [INFO] openai._base_client: Retrying request to /chat/completions in 0.414113 seconds
-2026-07-02 10:51:23,898 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 10:51:23,899 [INFO] main: TAOUSDT | Judge:HOLD conf=45% size=0.0%
-2026-07-02 10:51:23,899 [INFO] main: TAOUSDT | RL adj=45.0%
-2026-07-02 10:51:29,931 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-02 10:51:30,380 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-02 10:51:30,382 [INFO] main: BIRBUSDT | Bull:flat(25%) Bear:short(75%)
 2026-07-02 10:51:33,343 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -7715,6 +7716,11 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:55 /opt/ensemble
 2026-07-02 10:52:05,366 [INFO] main: TAIKOUSDT | Context score=-0.05 bias=0.05
 2026-07-02 10:52:05,366 [INFO] main: TAIKOUSDT | regime BLOCK (volatile)
 2026-07-02 10:52:07,385 [INFO] main: Next scan in 30min (always-30min)
+2026-07-02 11:06:59,646 [INFO] positions: STOP_LOSS ZECUSDT short PnL:-2.08%
+2026-07-02 11:06:59,668 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ZECUSDT @ 432.8900 PnL: -10.40% (-2.08 USDT) | Баланс: 920.88
+2026-07-02 11:06:59,967 [INFO] positions: LOSS ZECUSDT short PnL:-2.08% reason:stop_loss
+2026-07-02 11:06:59,967 [INFO] positions: Lessons: The trade was closed due to stop loss, resulting in a 2.08% loss. The initial analysis correctly identified overbought conditions and strong bear sentiment, but failed to predict the timing and magnitude of the move. This trade highlights the importance of precise timing and risk management in trading, even when the overall market analysis is correct.
+2026-07-02 11:06:59,967 [INFO] rl: RL learned from short ZECUSDT: loss -2.08% | weights bull=0.848 bear=0.790 judge=1.362 threshold=66.84
 ```
 
 ## Disk
@@ -7732,7 +7738,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       931Mi       120Mi       4.8Mi       3.0Gi       2.8Gi
+Mem:           3.7Gi       907Mi       143Mi       4.8Mi       3.0Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
