@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-02 13:30:01 UTC
+Generated: 2026-07-02 13:40:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  38:08 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 899.9406168489547,
+  "balance": 917.9138760489548,
   "positions": {
     "NEARUSDT": {
       "id": "PAPER_NEARUSDT_1782982351",
@@ -54,18 +54,6 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  38:08 /opt/ensemble
       "opened_at": "2026-07-02T11:27:47.414319",
       "cost": 20.000000630400002,
       "notional": 100.000003152,
-      "leverage": 5
-    },
-    "ETHUSDT": {
-      "id": "PAPER_ETHUSDT_1782995815",
-      "symbol": "ETHUSDT",
-      "side": "short",
-      "entry_price": 1658.32,
-      "qty": 0.0603,
-      "confidence": 75,
-      "opened_at": "2026-07-02T12:36:55.508718",
-      "cost": 19.9993392,
-      "notional": 99.996696,
       "leverage": 5
     },
     "PEPEUSDT": {
@@ -7749,19 +7737,32 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  38:08 /opt/ensemble
       "closed_at": "2026-07-02T12:50:31.507909",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ETHUSDT_1782995815",
+      "symbol": "ETHUSDT",
+      "side": "short",
+      "entry_price": 1658.32,
+      "qty": 0.0603,
+      "confidence": 75,
+      "opened_at": "2026-07-02T12:36:55.508718",
+      "cost": 19.9993392,
+      "notional": 99.996696,
+      "leverage": 5,
+      "exit_price": 1691.92,
+      "pnl_pct": -10.13,
+      "pnl_usdt": -2.03,
+      "closed_at": "2026-07-02T13:32:15.710138",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -0.06006028063832369
+  "total_pnl": -2.086140280638332
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-02 13:13:37,676 [INFO] main: BIRBUSDT | Context score=-0.0 bias=0.05
-2026-07-02 13:13:37,676 [INFO] main: BIRBUSDT | regime BLOCK (volatile)
-2026-07-02 13:13:45,542 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-02 13:13:45,955 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 13:13:45,956 [INFO] main: WLDUSDT | Bull:flat(35%) Bear:short(80%)
 2026-07-02 13:13:48,847 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-02 13:13:48,848 [INFO] main: WLDUSDT | Judge:HOLD conf=55% size=0.0%
 2026-07-02 13:13:48,848 [INFO] main: WLDUSDT | RL adj=55.0%
@@ -7787,6 +7788,11 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  38:08 /opt/ensemble
 2026-07-02 13:14:20,294 [INFO] main: TAIKOUSDT | RL adj=40.0%
 2026-07-02 13:14:22,296 [INFO] main: Next scan in 30min (always-30min)
 2026-07-02 13:29:36,637 [INFO] main: Symbols: 30
+2026-07-02 13:32:15,708 [INFO] positions: STOP_LOSS ETHUSDT short PnL:-2.03%
+2026-07-02 13:32:15,717 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ETHUSDT @ 1691.9200 PnL: -10.13% (-2.03 USDT) | Баланс: 917.91
+2026-07-02 13:32:16,120 [INFO] positions: LOSS ETHUSDT short PnL:-2.03% reason:stop_loss
+2026-07-02 13:32:16,120 [INFO] positions: Lessons: The trade was closed at a 2.03% loss due to a stop loss. The original reasoning was based on bear sentiment and overbought conditions indicated by an RSI of 79.9, but this did not lead to the expected downside move. The failure to achieve the expected 4% downside move suggests reevaluation of the weight given to bear sentiment and RSI indicators in similar future trades.
+2026-07-02 13:32:16,120 [INFO] rl: RL learned from short ETHUSDT: loss -2.03% | weights bull=0.864 bear=0.768 judge=1.368 threshold=66.96
 ```
 
 ## Disk
@@ -7804,7 +7810,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       906Mi       236Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       917Mi       225Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
