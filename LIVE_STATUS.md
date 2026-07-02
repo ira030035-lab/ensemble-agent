@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-02 14:40:01 UTC
+Generated: 2026-07-02 14:50:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61848 49628 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50556 ?        Ssl  Jun12   1:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  38:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  38:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 914.2380700209256,
+  "balance": 932.2308700209256,
   "positions": {
     "NEARUSDT": {
       "id": "PAPER_NEARUSDT_1782982351",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  38:13 /opt/ensemble
       "opened_at": "2026-07-02T08:52:31.046329",
       "cost": 19.9999836,
       "notional": 99.99991800000001,
-      "leverage": 5
-    },
-    "TAOUSDT": {
-      "id": "PAPER_TAOUSDT_1782999877",
-      "symbol": "TAOUSDT",
-      "side": "long",
-      "entry_price": 217.85,
-      "qty": 0.459,
-      "confidence": 85,
-      "opened_at": "2026-07-02T13:44:37.348373",
-      "cost": 19.99863,
-      "notional": 99.99315,
       "leverage": 5
     },
     "SUIUSDT": {
@@ -7809,19 +7797,32 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  38:13 /opt/ensemble
       "closed_at": "2026-07-02T14:35:00.722825",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_TAOUSDT_1782999877",
+      "symbol": "TAOUSDT",
+      "side": "long",
+      "entry_price": 217.85,
+      "qty": 0.459,
+      "confidence": 85,
+      "opened_at": "2026-07-02T13:44:37.348373",
+      "cost": 19.99863,
+      "notional": 99.99315,
+      "leverage": 5,
+      "exit_price": 213.48,
+      "pnl_pct": -10.03,
+      "pnl_usdt": -2.01,
+      "closed_at": "2026-07-02T14:41:15.321926",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -5.947122581073923
+  "total_pnl": -7.952952581073926
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-02 14:26:41,182 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 14:26:41,183 [INFO] main: XLMUSDT | Judge:LONG conf=75% size=15.0%
-2026-07-02 14:26:41,183 [INFO] main: XLMUSDT | RL adj=75.1%
-2026-07-02 14:26:41,193 [INFO] main: XLMUSDT | Context score=-0.0 bias=0.05
-2026-07-02 14:26:41,193 [INFO] main: XLMUSDT | gate PASS (Judge 75/70 RL 75.1/67.06 slack=±3)
 2026-07-02 14:26:41,194 [INFO] positions: Max positions reached (5/5 dyn)
 2026-07-02 14:26:47,385 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-02 14:26:47,837 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -7847,6 +7848,11 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  38:13 /opt/ensemble
 2026-07-02 14:35:01,066 [INFO] positions: OK ADAUSDT long PnL:0.44% reason:breakeven_stop
 2026-07-02 14:35:01,067 [INFO] positions: Lessons: The trade was closed at breakeven stop with a small profit of 0.44%. The initial bullish conditions and strong buy pressure were correct, but the trade did not yield significant gains. This outcome suggests that the support from the 4h uptrend and bullish MACD was not enough to propel the price upwards, and a more cautious approach may be needed in similar situations.
 2026-07-02 14:35:01,067 [INFO] rl: RL learned from long ADAUSDT: profit 0.44% | weights bull=0.872 bear=0.757 judge=1.371 threshold=67.03
+2026-07-02 14:41:15,320 [INFO] positions: STOP_LOSS TAOUSDT long PnL:-2.01%
+2026-07-02 14:41:15,329 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG TAOUSDT @ 213.4800 PnL: -10.03% (-2.01 USDT) | Баланс: 932.23
+2026-07-02 14:41:16,103 [INFO] positions: LOSS TAOUSDT long PnL:-2.01% reason:stop_loss
+2026-07-02 14:41:16,104 [INFO] positions: Lessons: High bull sentiment and a strong upward trend were not enough to overcome overbought conditions, leading to a stop loss. The trade was closed for a 2.01% loss, indicating that being in overbought territory can still pose significant risks. Overreliance on sentiment and trend indicators should be avoided when RSI suggests overbought conditions.
+2026-07-02 14:41:16,104 [INFO] rl: RL learned from long TAOUSDT: loss -2.01% | weights bull=0.868 bear=0.760 judge=1.372 threshold=67.08
 ```
 
 ## Disk
@@ -7864,7 +7870,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       918Mi       222Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       929Mi       210Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
