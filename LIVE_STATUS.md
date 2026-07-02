@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-02 07:40:01 UTC
+Generated: 2026-07-02 07:50:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:40 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 899.5350907637611,
+  "balance": 919.9238933393611,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1782915792",
@@ -66,18 +66,6 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:40 /opt/ensemble
       "opened_at": "2026-07-02T04:28:44.007266",
       "cost": 20.000046779999998,
       "notional": 100.0002339,
-      "leverage": 5
-    },
-    "ENAUSDT": {
-      "id": "PAPER_ENAUSDT_1782966552",
-      "symbol": "ENAUSDT",
-      "side": "short",
-      "entry_price": 0.07716,
-      "qty": 1296.0083,
-      "confidence": 80,
-      "opened_at": "2026-07-02T04:29:12.813076",
-      "cost": 20.0000000856,
-      "notional": 100.000000428,
       "leverage": 5
     }
   },
@@ -7641,19 +7629,32 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:40 /opt/ensemble
       "closed_at": "2026-07-02T03:57:36.219130",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ENAUSDT_1782966552",
+      "symbol": "ENAUSDT",
+      "side": "short",
+      "entry_price": 0.07716,
+      "qty": 1296.0083,
+      "confidence": 80,
+      "opened_at": "2026-07-02T04:29:12.813076",
+      "cost": 20.0000000856,
+      "notional": 100.000000428,
+      "leverage": 5,
+      "exit_price": 0.07686,
+      "pnl_pct": 1.94,
+      "pnl_usdt": 0.39,
+      "closed_at": "2026-07-02T07:49:42.803142",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -0.4672961706383312
+  "total_pnl": -0.07849368063832007
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-02 07:29:03,491 [INFO] main: TAIKOUSDT | Bull:flat(15%) Bear:short(80%)
-2026-07-02 07:29:08,966 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 07:29:08,967 [INFO] main: TAIKOUSDT | Judge:HOLD conf=45% size=0.0%
-2026-07-02 07:29:08,967 [INFO] main: TAIKOUSDT | RL adj=45.0%
-2026-07-02 07:29:15,527 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-02 07:29:16,265 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-02 07:29:16,266 [INFO] main: XLMUSDT | Bull:flat(15%) Bear:short(80%)
 2026-07-02 07:29:19,738 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -7679,6 +7680,11 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:40 /opt/ensemble
 2026-07-02 07:30:05,296 [INFO] main: BTCUSDT | Context score=-0.05 bias=0.05
 2026-07-02 07:30:05,297 [INFO] main: BTCUSDT | regime BLOCK (short × trending_up × rsi1h=49.8; counter-trend guard)
 2026-07-02 07:30:07,332 [INFO] main: Next scan in 30min (always-30min)
+2026-07-02 07:49:42,801 [INFO] positions: BREAKEVEN_STOP ENAUSDT short PnL:0.39%
+2026-07-02 07:49:42,810 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА SHORT ENAUSDT @ 0.0769 PnL: 1.94% (+0.39 USDT) | Баланс: 919.92
+2026-07-02 07:49:43,220 [INFO] positions: OK ENAUSDT short PnL:0.39% reason:breakeven_stop
+2026-07-02 07:49:43,220 [INFO] positions: Lessons: The trade was based on a bearish view despite a trending_up regime due to overbought conditions indicated by an 83.1 RSI. The outcome was a breakeven stop with a small profit of 0.39%. This suggests that the overbought condition was not enough to overcome the overall positive trend, and a stronger bearish signal may be needed for a more significant downside move.
+2026-07-02 07:49:43,221 [INFO] rl: RL learned from short ENAUSDT: profit 0.39% | weights bull=0.838 bear=0.804 judge=1.358 threshold=66.82
 ```
 
 ## Disk
@@ -7696,7 +7702,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       912Mi       187Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       912Mi       186Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
