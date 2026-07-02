@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-02 10:30:01 UTC
+Generated: 2026-07-02 10:40:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:52 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 899.9239097393612,
+  "balance": 922.9567237393612,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1782915792",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:52 /opt/ensemble
       "opened_at": "2026-07-02T03:53:21.054413",
       "cost": 19.9991412,
       "notional": 99.995706,
-      "leverage": 5
-    },
-    "SOLUSDT": {
-      "id": "PAPER_SOLUSDT_1782966298",
-      "symbol": "SOLUSDT",
-      "side": "long",
-      "entry_price": 78.278,
-      "qty": 1.2775,
-      "confidence": 70,
-      "opened_at": "2026-07-02T04:24:58.144528",
-      "cost": 20.000029000000005,
-      "notional": 100.00014500000002,
       "leverage": 5
     },
     "LINKUSDT": {
@@ -7659,19 +7647,32 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:52 /opt/ensemble
       "closed_at": "2026-07-02T07:49:42.803142",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_SOLUSDT_1782966298",
+      "symbol": "SOLUSDT",
+      "side": "long",
+      "entry_price": 78.278,
+      "qty": 1.2775,
+      "confidence": 70,
+      "opened_at": "2026-07-02T04:24:58.144528",
+      "cost": 20.000029000000005,
+      "notional": 100.00014500000002,
+      "leverage": 5,
+      "exit_price": 80.652,
+      "pnl_pct": 15.16,
+      "pnl_usdt": 3.03,
+      "closed_at": "2026-07-02T10:36:12.291269",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -0.07849368063832007
+  "total_pnl": 2.9542913193616744
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-02 10:14:40,111 [INFO] openai._base_client: Retrying request to /chat/completions in 0.452109 seconds
-2026-07-02 10:14:50,591 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-02 10:14:50,592 [INFO] openai._base_client: Retrying request to /chat/completions in 0.972973 seconds
-2026-07-02 10:14:56,833 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 10:14:56,833 [INFO] main: XLMUSDT | Judge:HOLD conf=55% size=0.0%
 2026-07-02 10:14:56,834 [INFO] main: XLMUSDT | RL adj=55.0%
 2026-07-02 10:15:03,683 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-02 10:15:07,877 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -7697,6 +7698,11 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:52 /opt/ensemble
 2026-07-02 10:15:52,480 [INFO] main: VELVETUSDT | regime BLOCK (volatile)
 2026-07-02 10:15:54,497 [INFO] main: Next scan in 30min (always-30min)
 2026-07-02 10:29:34,729 [INFO] main: Symbols: 30
+2026-07-02 10:36:12,289 [INFO] positions: TAKE-PROFIT SOLUSDT long PnL:3.03%
+2026-07-02 10:36:12,299 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG SOLUSDT @ 80.6520 PnL: 15.16% (+3.03 USDT) | Баланс: 922.96
+2026-07-02 10:36:12,621 [INFO] positions: OK SOLUSDT long PnL:3.03% reason:take_profit
+2026-07-02 10:36:12,621 [INFO] positions: Lessons: The trade was based on bullish sentiment and technical indicators, aiming for a 4% upside with 2% drawdown risk. It closed at a 3.03% profit, hitting the take profit target. The key takeaway is that the bullish trend and MACD signal correctly predicted an upside move, although it fell slightly short of the expected 4% gain.
+2026-07-02 10:36:12,621 [INFO] rl: RL learned from long SOLUSDT: profit 3.03% | weights bull=0.845 bear=0.795 judge=1.361 threshold=66.79
 ```
 
 ## Disk
@@ -7714,7 +7720,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       912Mi       140Mi       4.8Mi       3.0Gi       2.8Gi
+Mem:           3.7Gi       903Mi       148Mi       4.8Mi       3.0Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
