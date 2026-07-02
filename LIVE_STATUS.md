@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-02 12:50:01 UTC
+Generated: 2026-07-02 13:00:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61848 49628 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50556 ?        Ssl  Jun12   1:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  38:04 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  38:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 896.8193142689612,
+  "balance": 919.9406168489612,
   "positions": {
-    "LINKUSDT": {
-      "id": "PAPER_LINKUSDT_1782966524",
-      "symbol": "LINKUSDT",
-      "side": "long",
-      "entry_price": 7.497,
-      "qty": 13.3387,
-      "confidence": 70,
-      "opened_at": "2026-07-02T04:28:44.007266",
-      "cost": 20.000046779999998,
-      "notional": 100.0002339,
-      "leverage": 5
-    },
     "NEARUSDT": {
       "id": "PAPER_NEARUSDT_1782982351",
       "symbol": "NEARUSDT",
@@ -7731,19 +7719,32 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  38:04 /opt/ensemble
       "closed_at": "2026-07-02T12:30:39.760610",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_LINKUSDT_1782966524",
+      "symbol": "LINKUSDT",
+      "side": "long",
+      "entry_price": 7.497,
+      "qty": 13.3387,
+      "confidence": 70,
+      "opened_at": "2026-07-02T04:28:44.007266",
+      "cost": 20.000046779999998,
+      "notional": 100.0002339,
+      "leverage": 5,
+      "exit_price": 7.731,
+      "pnl_pct": 15.61,
+      "pnl_usdt": 3.12,
+      "closed_at": "2026-07-02T12:50:31.507909",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -3.1813160806383234
+  "total_pnl": -0.06006028063832369
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-02 12:39:06,005 [INFO] main: TLMUSDT | Bull:flat(25%) Bear:short(78%)
-2026-07-02 12:39:08,619 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 12:39:08,621 [INFO] main: TLMUSDT | Judge:SHORT conf=80% size=15.0%
-2026-07-02 12:39:08,621 [INFO] main: TLMUSDT | RL adj=89.1%
-2026-07-02 12:39:08,644 [INFO] main: TLMUSDT | Context score=-0.05 bias=0.05
 2026-07-02 12:39:08,644 [INFO] main: TLMUSDT | regime BLOCK (volatile)
 2026-07-02 12:39:14,346 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-02 12:39:15,591 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -7769,6 +7770,11 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  38:04 /opt/ensemble
 2026-07-02 12:39:39,326 [INFO] main: EPICUSDT | Judge:HOLD conf=60% size=0.0%
 2026-07-02 12:39:39,326 [INFO] main: EPICUSDT | RL adj=60.0%
 2026-07-02 12:39:41,328 [INFO] main: Next scan in 30min (always-30min)
+2026-07-02 12:50:31,506 [INFO] positions: TAKE-PROFIT LINKUSDT long PnL:3.12%
+2026-07-02 12:50:31,515 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG LINKUSDT @ 7.7310 PnL: 15.61% (+3.12 USDT) | Баланс: 919.94
+2026-07-02 12:50:31,802 [INFO] positions: OK LINKUSDT long PnL:3.12% reason:take_profit
+2026-07-02 12:50:31,803 [INFO] positions: Lessons: The trade was successful with a 3.12% profit, meeting the targeted risk/reward ratio. Despite initial overbought conditions, the bullish MACD and extreme fear sentiment correctly indicated a further upside move. This outcome highlights the importance of considering multiple indicators and sentiment analysis when making trading decisions.
+2026-07-02 12:50:31,803 [INFO] rl: RL learned from long LINKUSDT: profit 3.12% | weights bull=0.861 bear=0.772 judge=1.367 threshold=66.91
 ```
 
 ## Disk
@@ -7786,7 +7792,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       928Mi       216Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       943Mi       201Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
