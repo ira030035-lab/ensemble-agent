@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-02 07:30:01 UTC
+Generated: 2026-07-02 07:40:01 UTC
 
 ## Services
 ```
@@ -7649,12 +7649,6 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:40 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-02 07:28:33,515 [INFO] main: LABUSDT | Context score=-0.05 bias=0.05
-2026-07-02 07:28:33,515 [INFO] main: LABUSDT | regime BLOCK (volatile)
-2026-07-02 07:28:40,310 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-02 07:28:47,198 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-02 07:28:47,199 [INFO] openai._base_client: Retrying request to /chat/completions in 0.483801 seconds
-2026-07-02 07:29:03,489 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-02 07:29:03,491 [INFO] main: TAIKOUSDT | Bull:flat(15%) Bear:short(80%)
 2026-07-02 07:29:08,966 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-02 07:29:08,967 [INFO] main: TAIKOUSDT | Judge:HOLD conf=45% size=0.0%
@@ -7679,6 +7673,12 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:40 /opt/ensemble
 2026-07-02 07:29:46,555 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-02 07:29:50,084 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-02 07:29:50,085 [INFO] main: BTCUSDT | Bull:flat(15%) Bear:short(85%)
+2026-07-02 07:30:05,274 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 07:30:05,275 [INFO] main: BTCUSDT | Judge:SHORT conf=85% size=15.0%
+2026-07-02 07:30:05,276 [INFO] main: BTCUSDT | RL adj=95.2%
+2026-07-02 07:30:05,296 [INFO] main: BTCUSDT | Context score=-0.05 bias=0.05
+2026-07-02 07:30:05,297 [INFO] main: BTCUSDT | regime BLOCK (short × trending_up × rsi1h=49.8; counter-trend guard)
+2026-07-02 07:30:07,332 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -7696,7 +7696,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       936Mi       163Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       912Mi       187Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
