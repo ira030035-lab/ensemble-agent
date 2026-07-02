@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-02 14:30:01 UTC
+Generated: 2026-07-02 14:40:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  38:13 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 893.7978190209257,
+  "balance": 914.2380700209256,
   "positions": {
     "NEARUSDT": {
       "id": "PAPER_NEARUSDT_1782982351",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  38:13 /opt/ensemble
       "opened_at": "2026-07-02T08:52:31.046329",
       "cost": 19.9999836,
       "notional": 99.99991800000001,
-      "leverage": 5
-    },
-    "ADAUSDT": {
-      "id": "PAPER_ADAUSDT_1782991366",
-      "symbol": "ADAUSDT",
-      "side": "long",
-      "entry_price": 0.159,
-      "qty": 628.9308,
-      "confidence": 75,
-      "opened_at": "2026-07-02T11:22:46.818124",
-      "cost": 19.99999944,
-      "notional": 99.9999972,
       "leverage": 5
     },
     "TAOUSDT": {
@@ -7803,19 +7791,32 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  38:13 /opt/ensemble
       "closed_at": "2026-07-02T13:43:41.997130",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ADAUSDT_1782991366",
+      "symbol": "ADAUSDT",
+      "side": "long",
+      "entry_price": 0.159,
+      "qty": 628.9308,
+      "confidence": 75,
+      "opened_at": "2026-07-02T11:22:46.818124",
+      "cost": 19.99999944,
+      "notional": 99.9999972,
+      "leverage": 5,
+      "exit_price": 0.1597,
+      "pnl_pct": 2.2,
+      "pnl_usdt": 0.44,
+      "closed_at": "2026-07-02T14:35:00.722825",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -6.387374141073927
+  "total_pnl": -5.947122581073923
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-02 14:26:31,442 [INFO] main: ETHUSDT | Judge:HOLD conf=45% size=0.0%
-2026-07-02 14:26:31,442 [INFO] main: ETHUSDT | RL adj=45.0%
-2026-07-02 14:26:37,616 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 14:26:38,358 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-02 14:26:38,359 [INFO] main: XLMUSDT | Bull:long(62%) Bear:short(70%)
 2026-07-02 14:26:41,182 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-02 14:26:41,183 [INFO] main: XLMUSDT | Judge:LONG conf=75% size=15.0%
 2026-07-02 14:26:41,183 [INFO] main: XLMUSDT | RL adj=75.1%
@@ -7841,6 +7842,11 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  38:13 /opt/ensemble
 2026-07-02 14:27:11,903 [INFO] main: VELVETUSDT | regime BLOCK (volatile)
 2026-07-02 14:27:13,921 [INFO] main: Next scan in 30min (always-30min)
 2026-07-02 14:29:37,313 [INFO] main: Symbols: 30
+2026-07-02 14:35:00,718 [INFO] positions: BREAKEVEN_STOP ADAUSDT long PnL:0.44%
+2026-07-02 14:35:00,739 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG ADAUSDT @ 0.1597 PnL: 2.20% (+0.44 USDT) | Баланс: 914.24
+2026-07-02 14:35:01,066 [INFO] positions: OK ADAUSDT long PnL:0.44% reason:breakeven_stop
+2026-07-02 14:35:01,067 [INFO] positions: Lessons: The trade was closed at breakeven stop with a small profit of 0.44%. The initial bullish conditions and strong buy pressure were correct, but the trade did not yield significant gains. This outcome suggests that the support from the 4h uptrend and bullish MACD was not enough to propel the price upwards, and a more cautious approach may be needed in similar situations.
+2026-07-02 14:35:01,067 [INFO] rl: RL learned from long ADAUSDT: profit 0.44% | weights bull=0.872 bear=0.757 judge=1.371 threshold=67.03
 ```
 
 ## Disk
@@ -7858,7 +7864,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       921Mi       219Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       918Mi       222Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
