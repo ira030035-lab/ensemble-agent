@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-02 08:10:01 UTC
+Generated: 2026-07-02 08:20:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 48572 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50556 ?        Ssl  Jun12   1:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:42 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:43 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -7655,36 +7655,36 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:42 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-02 08:08:11,163 [INFO] main: SUIUSDT | Judge:HOLD conf=50% size=0.0%
-2026-07-02 08:08:11,163 [INFO] main: SUIUSDT | RL adj=50.0%
-2026-07-02 08:08:18,007 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-02 08:08:24,760 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-02 08:08:24,760 [INFO] openai._base_client: Retrying request to /chat/completions in 0.405941 seconds
-2026-07-02 08:08:35,183 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-02 08:08:35,183 [INFO] openai._base_client: Retrying request to /chat/completions in 0.796882 seconds
-2026-07-02 08:08:50,003 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 08:08:50,004 [INFO] main: VELVETUSDT | Bull:flat(15%) Bear:short(85%)
-2026-07-02 08:09:00,648 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 08:09:00,649 [INFO] main: VELVETUSDT | Judge:SHORT conf=85% size=20.0%
-2026-07-02 08:09:00,649 [INFO] main: VELVETUSDT | RL adj=95.2%
-2026-07-02 08:09:00,660 [INFO] main: VELVETUSDT | Context score=-0.05 bias=0.05
-2026-07-02 08:09:00,660 [INFO] main: VELVETUSDT | regime BLOCK (volatile)
-2026-07-02 08:09:09,021 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-02 08:09:15,747 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 08:09:15,748 [INFO] main: DYDXUSDT | Bull:flat(15%) Bear:short(70%)
-2026-07-02 08:09:28,862 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 08:09:28,863 [INFO] main: DYDXUSDT | Judge:SHORT conf=70% size=15.0%
-2026-07-02 08:09:28,863 [INFO] main: DYDXUSDT | RL adj=78.4%
-2026-07-02 08:09:28,875 [INFO] main: DYDXUSDT | Context score=-0.05 bias=0.05
-2026-07-02 08:09:28,875 [INFO] main: DYDXUSDT | regime BLOCK (volatile)
-2026-07-02 08:09:35,522 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-02 08:09:41,382 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 08:09:41,383 [INFO] main: MUSDT | Bull:flat(25%) Bear:short(80%)
-2026-07-02 08:09:49,717 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 08:09:49,718 [INFO] main: MUSDT | Judge:SHORT conf=70% size=12.0%
-2026-07-02 08:09:49,718 [INFO] main: MUSDT | RL adj=79.6%
-2026-07-02 08:09:49,739 [INFO] main: MUSDT | Context score=-0.05 bias=0.05
-2026-07-02 08:09:49,739 [INFO] main: MUSDT | regime BLOCK (volatile)
+2026-07-02 08:16:20,302 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-02 08:16:27,232 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-02 08:16:27,233 [INFO] openai._base_client: Retrying request to /chat/completions in 0.382910 seconds
+2026-07-02 08:16:41,426 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 08:16:41,427 [INFO] main: SLXUSDT | Bull:flat(15%) Bear:short(80%)
+2026-07-02 08:16:51,659 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-02 08:16:51,660 [INFO] openai._base_client: Retrying request to /chat/completions in 0.418383 seconds
+2026-07-02 08:17:02,091 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-02 08:17:02,091 [INFO] openai._base_client: Retrying request to /chat/completions in 0.813916 seconds
+2026-07-02 08:17:13,075 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-02 08:17:13,075 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
+2026-07-02 08:17:13,075 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-07-02 08:17:13,075 [INFO] main: SLXUSDT | Judge:HOLD conf=50% size=0.0%
+2026-07-02 08:17:13,075 [INFO] main: SLXUSDT | RL adj=50.0%
+2026-07-02 08:17:20,899 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-02 08:17:26,754 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-02 08:17:26,755 [INFO] openai._base_client: Retrying request to /chat/completions in 0.410349 seconds
+2026-07-02 08:17:40,644 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 08:17:40,645 [INFO] main: EPICUSDT | Bull:flat(25%) Bear:short(70%)
+2026-07-02 08:17:46,853 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 08:17:46,853 [INFO] main: EPICUSDT | Judge:HOLD conf=35% size=0.0%
+2026-07-02 08:17:46,854 [INFO] main: EPICUSDT | RL adj=35.0%
+2026-07-02 08:17:53,995 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-02 08:18:01,571 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 08:18:01,573 [INFO] main: ADAUSDT | Bull:long(62%) Bear:short(70%)
+2026-07-02 08:18:09,546 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 08:18:09,548 [INFO] main: ADAUSDT | Judge:LONG conf=65% size=10.0%
+2026-07-02 08:18:09,548 [INFO] main: ADAUSDT | RL adj=64.4%
+2026-07-02 08:18:09,567 [INFO] main: ADAUSDT | Context score=-0.0 bias=0.05
+2026-07-02 08:18:11,570 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -7702,7 +7702,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       912Mi       186Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       911Mi       186Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
