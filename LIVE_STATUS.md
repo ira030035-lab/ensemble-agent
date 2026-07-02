@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-02 13:40:01 UTC
+Generated: 2026-07-02 13:50:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61848 49628 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50556 ?        Ssl  Jun12   1:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  38:08 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145616 ?       Ssl  Jun16  38:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 917.9138760489548,
+  "balance": 893.7978190209257,
   "positions": {
     "NEARUSDT": {
       "id": "PAPER_NEARUSDT_1782982351",
@@ -44,28 +44,40 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  38:08 /opt/ensemble
       "notional": 99.9999972,
       "leverage": 5
     },
-    "XLMUSDT": {
-      "id": "PAPER_XLMUSDT_1782991667",
-      "symbol": "XLMUSDT",
-      "side": "short",
-      "entry_price": 0.19852,
-      "qty": 503.7276,
-      "confidence": 80,
-      "opened_at": "2026-07-02T11:27:47.414319",
-      "cost": 20.000000630400002,
-      "notional": 100.000003152,
+    "TAOUSDT": {
+      "id": "PAPER_TAOUSDT_1782999877",
+      "symbol": "TAOUSDT",
+      "side": "long",
+      "entry_price": 217.85,
+      "qty": 0.459,
+      "confidence": 85,
+      "opened_at": "2026-07-02T13:44:37.348373",
+      "cost": 19.99863,
+      "notional": 99.99315,
       "leverage": 5
     },
-    "PEPEUSDT": {
-      "id": "PAPER_PEPEUSDT_1782997833",
-      "symbol": "PEPEUSDT",
+    "SUIUSDT": {
+      "id": "PAPER_SUIUSDT_1783000039",
+      "symbol": "SUIUSDT",
       "side": "short",
-      "entry_price": 2.4356e-06,
-      "qty": 41057644.9335,
-      "confidence": 85,
-      "opened_at": "2026-07-02T13:10:33.212385",
-      "cost": 20.00000000000652,
-      "notional": 100.0000000000326,
+      "entry_price": 0.7497,
+      "qty": 133.3867,
+      "confidence": 70,
+      "opened_at": "2026-07-02T13:47:19.264917",
+      "cost": 20.000001798,
+      "notional": 100.00000899,
+      "leverage": 5
+    },
+    "BTCUSDT": {
+      "id": "PAPER_BTCUSDT_1783000163",
+      "symbol": "BTCUSDT",
+      "side": "short",
+      "entry_price": 61925.6,
+      "qty": 0.0016,
+      "confidence": 75,
+      "opened_at": "2026-07-02T13:49:23.139571",
+      "cost": 19.816192,
+      "notional": 99.08096,
       "leverage": 5
     }
   },
@@ -7755,44 +7767,80 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  38:08 /opt/ensemble
       "closed_at": "2026-07-02T13:32:15.710138",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_XLMUSDT_1782991667",
+      "symbol": "XLMUSDT",
+      "side": "short",
+      "entry_price": 0.19852,
+      "qty": 503.7276,
+      "confidence": 80,
+      "opened_at": "2026-07-02T11:27:47.414319",
+      "cost": 20.000000630400002,
+      "notional": 100.000003152,
+      "leverage": 5,
+      "exit_price": 0.20269,
+      "pnl_pct": -10.5,
+      "pnl_usdt": -2.1,
+      "closed_at": "2026-07-02T13:43:41.658318",
+      "reason": "stop_loss",
+      "outcome": "loss"
+    },
+    {
+      "id": "PAPER_PEPEUSDT_1782997833",
+      "symbol": "PEPEUSDT",
+      "side": "short",
+      "entry_price": 2.4356e-06,
+      "qty": 41057644.9335,
+      "confidence": 85,
+      "opened_at": "2026-07-02T13:10:33.212385",
+      "cost": 20.00000000000652,
+      "notional": 100.0000000000326,
+      "leverage": 5,
+      "exit_price": 2.4892e-06,
+      "pnl_pct": -11.0,
+      "pnl_usdt": -2.2,
+      "closed_at": "2026-07-02T13:43:41.997130",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -2.086140280638332
+  "total_pnl": -6.387374141073927
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-02 13:13:48,847 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 13:13:48,848 [INFO] main: WLDUSDT | Judge:HOLD conf=55% size=0.0%
-2026-07-02 13:13:48,848 [INFO] main: WLDUSDT | RL adj=55.0%
-2026-07-02 13:13:55,471 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 13:13:56,515 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-02 13:13:56,516 [INFO] main: SYNUSDT | Bull:flat(25%) Bear:short(75%)
-2026-07-02 13:13:59,114 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 13:13:59,115 [INFO] main: SYNUSDT | Judge:SHORT conf=65% size=10.0%
-2026-07-02 13:13:59,115 [INFO] main: SYNUSDT | RL adj=73.7%
-2026-07-02 13:13:59,124 [INFO] main: SYNUSDT | Context score=-0.05 bias=0.05
-2026-07-02 13:13:59,124 [INFO] main: SYNUSDT | regime BLOCK (volatile)
-2026-07-02 13:14:05,422 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 13:14:06,657 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-02 13:14:06,658 [INFO] main: ZECUSDT | Bull:flat(25%) Bear:short(80%)
-2026-07-02 13:14:09,346 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 13:14:09,347 [INFO] main: ZECUSDT | Judge:HOLD conf=40% size=0.0%
-2026-07-02 13:14:09,347 [INFO] main: ZECUSDT | RL adj=40.0%
-2026-07-02 13:14:15,925 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 13:14:17,004 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-02 13:14:17,006 [INFO] main: TAIKOUSDT | Bull:flat(15%) Bear:short(80%)
-2026-07-02 13:14:20,292 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 13:14:20,294 [INFO] main: TAIKOUSDT | Judge:HOLD conf=40% size=0.0%
-2026-07-02 13:14:20,294 [INFO] main: TAIKOUSDT | RL adj=40.0%
-2026-07-02 13:14:22,296 [INFO] main: Next scan in 30min (always-30min)
-2026-07-02 13:29:36,637 [INFO] main: Symbols: 30
-2026-07-02 13:32:15,708 [INFO] positions: STOP_LOSS ETHUSDT short PnL:-2.03%
-2026-07-02 13:32:15,717 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ETHUSDT @ 1691.9200 PnL: -10.13% (-2.03 USDT) | Баланс: 917.91
-2026-07-02 13:32:16,120 [INFO] positions: LOSS ETHUSDT short PnL:-2.03% reason:stop_loss
-2026-07-02 13:32:16,120 [INFO] positions: Lessons: The trade was closed at a 2.03% loss due to a stop loss. The original reasoning was based on bear sentiment and overbought conditions indicated by an RSI of 79.9, but this did not lead to the expected downside move. The failure to achieve the expected 4% downside move suggests reevaluation of the weight given to bear sentiment and RSI indicators in similar future trades.
-2026-07-02 13:32:16,120 [INFO] rl: RL learned from short ETHUSDT: loss -2.03% | weights bull=0.864 bear=0.768 judge=1.368 threshold=66.96
+2026-07-02 13:49:18,239 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-02 13:49:18,240 [INFO] main: BTCUSDT | Bull:flat(15%) Bear:short(75%)
+2026-07-02 13:49:23,123 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 13:49:23,123 [INFO] main: BTCUSDT | Judge:SHORT conf=75% size=15.0%
+2026-07-02 13:49:23,123 [INFO] main: BTCUSDT | RL adj=83.5%
+2026-07-02 13:49:23,136 [INFO] main: BTCUSDT | Context score=-0.05 bias=0.05
+2026-07-02 13:49:23,136 [INFO] main: BTCUSDT | gate PASS (Judge 75/70 RL 83.5/67.06 slack=±3)
+2026-07-02 13:49:23,138 [INFO] positions: [PAPER] Opening SHORT BTCUSDT notional=$100.0 conf=75%
+2026-07-02 13:49:23,146 [INFO] paper_trading: [PAPER] ОТКРЫТА SHORT BTCUSDT @ 61925.6000 qty=0.0016 notional=99.08 margin=19.82 x5 | Баланс: 893.80
+2026-07-02 13:49:30,578 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 13:49:31,285 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-02 13:49:31,286 [INFO] main: AAVEUSDT | Bull:flat(25%) Bear:short(80%)
+2026-07-02 13:49:35,318 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 13:49:35,319 [INFO] main: AAVEUSDT | Judge:SHORT conf=85% size=15.0%
+2026-07-02 13:49:35,319 [INFO] main: AAVEUSDT | RL adj=94.1%
+2026-07-02 13:49:35,329 [INFO] main: AAVEUSDT | Context score=-0.05 bias=0.05
+2026-07-02 13:49:35,329 [INFO] main: AAVEUSDT | gate PASS (Judge 85/70 RL 94.1/67.06 slack=±3)
+2026-07-02 13:49:35,330 [INFO] positions: Max positions reached (5/5 dyn)
+2026-07-02 13:49:42,255 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-02 13:49:44,700 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 13:49:44,702 [INFO] main: TAIKOUSDT | Bull:flat(15%) Bear:short(70%)
+2026-07-02 13:49:48,497 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 13:49:48,498 [INFO] main: TAIKOUSDT | Judge:HOLD conf=45% size=0.0%
+2026-07-02 13:49:48,498 [INFO] main: TAIKOUSDT | RL adj=45.0%
+2026-07-02 13:49:55,574 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-02 13:49:56,593 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 13:49:56,594 [INFO] main: LINKUSDT | Bull:flat(15%) Bear:short(70%)
+2026-07-02 13:50:01,042 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 13:50:01,043 [INFO] main: LINKUSDT | Judge:HOLD conf=50% size=0.0%
+2026-07-02 13:50:01,043 [INFO] main: LINKUSDT | RL adj=50.0%
 ```
 
 ## Disk
@@ -7810,7 +7858,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       917Mi       225Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       921Mi       221Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
