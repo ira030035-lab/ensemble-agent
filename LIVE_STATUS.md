@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-02 12:20:01 UTC
+Generated: 2026-07-02 12:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61848 49628 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50556 ?        Ssl  Jun12   1:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  38:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  38:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -7721,7 +7721,6 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  38:01 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-02 12:03:30,470 [INFO] main: BTCUSDT | RL adj=55.0%
 2026-07-02 12:03:38,916 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-02 12:03:39,931 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-02 12:03:39,932 [INFO] main: TLMUSDT | Bull:long(62%) Bear:short(70%)
@@ -7751,6 +7750,7 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  38:01 /opt/ensemble
 2026-07-02 12:04:52,099 [INFO] main: HYPEUSDT | Judge:HOLD conf=55% size=0.0%
 2026-07-02 12:04:52,100 [INFO] main: HYPEUSDT | RL adj=55.0%
 2026-07-02 12:04:54,102 [INFO] main: Next scan in 30min (always-30min)
+2026-07-02 12:29:35,984 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -7768,7 +7768,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       929Mi       217Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       937Mi       209Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
