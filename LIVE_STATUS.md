@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-02 11:20:01 UTC
+Generated: 2026-07-02 11:30:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  60944 48572 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.2 283284 50556 ?        Ssl  Jun12   1:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:55 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:58 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 920.8755438793612,
+  "balance": 898.8349074689612,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1782915792",
@@ -56,16 +56,28 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:55 /opt/ensemble
       "notional": 99.99991800000001,
       "leverage": 5
     },
-    "SOLUSDT": {
-      "id": "PAPER_SOLUSDT_1782989259",
-      "symbol": "SOLUSDT",
+    "ADAUSDT": {
+      "id": "PAPER_ADAUSDT_1782991366",
+      "symbol": "ADAUSDT",
+      "side": "long",
+      "entry_price": 0.159,
+      "qty": 628.9308,
+      "confidence": 75,
+      "opened_at": "2026-07-02T11:22:46.818124",
+      "cost": 19.99999944,
+      "notional": 99.9999972,
+      "leverage": 5
+    },
+    "XLMUSDT": {
+      "id": "PAPER_XLMUSDT_1782991667",
+      "symbol": "XLMUSDT",
       "side": "short",
-      "entry_price": 81.033,
-      "qty": 1.2341,
-      "confidence": 85,
-      "opened_at": "2026-07-02T10:47:39.094659",
-      "cost": 20.00056506,
-      "notional": 100.0028253,
+      "entry_price": 0.19852,
+      "qty": 503.7276,
+      "confidence": 80,
+      "opened_at": "2026-07-02T11:27:47.414319",
+      "cost": 20.000000630400002,
+      "notional": 100.000003152,
       "leverage": 5
     }
   },
@@ -7683,44 +7695,62 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  37:55 /opt/ensemble
       "closed_at": "2026-07-02T11:06:59.649683",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_SOLUSDT_1782989259",
+      "symbol": "SOLUSDT",
+      "side": "short",
+      "entry_price": 81.033,
+      "qty": 1.2341,
+      "confidence": 85,
+      "opened_at": "2026-07-02T10:47:39.094659",
+      "cost": 20.00056506,
+      "notional": 100.0028253,
+      "leverage": 5,
+      "exit_price": 82.687,
+      "pnl_pct": -10.21,
+      "pnl_usdt": -2.04,
+      "closed_at": "2026-07-02T11:26:45.317637",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 0.8745353193616761
+  "total_pnl": -1.1666660806383193
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-02 10:51:30,380 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-02 10:51:30,382 [INFO] main: BIRBUSDT | Bull:flat(25%) Bear:short(75%)
-2026-07-02 10:51:33,343 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 10:51:33,344 [INFO] main: BIRBUSDT | Judge:SHORT conf=70% size=15.0%
-2026-07-02 10:51:33,344 [INFO] main: BIRBUSDT | RL adj=78.9%
-2026-07-02 10:51:33,354 [INFO] main: BIRBUSDT | Context score=-0.05 bias=0.05
-2026-07-02 10:51:33,354 [INFO] main: BIRBUSDT | regime BLOCK (volatile)
-2026-07-02 10:51:38,762 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 10:51:40,161 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-02 10:51:40,162 [INFO] main: ETHUSDT | Bull:flat(15%) Bear:short(80%)
-2026-07-02 10:51:42,736 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 10:51:42,737 [INFO] main: ETHUSDT | Judge:LONG conf=75% size=15.0%
-2026-07-02 10:51:42,737 [INFO] main: ETHUSDT | RL adj=65.5%
-2026-07-02 10:51:42,763 [INFO] main: ETHUSDT | Context score=-0.0 bias=0.05
-2026-07-02 10:51:42,763 [INFO] main: ETHUSDT | gate PASS (Judge 75/70 RL 65.5/66.79 slack=±3)
-2026-07-02 10:51:42,766 [INFO] positions: Max positions reached (5/5 dyn)
-2026-07-02 10:51:49,058 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-02 10:52:02,649 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 10:52:02,650 [INFO] main: TAIKOUSDT | Bull:flat(15%) Bear:short(85%)
-2026-07-02 10:52:05,355 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 10:52:05,355 [INFO] main: TAIKOUSDT | Judge:SHORT conf=85% size=15.0%
-2026-07-02 10:52:05,355 [INFO] main: TAIKOUSDT | RL adj=95.1%
-2026-07-02 10:52:05,366 [INFO] main: TAIKOUSDT | Context score=-0.05 bias=0.05
-2026-07-02 10:52:05,366 [INFO] main: TAIKOUSDT | regime BLOCK (volatile)
-2026-07-02 10:52:07,385 [INFO] main: Next scan in 30min (always-30min)
-2026-07-02 11:06:59,646 [INFO] positions: STOP_LOSS ZECUSDT short PnL:-2.08%
-2026-07-02 11:06:59,668 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА SHORT ZECUSDT @ 432.8900 PnL: -10.40% (-2.08 USDT) | Баланс: 920.88
-2026-07-02 11:06:59,967 [INFO] positions: LOSS ZECUSDT short PnL:-2.08% reason:stop_loss
-2026-07-02 11:06:59,967 [INFO] positions: Lessons: The trade was closed due to stop loss, resulting in a 2.08% loss. The initial analysis correctly identified overbought conditions and strong bear sentiment, but failed to predict the timing and magnitude of the move. This trade highlights the importance of precise timing and risk management in trading, even when the overall market analysis is correct.
-2026-07-02 11:06:59,967 [INFO] rl: RL learned from short ZECUSDT: loss -2.08% | weights bull=0.848 bear=0.790 judge=1.362 threshold=66.84
+2026-07-02 11:26:57,174 [INFO] main: ETHUSDT | Context score=-0.0 bias=0.05
+2026-07-02 11:27:04,201 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-02 11:27:07,335 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 11:27:07,336 [INFO] main: DOGEUSDT | Bull:flat(25%) Bear:short(80%)
+2026-07-02 11:27:12,076 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 11:27:12,077 [INFO] main: DOGEUSDT | Judge:SHORT conf=75% size=15.0%
+2026-07-02 11:27:12,077 [INFO] main: DOGEUSDT | RL adj=84.4%
+2026-07-02 11:27:12,088 [INFO] main: DOGEUSDT | Context score=-0.05 bias=0.05
+2026-07-02 11:27:12,088 [INFO] main: DOGEUSDT | gate PASS (Judge 75/70 RL 84.4/66.89 slack=±3)
+2026-07-02 11:27:12,369 [INFO] positions: Correlation block: skip SHORT DOGEUSDT (corr 0.92 >= 0.85 with BNBUSDT short)
+2026-07-02 11:27:19,095 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-02 11:27:21,230 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 11:27:21,231 [INFO] main: REUSDT | Bull:long(62%) Bear:short(80%)
+2026-07-02 11:27:24,877 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 11:27:24,878 [INFO] main: REUSDT | Judge:LONG conf=65% size=10.0%
+2026-07-02 11:27:24,878 [INFO] main: REUSDT | RL adj=63.5%
+2026-07-02 11:27:24,889 [INFO] main: REUSDT | Context score=-0.0 bias=0.05
+2026-07-02 11:27:24,889 [INFO] main: REUSDT | regime BLOCK (volatile)
+2026-07-02 11:27:32,334 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-02 11:27:42,430 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 11:27:42,431 [INFO] main: XLMUSDT | Bull:flat(28%) Bear:short(70%)
+2026-07-02 11:27:47,386 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 11:27:47,387 [INFO] main: XLMUSDT | Judge:SHORT conf=80% size=15.0%
+2026-07-02 11:27:47,388 [INFO] main: XLMUSDT | RL adj=88.2%
+2026-07-02 11:27:47,408 [INFO] main: XLMUSDT | Context score=-0.05 bias=0.05
+2026-07-02 11:27:47,408 [INFO] main: XLMUSDT | gate PASS (Judge 80/70 RL 88.2/66.89 slack=±3)
+2026-07-02 11:27:47,411 [INFO] positions: [PAPER] Opening SHORT XLMUSDT notional=$100.0 conf=80%
+2026-07-02 11:27:47,428 [INFO] paper_trading: [PAPER] ОТКРЫТА SHORT XLMUSDT @ 0.1985 qty=503.7276 notional=100.00 margin=20.00 x5 | Баланс: 898.83
+2026-07-02 11:27:49,431 [INFO] main: Next scan in 30min (always-30min)
+2026-07-02 11:29:35,363 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -7738,7 +7768,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       911Mi       139Mi       4.8Mi       3.0Gi       2.8Gi
+Mem:           3.7Gi       915Mi       134Mi       4.8Mi       3.0Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
