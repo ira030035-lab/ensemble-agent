@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-02 13:00:01 UTC
+Generated: 2026-07-02 13:10:01 UTC
 
 ## Services
 ```
@@ -7745,24 +7745,6 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  38:05 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-02 12:39:08,644 [INFO] main: TLMUSDT | regime BLOCK (volatile)
-2026-07-02 12:39:14,346 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 12:39:15,591 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-02 12:39:15,591 [INFO] main: ZECUSDT | Bull:long(62%) Bear:short(85%)
-2026-07-02 12:39:18,039 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 12:39:18,039 [INFO] main: ZECUSDT | Judge:LONG conf=85% size=15.0%
-2026-07-02 12:39:18,039 [INFO] main: ZECUSDT | RL adj=83.0%
-2026-07-02 12:39:18,050 [INFO] main: ZECUSDT | Context score=-0.0 bias=0.05
-2026-07-02 12:39:18,051 [INFO] main: ZECUSDT | regime BLOCK (volatile)
-2026-07-02 12:39:25,746 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-02 12:39:27,055 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 12:39:27,056 [INFO] main: TAOUSDT | Bull:flat(35%) Bear:short(85%)
-2026-07-02 12:39:29,621 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-02 12:39:29,622 [INFO] main: TAOUSDT | Judge:SHORT conf=85% size=15.0%
-2026-07-02 12:39:29,622 [INFO] main: TAOUSDT | RL adj=94.9%
-2026-07-02 12:39:29,633 [INFO] main: TAOUSDT | Context score=-0.05 bias=0.05
-2026-07-02 12:39:29,634 [INFO] main: TAOUSDT | gate PASS (Judge 85/70 RL 94.9/66.94 slack=±3)
-2026-07-02 12:39:29,635 [INFO] positions: Max positions reached (5/5 dyn)
 2026-07-02 12:39:35,230 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-02 12:39:36,971 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-02 12:39:36,972 [INFO] main: EPICUSDT | Bull:long(42%) Bear:short(70%)
@@ -7775,6 +7757,24 @@ root     1488950  0.1  3.7 739384 145612 ?       Ssl  Jun16  38:05 /opt/ensemble
 2026-07-02 12:50:31,802 [INFO] positions: OK LINKUSDT long PnL:3.12% reason:take_profit
 2026-07-02 12:50:31,803 [INFO] positions: Lessons: The trade was successful with a 3.12% profit, meeting the targeted risk/reward ratio. Despite initial overbought conditions, the bullish MACD and extreme fear sentiment correctly indicated a further upside move. This outcome highlights the importance of considering multiple indicators and sentiment analysis when making trading decisions.
 2026-07-02 12:50:31,803 [INFO] rl: RL learned from long LINKUSDT: profit 3.12% | weights bull=0.861 bear=0.772 judge=1.367 threshold=66.91
+2026-07-02 13:09:41,342 [INFO] main: Scanning 26 symbols...
+2026-07-02 13:09:45,771 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 13:09:46,744 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-02 13:09:46,745 [INFO] main: SLXUSDT | Bull:flat(15%) Bear:short(90%)
+2026-07-02 13:09:49,382 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 13:09:49,383 [INFO] main: SLXUSDT | Judge:SHORT conf=90% size=20.0%
+2026-07-02 13:09:49,383 [INFO] main: SLXUSDT | RL adj=100.0%
+2026-07-02 13:09:49,393 [INFO] main: SLXUSDT | Context score=-0.05 bias=0.05
+2026-07-02 13:09:49,393 [INFO] main: SLXUSDT | regime BLOCK (volatile)
+2026-07-02 13:09:55,410 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 13:09:57,302 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-02 13:09:57,303 [INFO] main: DOGEUSDT | Bull:flat(35%) Bear:short(80%)
+2026-07-02 13:10:00,112 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-02 13:10:00,113 [INFO] main: DOGEUSDT | Judge:SHORT conf=70% size=15.0%
+2026-07-02 13:10:00,113 [INFO] main: DOGEUSDT | RL adj=79.3%
+2026-07-02 13:10:00,124 [INFO] main: DOGEUSDT | Context score=-0.05 bias=0.05
+2026-07-02 13:10:00,397 [INFO] main: DOGEUSDT | gate PASS (Judge 70/70 RL 79.3/66.91 slack=±3)
+2026-07-02 13:10:00,948 [INFO] positions: Correlation block: skip SHORT DOGEUSDT (corr 0.89 >= 0.85 with ETHUSDT short)
 ```
 
 ## Disk
@@ -7792,7 +7792,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       943Mi       201Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       911Mi       232Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
