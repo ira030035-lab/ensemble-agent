@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-02 19:20:01 UTC
+Generated: 2026-07-02 19:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61848 49628 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 285224 51212 ?        Ssl  Jun12   1:27 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  38:36 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  38:37 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -7847,7 +7847,6 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  38:36 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-02 19:04:09,608 [INFO] main: HYPEUSDT | Judge:LONG conf=70% size=15.0%
 2026-07-02 19:04:09,608 [INFO] main: HYPEUSDT | RL adj=60.9%
 2026-07-02 19:04:09,618 [INFO] main: HYPEUSDT | Context score=-0.0 bias=0.05
 2026-07-02 19:04:15,741 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -7877,6 +7876,7 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  38:36 /opt/ensemble
 2026-07-02 19:04:45,660 [INFO] main: WLDUSDT | Judge:HOLD conf=50% size=0.0%
 2026-07-02 19:04:45,660 [INFO] main: WLDUSDT | RL adj=50.0%
 2026-07-02 19:04:47,662 [INFO] main: Next scan in 30min (always-30min)
+2026-07-02 19:29:40,637 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -7894,7 +7894,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       932Mi       202Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       937Mi       197Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
