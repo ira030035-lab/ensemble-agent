@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-03 20:20:01 UTC
+Generated: 2026-07-03 20:30:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  40:45 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 942.4250121967258,
+  "balance": 965.4858308359258,
   "positions": {
-    "DOGEUSDT": {
-      "id": "PAPER_DOGEUSDT_1783076169",
-      "symbol": "DOGEUSDT",
-      "side": "long",
-      "entry_price": 0.07547,
-      "qty": 1325.0298,
-      "confidence": 85,
-      "opened_at": "2026-07-03T10:56:09.363437",
-      "cost": 19.999999801199998,
-      "notional": 99.999999006,
-      "leverage": 5
-    },
     "XLMUSDT": {
       "id": "PAPER_XLMUSDT_1783084547",
       "symbol": "XLMUSDT",
@@ -7959,20 +7947,32 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  40:45 /opt/ensemble
       "closed_at": "2026-07-03T14:58:07.015965",
       "reason": "max_hold",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_DOGEUSDT_1783076169",
+      "symbol": "DOGEUSDT",
+      "side": "long",
+      "entry_price": 0.07547,
+      "qty": 1325.0298,
+      "confidence": 85,
+      "opened_at": "2026-07-03T10:56:09.363437",
+      "cost": 19.999999801199998,
+      "notional": 99.999999006,
+      "leverage": 5,
+      "exit_price": 0.07778,
+      "pnl_pct": 15.3,
+      "pnl_usdt": 3.06,
+      "closed_at": "2026-07-03T20:20:20.613192",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 2.426957408926073
+  "total_pnl": 5.487776246926082
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-03 20:14:57,061 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-03 20:14:57,062 [INFO] main: SUIUSDT | Bull:flat(15%) Bear:short(80%)
-2026-07-03 20:14:59,317 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 20:14:59,318 [INFO] main: SUIUSDT | Judge:HOLD conf=55% size=0.0%
-2026-07-03 20:14:59,318 [INFO] main: SUIUSDT | RL adj=55.0%
-2026-07-03 20:15:05,019 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-03 20:15:05,895 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-03 20:15:05,896 [INFO] main: PEPEUSDT | Bull:flat(15%) Bear:short(80%)
 2026-07-03 20:15:08,441 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -7997,6 +7997,12 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  40:45 /opt/ensemble
 2026-07-03 20:15:35,786 [INFO] main: BIRBUSDT | Judge:HOLD conf=45% size=0.0%
 2026-07-03 20:15:35,786 [INFO] main: BIRBUSDT | RL adj=45.0%
 2026-07-03 20:15:37,789 [INFO] main: Next scan in 30min (always-30min)
+2026-07-03 20:20:20,611 [INFO] positions: TAKE-PROFIT DOGEUSDT long PnL:3.06%
+2026-07-03 20:20:20,621 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG DOGEUSDT @ 0.0778 PnL: 15.30% (+3.06 USDT) | Баланс: 965.49
+2026-07-03 20:20:20,944 [INFO] positions: OK DOGEUSDT long PnL:3.06% reason:take_profit
+2026-07-03 20:20:20,944 [INFO] positions: Lessons: This trade was successful with a 3.06% profit, meeting the initial expectation of a potential greater than 4% upside move. The bullish signals, including strong volume ratio, MACD, and order book imbalance, correctly indicated a trending up regime. The 2:1 risk/reward ratio was effectively managed, resulting in a profitable long position.
+2026-07-03 20:20:20,944 [INFO] rl: RL learned from long DOGEUSDT: profit 3.06% | weights bull=0.900 bear=0.719 judge=1.381 threshold=66.99
+2026-07-03 20:29:58,823 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8014,7 +8020,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       911Mi       457Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       925Mi       442Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
