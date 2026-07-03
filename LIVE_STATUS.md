@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-03 10:50:01 UTC
+Generated: 2026-07-03 11:00:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61848 49628 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 285224 51212 ?        Ssl  Jun12   1:27 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  39:53 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  39:56 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 958.6961980889257,
+  "balance": 918.6962000877256,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1783000163",
@@ -42,6 +42,30 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  39:53 /opt/ensemble
       "opened_at": "2026-07-02T14:57:42.472703",
       "cost": 20.00001432,
       "notional": 100.0000716,
+      "leverage": 5
+    },
+    "DOGEUSDT": {
+      "id": "PAPER_DOGEUSDT_1783076169",
+      "symbol": "DOGEUSDT",
+      "side": "long",
+      "entry_price": 0.07547,
+      "qty": 1325.0298,
+      "confidence": 85,
+      "opened_at": "2026-07-03T10:56:09.363437",
+      "cost": 19.999999801199998,
+      "notional": 99.999999006,
+      "leverage": 5
+    },
+    "NEARUSDT": {
+      "id": "PAPER_NEARUSDT_1783076206",
+      "symbol": "NEARUSDT",
+      "side": "long",
+      "entry_price": 1.9994,
+      "qty": 50.015,
+      "confidence": 70,
+      "opened_at": "2026-07-03T10:56:46.807041",
+      "cost": 19.9999982,
+      "notional": 99.99999100000001,
       "leverage": 5
     }
   },
@@ -7901,36 +7925,36 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  39:53 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-03 10:24:27,407 [INFO] main: LABUSDT | RL adj=50.0%
-2026-07-03 10:24:34,057 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-03 10:24:36,960 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 10:24:36,961 [INFO] main: TLMUSDT | Bull:flat(15%) Bear:short(80%)
-2026-07-03 10:24:42,337 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 10:24:42,338 [INFO] main: TLMUSDT | Judge:SHORT conf=85% size=15.0%
-2026-07-03 10:24:42,338 [INFO] main: TLMUSDT | RL adj=94.1%
-2026-07-03 10:24:42,348 [INFO] main: TLMUSDT | Context score=-0.05 bias=0.05
-2026-07-03 10:24:42,348 [INFO] main: TLMUSDT | regime BLOCK (volatile)
-2026-07-03 10:24:49,204 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-03 10:24:52,815 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 10:24:52,816 [INFO] main: BNBUSDT | Bull:long(72%) Bear:short(70%)
-2026-07-03 10:25:05,873 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 10:25:05,875 [INFO] main: BNBUSDT | Judge:LONG conf=85% size=15.0%
-2026-07-03 10:25:05,875 [INFO] main: BNBUSDT | RL adj=86.4%
-2026-07-03 10:25:05,897 [INFO] main: BNBUSDT | Context score=-0.0 bias=0.05
-2026-07-03 10:25:05,897 [INFO] main: BNBUSDT | gate PASS (Judge 85/70 RL 86.4/67.07 slack=±3)
-2026-07-03 10:25:05,901 [INFO] positions: 2/3 rule: skip LONG BNBUSDT (3/4 already long)
-2026-07-03 10:25:07,904 [INFO] main: Next scan in 30min (always-30min)
-2026-07-03 10:29:51,843 [INFO] main: Symbols: 30
-2026-07-03 10:40:54,710 [INFO] positions: TAKE-PROFIT HYPEUSDT long PnL:3.02%
-2026-07-03 10:40:54,729 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG HYPEUSDT @ 68.8720 PnL: 15.10% (+3.02 USDT) | Баланс: 935.66
-2026-07-03 10:40:55,032 [INFO] positions: OK HYPEUSDT long PnL:3.02% reason:take_profit
-2026-07-03 10:40:55,032 [INFO] positions: Lessons: This trade was successful due to high bulls confidence and favorable indicators, allowing for a 3.02% profit. The low funding rate and expected upwards move also contributed to the positive outcome. The trade was closed at take profit, meeting the initial expectation of an upwards move greater than 4% was not met but still resulted in a profitable trade.
-2026-07-03 10:40:55,032 [INFO] rl: RL learned from long HYPEUSDT: profit 3.02% | weights bull=0.876 bear=0.748 judge=1.375 threshold=67.04
-2026-07-03 10:45:02,151 [INFO] positions: TAKE-PROFIT BCHUSDT long PnL:3.03%
-2026-07-03 10:45:02,165 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG BCHUSDT @ 227.4100 PnL: 15.15% (+3.03 USDT) | Баланс: 958.70
-2026-07-03 10:45:02,462 [INFO] positions: OK BCHUSDT long PnL:3.03% reason:take_profit
-2026-07-03 10:45:02,463 [INFO] positions: Lessons: The trade was closed in profit with a 3.03% gain, meeting the expected 2:1 risk/reward ratio. The original analysis correctly identified a strong bull trend and moderate RSI, allowing for a profitable long position. This trade demonstrates the effectiveness of trend following and risk management strategies in a favorable market regime.
-2026-07-03 10:45:02,463 [INFO] rl: RL learned from long BCHUSDT: profit 3.03% | weights bull=0.883 bear=0.740 judge=1.378 threshold=67.02
+2026-07-03 10:59:08,175 [INFO] main: BNBUSDT | Judge:LONG conf=85% size=15.0%
+2026-07-03 10:59:08,175 [INFO] main: BNBUSDT | RL adj=86.2%
+2026-07-03 10:59:08,185 [INFO] main: BNBUSDT | Context score=-0.0 bias=0.05
+2026-07-03 10:59:08,185 [INFO] main: BNBUSDT | gate PASS (Judge 85/70 RL 86.2/67.02 slack=±3)
+2026-07-03 10:59:08,187 [INFO] positions: 2/3 rule: skip LONG BNBUSDT (3/4 already long)
+2026-07-03 10:59:13,923 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 10:59:14,737 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-03 10:59:14,738 [INFO] main: LABUSDT | Bull:flat(15%) Bear:short(75%)
+2026-07-03 10:59:17,089 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 10:59:17,090 [INFO] main: LABUSDT | Judge:SHORT conf=80% size=15.0%
+2026-07-03 10:59:17,091 [INFO] main: LABUSDT | RL adj=88.3%
+2026-07-03 10:59:17,115 [INFO] main: LABUSDT | Context score=-0.05 bias=0.05
+2026-07-03 10:59:17,115 [INFO] main: LABUSDT | regime BLOCK (volatile)
+2026-07-03 10:59:24,508 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 10:59:24,600 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-03 10:59:24,602 [INFO] main: SLXUSDT | Bull:flat(25%) Bear:short(80%)
+2026-07-03 10:59:29,093 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 10:59:29,094 [INFO] main: SLXUSDT | Judge:SHORT conf=75% size=15.0%
+2026-07-03 10:59:29,094 [INFO] main: SLXUSDT | RL adj=83.9%
+2026-07-03 10:59:29,105 [INFO] main: SLXUSDT | Context score=-0.05 bias=0.05
+2026-07-03 10:59:29,105 [INFO] main: SLXUSDT | regime BLOCK (volatile)
+2026-07-03 10:59:36,251 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-03 10:59:42,872 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-03 10:59:42,872 [INFO] openai._base_client: Retrying request to /chat/completions in 0.460100 seconds
+2026-07-03 10:59:49,129 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 10:59:49,130 [INFO] main: BEATUSDT | Bull:flat(25%) Bear:short(70%)
+2026-07-03 10:59:53,514 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 10:59:53,515 [INFO] main: BEATUSDT | Judge:HOLD conf=40% size=0.0%
+2026-07-03 10:59:53,515 [INFO] main: BEATUSDT | RL adj=40.0%
+2026-07-03 11:00:00,760 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 ```
 
 ## Disk
@@ -7948,7 +7972,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       890Mi       626Mi       4.4Mi       2.5Gi       2.9Gi
+Mem:           3.7Gi       903Mi       612Mi       4.4Mi       2.5Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
