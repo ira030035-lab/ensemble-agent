@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-03 17:20:01 UTC
+Generated: 2026-07-03 17:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61848 49628 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 285224 51212 ?        Ssl  Jun12   1:27 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  40:29 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  40:30 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -7967,36 +7967,36 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  40:29 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-03 17:19:26,090 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 17:19:27,503 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-03 17:19:27,504 [INFO] main: PEPEUSDT | Bull:long(62%) Bear:short(75%)
-2026-07-03 17:19:29,706 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 17:19:29,708 [INFO] main: PEPEUSDT | Judge:SHORT conf=70% size=15.0%
-2026-07-03 17:19:29,708 [INFO] main: PEPEUSDT | RL adj=69.9%
-2026-07-03 17:19:29,727 [INFO] main: PEPEUSDT | Context score=-0.05 bias=0.05
-2026-07-03 17:19:30,005 [INFO] main: PEPEUSDT | macro BLOCK (short при BTC uptrend)
-2026-07-03 17:19:35,798 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 17:19:37,479 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-03 17:19:37,481 [INFO] main: ADAUSDT | Bull:flat(25%) Bear:short(90%)
-2026-07-03 17:19:39,933 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 17:19:39,934 [INFO] main: ADAUSDT | Judge:LONG conf=70% size=15.0%
-2026-07-03 17:19:39,934 [INFO] main: ADAUSDT | RL adj=60.2%
-2026-07-03 17:19:39,954 [INFO] main: ADAUSDT | Context score=-0.0 bias=0.05
-2026-07-03 17:19:39,954 [INFO] main: ADAUSDT | regime BLOCK (volatile)
-2026-07-03 17:19:46,159 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 17:19:47,038 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-03 17:19:47,039 [INFO] main: MAGMAUSDT | Bull:flat(15%) Bear:short(70%)
-2026-07-03 17:19:50,007 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 17:19:50,008 [INFO] main: MAGMAUSDT | Judge:HOLD conf=50% size=0.0%
-2026-07-03 17:19:50,008 [INFO] main: MAGMAUSDT | RL adj=50.0%
-2026-07-03 17:19:56,071 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-03 17:19:56,398 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 17:19:56,399 [INFO] main: ZECUSDT | Bull:flat(25%) Bear:short(75%)
-2026-07-03 17:19:58,873 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 17:19:58,874 [INFO] main: ZECUSDT | Judge:SHORT conf=75% size=15.0%
-2026-07-03 17:19:58,874 [INFO] main: ZECUSDT | RL adj=83.2%
-2026-07-03 17:19:58,893 [INFO] main: ZECUSDT | Context score=-0.05 bias=0.05
-2026-07-03 17:19:58,893 [INFO] main: ZECUSDT | macro BLOCK (short при BTC uptrend)
+2026-07-03 17:22:50,967 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 17:22:52,062 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-03 17:22:52,064 [INFO] main: LABUSDT | Bull:flat(15%) Bear:short(100%)
+2026-07-03 17:22:54,253 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 17:22:54,254 [INFO] main: LABUSDT | Judge:SHORT conf=90% size=15.0%
+2026-07-03 17:22:54,254 [INFO] main: LABUSDT | RL adj=100.0%
+2026-07-03 17:22:54,273 [INFO] main: LABUSDT | Context score=-0.05 bias=0.05
+2026-07-03 17:22:54,273 [INFO] main: LABUSDT | regime BLOCK (volatile)
+2026-07-03 17:23:01,130 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 17:23:01,657 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-03 17:23:01,658 [INFO] main: ALLOUSDT | Bull:flat(25%) Bear:short(75%)
+2026-07-03 17:23:03,961 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 17:23:03,962 [INFO] main: ALLOUSDT | Judge:HOLD conf=60% size=0.0%
+2026-07-03 17:23:03,962 [INFO] main: ALLOUSDT | RL adj=60.0%
+2026-07-03 17:23:10,738 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-03 17:23:11,067 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 17:23:11,068 [INFO] main: NEARUSDT | Bull:flat(35%) Bear:short(80%)
+2026-07-03 17:23:13,100 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 17:23:13,101 [INFO] main: NEARUSDT | Judge:HOLD conf=55% size=0.0%
+2026-07-03 17:23:13,101 [INFO] main: NEARUSDT | RL adj=55.0%
+2026-07-03 17:23:19,558 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 17:23:20,718 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-03 17:23:20,719 [INFO] main: REUSDT | Bull:flat(15%) Bear:short(85%)
+2026-07-03 17:23:22,831 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 17:23:22,832 [INFO] main: REUSDT | Judge:SHORT conf=85% size=15.0%
+2026-07-03 17:23:22,832 [INFO] main: REUSDT | RL adj=94.3%
+2026-07-03 17:23:22,852 [INFO] main: REUSDT | Context score=-0.05 bias=0.05
+2026-07-03 17:23:22,852 [INFO] main: REUSDT | regime BLOCK (volatile)
+2026-07-03 17:23:24,893 [INFO] main: Next scan in 30min (always-30min)
+2026-07-03 17:29:56,575 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8014,7 +8014,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       906Mi       473Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       915Mi       463Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
