@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-03 21:30:01 UTC
+Generated: 2026-07-03 21:40:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  40:51 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 945.4858280439257,
+  "balance": 965.8407349349258,
   "positions": {
-    "XLMUSDT": {
-      "id": "PAPER_XLMUSDT_1783084547",
-      "symbol": "XLMUSDT",
-      "side": "long",
-      "entry_price": 0.20287,
-      "qty": 492.9265,
-      "confidence": 85,
-      "opened_at": "2026-07-03T13:15:47.823554",
-      "cost": 19.999999811,
-      "notional": 99.99999905499999,
-      "leverage": 5
-    },
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1783090837",
       "symbol": "ETHUSDT",
@@ -7977,19 +7965,32 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  40:51 /opt/ensemble
       "closed_at": "2026-07-03T20:20:20.613192",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_XLMUSDT_1783084547",
+      "symbol": "XLMUSDT",
+      "side": "long",
+      "entry_price": 0.20287,
+      "qty": 492.9265,
+      "confidence": 85,
+      "opened_at": "2026-07-03T13:15:47.823554",
+      "cost": 19.999999811,
+      "notional": 99.99999905499999,
+      "leverage": 5,
+      "exit_price": 0.20359,
+      "pnl_pct": 1.77,
+      "pnl_usdt": 0.35,
+      "closed_at": "2026-07-03T21:34:41.677392",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 5.487776246926082
+  "total_pnl": 5.842683326926081
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-03 21:23:31,650 [INFO] main: HYPEUSDT | Judge:SHORT conf=65% size=10.0%
-2026-07-03 21:23:31,650 [INFO] main: HYPEUSDT | RL adj=73.1%
-2026-07-03 21:23:31,670 [INFO] main: HYPEUSDT | Context score=-0.1 bias=0.1
-2026-07-03 21:23:31,670 [INFO] main: HYPEUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-03 21:23:37,689 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-03 21:23:38,502 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-03 21:23:38,504 [INFO] main: XPLUSDT | Bull:flat(15%) Bear:short(70%)
 2026-07-03 21:23:40,499 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -8015,6 +8016,11 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  40:51 /opt/ensemble
 2026-07-03 21:23:58,574 [INFO] main: MAGMAUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-03 21:24:00,617 [INFO] main: Next scan in 30min (always-30min)
 2026-07-03 21:29:59,444 [INFO] main: Symbols: 30
+2026-07-03 21:34:41,675 [INFO] positions: BREAKEVEN_STOP XLMUSDT long PnL:0.35%
+2026-07-03 21:34:41,685 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG XLMUSDT @ 0.2036 PnL: 1.77% (+0.35 USDT) | Баланс: 965.84
+2026-07-03 21:34:42,028 [INFO] positions: OK XLMUSDT long PnL:0.35% reason:breakeven_stop
+2026-07-03 21:34:42,029 [INFO] positions: Lessons: The trade was based on a bullish regime with supporting indicators, expecting a 4% upside move. However, it closed at breakeven stop with a minimal profit of 0.35%. This outcome suggests that while the indicators were correct, the upside potential was overestimated, and a more conservative approach might be needed in similar situations.
+2026-07-03 21:34:42,029 [INFO] rl: RL learned from long XLMUSDT: profit 0.35% | weights bull=0.901 bear=0.718 judge=1.381 threshold=66.96
 ```
 
 ## Disk
@@ -8032,7 +8038,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       915Mi       447Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       905Mi       457Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
