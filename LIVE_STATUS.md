@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-03 02:30:01 UTC
+Generated: 2026-07-03 02:40:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  39:15 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 912.1639702889257,
+  "balance": 932.6451954089257,
   "positions": {
-    "NEARUSDT": {
-      "id": "PAPER_NEARUSDT_1782982351",
-      "symbol": "NEARUSDT",
-      "side": "long",
-      "entry_price": 1.9325,
-      "qty": 51.7464,
-      "confidence": 85,
-      "opened_at": "2026-07-02T08:52:31.046329",
-      "cost": 19.9999836,
-      "notional": 99.99991800000001,
-      "leverage": 5
-    },
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1783000163",
       "symbol": "BTCUSDT",
@@ -7863,19 +7851,32 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  39:15 /opt/ensemble
       "closed_at": "2026-07-03T01:15:17.787286",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_NEARUSDT_1782982351",
+      "symbol": "NEARUSDT",
+      "side": "long",
+      "entry_price": 1.9325,
+      "qty": 51.7464,
+      "confidence": 85,
+      "opened_at": "2026-07-02T08:52:31.046329",
+      "cost": 19.9999836,
+      "notional": 99.99991800000001,
+      "leverage": 5,
+      "exit_price": 1.9418,
+      "pnl_pct": 2.41,
+      "pnl_usdt": 0.48,
+      "closed_at": "2026-07-03T02:33:10.148292",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -8.020096311073921
+  "total_pnl": -7.538854791073928
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-03 02:27:03,828 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-03 02:27:03,829 [INFO] main: TAOUSDT | Bull:flat(35%) Bear:short(75%)
-2026-07-03 02:27:07,234 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 02:27:07,235 [INFO] main: TAOUSDT | Judge:HOLD conf=65% size=0.0%
-2026-07-03 02:27:07,235 [INFO] main: TAOUSDT | RL adj=65.0%
 2026-07-03 02:27:13,795 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-03 02:27:14,336 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-03 02:27:14,337 [INFO] main: BNBUSDT | Bull:flat(35%) Bear:short(70%)
@@ -7901,6 +7902,11 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  39:15 /opt/ensemble
 2026-07-03 02:27:39,539 [INFO] positions: 2/3 rule: skip LONG DOGEUSDT (3/4 already long)
 2026-07-03 02:27:41,542 [INFO] main: Next scan in 30min (always-30min)
 2026-07-03 02:29:46,531 [INFO] main: Symbols: 30
+2026-07-03 02:33:10,146 [INFO] positions: BREAKEVEN_STOP NEARUSDT long PnL:0.48%
+2026-07-03 02:33:10,155 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG NEARUSDT @ 1.9418 PnL: 2.41% (+0.48 USDT) | Баланс: 932.65
+2026-07-03 02:33:10,478 [INFO] positions: OK NEARUSDT long PnL:0.48% reason:breakeven_stop
+2026-07-03 02:33:10,478 [INFO] positions: Lessons: The trade on NEARUSDT resulted in a small 0.48% gain, meeting the breakeven stop. High bull sentiment and potential upside were correctly identified, aligning with the asymmetric risk strategy. The outcome suggests that the strategy was sound, but the trade lacked significant upside momentum to yield a larger profit.
+2026-07-03 02:33:10,478 [INFO] rl: RL learned from long NEARUSDT: profit 0.48% | weights bull=0.868 bear=0.758 judge=1.374 threshold=67.07
 ```
 
 ## Disk
@@ -7918,7 +7924,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       923Mi       201Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       914Mi       209Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
