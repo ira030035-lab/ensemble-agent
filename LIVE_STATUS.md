@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-03 03:20:01 UTC
+Generated: 2026-07-03 03:30:01 UTC
 
 ## Services
 ```
@@ -7889,7 +7889,6 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  39:18 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-03 03:04:04,634 [INFO] main: BNBUSDT | RL adj=55.0%
 2026-07-03 03:04:12,593 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-03 03:04:13,843 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-03 03:04:13,844 [INFO] main: BIRBUSDT | Bull:flat(15%) Bear:short(80%)
@@ -7919,6 +7918,7 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  39:18 /opt/ensemble
 2026-07-03 03:05:06,478 [INFO] main: NEARUSDT | Context score=-0.05 bias=0.05
 2026-07-03 03:05:06,479 [INFO] main: NEARUSDT | macro BLOCK (short при BTC uptrend)
 2026-07-03 03:05:08,481 [INFO] main: Next scan in 30min (always-30min)
+2026-07-03 03:29:47,169 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -7936,7 +7936,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       912Mi       211Mi       4.8Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       922Mi       201Mi       4.8Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       512Ki       2.0Gi
 ```
 
