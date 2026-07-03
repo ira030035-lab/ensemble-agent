@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-03 07:00:01 UTC
+Generated: 2026-07-03 07:10:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61848 49628 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 285224 51212 ?        Ssl  Jun12   1:27 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  39:35 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  39:36 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -7889,17 +7889,6 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  39:35 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-03 06:39:05,559 [INFO] main: PEPEUSDT | Bull:long(62%) Bear:short(60%)
-2026-07-03 06:39:08,190 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 06:39:08,190 [INFO] main: PEPEUSDT | Judge:HOLD conf=50% size=0.0%
-2026-07-03 06:39:08,191 [INFO] main: PEPEUSDT | RL adj=50.0%
-2026-07-03 06:39:15,117 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-03 06:39:17,294 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 06:39:17,295 [INFO] main: ETHUSDT | Bull:long(68%) Bear:short(80%)
-2026-07-03 06:39:21,277 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 06:39:21,278 [INFO] main: ETHUSDT | Judge:LONG conf=85% size=15.0%
-2026-07-03 06:39:21,278 [INFO] main: ETHUSDT | RL adj=84.8%
-2026-07-03 06:39:21,290 [INFO] main: ETHUSDT | Context score=-0.0 bias=0.05
 2026-07-03 06:39:21,290 [INFO] main: ETHUSDT | gate PASS (Judge 85/70 RL 84.8/67.07 slack=±3)
 2026-07-03 06:39:21,291 [INFO] positions: 2/3 rule: skip LONG ETHUSDT (3/4 already long)
 2026-07-03 06:39:28,403 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -7919,12 +7908,23 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  39:35 /opt/ensemble
 2026-07-03 06:39:44,506 [INFO] main: UNIUSDT | Context score=-0.05 bias=0.05
 2026-07-03 06:39:44,506 [INFO] main: UNIUSDT | regime BLOCK (volatile)
 2026-07-03 06:39:46,529 [INFO] main: Next scan in 30min (always-30min)
+2026-07-03 07:09:46,541 [INFO] main: Scanning 27 symbols...
+2026-07-03 07:09:48,744 [INFO] main: USUSDT | Bull:long(72%) Bear:short(70%)
+2026-07-03 07:09:53,121 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 07:09:53,123 [INFO] main: USUSDT | Judge:HOLD conf=50% size=0.0%
+2026-07-03 07:09:53,123 [INFO] main: USUSDT | RL adj=50.0%
+2026-07-03 07:09:57,132 [INFO] main: SLXUSDT | Bull:long(72%) Bear:short(80%)
+2026-07-03 07:09:59,276 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-03 07:09:59,277 [INFO] main: SLXUSDT | Judge:SHORT conf=65% size=10.0%
+2026-07-03 07:09:59,277 [INFO] main: SLXUSDT | RL adj=64.7%
+2026-07-03 07:09:59,288 [INFO] main: SLXUSDT | Context score=-0.05 bias=0.05
+2026-07-03 07:09:59,288 [INFO] main: SLXUSDT | regime BLOCK (volatile)
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  900K  381M   1% /run
+tmpfs           382M  896K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  9.5G   63G  14% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -7936,7 +7936,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       921Mi       514Mi       4.4Mi       2.6Gi       2.8Gi
+Mem:           3.7Gi       910Mi       519Mi       4.4Mi       2.6Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
