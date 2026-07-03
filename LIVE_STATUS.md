@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-03 13:20:01 UTC
+Generated: 2026-07-03 13:30:01 UTC
 
 ## Services
 ```
@@ -7943,7 +7943,6 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  40:09 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-03 13:18:25,630 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-03 13:18:25,631 [INFO] main: WLDUSDT | Bull:long(62%) Bear:short(75%)
 2026-07-03 13:18:28,230 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-03 13:18:28,231 [INFO] main: WLDUSDT | Judge:LONG conf=75% size=15.0%
@@ -7973,6 +7972,7 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  40:09 /opt/ensemble
 2026-07-03 13:18:59,418 [INFO] main: PEPEUSDT | Context score=-0.05 bias=0.05
 2026-07-03 13:18:59,418 [INFO] main: PEPEUSDT | macro BLOCK (short при BTC uptrend)
 2026-07-03 13:19:01,420 [INFO] main: Next scan in 30min (always-30min)
+2026-07-03 13:29:53,864 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -7990,7 +7990,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       922Mi       476Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       929Mi       468Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
