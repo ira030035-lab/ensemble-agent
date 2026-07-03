@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-03 09:20:02 UTC
+Generated: 2026-07-03 09:30:01 UTC
 
 ## Services
 ```
@@ -7889,7 +7889,6 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  39:47 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-03 09:05:37,343 [INFO] openai._base_client: Retrying request to /chat/completions in 0.805200 seconds
 2026-07-03 09:05:48,239 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-07-03 09:05:48,239 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'The engine is currently overloaded, please try again later', 'type': 'engine_overloaded_error'}}
 2026-07-03 09:05:48,239 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
@@ -7919,6 +7918,7 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  39:47 /opt/ensemble
 2026-07-03 09:06:35,597 [INFO] main: ZECUSDT | Judge:HOLD conf=55% size=0.0%
 2026-07-03 09:06:35,597 [INFO] main: ZECUSDT | RL adj=55.0%
 2026-07-03 09:06:37,599 [INFO] main: Next scan in 30min (always-30min)
+2026-07-03 09:29:51,185 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -7936,7 +7936,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       916Mi       498Mi       4.4Mi       2.6Gi       2.8Gi
+Mem:           3.7Gi       920Mi       494Mi       4.4Mi       2.6Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
