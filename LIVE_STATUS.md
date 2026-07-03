@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-03 13:00:01 UTC
+Generated: 2026-07-03 13:10:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  40:06 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 918.6962000877256,
+  "balance": 941.7671192877257,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1783000163",
@@ -54,18 +54,6 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  40:06 /opt/ensemble
       "opened_at": "2026-07-03T10:56:09.363437",
       "cost": 19.999999801199998,
       "notional": 99.999999006,
-      "leverage": 5
-    },
-    "NEARUSDT": {
-      "id": "PAPER_NEARUSDT_1783076206",
-      "symbol": "NEARUSDT",
-      "side": "long",
-      "entry_price": 1.9994,
-      "qty": 50.015,
-      "confidence": 70,
-      "opened_at": "2026-07-03T10:56:46.807041",
-      "cost": 19.9999982,
-      "notional": 99.99999100000001,
       "leverage": 5
     }
   },
@@ -7917,19 +7905,32 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  40:06 /opt/ensemble
       "closed_at": "2026-07-03T10:45:02.154198",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_NEARUSDT_1783076206",
+      "symbol": "NEARUSDT",
+      "side": "long",
+      "entry_price": 1.9994,
+      "qty": 50.015,
+      "confidence": 70,
+      "opened_at": "2026-07-03T10:56:46.807041",
+      "cost": 19.9999982,
+      "notional": 99.99999100000001,
+      "leverage": 5,
+      "exit_price": 2.0608,
+      "pnl_pct": 15.35,
+      "pnl_usdt": 3.07,
+      "closed_at": "2026-07-03T13:07:39.230770",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -1.4875955910739207
+  "total_pnl": 1.5833254089260742
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-03 12:43:48,360 [INFO] main: THEUSDT | RL adj=93.3%
-2026-07-03 12:43:48,382 [INFO] main: THEUSDT | Context score=-0.05 bias=0.05
-2026-07-03 12:43:48,383 [INFO] main: THEUSDT | regime BLOCK (volatile)
-2026-07-03 12:43:55,079 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 12:43:56,146 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-03 12:43:56,148 [INFO] main: TAIKOUSDT | Bull:flat(15%) Bear:short(80%)
 2026-07-03 12:43:58,559 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-03 12:43:58,560 [INFO] main: TAIKOUSDT | Judge:SHORT conf=85% size=15.0%
@@ -7955,6 +7956,11 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  40:06 /opt/ensemble
 2026-07-03 12:44:26,697 [INFO] main: PEPEUSDT | Judge:HOLD conf=55% size=0.0%
 2026-07-03 12:44:26,698 [INFO] main: PEPEUSDT | RL adj=55.0%
 2026-07-03 12:44:28,700 [INFO] main: Next scan in 30min (always-30min)
+2026-07-03 13:07:39,227 [INFO] positions: TAKE-PROFIT NEARUSDT long PnL:3.07%
+2026-07-03 13:07:39,249 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG NEARUSDT @ 2.0608 PnL: 15.35% (+3.07 USDT) | Баланс: 941.77
+2026-07-03 13:07:39,583 [INFO] positions: OK NEARUSDT long PnL:3.07% reason:take_profit
+2026-07-03 13:07:39,583 [INFO] positions: Lessons: The trade was closed in profit with a 3.07% gain, meeting the expected upside move. The high RSI did not hinder the trend, validating the decision to follow the rule for a trending market. This outcome reinforces the importance of adhering to trend-following strategies despite potential overbought conditions.
+2026-07-03 13:07:39,583 [INFO] rl: RL learned from long NEARUSDT: profit 3.07% | weights bull=0.890 bear=0.731 judge=1.378 threshold=66.99
 ```
 
 ## Disk
@@ -7972,7 +7978,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       935Mi       465Mi       4.4Mi       2.6Gi       2.8Gi
+Mem:           3.7Gi       922Mi       476Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
