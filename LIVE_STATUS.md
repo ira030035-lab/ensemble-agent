@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-03 12:20:01 UTC
+Generated: 2026-07-03 12:30:01 UTC
 
 ## Services
 ```
@@ -7925,7 +7925,6 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  40:03 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-03 12:09:36,069 [INFO] main: XRPUSDT | RL adj=71.8%
 2026-07-03 12:09:36,088 [INFO] main: XRPUSDT | Context score=-0.0 bias=0.05
 2026-07-03 12:09:36,088 [INFO] main: XRPUSDT | gate PASS (Judge 70/70 RL 71.8/67.02 slack=±3)
 2026-07-03 12:09:36,091 [INFO] positions: 2/3 rule: skip LONG XRPUSDT (3/4 already long)
@@ -7955,6 +7954,7 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  40:03 /opt/ensemble
 2026-07-03 12:10:06,349 [INFO] main: SLXUSDT | Context score=-0.05 bias=0.05
 2026-07-03 12:10:06,349 [INFO] main: SLXUSDT | regime BLOCK (volatile)
 2026-07-03 12:10:08,388 [INFO] main: Next scan in 30min (always-30min)
+2026-07-03 12:29:53,176 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -7972,7 +7972,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       910Mi       493Mi       4.4Mi       2.6Gi       2.8Gi
+Mem:           3.7Gi       932Mi       471Mi       4.4Mi       2.6Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
