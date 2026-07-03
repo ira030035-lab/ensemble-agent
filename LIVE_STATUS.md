@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-03 10:40:01 UTC
+Generated: 2026-07-03 10:50:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  39:53 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 912.6435490089257,
+  "balance": 958.6961980889257,
   "positions": {
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1783000163",
@@ -42,30 +42,6 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  39:53 /opt/ensemble
       "opened_at": "2026-07-02T14:57:42.472703",
       "cost": 20.00001432,
       "notional": 100.0000716,
-      "leverage": 5
-    },
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1783037154",
-      "symbol": "HYPEUSDT",
-      "side": "long",
-      "entry_price": 66.853,
-      "qty": 1.4958,
-      "confidence": 80,
-      "opened_at": "2026-07-03T00:05:54.015651",
-      "cost": 19.99974348,
-      "notional": 99.99871739999999,
-      "leverage": 5
-    },
-    "BCHUSDT": {
-      "id": "PAPER_BCHUSDT_1783047663",
-      "symbol": "BCHUSDT",
-      "side": "long",
-      "entry_price": 220.72,
-      "qty": 0.4531,
-      "confidence": 70,
-      "opened_at": "2026-07-03T03:01:03.555053",
-      "cost": 20.001646400000002,
-      "notional": 100.008232,
       "leverage": 5
     }
   },
@@ -7881,24 +7857,50 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  39:53 /opt/ensemble
       "closed_at": "2026-07-03T02:33:10.148292",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1783037154",
+      "symbol": "HYPEUSDT",
+      "side": "long",
+      "entry_price": 66.853,
+      "qty": 1.4958,
+      "confidence": 80,
+      "opened_at": "2026-07-03T00:05:54.015651",
+      "cost": 19.99974348,
+      "notional": 99.99871739999999,
+      "leverage": 5,
+      "exit_price": 68.872,
+      "pnl_pct": 15.1,
+      "pnl_usdt": 3.02,
+      "closed_at": "2026-07-03T10:40:54.713712",
+      "reason": "take_profit",
+      "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BCHUSDT_1783047663",
+      "symbol": "BCHUSDT",
+      "side": "long",
+      "entry_price": 220.72,
+      "qty": 0.4531,
+      "confidence": 70,
+      "opened_at": "2026-07-03T03:01:03.555053",
+      "cost": 20.001646400000002,
+      "notional": 100.008232,
+      "leverage": 5,
+      "exit_price": 227.41,
+      "pnl_pct": 15.15,
+      "pnl_usdt": 3.03,
+      "closed_at": "2026-07-03T10:45:02.154198",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": -7.538854791073928
+  "total_pnl": -1.4875955910739207
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-03 10:24:09,506 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 10:24:09,506 [INFO] main: NEARUSDT | Bull:long(62%) Bear:short(70%)
-2026-07-03 10:24:14,081 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 10:24:14,082 [INFO] main: NEARUSDT | Judge:HOLD conf=55% size=0.0%
-2026-07-03 10:24:14,082 [INFO] main: NEARUSDT | RL adj=55.0%
-2026-07-03 10:24:21,588 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-03 10:24:23,290 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 10:24:23,291 [INFO] main: LABUSDT | Bull:flat(15%) Bear:short(80%)
-2026-07-03 10:24:27,406 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-03 10:24:27,407 [INFO] main: LABUSDT | Judge:HOLD conf=50% size=0.0%
 2026-07-03 10:24:27,407 [INFO] main: LABUSDT | RL adj=50.0%
 2026-07-03 10:24:34,057 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-03 10:24:36,960 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -7919,6 +7921,16 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  39:53 /opt/ensemble
 2026-07-03 10:25:05,901 [INFO] positions: 2/3 rule: skip LONG BNBUSDT (3/4 already long)
 2026-07-03 10:25:07,904 [INFO] main: Next scan in 30min (always-30min)
 2026-07-03 10:29:51,843 [INFO] main: Symbols: 30
+2026-07-03 10:40:54,710 [INFO] positions: TAKE-PROFIT HYPEUSDT long PnL:3.02%
+2026-07-03 10:40:54,729 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG HYPEUSDT @ 68.8720 PnL: 15.10% (+3.02 USDT) | Баланс: 935.66
+2026-07-03 10:40:55,032 [INFO] positions: OK HYPEUSDT long PnL:3.02% reason:take_profit
+2026-07-03 10:40:55,032 [INFO] positions: Lessons: This trade was successful due to high bulls confidence and favorable indicators, allowing for a 3.02% profit. The low funding rate and expected upwards move also contributed to the positive outcome. The trade was closed at take profit, meeting the initial expectation of an upwards move greater than 4% was not met but still resulted in a profitable trade.
+2026-07-03 10:40:55,032 [INFO] rl: RL learned from long HYPEUSDT: profit 3.02% | weights bull=0.876 bear=0.748 judge=1.375 threshold=67.04
+2026-07-03 10:45:02,151 [INFO] positions: TAKE-PROFIT BCHUSDT long PnL:3.03%
+2026-07-03 10:45:02,165 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG BCHUSDT @ 227.4100 PnL: 15.15% (+3.03 USDT) | Баланс: 958.70
+2026-07-03 10:45:02,462 [INFO] positions: OK BCHUSDT long PnL:3.03% reason:take_profit
+2026-07-03 10:45:02,463 [INFO] positions: Lessons: The trade was closed in profit with a 3.03% gain, meeting the expected 2:1 risk/reward ratio. The original analysis correctly identified a strong bull trend and moderate RSI, allowing for a profitable long position. This trade demonstrates the effectiveness of trend following and risk management strategies in a favorable market regime.
+2026-07-03 10:45:02,463 [INFO] rl: RL learned from long BCHUSDT: profit 3.03% | weights bull=0.883 bear=0.740 judge=1.378 threshold=67.02
 ```
 
 ## Disk
@@ -7926,7 +7938,7 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  39:53 /opt/ensemble
 Filesystem      Size  Used Avail Use% Mounted on
 tmpfs           382M  896K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
-/dev/sda1        75G  9.5G   63G  14% /
+/dev/sda1        75G  9.4G   63G  13% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
 tmpfs           5.0M     0  5.0M   0% /run/lock
 /dev/sda15      253M  146K  252M   1% /boot/efi
@@ -7936,7 +7948,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       930Mi       476Mi       4.4Mi       2.6Gi       2.8Gi
+Mem:           3.7Gi       890Mi       626Mi       4.4Mi       2.5Gi       2.9Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
