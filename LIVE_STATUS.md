@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-04 19:50:01 UTC
+Generated: 2026-07-04 20:00:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.7 739384 145624 ?       Ssl  Jun16  42:48 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 970.0447064759258,
+  "balance": 990.4928920759257,
   "positions": {
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1783171449",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.7 739384 145624 ?       Ssl  Jun16  42:48 /opt/ensemble
       "opened_at": "2026-07-04T13:24:09.958514",
       "cost": 19.985971,
       "notional": 99.929855,
-      "leverage": 5
-    },
-    "ZECUSDT": {
-      "id": "PAPER_ZECUSDT_1783189860",
-      "symbol": "ZECUSDT",
-      "side": "long",
-      "entry_price": 466.32,
-      "qty": 0.2144,
-      "confidence": 78,
-      "opened_at": "2026-07-04T18:31:00.831319",
-      "cost": 19.9958016,
-      "notional": 99.97900800000001,
       "leverage": 5
     }
   },
@@ -8091,19 +8079,32 @@ root     1488950  0.1  3.7 739384 145624 ?       Ssl  Jun16  42:48 /opt/ensemble
       "closed_at": "2026-07-04T19:13:37.562696",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ZECUSDT_1783189860",
+      "symbol": "ZECUSDT",
+      "side": "long",
+      "entry_price": 466.32,
+      "qty": 0.2144,
+      "confidence": 78,
+      "opened_at": "2026-07-04T18:31:00.831319",
+      "cost": 19.9958016,
+      "notional": 99.97900800000001,
+      "leverage": 5,
+      "exit_price": 468.43,
+      "pnl_pct": 2.26,
+      "pnl_usdt": 0.45,
+      "closed_at": "2026-07-04T19:55:26.957315",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 10.026479075926078
+  "total_pnl": 10.47886307592608
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-04 19:42:36,446 [INFO] main: 1000BONKUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-04 19:42:42,625 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-04 19:42:43,212 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-04 19:42:43,214 [INFO] main: ADAUSDT | Bull:flat(25%) Bear:short(78%)
-2026-07-04 19:42:45,746 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-04 19:42:45,747 [INFO] main: ADAUSDT | Judge:HOLD conf=45% size=0.0%
 2026-07-04 19:42:45,748 [INFO] main: ADAUSDT | RL adj=45.0%
 2026-07-04 19:42:51,826 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -8129,6 +8130,11 @@ root     1488950  0.1  3.7 739384 145624 ?       Ssl  Jun16  42:48 /opt/ensemble
 2026-07-04 19:43:11,865 [INFO] main: HYPEUSDT | Context score=-0.1 bias=0.1
 2026-07-04 19:43:11,865 [INFO] main: HYPEUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-04 19:43:13,867 [INFO] main: Next scan in 30min (always-30min)
+2026-07-04 19:55:26,953 [INFO] positions: BREAKEVEN_STOP ZECUSDT long PnL:0.45%
+2026-07-04 19:55:26,973 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG ZECUSDT @ 468.4300 PnL: 2.26% (+0.45 USDT) | Баланс: 990.49
+2026-07-04 19:55:29,636 [INFO] positions: OK ZECUSDT long PnL:0.45% reason:breakeven_stop
+2026-07-04 19:55:29,636 [INFO] positions: Lessons: The trade’s modest 0.45 % gain shows that even with bullish MACD and an up‑trend, higher bear confidence should have weighted the risk‑reward assessment more heavily. A tighter stop limited loss but also capped upside, suggesting the entry was marginal and the target too optimistic. Future trades need to prioritize dominant sentiment and set stops that protect capital without sacrificing realistic profit potential.
+2026-07-04 19:55:29,636 [INFO] rl: RL learned from long ZECUSDT: profit 0.45% | weights bull=0.905 bear=0.701 judge=1.394 threshold=66.91
 ```
 
 ## Disk
@@ -8146,7 +8152,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       912Mi       418Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       917Mi       413Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
