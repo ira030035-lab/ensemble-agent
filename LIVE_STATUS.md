@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-04 07:40:01 UTC
+Generated: 2026-07-04 07:50:01 UTC
 
 ## Services
 ```
@@ -8021,13 +8021,6 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  41:45 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-04 07:39:20,217 [INFO] main: ARPAUSDT | Judge:SHORT conf=70% size=15.0%
-2026-07-04 07:39:20,217 [INFO] main: ARPAUSDT | RL adj=69.7%
-2026-07-04 07:39:20,228 [INFO] main: ARPAUSDT | Context score=-0.1 bias=0.1
-2026-07-04 07:39:20,228 [INFO] main: ARPAUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-04 07:39:25,752 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-04 07:39:26,390 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-04 07:39:26,392 [INFO] main: MAGMAUSDT | Bull:flat(25%) Bear:short(75%)
 2026-07-04 07:39:28,822 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-04 07:39:28,823 [INFO] main: MAGMAUSDT | Judge:HOLD conf=45% size=0.0%
 2026-07-04 07:39:28,823 [INFO] main: MAGMAUSDT | RL adj=45.0%
@@ -8051,6 +8044,13 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  41:45 /opt/ensemble
 2026-07-04 07:39:58,483 [INFO] main: ZKPUSDT | RL adj=77.5%
 2026-07-04 07:39:58,499 [INFO] main: ZKPUSDT | Context score=-0.1 bias=0.1
 2026-07-04 07:39:58,499 [INFO] main: ZKPUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-07-04 07:40:04,116 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-04 07:40:05,428 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-04 07:40:05,430 [INFO] main: ETHUSDT | Bull:flat(25%) Bear:short(65%)
+2026-07-04 07:40:08,205 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-04 07:40:08,206 [INFO] main: ETHUSDT | Judge:HOLD conf=55% size=0.0%
+2026-07-04 07:40:08,207 [INFO] main: ETHUSDT | RL adj=55.0%
+2026-07-04 07:40:10,209 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -8068,7 +8068,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       901Mi       464Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       900Mi       465Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
