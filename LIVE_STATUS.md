@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-04 18:20:01 UTC
+Generated: 2026-07-04 18:30:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61988 49652 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 285224 51212 ?        Ssl  Jun12   1:28 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145624 ?       Ssl  Jun16  42:39 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145624 ?       Ssl  Jun16  42:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 950.3546706529258,
+  "balance": 972.1633026529258,
   "positions": {
-    "AAVEUSDT": {
-      "id": "PAPER_AAVEUSDT_1783115787",
-      "symbol": "AAVEUSDT",
-      "side": "long",
-      "entry_price": 87.87,
-      "qty": 1.138,
-      "confidence": 85,
-      "opened_at": "2026-07-03T21:56:27.268522",
-      "cost": 19.999212,
-      "notional": 99.99606,
-      "leverage": 5
-    },
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1783171449",
       "symbol": "ETHUSDT",
@@ -8067,19 +8055,32 @@ root     1488950  0.1  3.7 739384 145624 ?       Ssl  Jun16  42:39 /opt/ensemble
       "closed_at": "2026-07-04T16:23:12.021664",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_AAVEUSDT_1783115787",
+      "symbol": "AAVEUSDT",
+      "side": "long",
+      "entry_price": 87.87,
+      "qty": 1.138,
+      "confidence": 85,
+      "opened_at": "2026-07-03T21:56:27.268522",
+      "cost": 19.999212,
+      "notional": 99.99606,
+      "leverage": 5,
+      "exit_price": 89.46,
+      "pnl_pct": 9.05,
+      "pnl_usdt": 1.81,
+      "closed_at": "2026-07-04T18:24:48.213720",
+      "reason": "trailing_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 10.33985475092609
+  "total_pnl": 12.149274750926077
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-04 17:59:48,402 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-04 17:59:48,402 [INFO] main: ADAUSDT | Bull:flat(25%) Bear:short(80%)
-2026-07-04 17:59:51,088 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-04 17:59:51,090 [INFO] main: ADAUSDT | Judge:LONG conf=85% size=20.0%
-2026-07-04 17:59:51,090 [INFO] main: ADAUSDT | RL adj=76.6%
 2026-07-04 17:59:51,111 [INFO] main: ADAUSDT | Context score=-0.0 bias=0.1
 2026-07-04 17:59:51,111 [INFO] main: ADAUSDT | regime BLOCK (volatile)
 2026-07-04 17:59:56,712 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -8105,6 +8106,11 @@ root     1488950  0.1  3.7 739384 145624 ?       Ssl  Jun16  42:39 /opt/ensemble
 2026-07-04 18:00:25,522 [INFO] main: XRPUSDT | gate PASS (Judge 75/70 RL 77.9/66.92 slack=±3)
 2026-07-04 18:00:25,523 [INFO] positions: 2/3 rule: skip LONG XRPUSDT (3/3 already long)
 2026-07-04 18:00:27,526 [INFO] main: Next scan in 30min (always-30min)
+2026-07-04 18:24:48,210 [INFO] positions: TRAILING-STOP AAVEUSDT long peak:2.65% now:1.81%
+2026-07-04 18:24:48,230 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG AAVEUSDT @ 89.4600 PnL: 9.05% (+1.81 USDT) | Баланс: 972.16
+2026-07-04 18:24:48,529 [INFO] positions: OK AAVEUSDT long PnL:1.81% reason:trailing_stop
+2026-07-04 18:24:48,529 [INFO] positions: Lessons: The trade was closed by a trailing stop with a 1.81% profit, validating the initial bullish setup. The combination of a positive 4h trend, MACD in bull mode, and a trending up regime provided a solid foundation for the trade. This outcome reinforces the effectiveness of using technical indicators and risk-reward ratios to inform trading decisions.
+2026-07-04 18:24:48,529 [INFO] rl: RL learned from long AAVEUSDT: profit 1.81% | weights bull=0.909 bear=0.699 judge=1.392 threshold=66.89
 ```
 
 ## Disk
@@ -8122,7 +8128,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       896Mi       437Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       905Mi       427Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
