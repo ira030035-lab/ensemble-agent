@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-04 16:30:01 UTC
+Generated: 2026-07-04 16:40:01 UTC
 
 ## Services
 ```
@@ -8063,7 +8063,6 @@ root     1488950  0.1  3.7 739384 145624 ?       Ssl  Jun16  42:30 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-04 16:16:46,983 [INFO] main: LABUSDT | Context score=-0.1 bias=0.1
 2026-07-04 16:16:46,984 [INFO] main: LABUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-04 16:16:53,021 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-04 16:16:54,264 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -8093,6 +8092,7 @@ root     1488950  0.1  3.7 739384 145624 ?       Ssl  Jun16  42:30 /opt/ensemble
 2026-07-04 16:23:12,417 [INFO] positions: OK XLMUSDT long PnL:3.01% reason:take_profit
 2026-07-04 16:23:12,418 [INFO] positions: Lessons: This trade was successful due to a strong trending market, reaching the 3.01% take profit target. The original risk-reward framework was slightly exceeded, with the actual gain matching the upper end of expectations. The asymmetric risk framework with a 2% stop loss and 4% take profit target was effective in this instance.
 2026-07-04 16:23:12,418 [INFO] rl: RL learned from long XLMUSDT: profit 3.01% | weights bull=0.906 bear=0.704 judge=1.390 threshold=66.92
+2026-07-04 16:30:11,757 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8110,7 +8110,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       905Mi       434Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       896Mi       443Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
