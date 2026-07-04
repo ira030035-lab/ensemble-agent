@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-04 16:20:01 UTC
+Generated: 2026-07-04 16:30:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.7 739384 145624 ?       Ssl  Jun16  42:30 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 947.3464667565258,
+  "balance": 970.3546717509258,
   "positions": {
     "AAVEUSDT": {
       "id": "PAPER_AAVEUSDT_1783115787",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.7 739384 145624 ?       Ssl  Jun16  42:30 /opt/ensemble
       "opened_at": "2026-07-04T13:24:09.958514",
       "cost": 19.985971,
       "notional": 99.929855,
-      "leverage": 5
-    },
-    "XLMUSDT": {
-      "id": "PAPER_XLMUSDT_1783179449",
-      "symbol": "XLMUSDT",
-      "side": "long",
-      "entry_price": 0.20843,
-      "qty": 479.7774,
-      "confidence": 80,
-      "opened_at": "2026-07-04T15:37:29.348783",
-      "cost": 20.0000006964,
-      "notional": 100.000003482,
       "leverage": 5
     }
   },
@@ -8049,19 +8037,32 @@ root     1488950  0.1  3.7 739384 145624 ?       Ssl  Jun16  42:30 /opt/ensemble
       "closed_at": "2026-07-04T15:06:19.171628",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_XLMUSDT_1783179449",
+      "symbol": "XLMUSDT",
+      "side": "long",
+      "entry_price": 0.20843,
+      "qty": 479.7774,
+      "confidence": 80,
+      "opened_at": "2026-07-04T15:37:29.348783",
+      "cost": 20.0000006964,
+      "notional": 100.000003482,
+      "leverage": 5,
+      "exit_price": 0.2147,
+      "pnl_pct": 15.04,
+      "pnl_usdt": 3.01,
+      "closed_at": "2026-07-04T16:23:12.021664",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 7.331650452926092
+  "total_pnl": 10.33985475092609
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-04 16:16:44,869 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-04 16:16:44,870 [INFO] main: LABUSDT | Bull:flat(15%) Bear:short(85%)
-2026-07-04 16:16:46,972 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-04 16:16:46,973 [INFO] main: LABUSDT | Judge:SHORT conf=85% size=15.0%
-2026-07-04 16:16:46,973 [INFO] main: LABUSDT | RL adj=94.1%
 2026-07-04 16:16:46,983 [INFO] main: LABUSDT | Context score=-0.1 bias=0.1
 2026-07-04 16:16:46,984 [INFO] main: LABUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-04 16:16:53,021 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -8087,6 +8088,11 @@ root     1488950  0.1  3.7 739384 145624 ?       Ssl  Jun16  42:30 /opt/ensemble
 2026-07-04 16:17:17,916 [INFO] main: 1000BONKUSDT | Judge:HOLD conf=55% size=0.0%
 2026-07-04 16:17:17,916 [INFO] main: 1000BONKUSDT | RL adj=55.0%
 2026-07-04 16:17:19,918 [INFO] main: Next scan in 30min (always-30min)
+2026-07-04 16:23:12,018 [INFO] positions: TAKE-PROFIT XLMUSDT long PnL:3.01%
+2026-07-04 16:23:12,038 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG XLMUSDT @ 0.2147 PnL: 15.04% (+3.01 USDT) | Баланс: 970.35
+2026-07-04 16:23:12,417 [INFO] positions: OK XLMUSDT long PnL:3.01% reason:take_profit
+2026-07-04 16:23:12,418 [INFO] positions: Lessons: This trade was successful due to a strong trending market, reaching the 3.01% take profit target. The original risk-reward framework was slightly exceeded, with the actual gain matching the upper end of expectations. The asymmetric risk framework with a 2% stop loss and 4% take profit target was effective in this instance.
+2026-07-04 16:23:12,418 [INFO] rl: RL learned from long XLMUSDT: profit 3.01% | weights bull=0.906 bear=0.704 judge=1.390 threshold=66.92
 ```
 
 ## Disk
@@ -8104,7 +8110,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       896Mi       444Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       905Mi       434Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
