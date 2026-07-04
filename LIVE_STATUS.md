@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-04 23:10:01 UTC
+Generated: 2026-07-04 23:20:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  43:06 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 950.4874364471258,
+  "balance": 970.7756824471257,
   "positions": {
-    "ETHUSDT": {
-      "id": "PAPER_ETHUSDT_1783171449",
-      "symbol": "ETHUSDT",
-      "side": "long",
-      "entry_price": 1768.67,
-      "qty": 0.0565,
-      "confidence": 75,
-      "opened_at": "2026-07-04T13:24:09.958514",
-      "cost": 19.985971,
-      "notional": 99.929855,
-      "leverage": 5
-    },
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1783196081",
       "symbol": "BNBUSDT",
@@ -8121,19 +8109,32 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  43:06 /opt/ensemble
       "closed_at": "2026-07-04T19:55:26.957315",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ETHUSDT_1783171449",
+      "symbol": "ETHUSDT",
+      "side": "long",
+      "entry_price": 1768.67,
+      "qty": 0.0565,
+      "confidence": 75,
+      "opened_at": "2026-07-04T13:24:09.958514",
+      "cost": 19.985971,
+      "notional": 99.929855,
+      "leverage": 5,
+      "exit_price": 1774.02,
+      "pnl_pct": 1.51,
+      "pnl_usdt": 0.3,
+      "closed_at": "2026-07-04T23:14:38.006455",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 10.47886307592608
+  "total_pnl": 10.781138075926075
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-04 23:07:30,410 [INFO] main: EPICUSDT | Context score=-0.1 bias=0.1
-2026-07-04 23:07:30,410 [INFO] main: EPICUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-04 23:07:35,808 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-04 23:07:37,660 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-04 23:07:37,661 [INFO] main: HYPEUSDT | Bull:flat(25%) Bear:short(75%)
 2026-07-04 23:07:39,537 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-04 23:07:39,538 [INFO] main: HYPEUSDT | Judge:HOLD conf=55% size=0.0%
 2026-07-04 23:07:39,538 [INFO] main: HYPEUSDT | RL adj=55.0%
@@ -8159,6 +8160,11 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  43:06 /opt/ensemble
 2026-07-04 23:08:06,145 [INFO] main: WLDUSDT | Judge:HOLD conf=50% size=0.0%
 2026-07-04 23:08:06,145 [INFO] main: WLDUSDT | RL adj=50.0%
 2026-07-04 23:08:08,149 [INFO] main: Next scan in 30min (always-30min)
+2026-07-04 23:14:38,003 [INFO] positions: BREAKEVEN_STOP ETHUSDT long PnL:0.3%
+2026-07-04 23:14:38,023 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG ETHUSDT @ 1774.0200 PnL: 1.51% (+0.30 USDT) | Баланс: 970.78
+2026-07-04 23:14:38,342 [INFO] positions: OK ETHUSDT long PnL:0.3% reason:breakeven_stop
+2026-07-04 23:14:38,342 [INFO] positions: Lessons: The ETHUSDT long trade resulted in a 0.3% profit, meeting the breakeven stop. The initial bull case was correct, identifying a strong upward trend, but the expected 2:1 Risk/Reward ratio and 4% upside move were not achieved. This trade highlights the importance of accurate risk management and potentially adjusting expectations for trend continuation.
+2026-07-04 23:14:38,342 [INFO] rl: RL learned from long ETHUSDT: profit 0.30% | weights bull=0.906 bear=0.700 judge=1.394 threshold=66.88
 ```
 
 ## Disk
@@ -8176,7 +8182,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       899Mi       423Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       900Mi       422Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
