@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-04 14:30:01 UTC
+Generated: 2026-07-04 14:40:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61988 49652 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 285224 51212 ?        Ssl  Jun12   1:28 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  42:19 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  42:21 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8039,36 +8039,36 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  42:19 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-04 14:29:25,679 [INFO] main: NEARUSDT | Bull:long(70%) Bear:short(80%)
-2026-07-04 14:29:28,095 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-04 14:29:28,096 [INFO] main: NEARUSDT | Judge:SHORT conf=85% size=15.0%
-2026-07-04 14:29:28,096 [INFO] main: NEARUSDT | RL adj=84.2%
-2026-07-04 14:29:28,107 [INFO] main: NEARUSDT | Context score=-0.1 bias=0.1
-2026-07-04 14:29:28,107 [INFO] main: NEARUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-04 14:29:31,910 [INFO] main: SLXUSDT | Bull:long(72%) Bear:short(80%)
-2026-07-04 14:29:34,516 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-04 14:29:34,517 [INFO] main: SLXUSDT | Judge:HOLD conf=55% size=0.0%
-2026-07-04 14:29:34,517 [INFO] main: SLXUSDT | RL adj=55.0%
-2026-07-04 14:29:38,238 [INFO] main: TLMUSDT | Bull:long(70%) Bear:short(70%)
-2026-07-04 14:29:40,487 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-04 14:29:40,488 [INFO] main: TLMUSDT | Judge:HOLD conf=55% size=0.0%
-2026-07-04 14:29:40,488 [INFO] main: TLMUSDT | RL adj=55.0%
-2026-07-04 14:29:44,232 [WARNING] agents: Bull entropy-guard: шаблон long(72) ×5. Переключаемся на Kimi+Claude fallback.
-2026-07-04 14:29:44,232 [INFO] main: BEATUSDT | Bull:long(70%) Bear:short(80%)
-2026-07-04 14:29:46,802 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-04 14:29:46,803 [INFO] main: BEATUSDT | Judge:SHORT conf=85% size=15.0%
-2026-07-04 14:29:46,803 [INFO] main: BEATUSDT | RL adj=84.2%
-2026-07-04 14:29:46,813 [INFO] main: BEATUSDT | Context score=-0.1 bias=0.1
-2026-07-04 14:29:46,813 [INFO] main: BEATUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-04 14:29:50,261 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-07-04 14:29:52,235 [INFO] main: BCHUSDT | Bull:long(68%) Bear:short(80%)
-2026-07-04 14:29:54,985 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-04 14:29:54,986 [INFO] main: BCHUSDT | Judge:LONG conf=75% size=15.0%
-2026-07-04 14:29:54,986 [INFO] main: BCHUSDT | RL adj=75.5%
-2026-07-04 14:29:54,996 [INFO] main: BCHUSDT | Context score=-0.0 bias=0.1
-2026-07-04 14:29:54,996 [INFO] main: BCHUSDT | gate PASS (Judge 75/70 RL 75.5/66.98 slack=±3)
-2026-07-04 14:29:54,997 [INFO] positions: 2/3 rule: skip LONG BCHUSDT (3/3 already long)
-2026-07-04 14:29:59,254 [INFO] main: XPLUSDT | Bull:long(78%) Bear:short(80%)
+2026-07-04 14:32:15,543 [INFO] main: ARPAUSDT | RL adj=55.0%
+2026-07-04 14:32:22,443 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-04 14:32:22,693 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-04 14:32:22,695 [INFO] main: XLMUSDT | Bull:flat(25%) Bear:short(70%)
+2026-07-04 14:32:24,718 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-04 14:32:24,719 [INFO] main: XLMUSDT | Judge:HOLD conf=55% size=0.0%
+2026-07-04 14:32:24,719 [INFO] main: XLMUSDT | RL adj=55.0%
+2026-07-04 14:32:30,777 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-04 14:32:30,896 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-04 14:32:30,898 [INFO] main: VELVETUSDT | Bull:flat(15%) Bear:short(80%)
+2026-07-04 14:32:33,093 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-04 14:32:33,094 [INFO] main: VELVETUSDT | Judge:SHORT conf=85% size=15.0%
+2026-07-04 14:32:33,094 [INFO] main: VELVETUSDT | RL adj=93.6%
+2026-07-04 14:32:33,104 [INFO] main: VELVETUSDT | Context score=-0.1 bias=0.1
+2026-07-04 14:32:33,104 [INFO] main: VELVETUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-07-04 14:32:39,996 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-04 14:32:40,294 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-04 14:32:40,295 [INFO] main: SUIUSDT | Bull:flat(25%) Bear:short(60%)
+2026-07-04 14:32:42,451 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-04 14:32:42,451 [INFO] main: SUIUSDT | Judge:HOLD conf=55% size=0.0%
+2026-07-04 14:32:42,452 [INFO] main: SUIUSDT | RL adj=55.0%
+2026-07-04 14:32:48,026 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-04 14:32:52,608 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-04 14:32:52,609 [INFO] main: PEPEUSDT | Bull:flat(15%) Bear:short(60%)
+2026-07-04 14:32:54,881 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-04 14:32:54,882 [INFO] main: PEPEUSDT | Judge:SHORT conf=80% size=20.0%
+2026-07-04 14:32:54,882 [INFO] main: PEPEUSDT | RL adj=86.5%
+2026-07-04 14:32:54,891 [INFO] main: PEPEUSDT | Context score=-0.1 bias=0.1
+2026-07-04 14:32:54,891 [INFO] main: PEPEUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-07-04 14:32:56,925 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -8086,7 +8086,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       908Mi       435Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       902Mi       441Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
