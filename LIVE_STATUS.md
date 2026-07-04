@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-04 05:30:01 UTC
+Generated: 2026-07-04 05:40:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  63012 50660 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 285224 51212 ?        Ssl  Jun12   1:28 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  41:34 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  41:35 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8021,7 +8021,6 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  41:34 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-04 05:22:30,209 [INFO] main: WLDUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-04 05:22:36,792 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-04 05:22:37,025 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-04 05:22:37,026 [INFO] main: XPLUSDT | Bull:long(62%) Bear:short(60%)
@@ -8051,6 +8050,7 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  41:34 /opt/ensemble
 2026-07-04 05:23:07,357 [INFO] main: BEATUSDT | Judge:HOLD conf=45% size=0.0%
 2026-07-04 05:23:07,357 [INFO] main: BEATUSDT | RL adj=45.0%
 2026-07-04 05:23:09,359 [INFO] main: Next scan in 30min (always-30min)
+2026-07-04 05:30:04,625 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8068,7 +8068,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       942Mi       387Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       912Mi       416Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
