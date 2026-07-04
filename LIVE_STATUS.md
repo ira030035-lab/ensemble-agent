@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-04 19:10:01 UTC
+Generated: 2026-07-04 19:20:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.7 739384 145624 ?       Ssl  Jun16  42:45 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 952.1675010529258,
+  "balance": 970.0447064759258,
   "positions": {
     "ETHUSDT": {
       "id": "PAPER_ETHUSDT_1783171449",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.7 739384 145624 ?       Ssl  Jun16  42:45 /opt/ensemble
       "opened_at": "2026-07-04T13:24:09.958514",
       "cost": 19.985971,
       "notional": 99.929855,
-      "leverage": 5
-    },
-    "XLMUSDT": {
-      "id": "PAPER_XLMUSDT_1783187803",
-      "symbol": "XLMUSDT",
-      "side": "long",
-      "entry_price": 0.21434,
-      "qty": 466.5485,
-      "confidence": 85,
-      "opened_at": "2026-07-04T17:56:43.684177",
-      "cost": 20.000001098,
-      "notional": 100.00000548999999,
       "leverage": 5
     },
     "ZECUSDT": {
@@ -8085,19 +8073,32 @@ root     1488950  0.1  3.7 739384 145624 ?       Ssl  Jun16  42:45 /opt/ensemble
       "closed_at": "2026-07-04T18:24:48.213720",
       "reason": "trailing_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_XLMUSDT_1783187803",
+      "symbol": "XLMUSDT",
+      "side": "long",
+      "entry_price": 0.21434,
+      "qty": 466.5485,
+      "confidence": 85,
+      "opened_at": "2026-07-04T17:56:43.684177",
+      "cost": 20.000001098,
+      "notional": 100.00000548999999,
+      "leverage": 5,
+      "exit_price": 0.20979,
+      "pnl_pct": -10.61,
+      "pnl_usdt": -2.12,
+      "closed_at": "2026-07-04T19:13:37.562696",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 12.149274750926077
+  "total_pnl": 10.026479075926078
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-04 19:08:31,466 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-04 19:08:32,409 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-04 19:08:32,410 [INFO] main: WLDUSDT | Bull:flat(15%) Bear:short(70%)
-2026-07-04 19:08:34,377 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-04 19:08:34,378 [INFO] main: WLDUSDT | Judge:HOLD conf=55% size=0.0%
 2026-07-04 19:08:34,378 [INFO] main: WLDUSDT | RL adj=55.0%
 2026-07-04 19:08:40,179 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-04 19:08:41,229 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -8123,6 +8124,11 @@ root     1488950  0.1  3.7 739384 145624 ?       Ssl  Jun16  42:45 /opt/ensemble
 2026-07-04 19:09:00,531 [INFO] main: 1000BONKUSDT | Judge:HOLD conf=55% size=0.0%
 2026-07-04 19:09:00,531 [INFO] main: 1000BONKUSDT | RL adj=55.0%
 2026-07-04 19:09:02,533 [INFO] main: Next scan in 30min (always-30min)
+2026-07-04 19:13:37,561 [INFO] positions: STOP_LOSS XLMUSDT long PnL:-2.12%
+2026-07-04 19:13:37,570 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG XLMUSDT @ 0.2098 PnL: -10.61% (-2.12 USDT) | Баланс: 970.04
+2026-07-04 19:13:38,860 [INFO] positions: LOSS XLMUSDT long PnL:-2.12% reason:stop_loss
+2026-07-04 19:13:38,860 [INFO] positions: Lessons: The bullish case was over‑weighted on sentiment and MACD alignment without accounting for the tight range and low volatility that made the stop‑loss likely. In trending‑up regimes, funding and sentiment can stay favorable even as price stalls, so tighter risk limits or a closer stop are essential. Future entries should require additional confirmation, such as volume or breakout momentum, before committing.
+2026-07-04 19:13:38,860 [INFO] rl: RL learned from long XLMUSDT: loss -2.12% | weights bull=0.904 bear=0.702 judge=1.393 threshold=66.94
 ```
 
 ## Disk
@@ -8140,7 +8146,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       903Mi       427Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       899Mi       432Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
