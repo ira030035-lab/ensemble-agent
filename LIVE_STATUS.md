@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-04 00:30:01 UTC
+Generated: 2026-07-04 00:40:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61848 49628 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 285224 51212 ?        Ssl  Jun12   1:27 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  41:07 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  41:08 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8003,7 +8003,6 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  41:07 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-04 00:14:26,757 [INFO] main: BTCUSDT | Bull:long(62%) Bear:short(80%)
 2026-07-04 00:14:29,329 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-04 00:14:29,330 [INFO] main: BTCUSDT | Judge:SHORT conf=80% size=15.0%
 2026-07-04 00:14:29,330 [INFO] main: BTCUSDT | RL adj=80.2%
@@ -8033,6 +8032,7 @@ root     1488950  0.1  3.7 739384 145620 ?       Ssl  Jun16  41:07 /opt/ensemble
 2026-07-04 00:14:56,611 [INFO] main: THEUSDT | Context score=-0.1 bias=0.1
 2026-07-04 00:14:56,611 [INFO] main: THEUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-04 00:14:58,638 [INFO] main: Next scan in 30min (always-30min)
+2026-07-04 00:30:01,336 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8050,7 +8050,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       906Mi       445Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       897Mi       453Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
