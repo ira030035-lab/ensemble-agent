@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-05 07:30:01 UTC
+Generated: 2026-07-05 07:40:01 UTC
 
 ## Services
 ```
@@ -8165,7 +8165,6 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  43:50 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-05 07:10:41,783 [INFO] main: REUSDT | Context score=-0.0 bias=0.1
 2026-07-05 07:10:41,784 [INFO] main: REUSDT | gate PASS (Judge 78/70 RL 77.4/66.93 slack=±3)
 2026-07-05 07:10:41,785 [INFO] positions: 2/3 rule: skip LONG REUSDT (3/3 already long)
 2026-07-05 07:10:47,835 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -8195,6 +8194,7 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  43:50 /opt/ensemble
 2026-07-05 07:11:23,801 [INFO] main: HYPEUSDT | Context score=-0.1 bias=0.1
 2026-07-05 07:11:23,801 [INFO] main: HYPEUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-05 07:11:25,856 [INFO] main: Next scan in 30min (always-30min)
+2026-07-05 07:30:21,569 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8212,7 +8212,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       924Mi       431Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       928Mi       427Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
