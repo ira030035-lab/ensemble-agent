@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-05 10:00:01 UTC
+Generated: 2026-07-05 10:10:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61988 49652 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 286248 52220 ?        Ssl  Jun12   1:30 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  44:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  44:08 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 948.7649020439258,
+  "balance": 966.7163923639257,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1783196081",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  44:05 /opt/ensemble
       "opened_at": "2026-07-04T20:14:41.568340",
       "cost": 20.005456000000002,
       "notional": 100.02728,
-      "leverage": 5
-    },
-    "LINKUSDT": {
-      "id": "PAPER_LINKUSDT_1783208329",
-      "symbol": "LINKUSDT",
-      "side": "long",
-      "entry_price": 8.006,
-      "qty": 12.4906,
-      "confidence": 75,
-      "opened_at": "2026-07-04T23:38:49.484211",
-      "cost": 19.99994872,
-      "notional": 99.9997436,
       "leverage": 5
     },
     "SOLUSDT": {
@@ -8157,44 +8145,62 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  44:05 /opt/ensemble
       "closed_at": "2026-07-05T00:32:33.648356",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_LINKUSDT_1783208329",
+      "symbol": "LINKUSDT",
+      "side": "long",
+      "entry_price": 8.006,
+      "qty": 12.4906,
+      "confidence": 75,
+      "opened_at": "2026-07-04T23:38:49.484211",
+      "cost": 19.99994872,
+      "notional": 99.9997436,
+      "leverage": 5,
+      "exit_price": 7.842,
+      "pnl_pct": -10.24,
+      "pnl_usdt": -2.05,
+      "closed_at": "2026-07-05T10:02:17.777969",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 8.769936483926077
+  "total_pnl": 6.72147808392607
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-05 09:59:33,762 [INFO] main: VANRYUSDT | Judge:SHORT conf=70% size=15.0%
-2026-07-05 09:59:33,762 [INFO] main: VANRYUSDT | RL adj=69.0%
-2026-07-05 09:59:33,773 [INFO] main: VANRYUSDT | Context score=-0.1 bias=0.1
-2026-07-05 09:59:33,773 [INFO] main: VANRYUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-05 09:59:37,207 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-07-05 09:59:37,565 [INFO] main: PEPEUSDT | Bull:long(70%) Bear:short(80%)
-2026-07-05 09:59:40,517 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-05 09:59:40,517 [INFO] main: PEPEUSDT | Judge:SHORT conf=75% size=15.0%
-2026-07-05 09:59:40,517 [INFO] main: PEPEUSDT | RL adj=74.0%
-2026-07-05 09:59:40,529 [INFO] main: PEPEUSDT | Context score=-0.1 bias=0.1
-2026-07-05 09:59:40,529 [INFO] main: PEPEUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-05 09:59:43,961 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-07-05 09:59:44,308 [INFO] main: VELVETUSDT | Bull:long(70%) Bear:short(80%)
-2026-07-05 09:59:46,236 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-05 09:59:46,237 [INFO] main: VELVETUSDT | Judge:SHORT conf=80% size=15.0%
-2026-07-05 09:59:46,237 [INFO] main: VELVETUSDT | RL adj=79.0%
-2026-07-05 09:59:46,246 [INFO] main: VELVETUSDT | Context score=-0.1 bias=0.1
-2026-07-05 09:59:46,246 [INFO] main: VELVETUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-05 09:59:49,666 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-07-05 09:59:50,185 [INFO] main: BTCUSDT | Bull:long(70%) Bear:short(80%)
-2026-07-05 09:59:53,005 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-05 09:59:53,007 [INFO] main: BTCUSDT | Judge:SHORT conf=80% size=15.0%
-2026-07-05 09:59:53,007 [INFO] main: BTCUSDT | RL adj=79.0%
-2026-07-05 09:59:53,026 [INFO] main: BTCUSDT | Context score=-0.1 bias=0.1
-2026-07-05 09:59:53,026 [INFO] main: BTCUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-05 09:59:56,459 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-07-05 09:59:57,117 [INFO] main: TLMUSDT | Bull:long(72%) Bear:short(80%)
-2026-07-05 09:59:59,053 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-05 09:59:59,054 [INFO] main: TLMUSDT | Judge:HOLD conf=45% size=0.0%
-2026-07-05 09:59:59,054 [INFO] main: TLMUSDT | RL adj=45.0%
+2026-07-05 10:02:49,435 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 10:02:49,435 [INFO] main: REUSDT | Judge:SHORT conf=75% size=15.0%
+2026-07-05 10:02:49,435 [INFO] main: REUSDT | RL adj=82.4%
+2026-07-05 10:02:49,445 [INFO] main: REUSDT | Context score=-0.1 bias=0.1
+2026-07-05 10:02:49,445 [INFO] main: REUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-07-05 10:02:52,879 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-07-05 10:02:55,671 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 10:03:00,308 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-05 10:03:00,310 [INFO] main: ETHUSDT | Bull:flat(15%) Bear:short(78%)
+2026-07-05 10:03:03,184 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 10:03:03,184 [INFO] main: ETHUSDT | Judge:SHORT conf=90% size=20.0%
+2026-07-05 10:03:03,184 [INFO] main: ETHUSDT | RL adj=98.2%
+2026-07-05 10:03:03,195 [INFO] main: ETHUSDT | Context score=-0.1 bias=0.1
+2026-07-05 10:03:03,195 [INFO] main: ETHUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-07-05 10:03:06,630 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-07-05 10:03:09,634 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 10:03:10,515 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-05 10:03:10,517 [INFO] main: MIRAUSDT | Bull:flat(25%) Bear:short(75%)
+2026-07-05 10:03:13,023 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 10:03:13,024 [INFO] main: MIRAUSDT | Judge:HOLD conf=55% size=0.0%
+2026-07-05 10:03:13,024 [INFO] main: MIRAUSDT | RL adj=55.0%
+2026-07-05 10:03:19,549 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-05 10:03:20,122 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 10:03:20,123 [INFO] main: MAGMAUSDT | Bull:flat(15%) Bear:short(80%)
+2026-07-05 10:03:22,999 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 10:03:23,000 [INFO] main: MAGMAUSDT | Judge:SHORT conf=85% size=20.0%
+2026-07-05 10:03:23,000 [INFO] main: MAGMAUSDT | RL adj=93.5%
+2026-07-05 10:03:23,021 [INFO] main: MAGMAUSDT | Context score=-0.1 bias=0.1
+2026-07-05 10:03:23,021 [INFO] main: MAGMAUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-07-05 10:03:25,074 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -8212,7 +8218,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       941Mi       410Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       937Mi       414Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
