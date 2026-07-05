@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-05 00:30:01 UTC
+Generated: 2026-07-05 00:40:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  43:13 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 950.7757337271257,
+  "balance": 968.7645317639258,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1783196081",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  43:13 /opt/ensemble
       "opened_at": "2026-07-04T20:14:41.568340",
       "cost": 20.005456000000002,
       "notional": 100.02728,
-      "leverage": 5
-    },
-    "DOGEUSDT": {
-      "id": "PAPER_DOGEUSDT_1783196145",
-      "symbol": "DOGEUSDT",
-      "side": "long",
-      "entry_price": 0.07856,
-      "qty": 1272.9124,
-      "confidence": 70,
-      "opened_at": "2026-07-04T20:15:45.895369",
-      "cost": 19.9999996288,
-      "notional": 99.999998144,
       "leverage": 5
     },
     "LINKUSDT": {
@@ -8139,20 +8127,32 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  43:13 /opt/ensemble
       "closed_at": "2026-07-04T23:14:38.006455",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_DOGEUSDT_1783196145",
+      "symbol": "DOGEUSDT",
+      "side": "long",
+      "entry_price": 0.07856,
+      "qty": 1272.9124,
+      "confidence": 70,
+      "opened_at": "2026-07-04T20:15:45.895369",
+      "cost": 19.9999996288,
+      "notional": 99.999998144,
+      "leverage": 5,
+      "exit_price": 0.07698,
+      "pnl_pct": -10.06,
+      "pnl_usdt": -2.01,
+      "closed_at": "2026-07-05T00:32:33.648356",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 10.781138075926075
+  "total_pnl": 8.769936483926077
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-05 00:15:49,367 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-05 00:15:49,368 [INFO] main: HYPEUSDT | Bull:flat(15%) Bear:short(70%)
-2026-07-05 00:15:51,864 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-05 00:15:51,865 [INFO] main: HYPEUSDT | Judge:SHORT conf=70% size=15.0%
-2026-07-05 00:15:51,865 [INFO] main: HYPEUSDT | RL adj=77.4%
-2026-07-05 00:15:51,875 [INFO] main: HYPEUSDT | Context score=-0.1 bias=0.1
 2026-07-05 00:15:51,875 [INFO] main: HYPEUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-05 00:15:57,459 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-05 00:15:59,504 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -8177,6 +8177,12 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  43:13 /opt/ensemble
 2026-07-05 00:16:21,682 [INFO] main: WLDUSDT | Context score=-0.1 bias=0.1
 2026-07-05 00:16:21,683 [INFO] main: WLDUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-05 00:16:23,686 [INFO] main: Next scan in 30min (always-30min)
+2026-07-05 00:30:17,112 [INFO] main: Symbols: 30
+2026-07-05 00:32:33,646 [INFO] positions: STOP_LOSS DOGEUSDT long PnL:-2.01%
+2026-07-05 00:32:33,656 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG DOGEUSDT @ 0.0770 PnL: -10.06% (-2.01 USDT) | Баланс: 968.76
+2026-07-05 00:32:34,049 [INFO] positions: LOSS DOGEUSDT long PnL:-2.01% reason:stop_loss
+2026-07-05 00:32:34,049 [INFO] positions: Lessons: The trade was closed at a 2.01% loss due to a stop loss, despite the regime indicating a trending up movement. The original reasoning was based on a potential upside move with a 2:1 risk-reward ratio, but the trade did not play out as expected. This trade highlights the importance of managing risk and being prepared for conflicting signals, even in a trending up regime.
+2026-07-05 00:32:34,050 [INFO] rl: RL learned from long DOGEUSDT: loss -2.01% | weights bull=0.903 bear=0.702 judge=1.395 threshold=66.93
 ```
 
 ## Disk
@@ -8194,7 +8200,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       913Mi       451Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       910Mi       453Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
