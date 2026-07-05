@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-05 20:30:01 UTC
+Generated: 2026-07-05 20:40:01 UTC
 
 ## Services
 ```
@@ -8195,7 +8195,6 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:12 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-05 20:22:48,801 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-05 20:22:48,802 [INFO] main: CAPUSDT | Bull:flat(25%) Bear:short(80%)
 2026-07-05 20:22:50,771 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-05 20:22:50,772 [INFO] main: CAPUSDT | Judge:SHORT conf=80% size=15.0%
@@ -8225,6 +8224,7 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:12 /opt/ensemble
 2026-07-05 20:23:16,984 [INFO] main: LABUSDT | Context score=-0.1 bias=0.1
 2026-07-05 20:23:16,984 [INFO] main: LABUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-05 20:23:19,030 [INFO] main: Next scan in 30min (always-30min)
+2026-07-05 20:30:30,501 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8242,7 +8242,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       920Mi       414Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       900Mi       434Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
