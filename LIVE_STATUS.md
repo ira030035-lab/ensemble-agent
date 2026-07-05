@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-05 05:30:01 UTC
+Generated: 2026-07-05 05:40:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61988 49652 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 285224 51180 ?        Ssl  Jun12   1:29 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  43:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  43:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8165,7 +8165,6 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  43:40 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-05 05:24:25,590 [INFO] main: 1000BONKUSDT | Bull:flat(15%) Bear:short(80%)
 2026-07-05 05:24:27,775 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-05 05:24:27,775 [INFO] main: 1000BONKUSDT | Judge:SHORT conf=70% size=15.0%
 2026-07-05 05:24:27,775 [INFO] main: 1000BONKUSDT | RL adj=78.4%
@@ -8195,12 +8194,13 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  43:40 /opt/ensemble
 2026-07-05 05:24:54,424 [INFO] main: BCHUSDT | gate PASS (Judge 75/70 RL 76.0/66.93 slack=±3)
 2026-07-05 05:24:54,425 [INFO] positions: 2/3 rule: skip LONG BCHUSDT (3/3 already long)
 2026-07-05 05:24:56,426 [INFO] main: Next scan in 30min (always-30min)
+2026-07-05 05:30:20,210 [INFO] main: Symbols: 30
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  896K  381M   1% /run
+tmpfs           382M  900K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  9.4G   63G  14% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -8212,7 +8212,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       933Mi       424Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       917Mi       439Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
