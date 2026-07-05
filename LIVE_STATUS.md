@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-05 19:30:01 UTC
+Generated: 2026-07-05 19:40:01 UTC
 
 ## Services
 ```
@@ -8189,7 +8189,6 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:06 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-05 19:14:22,705 [INFO] main: ADAUSDT | RL adj=35.0%
 2026-07-05 19:14:26,090 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
 2026-07-05 19:14:28,555 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-05 19:14:29,281 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -8219,6 +8218,7 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:06 /opt/ensemble
 2026-07-05 19:29:38,890 [INFO] positions: OK BCHUSDT long PnL:3.01% reason:take_profit
 2026-07-05 19:29:38,891 [INFO] positions: Lessons: The trade’s bullish premise captured the short‑term uptrend, but the actual move fell short of the 4 % target, yielding a 3.01 % profit before the take‑profit hit. The outcome shows the importance of setting realistic targets and allowing a modest buffer for market variance. Future setups should align target percentages with recent volatility ranges to avoid under‑shooting expectations.
 2026-07-05 19:29:38,891 [INFO] rl: RL learned from long BCHUSDT: profit 3.01% | weights bull=0.906 bear=0.697 judge=1.397 threshold=66.95
+2026-07-05 19:30:29,868 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8236,7 +8236,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       900Mi       436Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       894Mi       441Mi       4.4Mi       2.7Gi       2.9Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
