@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-05 16:30:01 UTC
+Generated: 2026-07-05 16:40:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61988 49652 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 286248 52220 ?        Ssl  Jun12   1:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  44:47 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  44:48 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8183,7 +8183,6 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  44:47 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-05 16:22:32,804 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
 2026-07-05 16:22:35,045 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-05 16:22:35,736 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-05 16:22:35,738 [INFO] main: ETHUSDT | Bull:flat(25%) Bear:short(60%)
@@ -8213,6 +8212,7 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  44:47 /opt/ensemble
 2026-07-05 16:23:12,062 [INFO] main: MAGMAUSDT | Context score=-0.1 bias=0.1
 2026-07-05 16:23:12,062 [INFO] main: MAGMAUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-05 16:23:14,196 [INFO] main: Next scan in 30min (always-30min)
+2026-07-05 16:30:27,913 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8230,7 +8230,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       929Mi       412Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       916Mi       424Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
