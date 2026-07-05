@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-05 09:30:01 UTC
+Generated: 2026-07-05 09:40:01 UTC
 
 ## Services
 ```
@@ -8165,7 +8165,6 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  44:04 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-05 09:28:25,267 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-05 09:28:30,014 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-05 09:28:30,016 [INFO] main: MAGMAUSDT | Bull:flat(25%) Bear:short(80%)
 2026-07-05 09:28:33,093 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -8195,6 +8194,7 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  44:04 /opt/ensemble
 2026-07-05 09:29:00,806 [INFO] main: SUIUSDT | Context score=-0.1 bias=0.1
 2026-07-05 09:29:00,806 [INFO] main: SUIUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-05 09:29:02,858 [INFO] main: Next scan in 30min (always-30min)
+2026-07-05 09:30:22,851 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8212,7 +8212,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       948Mi       404Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       942Mi       410Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
