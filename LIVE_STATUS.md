@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-05 15:40:01 UTC
+Generated: 2026-07-05 15:50:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61988 49652 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 286248 52220 ?        Ssl  Jun12   1:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  44:41 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  44:43 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8183,36 +8183,36 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  44:41 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-05 15:14:00,824 [INFO] main: DOGEUSDT | Bull:flat(15%) Bear:short(80%)
-2026-07-05 15:14:03,389 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-05 15:14:03,391 [INFO] main: DOGEUSDT | Judge:SHORT conf=80% size=15.0%
-2026-07-05 15:14:03,391 [INFO] main: DOGEUSDT | RL adj=88.5%
-2026-07-05 15:14:03,411 [INFO] main: DOGEUSDT | Context score=-0.1 bias=0.1
-2026-07-05 15:14:03,411 [INFO] main: DOGEUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-05 15:14:09,751 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-05 15:14:14,211 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-05 15:14:14,213 [INFO] main: WLDUSDT | Bull:flat(25%) Bear:short(80%)
-2026-07-05 15:14:16,663 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-05 15:14:16,665 [INFO] main: WLDUSDT | Judge:HOLD conf=55% size=0.0%
-2026-07-05 15:14:16,665 [INFO] main: WLDUSDT | RL adj=55.0%
-2026-07-05 15:14:23,027 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-05 15:14:23,707 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-05 15:14:23,708 [INFO] main: BIRBUSDT | Bull:long(62%) Bear:short(70%)
-2026-07-05 15:14:25,761 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-05 15:14:25,763 [INFO] main: BIRBUSDT | Judge:LONG conf=70% size=15.0%
-2026-07-05 15:14:25,763 [INFO] main: BIRBUSDT | RL adj=71.0%
-2026-07-05 15:14:25,789 [INFO] main: BIRBUSDT | Context score=-0.0 bias=0.1
-2026-07-05 15:14:25,789 [INFO] main: BIRBUSDT | regime BLOCK (volatile)
-2026-07-05 15:14:33,666 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-05 15:14:33,778 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-05 15:14:33,780 [INFO] main: TRUMPUSDT | Bull:flat(15%) Bear:short(75%)
-2026-07-05 15:14:36,499 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-05 15:14:36,500 [INFO] main: TRUMPUSDT | Judge:SHORT conf=75% size=15.0%
-2026-07-05 15:14:36,500 [INFO] main: TRUMPUSDT | RL adj=82.9%
-2026-07-05 15:14:36,511 [INFO] main: TRUMPUSDT | Context score=-0.1 bias=0.1
-2026-07-05 15:14:36,512 [INFO] main: TRUMPUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-05 15:14:38,556 [INFO] main: Next scan in 30min (always-30min)
-2026-07-05 15:30:27,280 [INFO] main: Symbols: 30
+2026-07-05 15:48:03,937 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-05 15:48:03,938 [INFO] main: HYPEUSDT | Bull:flat(15%) Bear:short(70%)
+2026-07-05 15:48:07,232 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 15:48:07,232 [INFO] main: HYPEUSDT | Judge:SHORT conf=70% size=10.0%
+2026-07-05 15:48:07,232 [INFO] main: HYPEUSDT | RL adj=77.4%
+2026-07-05 15:48:07,243 [INFO] main: HYPEUSDT | Context score=-0.1 bias=0.1
+2026-07-05 15:48:07,243 [INFO] main: HYPEUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-07-05 15:48:12,945 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 15:48:13,460 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-05 15:48:13,461 [INFO] main: ETHUSDT | Bull:flat(25%) Bear:short(60%)
+2026-07-05 15:48:15,637 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 15:48:15,638 [INFO] main: ETHUSDT | Judge:HOLD conf=50% size=0.0%
+2026-07-05 15:48:15,639 [INFO] main: ETHUSDT | RL adj=50.0%
+2026-07-05 15:48:22,245 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-05 15:48:23,338 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 15:48:23,340 [INFO] main: TRUMPUSDT | Bull:flat(15%) Bear:short(85%)
+2026-07-05 15:48:25,533 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 15:48:25,534 [INFO] main: TRUMPUSDT | Judge:SHORT conf=85% size=15.0%
+2026-07-05 15:48:25,534 [INFO] main: TRUMPUSDT | RL adj=94.0%
+2026-07-05 15:48:25,543 [INFO] main: TRUMPUSDT | Context score=-0.1 bias=0.1
+2026-07-05 15:48:25,543 [INFO] main: TRUMPUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-07-05 15:48:32,596 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-05 15:48:33,888 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 15:48:33,889 [INFO] main: WLDUSDT | Bull:flat(15%) Bear:short(75%)
+2026-07-05 15:48:36,324 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 15:48:36,325 [INFO] main: WLDUSDT | Judge:SHORT conf=75% size=20.0%
+2026-07-05 15:48:36,325 [INFO] main: WLDUSDT | RL adj=82.9%
+2026-07-05 15:48:36,340 [INFO] main: WLDUSDT | Context score=-0.1 bias=0.1
+2026-07-05 15:48:36,340 [INFO] main: WLDUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-07-05 15:48:38,395 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -8230,7 +8230,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       917Mi       425Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       916Mi       426Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
