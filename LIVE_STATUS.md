@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-05 19:20:01 UTC
+Generated: 2026-07-05 19:30:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61988 49652 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 286248 52220 ?        Ssl  Jun12   1:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:05 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 946.7162407639257,
+  "balance": 969.7229673639257,
   "positions": {
     "BNBUSDT": {
       "id": "PAPER_BNBUSDT_1783196081",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:05 /opt/ensemble
       "opened_at": "2026-07-05T01:23:18.962732",
       "cost": 19.99962972,
       "notional": 99.99814860000001,
-      "leverage": 5
-    },
-    "BCHUSDT": {
-      "id": "PAPER_BCHUSDT_1783256149",
-      "symbol": "BCHUSDT",
-      "side": "long",
-      "entry_price": 241.14,
-      "qty": 0.4147,
-      "confidence": 70,
-      "opened_at": "2026-07-05T12:55:49.979719",
-      "cost": 20.0001516,
-      "notional": 100.00075799999999,
       "leverage": 5
     }
   },
@@ -8175,21 +8163,32 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:05 /opt/ensemble
       "closed_at": "2026-07-05T10:02:17.777969",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_BCHUSDT_1783256149",
+      "symbol": "BCHUSDT",
+      "side": "long",
+      "entry_price": 241.14,
+      "qty": 0.4147,
+      "confidence": 70,
+      "opened_at": "2026-07-05T12:55:49.979719",
+      "cost": 20.0001516,
+      "notional": 100.00075799999999,
+      "leverage": 5,
+      "exit_price": 248.39,
+      "pnl_pct": 15.03,
+      "pnl_usdt": 3.01,
+      "closed_at": "2026-07-05T19:29:38.432128",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 6.72147808392607
+  "total_pnl": 9.72805308392607
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-05 19:14:13,471 [INFO] main: TAOUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-05 19:14:16,860 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-07-05 19:14:19,064 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-05 19:14:21,017 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-05 19:14:21,018 [INFO] main: ADAUSDT | Bull:flat(25%) Bear:short(75%)
-2026-07-05 19:14:22,703 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-05 19:14:22,705 [INFO] main: ADAUSDT | Judge:HOLD conf=35% size=0.0%
 2026-07-05 19:14:22,705 [INFO] main: ADAUSDT | RL adj=35.0%
 2026-07-05 19:14:26,090 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
 2026-07-05 19:14:28,555 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -8213,6 +8212,13 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:05 /opt/ensemble
 2026-07-05 19:14:48,902 [INFO] main: XLMUSDT | Judge:HOLD conf=55% size=0.0%
 2026-07-05 19:14:48,902 [INFO] main: XLMUSDT | RL adj=55.0%
 2026-07-05 19:14:50,904 [INFO] main: Next scan in 30min (always-30min)
+2026-07-05 19:28:02,140 [WARNING] agents: Judge-Groq all failed: openai/gpt-oss-120b empty
+2026-07-05 19:28:05,842 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-05 19:29:38,430 [INFO] positions: TAKE-PROFIT BCHUSDT long PnL:3.01%
+2026-07-05 19:29:38,440 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG BCHUSDT @ 248.3900 PnL: 15.03% (+3.01 USDT) | Баланс: 969.72
+2026-07-05 19:29:38,890 [INFO] positions: OK BCHUSDT long PnL:3.01% reason:take_profit
+2026-07-05 19:29:38,891 [INFO] positions: Lessons: The trade’s bullish premise captured the short‑term uptrend, but the actual move fell short of the 4 % target, yielding a 3.01 % profit before the take‑profit hit. The outcome shows the importance of setting realistic targets and allowing a modest buffer for market variance. Future setups should align target percentages with recent volatility ranges to avoid under‑shooting expectations.
+2026-07-05 19:29:38,891 [INFO] rl: RL learned from long BCHUSDT: profit 3.01% | weights bull=0.906 bear=0.697 judge=1.397 threshold=66.95
 ```
 
 ## Disk
@@ -8230,7 +8236,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       912Mi       424Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       900Mi       436Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
