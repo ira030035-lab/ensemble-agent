@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-06 16:10:01 UTC
+Generated: 2026-07-06 16:20:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  47:09 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 944.8002095619258,
+  "balance": 967.8656803619258,
   "positions": {
     "ZECUSDT": {
       "id": "PAPER_ZECUSDT_1783337051",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  47:09 /opt/ensemble
       "opened_at": "2026-07-06T12:37:22.140676",
       "cost": 19.999716,
       "notional": 99.99858,
-      "leverage": 5
-    },
-    "AAVEUSDT": {
-      "id": "PAPER_AAVEUSDT_1783347817",
-      "symbol": "AAVEUSDT",
-      "side": "long",
-      "entry_price": 93.97,
-      "qty": 1.0642,
-      "confidence": 85,
-      "opened_at": "2026-07-06T14:23:37.321823",
-      "cost": 20.000574800000003,
-      "notional": 100.002874,
       "leverage": 5
     }
   },
@@ -8373,19 +8361,32 @@ root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  47:09 /opt/ensemble
       "closed_at": "2026-07-06T12:03:40.260601",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_AAVEUSDT_1783347817",
+      "symbol": "AAVEUSDT",
+      "side": "long",
+      "entry_price": 93.97,
+      "qty": 1.0642,
+      "confidence": 85,
+      "opened_at": "2026-07-06T14:23:37.321823",
+      "cost": 20.000574800000003,
+      "notional": 100.002874,
+      "leverage": 5,
+      "exit_price": 96.85,
+      "pnl_pct": 15.32,
+      "pnl_usdt": 3.06,
+      "closed_at": "2026-07-06T16:11:38.790184",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 4.798324361926072
+  "total_pnl": 7.863220361926068
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-06 16:06:52,736 [INFO] main: ETHUSDT | Bull:flat(15%) Bear:short(90%)
-2026-07-06 16:06:55,278 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-06 16:06:55,279 [INFO] main: ETHUSDT | Judge:SHORT conf=70% size=15.0%
-2026-07-06 16:06:55,279 [INFO] main: ETHUSDT | RL adj=79.4%
-2026-07-06 16:06:55,301 [INFO] main: ETHUSDT | Context score=-0.1 bias=0.1
 2026-07-06 16:06:55,301 [INFO] main: ETHUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-06 16:06:58,696 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
 2026-07-06 16:07:01,140 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -8411,6 +8412,11 @@ root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  47:09 /opt/ensemble
 2026-07-06 16:07:22,857 [INFO] main: LITUSDT | Context score=-0.1 bias=0.1
 2026-07-06 16:07:22,857 [INFO] main: LITUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-06 16:07:24,924 [INFO] main: Next scan in 30min (always-30min)
+2026-07-06 16:11:38,786 [INFO] positions: TAKE-PROFIT AAVEUSDT long PnL:3.06%
+2026-07-06 16:11:38,811 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG AAVEUSDT @ 96.8500 PnL: 15.32% (+3.06 USDT) | Баланс: 967.87
+2026-07-06 16:11:39,334 [INFO] positions: OK AAVEUSDT long PnL:3.06% reason:take_profit
+2026-07-06 16:11:39,334 [INFO] positions: Lessons: The trade was successful with a 3.06% profit, meeting the expected upside move. The original reasoning based on strong bullish indicators such as a positive 4h uptrend, MACD, and RSI was correct. This trade demonstrates the effectiveness of combining multiple indicators to identify trending opportunities with potential for significant upside.
+2026-07-06 16:11:39,334 [INFO] rl: RL learned from long AAVEUSDT: profit 3.06% | weights bull=0.903 bear=0.687 judge=1.409 threshold=67.02
 ```
 
 ## Disk
@@ -8428,7 +8434,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       925Mi       376Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       909Mi       391Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
