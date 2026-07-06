@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-06 03:40:01 UTC
+Generated: 2026-07-06 03:50:01 UTC
 
 ## Services
 ```
@@ -12,13 +12,13 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61988 49652 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 286248 52220 ?        Ssl  Jun12   1:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:54 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:57 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 988.4922241239258,
+  "balance": 968.4931721239258,
   "positions": {
     "LINKUSDT": {
       "id": "PAPER_LINKUSDT_1783299251",
@@ -30,6 +30,18 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:54 /opt/ensemble
       "opened_at": "2026-07-06T00:54:11.971284",
       "cost": 19.999959699999998,
       "notional": 99.9997985,
+      "leverage": 5
+    },
+    "BCHUSDT": {
+      "id": "PAPER_BCHUSDT_1783309730",
+      "symbol": "BCHUSDT",
+      "side": "long",
+      "entry_price": 240.2,
+      "qty": 0.4163,
+      "confidence": 75,
+      "opened_at": "2026-07-06T03:48:50.909611",
+      "cost": 19.999052,
+      "notional": 99.99526,
       "leverage": 5
     }
   },
@@ -8249,36 +8261,36 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:54 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-06 03:13:58,434 [INFO] main: ZECUSDT | Context score=-0.1 bias=0.1
-2026-07-06 03:13:58,434 [INFO] main: ZECUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-06 03:14:01,845 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-07-06 03:14:04,930 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-06 03:14:08,597 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-06 03:14:08,598 [INFO] main: BIRBUSDT | Bull:flat(15%) Bear:short(70%)
-2026-07-06 03:14:11,159 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-06 03:14:11,160 [INFO] main: BIRBUSDT | Judge:SHORT conf=85% size=15.0%
-2026-07-06 03:14:11,160 [INFO] main: BIRBUSDT | RL adj=92.2%
-2026-07-06 03:14:11,170 [INFO] main: BIRBUSDT | Context score=-0.1 bias=0.1
-2026-07-06 03:14:11,170 [INFO] main: BIRBUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-06 03:14:14,540 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-07-06 03:14:18,192 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-06 03:14:18,953 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-06 03:14:18,955 [INFO] main: ETHUSDT | Bull:flat(25%) Bear:short(70%)
-2026-07-06 03:14:22,563 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-06 03:14:22,564 [INFO] main: ETHUSDT | Judge:HOLD conf=50% size=0.0%
-2026-07-06 03:14:22,564 [INFO] main: ETHUSDT | RL adj=50.0%
-2026-07-06 03:14:24,566 [INFO] main: Next scan in 30min (always-30min)
-2026-07-06 03:22:23,034 [INFO] positions: STOP_LOSS BCHUSDT long PnL:-2.04%
-2026-07-06 03:22:23,044 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG BCHUSDT @ 239.7400 PnL: -10.19% (-2.04 USDT) | Баланс: 970.68
-2026-07-06 03:22:23,366 [INFO] positions: LOSS BCHUSDT long PnL:-2.04% reason:stop_loss
-2026-07-06 03:22:23,366 [INFO] positions: Lessons: The trade was based on a strong 4h uptrend and bullish MACD, but ultimately stopped out for a 2.04% loss. The expected asymmetric risk/reward and contrarian opportunity did not materialize. This trade highlights the importance of managing risk and not overrelying on trend indicators and sentiment analysis.
-2026-07-06 03:22:23,366 [INFO] rl: RL learned from long BCHUSDT: loss -2.04% | weights bull=0.908 bear=0.691 judge=1.400 threshold=66.94
-2026-07-06 03:24:25,638 [INFO] positions: STOP_LOSS NEARUSDT long PnL:-2.19%
-2026-07-06 03:24:25,660 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG NEARUSDT @ 1.9822 PnL: -10.93% (-2.19 USDT) | Баланс: 988.49
-2026-07-06 03:24:26,011 [INFO] positions: LOSS NEARUSDT long PnL:-2.19% reason:stop_loss
-2026-07-06 03:24:26,012 [INFO] positions: Lessons: High bull sentiment and potential upside were outweighed by overbought signals, leading to a stop loss. The trade resulted in a 2.19% loss, indicating that caution should have been exercised more strongly. Overbought conditions can quickly reverse sentiment and lead to losses despite bullish outlooks.
-2026-07-06 03:24:26,012 [INFO] rl: RL learned from long NEARUSDT: loss -2.19% | weights bull=0.904 bear=0.694 judge=1.402 threshold=66.99
-2026-07-06 03:30:35,286 [INFO] main: Symbols: 30
+2026-07-06 03:48:50,631 [INFO] main: BCHUSDT | gate PASS (Judge 75/70 RL 67.7/66.99 slack=±3)
+2026-07-06 03:48:50,906 [INFO] positions: [PAPER] Opening LONG BCHUSDT notional=$100.0 conf=75%
+2026-07-06 03:48:50,927 [INFO] paper_trading: [PAPER] ОТКРЫТА LONG BCHUSDT @ 240.2000 qty=0.4163 notional=100.00 margin=20.00 x5 | Баланс: 968.49
+2026-07-06 03:48:56,842 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 03:48:58,765 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-06 03:48:58,766 [INFO] main: BNBUSDT | Bull:flat(28%) Bear:short(70%)
+2026-07-06 03:49:01,821 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 03:49:01,823 [INFO] main: BNBUSDT | Judge:HOLD conf=50% size=0.0%
+2026-07-06 03:49:01,823 [INFO] main: BNBUSDT | RL adj=50.0%
+2026-07-06 03:49:07,925 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 03:49:08,725 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-06 03:49:08,725 [INFO] main: TLMUSDT | Bull:flat(15%) Bear:short(75%)
+2026-07-06 03:49:11,458 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 03:49:11,459 [INFO] main: TLMUSDT | Judge:HOLD conf=55% size=0.0%
+2026-07-06 03:49:11,459 [INFO] main: TLMUSDT | RL adj=55.0%
+2026-07-06 03:49:18,012 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 03:49:18,391 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-06 03:49:18,391 [INFO] main: REUSDT | Bull:flat(15%) Bear:short(85%)
+2026-07-06 03:49:22,354 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 03:49:22,356 [INFO] main: REUSDT | Judge:SHORT conf=85% size=15.0%
+2026-07-06 03:49:22,356 [INFO] main: REUSDT | RL adj=93.8%
+2026-07-06 03:49:22,375 [INFO] main: REUSDT | Context score=-0.1 bias=0.1
+2026-07-06 03:49:22,375 [INFO] main: REUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-07-06 03:49:28,829 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-06 03:49:29,902 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 03:49:29,903 [INFO] main: BIRBUSDT | Bull:flat(15%) Bear:short(80%)
+2026-07-06 03:49:32,578 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 03:49:32,579 [INFO] main: BIRBUSDT | Judge:HOLD conf=55% size=0.0%
+2026-07-06 03:49:32,579 [INFO] main: BIRBUSDT | RL adj=55.0%
+2026-07-06 03:49:34,581 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -8296,7 +8308,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       910Mi       409Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       908Mi       411Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
