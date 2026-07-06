@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-06 21:30:01 UTC
+Generated: 2026-07-06 21:40:01 UTC
 
 ## Services
 ```
@@ -8435,7 +8435,6 @@ root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  47:40 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-06 21:16:54,417 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-06 21:16:54,418 [INFO] main: SLXUSDT | Judge:HOLD conf=55% size=0.0%
 2026-07-06 21:16:54,418 [INFO] main: SLXUSDT | RL adj=55.0%
 2026-07-06 21:17:00,563 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -8465,6 +8464,7 @@ root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  47:40 /opt/ensemble
 2026-07-06 21:17:34,458 [INFO] main: PEPEUSDT | Judge:HOLD conf=25% size=0.0%
 2026-07-06 21:17:34,458 [INFO] main: PEPEUSDT | RL adj=25.0%
 2026-07-06 21:17:36,461 [INFO] main: Next scan in 30min (always-30min)
+2026-07-06 21:30:47,522 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8482,7 +8482,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       918Mi       372Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       927Mi       363Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
