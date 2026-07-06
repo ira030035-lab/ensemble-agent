@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-06 17:30:01 UTC
+Generated: 2026-07-06 17:40:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61988 49656 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 286248 52212 ?        Ssl  Jun12   1:33 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  47:16 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  47:17 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8417,7 +8417,6 @@ root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  47:16 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-06 17:16:19,033 [INFO] main: ENAUSDT | Bull:flat(15%) Bear:short(75%)
 2026-07-06 17:16:21,316 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-06 17:16:21,317 [INFO] main: ENAUSDT | Judge:SHORT conf=80% size=15.0%
 2026-07-06 17:16:21,317 [INFO] main: ENAUSDT | RL adj=87.7%
@@ -8447,6 +8446,7 @@ root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  47:16 /opt/ensemble
 2026-07-06 17:16:50,004 [INFO] main: TAOUSDT | Context score=-0.1 bias=0.1
 2026-07-06 17:16:50,004 [INFO] main: TAOUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-06 17:16:52,053 [INFO] main: Next scan in 30min (always-30min)
+2026-07-06 17:30:44,704 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8464,7 +8464,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       916Mi       382Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       909Mi       389Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
