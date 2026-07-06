@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-06 00:30:01 UTC
+Generated: 2026-07-06 00:40:01 UTC
 
 ## Services
 ```
@@ -8225,7 +8225,6 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:37 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-06 00:21:57,483 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-06 00:21:58,177 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-06 00:21:58,179 [INFO] main: RPLUSDT | Bull:long(62%) Bear:short(60%)
 2026-07-06 00:22:00,439 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -8255,6 +8254,7 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:37 /opt/ensemble
 2026-07-06 00:26:22,469 [INFO] positions: OK SOLUSDT long PnL:0.5% reason:breakeven_stop
 2026-07-06 00:26:22,469 [INFO] positions: Lessons: The trade was a long position on SOLUSDT that closed at a 0.5% profit, meeting the breakeven stop. The initial bullish signal had 62% confidence but was countered by stronger bearish signals, highlighting the importance of considering multiple perspectives. The RSI 15m indicator correctly identified an oversold condition, leading to a reversal and a modest profit.
 2026-07-06 00:26:22,470 [INFO] rl: RL learned from long SOLUSDT: profit 0.50% | weights bull=0.911 bear=0.689 judge=1.400 threshold=66.89
+2026-07-06 00:30:33,456 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8272,7 +8272,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       915Mi       409Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       907Mi       417Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
