@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-06 17:00:01 UTC
+Generated: 2026-07-06 17:10:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  47:13 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 967.8656803619258,
+  "balance": 988.3630243619258,
   "positions": {
-    "ZECUSDT": {
-      "id": "PAPER_ZECUSDT_1783337051",
-      "symbol": "ZECUSDT",
-      "side": "long",
-      "entry_price": 446.38,
-      "qty": 0.224,
-      "confidence": 70,
-      "opened_at": "2026-07-06T11:24:11.923405",
-      "cost": 19.997824,
-      "notional": 99.98912,
-      "leverage": 5
-    },
     "LTCUSDT": {
       "id": "PAPER_LTCUSDT_1783341442",
       "symbol": "LTCUSDT",
@@ -8379,19 +8367,32 @@ root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  47:13 /opt/ensemble
       "closed_at": "2026-07-06T16:11:38.790184",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_ZECUSDT_1783337051",
+      "symbol": "ZECUSDT",
+      "side": "long",
+      "entry_price": 446.38,
+      "qty": 0.224,
+      "confidence": 70,
+      "opened_at": "2026-07-06T11:24:11.923405",
+      "cost": 19.997824,
+      "notional": 99.98912,
+      "leverage": 5,
+      "exit_price": 448.61,
+      "pnl_pct": 2.5,
+      "pnl_usdt": 0.5,
+      "closed_at": "2026-07-06T17:02:08.118728",
+      "reason": "breakeven_stop",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 7.863220361926068
+  "total_pnl": 8.362740361926072
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-06 16:41:20,451 [INFO] main: LABUSDT | RL adj=93.2%
-2026-07-06 16:41:20,461 [INFO] main: LABUSDT | Context score=-0.1 bias=0.1
-2026-07-06 16:41:20,461 [INFO] main: LABUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-06 16:41:26,632 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-06 16:41:28,228 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-06 16:41:28,229 [INFO] main: ETHUSDT | Bull:flat(25%) Bear:short(80%)
 2026-07-06 16:41:30,997 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-06 16:41:30,998 [INFO] main: ETHUSDT | Judge:HOLD conf=55% size=0.0%
@@ -8417,6 +8418,11 @@ root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  47:13 /opt/ensemble
 2026-07-06 16:41:59,533 [INFO] main: ENAUSDT | Judge:HOLD conf=55% size=0.0%
 2026-07-06 16:41:59,533 [INFO] main: ENAUSDT | RL adj=55.0%
 2026-07-06 16:42:01,535 [INFO] main: Next scan in 30min (always-30min)
+2026-07-06 17:02:08,114 [INFO] positions: BREAKEVEN_STOP ZECUSDT long PnL:0.5%
+2026-07-06 17:02:08,136 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG ZECUSDT @ 448.6100 PnL: 2.50% (+0.50 USDT) | Баланс: 988.36
+2026-07-06 17:02:08,497 [INFO] positions: OK ZECUSDT long PnL:0.5% reason:breakeven_stop
+2026-07-06 17:02:08,497 [INFO] positions: Lessons: The trade was based on a bull case with 70% confidence due to Extreme Fear sentiment and oversold RSI levels, but ultimately closed at breakeven. The MACD signal did not lead to the expected ≥4% upside, resulting in a 0.5% profit. This outcome suggests that relying solely on sentiment and technical indicators may not be enough to overcome a trending_down regime.
+2026-07-06 17:02:08,497 [INFO] rl: RL learned from long ZECUSDT: profit 0.50% | weights bull=0.905 bear=0.686 judge=1.409 threshold=66.99
 ```
 
 ## Disk
@@ -8434,7 +8440,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       918Mi       381Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       911Mi       388Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
