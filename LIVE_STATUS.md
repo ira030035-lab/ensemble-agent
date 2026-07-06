@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-06 16:40:01 UTC
+Generated: 2026-07-06 16:50:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61988 49656 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 286248 52212 ?        Ssl  Jun12   1:33 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  47:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  47:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8387,36 +8387,36 @@ root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  47:11 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-06 16:39:18,007 [INFO] main: SLXUSDT | Bull:flat(15%) Bear:short(80%)
-2026-07-06 16:39:20,120 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-06 16:39:20,121 [INFO] main: SLXUSDT | Judge:HOLD conf=45% size=0.0%
-2026-07-06 16:39:20,121 [INFO] main: SLXUSDT | RL adj=45.0%
-2026-07-06 16:39:25,775 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-06 16:39:26,933 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-06 16:39:26,935 [INFO] main: AVAXUSDT | Bull:flat(25%) Bear:short(65%)
-2026-07-06 16:39:29,152 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-06 16:39:29,153 [INFO] main: AVAXUSDT | Judge:HOLD conf=50% size=0.0%
-2026-07-06 16:39:29,153 [INFO] main: AVAXUSDT | RL adj=50.0%
-2026-07-06 16:39:34,775 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-06 16:39:36,202 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-06 16:39:36,203 [INFO] main: XLMUSDT | Bull:flat(25%) Bear:short(60%)
-2026-07-06 16:39:38,688 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-06 16:39:38,690 [INFO] main: XLMUSDT | Judge:HOLD conf=50% size=0.0%
-2026-07-06 16:39:38,690 [INFO] main: XLMUSDT | RL adj=50.0%
-2026-07-06 16:39:44,921 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-06 16:39:45,569 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-06 16:39:45,570 [INFO] main: NEARUSDT | Bull:long(62%) Bear:short(80%)
-2026-07-06 16:39:47,879 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-06 16:39:47,880 [INFO] main: NEARUSDT | Judge:HOLD conf=50% size=0.0%
-2026-07-06 16:39:47,880 [INFO] main: NEARUSDT | RL adj=50.0%
-2026-07-06 16:39:54,237 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-06 16:39:54,753 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-06 16:39:54,754 [INFO] main: CAPUSDT | Bull:flat(25%) Bear:short(80%)
-2026-07-06 16:39:57,056 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-06 16:39:57,057 [INFO] main: CAPUSDT | Judge:SHORT conf=80% size=15.0%
-2026-07-06 16:39:57,057 [INFO] main: CAPUSDT | RL adj=88.2%
-2026-07-06 16:39:57,066 [INFO] main: CAPUSDT | Context score=-0.1 bias=0.1
-2026-07-06 16:39:57,066 [INFO] main: CAPUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-07-06 16:41:20,451 [INFO] main: LABUSDT | RL adj=93.2%
+2026-07-06 16:41:20,461 [INFO] main: LABUSDT | Context score=-0.1 bias=0.1
+2026-07-06 16:41:20,461 [INFO] main: LABUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-07-06 16:41:26,632 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 16:41:28,228 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-06 16:41:28,229 [INFO] main: ETHUSDT | Bull:flat(25%) Bear:short(80%)
+2026-07-06 16:41:30,997 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 16:41:30,998 [INFO] main: ETHUSDT | Judge:HOLD conf=55% size=0.0%
+2026-07-06 16:41:30,998 [INFO] main: ETHUSDT | RL adj=55.0%
+2026-07-06 16:41:37,604 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-06 16:41:38,417 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 16:41:38,418 [INFO] main: AAVEUSDT | Bull:flat(28%) Bear:short(70%)
+2026-07-06 16:41:40,469 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 16:41:40,470 [INFO] main: AAVEUSDT | Judge:HOLD conf=50% size=0.0%
+2026-07-06 16:41:40,470 [INFO] main: AAVEUSDT | RL adj=50.0%
+2026-07-06 16:41:47,505 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-06 16:41:47,591 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 16:41:47,593 [INFO] main: ADAUSDT | Bull:flat(15%) Bear:short(75%)
+2026-07-06 16:41:49,704 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 16:41:49,705 [INFO] main: ADAUSDT | Judge:SHORT conf=75% size=15.0%
+2026-07-06 16:41:49,705 [INFO] main: ADAUSDT | RL adj=82.7%
+2026-07-06 16:41:49,727 [INFO] main: ADAUSDT | Context score=-0.1 bias=0.1
+2026-07-06 16:41:49,727 [INFO] main: ADAUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-07-06 16:41:55,574 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 16:41:57,199 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-06 16:41:57,200 [INFO] main: ENAUSDT | Bull:flat(15%) Bear:short(80%)
+2026-07-06 16:41:59,532 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-06 16:41:59,533 [INFO] main: ENAUSDT | Judge:HOLD conf=55% size=0.0%
+2026-07-06 16:41:59,533 [INFO] main: ENAUSDT | RL adj=55.0%
+2026-07-06 16:42:01,535 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -8434,7 +8434,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       911Mi       389Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       910Mi       390Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
