@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-06 03:20:01 UTC
+Generated: 2026-07-06 03:30:01 UTC
 
 ## Services
 ```
@@ -12,38 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61988 49652 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 286248 52220 ?        Ssl  Jun12   1:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:53 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:54 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 952.7178243239258,
+  "balance": 988.4922241239258,
   "positions": {
-    "BCHUSDT": {
-      "id": "PAPER_BCHUSDT_1783285045",
-      "symbol": "BCHUSDT",
-      "side": "long",
-      "entry_price": 244.73,
-      "qty": 0.4086,
-      "confidence": 85,
-      "opened_at": "2026-07-05T20:57:25.139358",
-      "cost": 19.999335600000002,
-      "notional": 99.996678,
-      "leverage": 5
-    },
-    "NEARUSDT": {
-      "id": "PAPER_NEARUSDT_1783286888",
-      "symbol": "NEARUSDT",
-      "side": "long",
-      "entry_price": 2.0265,
-      "qty": 49.3462,
-      "confidence": 70,
-      "opened_at": "2026-07-05T21:28:08.029494",
-      "cost": 20.00001486,
-      "notional": 100.00007430000001,
-      "leverage": 5
-    },
     "LINKUSDT": {
       "id": "PAPER_LINKUSDT_1783299251",
       "symbol": "LINKUSDT",
@@ -8229,24 +8205,50 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:53 /opt/ensemble
       "closed_at": "2026-07-06T00:26:22.071843",
       "reason": "breakeven_stop",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_BCHUSDT_1783285045",
+      "symbol": "BCHUSDT",
+      "side": "long",
+      "entry_price": 244.73,
+      "qty": 0.4086,
+      "confidence": 85,
+      "opened_at": "2026-07-05T20:57:25.139358",
+      "cost": 19.999335600000002,
+      "notional": 99.996678,
+      "leverage": 5,
+      "exit_price": 239.74,
+      "pnl_pct": -10.19,
+      "pnl_usdt": -2.04,
+      "closed_at": "2026-07-06T03:22:23.036539",
+      "reason": "stop_loss",
+      "outcome": "loss"
+    },
+    {
+      "id": "PAPER_NEARUSDT_1783286888",
+      "symbol": "NEARUSDT",
+      "side": "long",
+      "entry_price": 2.0265,
+      "qty": 49.3462,
+      "confidence": 70,
+      "opened_at": "2026-07-05T21:28:08.029494",
+      "cost": 20.00001486,
+      "notional": 100.00007430000001,
+      "leverage": 5,
+      "exit_price": 1.9822,
+      "pnl_pct": -10.93,
+      "pnl_usdt": -2.19,
+      "closed_at": "2026-07-06T03:24:25.641950",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 12.71713448392605
+  "total_pnl": 8.492183823926057
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-06 03:13:45,667 [INFO] main: REUSDT | Bull:flat(15%) Bear:short(70%)
-2026-07-06 03:13:48,939 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-06 03:13:48,940 [INFO] main: REUSDT | Judge:HOLD conf=55% size=0.0%
-2026-07-06 03:13:48,940 [INFO] main: REUSDT | RL adj=55.0%
-2026-07-06 03:13:54,613 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-06 03:13:56,200 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-06 03:13:56,201 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
-2026-07-06 03:13:56,201 [INFO] main: ZECUSDT | Bull:flat(15%) Bear:short(65%)
-2026-07-06 03:13:58,310 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-06 03:13:58,311 [INFO] main: ZECUSDT | Judge:SHORT conf=75% size=15.0%
 2026-07-06 03:13:58,311 [INFO] main: ZECUSDT | RL adj=81.7%
 2026-07-06 03:13:58,434 [INFO] main: ZECUSDT | Context score=-0.1 bias=0.1
 2026-07-06 03:13:58,434 [INFO] main: ZECUSDT | side-bias BLOCK (market bullish, short forbidden)
@@ -8267,6 +8269,16 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:53 /opt/ensemble
 2026-07-06 03:14:22,564 [INFO] main: ETHUSDT | Judge:HOLD conf=50% size=0.0%
 2026-07-06 03:14:22,564 [INFO] main: ETHUSDT | RL adj=50.0%
 2026-07-06 03:14:24,566 [INFO] main: Next scan in 30min (always-30min)
+2026-07-06 03:22:23,034 [INFO] positions: STOP_LOSS BCHUSDT long PnL:-2.04%
+2026-07-06 03:22:23,044 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG BCHUSDT @ 239.7400 PnL: -10.19% (-2.04 USDT) | Баланс: 970.68
+2026-07-06 03:22:23,366 [INFO] positions: LOSS BCHUSDT long PnL:-2.04% reason:stop_loss
+2026-07-06 03:22:23,366 [INFO] positions: Lessons: The trade was based on a strong 4h uptrend and bullish MACD, but ultimately stopped out for a 2.04% loss. The expected asymmetric risk/reward and contrarian opportunity did not materialize. This trade highlights the importance of managing risk and not overrelying on trend indicators and sentiment analysis.
+2026-07-06 03:22:23,366 [INFO] rl: RL learned from long BCHUSDT: loss -2.04% | weights bull=0.908 bear=0.691 judge=1.400 threshold=66.94
+2026-07-06 03:24:25,638 [INFO] positions: STOP_LOSS NEARUSDT long PnL:-2.19%
+2026-07-06 03:24:25,660 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG NEARUSDT @ 1.9822 PnL: -10.93% (-2.19 USDT) | Баланс: 988.49
+2026-07-06 03:24:26,011 [INFO] positions: LOSS NEARUSDT long PnL:-2.19% reason:stop_loss
+2026-07-06 03:24:26,012 [INFO] positions: Lessons: High bull sentiment and potential upside were outweighed by overbought signals, leading to a stop loss. The trade resulted in a 2.19% loss, indicating that caution should have been exercised more strongly. Overbought conditions can quickly reverse sentiment and lead to losses despite bullish outlooks.
+2026-07-06 03:24:26,012 [INFO] rl: RL learned from long NEARUSDT: loss -2.19% | weights bull=0.904 bear=0.694 judge=1.402 threshold=66.99
 ```
 
 ## Disk
@@ -8284,7 +8296,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       907Mi       413Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       915Mi       405Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
