@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-06 14:30:01 UTC
+Generated: 2026-07-06 14:40:01 UTC
 
 ## Services
 ```
@@ -8381,7 +8381,6 @@ root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  46:59 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-06 14:23:16,729 [INFO] main: WLDUSDT | Judge:SHORT conf=85% size=15.0%
 2026-07-06 14:23:16,729 [INFO] main: WLDUSDT | RL adj=92.8%
 2026-07-06 14:23:16,748 [INFO] main: WLDUSDT | Context score=-0.1 bias=0.1
 2026-07-06 14:23:16,749 [INFO] main: WLDUSDT | side-bias BLOCK (market bullish, short forbidden)
@@ -8411,6 +8410,7 @@ root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  46:59 /opt/ensemble
 2026-07-06 14:23:47,872 [INFO] main: DOGEUSDT | Context score=-0.1 bias=0.1
 2026-07-06 14:23:47,872 [INFO] main: DOGEUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-06 14:23:49,920 [INFO] main: Next scan in 30min (always-30min)
+2026-07-06 14:30:42,534 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8428,7 +8428,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       921Mi       381Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       927Mi       375Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
