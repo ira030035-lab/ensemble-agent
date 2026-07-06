@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-06 09:10:01 UTC
+Generated: 2026-07-06 09:20:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  46:27 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 946.7060803239259,
+  "balance": 964.6980523239259,
   "positions": {
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1783311585",
-      "symbol": "HYPEUSDT",
-      "side": "long",
-      "entry_price": 71.455,
-      "qty": 1.3995,
-      "confidence": 70,
-      "opened_at": "2026-07-06T04:19:45.979968",
-      "cost": 20.0002545,
-      "notional": 100.0012725,
-      "leverage": 5
-    },
     "BTCUSDT": {
       "id": "PAPER_BTCUSDT_1783313902",
       "symbol": "BTCUSDT",
@@ -8301,19 +8289,32 @@ root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  46:27 /opt/ensemble
       "closed_at": "2026-07-06T05:28:06.370441",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1783311585",
+      "symbol": "HYPEUSDT",
+      "side": "long",
+      "entry_price": 71.455,
+      "qty": 1.3995,
+      "confidence": 70,
+      "opened_at": "2026-07-06T04:19:45.979968",
+      "cost": 20.0002545,
+      "notional": 100.0012725,
+      "leverage": 5,
+      "exit_price": 70.02,
+      "pnl_pct": -10.04,
+      "pnl_usdt": -2.01,
+      "closed_at": "2026-07-06T09:12:43.879740",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 6.946902823926068
+  "total_pnl": 4.938620323926065
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-06 09:05:50,259 [INFO] main: LTCUSDT | RL adj=60.0%
-2026-07-06 09:05:56,778 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-06 09:05:56,943 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-06 09:05:56,943 [INFO] main: BCHUSDT | Bull:flat(25%) Bear:short(65%)
-2026-07-06 09:05:59,487 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-06 09:05:59,487 [INFO] main: BCHUSDT | Judge:HOLD conf=40% size=0.0%
 2026-07-06 09:05:59,487 [INFO] main: BCHUSDT | RL adj=40.0%
 2026-07-06 09:06:06,477 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -8339,6 +8340,11 @@ root     1488950  0.1  3.7 739384 145632 ?       Ssl  Jun16  46:27 /opt/ensemble
 2026-07-06 09:06:40,034 [INFO] main: ADAUSDT | Context score=-0.1 bias=0.1
 2026-07-06 09:06:40,034 [INFO] main: ADAUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-06 09:06:42,081 [INFO] main: Next scan in 30min (always-30min)
+2026-07-06 09:12:43,878 [INFO] positions: STOP_LOSS HYPEUSDT long PnL:-2.01%
+2026-07-06 09:12:43,887 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG HYPEUSDT @ 70.0200 PnL: -10.04% (-2.01 USDT) | Баланс: 964.70
+2026-07-06 09:12:44,253 [INFO] positions: LOSS HYPEUSDT long PnL:-2.01% reason:stop_loss
+2026-07-06 09:12:44,253 [INFO] positions: Lessons: The trade was based on a 70% bullside sentiment with a favorable risk to reward ratio but ultimately hit the stop loss, resulting in a 2.01% loss. The trending_up regime did not provide the expected support for the long position. This trade highlights the importance of managing risk and not overrelying on sentiment and regime indicators.
+2026-07-06 09:12:44,253 [INFO] rl: RL learned from long HYPEUSDT: loss -2.01% | weights bull=0.897 bear=0.698 judge=1.405 threshold=67.06
 ```
 
 ## Disk
@@ -8356,7 +8362,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       912Mi       398Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       911Mi       397Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
