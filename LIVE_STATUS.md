@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-06 03:30:01 UTC
+Generated: 2026-07-06 03:40:01 UTC
 
 ## Services
 ```
@@ -8249,7 +8249,6 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:54 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-06 03:13:58,311 [INFO] main: ZECUSDT | RL adj=81.7%
 2026-07-06 03:13:58,434 [INFO] main: ZECUSDT | Context score=-0.1 bias=0.1
 2026-07-06 03:13:58,434 [INFO] main: ZECUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-06 03:14:01,845 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
@@ -8279,6 +8278,7 @@ root     1488950  0.1  3.7 739384 145628 ?       Ssl  Jun16  45:54 /opt/ensemble
 2026-07-06 03:24:26,011 [INFO] positions: LOSS NEARUSDT long PnL:-2.19% reason:stop_loss
 2026-07-06 03:24:26,012 [INFO] positions: Lessons: High bull sentiment and potential upside were outweighed by overbought signals, leading to a stop loss. The trade resulted in a 2.19% loss, indicating that caution should have been exercised more strongly. Overbought conditions can quickly reverse sentiment and lead to losses despite bullish outlooks.
 2026-07-06 03:24:26,012 [INFO] rl: RL learned from long NEARUSDT: loss -2.19% | weights bull=0.904 bear=0.694 judge=1.402 threshold=66.99
+2026-07-06 03:30:35,286 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8296,7 +8296,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       915Mi       405Mi       4.4Mi       2.7Gi       2.8Gi
+Mem:           3.7Gi       910Mi       409Mi       4.4Mi       2.7Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
