@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-07 18:30:01 UTC
+Generated: 2026-07-07 18:40:01 UTC
 
 ## Services
 ```
@@ -8525,7 +8525,6 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:48 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-07 18:14:29,433 [INFO] main: DOGEUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-07 18:14:34,574 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-07 18:14:35,994 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-07 18:14:35,996 [INFO] main: BLURUSDT | Bull:flat(15%) Bear:short(70%)
@@ -8555,6 +8554,7 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:48 /opt/ensemble
 2026-07-07 18:15:09,536 [INFO] main: PEPEUSDT | Judge:HOLD conf=55% size=0.0%
 2026-07-07 18:15:09,537 [INFO] main: PEPEUSDT | RL adj=55.0%
 2026-07-07 18:15:11,539 [INFO] main: Next scan in 30min (always-30min)
+2026-07-07 18:31:01,218 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8572,7 +8572,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       920Mi       323Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       913Mi       330Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
