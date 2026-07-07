@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-07 18:50:01 UTC
+Generated: 2026-07-07 19:00:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:51 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 945.2598467319259,
+  "balance": 962.5918960119259,
   "positions": {
     "AVAXUSDT": {
       "id": "PAPER_AVAXUSDT_1783403607",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:51 /opt/ensemble
       "opened_at": "2026-07-07T12:25:26.120816",
       "cost": 19.99977512,
       "notional": 99.99887559999999,
-      "leverage": 5
-    },
-    "HYPEUSDT": {
-      "id": "PAPER_HYPEUSDT_1783439634",
-      "symbol": "HYPEUSDT",
-      "side": "long",
-      "entry_price": 72.297,
-      "qty": 1.3832,
-      "confidence": 75,
-      "opened_at": "2026-07-07T15:53:54.465744",
-      "cost": 20.00024208,
-      "notional": 100.00121039999999,
       "leverage": 5
     }
   },
@@ -8517,19 +8505,32 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:51 /opt/ensemble
       "closed_at": "2026-07-07T15:36:53.510287",
       "reason": "take_profit",
       "outcome": "profit"
+    },
+    {
+      "id": "PAPER_HYPEUSDT_1783439634",
+      "symbol": "HYPEUSDT",
+      "side": "long",
+      "entry_price": 72.297,
+      "qty": 1.3832,
+      "confidence": 75,
+      "opened_at": "2026-07-07T15:53:54.465744",
+      "cost": 20.00024208,
+      "notional": 100.00121039999999,
+      "leverage": 5,
+      "exit_price": 70.368,
+      "pnl_pct": -13.34,
+      "pnl_usdt": -2.67,
+      "closed_at": "2026-07-07T18:50:13.531104",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 5.25988011192606
+  "total_pnl": 2.5916873119260577
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-07 18:49:10,329 [INFO] main: LABUSDT | RL adj=50.0%
-2026-07-07 18:49:16,108 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-07 18:49:16,736 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-07 18:49:16,737 [INFO] main: USUSDT | Bull:flat(25%) Bear:short(60%)
-2026-07-07 18:49:19,020 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-07 18:49:19,022 [INFO] main: USUSDT | Judge:HOLD conf=55% size=0.0%
 2026-07-07 18:49:19,022 [INFO] main: USUSDT | RL adj=55.0%
 2026-07-07 18:49:24,787 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -8555,6 +8556,11 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:51 /opt/ensemble
 2026-07-07 18:49:49,310 [INFO] main: BLURUSDT | Context score=-0.1 bias=0.1
 2026-07-07 18:49:49,311 [INFO] main: BLURUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-07 18:49:51,370 [INFO] main: Next scan in 30min (always-30min)
+2026-07-07 18:50:13,529 [INFO] positions: STOP_LOSS HYPEUSDT long PnL:-2.67%
+2026-07-07 18:50:13,539 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG HYPEUSDT @ 70.3680 PnL: -13.34% (-2.67 USDT) | Баланс: 962.59
+2026-07-07 18:50:13,892 [INFO] positions: LOSS HYPEUSDT long PnL:-2.67% reason:stop_loss
+2026-07-07 18:50:13,892 [INFO] positions: Lessons: The trade was based on bullish conditions with a trending up regime, but ultimately hit the stop loss. The loss was contained at 2.67%, which is within acceptable risk parameters. This trade serves as a reminder that even with strong technical indicators, trends can reverse quickly and stop losses are essential.
+2026-07-07 18:50:13,892 [INFO] rl: RL learned from long HYPEUSDT: loss -2.67% | weights bull=0.897 bear=0.685 judge=1.418 threshold=67.18
 ```
 
 ## Disk
@@ -8572,7 +8578,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       913Mi       330Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       926Mi       316Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
