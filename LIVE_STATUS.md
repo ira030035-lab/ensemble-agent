@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-07 02:30:01 UTC
+Generated: 2026-07-07 02:40:01 UTC
 
 ## Services
 ```
@@ -12,26 +12,14 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61988 49656 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 286248 52212 ?        Ssl  Jun12   1:33 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  48:09 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  48:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
 ```json
 {
-  "balance": 947.5869716419257,
+  "balance": 965.5591936719258,
   "positions": {
-    "NEARUSDT": {
-      "id": "PAPER_NEARUSDT_1783358144",
-      "symbol": "NEARUSDT",
-      "side": "long",
-      "entry_price": 2.0811,
-      "qty": 48.0515,
-      "confidence": 80,
-      "opened_at": "2026-07-06T17:15:44.122250",
-      "cost": 19.99999533,
-      "notional": 99.99997665000001,
-      "leverage": 5
-    },
     "SOLUSDT": {
       "id": "PAPER_SOLUSDT_1783372479",
       "symbol": "SOLUSDT",
@@ -8445,20 +8433,32 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  48:09 /opt/ensemble
       "closed_at": "2026-07-07T00:37:48.398216",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_NEARUSDT_1783358144",
+      "symbol": "NEARUSDT",
+      "side": "long",
+      "entry_price": 2.0811,
+      "qty": 48.0515,
+      "confidence": 80,
+      "opened_at": "2026-07-06T17:15:44.122250",
+      "cost": 19.99999533,
+      "notional": 99.99997665000001,
+      "leverage": 5,
+      "exit_price": 2.0389,
+      "pnl_pct": -10.14,
+      "pnl_usdt": -2.03,
+      "closed_at": "2026-07-07T02:34:28.826069",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 8.075591011926058
+  "total_pnl": 6.047817711926046
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-07 02:25:15,054 [INFO] main: WLDUSDT | RL adj=92.2%
-2026-07-07 02:25:15,066 [INFO] main: WLDUSDT | Context score=-0.05 bias=0.05
-2026-07-07 02:25:15,066 [INFO] main: WLDUSDT | macro BLOCK (short при BTC uptrend)
-2026-07-07 02:25:22,049 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-07 02:25:22,984 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-07 02:25:22,985 [INFO] main: TAOUSDT | Bull:flat(35%) Bear:short(70%)
 2026-07-07 02:25:25,610 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-07 02:25:25,610 [INFO] main: TAOUSDT | Judge:HOLD conf=55% size=0.0%
 2026-07-07 02:25:25,610 [INFO] main: TAOUSDT | RL adj=55.0%
@@ -8483,6 +8483,12 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  48:09 /opt/ensemble
 2026-07-07 02:25:55,422 [INFO] main: TLMUSDT | Judge:HOLD conf=45% size=0.0%
 2026-07-07 02:25:55,422 [INFO] main: TLMUSDT | RL adj=45.0%
 2026-07-07 02:25:57,424 [INFO] main: Next scan in 30min (always-30min)
+2026-07-07 02:30:50,649 [INFO] main: Symbols: 30
+2026-07-07 02:34:28,823 [INFO] positions: STOP_LOSS NEARUSDT long PnL:-2.03%
+2026-07-07 02:34:28,837 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG NEARUSDT @ 2.0389 PnL: -10.14% (-2.03 USDT) | Баланс: 965.56
+2026-07-07 02:34:29,105 [INFO] positions: LOSS NEARUSDT long PnL:-2.03% reason:stop_loss
+2026-07-07 02:34:29,105 [INFO] positions: Lessons: The trade on NEARUSDT resulted in a 2.03% loss due to a stop loss, contrary to the expected 4% upside move. The indicators that suggested a bullish trend were incorrect, and the asymmetric risk framework did not yield the desired outcome. This trade highlights the importance of reevaluating indicator reliability and risk management strategies.
+2026-07-07 02:34:29,105 [INFO] rl: RL learned from long NEARUSDT: loss -2.03% | weights bull=0.901 bear=0.686 judge=1.413 threshold=67.06
 ```
 
 ## Disk
@@ -8500,7 +8506,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       919Mi       360Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       912Mi       367Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
