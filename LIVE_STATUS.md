@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-07 20:20:01 UTC
+Generated: 2026-07-07 20:30:01 UTC
 
 ## Services
 ```
@@ -8531,36 +8531,36 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:59 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-07 19:58:03,253 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-07 19:58:03,255 [INFO] main: EDGEUSDT | Bull:flat(25%) Bear:short(70%)
-2026-07-07 19:58:05,338 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-07 19:58:05,339 [INFO] main: EDGEUSDT | Judge:SHORT conf=70% size=15.0%
-2026-07-07 19:58:05,339 [INFO] main: EDGEUSDT | RL adj=77.2%
-2026-07-07 19:58:05,359 [INFO] main: EDGEUSDT | Context score=-0.1 bias=0.1
-2026-07-07 19:58:05,359 [INFO] main: EDGEUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-07 19:58:12,314 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-07 19:58:12,796 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-07 19:58:12,797 [INFO] main: AAVEUSDT | Bull:flat(15%) Bear:short(80%)
-2026-07-07 19:58:14,757 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-07 19:58:14,758 [INFO] main: AAVEUSDT | Judge:SHORT conf=80% size=15.0%
-2026-07-07 19:58:14,759 [INFO] main: AAVEUSDT | RL adj=88.2%
-2026-07-07 19:58:14,778 [INFO] main: AAVEUSDT | Context score=-0.1 bias=0.1
-2026-07-07 19:58:14,779 [INFO] main: AAVEUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-07 19:58:20,983 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-07 19:58:21,338 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-07 19:58:21,339 [INFO] main: ETHUSDT | Bull:flat(15%) Bear:short(80%)
-2026-07-07 19:58:23,603 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-07 19:58:23,604 [INFO] main: ETHUSDT | Judge:SHORT conf=70% size=15.0%
-2026-07-07 19:58:23,604 [INFO] main: ETHUSDT | RL adj=78.2%
-2026-07-07 19:58:23,697 [INFO] main: ETHUSDT | Context score=-0.1 bias=0.1
-2026-07-07 19:58:23,697 [INFO] main: ETHUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-07 19:58:30,401 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-07 19:58:30,665 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-07 19:58:30,666 [INFO] main: HYPEUSDT | Bull:flat(15%) Bear:short(80%)
-2026-07-07 19:58:32,458 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-07 19:58:32,460 [INFO] main: HYPEUSDT | Judge:HOLD conf=50% size=0.0%
-2026-07-07 19:58:32,460 [INFO] main: HYPEUSDT | RL adj=50.0%
-2026-07-07 19:58:34,461 [INFO] main: Next scan in 30min (always-30min)
+2026-07-07 20:29:12,549 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-07-07 20:29:16,252 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-07 20:29:21,867 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 20:29:21,869 [INFO] main: PEPEUSDT | Bull:flat(15%) Bear:short(70%)
+2026-07-07 20:29:29,430 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 20:29:29,430 [INFO] main: PEPEUSDT | Judge:SHORT conf=70% size=15.0%
+2026-07-07 20:29:29,430 [INFO] main: PEPEUSDT | RL adj=77.2%
+2026-07-07 20:29:29,441 [INFO] main: PEPEUSDT | Context score=-0.1 bias=0.1
+2026-07-07 20:29:29,441 [INFO] main: PEPEUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-07-07 20:29:32,857 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-07-07 20:29:36,716 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 20:29:36,772 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-07 20:29:36,773 [INFO] main: OPGUSDT | Bull:flat(25%) Bear:short(65%)
+2026-07-07 20:29:39,150 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 20:29:39,151 [INFO] main: OPGUSDT | Judge:HOLD conf=60% size=0.0%
+2026-07-07 20:29:39,151 [INFO] main: OPGUSDT | RL adj=60.0%
+2026-07-07 20:29:45,902 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 20:29:45,911 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-07 20:29:45,912 [INFO] main: SUIUSDT | Bull:flat(15%) Bear:short(75%)
+2026-07-07 20:29:48,281 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 20:29:48,282 [INFO] main: SUIUSDT | Judge:HOLD conf=55% size=0.0%
+2026-07-07 20:29:48,282 [INFO] main: SUIUSDT | RL adj=55.0%
+2026-07-07 20:29:53,368 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 20:29:54,457 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-07 20:29:54,457 [INFO] main: ENAUSDT | Bull:flat(15%) Bear:short(75%)
+2026-07-07 20:29:56,675 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 20:29:56,676 [INFO] main: ENAUSDT | Judge:SHORT conf=85% size=15.0%
+2026-07-07 20:29:56,676 [INFO] main: ENAUSDT | RL adj=92.7%
+2026-07-07 20:29:56,687 [INFO] main: ENAUSDT | Context score=-0.1 bias=0.1
+2026-07-07 20:29:56,687 [INFO] main: ENAUSDT | side-bias BLOCK (market bullish, short forbidden)
 ```
 
 ## Disk
@@ -8578,7 +8578,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       910Mi       328Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       922Mi       315Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
