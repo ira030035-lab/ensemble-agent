@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-07 11:30:01 UTC
+Generated: 2026-07-07 11:40:01 UTC
 
 ## Services
 ```
@@ -8477,7 +8477,6 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:03 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-07 11:19:35,571 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
 2026-07-07 11:19:37,972 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-07 11:19:39,233 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-07 11:19:39,234 [INFO] main: TAOUSDT | Bull:flat(25%) Bear:short(80%)
@@ -8507,6 +8506,7 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:03 /opt/ensemble
 2026-07-07 11:20:11,066 [INFO] main: LTCUSDT | Context score=-0.05 bias=0.05
 2026-07-07 11:20:11,066 [INFO] main: LTCUSDT | macro BLOCK (short при BTC uptrend)
 2026-07-07 11:20:13,069 [INFO] main: Next scan in 30min (always-30min)
+2026-07-07 11:30:56,468 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8524,7 +8524,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       929Mi       330Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       910Mi       349Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
