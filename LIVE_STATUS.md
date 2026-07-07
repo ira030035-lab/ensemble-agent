@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-07 15:30:01 UTC
+Generated: 2026-07-07 15:40:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:29 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 941.8993000119259,
+  "balance": 965.2600888119259,
   "positions": {
     "AVAXUSDT": {
       "id": "PAPER_AVAXUSDT_1783403607",
@@ -42,18 +42,6 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:29 /opt/ensemble
       "opened_at": "2026-07-07T12:25:26.120816",
       "cost": 19.99977512,
       "notional": 99.99887559999999,
-      "leverage": 5
-    },
-    "ZECUSDT": {
-      "id": "PAPER_ZECUSDT_1783435710",
-      "symbol": "ZECUSDT",
-      "side": "long",
-      "entry_price": 465.48,
-      "qty": 0.2148,
-      "confidence": 85,
-      "opened_at": "2026-07-07T14:48:30.685512",
-      "cost": 19.997020799999998,
-      "notional": 99.98510399999999,
       "leverage": 5
     }
   },
@@ -8499,20 +8487,32 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:29 /opt/ensemble
       "closed_at": "2026-07-07T14:36:47.390390",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_ZECUSDT_1783435710",
+      "symbol": "ZECUSDT",
+      "side": "long",
+      "entry_price": 465.48,
+      "qty": 0.2148,
+      "confidence": 85,
+      "opened_at": "2026-07-07T14:48:30.685512",
+      "cost": 19.997020799999998,
+      "notional": 99.98510399999999,
+      "leverage": 5,
+      "exit_price": 481.14,
+      "pnl_pct": 16.82,
+      "pnl_usdt": 3.36,
+      "closed_at": "2026-07-07T15:36:53.510287",
+      "reason": "take_profit",
+      "outcome": "profit"
     }
   ],
-  "total_pnl": 1.8961121119260667
+  "total_pnl": 5.25988011192606
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-07 15:22:25,112 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-07 15:22:25,112 [INFO] main: TLMUSDT | Bull:flat(15%) Bear:short(70%)
-2026-07-07 15:22:27,666 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-07 15:22:27,667 [INFO] main: TLMUSDT | Judge:SHORT conf=80% size=15.0%
-2026-07-07 15:22:27,667 [INFO] main: TLMUSDT | RL adj=87.3%
-2026-07-07 15:22:27,681 [INFO] main: TLMUSDT | Context score=-0.05 bias=0.05
 2026-07-07 15:22:27,681 [INFO] main: TLMUSDT | regime BLOCK (volatile)
 2026-07-07 15:22:34,278 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-07 15:22:34,879 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -8537,6 +8537,12 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:29 /opt/ensemble
 2026-07-07 15:22:57,715 [INFO] main: EVAAUSDT | Context score=-0.0 bias=0.05
 2026-07-07 15:22:57,715 [INFO] main: EVAAUSDT | regime BLOCK (volatile)
 2026-07-07 15:22:59,785 [INFO] main: Next scan in 30min (always-30min)
+2026-07-07 15:30:59,187 [INFO] main: Symbols: 30
+2026-07-07 15:36:53,507 [INFO] positions: TAKE-PROFIT ZECUSDT long PnL:3.36%
+2026-07-07 15:36:53,518 [INFO] paper_trading: [PAPER] ✅ ЗАКРЫТА LONG ZECUSDT @ 481.1400 PnL: 16.82% (+3.36 USDT) | Баланс: 965.26
+2026-07-07 15:36:53,836 [INFO] positions: OK ZECUSDT long PnL:3.36% reason:take_profit
+2026-07-07 15:36:53,836 [INFO] positions: Lessons: The trade was based on a bullish confluence of indicators in a trending-up market, with a weaker bear argument. The position was closed at a 3.36% profit, meeting the expected upside. This outcome reinforces the importance of identifying and acting on significant bullish signals in a trending-up regime.
+2026-07-07 15:36:53,836 [INFO] rl: RL learned from long ZECUSDT: profit 3.36% | weights bull=0.901 bear=0.682 judge=1.417 threshold=67.13
 ```
 
 ## Disk
@@ -8554,7 +8560,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       919Mi       333Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       909Mi       343Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
