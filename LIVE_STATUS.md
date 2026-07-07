@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-07 14:30:01 UTC
+Generated: 2026-07-07 14:40:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:21 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 943.5543368119259,
+  "balance": 961.8963208119259,
   "positions": {
-    "BTCUSDT": {
-      "id": "PAPER_BTCUSDT_1783384892",
-      "symbol": "BTCUSDT",
-      "side": "long",
-      "entry_price": 64024.7,
-      "qty": 0.0016,
-      "confidence": 75,
-      "opened_at": "2026-07-07T00:41:32.290668",
-      "cost": 20.487904,
-      "notional": 102.43952,
-      "leverage": 5
-    },
     "AVAXUSDT": {
       "id": "PAPER_AVAXUSDT_1783403607",
       "symbol": "AVAXUSDT",
@@ -8481,20 +8469,32 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:21 /opt/ensemble
       "closed_at": "2026-07-07T02:51:48.686149",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_BTCUSDT_1783384892",
+      "symbol": "BTCUSDT",
+      "side": "long",
+      "entry_price": 64024.7,
+      "qty": 0.0016,
+      "confidence": 75,
+      "opened_at": "2026-07-07T00:41:32.290668",
+      "cost": 20.487904,
+      "notional": 102.43952,
+      "leverage": 5,
+      "exit_price": 62683.5,
+      "pnl_pct": -10.47,
+      "pnl_usdt": -2.15,
+      "closed_at": "2026-07-07T14:36:47.390390",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": 4.042032111926062
+  "total_pnl": 1.8961121119260667
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-07 14:13:08,315 [INFO] main: 1000BONKUSDT | Context score=-0.05 bias=0.05
-2026-07-07 14:13:08,315 [INFO] main: 1000BONKUSDT | regime BLOCK (volatile)
-2026-07-07 14:13:11,867 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-07-07 14:13:14,309 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-07 14:13:15,367 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-07 14:13:15,369 [INFO] main: EPICUSDT | Bull:flat(15%) Bear:short(70%)
 2026-07-07 14:13:19,348 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-07 14:13:19,350 [INFO] main: EPICUSDT | Judge:SHORT conf=70% size=15.0%
 2026-07-07 14:13:19,350 [INFO] main: EPICUSDT | RL adj=77.2%
@@ -8519,6 +8519,12 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:21 /opt/ensemble
 2026-07-07 14:13:40,263 [INFO] main: XLMUSDT | Context score=-0.05 bias=0.05
 2026-07-07 14:13:40,263 [INFO] main: XLMUSDT | macro BLOCK (short при BTC uptrend)
 2026-07-07 14:13:42,266 [INFO] main: Next scan in 30min (always-30min)
+2026-07-07 14:30:58,508 [INFO] main: Symbols: 30
+2026-07-07 14:36:47,387 [INFO] positions: STOP_LOSS BTCUSDT long PnL:-2.09%
+2026-07-07 14:36:47,407 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG BTCUSDT @ 62683.5000 PnL: -10.47% (-2.15 USDT) | Баланс: 961.90
+2026-07-07 14:36:47,688 [INFO] positions: LOSS BTCUSDT long PnL:-2.09% reason:stop_loss
+2026-07-07 14:36:47,688 [INFO] positions: Lessons: The trade was closed at a 2.09% loss due to a stop loss trigger. Despite bullish sentiment and a favorable RSI, the upward momentum did not materialize. This outcome highlights the importance of risk management and not overrelying on sentiment and technical indicators in a trending_up regime.
+2026-07-07 14:36:47,688 [INFO] rl: RL learned from long BTCUSDT: loss -2.09% | weights bull=0.894 bear=0.691 judge=1.415 threshold=67.16
 ```
 
 ## Disk
@@ -8536,7 +8542,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       915Mi       339Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       911Mi       343Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
