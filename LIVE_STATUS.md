@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-07 19:10:01 UTC
+Generated: 2026-07-07 19:20:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61988 49656 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 285224 51212 ?        Ssl  Jun12   1:33 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:51 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:52 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8531,15 +8531,6 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:51 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-07 18:49:19,022 [INFO] main: USUSDT | Judge:HOLD conf=55% size=0.0%
-2026-07-07 18:49:19,022 [INFO] main: USUSDT | RL adj=55.0%
-2026-07-07 18:49:24,787 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-07 18:49:26,192 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-07 18:49:26,193 [INFO] main: ZECUSDT | Bull:flat(15%) Bear:short(70%)
-2026-07-07 18:49:29,053 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-07 18:49:29,054 [INFO] main: ZECUSDT | Judge:HOLD conf=45% size=0.0%
-2026-07-07 18:49:29,054 [INFO] main: ZECUSDT | RL adj=45.0%
-2026-07-07 18:49:35,087 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-07 18:49:35,827 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-07 18:49:35,829 [INFO] main: XLMUSDT | Bull:flat(15%) Bear:short(75%)
 2026-07-07 18:49:38,000 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -8561,6 +8552,15 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:51 /opt/ensemble
 2026-07-07 18:50:13,892 [INFO] positions: LOSS HYPEUSDT long PnL:-2.67% reason:stop_loss
 2026-07-07 18:50:13,892 [INFO] positions: Lessons: The trade was based on bullish conditions with a trending up regime, but ultimately hit the stop loss. The loss was contained at 2.67%, which is within acceptable risk parameters. This trade serves as a reminder that even with strong technical indicators, trends can reverse quickly and stop losses are essential.
 2026-07-07 18:50:13,892 [INFO] rl: RL learned from long HYPEUSDT: loss -2.67% | weights bull=0.897 bear=0.685 judge=1.418 threshold=67.18
+2026-07-07 19:19:51,373 [INFO] main: Scanning 28 symbols...
+2026-07-07 19:19:55,749 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 19:19:56,829 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-07 19:19:56,831 [INFO] main: TACUSDT | Bull:flat(15%) Bear:short(65%)
+2026-07-07 19:19:59,172 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 19:19:59,173 [INFO] main: TACUSDT | Judge:SHORT conf=85% size=15.0%
+2026-07-07 19:19:59,173 [INFO] main: TACUSDT | RL adj=91.7%
+2026-07-07 19:19:59,194 [INFO] main: TACUSDT | Context score=-0.1 bias=0.1
+2026-07-07 19:19:59,195 [INFO] main: TACUSDT | side-bias BLOCK (market bullish, short forbidden)
 ```
 
 ## Disk
@@ -8578,7 +8578,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       909Mi       332Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       913Mi       328Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
