@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-07 12:50:01 UTC
+Generated: 2026-07-07 13:00:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1408411  0.0  1.2  61988 49656 ?        Ss   Jun12   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1408416  0.0  1.3 286248 52212 ?        Ssl  Jun12   1:33 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:11 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8489,36 +8489,36 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  49:10 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-07 12:28:50,324 [INFO] main: DOGEUSDT | Bull:flat(25%) Bear:short(80%)
-2026-07-07 12:28:52,465 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-07 12:28:52,465 [INFO] main: DOGEUSDT | Judge:HOLD conf=55% size=0.0%
-2026-07-07 12:28:52,465 [INFO] main: DOGEUSDT | RL adj=55.0%
-2026-07-07 12:28:58,050 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-07 12:28:59,134 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-07 12:28:59,135 [INFO] main: EPICUSDT | Bull:flat(25%) Bear:short(75%)
-2026-07-07 12:29:01,329 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-07 12:29:01,329 [INFO] main: EPICUSDT | Judge:SHORT conf=75% size=15.0%
-2026-07-07 12:29:01,330 [INFO] main: EPICUSDT | RL adj=82.7%
-2026-07-07 12:29:01,340 [INFO] main: EPICUSDT | Context score=-0.1 bias=0.1
-2026-07-07 12:29:01,340 [INFO] main: EPICUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-07 12:29:07,186 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-07 12:29:08,724 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-07 12:29:08,725 [INFO] main: ADAUSDT | Bull:flat(25%) Bear:short(65%)
-2026-07-07 12:29:11,113 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-07 12:29:11,115 [INFO] main: ADAUSDT | Judge:SHORT conf=80% size=15.0%
-2026-07-07 12:29:11,115 [INFO] main: ADAUSDT | RL adj=86.7%
-2026-07-07 12:29:11,139 [INFO] main: ADAUSDT | Context score=-0.1 bias=0.1
-2026-07-07 12:29:11,139 [INFO] main: ADAUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-07 12:29:17,432 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-07 12:29:18,001 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-07 12:29:18,002 [INFO] main: XLMUSDT | Bull:flat(35%) Bear:short(75%)
-2026-07-07 12:29:21,095 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-07 12:29:21,096 [INFO] main: XLMUSDT | Judge:SHORT conf=85% size=15.0%
-2026-07-07 12:29:21,096 [INFO] main: XLMUSDT | RL adj=92.7%
-2026-07-07 12:29:21,108 [INFO] main: XLMUSDT | Context score=-0.1 bias=0.1
-2026-07-07 12:29:21,108 [INFO] main: XLMUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-07 12:29:23,166 [INFO] main: Next scan in 30min (always-30min)
 2026-07-07 12:30:57,139 [INFO] main: Symbols: 30
+2026-07-07 12:59:23,173 [INFO] main: Scanning 27 symbols...
+2026-07-07 12:59:25,524 [INFO] main: LTCUSDT | Bull:long(72%) Bear:short(72%)
+2026-07-07 12:59:27,808 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 12:59:27,810 [INFO] main: LTCUSDT | Judge:SHORT conf=75% size=15.0%
+2026-07-07 12:59:27,810 [INFO] main: LTCUSDT | RL adj=72.7%
+2026-07-07 12:59:27,835 [INFO] main: LTCUSDT | Context score=-0.1 bias=0.1
+2026-07-07 12:59:27,836 [INFO] main: LTCUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-07-07 12:59:31,702 [INFO] main: BLURUSDT | Bull:long(80%) Bear:short(70%)
+2026-07-07 12:59:34,057 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 12:59:34,059 [INFO] main: BLURUSDT | Judge:LONG conf=85% size=15.0%
+2026-07-07 12:59:34,059 [INFO] main: BLURUSDT | RL adj=88.5%
+2026-07-07 12:59:34,082 [INFO] main: BLURUSDT | Context score=-0.0 bias=0.1
+2026-07-07 12:59:34,082 [INFO] main: BLURUSDT | regime BLOCK (volatile)
+2026-07-07 12:59:37,932 [INFO] main: 1000BONKUSDT | Bull:long(72%) Bear:short(72%)
+2026-07-07 12:59:40,346 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 12:59:40,348 [INFO] main: 1000BONKUSDT | Judge:HOLD conf=55% size=0.0%
+2026-07-07 12:59:40,348 [INFO] main: 1000BONKUSDT | RL adj=55.0%
+2026-07-07 12:59:44,322 [INFO] main: LINKUSDT | Bull:long(72%) Bear:short(72%)
+2026-07-07 12:59:46,888 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 12:59:46,890 [INFO] main: LINKUSDT | Judge:SHORT conf=70% size=15.0%
+2026-07-07 12:59:46,890 [INFO] main: LINKUSDT | RL adj=67.7%
+2026-07-07 12:59:46,911 [INFO] main: LINKUSDT | Context score=-0.1 bias=0.1
+2026-07-07 12:59:46,911 [INFO] main: LINKUSDT | side-bias BLOCK (market bullish, short forbidden)
+2026-07-07 12:59:50,706 [INFO] main: PEPEUSDT | Bull:long(60%) Bear:short(85%)
+2026-07-07 12:59:53,079 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-07 12:59:53,081 [INFO] main: PEPEUSDT | Judge:SHORT conf=85% size=15.0%
+2026-07-07 12:59:53,081 [INFO] main: PEPEUSDT | RL adj=85.7%
+2026-07-07 12:59:53,101 [INFO] main: PEPEUSDT | Context score=-0.1 bias=0.1
+2026-07-07 12:59:53,101 [INFO] main: PEPEUSDT | side-bias BLOCK (market bullish, short forbidden)
 ```
 
 ## Disk
@@ -8536,7 +8536,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       910Mi       346Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       922Mi       335Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
