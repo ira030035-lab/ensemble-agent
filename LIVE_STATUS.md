@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-08 03:30:01 UTC
+Generated: 2026-07-08 03:40:01 UTC
 
 ## Services
 ```
@@ -8596,7 +8596,6 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  50:51 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-08 03:27:18,066 [INFO] main: ENAUSDT | RL adj=94.2%
 2026-07-08 03:27:18,078 [INFO] main: ENAUSDT | Context score=-0.1 bias=0.1
 2026-07-08 03:27:18,078 [INFO] main: ENAUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-08 03:27:24,960 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
@@ -8626,6 +8625,7 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  50:51 /opt/ensemble
 2026-07-08 03:27:53,310 [INFO] main: PEPEUSDT | Context score=-0.1 bias=0.1
 2026-07-08 03:27:53,310 [INFO] main: PEPEUSDT | side-bias BLOCK (market bullish, short forbidden)
 2026-07-08 03:27:55,372 [INFO] main: Next scan in 30min (always-30min)
+2026-07-08 03:31:07,004 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       922Mi       303Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       910Mi       316Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
