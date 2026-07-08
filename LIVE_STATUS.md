@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-08 02:00:01 UTC
+Generated: 2026-07-08 02:10:01 UTC
 
 ## Services
 ```
@@ -18,7 +18,7 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  50:37 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 956.5366056021257,
+  "balance": 974.5291515861257,
   "positions": {
     "XLMUSDT": {
       "id": "PAPER_XLMUSDT_1783472690",
@@ -30,18 +30,6 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  50:37 /opt/ensemble
       "opened_at": "2026-07-08T01:04:50.959715",
       "cost": 19.9999991058,
       "notional": 99.999995529,
-      "leverage": 5
-    },
-    "NEARUSDT": {
-      "id": "PAPER_NEARUSDT_1783474715",
-      "symbol": "NEARUSDT",
-      "side": "long",
-      "entry_price": 1.9328,
-      "qty": 51.7384,
-      "confidence": 70,
-      "opened_at": "2026-07-08T01:38:35.587003",
-      "cost": 19.999995904,
-      "notional": 99.99997952,
       "leverage": 5
     }
   },
@@ -8577,19 +8565,32 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  50:37 /opt/ensemble
       "closed_at": "2026-07-08T01:56:36.154585",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_NEARUSDT_1783474715",
+      "symbol": "NEARUSDT",
+      "side": "long",
+      "entry_price": 1.9328,
+      "qty": 51.7384,
+      "confidence": 70,
+      "opened_at": "2026-07-08T01:38:35.587003",
+      "cost": 19.999995904,
+      "notional": 99.99997952,
+      "leverage": 5,
+      "exit_price": 1.894,
+      "pnl_pct": -10.04,
+      "pnl_usdt": -2.01,
+      "closed_at": "2026-07-08T02:01:42.212306",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -3.4633993880739564
+  "total_pnl": -5.470849308073965
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-08 01:41:13,244 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-08 01:41:13,246 [INFO] main: BTCUSDT | Judge:HOLD conf=50% size=0.0%
-2026-07-08 01:41:13,246 [INFO] main: BTCUSDT | RL adj=50.0%
-2026-07-08 01:41:16,655 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-07-08 01:41:19,393 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-08 01:41:20,094 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-08 01:41:20,096 [INFO] main: ZECUSDT | Bull:long(62%) Bear:short(80%)
 2026-07-08 01:41:22,338 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -8615,6 +8616,11 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  50:37 /opt/ensemble
 2026-07-08 01:56:36,480 [INFO] positions: LOSS TAOUSDT long PnL:-2.01% reason:stop_loss
 2026-07-08 01:56:36,481 [INFO] positions: Lessons: TAOUSDT long trade resulted in a 2.01% loss due to stop loss, despite initial bullish MACD signal. The trade was based on a potential 4% upside move with 2:1 risk/reward ratio, but ultimately did not play out. This serves as a reminder to be cautious when trading with mixed signals and extreme fear sentiment.
 2026-07-08 01:56:36,481 [INFO] rl: RL learned from long TAOUSDT: loss -2.01% | weights bull=0.886 bear=0.692 judge=1.422 threshold=67.33
+2026-07-08 02:01:42,210 [INFO] positions: STOP_LOSS NEARUSDT long PnL:-2.01%
+2026-07-08 02:01:42,222 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG NEARUSDT @ 1.8940 PnL: -10.04% (-2.01 USDT) | Баланс: 974.53
+2026-07-08 02:01:42,673 [INFO] positions: LOSS NEARUSDT long PnL:-2.01% reason:stop_loss
+2026-07-08 02:01:42,673 [INFO] positions: Lessons: The trade on NEARUSDT resulted in a 2.01% loss due to a stop loss being triggered. Despite initial bull sentiment, the market continued its downtrend, indicating that sentiment analysis may not always be a reliable indicator of price movement. This trade highlights the importance of adhering to risk management strategies and accepting losses when they occur.
+2026-07-08 02:01:42,673 [INFO] rl: RL learned from long NEARUSDT: loss -2.01% | weights bull=0.883 bear=0.695 judge=1.423 threshold=67.38
 ```
 
 ## Disk
@@ -8632,7 +8638,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       922Mi       306Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       911Mi       317Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
