@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-08 01:50:01 UTC
+Generated: 2026-07-08 02:00:01 UTC
 
 ## Services
 ```
@@ -18,20 +18,8 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  50:37 /opt/ensemble
 ## Paper state
 ```json
 {
-  "balance": 938.5521560021258,
+  "balance": 956.5366056021257,
   "positions": {
-    "TAOUSDT": {
-      "id": "PAPER_TAOUSDT_1783470557",
-      "symbol": "TAOUSDT",
-      "side": "long",
-      "entry_price": 212.48,
-      "qty": 0.4706,
-      "confidence": 70,
-      "opened_at": "2026-07-08T00:29:17.524865",
-      "cost": 19.9986176,
-      "notional": 99.993088,
-      "leverage": 5
-    },
     "XLMUSDT": {
       "id": "PAPER_XLMUSDT_1783472690",
       "symbol": "XLMUSDT",
@@ -8571,19 +8559,32 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  50:37 /opt/ensemble
       "closed_at": "2026-07-08T01:35:01.004721",
       "reason": "stop_loss",
       "outcome": "loss"
+    },
+    {
+      "id": "PAPER_TAOUSDT_1783470557",
+      "symbol": "TAOUSDT",
+      "side": "long",
+      "entry_price": 212.48,
+      "qty": 0.4706,
+      "confidence": 70,
+      "opened_at": "2026-07-08T00:29:17.524865",
+      "cost": 19.9986176,
+      "notional": 99.993088,
+      "leverage": 5,
+      "exit_price": 208.2,
+      "pnl_pct": -10.07,
+      "pnl_usdt": -2.01,
+      "closed_at": "2026-07-08T01:56:36.154585",
+      "reason": "stop_loss",
+      "outcome": "loss"
     }
   ],
-  "total_pnl": -1.4492313880739558
+  "total_pnl": -3.4633993880739564
 }
 ```
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-08 01:41:03,420 [INFO] main: HYPEUSDT | side-bias BLOCK (market bullish, short forbidden)
-2026-07-08 01:41:08,876 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-07-08 01:41:10,490 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-08 01:41:10,492 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
-2026-07-08 01:41:10,492 [INFO] main: BTCUSDT | Bull:flat(15%) Bear:short(70%)
 2026-07-08 01:41:13,244 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-08 01:41:13,246 [INFO] main: BTCUSDT | Judge:HOLD conf=50% size=0.0%
 2026-07-08 01:41:13,246 [INFO] main: BTCUSDT | RL adj=50.0%
@@ -8609,6 +8610,11 @@ root     1488950  0.1  3.7 739384 145636 ?       Ssl  Jun16  50:37 /opt/ensemble
 2026-07-08 01:41:45,360 [INFO] main: ADAUSDT | Judge:HOLD conf=40% size=0.0%
 2026-07-08 01:41:45,360 [INFO] main: ADAUSDT | RL adj=40.0%
 2026-07-08 01:41:47,362 [INFO] main: Next scan in 30min (always-30min)
+2026-07-08 01:56:36,152 [INFO] positions: STOP_LOSS TAOUSDT long PnL:-2.01%
+2026-07-08 01:56:36,162 [INFO] paper_trading: [PAPER] ❌ ЗАКРЫТА LONG TAOUSDT @ 208.2000 PnL: -10.07% (-2.01 USDT) | Баланс: 956.54
+2026-07-08 01:56:36,480 [INFO] positions: LOSS TAOUSDT long PnL:-2.01% reason:stop_loss
+2026-07-08 01:56:36,481 [INFO] positions: Lessons: TAOUSDT long trade resulted in a 2.01% loss due to stop loss, despite initial bullish MACD signal. The trade was based on a potential 4% upside move with 2:1 risk/reward ratio, but ultimately did not play out. This serves as a reminder to be cautious when trading with mixed signals and extreme fear sentiment.
+2026-07-08 01:56:36,481 [INFO] rl: RL learned from long TAOUSDT: loss -2.01% | weights bull=0.886 bear=0.692 judge=1.422 threshold=67.33
 ```
 
 ## Disk
@@ -8626,7 +8632,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       927Mi       301Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       922Mi       306Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
