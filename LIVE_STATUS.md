@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-09 20:50:01 UTC
+Generated: 2026-07-09 21:00:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1975477  0.0  1.0  55200 42016 ?        Ss   06:58   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1975479  0.0  1.2 136516 48956 ?        Ssl  06:58   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1975483  0.1  3.4 697424 135624 ?       Ssl  06:58   1:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1975483  0.1  3.5 699004 136936 ?       Ssl  06:58   1:26 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8596,7 +8596,6 @@ root     1975483  0.1  3.4 697424 135624 ?       Ssl  06:58   1:26 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-09 20:33:19,489 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-09 20:33:21,575 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-09 20:33:21,577 [INFO] main: NEARUSDT | Bull:flat(35%) Bear:flat(45%)
 2026-07-09 20:33:21,809 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
@@ -8626,6 +8625,7 @@ root     1975483  0.1  3.4 697424 135624 ?       Ssl  06:58   1:26 /opt/ensemble
 2026-07-09 20:33:33,742 [INFO] main: SUIUSDT | Judge:HOLD conf=50% size=0.0%
 2026-07-09 20:33:33,742 [INFO] main: SUIUSDT | RL adj=50.0%
 2026-07-09 20:33:35,744 [INFO] main: Next scan in 30min (always-30min)
+2026-07-09 20:58:33,697 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       909Mi       341Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       918Mi       332Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
