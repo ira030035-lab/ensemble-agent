@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-10 08:00:01 UTC
+Generated: 2026-07-10 08:10:01 UTC
 
 ## Services
 ```
@@ -8596,19 +8596,6 @@ root     1975483  0.1  3.5 699952 138380 ?       Ssl  Jul09   2:34 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-10 07:39:36,554 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-10 07:39:36,556 [INFO] main: LINKUSDT | Bull:flat(35%) Bear:flat(45%)
-2026-07-10 07:39:36,782 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-10 07:39:36,783 [INFO] openai._base_client: Retrying request to /chat/completions in 0.454553 seconds
-2026-07-10 07:39:37,438 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-10 07:39:37,438 [INFO] openai._base_client: Retrying request to /chat/completions in 0.848460 seconds
-2026-07-10 07:39:38,492 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-10 07:39:38,492 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'Your account org-b15d7af77d7b407d9d9f07f16a409e94 <ak-fabqohadqgu111dtsdp1> is suspended due to insufficient balance, please recharge your account or check your plan and billing details', 'type': 'exceeded_current_quota_error'}}
-2026-07-10 07:39:38,492 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
-2026-07-10 07:39:38,492 [INFO] main: LINKUSDT | Judge:HOLD conf=50% size=0.0%
-2026-07-10 07:39:38,492 [INFO] main: LINKUSDT | RL adj=50.0%
-2026-07-10 07:39:42,125 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-10 07:39:42,126 [INFO] openai._base_client: Retrying request to /chat/completions in 0.446001 seconds
 2026-07-10 07:39:42,793 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-07-10 07:39:42,794 [INFO] openai._base_client: Retrying request to /chat/completions in 0.979841 seconds
 2026-07-10 07:39:44,000 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
@@ -8626,6 +8613,19 @@ root     1975483  0.1  3.5 699952 138380 ?       Ssl  Jul09   2:34 /opt/ensemble
 2026-07-10 07:39:49,116 [INFO] main: ARBUSDT | RL adj=50.0%
 2026-07-10 07:39:51,118 [INFO] main: Next scan in 30min (always-30min)
 2026-07-10 07:58:41,060 [INFO] main: Symbols: 30
+2026-07-10 08:09:51,134 [INFO] main: Scanning 30 symbols...
+2026-07-10 08:09:52,875 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-10 08:09:52,876 [INFO] openai._base_client: Retrying request to /chat/completions in 0.467599 seconds
+2026-07-10 08:09:53,572 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-10 08:09:53,572 [INFO] openai._base_client: Retrying request to /chat/completions in 0.846094 seconds
+2026-07-10 08:09:54,640 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-10 08:09:56,423 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-10 08:10:00,801 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-10 08:10:00,802 [INFO] main: PEPEUSDT | Bull:flat(15%) Bear:short(72%)
+2026-07-10 08:10:01,023 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-10 08:10:01,023 [INFO] openai._base_client: Retrying request to /chat/completions in 0.384389 seconds
+2026-07-10 08:10:01,636 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-10 08:10:01,637 [INFO] openai._base_client: Retrying request to /chat/completions in 0.782492 seconds
 ```
 
 ## Disk
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       924Mi       304Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       914Mi       314Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
