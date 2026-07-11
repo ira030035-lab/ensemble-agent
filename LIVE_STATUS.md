@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-11 01:10:01 UTC
+Generated: 2026-07-11 01:20:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1975477  0.0  1.0  55344 42044 ?        Ss   Jul09   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1975479  0.0  1.2 136516 48940 ?        Ssl  Jul09   0:02 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     1975483  0.1  3.5 700432 138560 ?       Ssl  Jul09   4:15 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     1975483  0.1  3.5 700432 138560 ?       Ssl  Jul09   4:18 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8596,36 +8596,36 @@ root     1975483  0.1  3.5 700432 138560 ?       Ssl  Jul09   4:15 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-11 00:40:52,968 [INFO] main: UNIUSDT | Bull:flat(15%) Bear:short(72%)
-2026-07-11 00:40:53,187 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-11 00:40:53,187 [INFO] openai._base_client: Retrying request to /chat/completions in 0.417079 seconds
-2026-07-11 00:40:53,819 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-11 00:40:53,820 [INFO] openai._base_client: Retrying request to /chat/completions in 0.776475 seconds
-2026-07-11 00:40:54,796 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-11 00:40:54,797 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'Your account org-b15d7af77d7b407d9d9f07f16a409e94 <ak-fabqohadqgu111dtsdp1> is suspended due to insufficient balance, please recharge your account or check your plan and billing details', 'type': 'exceeded_current_quota_error'}}
-2026-07-11 00:40:54,797 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
-2026-07-11 00:40:54,797 [INFO] main: UNIUSDT | Judge:HOLD conf=50% size=0.0%
-2026-07-11 00:40:54,797 [INFO] main: UNIUSDT | RL adj=50.0%
-2026-07-11 00:40:58,142 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-07-11 00:40:58,422 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-11 00:40:58,423 [INFO] openai._base_client: Retrying request to /chat/completions in 0.452787 seconds
-2026-07-11 00:40:59,070 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-11 00:40:59,071 [INFO] openai._base_client: Retrying request to /chat/completions in 0.816749 seconds
-2026-07-11 00:41:00,090 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-11 00:41:02,642 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-11 00:41:03,633 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-11 00:41:03,634 [INFO] main: ADAUSDT | Bull:flat(15%) Bear:short(72%)
-2026-07-11 00:41:03,861 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-11 00:41:03,862 [INFO] openai._base_client: Retrying request to /chat/completions in 0.389425 seconds
-2026-07-11 00:41:04,450 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-11 00:41:04,451 [INFO] openai._base_client: Retrying request to /chat/completions in 0.890585 seconds
-2026-07-11 00:41:05,549 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-11 00:41:05,549 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'Your account org-b15d7af77d7b407d9d9f07f16a409e94 <ak-fabqohadqgu111dtsdp1> is suspended due to insufficient balance, please recharge your account or check your plan and billing details', 'type': 'exceeded_current_quota_error'}}
-2026-07-11 00:41:05,549 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
-2026-07-11 00:41:05,549 [INFO] main: ADAUSDT | Judge:HOLD conf=50% size=0.0%
-2026-07-11 00:41:05,549 [INFO] main: ADAUSDT | RL adj=50.0%
-2026-07-11 00:41:07,551 [INFO] main: Next scan in 30min (always-30min)
-2026-07-11 00:58:52,500 [INFO] main: Symbols: 30
+2026-07-11 01:15:55,306 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-11 01:15:55,307 [INFO] main: WLDUSDT | Bull:flat(15%) Bear:short(72%)
+2026-07-11 01:15:55,524 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-11 01:15:55,525 [INFO] openai._base_client: Retrying request to /chat/completions in 0.394101 seconds
+2026-07-11 01:15:56,120 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-11 01:15:56,121 [INFO] openai._base_client: Retrying request to /chat/completions in 0.776021 seconds
+2026-07-11 01:15:57,099 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-11 01:15:57,100 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'Your account org-b15d7af77d7b407d9d9f07f16a409e94 <ak-fabqohadqgu111dtsdp1> is suspended due to insufficient balance, please recharge your account or check your plan and billing details', 'type': 'exceeded_current_quota_error'}}
+2026-07-11 01:15:57,101 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-07-11 01:15:57,101 [INFO] main: WLDUSDT | Judge:HOLD conf=50% size=0.0%
+2026-07-11 01:15:57,101 [INFO] main: WLDUSDT | RL adj=50.0%
+2026-07-11 01:16:00,460 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
+2026-07-11 01:16:00,702 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-11 01:16:00,703 [INFO] openai._base_client: Retrying request to /chat/completions in 0.494500 seconds
+2026-07-11 01:16:01,402 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-11 01:16:01,403 [INFO] openai._base_client: Retrying request to /chat/completions in 0.933583 seconds
+2026-07-11 01:16:02,537 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-11 01:16:03,446 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-11 01:16:05,401 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-11 01:16:05,403 [INFO] main: KATUSDT | Bull:flat(5%) Bear:short(78%)
+2026-07-11 01:16:05,620 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-11 01:16:05,620 [INFO] openai._base_client: Retrying request to /chat/completions in 0.484039 seconds
+2026-07-11 01:16:06,302 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-11 01:16:06,303 [INFO] openai._base_client: Retrying request to /chat/completions in 0.759181 seconds
+2026-07-11 01:16:07,259 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-11 01:16:07,259 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'Your account org-b15d7af77d7b407d9d9f07f16a409e94 <ak-fabqohadqgu111dtsdp1> is suspended due to insufficient balance, please recharge your account or check your plan and billing details', 'type': 'exceeded_current_quota_error'}}
+2026-07-11 01:16:07,260 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-07-11 01:16:07,260 [INFO] main: KATUSDT | Judge:HOLD conf=50% size=0.0%
+2026-07-11 01:16:07,260 [INFO] main: KATUSDT | RL adj=50.0%
+2026-07-11 01:16:09,262 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -8633,7 +8633,7 @@ root     1975483  0.1  3.5 700432 138560 ?       Ssl  Jul09   4:15 /opt/ensemble
 Filesystem      Size  Used Avail Use% Mounted on
 tmpfs           382M  896K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
-/dev/sda1        75G  9.6G   63G  14% /
+/dev/sda1        75G  9.7G   63G  14% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
 tmpfs           5.0M     0  5.0M   0% /run/lock
 /dev/sda15      253M  146K  252M   1% /boot/efi
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       905Mi       290Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       903Mi       291Mi       4.4Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
