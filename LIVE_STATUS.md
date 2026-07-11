@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-10 23:50:01 UTC
+Generated: 2026-07-11 00:00:01 UTC
 
 ## Services
 ```
@@ -8596,7 +8596,6 @@ root     1975483  0.1  3.5 700432 138560 ?       Ssl  Jul09   4:09 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-10 23:31:15,062 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-10 23:31:18,386 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-10 23:31:18,388 [INFO] main: DEXEUSDT | Bull:flat(15%) Bear:short(72%)
 2026-07-10 23:31:18,596 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
@@ -8626,12 +8625,13 @@ root     1975483  0.1  3.5 700432 138560 ?       Ssl  Jul09   4:09 /opt/ensemble
 2026-07-10 23:31:30,440 [INFO] main: ZECUSDT | Judge:HOLD conf=50% size=0.0%
 2026-07-10 23:31:30,440 [INFO] main: ZECUSDT | RL adj=50.0%
 2026-07-10 23:31:32,443 [INFO] main: Next scan in 30min (always-30min)
+2026-07-10 23:58:51,880 [INFO] main: Symbols: 30
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  896K  381M   1% /run
+tmpfs           382M  900K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G  9.6G   63G  14% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       907Mi       291Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       957Mi       240Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
