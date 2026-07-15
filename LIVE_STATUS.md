@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-15 22:10:01 UTC
+Generated: 2026-07-15 22:20:01 UTC
 
 ## Services
 ```
@@ -8596,7 +8596,6 @@ root     2112728  0.1  3.5 700240 138612 ?       Ssl  Jul14   3:56 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-15 21:56:55,367 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-15 21:56:56,415 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-15 21:56:56,416 [INFO] main: ZECUSDT | Bull:long(62%) Bear:short(72%)
 2026-07-15 21:56:56,643 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
@@ -8626,6 +8625,7 @@ root     2112728  0.1  3.5 700240 138612 ?       Ssl  Jul14   3:56 /opt/ensemble
 2026-07-15 21:57:10,839 [INFO] main: KAITOUSDT | Judge:HOLD conf=50% size=0.0%
 2026-07-15 21:57:10,839 [INFO] main: KAITOUSDT | RL adj=50.0%
 2026-07-15 21:57:12,842 [INFO] main: Next scan in 30min (always-30min)
+2026-07-15 22:15:43,176 [INFO] main: Symbols: 30
 ```
 
 ## Disk
