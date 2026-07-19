@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-19 22:00:01 UTC
+Generated: 2026-07-19 22:10:01 UTC
 
 ## Services
 ```
@@ -8596,9 +8596,6 @@ root     2237388  0.1  3.5 700184 138916 ?       Ssl  Jul18   2:24 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-19 21:39:43,094 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-19 21:39:45,449 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-19 21:39:45,450 [INFO] main: 1000BONKUSDT | Bull:flat(15%) Bear:short(72%)
 2026-07-19 21:39:45,665 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-07-19 21:39:45,665 [INFO] openai._base_client: Retrying request to /chat/completions in 0.387130 seconds
 2026-07-19 21:39:46,249 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
@@ -8626,6 +8623,9 @@ root     2237388  0.1  3.5 700184 138916 ?       Ssl  Jul18   2:24 /opt/ensemble
 2026-07-19 21:39:57,661 [INFO] main: 1000XECUSDT | Judge:HOLD conf=50% size=0.0%
 2026-07-19 21:39:57,661 [INFO] main: 1000XECUSDT | RL adj=50.0%
 2026-07-19 21:39:59,663 [INFO] main: Next scan in 30min (always-30min)
+2026-07-19 22:09:59,665 [INFO] main: Scanning 30 symbols...
+2026-07-19 22:10:01,697 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-19 22:10:01,697 [INFO] openai._base_client: Retrying request to /chat/completions in 0.382076 seconds
 ```
 
 ## Disk
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       906Mi       323Mi       4.3Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       910Mi       317Mi       4.3Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
