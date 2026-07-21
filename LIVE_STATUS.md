@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-21 16:50:01 UTC
+Generated: 2026-07-21 17:00:01 UTC
 
 ## Services
 ```
@@ -8596,19 +8596,6 @@ root     2237388  0.1  3.5 701228 139428 ?       Ssl  Jul18   7:52 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-21 16:29:36,747 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2026-07-21 16:29:36,749 [INFO] main: BTCUSDT | Bull:flat(25%) Bear:flat(35%)
-2026-07-21 16:29:36,976 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-21 16:29:36,976 [INFO] openai._base_client: Retrying request to /chat/completions in 0.478810 seconds
-2026-07-21 16:29:37,665 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-21 16:29:37,666 [INFO] openai._base_client: Retrying request to /chat/completions in 0.884447 seconds
-2026-07-21 16:29:38,758 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-21 16:29:38,758 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'Your account org-b15d7af77d7b407d9d9f07f16a409e94 <ak-fabqohadqgu111dtsdp1> is suspended due to insufficient balance, please recharge your account or check your plan and billing details', 'type': 'exceeded_current_quota_error'}}
-2026-07-21 16:29:38,758 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
-2026-07-21 16:29:38,758 [INFO] main: BTCUSDT | Judge:HOLD conf=50% size=0.0%
-2026-07-21 16:29:38,758 [INFO] main: BTCUSDT | RL adj=50.0%
-2026-07-21 16:29:42,475 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-21 16:29:42,475 [INFO] openai._base_client: Retrying request to /chat/completions in 0.451474 seconds
 2026-07-21 16:29:43,138 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-07-21 16:29:43,139 [INFO] openai._base_client: Retrying request to /chat/completions in 0.809782 seconds
 2026-07-21 16:29:44,157 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
@@ -8626,6 +8613,19 @@ root     2237388  0.1  3.5 701228 139428 ?       Ssl  Jul18   7:52 /opt/ensemble
 2026-07-21 16:29:50,287 [INFO] main: LABUSDT | RL adj=50.0%
 2026-07-21 16:29:52,289 [INFO] main: Next scan in 30min (always-30min)
 2026-07-21 16:30:35,262 [INFO] main: Symbols: 30
+2026-07-21 16:59:52,307 [INFO] main: Scanning 30 symbols...
+2026-07-21 16:59:54,008 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-21 16:59:54,009 [INFO] openai._base_client: Retrying request to /chat/completions in 0.439188 seconds
+2026-07-21 16:59:54,661 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-21 16:59:54,662 [INFO] openai._base_client: Retrying request to /chat/completions in 0.887564 seconds
+2026-07-21 16:59:55,763 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-21 16:59:57,681 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-21 16:59:58,836 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-07-21 16:59:58,837 [INFO] main: DOGEUSDT | Bull:long(62%) Bear:short(72%)
+2026-07-21 16:59:59,064 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-21 16:59:59,064 [INFO] openai._base_client: Retrying request to /chat/completions in 0.477230 seconds
+2026-07-21 17:00:00,117 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-21 17:00:00,118 [INFO] openai._base_client: Retrying request to /chat/completions in 0.879055 seconds
 ```
 
 ## Disk
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       910Mi       317Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       926Mi       300Mi       4.3Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
