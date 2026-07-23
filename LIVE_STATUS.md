@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-23 11:10:01 UTC
+Generated: 2026-07-23 11:20:01 UTC
 
 ## Services
 ```
@@ -8596,7 +8596,6 @@ root     2359507  0.2  3.4 696044 134088 ?       Ssl  Jul22   1:55 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-23 11:09:44,605 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-07-23 11:09:45,380 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-23 11:09:47,415 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-23 11:09:47,418 [INFO] main: ZECUSDT | Bull:flat(15%) Bear:short(72%)
@@ -8626,6 +8625,7 @@ root     2359507  0.2  3.4 696044 134088 ?       Ssl  Jul22   1:55 /opt/ensemble
 2026-07-23 11:09:59,823 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
 2026-07-23 11:09:59,823 [INFO] main: DOGEUSDT | Judge:HOLD conf=50% size=0.0%
 2026-07-23 11:09:59,823 [INFO] main: DOGEUSDT | RL adj=50.0%
+2026-07-23 11:10:01,825 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       913Mi       359Mi       4.3Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       905Mi       367Mi       4.3Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
