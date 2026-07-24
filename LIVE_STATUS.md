@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-24 05:30:01 UTC
+Generated: 2026-07-24 05:40:01 UTC
 
 ## Services
 ```
@@ -8596,7 +8596,6 @@ root     2359507  0.2  3.4 697812 135576 ?       Ssl  Jul22   4:24 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-24 05:18:32,589 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-24 05:18:34,783 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-24 05:18:34,785 [INFO] main: ADAUSDT | Bull:flat(15%) Bear:short(72%)
 2026-07-24 05:18:35,005 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
@@ -8626,6 +8625,7 @@ root     2359507  0.2  3.4 697812 135576 ?       Ssl  Jul22   4:24 /opt/ensemble
 2026-07-24 05:18:50,270 [INFO] main: SOLUSDT | Judge:HOLD conf=50% size=0.0%
 2026-07-24 05:18:50,270 [INFO] main: SOLUSDT | RL adj=50.0%
 2026-07-24 05:18:52,272 [INFO] main: Next scan in 30min (always-30min)
+2026-07-24 05:39:18,853 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       925Mi       313Mi       4.3Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       915Mi       323Mi       4.3Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
