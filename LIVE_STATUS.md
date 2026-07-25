@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-25 05:30:02 UTC
+Generated: 2026-07-25 05:40:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1975477  0.0  1.2  60728 47948 ?        Ss   Jul09   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1975479  0.0  1.2 136516 49168 ?        Ssl  Jul09   0:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     2412919  0.3  3.2 688960 126600 ?       Ssl  04:15   0:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     2412919  0.2  3.2 688960 126608 ?       Ssl  04:15   0:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8596,7 +8596,6 @@ root     2412919  0.3  3.2 688960 126600 ?       Ssl  04:15   0:14 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-25 05:29:46,545 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-07-25 05:29:49,328 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-25 05:29:49,431 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-25 05:29:49,433 [INFO] main: WLDUSDT | Bull:flat(25%) Bear:short(72%)
@@ -8626,6 +8625,7 @@ root     2412919  0.3  3.2 688960 126600 ?       Ssl  04:15   0:14 /opt/ensemble
 2026-07-25 05:30:01,851 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
 2026-07-25 05:30:01,851 [INFO] main: LAUSDT | Judge:HOLD conf=50% size=0.0%
 2026-07-25 05:30:01,852 [INFO] main: LAUSDT | RL adj=50.0%
+2026-07-25 05:30:03,854 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       922Mi       365Mi       4.3Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       909Mi       377Mi       4.3Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
