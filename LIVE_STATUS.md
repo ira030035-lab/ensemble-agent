@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-25 23:10:01 UTC
+Generated: 2026-07-25 23:20:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1975477  0.0  1.2  60728 47948 ?        Ss   Jul09   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1975479  0.0  1.2 136516 49168 ?        Ssl  Jul09   0:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     2412919  0.2  3.4 696856 134396 ?       Ssl  04:15   2:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     2412919  0.2  3.4 697636 135048 ?       Ssl  04:15   2:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8596,7 +8596,6 @@ root     2412919  0.2  3.4 696856 134396 ?       Ssl  04:15   2:31 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-25 23:00:35,977 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-25 23:00:36,316 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-25 23:00:36,318 [INFO] main: REUSDT | Bull:flat(15%) Bear:short(72%)
 2026-07-25 23:00:36,543 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
@@ -8626,6 +8625,7 @@ root     2412919  0.2  3.4 696856 134396 ?       Ssl  04:15   2:31 /opt/ensemble
 2026-07-25 23:00:49,019 [INFO] main: GWEIUSDT | Judge:HOLD conf=50% size=0.0%
 2026-07-25 23:00:49,019 [INFO] main: GWEIUSDT | RL adj=50.0%
 2026-07-25 23:00:51,022 [INFO] main: Next scan in 30min (always-30min)
+2026-07-25 23:15:23,183 [INFO] main: Symbols: 30
 ```
 
 ## Disk
