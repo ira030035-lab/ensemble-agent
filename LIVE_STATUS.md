@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-26 06:20:01 UTC
+Generated: 2026-07-26 06:30:01 UTC
 
 ## Services
 ```
@@ -8596,12 +8596,6 @@ root     2412919  0.2  3.6 703096 140636 ?       Ssl  Jul25   3:27 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-26 05:59:43,053 [INFO] main: PROMUSDT | Bull:flat(15%) Bear:short(72%)
-2026-07-26 05:59:43,269 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-26 05:59:43,270 [INFO] openai._base_client: Retrying request to /chat/completions in 0.389191 seconds
-2026-07-26 05:59:43,855 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-26 05:59:43,855 [INFO] openai._base_client: Retrying request to /chat/completions in 0.785554 seconds
-2026-07-26 05:59:44,842 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-07-26 05:59:44,843 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'Your account org-b15d7af77d7b407d9d9f07f16a409e94 <ak-fabqohadqgu111dtsdp1> is suspended due to insufficient balance, please recharge your account or check your plan and billing details', 'type': 'exceeded_current_quota_error'}}
 2026-07-26 05:59:44,843 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
 2026-07-26 05:59:44,843 [INFO] main: PROMUSDT | Judge:HOLD conf=50% size=0.0%
@@ -8626,6 +8620,12 @@ root     2412919  0.2  3.6 703096 140636 ?       Ssl  Jul25   3:27 /opt/ensemble
 2026-07-26 05:59:55,299 [INFO] main: ZECUSDT | RL adj=50.0%
 2026-07-26 05:59:57,300 [INFO] main: Next scan in 30min (always-30min)
 2026-07-26 06:15:27,687 [INFO] main: Symbols: 30
+2026-07-26 06:29:57,302 [INFO] main: Scanning 30 symbols...
+2026-07-26 06:29:58,946 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-26 06:29:58,947 [INFO] openai._base_client: Retrying request to /chat/completions in 0.453818 seconds
+2026-07-26 06:29:59,602 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-26 06:29:59,603 [INFO] openai._base_client: Retrying request to /chat/completions in 0.815424 seconds
+2026-07-26 06:30:00,660 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 ```
 
 ## Disk
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       933Mi       220Mi       4.4Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       951Mi       202Mi       4.4Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
