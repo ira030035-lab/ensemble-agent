@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-26 06:10:01 UTC
+Generated: 2026-07-26 06:20:01 UTC
 
 ## Services
 ```
@@ -8596,7 +8596,6 @@ root     2412919  0.2  3.6 703096 140636 ?       Ssl  Jul25   3:27 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-26 05:59:43,053 [WARNING] agents: Bull entropy-guard: шаблон flat(15) ×5. Переключаемся на Kimi+Claude fallback.
 2026-07-26 05:59:43,053 [INFO] main: PROMUSDT | Bull:flat(15%) Bear:short(72%)
 2026-07-26 05:59:43,269 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-07-26 05:59:43,270 [INFO] openai._base_client: Retrying request to /chat/completions in 0.389191 seconds
@@ -8626,6 +8625,7 @@ root     2412919  0.2  3.6 703096 140636 ?       Ssl  Jul25   3:27 /opt/ensemble
 2026-07-26 05:59:55,299 [INFO] main: ZECUSDT | Judge:HOLD conf=50% size=0.0%
 2026-07-26 05:59:55,299 [INFO] main: ZECUSDT | RL adj=50.0%
 2026-07-26 05:59:57,300 [INFO] main: Next scan in 30min (always-30min)
+2026-07-26 06:15:27,687 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       929Mi       224Mi       4.4Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       933Mi       220Mi       4.4Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
