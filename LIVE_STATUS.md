@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-27 13:10:01 UTC
+Generated: 2026-07-27 13:20:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1975477  0.0  1.2  60728 47952 ?        Ss   Jul09   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1975479  0.0  1.2 136512 49168 ?        Ssl  Jul09   0:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     2412919  0.2  3.6 706572 144028 ?       Ssl  Jul25   7:37 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     2412919  0.2  3.6 706572 144136 ?       Ssl  Jul25   7:37 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8596,7 +8596,6 @@ root     2412919  0.2  3.6 706572 144028 ?       Ssl  Jul25   7:37 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-27 12:57:17,556 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-27 12:57:19,643 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-27 12:57:19,645 [INFO] main: ESPUSDT | Bull:flat(15%) Bear:short(72%)
 2026-07-27 12:57:19,878 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
@@ -8626,6 +8625,7 @@ root     2412919  0.2  3.6 706572 144028 ?       Ssl  Jul25   7:37 /opt/ensemble
 2026-07-27 12:57:32,857 [INFO] main: SHIBUSDT | Judge:HOLD conf=50% size=0.0%
 2026-07-27 12:57:32,857 [INFO] main: SHIBUSDT | RL adj=50.0%
 2026-07-27 12:57:34,860 [INFO] main: Next scan in 30min (always-30min)
+2026-07-27 13:15:48,844 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       923Mi       232Mi       4.4Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       922Mi       232Mi       4.4Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
