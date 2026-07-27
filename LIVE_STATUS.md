@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-27 03:10:01 UTC
+Generated: 2026-07-27 03:20:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     1975477  0.0  1.2  60728 47952 ?        Ss   Jul09   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
 root     1975479  0.0  1.2 136512 49168 ?        Ssl  Jul09   0:24 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
-root     2412919  0.2  3.6 705548 143940 ?       Ssl  Jul25   6:16 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     2412919  0.2  3.6 706572 143984 ?       Ssl  Jul25   6:16 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8596,7 +8596,6 @@ root     2412919  0.2  3.6 705548 143940 ?       Ssl  Jul25   6:16 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-27 02:58:39,086 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-27 02:58:40,813 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-27 02:58:40,815 [INFO] main: TAOUSDT | Bull:flat(35%) Bear:flat(45%)
 2026-07-27 02:58:41,026 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
@@ -8626,6 +8625,7 @@ root     2412919  0.2  3.6 705548 143940 ?       Ssl  Jul25   6:16 /opt/ensemble
 2026-07-27 02:58:53,226 [INFO] main: ESPUSDT | Judge:HOLD conf=50% size=0.0%
 2026-07-27 02:58:53,226 [INFO] main: ESPUSDT | RL adj=50.0%
 2026-07-27 02:58:55,229 [INFO] main: Next scan in 30min (always-30min)
+2026-07-27 03:15:41,821 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       930Mi       250Mi       4.4Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       942Mi       237Mi       4.4Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
