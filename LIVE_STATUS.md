@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-29 00:20:01 UTC
+Generated: 2026-07-29 00:30:01 UTC
 
 ## Services
 ```
@@ -8596,7 +8596,6 @@ root     2495722  0.2  3.5 702108 140200 ?       Ssl  Jul28   2:31 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-29 00:09:00,821 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-29 00:09:05,172 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2026-07-29 00:09:05,174 [INFO] main: PUMPUSDT | Bull:flat(25%) Bear:short(72%)
 2026-07-29 00:09:05,409 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
@@ -8626,12 +8625,13 @@ root     2495722  0.2  3.5 702108 140200 ?       Ssl  Jul28   2:31 /opt/ensemble
 2026-07-29 00:09:17,991 [INFO] main: AAVEUSDT | Judge:HOLD conf=50% size=0.0%
 2026-07-29 00:09:17,992 [INFO] main: AAVEUSDT | RL adj=50.0%
 2026-07-29 00:09:19,994 [INFO] main: Next scan in 30min (always-30min)
+2026-07-29 00:26:22,619 [INFO] main: Symbols: 30
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  900K  381M   1% /run
+tmpfs           382M  896K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G   11G   62G  15% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       898Mi       319Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       899Mi       318Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
