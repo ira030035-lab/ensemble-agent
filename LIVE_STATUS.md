@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-30 19:40:01 UTC
+Generated: 2026-07-30 19:50:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     2495692  0.0  1.0  55460 42656 ?        Ss   Jul28   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     2495694  0.0  1.1  58416 45640 ?        Ss   Jul28   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     2495722  0.2  3.5 699928 137988 ?       Ssl  Jul28   8:31 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     2495722  0.2  3.5 699928 137988 ?       Ssl  Jul28   8:36 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8596,36 +8596,36 @@ root     2495722  0.2  3.5 699928 137988 ?       Ssl  Jul28   8:31 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-30 19:10:07,085 [INFO] openai._base_client: Retrying request to /chat/completions in 0.872368 seconds
-2026-07-30 19:10:08,177 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-30 19:10:08,178 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'Your account org-b15d7af77d7b407d9d9f07f16a409e94 <ak-fabqohadqgu111dtsdp1> is suspended due to insufficient balance, please recharge your account or check your plan and billing details', 'type': 'exceeded_current_quota_error'}}
-2026-07-30 19:10:08,178 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
-2026-07-30 19:10:08,179 [INFO] main: ENAUSDT | Judge:HOLD conf=50% size=0.0%
-2026-07-30 19:10:08,179 [INFO] main: ENAUSDT | RL adj=50.0%
-2026-07-30 19:10:11,650 [WARNING] agents: Bull entropy-guard: шаблон detected. Используем Groq+Claude fallback.
-2026-07-30 19:10:11,917 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-30 19:10:11,918 [INFO] openai._base_client: Retrying request to /chat/completions in 0.486072 seconds
-2026-07-30 19:10:11,961 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
-2026-07-30 19:10:11,962 [ERROR] agents: race fallback: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdYmdbUbJUfiU24p3EXqJ'}
-2026-07-30 19:10:11,963 [WARNING] agents: Bull: unparseable response → flat/25. raw=
-2026-07-30 19:10:12,675 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-30 19:10:12,675 [INFO] openai._base_client: Retrying request to /chat/completions in 0.892003 seconds
-2026-07-30 19:10:13,779 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-30 19:10:14,067 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
-2026-07-30 19:10:14,068 [ERROR] agents: race fallback: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdYmdkZJ87YJmSVZLpMce'}
-2026-07-30 19:10:14,068 [WARNING] agents: Bear: unparseable response → flat/25. raw=
-2026-07-30 19:10:14,068 [INFO] main: NEARUSDT | Bull:flat(25%) Bear:flat(25%)
-2026-07-30 19:10:14,298 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-30 19:10:14,299 [INFO] openai._base_client: Retrying request to /chat/completions in 0.474055 seconds
-2026-07-30 19:10:15,022 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-30 19:10:15,023 [INFO] openai._base_client: Retrying request to /chat/completions in 0.949466 seconds
-2026-07-30 19:10:16,185 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-07-30 19:10:16,186 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'Your account org-b15d7af77d7b407d9d9f07f16a409e94 <ak-fabqohadqgu111dtsdp1> is suspended due to insufficient balance, please recharge your account or check your plan and billing details', 'type': 'exceeded_current_quota_error'}}
-2026-07-30 19:10:16,186 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
-2026-07-30 19:10:16,186 [INFO] main: NEARUSDT | Judge:HOLD conf=50% size=0.0%
-2026-07-30 19:10:16,186 [INFO] main: NEARUSDT | RL adj=50.0%
-2026-07-30 19:10:18,189 [INFO] main: Next scan in 30min (always-30min)
-2026-07-30 19:26:52,232 [INFO] main: Symbols: 30
+2026-07-30 19:43:55,470 [INFO] openai._base_client: Retrying request to /chat/completions in 0.417028 seconds
+2026-07-30 19:43:56,096 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-30 19:43:56,097 [INFO] openai._base_client: Retrying request to /chat/completions in 0.878739 seconds
+2026-07-30 19:43:57,191 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-30 19:43:57,192 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'Your account org-b15d7af77d7b407d9d9f07f16a409e94 <ak-fabqohadqgu111dtsdp1> is suspended due to insufficient balance, please recharge your account or check your plan and billing details', 'type': 'exceeded_current_quota_error'}}
+2026-07-30 19:43:57,192 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-07-30 19:43:57,192 [INFO] main: BANKUSDT | Judge:HOLD conf=50% size=0.0%
+2026-07-30 19:43:57,192 [INFO] main: BANKUSDT | RL adj=50.0%
+2026-07-30 19:44:00,948 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-07-30 19:44:00,949 [ERROR] agents: race fallback: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdYpDANAmdtYZpG9qytxh'}
+2026-07-30 19:44:00,950 [WARNING] agents: Bull: unparseable response → flat/25. raw=
+2026-07-30 19:44:00,993 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-30 19:44:00,993 [INFO] openai._base_client: Retrying request to /chat/completions in 0.480574 seconds
+2026-07-30 19:44:01,717 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-30 19:44:01,718 [INFO] openai._base_client: Retrying request to /chat/completions in 0.907115 seconds
+2026-07-30 19:44:02,849 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-30 19:44:03,114 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-07-30 19:44:03,115 [ERROR] agents: race fallback: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdYpDKcnRNaZVu2h77ME6'}
+2026-07-30 19:44:03,115 [WARNING] agents: Bear: unparseable response → flat/25. raw=
+2026-07-30 19:44:03,115 [INFO] main: TAOUSDT | Bull:flat(25%) Bear:flat(25%)
+2026-07-30 19:44:03,349 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-30 19:44:03,349 [INFO] openai._base_client: Retrying request to /chat/completions in 0.415500 seconds
+2026-07-30 19:44:03,971 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-30 19:44:03,972 [INFO] openai._base_client: Retrying request to /chat/completions in 0.866670 seconds
+2026-07-30 19:44:05,044 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-30 19:44:05,045 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'Your account org-b15d7af77d7b407d9d9f07f16a409e94 <ak-fabqohadqgu111dtsdp1> is suspended due to insufficient balance, please recharge your account or check your plan and billing details', 'type': 'exceeded_current_quota_error'}}
+2026-07-30 19:44:05,045 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-07-30 19:44:05,045 [INFO] main: TAOUSDT | Judge:HOLD conf=50% size=0.0%
+2026-07-30 19:44:05,045 [INFO] main: TAOUSDT | RL adj=50.0%
+2026-07-30 19:44:07,048 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       905Mi       314Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       905Mi       313Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
