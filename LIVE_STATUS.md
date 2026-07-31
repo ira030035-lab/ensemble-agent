@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-07-31 14:20:01 UTC
+Generated: 2026-07-31 14:30:01 UTC
 
 ## Services
 ```
@@ -8596,7 +8596,6 @@ root     2495722  0.2  3.5 699928 138620 ?       Ssl  Jul28  11:13 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-07-31 14:17:51,150 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-07-31 14:17:51,151 [INFO] openai._base_client: Retrying request to /chat/completions in 0.809766 seconds
 2026-07-31 14:17:52,167 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-07-31 14:17:52,168 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'Your account org-b15d7af77d7b407d9d9f07f16a409e94 <ak-fabqohadqgu111dtsdp1> is suspended due to insufficient balance, please recharge your account or check your plan and billing details', 'type': 'exceeded_current_quota_error'}}
@@ -8626,6 +8625,7 @@ root     2495722  0.2  3.5 699928 138620 ?       Ssl  Jul28  11:13 /opt/ensemble
 2026-07-31 14:17:59,955 [INFO] main: WLDUSDT | Judge:HOLD conf=50% size=0.0%
 2026-07-31 14:17:59,956 [INFO] main: WLDUSDT | RL adj=50.0%
 2026-07-31 14:18:01,958 [INFO] main: Next scan in 30min (always-30min)
+2026-07-31 14:27:04,912 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       910Mi       268Mi       4.4Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       922Mi       256Mi       4.4Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
