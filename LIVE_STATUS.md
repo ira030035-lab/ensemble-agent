@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-08-08 06:20:01 UTC
+Generated: 2026-08-08 06:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     2644105  0.0  1.0  55460 42712 ?        Ss   Aug04   0:06 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     2644107  0.0  1.0  55328 42120 ?        Ss   Aug04   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     2644122  0.2  3.4 695040 133356 ?       Ssl  Aug04  13:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     2644122  0.2  3.4 697220 134400 ?       Ssl  Aug04  13:13 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8596,7 +8596,6 @@ root     2644122  0.2  3.4 695040 133356 ?       Ssl  Aug04  13:13 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-08-08 06:07:24,530 [INFO] openai._base_client: Retrying request to /chat/completions in 0.384315 seconds
 2026-08-08 06:07:25,127 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-08-08 06:07:25,128 [INFO] openai._base_client: Retrying request to /chat/completions in 0.990796 seconds
 2026-08-08 06:07:26,321 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
@@ -8626,12 +8625,13 @@ root     2644122  0.2  3.4 695040 133356 ?       Ssl  Aug04  13:13 /opt/ensemble
 2026-08-08 06:07:33,786 [INFO] main: EPICUSDT | Judge:HOLD conf=50% size=0.0%
 2026-08-08 06:07:33,786 [INFO] main: EPICUSDT | RL adj=50.0%
 2026-08-08 06:07:35,788 [INFO] main: Next scan in 30min (always-30min)
+2026-08-08 06:23:16,701 [INFO] main: Symbols: 30
 ```
 
 ## Disk
 ```
 Filesystem      Size  Used Avail Use% Mounted on
-tmpfs           382M  896K  381M   1% /run
+tmpfs           382M  904K  381M   1% /run
 efivarfs        256K   39K  213K  16% /sys/firmware/efi/efivars
 /dev/sda1        75G   11G   61G  15% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       907Mi       198Mi       4.4Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       958Mi       147Mi       4.4Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
