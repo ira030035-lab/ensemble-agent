@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-08-12 08:20:01 UTC
+Generated: 2026-08-12 08:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     2644105  0.0  1.0  55460 42780 ?        Ss   Aug04   0:09 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     2644107  0.0  1.0  55328 42268 ?        Ss   Aug04   0:00 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     2644122  0.2  3.5 700160 137404 ?       Ssl  Aug04  26:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     2644122  0.2  3.5 700520 137780 ?       Ssl  Aug04  26:40 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8596,7 +8596,6 @@ root     2644122  0.2  3.5 700160 137404 ?       Ssl  Aug04  26:40 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-08-12 08:01:45,833 [INFO] openai._base_client: Retrying request to /chat/completions in 0.407387 seconds
 2026-08-12 08:01:46,446 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-08-12 08:01:46,447 [INFO] openai._base_client: Retrying request to /chat/completions in 0.791437 seconds
 2026-08-12 08:01:47,442 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
@@ -8626,6 +8625,7 @@ root     2644122  0.2  3.5 700160 137404 ?       Ssl  Aug04  26:40 /opt/ensemble
 2026-08-12 08:01:55,470 [INFO] main: ENAUSDT | Judge:HOLD conf=50% size=0.0%
 2026-08-12 08:01:55,470 [INFO] main: ENAUSDT | RL adj=50.0%
 2026-08-12 08:01:57,473 [INFO] main: Next scan in 30min (always-30min)
+2026-08-12 08:24:26,846 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       905Mi       369Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       912Mi       362Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
