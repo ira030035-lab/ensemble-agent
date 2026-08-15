@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-08-15 17:20:01 UTC
+Generated: 2026-08-15 17:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     2644105  0.0  1.0  55460 42820 ?        Ss   Aug04   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     2644107  0.0  1.2  60448 47652 ?        Ss   Aug04   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     2644122  0.2  3.6 705112 142808 ?       Ssl  Aug04  38:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     2644122  0.2  3.6 705588 143268 ?       Ssl  Aug04  38:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8596,7 +8596,6 @@ root     2644122  0.2  3.6 705112 142808 ?       Ssl  Aug04  38:10 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-08-15 17:08:55,261 [INFO] openai._base_client: Retrying request to /chat/completions in 0.442346 seconds
 2026-08-15 17:08:55,914 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-08-15 17:08:55,914 [INFO] openai._base_client: Retrying request to /chat/completions in 0.969015 seconds
 2026-08-15 17:08:57,091 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
@@ -8626,6 +8625,7 @@ root     2644122  0.2  3.6 705112 142808 ?       Ssl  Aug04  38:10 /opt/ensemble
 2026-08-15 17:09:05,004 [INFO] main: ROBOUSDT | Judge:HOLD conf=50% size=0.0%
 2026-08-15 17:09:05,004 [INFO] main: ROBOUSDT | RL adj=50.0%
 2026-08-15 17:09:07,006 [INFO] main: Next scan in 30min (always-30min)
+2026-08-15 17:25:23,194 [INFO] main: Symbols: 30
 ```
 
 ## Disk
