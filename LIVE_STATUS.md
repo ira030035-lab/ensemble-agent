@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-08-15 04:20:01 UTC
+Generated: 2026-08-15 04:30:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     2644105  0.0  1.0  55460 42820 ?        Ss   Aug04   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     2644107  0.0  1.2  60448 47652 ?        Ss   Aug04   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     2644122  0.2  3.6 705248 143092 ?       Ssl  Aug04  36:23 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     2644122  0.2  3.6 705248 143104 ?       Ssl  Aug04  36:23 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8596,7 +8596,6 @@ root     2644122  0.2  3.6 705248 143092 ?       Ssl  Aug04  36:23 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-08-15 04:13:29,751 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-08-15 04:13:29,752 [INFO] openai._base_client: Retrying request to /chat/completions in 0.961808 seconds
 2026-08-15 04:13:30,915 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-08-15 04:13:30,916 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'Your account org-b15d7af77d7b407d9d9f07f16a409e94 <ak-fabqohadqgu111dtsdp1> is suspended due to insufficient balance, please recharge your account or check your plan and billing details', 'type': 'exceeded_current_quota_error'}}
@@ -8626,6 +8625,7 @@ root     2644122  0.2  3.6 705248 143092 ?       Ssl  Aug04  36:23 /opt/ensemble
 2026-08-15 04:13:38,219 [INFO] main: BTWUSDT | Judge:HOLD conf=50% size=0.0%
 2026-08-15 04:13:38,219 [INFO] main: BTWUSDT | RL adj=50.0%
 2026-08-15 04:13:40,221 [INFO] main: Next scan in 30min (always-30min)
+2026-08-15 04:25:14,228 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       930Mi       328Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       932Mi       325Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       768Ki       2.0Gi
 ```
 
