@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-08-20 08:20:01 UTC
+Generated: 2026-08-20 08:30:01 UTC
 
 ## Services
 ```
@@ -8596,7 +8596,6 @@ root     2644122  0.2  3.7 707340 144940 ?       Ssl  Aug04  54:32 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-08-20 08:12:53,400 [INFO] openai._base_client: Retrying request to /chat/completions in 0.405355 seconds
 2026-08-20 08:12:54,031 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-08-20 08:12:54,032 [INFO] openai._base_client: Retrying request to /chat/completions in 0.978522 seconds
 2026-08-20 08:12:55,225 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
@@ -8626,6 +8625,7 @@ root     2644122  0.2  3.7 707340 144940 ?       Ssl  Aug04  54:32 /opt/ensemble
 2026-08-20 08:13:03,107 [INFO] main: XLMUSDT | Judge:HOLD conf=50% size=0.0%
 2026-08-20 08:13:03,107 [INFO] main: XLMUSDT | RL adj=50.0%
 2026-08-20 08:13:05,110 [INFO] main: Next scan in 30min (always-30min)
+2026-08-20 08:26:53,477 [INFO] main: Symbols: 30
 ```
 
 ## Disk
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       929Mi       182Mi       4.3Mi       2.9Gi       2.8Gi
+Mem:           3.7Gi       946Mi       165Mi       4.3Mi       2.9Gi       2.8Gi
 Swap:          2.0Gi       1.0Mi       2.0Gi
 ```
 
