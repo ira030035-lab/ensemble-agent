@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-08-23 15:10:01 UTC
+Generated: 2026-08-23 15:20:01 UTC
 
 ## Services
 ```
@@ -12,7 +12,7 @@ ensemble-dashboard.service: active
 ```
 root     2644105  0.0  1.0  55460 42844 ?        Ss   Aug04   0:10 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/dashboard_api.py
 root     2644107  0.0  1.2  60448 47668 ?        Ss   Aug04   0:01 /opt/ensemble-agent/venv/bin/python3 /opt/metla/dashboard_api.py
-root     2644122  0.2  3.6 706660 144260 ?       Ssl  Aug04  66:14 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
+root     2644122  0.2  3.6 706660 144260 ?       Ssl  Aug04  66:19 /opt/ensemble-agent/venv/bin/python3 /opt/ensemble-agent/main.py
 ```
 
 ## Paper state
@@ -8596,36 +8596,36 @@ root     2644122  0.2  3.6 706660 144260 ?       Ssl  Aug04  66:14 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-08-23 14:40:14,127 [INFO] openai._base_client: Retrying request to /chat/completions in 0.416277 seconds
-2026-08-23 14:40:14,549 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 502 Bad Gateway"
-2026-08-23 14:40:14,550 [INFO] openai._base_client: Retrying request to /chat/completions in 0.807517 seconds
-2026-08-23 14:40:15,364 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 502 Bad Gateway"
-2026-08-23 14:40:15,365 [WARNING] agents: KimiJudge _claude failed: <html>
-<head><title>502 Bad Gateway</title></head>
-<body>
-<center><h1>502 Bad Gateway</h1></center>
-<hr><center>cloudflare</center>
-</body>
-</html>
-2026-08-23 14:40:15,365 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
-2026-08-23 14:40:15,365 [INFO] main: LINKUSDT | Judge:HOLD conf=50% size=0.0%
-2026-08-23 14:40:15,365 [INFO] main: LINKUSDT | RL adj=50.0%
-2026-08-23 14:40:17,388 [WARNING] bitget: Bitget GET /api/v2/mix/market/candles retry 1/3 after HTTP 502 on /api/v2/mix/market/candles — sleep 0.5s
-2026-08-23 14:40:17,891 [WARNING] bitget: Bitget GET /api/v2/mix/market/candles retry 2/3 after HTTP 502 on /api/v2/mix/market/candles — sleep 1.5s
-2026-08-23 14:40:19,398 [ERROR] data_engine: DataEngine NEARUSDT: HTTP 502 on /api/v2/mix/market/candles
-2026-08-23 14:40:21,404 [WARNING] bitget: Bitget GET /api/v2/mix/market/candles retry 1/3 after HTTP 502 on /api/v2/mix/market/candles — sleep 0.5s
-2026-08-23 14:40:21,908 [ERROR] bitget: Bitget circuit OPEN for 60s after 5 consecutive failures: HTTP 502 on /api/v2/mix/market/candles
-2026-08-23 14:40:21,908 [ERROR] data_engine: DataEngine ADAUSDT: HTTP 502 on /api/v2/mix/market/candles
-2026-08-23 14:40:23,910 [ERROR] data_engine: DataEngine SOLUSDT: Bitget circuit OPEN, 57s remaining
-2026-08-23 14:40:25,913 [ERROR] data_engine: DataEngine TUTUSDT: Bitget circuit OPEN, 55s remaining
-2026-08-23 14:40:27,915 [ERROR] data_engine: DataEngine TRUMPUSDT: Bitget circuit OPEN, 53s remaining
-2026-08-23 14:40:29,918 [ERROR] data_engine: DataEngine PUMPUSDT: Bitget circuit OPEN, 51s remaining
-2026-08-23 14:40:31,920 [ERROR] data_engine: DataEngine ETHUSDT: Bitget circuit OPEN, 49s remaining
-2026-08-23 14:40:33,923 [ERROR] data_engine: DataEngine FARTCOINUSDT: Bitget circuit OPEN, 47s remaining
-2026-08-23 14:40:35,925 [ERROR] data_engine: DataEngine XLMUSDT: Bitget circuit OPEN, 45s remaining
-2026-08-23 14:40:37,928 [ERROR] data_engine: DataEngine LTCUSDT: Bitget circuit OPEN, 43s remaining
-2026-08-23 14:40:39,931 [ERROR] data_engine: DataEngine DOGEUSDT: Bitget circuit OPEN, 41s remaining
-2026-08-23 14:40:41,933 [INFO] main: Next scan in 30min (always-30min)
+2026-08-23 15:14:23,402 [INFO] openai._base_client: Retrying request to /chat/completions in 0.485351 seconds
+2026-08-23 15:14:24,091 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-23 15:14:24,092 [INFO] openai._base_client: Retrying request to /chat/completions in 0.782246 seconds
+2026-08-23 15:14:25,084 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-23 15:14:25,085 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'Your account org-b15d7af77d7b407d9d9f07f16a409e94 <ak-fabqohadqgu111dtsdp1> is suspended due to insufficient balance, please recharge your account or check your plan and billing details', 'type': 'exceeded_current_quota_error'}}
+2026-08-23 15:14:25,085 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-08-23 15:14:25,086 [INFO] main: TRUMPUSDT | Judge:HOLD conf=50% size=0.0%
+2026-08-23 15:14:25,086 [INFO] main: TRUMPUSDT | RL adj=50.0%
+2026-08-23 15:14:28,842 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-23 15:14:28,843 [INFO] openai._base_client: Retrying request to /chat/completions in 0.492229 seconds
+2026-08-23 15:14:28,854 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-08-23 15:14:28,855 [ERROR] agents: race fallback: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeKu52KWV5JmkLgUjoCtE'}
+2026-08-23 15:14:28,856 [WARNING] agents: Bull: unparseable response → flat/25. raw=
+2026-08-23 15:14:29,548 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-23 15:14:29,549 [INFO] openai._base_client: Retrying request to /chat/completions in 0.907753 seconds
+2026-08-23 15:14:30,663 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-23 15:14:30,933 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-08-23 15:14:30,934 [ERROR] agents: race fallback: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeKu5BDnzJz5zgh8LJJFW'}
+2026-08-23 15:14:30,934 [WARNING] agents: Bear: unparseable response → flat/25. raw=
+2026-08-23 15:14:30,934 [INFO] main: LTCUSDT | Bull:flat(25%) Bear:flat(25%)
+2026-08-23 15:14:31,156 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-23 15:14:31,156 [INFO] openai._base_client: Retrying request to /chat/completions in 0.474724 seconds
+2026-08-23 15:14:31,841 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-23 15:14:31,842 [INFO] openai._base_client: Retrying request to /chat/completions in 0.809379 seconds
+2026-08-23 15:14:32,853 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-23 15:14:32,854 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'Your account org-b15d7af77d7b407d9d9f07f16a409e94 <ak-fabqohadqgu111dtsdp1> is suspended due to insufficient balance, please recharge your account or check your plan and billing details', 'type': 'exceeded_current_quota_error'}}
+2026-08-23 15:14:32,854 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-08-23 15:14:32,854 [INFO] main: LTCUSDT | Judge:HOLD conf=50% size=0.0%
+2026-08-23 15:14:32,854 [INFO] main: LTCUSDT | RL adj=50.0%
+2026-08-23 15:14:34,856 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
