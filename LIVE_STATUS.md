@@ -1,6 +1,6 @@
 # Live status
 
-Generated: 2026-08-23 14:40:01 UTC
+Generated: 2026-08-23 14:50:01 UTC
 
 ## Services
 ```
@@ -8596,36 +8596,36 @@ root     2644122  0.2  3.6 706660 144260 ?       Ssl  Aug04  66:14 /opt/ensemble
 
 ## Ensemble log (last 30 lines)
 ```
-2026-08-23 14:39:40,808 [ERROR] agents: race fallback: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeKrR6xH3ri7Z1ErG6JBL'}
-2026-08-23 14:39:40,809 [WARNING] agents: Bull: unparseable response → flat/25. raw=
-2026-08-23 14:39:41,306 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-23 14:39:41,307 [INFO] openai._base_client: Retrying request to /chat/completions in 0.760637 seconds
-2026-08-23 14:39:42,285 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-23 14:39:42,559 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
-2026-08-23 14:39:42,560 [ERROR] agents: race fallback: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeKrREbuKLb8j9S15PLso'}
-2026-08-23 14:39:42,560 [WARNING] agents: Bear: unparseable response → flat/25. raw=
-2026-08-23 14:39:42,560 [INFO] main: BTCUSDT | Bull:flat(25%) Bear:flat(25%)
-2026-08-23 14:39:42,794 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-23 14:39:42,795 [INFO] openai._base_client: Retrying request to /chat/completions in 0.409615 seconds
-2026-08-23 14:39:43,424 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-23 14:39:43,425 [INFO] openai._base_client: Retrying request to /chat/completions in 0.789014 seconds
-2026-08-23 14:39:44,415 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-23 14:39:44,416 [WARNING] agents: KimiJudge _claude failed: Error code: 429 - {'error': {'message': 'Your account org-b15d7af77d7b407d9d9f07f16a409e94 <ak-fabqohadqgu111dtsdp1> is suspended due to insufficient balance, please recharge your account or check your plan and billing details', 'type': 'exceeded_current_quota_error'}}
-2026-08-23 14:39:44,417 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
-2026-08-23 14:39:44,417 [INFO] main: BTCUSDT | Judge:HOLD conf=50% size=0.0%
-2026-08-23 14:39:44,417 [INFO] main: BTCUSDT | RL adj=50.0%
-2026-08-23 14:39:48,266 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-23 14:39:48,267 [INFO] openai._base_client: Retrying request to /chat/completions in 0.477836 seconds
-2026-08-23 14:39:48,272 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
-2026-08-23 14:39:48,273 [ERROR] agents: race fallback: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeKrRf1axHo5VM9FGheSG'}
-2026-08-23 14:39:48,273 [WARNING] agents: Bull: unparseable response → flat/25. raw=
-2026-08-23 14:39:48,949 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-23 14:39:48,950 [INFO] openai._base_client: Retrying request to /chat/completions in 0.956406 seconds
-2026-08-23 14:39:50,132 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-23 14:39:52,186 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
-2026-08-23 14:39:52,187 [ERROR] agents: race fallback: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeKrRr3cTfaheRgEnX8Te'}
-2026-08-23 14:39:52,188 [WARNING] agents: Bear: unparseable response → flat/25. raw=
-2026-08-23 14:39:52,188 [INFO] main: LINKUSDT | Bull:flat(25%) Bear:flat(25%)
+2026-08-23 14:40:14,127 [INFO] openai._base_client: Retrying request to /chat/completions in 0.416277 seconds
+2026-08-23 14:40:14,549 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 502 Bad Gateway"
+2026-08-23 14:40:14,550 [INFO] openai._base_client: Retrying request to /chat/completions in 0.807517 seconds
+2026-08-23 14:40:15,364 [INFO] httpx: HTTP Request: POST https://api.moonshot.ai/v1/chat/completions "HTTP/1.1 502 Bad Gateway"
+2026-08-23 14:40:15,365 [WARNING] agents: KimiJudge _claude failed: <html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>cloudflare</center>
+</body>
+</html>
+2026-08-23 14:40:15,365 [WARNING] agents: Judge JSON unparseable, defaulting to hold: 
+2026-08-23 14:40:15,365 [INFO] main: LINKUSDT | Judge:HOLD conf=50% size=0.0%
+2026-08-23 14:40:15,365 [INFO] main: LINKUSDT | RL adj=50.0%
+2026-08-23 14:40:17,388 [WARNING] bitget: Bitget GET /api/v2/mix/market/candles retry 1/3 after HTTP 502 on /api/v2/mix/market/candles — sleep 0.5s
+2026-08-23 14:40:17,891 [WARNING] bitget: Bitget GET /api/v2/mix/market/candles retry 2/3 after HTTP 502 on /api/v2/mix/market/candles — sleep 1.5s
+2026-08-23 14:40:19,398 [ERROR] data_engine: DataEngine NEARUSDT: HTTP 502 on /api/v2/mix/market/candles
+2026-08-23 14:40:21,404 [WARNING] bitget: Bitget GET /api/v2/mix/market/candles retry 1/3 after HTTP 502 on /api/v2/mix/market/candles — sleep 0.5s
+2026-08-23 14:40:21,908 [ERROR] bitget: Bitget circuit OPEN for 60s after 5 consecutive failures: HTTP 502 on /api/v2/mix/market/candles
+2026-08-23 14:40:21,908 [ERROR] data_engine: DataEngine ADAUSDT: HTTP 502 on /api/v2/mix/market/candles
+2026-08-23 14:40:23,910 [ERROR] data_engine: DataEngine SOLUSDT: Bitget circuit OPEN, 57s remaining
+2026-08-23 14:40:25,913 [ERROR] data_engine: DataEngine TUTUSDT: Bitget circuit OPEN, 55s remaining
+2026-08-23 14:40:27,915 [ERROR] data_engine: DataEngine TRUMPUSDT: Bitget circuit OPEN, 53s remaining
+2026-08-23 14:40:29,918 [ERROR] data_engine: DataEngine PUMPUSDT: Bitget circuit OPEN, 51s remaining
+2026-08-23 14:40:31,920 [ERROR] data_engine: DataEngine ETHUSDT: Bitget circuit OPEN, 49s remaining
+2026-08-23 14:40:33,923 [ERROR] data_engine: DataEngine FARTCOINUSDT: Bitget circuit OPEN, 47s remaining
+2026-08-23 14:40:35,925 [ERROR] data_engine: DataEngine XLMUSDT: Bitget circuit OPEN, 45s remaining
+2026-08-23 14:40:37,928 [ERROR] data_engine: DataEngine LTCUSDT: Bitget circuit OPEN, 43s remaining
+2026-08-23 14:40:39,931 [ERROR] data_engine: DataEngine DOGEUSDT: Bitget circuit OPEN, 41s remaining
+2026-08-23 14:40:41,933 [INFO] main: Next scan in 30min (always-30min)
 ```
 
 ## Disk
@@ -8643,7 +8643,7 @@ tmpfs           382M   12K  382M   1% /run/user/0
 ## Memory
 ```
                total        used        free      shared  buff/cache   available
-Mem:           3.7Gi       916Mi       338Mi       4.4Mi       2.8Gi       2.8Gi
+Mem:           3.7Gi       917Mi       336Mi       4.4Mi       2.8Gi       2.8Gi
 Swap:          2.0Gi       1.0Mi       2.0Gi
 ```
 
